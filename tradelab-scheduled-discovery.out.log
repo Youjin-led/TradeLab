@@ -1,0 +1,137 @@
+﻿
+> multi-agent-threejs-site@1.0.0 tradelab:discover
+> node tools/tradelab_daily_discovery.js
+
+{
+  "generatedAt": "2026-06-13T06:15:50.401Z",
+  "tested": 225,
+  "qualified": 0,
+  "quarantineSkipped": 61,
+  "killSwitch": {
+    "active": true,
+    "reasons": [
+      "portfolio forward PnL -11806.16 <= -750"
+    ],
+    "metrics": {
+      "candidates": 21,
+      "incubating": 1,
+      "rejected": 5,
+      "forwardTrades": 130,
+      "forwardPnl": -11806.16,
+      "avgPerTrade": -90.82,
+      "rejectedRatio": 0.238,
+      "activePositiveRatio": 0
+    },
+    "rules": {
+      "minForwardTrades": 8,
+      "maxPortfolioLossUsd": -750,
+      "maxAverageLossPerTradeUsd": -120,
+      "maxRejectedRatio": 0.65,
+      "minActivePositiveForwardRatio": 0.25
+    }
+  },
+  "added": [],
+  "recoverySandbox": {
+    "path": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\tradelab-recovery-sandbox.json",
+    "rows": 0,
+    "nearMisses": 12
+  },
+  "errors": [],
+  "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_DAILY_DISCOVERY.md"
+}
+
+
+> multi-agent-threejs-site@1.0.0 tradelab:cycle
+> node tools/tradelab_review_cycle.js
+
+{
+  "generatedAt": "2026-06-13T06:15:56.374Z",
+  "incubation": {
+    "updatedAt": "2026-06-13T06:15:50.864Z",
+    "total": 21,
+    "incubating": 2,
+    "readyForReview": 0,
+    "rejected": 4,
+    "quarantined": 15,
+    "networkErrors": 0,
+    "networkErrorKeys": [],
+    "nextAction": "review quarantined strategies before adding similar candidates"
+  },
+  "incubationErrors": [],
+  "drawdown": {
+    "summary": {
+      "candidates": 21,
+      "incubating": 2,
+      "rejected": 4,
+      "forwardTrades": 132,
+      "forwardPnl": -11580.78,
+      "avgPerTrade": -87.73,
+      "activePositiveRatio": 0.5
+    },
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_DRAWDOWN_DIAGNOSTICS.md"
+  },
+  "quarantine": {
+    "generatedAt": "2026-06-13T06:15:56.335Z",
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_QUARANTINE.md",
+    "jsonPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\tradelab-quarantine.json",
+    "stateUpdate": {
+      "changed": 0,
+      "statePath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\tradelab-incubation-state.json",
+      "quarantined": 15
+    },
+    "blockedSymbols": 7,
+    "blockedStrategies": 1,
+    "blockedCandidates": 9,
+    "downrankIntervals": 1
+  },
+  "lifecycle": {
+    "summary": {
+      "candidates": 21,
+      "probation": 0,
+      "queued": 1,
+      "readyQueued": 0
+    },
+    "actions": [],
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_LIFECYCLE.md"
+  },
+  "gate": {
+    "status": "BLOCKED",
+    "allowed": 0,
+    "blocked": 21,
+    "nextAction": "Portfolio kill-switch active: portfolio forward PnL -11580.78 <= -750"
+  },
+  "report": {
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_INCUBATION_REPORT.md",
+    "gate": "BLOCKED",
+    "candidates": 21,
+    "nextAction": "Portfolio kill-switch active: portfolio forward PnL -11580.78 <= -750"
+  },
+  "scoreboard": {
+    "summary": {
+      "candidates": 21,
+      "live": 2,
+      "probation": 0,
+      "quarantined": 15,
+      "rejected": 4,
+      "readyForReview": 0,
+      "improving": 1,
+      "deteriorating": 0,
+      "collecting": 1
+    },
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_SCOREBOARD.md"
+  },
+  "network": {
+    "generatedAt": "2026-06-13T06:15:56.373Z",
+    "status": "PASS",
+    "recentRuns": 24,
+    "recentFailures": 0,
+    "recentFetchFailures": 0,
+    "lastRun": {
+      "startedAt": "2026-06-12T19:32:32",
+      "status": "PASS",
+      "error": "",
+      "finishedAt": "2026-06-12T19:32:37"
+    },
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_NETWORK_HEALTH.md"
+  }
+}

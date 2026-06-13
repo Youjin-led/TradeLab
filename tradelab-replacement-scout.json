@@ -1,0 +1,877 @@
+{
+  "generatedAt": "2026-06-08T10:08:29.700Z",
+  "tested": 72,
+  "qualified": 0,
+  "shortlist": [],
+  "nearMisses": [
+    {
+      "symbol": "FILUSDT",
+      "interval": "1d",
+      "strategy": "breakout",
+      "params": {
+        "strategy": "breakout",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 34,
+        "rsiBuy": 42,
+        "rsiSell": 68,
+        "lookback": 20,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 13039.653684110357,
+        "pnl": 3039.653684110357,
+        "profitFactor": 2.146881603305851,
+        "winrate": 60,
+        "avg": 202.6435789406906,
+        "maxDd": 9.200642350617896,
+        "tradeCount": 15,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 14874.685837522771,
+        "pnl": 4874.685837522771,
+        "profitFactor": 3.8533916607367438,
+        "winrate": 40,
+        "avg": 974.9371675045544,
+        "maxDd": 10.301971407047386,
+        "tradeCount": 5,
+        "maxLossStreak": 3
+      },
+      "ratio": 1.603697770902309,
+      "stability": "weak",
+      "health": {
+        "score": 50,
+        "status": "Caution",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown exceeds limit",
+          "walk-forward weak",
+          "guardrails would block live entry"
+        ]
+      },
+      "score": 4798.97900209753,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test trades 5 < 6",
+          "test DD 10.30% > 6%",
+          "health Caution != Healthy",
+          "health score 50 < 75"
+        ]
+      },
+      "failReasons": [
+        "walk-forward weak",
+        "health Caution",
+        "health score 50 < 78",
+        "test trades 5 < 6",
+        "test DD 10.30% > 5.25%",
+        "test DD 10.30% > 6%",
+        "health Caution != Healthy",
+        "health score 50 < 75"
+      ]
+    },
+    {
+      "symbol": "FILUSDT",
+      "interval": "1d",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 24,
+        "rsiBuy": 35,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 11807.898081916626,
+        "pnl": 1807.8980819166263,
+        "profitFactor": 2.5924877862168505,
+        "winrate": 61.53846153846154,
+        "avg": 139.0690832243559,
+        "maxDd": 4.198979042173342,
+        "tradeCount": 13,
+        "maxLossStreak": 2
+      },
+      "test": {
+        "balance": 13858.471649661997,
+        "pnl": 3858.4716496619967,
+        "profitFactor": 3.1258894727691997,
+        "winrate": 14.285714285714285,
+        "avg": 551.2102356659991,
+        "maxDd": 9.208195010097878,
+        "tradeCount": 7,
+        "maxLossStreak": 5
+      },
+      "ratio": 2.134230733610533,
+      "stability": "weak",
+      "health": {
+        "score": 50,
+        "status": "Caution",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown exceeds limit",
+          "walk-forward weak",
+          "guardrails would block live entry"
+        ]
+      },
+      "score": 3787.554132265856,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test DD 9.21% > 6%",
+          "test loss streak 5 > 3",
+          "health Caution != Healthy",
+          "health score 50 < 75"
+        ]
+      },
+      "failReasons": [
+        "walk-forward weak",
+        "health Caution",
+        "health score 50 < 78",
+        "test DD 9.21% > 5.25%",
+        "test DD 9.21% > 6%",
+        "test loss streak 5 > 3",
+        "health Caution != Healthy",
+        "health score 50 < 75"
+      ]
+    },
+    {
+      "symbol": "SEIUSDT",
+      "interval": "1d",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 8,
+        "slow": 24,
+        "rsiBuy": 35,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 17599.80391936029,
+        "pnl": 7599.803919360289,
+        "profitFactor": 5.211388626541745,
+        "winrate": 66.66666666666666,
+        "avg": 506.65359462401915,
+        "maxDd": 8.497868187254161,
+        "tradeCount": 15,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 11098.34869493897,
+        "pnl": 1098.3486949389699,
+        "profitFactor": null,
+        "winrate": 100,
+        "avg": 549.1743474694849,
+        "maxDd": 0,
+        "tradeCount": 2,
+        "maxLossStreak": 0
+      },
+      "ratio": 0.14452329383669454,
+      "stability": "weak",
+      "health": {
+        "score": 90,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward weak"
+        ]
+      },
+      "score": 1400.3486949389699,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test trades 2 < 6"
+        ]
+      },
+      "failReasons": [
+        "walk-forward weak",
+        "test trades 2 < 6"
+      ]
+    },
+    {
+      "symbol": "DOTUSDT",
+      "interval": "1d",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 16,
+        "slow": 24,
+        "rsiBuy": 35,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 12344.961451746234,
+        "pnl": 2344.961451746234,
+        "profitFactor": 2.623263944842275,
+        "winrate": 66.66666666666666,
+        "avg": 195.41345431218625,
+        "maxDd": 9.2501254421431,
+        "tradeCount": 12,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 11420.89690301125,
+        "pnl": 1420.8969030112494,
+        "profitFactor": 2.8279690994474915,
+        "winrate": 77.77777777777779,
+        "avg": 157.87743366791693,
+        "maxDd": 7.947104813974098,
+        "tradeCount": 9,
+        "maxLossStreak": 2
+      },
+      "ratio": 0.605936145326885,
+      "stability": "stable",
+      "health": {
+        "score": 100,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      },
+      "score": 1376.9939848386914,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test DD 7.95% > 6%"
+        ]
+      },
+      "failReasons": [
+        "test DD 7.95% > 5.25%",
+        "test DD 7.95% > 6%"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1d",
+      "strategy": "breakout",
+      "params": {
+        "strategy": "breakout",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 34,
+        "rsiBuy": 42,
+        "rsiSell": 68,
+        "lookback": 20,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 3.2,
+        "takePct": 5.8,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 12928.236104850746,
+        "pnl": 2928.2361048507464,
+        "profitFactor": 1.8422050174449625,
+        "winrate": 55.55555555555556,
+        "avg": 108.45318906854621,
+        "maxDd": 9.106210888327114,
+        "tradeCount": 27,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 10913.389331268783,
+        "pnl": 913.3893312687833,
+        "profitFactor": 6.164160066207359,
+        "winrate": 75,
+        "avg": 228.34733281719554,
+        "maxDd": 1.8156818336600398,
+        "tradeCount": 4,
+        "maxLossStreak": 1
+      },
+      "ratio": 0.31192475557408617,
+      "stability": "stable",
+      "health": {
+        "score": 100,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      },
+      "score": 1142.8920082079912,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test trades 4 < 6"
+        ]
+      },
+      "failReasons": [
+        "test trades 4 < 6"
+      ]
+    },
+    {
+      "symbol": "TIAUSDT",
+      "interval": "1d",
+      "strategy": "breakout",
+      "params": {
+        "strategy": "breakout",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 34,
+        "rsiBuy": 42,
+        "rsiSell": 68,
+        "lookback": 20,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 10402.00346365678,
+        "pnl": 402.0034636567798,
+        "profitFactor": 1.2576523879828903,
+        "winrate": 33.33333333333333,
+        "avg": 67.00057727612995,
+        "maxDd": 9.982444822507137,
+        "tradeCount": 6,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 10907.72773145454,
+        "pnl": 907.7277314545408,
+        "profitFactor": 1.6006939296009088,
+        "winrate": 25,
+        "avg": 113.46596643181755,
+        "maxDd": 9.6258151390519,
+        "tradeCount": 8,
+        "maxLossStreak": 4
+      },
+      "ratio": 2.2580097275717392,
+      "stability": "weak",
+      "health": {
+        "score": 50,
+        "status": "Caution",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown exceeds limit",
+          "walk-forward weak",
+          "guardrails would block live entry"
+        ]
+      },
+      "score": 766.3114980214815,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test DD 9.63% > 6%",
+          "test loss streak 4 > 3",
+          "health Caution != Healthy",
+          "health score 50 < 75"
+        ]
+      },
+      "failReasons": [
+        "walk-forward weak",
+        "health Caution",
+        "health score 50 < 78",
+        "test PF 1.60 < 1.65",
+        "test DD 9.63% > 5.25%",
+        "test DD 9.63% > 6%",
+        "test loss streak 4 > 3",
+        "health Caution != Healthy",
+        "health score 50 < 75"
+      ]
+    },
+    {
+      "symbol": "TRXUSDT",
+      "interval": "4h",
+      "strategy": "breakout",
+      "params": {
+        "strategy": "breakout",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 34,
+        "rsiBuy": 42,
+        "rsiSell": 68,
+        "lookback": 20,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 10804.728673742837,
+        "pnl": 804.7286737428367,
+        "profitFactor": 2.09131178336829,
+        "winrate": 65,
+        "avg": 40.23643368714172,
+        "maxDd": 4.379506276948025,
+        "tradeCount": 20,
+        "maxLossStreak": 2
+      },
+      "test": {
+        "balance": 10389.050451626928,
+        "pnl": 389.0504516269284,
+        "profitFactor": 3.918567526971433,
+        "winrate": 40,
+        "avg": 38.905045162693185,
+        "maxDd": 1.6544777912060555,
+        "tradeCount": 10,
+        "maxLossStreak": 4
+      },
+      "ratio": 0.48345543575256694,
+      "stability": "stable",
+      "health": {
+        "score": 82,
+        "status": "Caution",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable",
+          "guardrails would block live entry"
+        ]
+      },
+      "score": 552.2683429795773,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test loss streak 4 > 3",
+          "health Caution != Healthy"
+        ]
+      },
+      "failReasons": [
+        "health Caution",
+        "test loss streak 4 > 3",
+        "health Caution != Healthy"
+      ]
+    },
+    {
+      "symbol": "SUIUSDT",
+      "interval": "4h",
+      "strategy": "breakout",
+      "params": {
+        "strategy": "breakout",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 34,
+        "rsiBuy": 42,
+        "rsiSell": 68,
+        "lookback": 20,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 3.2,
+        "takePct": 5.8,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 10549.299525819133,
+        "pnl": 549.2995258191331,
+        "profitFactor": 1.406260513205675,
+        "winrate": 47.368421052631575,
+        "avg": 28.91050135890173,
+        "maxDd": 6.759030003320535,
+        "tradeCount": 19,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 10415.456582718201,
+        "pnl": 415.4565827182014,
+        "profitFactor": 1.647063856412534,
+        "winrate": 42.857142857142854,
+        "avg": 59.35094038831479,
+        "maxDd": 4.672236528086527,
+        "tradeCount": 7,
+        "maxLossStreak": 3
+      },
+      "ratio": 0.7563388701249272,
+      "stability": "stable",
+      "health": {
+        "score": 100,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      },
+      "score": 395.8273514853646,
+      "validation": {
+        "ok": true,
+        "reasons": []
+      },
+      "failReasons": [
+        "test PF 1.65 < 1.65"
+      ]
+    },
+    {
+      "symbol": "BCHUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 8,
+        "slow": 55,
+        "rsiBuy": 35,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 10394.308036309729,
+        "pnl": 394.3080363097288,
+        "profitFactor": 1.5600747942830724,
+        "winrate": 58.333333333333336,
+        "avg": 32.8590030258108,
+        "maxDd": 5.254013734050862,
+        "tradeCount": 12,
+        "maxLossStreak": 2
+      },
+      "test": {
+        "balance": 10201.63911793851,
+        "pnl": 201.63911793851003,
+        "profitFactor": 4.482876185133541,
+        "winrate": 33.33333333333333,
+        "avg": 67.21303931283643,
+        "maxDd": 0.7126085198366563,
+        "tradeCount": 3,
+        "maxLossStreak": 2
+      },
+      "ratio": 0.511374609114288,
+      "stability": "stable",
+      "health": {
+        "score": 100,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      },
+      "score": 384.10470471820236,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test trades 3 < 6"
+        ]
+      },
+      "failReasons": [
+        "test trades 3 < 6"
+      ]
+    },
+    {
+      "symbol": "JUPUSDT",
+      "interval": "1d",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 16,
+        "slow": 55,
+        "rsiBuy": 35,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 11236.397865942796,
+        "pnl": 1236.3978659427958,
+        "profitFactor": 1.729369774196095,
+        "winrate": 62.5,
+        "avg": 154.54973324284958,
+        "maxDd": 11.117096322870989,
+        "tradeCount": 8,
+        "maxLossStreak": 2
+      },
+      "test": {
+        "balance": 10408.674923275707,
+        "pnl": 408.67492327570653,
+        "profitFactor": 1.267178455218668,
+        "winrate": 44.44444444444444,
+        "avg": 45.40832480841156,
+        "maxDd": 8.574982773098395,
+        "tradeCount": 9,
+        "maxLossStreak": 3
+      },
+      "ratio": 0.3305367426884694,
+      "stability": "stable",
+      "health": {
+        "score": 90,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "moderate profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      },
+      "score": 283.5218490674307,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test PF 1.27 < 1.4",
+          "test DD 8.57% > 6%"
+        ]
+      },
+      "failReasons": [
+        "test PF 1.27 < 1.65",
+        "test DD 8.57% > 5.25%",
+        "test PF 1.27 < 1.4",
+        "test DD 8.57% > 6%"
+      ]
+    },
+    {
+      "symbol": "TRXUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 12,
+        "slow": 55,
+        "rsiBuy": 48,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 1.6,
+        "takePct": 3,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 12101.293512350878,
+        "pnl": 2101.293512350878,
+        "profitFactor": 6.9269601481338885,
+        "winrate": 77.27272727272727,
+        "avg": 95.51334147049451,
+        "maxDd": 2.384470423858783,
+        "tradeCount": 22,
+        "maxLossStreak": 2
+      },
+      "test": {
+        "balance": 10199.710833761912,
+        "pnl": 199.710833761912,
+        "profitFactor": 2.183351504335478,
+        "winrate": 83.33333333333334,
+        "avg": 33.285138960318946,
+        "maxDd": 1.7195866440444008,
+        "tradeCount": 6,
+        "maxLossStreak": 1
+      },
+      "ratio": 0.09504185521349667,
+      "stability": "weak",
+      "health": {
+        "score": 90,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward weak"
+        ]
+      },
+      "score": 272.42193084289204,
+      "validation": {
+        "ok": true,
+        "reasons": []
+      },
+      "failReasons": [
+        "walk-forward weak"
+      ]
+    },
+    {
+      "symbol": "ARBUSDT",
+      "interval": "1d",
+      "strategy": "sma-rsi",
+      "params": {
+        "strategy": "sma-rsi",
+        "direction": "long-only",
+        "fast": 16,
+        "slow": 55,
+        "rsiBuy": 48,
+        "rsiSell": 68,
+        "lookback": 42,
+        "deviationPct": 3.2,
+        "riskPct": 1.2,
+        "stopPct": 3.2,
+        "takePct": 5.8,
+        "maxDrawdownPct": 9,
+        "feePct": 0.06,
+        "slippagePct": 0.04
+      },
+      "train": {
+        "balance": 12489.49901239143,
+        "pnl": 2489.4990123914304,
+        "profitFactor": 1.5730051810722447,
+        "winrate": 55.55555555555556,
+        "avg": 69.15275034420642,
+        "maxDd": 8.805134843993407,
+        "tradeCount": 36,
+        "maxLossStreak": 3
+      },
+      "test": {
+        "balance": 10281.132221754322,
+        "pnl": 281.132221754322,
+        "profitFactor": 1.2997753498748068,
+        "winrate": 44.44444444444444,
+        "avg": 31.23691352825777,
+        "maxDd": 5.450681464212092,
+        "tradeCount": 9,
+        "maxLossStreak": 3
+      },
+      "ratio": 0.11292722766909813,
+      "stability": "weak",
+      "health": {
+        "score": 80,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "moderate profit factor",
+          "drawdown inside limit",
+          "walk-forward weak"
+        ]
+      },
+      "score": 235.4557498437616,
+      "validation": {
+        "ok": false,
+        "reasons": [
+          "test PF 1.30 < 1.4"
+        ]
+      },
+      "failReasons": [
+        "walk-forward weak",
+        "test PF 1.30 < 1.65",
+        "test DD 5.45% > 5.25%",
+        "test PF 1.30 < 1.4"
+      ]
+    }
+  ],
+  "reserveCandidates": [],
+  "skipped": [
+    {
+      "symbol": "FILUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "reason": "already known in base, auto, or incubation state"
+    },
+    {
+      "symbol": "SEIUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "reason": "already known in base, auto, or incubation state"
+    },
+    {
+      "symbol": "SEIUSDT",
+      "interval": "4h",
+      "strategy": "breakout",
+      "reason": "already known in base, auto, or incubation state"
+    },
+    {
+      "symbol": "JUPUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "reason": "already known in base, auto, or incubation state"
+    },
+    {
+      "symbol": "JUPUSDT",
+      "interval": "4h",
+      "strategy": "breakout",
+      "reason": "already known in base, auto, or incubation state"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "reason": "already known in base, auto, or incubation state"
+    },
+    {
+      "symbol": "TRXUSDT",
+      "interval": "1d",
+      "strategy": "sma-rsi",
+      "reason": "already known in base, auto, or incubation state"
+    }
+  ],
+  "errors": [],
+  "killSwitch": {
+    "active": true,
+    "reasons": [
+      "portfolio forward PnL -11541.24 <= -750"
+    ],
+    "metrics": {
+      "candidates": 20,
+      "incubating": 3,
+      "rejected": 5,
+      "forwardTrades": 121,
+      "forwardPnl": -11541.24,
+      "avgPerTrade": -95.38,
+      "rejectedRatio": 0.25,
+      "activePositiveRatio": 0.333
+    },
+    "rules": {
+      "minForwardTrades": 8,
+      "maxPortfolioLossUsd": -750,
+      "maxAverageLossPerTradeUsd": -120,
+      "maxRejectedRatio": 0.65,
+      "minActivePositiveForwardRatio": 0.25
+    }
+  },
+  "reportPath": "C:\\Users\\Ардор\\OneDrive\\Рабочий стол\\JS\\ДЗ-1\\TRADELAB_REPLACEMENT_SCOUT.md"
+}

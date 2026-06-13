@@ -1,0 +1,124 @@
+﻿
+> multi-agent-threejs-site@1.0.0 tradelab:news
+> node tools/tradelab_news_impact.js BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT,XRPUSDT,INJUSDT,APTUSDT,JUPUSDT,SEIUSDT,OPUSDT,NEARUSDT,FILUSDT,RENDERUSDT,AVAXUSDT,LINKUSDT
+
+{
+  "generatedAt": "2026-06-13T06:05:15.316Z",
+  "itemCount": 192,
+  "matchedEvents": 95,
+  "summary": [
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "positive",
+      "count": 21,
+      "avg1h": 0.137,
+      "avg4h": -0.066,
+      "avg12h": 0.028,
+      "avg24h": 0.09
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "neutral",
+      "count": 18,
+      "avg1h": 0.09,
+      "avg4h": 0.104,
+      "avg12h": 0.087,
+      "avg24h": 0.196
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "negative",
+      "count": 15,
+      "avg1h": -0.177,
+      "avg4h": -0.105,
+      "avg12h": -0.193,
+      "avg24h": -0.126
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "positive",
+      "count": 10,
+      "avg1h": 0.49,
+      "avg4h": 0.672,
+      "avg12h": 0.738,
+      "avg24h": 0.256
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "positive",
+      "count": 8,
+      "avg1h": 0.662,
+      "avg4h": 0.414,
+      "avg12h": 0.412,
+      "avg24h": 0.321
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "positive",
+      "count": 4,
+      "avg1h": 0.703,
+      "avg4h": -0.534,
+      "avg12h": -0.435,
+      "avg24h": -3.162
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "neutral",
+      "count": 4,
+      "avg1h": 0.605,
+      "avg4h": 0.727,
+      "avg12h": 0.671,
+      "avg24h": 0.266
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "neutral",
+      "count": 3,
+      "avg1h": 0.092,
+      "avg4h": -0.288,
+      "avg12h": -0.693,
+      "avg24h": -0.507
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "neutral",
+      "count": 2,
+      "avg1h": -0.432,
+      "avg4h": -0.124,
+      "avg12h": -0.599,
+      "avg24h": -1.135
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "positive",
+      "count": 2,
+      "avg1h": 0.268,
+      "avg4h": -0.142,
+      "avg12h": -0.455,
+      "avg24h": -0.831
+    }
+  ],
+  "errors": [],
+  "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_NEWS_IMPACT.md"
+}
+
+
+> multi-agent-threejs-site@1.0.0 tradelab:dependencies
+> node tools/tradelab_news_dependencies.js
+
+{
+  "generatedAt": "2026-06-13T06:05:15.600Z",
+  "matchedEvents": 95,
+  "findings": [
+    "NEARUSDT: all matched news has a strong 24h down dependency, avg -3.39%, agreement 100%, n=5.",
+    "XRPUSDT: positive news has a moderate 12h up dependency, avg 0.738%, agreement 70%, n=10.",
+    "XRPUSDT: all matched news has a moderate 4h up dependency, avg 0.638%, agreement 73%, n=15.",
+    "NEARUSDT: all matched news has a moderate 12h down dependency, avg -1.132%, agreement 80%, n=5.",
+    "XRPUSDT: positive news has a moderate 4h up dependency, avg 0.672%, agreement 70%, n=10.",
+    "XRPUSDT: all matched news has a moderate 12h up dependency, avg 0.614%, agreement 67%, n=15.",
+    "ETHUSDT: positive news has a moderate 1h up dependency, avg 0.662%, agreement 100%, n=8.",
+    "NEARUSDT: all matched news has a moderate 1h up dependency, avg 0.639%, agreement 80%, n=5.",
+    "NEARUSDT: all matched news has a moderate 4h down dependency, avg -0.953%, agreement 60%, n=5."
+  ],
+  "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_NEWS_DEPENDENCIES.md"
+}

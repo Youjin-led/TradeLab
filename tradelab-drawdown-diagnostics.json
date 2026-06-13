@@ -1,0 +1,787 @@
+{
+  "generatedAt": "2026-06-13T11:32:38.342Z",
+  "incubationUpdatedAt": "2026-06-13T11:32:32.570Z",
+  "summary": {
+    "candidates": 21,
+    "incubating": 2,
+    "rejected": 4,
+    "forwardTrades": 132,
+    "forwardPnl": -11580.78,
+    "avgPerTrade": -87.73,
+    "activePositiveRatio": 0.5
+  },
+  "killSwitch": {
+    "active": true,
+    "reasons": [
+      "portfolio forward PnL -11580.78 <= -750"
+    ],
+    "metrics": {
+      "candidates": 21,
+      "incubating": 2,
+      "rejected": 4,
+      "forwardTrades": 132,
+      "forwardPnl": -11580.78,
+      "avgPerTrade": -87.73,
+      "rejectedRatio": 0.19,
+      "activePositiveRatio": 0.5
+    },
+    "rules": {
+      "minForwardTrades": 8,
+      "maxPortfolioLossUsd": -750,
+      "maxAverageLossPerTradeUsd": -120,
+      "maxRejectedRatio": 0.65,
+      "minActivePositiveForwardRatio": 0.25
+    }
+  },
+  "actions": [
+    {
+      "level": "critical",
+      "action": "Freeze auto-adds and real-money preparation until kill-switch clears.",
+      "reason": "portfolio forward PnL -11580.78 <= -750"
+    },
+    {
+      "level": "high",
+      "action": "Quarantine or down-rank INJUSDT candidates until they recover in paper mode.",
+      "reason": "INJUSDT forward PnL -2088.70 with no useful news dependency yet."
+    },
+    {
+      "level": "high",
+      "action": "Quarantine or down-rank NEARUSDT candidates until they recover in paper mode.",
+      "reason": "NEARUSDT forward PnL -1696.33; news dependency strong 24h down, avg -3.39%, agreement 100.0%."
+    },
+    {
+      "level": "high",
+      "action": "Quarantine or down-rank AVAXUSDT candidates until they recover in paper mode.",
+      "reason": "AVAXUSDT forward PnL -1549.14 with no useful news dependency yet."
+    },
+    {
+      "level": "high",
+      "action": "Quarantine or down-rank APTUSDT candidates until they recover in paper mode.",
+      "reason": "APTUSDT forward PnL -1402.63 with no useful news dependency yet."
+    },
+    {
+      "level": "high",
+      "action": "Quarantine or down-rank BTCUSDT candidates until they recover in paper mode.",
+      "reason": "BTCUSDT forward PnL -1321.16 with no useful news dependency yet."
+    },
+    {
+      "level": "medium",
+      "action": "Reduce priority for 1h timeframe discovery.",
+      "reason": "1h is the weakest timeframe group: -6991.73 across 85 forward trades."
+    },
+    {
+      "level": "medium",
+      "action": "Tighten validation or pause mean-reversion variants.",
+      "reason": "mean-reversion is the weakest strategy group: -9274.38; blocked 8/8."
+    },
+    {
+      "level": "medium",
+      "action": "Review stop/take parameters for repeated stop-loss candidates before adding more similar setups.",
+      "reason": "8 of the worst candidates already carry drawdown, loss-streak, or profit-factor alerts."
+    }
+  ],
+  "worstCandidates": [
+    {
+      "key": "NEARUSDT:1h:mean-reversion",
+      "symbol": "NEARUSDT",
+      "interval": "1h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 15,
+      "forwardPaperPnl": -1800.17,
+      "totalPnl": -209.19,
+      "profitFactor": 0.9,
+      "maxDrawdownPct": 10.61,
+      "maxLossStreak": 6,
+      "alerts": [
+        "drawdown 10.61% >= limit 9%",
+        "loss streak 6",
+        "profit factor 0.90 < 1.05",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -1800.17, PF 0.9, max DD 10.61%, health Blocked"
+      ],
+      "health": {
+        "score": 0,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "AVAXUSDT:4h:mean-reversion",
+      "symbol": "AVAXUSDT",
+      "interval": "4h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 10,
+      "forwardPaperPnl": -1549.14,
+      "totalPnl": 428.66,
+      "profitFactor": 1.12,
+      "maxDrawdownPct": 9.81,
+      "maxLossStreak": 3,
+      "alerts": [
+        "drawdown 9.81% >= limit 9%",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -1549.14, PF 1.12, max DD 9.81%, health Blocked"
+      ],
+      "health": {
+        "score": 25,
+        "status": "Blocked",
+        "reasons": [
+          "positive backtest",
+          "moderate profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "APTUSDT:1h:mean-reversion",
+      "symbol": "APTUSDT",
+      "interval": "1h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 15,
+      "forwardPaperPnl": -1402.63,
+      "totalPnl": -388.6,
+      "profitFactor": 0.85,
+      "maxDrawdownPct": 10.9,
+      "maxLossStreak": 4,
+      "alerts": [
+        "drawdown 10.90% >= limit 9%",
+        "loss streak 4",
+        "profit factor 0.85 < 1.05",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -1402.63, PF 0.85, max DD 10.9%, health Blocked"
+      ],
+      "health": {
+        "score": 0,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "BTCUSDT:1h:mean-reversion",
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 13,
+      "forwardPaperPnl": -1321.16,
+      "totalPnl": -683.62,
+      "profitFactor": 0.4,
+      "maxDrawdownPct": 9.93,
+      "maxLossStreak": 4,
+      "alerts": [
+        "drawdown 9.93% >= limit 9%",
+        "loss streak 4",
+        "profit factor 0.40 < 1.05",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -1321.16, PF 0.4, max DD 9.93%, health Blocked"
+      ],
+      "health": {
+        "score": 0,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "ETHUSDT:1h:mean-reversion",
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 14,
+      "forwardPaperPnl": -1107.6,
+      "totalPnl": -585.63,
+      "profitFactor": 0.57,
+      "maxDrawdownPct": 10.33,
+      "maxLossStreak": 4,
+      "alerts": [
+        "drawdown 10.33% >= limit 9%",
+        "loss streak 4",
+        "profit factor 0.57 < 1.05",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -1107.6, PF 0.57, max DD 10.33%, health Blocked"
+      ],
+      "health": {
+        "score": 0,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "INJUSDT:1h:mean-reversion",
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 19,
+      "forwardPaperPnl": -1098.48,
+      "totalPnl": 1721.02,
+      "profitFactor": 1.49,
+      "maxDrawdownPct": 10.34,
+      "maxLossStreak": 6,
+      "alerts": [
+        "drawdown 10.34% >= limit 9%",
+        "loss streak 6",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -1098.48, PF 1.49, max DD 10.34%, health Blocked"
+      ],
+      "health": {
+        "score": 35,
+        "status": "Blocked",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "INJUSDT:4h:sma-rsi",
+      "symbol": "INJUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "status": "quarantined",
+      "forwardPaperTrades": 6,
+      "forwardPaperPnl": -990.22,
+      "totalPnl": 2207,
+      "profitFactor": 1.94,
+      "maxDrawdownPct": 5.74,
+      "maxLossStreak": 3,
+      "alerts": [
+        "quarantine: weak candidate: forward PnL -990.22, PF 1.94, max DD 5.74%, health Healthy"
+      ],
+      "health": {
+        "score": 100,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      }
+    },
+    {
+      "key": "JUPUSDT:4h:sma-rsi",
+      "symbol": "JUPUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "status": "quarantined",
+      "forwardPaperTrades": 5,
+      "forwardPaperPnl": -542.98,
+      "totalPnl": 1337.21,
+      "profitFactor": 1.45,
+      "maxDrawdownPct": 6.67,
+      "maxLossStreak": 2,
+      "alerts": [
+        "quarantine: weak candidate: forward PnL -542.98, PF 1.45, max DD 6.67%, health Healthy"
+      ],
+      "health": {
+        "score": 100,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable"
+        ]
+      }
+    },
+    {
+      "key": "LINKUSDT:4h:mean-reversion",
+      "symbol": "LINKUSDT",
+      "interval": "4h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 5,
+      "forwardPaperPnl": -506.04,
+      "totalPnl": -311.74,
+      "profitFactor": 0.91,
+      "maxDrawdownPct": 9.37,
+      "maxLossStreak": 5,
+      "alerts": [
+        "drawdown 9.37% >= limit 9%",
+        "loss streak 5",
+        "profit factor 0.91 < 1.05",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -506.04, PF 0.91, max DD 9.37%, health Blocked"
+      ],
+      "health": {
+        "score": 0,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
+        ]
+      }
+    },
+    {
+      "key": "RENDERUSDT:4h:mean-reversion",
+      "symbol": "RENDERUSDT",
+      "interval": "4h",
+      "strategy": "mean-reversion",
+      "status": "quarantined",
+      "forwardPaperTrades": 7,
+      "forwardPaperPnl": -489.16,
+      "totalPnl": 1604.89,
+      "profitFactor": 1.45,
+      "maxDrawdownPct": 8.87,
+      "maxLossStreak": 4,
+      "alerts": [
+        "loss streak 4",
+        "quarantine: weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8"
+      ],
+      "health": {
+        "score": 82,
+        "status": "Caution",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward stable",
+          "guardrails would block live entry"
+        ]
+      }
+    }
+  ],
+  "bySymbol": [
+    {
+      "key": "INJUSDT",
+      "count": 0,
+      "candidates": 2,
+      "trades": 25,
+      "pnl": -2088.7,
+      "wins": 5,
+      "losses": 20,
+      "maxDrawdownPct": 18.02,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 2,
+      "avgPerTrade": -83.55,
+      "winrate": 0.2
+    },
+    {
+      "key": "NEARUSDT",
+      "count": 0,
+      "candidates": 3,
+      "trades": 16,
+      "pnl": -1696.33,
+      "wins": 3,
+      "losses": 13,
+      "maxDrawdownPct": 20.13,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 3,
+      "avgPerTrade": -106.02,
+      "winrate": 0.188
+    },
+    {
+      "key": "AVAXUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 10,
+      "pnl": -1549.14,
+      "wins": 1,
+      "losses": 9,
+      "maxDrawdownPct": 16.32,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -154.91,
+      "winrate": 0.1
+    },
+    {
+      "key": "APTUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 15,
+      "pnl": -1402.63,
+      "wins": 4,
+      "losses": 11,
+      "maxDrawdownPct": 17.13,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -93.51,
+      "winrate": 0.267
+    },
+    {
+      "key": "BTCUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 13,
+      "pnl": -1321.16,
+      "wins": 3,
+      "losses": 10,
+      "maxDrawdownPct": 14.68,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -101.63,
+      "winrate": 0.231
+    },
+    {
+      "key": "ETHUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 14,
+      "pnl": -1107.6,
+      "wins": 5,
+      "losses": 9,
+      "maxDrawdownPct": 12.59,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -79.11,
+      "winrate": 0.357
+    },
+    {
+      "key": "JUPUSDT",
+      "count": 0,
+      "candidates": 2,
+      "trades": 7,
+      "pnl": -1010.6,
+      "wins": 1,
+      "losses": 6,
+      "maxDrawdownPct": 5.53,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 2,
+      "avgPerTrade": -144.37,
+      "winrate": 0.143
+    },
+    {
+      "key": "LINKUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 5,
+      "pnl": -506.04,
+      "wins": 1,
+      "losses": 4,
+      "maxDrawdownPct": 8.15,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -101.21,
+      "winrate": 0.2
+    },
+    {
+      "key": "RENDERUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 7,
+      "pnl": -489.16,
+      "wins": 2,
+      "losses": 5,
+      "maxDrawdownPct": 8.26,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -69.88,
+      "winrate": 0.286
+    },
+    {
+      "key": "BNBUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 5,
+      "pnl": -246.58,
+      "wins": 1,
+      "losses": 4,
+      "maxDrawdownPct": 3.15,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": -49.32,
+      "winrate": 0.2
+    },
+    {
+      "key": "TRXUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 2,
+      "pnl": -246.32,
+      "wins": 0,
+      "losses": 2,
+      "maxDrawdownPct": 2.59,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": -123.16,
+      "winrate": 0
+    },
+    {
+      "key": "OPUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 5,
+      "pnl": -216.56,
+      "wins": 2,
+      "losses": 3,
+      "maxDrawdownPct": 5.02,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -43.31,
+      "winrate": 0.4
+    },
+    {
+      "key": "ATOMUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 1,
+      "pnl": -71.57,
+      "wins": 0,
+      "losses": 1,
+      "maxDrawdownPct": 1,
+      "rejected": 0,
+      "incubating": 1,
+      "quarantined": 0,
+      "avgPerTrade": -71.57,
+      "winrate": 0
+    },
+    {
+      "key": "FILUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 0,
+      "pnl": 0,
+      "wins": 0,
+      "losses": 0,
+      "maxDrawdownPct": 4.92,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": 0,
+      "winrate": 0
+    },
+    {
+      "key": "SEIUSDT",
+      "count": 0,
+      "candidates": 3,
+      "trades": 7,
+      "pnl": 371.61,
+      "wins": 5,
+      "losses": 2,
+      "maxDrawdownPct": 3.6,
+      "rejected": 1,
+      "incubating": 1,
+      "quarantined": 1,
+      "avgPerTrade": 53.09,
+      "winrate": 0.714
+    }
+  ],
+  "byInterval": [
+    {
+      "key": "1h",
+      "count": 0,
+      "candidates": 8,
+      "trades": 85,
+      "pnl": -6991.73,
+      "wins": 23,
+      "losses": 62,
+      "maxDrawdownPct": 20.13,
+      "rejected": 0,
+      "incubating": 2,
+      "quarantined": 6,
+      "avgPerTrade": -82.26,
+      "winrate": 0.271
+    },
+    {
+      "key": "4h",
+      "count": 0,
+      "candidates": 11,
+      "trades": 45,
+      "pnl": -4342.73,
+      "wins": 10,
+      "losses": 35,
+      "maxDrawdownPct": 16.32,
+      "rejected": 3,
+      "incubating": 0,
+      "quarantined": 8,
+      "avgPerTrade": -96.51,
+      "winrate": 0.222
+    },
+    {
+      "key": "1d",
+      "count": 0,
+      "candidates": 2,
+      "trades": 2,
+      "pnl": -246.32,
+      "wins": 0,
+      "losses": 2,
+      "maxDrawdownPct": 7.81,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -123.16,
+      "winrate": 0
+    }
+  ],
+  "byStrategy": [
+    {
+      "key": "mean-reversion",
+      "count": 0,
+      "candidates": 8,
+      "trades": 98,
+      "pnl": -9274.38,
+      "wins": 23,
+      "losses": 75,
+      "maxDrawdownPct": 20.13,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 8,
+      "avgPerTrade": -94.64,
+      "winrate": 0.235
+    },
+    {
+      "key": "sma-rsi",
+      "count": 0,
+      "candidates": 10,
+      "trades": 30,
+      "pnl": -2239.57,
+      "wins": 8,
+      "losses": 22,
+      "maxDrawdownPct": 9.9,
+      "rejected": 3,
+      "incubating": 2,
+      "quarantined": 5,
+      "avgPerTrade": -74.65,
+      "winrate": 0.267
+    },
+    {
+      "key": "breakout",
+      "count": 0,
+      "candidates": 3,
+      "trades": 4,
+      "pnl": -66.83,
+      "wins": 2,
+      "losses": 2,
+      "maxDrawdownPct": 4.68,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 2,
+      "avgPerTrade": -16.71,
+      "winrate": 0.5
+    }
+  ],
+  "byExitReason": [
+    {
+      "key": "stop",
+      "count": 89,
+      "candidates": 0,
+      "trades": 89,
+      "pnl": -16161.17,
+      "wins": 0,
+      "losses": 89,
+      "maxDrawdownPct": 0,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": -181.59,
+      "winrate": 0
+    },
+    {
+      "key": "signal",
+      "count": 28,
+      "candidates": 0,
+      "trades": 28,
+      "pnl": 629.13,
+      "wins": 18,
+      "losses": 10,
+      "maxDrawdownPct": 0,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": 22.47,
+      "winrate": 0.643
+    },
+    {
+      "key": "take",
+      "count": 15,
+      "candidates": 0,
+      "trades": 15,
+      "pnl": 3951.26,
+      "wins": 15,
+      "losses": 0,
+      "maxDrawdownPct": 0,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": 263.42,
+      "winrate": 1
+    }
+  ],
+  "newsContext": [
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 5,
+      "avgReturn": -3.39,
+      "medianReturn": -3.313,
+      "stdev": 0.969,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0.757,
+      "confidence": 80,
+      "strength": "strong",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 8,
+      "avgReturn": 0.662,
+      "medianReturn": 0.393,
+      "stdev": 0.626,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": -0.071,
+      "confidence": 59,
+      "strength": "moderate",
+      "examples": [
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Ethereum Price Analysis: ETH’s Next Rally Attempt Hinges on This Key Level"
+      ]
+    }
+  ]
+}

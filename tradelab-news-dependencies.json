@@ -1,0 +1,1906 @@
+{
+  "generatedAt": "2026-06-13T06:05:15.600Z",
+  "inputGeneratedAt": "2026-06-13T06:05:15.316Z",
+  "matchedEvents": 95,
+  "narratives": [
+    "NEARUSDT: all matched news has a strong 24h down dependency, avg -3.39%, agreement 100%, n=5.",
+    "XRPUSDT: positive news has a moderate 12h up dependency, avg 0.738%, agreement 70%, n=10.",
+    "XRPUSDT: all matched news has a moderate 4h up dependency, avg 0.638%, agreement 73%, n=15.",
+    "NEARUSDT: all matched news has a moderate 12h down dependency, avg -1.132%, agreement 80%, n=5.",
+    "XRPUSDT: positive news has a moderate 4h up dependency, avg 0.672%, agreement 70%, n=10.",
+    "XRPUSDT: all matched news has a moderate 12h up dependency, avg 0.614%, agreement 67%, n=15.",
+    "ETHUSDT: positive news has a moderate 1h up dependency, avg 0.662%, agreement 100%, n=8.",
+    "NEARUSDT: all matched news has a moderate 1h up dependency, avg 0.639%, agreement 80%, n=5.",
+    "NEARUSDT: all matched news has a moderate 4h down dependency, avg -0.953%, agreement 60%, n=5."
+  ],
+  "rows": [
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 5,
+      "avgReturn": -3.39,
+      "medianReturn": -3.313,
+      "stdev": 0.969,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0.757,
+      "confidence": 80,
+      "strength": "strong",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 10,
+      "avgReturn": 0.738,
+      "medianReturn": 0.434,
+      "stdev": 1.274,
+      "direction": "up",
+      "agreement": 0.7,
+      "sentimentReturnCorr": -0.302,
+      "confidence": 71,
+      "strength": "moderate",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 15,
+      "avgReturn": 0.638,
+      "medianReturn": 0.23,
+      "stdev": 0.936,
+      "direction": "up",
+      "agreement": 0.733,
+      "sentimentReturnCorr": 0.039,
+      "confidence": 65,
+      "strength": "moderate",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 5,
+      "avgReturn": -1.132,
+      "medianReturn": -2.16,
+      "stdev": 3.407,
+      "direction": "down",
+      "agreement": 0.8,
+      "sentimentReturnCorr": 0.553,
+      "confidence": 64,
+      "strength": "moderate",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 10,
+      "avgReturn": 0.672,
+      "medianReturn": 0.309,
+      "stdev": 1.012,
+      "direction": "up",
+      "agreement": 0.7,
+      "sentimentReturnCorr": -0.018,
+      "confidence": 62,
+      "strength": "moderate",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 15,
+      "avgReturn": 0.614,
+      "medianReturn": 0.434,
+      "stdev": 1.227,
+      "direction": "up",
+      "agreement": 0.667,
+      "sentimentReturnCorr": -0.086,
+      "confidence": 61,
+      "strength": "moderate",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 8,
+      "avgReturn": 0.662,
+      "medianReturn": 0.393,
+      "stdev": 0.626,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": -0.071,
+      "confidence": 59,
+      "strength": "moderate",
+      "examples": [
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Ethereum Price Analysis: ETH’s Next Rally Attempt Hinges on This Key Level"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 5,
+      "avgReturn": 0.639,
+      "medianReturn": 0.624,
+      "stdev": 1.425,
+      "direction": "up",
+      "agreement": 0.8,
+      "sentimentReturnCorr": 0.427,
+      "confidence": 58,
+      "strength": "moderate",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 5,
+      "avgReturn": -0.953,
+      "medianReturn": -0.969,
+      "stdev": 1.321,
+      "direction": "down",
+      "agreement": 0.6,
+      "sentimentReturnCorr": 0.697,
+      "confidence": 51,
+      "strength": "moderate",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 12,
+      "avgReturn": 0.338,
+      "medianReturn": 0.277,
+      "stdev": 0.804,
+      "direction": "up",
+      "agreement": 0.833,
+      "sentimentReturnCorr": 0.537,
+      "confidence": 78,
+      "strength": "weak",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "negative",
+      "horizon": "1h",
+      "count": 15,
+      "avgReturn": -0.177,
+      "medianReturn": -0.268,
+      "stdev": 0.331,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": -0.561,
+      "confidence": 70,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Standard Chartered Calls Crypto Bottom as Bitcoin Price Recovers From $59,000 Low",
+        "Bitcoin price faces new risk as big buyers lose conviction"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "negative",
+      "horizon": "24h",
+      "count": 15,
+      "avgReturn": -0.126,
+      "medianReturn": -0.041,
+      "stdev": 0.323,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": -0.389,
+      "confidence": 66,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Standard Chartered Calls Crypto Bottom as Bitcoin Price Recovers From $59,000 Low",
+        "Bitcoin price faces new risk as big buyers lose conviction"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "negative",
+      "horizon": "4h",
+      "count": 15,
+      "avgReturn": -0.105,
+      "medianReturn": -0.159,
+      "stdev": 0.428,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": -0.234,
+      "confidence": 61,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Standard Chartered Calls Crypto Bottom as Bitcoin Price Recovers From $59,000 Low",
+        "Bitcoin price faces new risk as big buyers lose conviction"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 12,
+      "avgReturn": -0.016,
+      "medianReturn": -0.097,
+      "stdev": 0.934,
+      "direction": "down",
+      "agreement": 0.583,
+      "sentimentReturnCorr": 0.377,
+      "confidence": 58,
+      "strength": "weak",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 21,
+      "avgReturn": -0.066,
+      "medianReturn": -0.148,
+      "stdev": 0.685,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": -0.099,
+      "confidence": 57,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Bitcoin surfs SpaceX IPO at $64K as trader warns key BTC price support may crumble"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 10,
+      "avgReturn": 0.256,
+      "medianReturn": 0.133,
+      "stdev": 0.972,
+      "direction": "up",
+      "agreement": 0.6,
+      "sentimentReturnCorr": -0.188,
+      "confidence": 56,
+      "strength": "weak",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "negative",
+      "horizon": "12h",
+      "count": 15,
+      "avgReturn": -0.193,
+      "medianReturn": -0.292,
+      "stdev": 0.435,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": 0.003,
+      "confidence": 55,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Standard Chartered Calls Crypto Bottom as Bitcoin Price Recovers From $59,000 Low",
+        "Bitcoin price faces new risk as big buyers lose conviction"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 54,
+      "avgReturn": -0.02,
+      "medianReturn": -0.076,
+      "stdev": 0.583,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": -0.056,
+      "confidence": 55,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 54,
+      "avgReturn": -0.014,
+      "medianReturn": -0.035,
+      "stdev": 0.637,
+      "direction": "down",
+      "agreement": 0.648,
+      "sentimentReturnCorr": 0.088,
+      "confidence": 55,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 10,
+      "avgReturn": 0.49,
+      "medianReturn": 0.175,
+      "stdev": 0.997,
+      "direction": "up",
+      "agreement": 0.6,
+      "sentimentReturnCorr": -0.081,
+      "confidence": 54,
+      "strength": "weak",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 12,
+      "avgReturn": 0.015,
+      "medianReturn": 0.017,
+      "stdev": 0.935,
+      "direction": "up",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0.445,
+      "confidence": 53,
+      "strength": "weak",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 15,
+      "avgReturn": 0.444,
+      "medianReturn": 0.175,
+      "stdev": 0.938,
+      "direction": "up",
+      "agreement": 0.6,
+      "sentimentReturnCorr": 0.02,
+      "confidence": 52,
+      "strength": "weak",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 12,
+      "avgReturn": 0.111,
+      "medianReturn": 0.017,
+      "stdev": 0.876,
+      "direction": "up",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0.377,
+      "confidence": 52,
+      "strength": "weak",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 8,
+      "avgReturn": 0.414,
+      "medianReturn": 0.352,
+      "stdev": 0.892,
+      "direction": "up",
+      "agreement": 0.625,
+      "sentimentReturnCorr": -0.15,
+      "confidence": 50,
+      "strength": "weak",
+      "examples": [
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Ethereum Price Analysis: ETH’s Next Rally Attempt Hinges on This Key Level"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 8,
+      "avgReturn": 0.412,
+      "medianReturn": 0.311,
+      "stdev": 0.813,
+      "direction": "up",
+      "agreement": 0.625,
+      "sentimentReturnCorr": -0.166,
+      "confidence": 50,
+      "strength": "weak",
+      "examples": [
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Ethereum Price Analysis: ETH’s Next Rally Attempt Hinges on This Key Level"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 15,
+      "avgReturn": 0.172,
+      "medianReturn": 0.133,
+      "stdev": 0.926,
+      "direction": "up",
+      "agreement": 0.6,
+      "sentimentReturnCorr": -0.015,
+      "confidence": 50,
+      "strength": "weak",
+      "examples": [
+        "Ripple&#8217;s Garlinghouse Fires Back After Jamie Dimon Targets Coinbase and CLARITY ACT",
+        "XRP aims for $0.90 as ETF demand battles selling pressure from whales",
+        "Nobody Likes XRP Right Now, and That May Be Bullish: Santiment"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "neutral",
+      "horizon": "24h",
+      "count": 18,
+      "avgReturn": 0.196,
+      "medianReturn": 0.152,
+      "stdev": 0.385,
+      "direction": "up",
+      "agreement": 0.556,
+      "sentimentReturnCorr": 0,
+      "confidence": 46,
+      "strength": "weak",
+      "examples": [
+        "Blockworks Acquires Messari in Deal Highlighting Crypto&#8217;s Data Consolidation Race",
+        "Bitcoin set to snap four-week losing streak; SpaceX becomes a top corporate holder",
+        "Bitcoin hit bottom at $59,000 marking end to the crypto winter, says Standard Chartered analyst"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 21,
+      "avgReturn": 0.09,
+      "medianReturn": -0.052,
+      "stdev": 0.808,
+      "direction": "up",
+      "agreement": 0.429,
+      "sentimentReturnCorr": -0.187,
+      "confidence": 46,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Bitcoin surfs SpaceX IPO at $64K as trader warns key BTC price support may crumble"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 21,
+      "avgReturn": 0.137,
+      "medianReturn": 0.025,
+      "stdev": 0.587,
+      "direction": "up",
+      "agreement": 0.524,
+      "sentimentReturnCorr": 0.075,
+      "confidence": 45,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Bitcoin surfs SpaceX IPO at $64K as trader warns key BTC price support may crumble"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 54,
+      "avgReturn": 0.034,
+      "medianReturn": -0.155,
+      "stdev": 0.517,
+      "direction": "up",
+      "agreement": 0.444,
+      "sentimentReturnCorr": 0.155,
+      "confidence": 45,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 21,
+      "avgReturn": 0.028,
+      "medianReturn": -0.052,
+      "stdev": 0.743,
+      "direction": "up",
+      "agreement": 0.381,
+      "sentimentReturnCorr": -0.057,
+      "confidence": 42,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Bitcoin surfs SpaceX IPO at $64K as trader warns key BTC price support may crumble"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "neutral",
+      "horizon": "4h",
+      "count": 18,
+      "avgReturn": 0.104,
+      "medianReturn": -0.015,
+      "stdev": 0.545,
+      "direction": "up",
+      "agreement": 0.333,
+      "sentimentReturnCorr": 0,
+      "confidence": 41,
+      "strength": "weak",
+      "examples": [
+        "Blockworks Acquires Messari in Deal Highlighting Crypto&#8217;s Data Consolidation Race",
+        "Bitcoin set to snap four-week losing streak; SpaceX becomes a top corporate holder",
+        "Bitcoin hit bottom at $59,000 marking end to the crypto winter, says Standard Chartered analyst"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "neutral",
+      "horizon": "1h",
+      "count": 18,
+      "avgReturn": 0.09,
+      "medianReturn": -0.031,
+      "stdev": 0.506,
+      "direction": "up",
+      "agreement": 0.444,
+      "sentimentReturnCorr": 0,
+      "confidence": 41,
+      "strength": "weak",
+      "examples": [
+        "Blockworks Acquires Messari in Deal Highlighting Crypto&#8217;s Data Consolidation Race",
+        "Bitcoin set to snap four-week losing streak; SpaceX becomes a top corporate holder",
+        "Bitcoin hit bottom at $59,000 marking end to the crypto winter, says Standard Chartered analyst"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "neutral",
+      "horizon": "12h",
+      "count": 18,
+      "avgReturn": 0.087,
+      "medianReturn": -0.035,
+      "stdev": 0.612,
+      "direction": "up",
+      "agreement": 0.333,
+      "sentimentReturnCorr": 0,
+      "confidence": 41,
+      "strength": "weak",
+      "examples": [
+        "Blockworks Acquires Messari in Deal Highlighting Crypto&#8217;s Data Consolidation Race",
+        "Bitcoin set to snap four-week losing streak; SpaceX becomes a top corporate holder",
+        "Bitcoin hit bottom at $59,000 marking end to the crypto winter, says Standard Chartered analyst"
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 54,
+      "avgReturn": 0.066,
+      "medianReturn": -0.026,
+      "stdev": 0.59,
+      "direction": "up",
+      "agreement": 0.444,
+      "sentimentReturnCorr": 0.005,
+      "confidence": 41,
+      "strength": "weak",
+      "examples": [
+        "Bitcoin’s ‘calm top’ challenges most market bottom estimates: Research",
+        "Bitcoin rally to $70K builds as orderbook structure highlights traders’ confidence",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 8,
+      "avgReturn": 0.321,
+      "medianReturn": 0.284,
+      "stdev": 0.923,
+      "direction": "up",
+      "agreement": 0.5,
+      "sentimentReturnCorr": -0.174,
+      "confidence": 40,
+      "strength": "weak",
+      "examples": [
+        "Fireblocks Says Institutional ETH Staking Is Moving Toward Standardized Rails",
+        "Aave Proposal Moves To Add Circle Wrapped Bitcoin As Collateral",
+        "Ethereum Price Analysis: ETH’s Next Rally Attempt Hinges on This Key Level"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 4,
+      "avgReturn": -3.162,
+      "medianReturn": -2.422,
+      "stdev": 0.956,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0.829,
+      "confidence": 76,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?",
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 3,
+      "avgReturn": 2.341,
+      "medianReturn": 0.06,
+      "stdev": 3.225,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": -0.693,
+      "confidence": 66,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 3,
+      "avgReturn": 2.215,
+      "medianReturn": 1.094,
+      "stdev": 1.586,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": -0.693,
+      "confidence": 65,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 3,
+      "avgReturn": 1.91,
+      "medianReturn": 1.019,
+      "stdev": 1.26,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": -0.693,
+      "confidence": 62,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 4,
+      "avgReturn": -0.984,
+      "medianReturn": -0.877,
+      "stdev": 0.255,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0.597,
+      "confidence": 59,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 3,
+      "avgReturn": 1.315,
+      "medianReturn": 1.829,
+      "stdev": 0.726,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0.693,
+      "confidence": 58,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 4,
+      "avgReturn": 0.703,
+      "medianReturn": 1.55,
+      "stdev": 1.587,
+      "direction": "up",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0.748,
+      "confidence": 57,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?",
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 4,
+      "avgReturn": -0.435,
+      "medianReturn": -0.048,
+      "stdev": 3.476,
+      "direction": "down",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0.45,
+      "confidence": 53,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?",
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 4,
+      "avgReturn": -0.082,
+      "medianReturn": -0.166,
+      "stdev": 0.5,
+      "direction": "down",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0.701,
+      "confidence": 52,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "negative",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": 6.902,
+      "medianReturn": 6.902,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": 5.335,
+      "medianReturn": 5.335,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": 5.335,
+      "medianReturn": 5.335,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "negative",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": 4.458,
+      "medianReturn": 4.458,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "neutral",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": -4.3,
+      "medianReturn": -4.3,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "neutral",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": -3.918,
+      "medianReturn": -3.918,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "negative",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 3.691,
+      "medianReturn": 3.691,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 49,
+      "strength": "too-thin",
+      "examples": [
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": 3.033,
+      "medianReturn": 3.033,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 48,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": 3.033,
+      "medianReturn": 3.033,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 48,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "neutral",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": -2.628,
+      "medianReturn": -2.628,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 45,
+      "strength": "too-thin",
+      "examples": [
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 4,
+      "avgReturn": -0.527,
+      "medianReturn": -0.244,
+      "stdev": 0.49,
+      "direction": "down",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0.148,
+      "confidence": 45,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "neutral",
+      "horizon": "4h",
+      "count": 4,
+      "avgReturn": 0.727,
+      "medianReturn": 0.457,
+      "stdev": 0.772,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 42,
+      "strength": "too-thin",
+      "examples": [
+        "XRP sentiment falls to 8-month low, and that has been a buy signal before",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "neutral",
+      "horizon": "12h",
+      "count": 4,
+      "avgReturn": 0.671,
+      "medianReturn": 0.867,
+      "stdev": 1.005,
+      "direction": "up",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0,
+      "confidence": 41,
+      "strength": "too-thin",
+      "examples": [
+        "XRP sentiment falls to 8-month low, and that has been a buy signal before",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "neutral",
+      "horizon": "1h",
+      "count": 4,
+      "avgReturn": 0.605,
+      "medianReturn": 0.62,
+      "stdev": 0.694,
+      "direction": "up",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0,
+      "confidence": 41,
+      "strength": "too-thin",
+      "examples": [
+        "XRP sentiment falls to 8-month low, and that has been a buy signal before",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": 1.829,
+      "medianReturn": 1.829,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 39,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "neutral",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": 1.829,
+      "medianReturn": 1.829,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 39,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "neutral",
+      "horizon": "24h",
+      "count": 4,
+      "avgReturn": 0.266,
+      "medianReturn": 0.319,
+      "stdev": 0.675,
+      "direction": "up",
+      "agreement": 0.75,
+      "sentimentReturnCorr": 0,
+      "confidence": 38,
+      "strength": "too-thin",
+      "examples": [
+        "XRP sentiment falls to 8-month low, and that has been a buy signal before",
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "neutral",
+      "horizon": "24h",
+      "count": 2,
+      "avgReturn": -1.135,
+      "medianReturn": -0.877,
+      "stdev": 0.258,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 37,
+      "strength": "too-thin",
+      "examples": [
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "SpaceX tokenized IPO campaign draws $557M on Binance ahead of debut"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "negative",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": -1.516,
+      "medianReturn": -1.516,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 36,
+      "strength": "too-thin",
+      "examples": [
+        "CoinDesk 20 performance update: Ethereum (ETH) falls 1% as index trades lower"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 2,
+      "avgReturn": -0.831,
+      "medianReturn": -0.702,
+      "stdev": 0.13,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 35,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "negative",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": -1.237,
+      "medianReturn": -1.237,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 34,
+      "strength": "too-thin",
+      "examples": [
+        "CoinDesk 20 performance update: Ethereum (ETH) falls 1% as index trades lower"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "negative",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": -1.114,
+      "medianReturn": -1.114,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 33,
+      "strength": "too-thin",
+      "examples": [
+        "CoinDesk 20 performance update: Ethereum (ETH) falls 1% as index trades lower"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": -1.103,
+      "medianReturn": -1.103,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 33,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": -1.103,
+      "medianReturn": -1.103,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 33,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": 1.094,
+      "medianReturn": 1.094,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 33,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "neutral",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": 1.094,
+      "medianReturn": 1.094,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 33,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "neutral",
+      "horizon": "12h",
+      "count": 2,
+      "avgReturn": -0.599,
+      "medianReturn": -0.244,
+      "stdev": 0.355,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 33,
+      "strength": "too-thin",
+      "examples": [
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "SpaceX tokenized IPO campaign draws $557M on Binance ahead of debut"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "negative",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": -1.05,
+      "medianReturn": -1.05,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 32,
+      "strength": "too-thin",
+      "examples": [
+        "Three signs that XRP price risks falling below $1 in June"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "negative",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": -1.045,
+      "medianReturn": -1.045,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 32,
+      "strength": "too-thin",
+      "examples": [
+        "CoinDesk 20 performance update: Ethereum (ETH) falls 1% as index trades lower"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 1.019,
+      "medianReturn": 1.019,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 32,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "neutral",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 1.019,
+      "medianReturn": 1.019,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 32,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 4,
+      "avgReturn": -0.534,
+      "medianReturn": 0.288,
+      "stdev": 1.141,
+      "direction": "down",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0.378,
+      "confidence": 32,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple chases AI’s machine economy as XRPL stablecoins near $1 billion",
+        "Crypto Volume Drops To 2-Year Low—Is A Relief Rally Next?",
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "negative",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": -0.857,
+      "medianReturn": -0.857,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 31,
+      "strength": "too-thin",
+      "examples": [
+        "Three signs that XRP price risks falling below $1 in June"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "neutral",
+      "horizon": "12h",
+      "count": 3,
+      "avgReturn": -0.693,
+      "medianReturn": -0.514,
+      "stdev": 0.665,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": 0,
+      "confidence": 31,
+      "strength": "too-thin",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "How Will $2.2B Bitcoin Options Expiring Impact Spot Markets Today?",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "neutral",
+      "horizon": "1h",
+      "count": 2,
+      "avgReturn": -0.432,
+      "medianReturn": -0.176,
+      "stdev": 0.256,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 31,
+      "strength": "too-thin",
+      "examples": [
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "SpaceX tokenized IPO campaign draws $557M on Binance ahead of debut"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 0.732,
+      "medianReturn": 0.732,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 30,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 0.732,
+      "medianReturn": 0.732,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 30,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "negative",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": -0.656,
+      "medianReturn": -0.656,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 29,
+      "strength": "too-thin",
+      "examples": [
+        "Three signs that XRP price risks falling below $1 in June"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "all",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": 0.628,
+      "medianReturn": 0.628,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 29,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "OPUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": 0.628,
+      "medianReturn": 0.628,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 29,
+      "strength": "too-thin",
+      "examples": [
+        "Dogecoin Just Hit A Rare Capitulation Signal: What It Means For DOGE"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "neutral",
+      "horizon": "24h",
+      "count": 3,
+      "avgReturn": -0.507,
+      "medianReturn": -0.522,
+      "stdev": 0.422,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": 0,
+      "confidence": 29,
+      "strength": "too-thin",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "How Will $2.2B Bitcoin Options Expiring Impact Spot Markets Today?",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "neutral",
+      "horizon": "4h",
+      "count": 3,
+      "avgReturn": -0.288,
+      "medianReturn": -0.418,
+      "stdev": 0.217,
+      "direction": "down",
+      "agreement": 0.667,
+      "sentimentReturnCorr": 0,
+      "confidence": 28,
+      "strength": "too-thin",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "How Will $2.2B Bitcoin Options Expiring Impact Spot Markets Today?",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 0.423,
+      "medianReturn": 0.423,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": 0.423,
+      "medianReturn": 0.423,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "all",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": -0.408,
+      "medianReturn": -0.408,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": -0.408,
+      "medianReturn": -0.408,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "NEARUSDT",
+      "sentiment": "neutral",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": 0.382,
+      "medianReturn": 0.382,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "While bitcoin holds near $63,000, some data points to pain ahead for bulls"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "all",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": -0.347,
+      "medianReturn": -0.347,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 1,
+      "avgReturn": -0.347,
+      "medianReturn": -0.347,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 27,
+      "strength": "too-thin",
+      "examples": [
+        "Avalanche Treasury falls 16% as it debuts on Nasdaq"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "negative",
+      "horizon": "1h",
+      "count": 1,
+      "avgReturn": 0.288,
+      "medianReturn": 0.288,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 26,
+      "strength": "too-thin",
+      "examples": [
+        "Solana Exchange Raydium Hit With $1.34 Million Exploit as DeFi Attacks Grow"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "sentiment": "neutral",
+      "horizon": "1h",
+      "count": 3,
+      "avgReturn": 0.092,
+      "medianReturn": 0.043,
+      "stdev": 0.23,
+      "direction": "up",
+      "agreement": 0.667,
+      "sentimentReturnCorr": 0,
+      "confidence": 26,
+      "strength": "too-thin",
+      "examples": [
+        "ETH futures flash bearish signal, but stakers’ resilience points to underlying strength",
+        "How Will $2.2B Bitcoin Options Expiring Impact Spot Markets Today?",
+        "Japan’s SBI is using XRP to solve a banking problem"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "positive",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": 0.06,
+      "medianReturn": 0.06,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 24,
+      "strength": "too-thin",
+      "examples": [
+        "LBank Pay Expands to Support BTC, ETH and 20+ Crypto Assets, Launches 20,000 USDT Campaign"
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "sentiment": "neutral",
+      "horizon": "24h",
+      "count": 1,
+      "avgReturn": 0.06,
+      "medianReturn": 0.06,
+      "stdev": 0,
+      "direction": "up",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 24,
+      "strength": "too-thin",
+      "examples": [
+        "Ripple&#8217;s (XRP) Potential, Solana (SOL) Price Predictions, and More: Bits Recap June 12"
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "sentiment": "negative",
+      "horizon": "4h",
+      "count": 1,
+      "avgReturn": -0.052,
+      "medianReturn": -0.052,
+      "stdev": 0,
+      "direction": "down",
+      "agreement": 1,
+      "sentimentReturnCorr": 0,
+      "confidence": 24,
+      "strength": "too-thin",
+      "examples": [
+        "Three signs that XRP price risks falling below $1 in June"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "all",
+      "horizon": "4h",
+      "count": 4,
+      "avgReturn": -0.133,
+      "medianReturn": 0.261,
+      "stdev": 0.443,
+      "direction": "down",
+      "agreement": 0.5,
+      "sentimentReturnCorr": -0.02,
+      "confidence": 18,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "positive",
+      "horizon": "12h",
+      "count": 2,
+      "avgReturn": -0.455,
+      "medianReturn": 0.131,
+      "stdev": 0.586,
+      "direction": "down",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0,
+      "confidence": 12,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "positive",
+      "horizon": "1h",
+      "count": 2,
+      "avgReturn": 0.268,
+      "medianReturn": 0.702,
+      "stdev": 0.434,
+      "direction": "up",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0,
+      "confidence": 10,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "positive",
+      "horizon": "4h",
+      "count": 2,
+      "avgReturn": -0.142,
+      "medianReturn": 0.261,
+      "stdev": 0.403,
+      "direction": "down",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0,
+      "confidence": 9,
+      "strength": "too-thin",
+      "examples": [
+        "VanEck bets BNB’s real-world usage can stand out in a crowded crypto ETF market",
+        "Crypto Price Analysis Jun-12: ETH, XRP, ADA, BNB, and HYPE"
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "sentiment": "neutral",
+      "horizon": "4h",
+      "count": 2,
+      "avgReturn": -0.124,
+      "medianReturn": 0.355,
+      "stdev": 0.479,
+      "direction": "down",
+      "agreement": 0.5,
+      "sentimentReturnCorr": 0,
+      "confidence": 9,
+      "strength": "too-thin",
+      "examples": [
+        "Crypto exchanges are opening a two-front war for the stock market",
+        "SpaceX tokenized IPO campaign draws $557M on Binance ahead of debut"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+﻿
+> multi-agent-threejs-site@1.0.0 tradelab:cycle
+> node tools/tradelab_review_cycle.js
+
+{
+  "generatedAt": "2026-06-13T11:32:38.384Z",
+  "incubation": {
+    "updatedAt": "2026-06-13T11:32:32.570Z",
+    "total": 21,
+    "incubating": 2,
+    "readyForReview": 0,
+    "rejected": 4,
+    "quarantined": 15,
+    "networkErrors": 0,
+    "networkErrorKeys": [],
+    "nextAction": "review quarantined strategies before adding similar candidates"
+  },
+  "incubationErrors": [],
+  "drawdown": {
+    "summary": {
+      "candidates": 21,
+      "incubating": 2,
+      "rejected": 4,
+      "forwardTrades": 132,
+      "forwardPnl": -11580.78,
+      "avgPerTrade": -87.73,
+      "activePositiveRatio": 0.5
+    },
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_DRAWDOWN_DIAGNOSTICS.md"
+  },
+  "quarantine": {
+    "generatedAt": "2026-06-13T11:32:38.344Z",
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_QUARANTINE.md",
+    "jsonPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\tradelab-quarantine.json",
+    "stateUpdate": {
+      "changed": 0,
+      "statePath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\tradelab-incubation-state.json",
+      "quarantined": 15
+    },
+    "blockedSymbols": 7,
+    "blockedStrategies": 1,
+    "blockedCandidates": 9,
+    "downrankIntervals": 1
+  },
+  "lifecycle": {
+    "summary": {
+      "candidates": 21,
+      "probation": 0,
+      "queued": 1,
+      "readyQueued": 0
+    },
+    "actions": [],
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_LIFECYCLE.md"
+  },
+  "gate": {
+    "status": "BLOCKED",
+    "allowed": 0,
+    "blocked": 21,
+    "nextAction": "Portfolio kill-switch active: portfolio forward PnL -11580.78 <= -750"
+  },
+  "report": {
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_INCUBATION_REPORT.md",
+    "gate": "BLOCKED",
+    "candidates": 21,
+    "nextAction": "Portfolio kill-switch active: portfolio forward PnL -11580.78 <= -750"
+  },
+  "scoreboard": {
+    "summary": {
+      "candidates": 21,
+      "live": 2,
+      "probation": 0,
+      "quarantined": 15,
+      "rejected": 4,
+      "readyForReview": 0,
+      "improving": 1,
+      "deteriorating": 0,
+      "collecting": 1
+    },
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_SCOREBOARD.md"
+  },
+  "network": {
+    "generatedAt": "2026-06-13T11:32:38.383Z",
+    "status": "PASS",
+    "recentRuns": 24,
+    "recentFailures": 0,
+    "recentFetchFailures": 0,
+    "lastRun": {
+      "startedAt": "2026-06-13T14:32:32",
+      "status": "UNKNOWN",
+      "error": "",
+      "finishedAt": ""
+    },
+    "reportPath": "C:\\Users\\╨Р╤А╨┤╨╛╤А\\OneDrive\\╨а╨░╨▒╨╛╤З╨╕╨╣ ╤Б╤В╨╛╨╗\\JS\\╨Ф╨Ч-1\\TRADELAB_NETWORK_HEALTH.md"
+  }
+}
