@@ -248,11 +248,15 @@ function summarize(account) {
 function simulate(candles, params) {
   const account = { balance: 10000, peak: 10000, maxDd: 0, position: null, trades: [], equity: [] };
   const warmup = Math.max(params.slow + 2, params.lookback + 2, 20);
+  
+  // Apply dynamic params once at the start if enabled
+  const effectiveParams = applyDynamicParams(candles, { ...params });
+  
   for (let cursor = warmup; cursor < candles.length; cursor += 1) {
     const candle = candles[cursor - 1];
     const price = candle.close;
-    const signal = getSignal(candles, cursor, params);
-    const equity = account.position ? account.balance + floatingPnl(account.position, price, params) : account.balance;
+    const signal = getSignal(candles, cursor, effectiveParams);
+    const equity = account.position ? account.balance + floatingPnl(account.position, price, effectiveParams) : account.balance;
     account.peak = Math.max(account.peak, equity);
     account.maxDd = Math.max(account.maxDd, ((account.peak - equity) / account.peak) * 100);
     account.equity.push({ value: equity });
@@ -260,8 +264,8 @@ function simulate(candles, params) {
     if (account.position) {
       const reason = exitReason(account.position, signal, price);
       if (reason) {
-        const exit = executionPrice(price, exitAction(account.position.side), params);
-        const result = tradePnl(account.position, exit, params);
+        const exit = executionPrice(price, exitAction(account.position.side), effectiveParams);
+        const result = tradePnl(account.position, exit, effectiveParams);
         account.balance += result.net;
         account.trades.push({
           side: account.position.side,
@@ -276,9 +280,12 @@ function simulate(candles, params) {
         });
         account.position = null;
       }
-    } else if (account.maxDd < params.maxDrawdownPct) {
-      const side = signalToEntrySide(signal, params);
-      if (side) account.position = makePosition(side, price, account.balance, params, cursor, candle.time);
+    } else if (account.maxDd < effectiveParams.maxDrawdownPct) {
+      // Check if strategy is suitable for current market phase
+      if (isStrategySuitable(candles, effectiveParams)) {
+        const side = signalToEntrySide(signal, effectiveParams);
+        if (side) account.position = makePosition(side, price, account.balance, effectiveParams, cursor, candle.time);
+      }
     }
   }
   return { account, summary: summarize(account) };
@@ -398,6 +405,26 @@ async function runOnce(symbol = 'BTCUSDT', interval = '1h', limit = 500, params 
     || (base.summary.tradeCount >= 3 && base.summary.profitFactor < 1.05)
     || wfStatus === 'overfit risk';
 
+  // Market phase detection
+  const phase = detectPhase(candles);
+
+  // News sentiment (optional — requires tradelab-news-impact.json)
+  let news = null;
+  try {
+    const { shouldAllowEntry, getNewsRiskAdjustment } = require('./tradelab_news_filter');
+    const newsCheck = shouldAllowEntry(symbol);
+    const newsRisk = getNewsRiskAdjustment(symbol);
+    news = {
+      allowed: newsCheck.allowed,
+      reason: newsCheck.reason,
+      sentiment: newsCheck.sentiment ? { label: newsCheck.sentiment.label, score: newsCheck.sentiment.score } : null,
+      riskMultiplier: newsRisk.riskMultiplier,
+      stopMultiplier: newsRisk.stopMultiplier
+    };
+  } catch {
+    // News filter not available — skip
+  }
+
   return {
     source: {
       symbol,
@@ -408,6 +435,14 @@ async function runOnce(symbol = 'BTCUSDT', interval = '1h', limit = 500, params 
       lastClose: candles[candles.length - 1].close
     },
     params,
+    marketPhase: {
+      phase: phase.phase,
+      adx: phase.adx,
+      atrPct: phase.atrPct,
+      volatility: phase.volatility,
+      stopMultiplier: phase.stopMultiplier
+    },
+    news,
     backtest: base.summary,
     compare,
     optimized: optimized.map((item) => ({ params: describe(item.params), score: item.score, summary: item.summary })),
