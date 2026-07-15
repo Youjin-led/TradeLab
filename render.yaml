@@ -1,0 +1,12 @@
+services:
+  - type: worker
+    name: tradelab-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node tools/tradelab_telegram_bot.js
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
