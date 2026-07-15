@@ -25,62 +25,132 @@ const { applyQuarantineToState, isQuarantined, loadQuarantine, quarantineReason 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const AUTO_CANDIDATES_PATH = path.join(__dirname, '..', 'tradelab-auto-candidates.json');
 
+// MEAN-REVERSION is BLOCKED globally — it caused -11k+ PnL across 8 candidates.
+// Only SMA+RSI and Breakout are active. Mean-reversion candidates are removed.
+// dynamicRisk: true enables market-phase-aware strategy filtering via isStrategySuitable().
 const CANDIDATES = [
+  // === SMA+RSI стратегии ===
   {
-    symbol: 'LINKUSDT',
-    interval: '4h',
-    limit: 1000,
-    params: { strategy: 'mean-reversion', lookback: 20, deviationPct: 3.2, stopPct: 2.4, takePct: 4.2 }
-  },
-  {
-    symbol: 'BNBUSDT',
-    interval: '4h',
-    limit: 1000,
-    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 42, stopPct: 1.6, takePct: 3 }
-  },
-  {
-    symbol: 'AVAXUSDT',
-    interval: '4h',
-    limit: 1000,
-    params: { strategy: 'mean-reversion', lookback: 20, deviationPct: 3.2, stopPct: 1.6, takePct: 3 }
-  },
-  {
-    symbol: 'ETHUSDT',
+    symbol: 'SEIUSDT',
     interval: '1h',
     limit: 1000,
-    params: { strategy: 'mean-reversion', lookback: 80, deviationPct: 2, stopPct: 2.4, takePct: 4.2 }
+    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 42, stopPct: 1.6, takePct: 3, dynamicRisk: true }
   },
   {
-    symbol: 'BTCUSDT',
+    symbol: 'ATOMUSDT',
     interval: '1h',
     limit: 1000,
-    params: { strategy: 'mean-reversion', lookback: 42, deviationPct: 2, stopPct: 1.6, takePct: 3 }
+    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 42, stopPct: 1.6, takePct: 3, dynamicRisk: true }
   },
   {
     symbol: 'INJUSDT',
     interval: '4h',
     limit: 1000,
-    params: { strategy: 'sma-rsi', fast: 16, slow: 55, rsiBuy: 42, stopPct: 2.4, takePct: 4.2 }
+    params: { strategy: 'sma-rsi', fast: 16, slow: 55, rsiBuy: 42, stopPct: 2.4, takePct: 4.2, dynamicRisk: true }
+  },
+  {
+    symbol: 'JUPUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 42, stopPct: 1.6, takePct: 3, dynamicRisk: true }
+  },
+  {
+    symbol: 'OPUSDT',
+    interval: '1h',
+    limit: 1000,
+    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 42, stopPct: 1.6, takePct: 3, dynamicRisk: true }
+  },
+  {
+    symbol: 'RENDERUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 42, stopPct: 1.6, takePct: 3, dynamicRisk: true }
+  },
+  // === Breakout стратегии (приоритет на трендовом рынке) ===
+  // 4h — основные
+  {
+    symbol: 'BTCUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.0, takePct: 4.0, dynamicRisk: true }
+  },
+  {
+    symbol: 'ETHUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.0, takePct: 4.0, dynamicRisk: true }
+  },
+  {
+    symbol: 'SOLUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.4, takePct: 4.5, dynamicRisk: true }
   },
   {
     symbol: 'NEARUSDT',
     interval: '4h',
     limit: 1000,
-    params: { strategy: 'breakout', lookback: 20, stopPct: 3.2, takePct: 5.8 }
+    params: { strategy: 'breakout', lookback: 20, stopPct: 3.2, takePct: 5.8, dynamicRisk: true }
   },
   {
-    symbol: 'APTUSDT',
+    symbol: 'BNBUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.0, takePct: 4.0, dynamicRisk: true }
+  },
+  {
+    symbol: 'LINKUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.4, takePct: 4.5, dynamicRisk: true }
+  },
+  {
+    symbol: 'DOTUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.4, takePct: 4.5, dynamicRisk: true }
+  },
+  {
+    symbol: 'AVAXUSDT',
+    interval: '4h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 2.4, takePct: 4.5, dynamicRisk: true }
+  },
+  // 1h — быстрые breakout для частых сделок
+  {
+    symbol: 'SOLUSDT',
     interval: '1h',
     limit: 1000,
-    params: { strategy: 'mean-reversion', lookback: 42, deviationPct: 2, stopPct: 2.4, takePct: 4.2 }
+    params: { strategy: 'breakout', lookback: 20, stopPct: 1.6, takePct: 3.2, dynamicRisk: true }
   },
   {
-    symbol: 'TRXUSDT',
-    interval: '1d',
+    symbol: 'AVAXUSDT',
+    interval: '1h',
     limit: 1000,
-    params: { strategy: 'sma-rsi', fast: 12, slow: 24, rsiBuy: 48, stopPct: 1.6, takePct: 3 }
+    params: { strategy: 'breakout', lookback: 20, stopPct: 1.6, takePct: 3.2, dynamicRisk: true }
+  },
+  {
+    symbol: 'DOTUSDT',
+    interval: '1h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 1.6, takePct: 3.2, dynamicRisk: true }
+  },
+  {
+    symbol: 'LINKUSDT',
+    interval: '1h',
+    limit: 1000,
+    params: { strategy: 'breakout', lookback: 20, stopPct: 1.6, takePct: 3.2, dynamicRisk: true }
   }
 ];
+
+
+
+// Mean-reversion стратегии глобально заблокированы — показали -11k+ PnL
+const BLOCKED_STRATEGIES = ['mean-reversion'];
+
+function isBlockedStrategy(candidate) {
+  return BLOCKED_STRATEGIES.includes(candidate.params?.strategy);
+}
 
 function loadAutoCandidates() {
   if (!fs.existsSync(AUTO_CANDIDATES_PATH)) return [];
@@ -90,6 +160,7 @@ function loadAutoCandidates() {
   return rows
     .filter((candidate) => candidate && candidate.active !== false && candidate.symbol && candidate.interval && candidate.params)
     .filter((candidate) => !baseKeys.has(keyFor(candidate)))
+    .filter((candidate) => !isBlockedStrategy(candidate))
     .map((candidate) => ({
       symbol: String(candidate.symbol).toUpperCase(),
       interval: String(candidate.interval),
@@ -373,6 +444,14 @@ async function incubateOnce() {
   }
 
   const allRows = Object.values(state.candidates || {});
+  // Определяем доминирующую фазу рынка среди кандидатов
+  const phaseCounts = {};
+  for (const row of allRows) {
+    const p = row.marketPhase || 'unknown';
+    phaseCounts[p] = (phaseCounts[p] || 0) + 1;
+  }
+  const dominantPhase = Object.entries(phaseCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'unknown';
+
   state.summary = {
     updatedAt: state.updatedAt,
     total: allRows.length,
@@ -380,6 +459,7 @@ async function incubateOnce() {
     readyForReview: allRows.filter((row) => row.status === 'ready-for-review').length,
     rejected: allRows.filter((row) => row.status === 'rejected').length,
     quarantined: allRows.filter((row) => row.status === 'quarantined').length,
+    marketPhase: dominantPhase,
     networkErrors: errors.length,
     networkErrorKeys: errors.map((error) => error.key),
     nextAction: allRows.some((row) => row.status === 'quarantined')

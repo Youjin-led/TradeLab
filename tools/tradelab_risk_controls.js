@@ -6,8 +6,8 @@ const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
 
 const VALIDATOR_RULES = {
   minTestTrades: 6,
-  minProfitFactor: 1.4,
-  maxDrawdownPct: 6,
+  minProfitFactor: 1.5,
+  maxDrawdownPct: 8.0,
   maxLossStreak: 3,
   minHealthScore: 75,
   maxRiskPct: 1.5,
@@ -17,11 +17,18 @@ const VALIDATOR_RULES = {
 
 const KILL_SWITCH_RULES = {
   minForwardTrades: 8,
-  maxPortfolioLossUsd: -750,
-  maxAverageLossPerTradeUsd: -120,
-  maxRejectedRatio: 0.65,
-  minActivePositiveForwardRatio: 0.25
+  // SOFT kill-switch: warns but doesn't block discovery
+  softMaxPortfolioLossUsd: -500,
+  softMaxAverageLossPerTradeUsd: -80,
+  softMaxRejectedRatio: 0.50,
+  softMinActivePositiveForwardRatio: 0.30,
+  // HARD kill-switch: blocks everything including new discovery
+  hardMaxPortfolioLossUsd: -2000,
+  hardMaxAverageLossPerTradeUsd: -150,
+  hardMaxRejectedRatio: 0.65,
+  hardMinActivePositiveForwardRatio: 0.15
 };
+
 
 function readIncubationState() {
   if (!fs.existsSync(STATE_PATH)) return { candidates: {}, summary: null };
@@ -62,24 +69,57 @@ function portfolioKillSwitch(state = readIncubationState()) {
   const rejectedRatio = candidates.length ? rejectedRows.length / candidates.length : 0;
   const activePositive = activeRows.filter((candidate) => (candidate.forwardPaperPnl || 0) > 0).length;
   const activePositiveRatio = activeRows.length ? activePositive / activeRows.length : 0;
-  const reasons = [];
+  const rules = KILL_SWITCH_RULES;
 
-  if (forwardTrades >= KILL_SWITCH_RULES.minForwardTrades && forwardPnl <= KILL_SWITCH_RULES.maxPortfolioLossUsd) {
-    reasons.push(`portfolio forward PnL ${forwardPnl.toFixed(2)} <= ${KILL_SWITCH_RULES.maxPortfolioLossUsd}`);
+  // SOFT kill-switch: warns, blocks only real-money gate, allows paper discovery
+  const softReasons = [];
+  if (forwardTrades >= rules.minForwardTrades && forwardPnl <= rules.softMaxPortfolioLossUsd) {
+    softReasons.push(`portfolio forward PnL ${forwardPnl.toFixed(2)} <= ${rules.softMaxPortfolioLossUsd}`);
   }
-  if (forwardTrades >= KILL_SWITCH_RULES.minForwardTrades && avgPerTrade <= KILL_SWITCH_RULES.maxAverageLossPerTradeUsd) {
-    reasons.push(`avg forward trade ${avgPerTrade.toFixed(2)} <= ${KILL_SWITCH_RULES.maxAverageLossPerTradeUsd}`);
+  if (forwardTrades >= rules.minForwardTrades && avgPerTrade <= rules.softMaxAverageLossPerTradeUsd) {
+    softReasons.push(`avg forward trade ${avgPerTrade.toFixed(2)} <= ${rules.softMaxAverageLossPerTradeUsd}`);
   }
-  if (candidates.length >= 10 && rejectedRatio >= KILL_SWITCH_RULES.maxRejectedRatio) {
-    reasons.push(`rejected ratio ${(rejectedRatio * 100).toFixed(1)}% >= ${(KILL_SWITCH_RULES.maxRejectedRatio * 100).toFixed(0)}%`);
+  if (candidates.length >= 10 && rejectedRatio >= rules.softMaxRejectedRatio) {
+    softReasons.push(`rejected ratio ${(rejectedRatio * 100).toFixed(1)}% >= ${(rules.softMaxRejectedRatio * 100).toFixed(0)}%`);
   }
-  if (activeRows.length >= 4 && forwardTrades >= KILL_SWITCH_RULES.minForwardTrades && activePositiveRatio < KILL_SWITCH_RULES.minActivePositiveForwardRatio) {
-    reasons.push(`active positive forward ratio ${(activePositiveRatio * 100).toFixed(1)}% < ${(KILL_SWITCH_RULES.minActivePositiveForwardRatio * 100).toFixed(0)}%`);
+  if (activeRows.length >= 4 && forwardTrades >= rules.minForwardTrades && activePositiveRatio < rules.softMinActivePositiveForwardRatio) {
+    softReasons.push(`active positive forward ratio ${(activePositiveRatio * 100).toFixed(1)}% < ${(rules.softMinActivePositiveForwardRatio * 100).toFixed(0)}%`);
   }
+
+  // HARD kill-switch: blocks everything including paper discovery
+  const hardReasons = [];
+  if (forwardTrades >= rules.minForwardTrades && forwardPnl <= rules.hardMaxPortfolioLossUsd) {
+    hardReasons.push(`portfolio forward PnL ${forwardPnl.toFixed(2)} <= ${rules.hardMaxPortfolioLossUsd}`);
+  }
+  if (forwardTrades >= rules.minForwardTrades && avgPerTrade <= rules.hardMaxAverageLossPerTradeUsd) {
+    hardReasons.push(`avg forward trade ${avgPerTrade.toFixed(2)} <= ${rules.hardMaxAverageLossPerTradeUsd}`);
+  }
+  if (candidates.length >= 10 && rejectedRatio >= rules.hardMaxRejectedRatio) {
+    hardReasons.push(`rejected ratio ${(rejectedRatio * 100).toFixed(1)}% >= ${(rules.hardMaxRejectedRatio * 100).toFixed(0)}%`);
+  }
+  if (activeRows.length >= 4 && forwardTrades >= rules.minForwardTrades && activePositiveRatio < rules.hardMinActivePositiveForwardRatio) {
+    hardReasons.push(`active positive forward ratio ${(activePositiveRatio * 100).toFixed(1)}% < ${(rules.hardMinActivePositiveForwardRatio * 100).toFixed(0)}%`);
+  }
+
+  const softActive = softReasons.length > 0;
+  const hardActive = hardReasons.length > 0;
 
   return {
-    active: reasons.length > 0,
-    reasons,
+    active: softActive,
+    soft: {
+      active: softActive,
+      reasons: softReasons
+    },
+    hard: {
+      active: hardActive,
+      reasons: hardReasons
+    },
+    // Overall status: 'ok' | 'soft' | 'hard'
+    status: hardActive ? 'hard' : softActive ? 'soft' : 'ok',
+    // Discovery is NEVER blocked by kill-switch — paper trading should always find new ideas
+    blocksDiscovery: false,
+    // Real-money gate is blocked by soft or hard kill-switch
+    blocksRealMoney: softActive || hardActive,
     metrics: {
       candidates: candidates.length,
       incubating: activeRows.length,
@@ -93,6 +133,7 @@ function portfolioKillSwitch(state = readIncubationState()) {
     rules: KILL_SWITCH_RULES
   };
 }
+
 
 module.exports = {
   VALIDATOR_RULES,

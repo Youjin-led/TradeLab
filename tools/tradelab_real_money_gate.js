@@ -5,10 +5,10 @@ const { portfolioKillSwitch } = require('./tradelab_risk_controls');
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 
 const REQUIREMENTS = {
-  minLiveObservations: 20,
-  minClosedPaperTrades: 10,
-  minProfitFactor: 1.4,
-  maxDrawdownPct: 6,
+  minLiveObservations: 30,
+  minClosedPaperTrades: 15,
+  minProfitFactor: 1.6,
+  maxDrawdownPct: 8,
   maxLossStreak: 2,
   requiredHealth: 'Healthy',
   requiredStatus: 'ready-for-review'
@@ -88,7 +88,7 @@ function evaluateGate() {
   const allowed = candidates.filter((candidate) => candidate.decision === 'manual-review-allowed');
   const killSwitch = portfolioKillSwitch(state);
   return {
-    gate: allowed.length && !killSwitch.active ? 'MANUAL_REVIEW_ALLOWED' : 'BLOCKED',
+    gate: allowed.length && !killSwitch.blocksRealMoney ? 'MANUAL_REVIEW_ALLOWED' : 'BLOCKED',
     generatedAt: new Date().toISOString(),
     incubationUpdatedAt: state.updatedAt || null,
     requirements: REQUIREMENTS,
@@ -96,7 +96,7 @@ function evaluateGate() {
     candidates,
     portfolioKillSwitch: killSwitch,
     nextAction: killSwitch.active
-      ? `Portfolio kill-switch active: ${killSwitch.reasons.join('; ')}`
+      ? `Portfolio kill-switch active: ${(killSwitch.soft?.reasons || killSwitch.hard?.reasons || []).join('; ')}`
       : allowed.length
       ? 'Manual risk review only. Real orders still require explicit separate implementation and approval.'
       : 'Continue paper incubation or research new candidates. Do not connect real money.'

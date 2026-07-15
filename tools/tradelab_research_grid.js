@@ -6,6 +6,7 @@ const {
   describe,
   health
 } = require('./tradelab_run_once');
+const { detectPhase } = require('./tradelab_market_phase');
 
 const symbols = (process.argv[2] || 'BTCUSDT,ETHUSDT,SOLUSDT').split(',').map((item) => item.trim().toUpperCase()).filter(Boolean);
 const intervals = (process.argv[3] || '15m,1h,4h,1d').split(',').map((item) => item.trim()).filter(Boolean);
@@ -89,8 +90,15 @@ async function main() {
   });
 
   const stable = rows.filter((row) => row.stability === 'stable' && row.health !== 'Blocked');
+  // Определяем фазу рынка
+  let marketPhase = 'unknown';
+  try {
+    const phase = detectPhase([]);
+    marketPhase = phase.phase || 'unknown';
+  } catch (_) { /* ignore */ }
   const output = {
     generatedAt: new Date().toISOString(),
+    marketPhase,
     symbols,
     intervals,
     limit,

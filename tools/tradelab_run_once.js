@@ -8,7 +8,7 @@ const {
 
 const DEFAULT_PARAMS = {
   strategy: 'sma-rsi',
-  direction: 'long-only',
+  direction: 'long-short',
   fast: 12,
   slow: 34,
   rsiBuy: 42,
@@ -22,9 +22,16 @@ const DEFAULT_PARAMS = {
   feePct: 0.06,
   slippagePct: 0.04,
   // Dynamic mode: if true, stopPct/takePct/riskPct are computed from ATR
-  dynamicRisk: false,
+  dynamicRisk: true,
   // Market phase detection
-  marketPhase: null
+  marketPhase: null,
+  // Трейлинг-стоп
+  trailingActivated: true,    // Включить трейлинг-стоп
+  trailPct: 0.8,              // Расстояние трейлинга от максимума (%)
+  trailActivatePct: 1.5,      // Активировать трейлинг при прибыли X%
+  // ATR-фильтр входа
+  minAtrPct: 0.3,             // Минимальный ATR% для входа (иначе рынок слишком тихий)
+  maxAtrPct: 5.0              // Максимальный ATR% для входа (иначе слишком волатильно)
 };
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -149,10 +156,16 @@ function getSignal(candles, cursor, params) {
     if (basis && deviation <= -params.deviationPct && currentRsi <= params.rsiBuy) action = 'BUY';
     else if ((basis && price >= basis) || (prevBasis && price < prevBasis * (1 - params.deviationPct / 100) && currentRsi > params.rsiBuy + 12)) action = 'SELL';
   } else {
-    if (crossUp && currentRsi <= params.rsiSell) action = 'BUY';
-    else if (crossDown || currentRsi >= params.rsiSell) action = 'SELL';
-    else if (fastNow > slowNow && currentRsi <= params.rsiBuy) action = 'BUY';
+    // SMA+RSI: ослабленные условия для увеличения частоты forward сделок
+    // Оригинал: crossUp + RSI <= rsiSell (68)
+    // Теперь: crossUp + RSI <= 75 (больше BUY сигналов)
+    if (crossUp && currentRsi <= Math.min(params.rsiSell + 7, 80)) action = 'BUY';
+    // SELL: crossDown или RSI >= rsiSell - 5 (раньше было rsiSell = 68)
+    else if (crossDown || currentRsi >= Math.max(params.rsiSell - 5, 55)) action = 'SELL';
+    // Дополнительный BUY: fast > slow + RSI <= rsiBuy + 5 (раньше rsiBuy = 42)
+    else if (fastNow > slowNow && currentRsi <= Math.min(params.rsiBuy + 5, 55)) action = 'BUY';
   }
+
 
   return { action, price };
 }
@@ -187,7 +200,7 @@ function makePosition(side, rawPrice, balance, params, cursor, time) {
   const riskUsd = balance * (params.riskPct / 100);
   const qty = riskUsd / (entry * (params.stopPct / 100));
   const entryFee = entry * qty * (params.feePct / 100);
-  return { side, entry, qty, entryFee, openedAt: cursor, entryTime: time, ...positionLevels(entry, side, params) };
+  return { side, entry, qty, entryFee, openedAt: cursor, entryTime: time, ...positionLevels(entry, side, params), trailingActivated: false, trailPct: params.trailPct || 0.8, trailActivatePct: params.trailActivatePct || 1.5 };
 }
 
 function tradePnl(position, exit, params) {
@@ -210,10 +223,35 @@ function exitReason(position, signal, rawPrice) {
     if (rawPrice <= position.stop) return 'stop';
     if (rawPrice >= position.take) return 'take';
     if (signal.action === 'SELL') return 'signal';
+    // Трейлинг-стоп: активируем при достижении trailActivatePct прибыли
+    var pnlPct = ((rawPrice - position.entry) / position.entry) * 100;
+    if (!position.trailingActivated && pnlPct >= position.trailActivatePct) {
+      position.trailingActivated = true;
+    }
+    // Подтягиваем стоп при движении в нашу сторону
+    if (position.trailingActivated && rawPrice > position.entry) {
+      var trailDistance = position.entry * (position.trailPct / 100);
+      var newStop = rawPrice - trailDistance;
+      if (newStop > position.stop) {
+        position.stop = newStop;
+      }
+    }
   } else {
     if (rawPrice >= position.stop) return 'stop';
     if (rawPrice <= position.take) return 'take';
     if (signal.action === 'BUY') return 'signal';
+    // Трейлинг-стоп для SHORT
+    var pnlPct = ((position.entry - rawPrice) / position.entry) * 100;
+    if (!position.trailingActivated && pnlPct >= position.trailActivatePct) {
+      position.trailingActivated = true;
+    }
+    if (position.trailingActivated && rawPrice < position.entry) {
+      var trailDistance = position.entry * (position.trailPct / 100);
+      var newStop = rawPrice + trailDistance;
+      if (newStop < position.stop) {
+        position.stop = newStop;
+      }
+    }
   }
   return '';
 }
@@ -283,8 +321,14 @@ function simulate(candles, params) {
     } else if (account.maxDd < effectiveParams.maxDrawdownPct) {
       // Check if strategy is suitable for current market phase
       if (isStrategySuitable(candles, effectiveParams)) {
-        const side = signalToEntrySide(signal, effectiveParams);
-        if (side) account.position = makePosition(side, price, account.balance, effectiveParams, cursor, candle.time);
+        // ATR-фильтр: не входить при слишком низкой или высокой волатильности
+        var phase = detectPhase(candles);
+        var atrValue = phase.atrPct || 0;
+        var atrOk = atrValue >= (effectiveParams.minAtrPct || 0.3) && atrValue <= (effectiveParams.maxAtrPct || 5.0);
+        if (atrOk) {
+          const side = signalToEntrySide(signal, effectiveParams);
+          if (side) account.position = makePosition(side, price, account.balance, effectiveParams, cursor, candle.time);
+        }
       }
     }
   }
@@ -328,11 +372,15 @@ async function fetchCandles(symbol, interval, limit, options = {}) {
   const url = `https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
   const attempts = options.attempts || FETCH_RETRY.attempts;
   const delayMs = options.delayMs || FETCH_RETRY.delayMs;
+  const timeoutMs = options.timeoutMs || 15000;
   let lastError = null;
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const response = await fetch(url);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const rows = await response.json();
       return rows.map((row, index) => ({
@@ -353,6 +401,7 @@ async function fetchCandles(symbol, interval, limit, options = {}) {
   const message = lastError && lastError.message ? lastError.message : String(lastError);
   throw new Error(`fetchCandles failed for ${symbol} ${interval} after ${attempts} attempts: ${message}`);
 }
+
 
 async function fetchCandlesNoRetry(symbol, interval, limit) {
   const url = `https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;

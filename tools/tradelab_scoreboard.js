@@ -38,6 +38,20 @@ function trend(candidate) {
   if (candidate.status === 'rejected') return 'rejected';
   if (candidate.status === 'probation') return 'deteriorating';
   if ((candidate.forwardPaperTrades || 0) < 3) return 'collecting';
+  
+  // Проверка phase-mismatch: если стратегия не подходит под фазу рынка
+  const strategy = candidate.strategy || '';
+  const marketPhase = candidate.marketPhase || '';
+  const PHASE_MAP = {
+    'breakout': ['trending', 'volatile'],
+    'sma-rsi': ['trending', 'ranging'],
+    'mean-reversion': ['ranging']
+  };
+  const suitablePhases = PHASE_MAP[strategy] || ['trending', 'ranging', 'volatile'];
+  if (marketPhase && !suitablePhases.includes(marketPhase)) {
+    return 'phase-mismatch';
+  }
+  
   if ((candidate.forwardPaperPnl || 0) > 0 && (candidate.maxDrawdownPct || 0) <= REQUIREMENTS.maxDrawdownPct && (candidate.profitFactor || 0) >= REQUIREMENTS.minProfitFactor) return 'improving';
   if ((candidate.forwardPaperPnl || 0) < -250 || (candidate.maxDrawdownPct || 0) > REQUIREMENTS.maxDrawdownPct || (candidate.maxLossStreak || 0) > REQUIREMENTS.maxLossStreak) return 'deteriorating';
   return 'watch';

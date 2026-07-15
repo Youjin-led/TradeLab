@@ -5,14 +5,28 @@ const { evaluateGate } = require('./tradelab_real_money_gate');
 
 const ROOT = path.join(__dirname, '..');
 const FILES_TO_SCAN = [
-  'index.html',
   'tools/tradelab_run_once.js',
   'tools/tradelab_research_grid.js',
   'tools/tradelab_incubate_once.js',
   'tools/tradelab_real_money_gate.js',
   'tools/tradelab_incubation_report.js',
   'tools/tradelab_review_cycle.js',
-  'tools/tradelab_watch.js'
+  'tools/tradelab_watch.js',
+  'tools/tradelab_quarantine.js',
+  'tools/tradelab_unquarantine.js',
+  'tools/tradelab_risk_controls.js',
+  'tools/tradelab_daily_discovery.js',
+  'tools/tradelab_scoreboard.js',
+  'tools/tradelab_paper_trader.js',
+  'tools/tradelab_replacement_scout.js',
+  'tools/tradelab_doctor.js',
+  'tools/tradelab_drawdown_diagnostics.js',
+  'tools/tradelab_promote_recovery.js',
+  'tools/tradelab_lifecycle.js',
+  'tools/tradelab_network_health.js',
+  'tools/tradelab_market_phase.js',
+  'tools/tradelab_news_impact.js',
+  'tools/tradelab_risk_manager.js'
 ];
 
 const FORBIDDEN_PATTERNS = [

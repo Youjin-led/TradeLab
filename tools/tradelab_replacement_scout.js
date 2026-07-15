@@ -9,6 +9,7 @@ const {
   describe,
   health
 } = require('./tradelab_run_once');
+const { detectPhase } = require('./tradelab_market_phase');
 const { CANDIDATES } = require('./tradelab_incubate_once');
 const { validateStrategy, portfolioKillSwitch } = require('./tradelab_risk_controls');
 const { isQuarantined, loadQuarantine, quarantineReason } = require('./tradelab_quarantine');
@@ -196,13 +197,13 @@ async function scoutReplacements() {
   const skipped = [];
   const errors = [];
 
-  for (const symbol of SYMBOLS) {
-    const symbolProbe = { symbol, interval: '*', params: { strategy: '*' } };
-    if (isQuarantined(symbolProbe, quarantine)) {
-      skipped.push({ symbol, reason: quarantineReason(symbolProbe, quarantine) });
-      continue;
-    }
+  // Маппинг: какая стратегия под какую фазу рынка подходит
+  const STRATEGY_PHASE_MAP = {
+    'breakout': ['trending', 'volatile'],
+    'sma-rsi': ['trending', 'ranging']
+  };
 
+  for (const symbol of SYMBOLS) {
     for (const interval of INTERVALS) {
       let candles;
       try {
@@ -212,7 +213,16 @@ async function scoutReplacements() {
         continue;
       }
 
-      for (const strategy of STRATEGIES) {
+      // Определяем фазу рынка для фильтрации стратегий
+      const phase = detectPhase(candles);
+
+      // Фильтруем стратегии по market phase
+      const suitableStrategies = STRATEGIES.filter((s) => {
+        const suitablePhases = STRATEGY_PHASE_MAP[s] || ['trending', 'ranging', 'volatile'];
+        return suitablePhases.includes(phase.phase);
+      });
+
+      for (const strategy of suitableStrategies) {
         const probe = { symbol, interval, params: { strategy } };
         const key = keyFor(probe);
         if (skipKeys.has(key)) {

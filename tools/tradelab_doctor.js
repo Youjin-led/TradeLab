@@ -16,18 +16,26 @@ const BASE_CHECKS = [
   { name: 'syntax:safety', type: 'syntax', file: 'tools/tradelab_safety_audit.js' },
   { name: 'syntax:drawdown', type: 'syntax', file: 'tools/tradelab_drawdown_diagnostics.js' },
   { name: 'syntax:quarantine', type: 'syntax', file: 'tools/tradelab_quarantine.js' },
+  { name: 'syntax:unquarantine', type: 'syntax', file: 'tools/tradelab_unquarantine.js' },
   { name: 'syntax:replacement-scout', type: 'syntax', file: 'tools/tradelab_replacement_scout.js' },
   { name: 'syntax:scoreboard', type: 'syntax', file: 'tools/tradelab_scoreboard.js' },
   { name: 'syntax:network-health', type: 'syntax', file: 'tools/tradelab_network_health.js' },
   { name: 'syntax:lifecycle', type: 'syntax', file: 'tools/tradelab_lifecycle.js' },
   { name: 'syntax:recovery-promote', type: 'syntax', file: 'tools/tradelab_promote_recovery.js' },
+  { name: 'syntax:discovery', type: 'syntax', file: 'tools/tradelab_daily_discovery.js' },
+  { name: 'syntax:paper-trader', type: 'syntax', file: 'tools/tradelab_paper_trader.js' },
+  { name: 'syntax:risk-controls', type: 'syntax', file: 'tools/tradelab_risk_controls.js' },
+  { name: 'syntax:market-phase', type: 'syntax', file: 'tools/tradelab_market_phase.js' },
+  { name: 'syntax:news-impact', type: 'syntax', file: 'tools/tradelab_news_impact.js' },
+  { name: 'syntax:risk-manager', type: 'syntax', file: 'tools/tradelab_risk_manager.js' },
   { name: 'safety', type: 'module', file: 'tools/tradelab_safety_audit.js', exportName: 'audit' },
   { name: 'gate', type: 'module', file: 'tools/tradelab_real_money_gate.js', exportName: 'evaluateGate' },
   { name: 'report', type: 'module', file: 'tools/tradelab_incubation_report.js', exportName: 'makeReport' },
   { name: 'drawdown', type: 'module', file: 'tools/tradelab_drawdown_diagnostics.js', exportName: 'analyzeDrawdown' },
   { name: 'quarantine', type: 'module', file: 'tools/tradelab_quarantine.js', exportName: 'refreshQuarantine' },
   { name: 'scoreboard', type: 'module', file: 'tools/tradelab_scoreboard.js', exportName: 'makeScoreboard' },
-  { name: 'network-health', type: 'module', file: 'tools/tradelab_network_health.js', exportName: 'analyzeNetworkHealth' }
+  { name: 'network-health', type: 'module', file: 'tools/tradelab_network_health.js', exportName: 'analyzeNetworkHealth' },
+  { name: 'lifecycle', type: 'module', file: 'tools/tradelab_lifecycle.js', exportName: 'applyLifecycle' }
 ];
 
 const BROWSER_CHECKS = [

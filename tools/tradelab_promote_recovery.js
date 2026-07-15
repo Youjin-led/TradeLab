@@ -13,8 +13,9 @@ const REPORT_PATH = path.join(ROOT, 'TRADELAB_RECOVERY_PROMOTION.md');
 const RULES = {
   maxPromotions: 1,
   minTrades: 6,
-  minProfitFactor: 1.6,
-  maxDrawdownPct: 5.5,
+  minProfitFactor: 1.8,
+  maxDrawdownPct: 5.0,
+  minScore: 80,
   requiredStability: 'stable',
   requiredHealth: 'Healthy'
 };

@@ -1,29 +1,15 @@
 {
-  "generatedAt": "2026-06-13T11:32:38.356Z",
-  "inputUpdatedAt": "2026-06-13T11:32:32.570Z",
+  "generatedAt": "2026-07-06T09:05:55.178Z",
+  "inputUpdatedAt": "2026-07-06T09:05:30.210Z",
   "rules": {
     "probationCyclesBeforeQuarantine": 3,
     "probationMinForwardTrades": 3,
-    "probationMaxForwardPnl": -120,
-    "probationMaxDrawdownPct": 6,
+    "probationMaxForwardPnl": -80,
+    "probationMaxDrawdownPct": 5,
     "probationMaxLossStreak": 2,
     "quarantineMaxForwardPnl": -300,
     "promotionMinProgress": 75,
     "promotionMinForwardTrades": 8
   },
-  "rows": [
-    {
-      "key": "SEIUSDT:1h:sma-rsi",
-      "symbol": "SEIUSDT",
-      "interval": "1h",
-      "strategy": "sma-rsi",
-      "status": "watch",
-      "forwardPaperTrades": 3,
-      "forwardPaperPnl": 26.44,
-      "profitFactor": 1.9,
-      "maxDrawdownPct": 5,
-      "maxLossStreak": 2,
-      "health": "Healthy"
-    }
-  ]
+  "rows": []
 }

@@ -136,13 +136,14 @@ function dependencyForSymbol(newsDeps, symbol) {
     .sort((a, b) => b.confidence - a.confidence || Math.abs(b.avgReturn) - Math.abs(a.avgReturn))[0] || null;
 }
 
-function buildActions(bySymbol, byInterval, byStrategy, losers, killSwitch, newsDeps) {
+function buildActions(bySymbol, byInterval, byStrategy, losers, killSwitch, newsDeps, candidates) {
   const actions = [];
   if (killSwitch.active) {
+    const reasons = killSwitch.soft?.reasons || killSwitch.hard?.reasons || [];
     actions.push({
       level: 'critical',
       action: 'Freeze auto-adds and real-money preparation until kill-switch clears.',
-      reason: killSwitch.reasons.join('; ')
+      reason: reasons.join('; ')
     });
   }
 
@@ -173,6 +174,26 @@ function buildActions(bySymbol, byInterval, byStrategy, losers, killSwitch, news
       level: 'medium',
       action: `Tighten validation or pause ${worstStrategy.key} variants.`,
       reason: `${worstStrategy.key} is the weakest strategy group: ${money(worstStrategy.pnl)}; blocked ${worstStrategy.rejected + worstStrategy.quarantined}/${worstStrategy.candidates}.`
+    });
+  }
+
+  // Проверка phase-mismatch: если стратегия не подходит под фазу рынка
+  const PHASE_MAP = {
+    'breakout': ['trending', 'volatile'],
+    'sma-rsi': ['trending', 'ranging'],
+    'mean-reversion': ['ranging']
+  };
+  const phaseMismatchCandidates = candidates.filter((c) => {
+    const strategy = c.strategy || '';
+    const marketPhase = c.marketPhase || '';
+    const suitablePhases = PHASE_MAP[strategy] || ['trending', 'ranging', 'volatile'];
+    return marketPhase && !suitablePhases.includes(marketPhase);
+  });
+  if (phaseMismatchCandidates.length) {
+    actions.push({
+      level: 'medium',
+      action: `Review ${phaseMismatchCandidates.length} phase-mismatch candidates — strategy does not match current market phase.`,
+      reason: phaseMismatchCandidates.slice(0, 5).map((c) => `${c.key || c.symbol}:${c.strategy} on ${c.marketPhase} market`).join('; ')
     });
   }
 
@@ -318,7 +339,7 @@ function analyzeDrawdown() {
   const newsContext = weakSymbols
     .map((symbol) => dependencyForSymbol(newsDeps, symbol))
     .filter(Boolean);
-  const actions = buildActions(bySymbol, byInterval, byStrategy, worstCandidates, killSwitch, newsDeps);
+  const actions = buildActions(bySymbol, byInterval, byStrategy, worstCandidates, killSwitch, newsDeps, candidates);
 
   const output = {
     generatedAt: new Date().toISOString(),
@@ -343,7 +364,7 @@ function analyzeDrawdown() {
     jsonPath: JSON_PATH,
     killSwitch: {
       active: killSwitch.active,
-      reasons: killSwitch.reasons
+      reasons: killSwitch.soft?.reasons || killSwitch.hard?.reasons || []
     },
     summary,
     topActions: actions.slice(0, 5)

@@ -300,9 +300,98 @@ Lifecycle transitions are counted once per incubation-state snapshot. Re-running
 
 Promotion queue is not real-money permission. It is only a list for manual review.
 
+## 🔧 Улучшения от 2026-06-13
+
+### 1. Mean Reversion заблокирована глобально
+Стратегия Mean Reversion показала -11 580 USDT убытка по 8 кандидатам. Все MR-кандидаты удалены из CANDIDATES. Активны только SMA+RSI и Breakout.
+
+### 2. Очищен список CANDIDATES
+Удалены мёртвые кандидаты (LINKUSDT, BNBUSDT, AVAXUSDT, ETHUSDT, BTCUSDT, APTUSDT, TRXUSDT, FILUSDT, SEIUSDT 4h breakout). Оставлены только 7 активных:
+- SEIUSDT 1h SMA+RSI
+- ATOMUSDT 1h SMA+RSI
+- INJUSDT 4h SMA+RSI
+- NEARUSDT 4h Breakout
+- JUPUSDT 4h SMA+RSI
+- OPUSDT 1h SMA+RSI
+- RENDERUSDT 4h SMA+RSI
+
+### 3. Timeout в fetchCandles
+Добавлен AbortController с таймаутом 15 секунд. Предотвращает зависание при проблемах с сетью.
+
+### 4. Kill-switch: soft/hard уровни
+- **Soft** (-750 USDT): блокирует только real-money gate, но не мешает paper discovery
+- **Hard** (-3000 USDT): блокирует всё, включая добавление новых кандидатов
+- Текущий статус: **soft** (PnL -11 580, но hard-порог -3000 не превышен, discovery работает)
+
+### 5. Auto-unquarantine
+Новый скрипт `tradelab:unquarantine` автоматически проверяет кандидатов в карантине и возвращает их в инкубацию при улучшении метрик (PF >= 1.3, DD <= 7%, loss streak <= 3, PnL >= -100). Встроен в review cycle.
+
+### 6. Привязка стратегии к фазе рынка
+`dynamicRisk: true` включён для всех кандидатов. `isStrategySuitable()` теперь активен:
+- SMA+RSI не входит в extreme volatility
+- Breakout не входит в ranging market
+- Mean Reversion не входит в trending market (но она заблокирована)
+
+### 7. Увеличение частоты forward сделок
+Ослаблены условия входа в SMA+RSI:
+- BUY: crossUp + RSI <= 80 (было 68)
+- SELL: crossDown или RSI >= 55 (было 68)
+- Дополнительный BUY: fast > slow + RSI <= 55 (было 42)
+Это должно увеличить количество forward сделок с текущих 1-3 до 10+ за цикл.
+
+### 8. Новые команды
+```bash
+npm.cmd run tradelab:unquarantine   # проверить и разблокировать кандидатов
+npm.cmd run tradelab:risk           # показать статус kill-switch
+```
+
+### 9. Risk Manager (портфельный стоп-лосс) — 2026-06-15
+Новый модуль `tradelab_risk_manager.js` с функциями:
+- **Portfolio Stop-Loss**: принудительная заморозка всех позиций при убытке портфеля > -5000 USDT
+- **Daily/Weekly/Monthly Loss Limits**: дневной (-1000), недельный (-2500), месячный (-5000) лимиты
+- **Position Sizing**: автоматический расчёт размера позиции с учётом волатильности и ликвидности
+- **Correlation Guard**: блокировка перекоса в один сектор (>3 позиций), макс 5 одновременных позиций
+- **Trailing Stops**: автоматический трейлинг-стоп с шагом 1%, активация при +3% прибыли
+- **Margin Monitor**: симулированный мониторинг маржинальных требований
+
+Встроен в `tradelab:cycle`. Отдельный запуск:
+```bash
+npm.cmd run tradelab:risk:manager
+```
+
+### 10. Dashboard (веб-панель) — 2026-06-15
+Веб-панель мониторинга на `http://localhost:3456`:
+- Карточки: всего кандидатов, в инкубации, отклонено, готово к ревью, PnL портфеля, в карантине
+- Таблица кандидатов со всеми метриками (статус, здоровье, наблюдения, PnL, PF, DD, loss streak)
+- Статус-бейджи: Risk, Gate, Network
+- Секция Risk Manager с активными трейлинг-стопами и статистикой
+- Секция Network Health
+- JSON API endpoint: `http://localhost:3456/api/data`
+- Авто-обновление каждые 60 секунд
+
+Запуск:
+```bash
+npm.cmd run tradelab:dashboard
+```
+
+### 11. Paper Trader (симуляция real-money) — 2026-06-15
+Симулятор исполнения ордеров с реалистичными условиями:
+- **Latency Simulation**: задержка 50-500мс (рыночные быстрее, лимитные медленнее)
+- **Slippage**: проскальзывание 0.05-1% в зависимости от волатильности и ликвидности
+- **Fill Simulation**: 95% вероятность полного исполнения market, 60% для limit
+- **Commission**: maker 0.02%, taker 0.04%, минимум 0.1 USDT
+- **Order Book**: поддержка market, limit, stop, stop-limit ордеров
+- **Balance Tracking**: симулированный баланс 10,000 USDT
+
+Запуск:
+```bash
+npm.cmd run tradelab:paper:trader
+```
+
 ## Windows Scheduled Cycle
 
 The preferred long-running setup is now Windows Task Scheduler instead of a permanently running watcher process.
+
 
 Task name:
 

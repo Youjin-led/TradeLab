@@ -10,6 +10,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const { detectPhase } = require('./tradelab_market_phase');
+
 const ROOT = path.join(__dirname, '..');
 const NEWS_IMPACT_PATH = path.join(ROOT, 'tradelab-news-impact.json');
 
@@ -93,11 +95,19 @@ function getMarketSentiment(hoursBack = 24) {
   const positive = recent.filter((event) => event.sentiment.score > 0).length;
   const negative = recent.filter((event) => event.sentiment.score < 0).length;
 
+  // Определяем фазу рынка
+  let marketPhase = 'unknown';
+  try {
+    const phase = detectPhase([]);
+    marketPhase = phase.phase || 'unknown';
+  } catch (_) { /* ignore */ }
+
   return {
     score: totalScore,
     positive,
     negative,
     total: recent.length,
+    marketPhase,
     symbols: bySymbol
   };
 }

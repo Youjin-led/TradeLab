@@ -1,92 +1,62 @@
 {
-  "generatedAt": "2026-06-13T11:32:38.344Z",
-  "diagnosticsGeneratedAt": "2026-06-13T11:32:38.342Z",
+  "generatedAt": "2026-07-15T19:42:13.506Z",
+  "diagnosticsGeneratedAt": "2026-07-15T19:42:13.502Z",
   "rules": {
-    "maxSymbolForwardPnl": -1000,
-    "maxCandidateForwardPnl": -500,
-    "maxStrategyForwardPnl": -3000,
-    "minStrategyRejectedRatio": 0.75,
-    "maxTimeframeForwardPnlForDownrank": -5000
+    "maxSymbolForwardPnl": -750,
+    "maxCandidateForwardPnl": -300,
+    "maxStrategyForwardPnl": -2000,
+    "minStrategyRejectedRatio": 0.6,
+    "maxTimeframeForwardPnlForDownrank": -3000
   },
   "blockedSymbols": [
     {
-      "symbol": "INJUSDT",
-      "reason": "weak symbol: PnL -2088.7, trades 25, winrate 20%, max DD 18.02%"
-    },
-    {
-      "symbol": "NEARUSDT",
-      "reason": "weak symbol: PnL -1696.33, trades 16, winrate 19%, max DD 20.13%"
-    },
-    {
-      "symbol": "AVAXUSDT",
-      "reason": "weak symbol: PnL -1549.14, trades 10, winrate 10%, max DD 16.32%"
-    },
-    {
-      "symbol": "APTUSDT",
-      "reason": "weak symbol: PnL -1402.63, trades 15, winrate 27%, max DD 17.13%"
-    },
-    {
-      "symbol": "BTCUSDT",
-      "reason": "weak symbol: PnL -1321.16, trades 13, winrate 23%, max DD 14.68%"
+      "symbol": "LINKUSDT",
+      "reason": "weak symbol: PnL -848.89, trades 10, winrate 20%, max DD 4.09%"
     },
     {
       "symbol": "ETHUSDT",
-      "reason": "weak symbol: PnL -1107.6, trades 14, winrate 36%, max DD 12.59%"
-    },
-    {
-      "symbol": "JUPUSDT",
-      "reason": "weak symbol: PnL -1010.6, trades 7, winrate 14%, max DD 5.53%"
+      "reason": "weak symbol: PnL -778.6, trades 13, winrate 31%, max DD 6.17%"
     }
   ],
-  "blockedStrategies": [
-    {
-      "strategy": "mean-reversion",
-      "reason": "weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8"
-    }
-  ],
+  "blockedStrategies": [],
   "blockedCandidates": [
     {
-      "key": "NEARUSDT:1h:mean-reversion",
-      "reason": "weak candidate: forward PnL -1800.17, PF 0.9, max DD 10.61%, health Blocked"
+      "key": "ETHUSDT:4h:breakout",
+      "reason": "weak candidate: forward PnL -558.91, PF 0, max DD 0%, health Blocked"
     },
     {
-      "key": "AVAXUSDT:4h:mean-reversion",
-      "reason": "weak candidate: forward PnL -1549.14, PF 1.12, max DD 9.81%, health Blocked"
+      "key": "LINKUSDT:4h:sma-rsi",
+      "reason": "weak candidate: forward PnL -408.4, PF 1.77, max DD 4.27%, health Caution"
     },
     {
-      "key": "APTUSDT:1h:mean-reversion",
-      "reason": "weak candidate: forward PnL -1402.63, PF 0.85, max DD 10.9%, health Blocked"
+      "key": "SUIUSDT:4h:breakout",
+      "reason": "weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution"
     },
     {
-      "key": "BTCUSDT:1h:mean-reversion",
-      "reason": "weak candidate: forward PnL -1321.16, PF 0.4, max DD 9.93%, health Blocked"
+      "key": "LTCUSDT:1h:sma-rsi",
+      "reason": "weak candidate: forward PnL -340.45, PF 1.78, max DD 4.89%, health Caution"
     },
     {
-      "key": "ETHUSDT:1h:mean-reversion",
-      "reason": "weak candidate: forward PnL -1107.6, PF 0.57, max DD 10.33%, health Blocked"
+      "key": "LTCUSDT:1d:sma-rsi",
+      "reason": "weak candidate: forward PnL -333.37, PF 0.95, max DD 9.49%, health Blocked"
     },
     {
-      "key": "INJUSDT:1h:mean-reversion",
-      "reason": "weak candidate: forward PnL -1098.48, PF 1.49, max DD 10.34%, health Blocked"
+      "key": "SEIUSDT:4h:sma-rsi",
+      "reason": "weak candidate: forward PnL -294.32, PF 0.68, max DD 8.72%, health Blocked"
     },
     {
-      "key": "INJUSDT:4h:sma-rsi",
-      "reason": "weak candidate: forward PnL -990.22, PF 1.94, max DD 5.74%, health Healthy"
+      "key": "SEIUSDT:1h:breakout",
+      "reason": "weak candidate: forward PnL -276.46, PF 0.7, max DD 9.31%, health Blocked"
     },
     {
-      "key": "JUPUSDT:4h:sma-rsi",
-      "reason": "weak candidate: forward PnL -542.98, PF 1.45, max DD 6.67%, health Healthy"
+      "key": "DOTUSDT:1h:breakout",
+      "reason": "weak candidate: forward PnL -264.22, PF 0.49, max DD 10.07%, health Blocked"
     },
     {
-      "key": "LINKUSDT:4h:mean-reversion",
-      "reason": "weak candidate: forward PnL -506.04, PF 0.91, max DD 9.37%, health Blocked"
+      "key": "LINKUSDT:4h:breakout",
+      "reason": "weak candidate: forward PnL -236.86, PF 0, max DD 0%, health Blocked"
     }
   ],
-  "downrankIntervals": [
-    {
-      "interval": "1h",
-      "reason": "weak timeframe: PnL -6991.73, trades 85, winrate 27%, max DD 20.13%"
-    }
-  ],
-  "source": "C:\\Users\\Ардор\\OneDrive\\Рабочий стол\\JS\\ДЗ-1\\tradelab-drawdown-diagnostics.json"
+  "downrankIntervals": [],
+  "source": "C:\\Users\\Ардор\\OneDrive\\Рабочий стол\\Проекты\\TradeLab\\tradelab-drawdown-diagnostics.json"
 }

@@ -1,0 +1,16 @@
+# TradeLab — sensitive files
+.env
+tradelab-live-trades.json
+tradelab-daily-pnl.json
+tradelab-paused.json
+bot-error.log
+bot-output.log
+logs/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

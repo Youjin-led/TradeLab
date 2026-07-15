@@ -1,89 +1,87 @@
 # TradeLab Drawdown Diagnostics
 
-Generated: 2026-06-13T11:32:38.342Z
-Incubation updated: 2026-06-13T11:32:32.570Z
-Portfolio kill-switch: **ACTIVE**
+Generated: 2026-07-15T19:42:13.502Z
+Incubation updated: 2026-07-15T19:41:53.238Z
+Portfolio kill-switch: **clear**
 
 This report is paper-only. It explains losses; it does not approve exchange connectivity or real-money trading.
 
 ## Summary
 
-Candidates: 21; forward trades: 132; forward PnL: -11580.78; avg/trade: -87.73.
-Incubating: 2; rejected: 4; active positive ratio: 50.0%.
+Candidates: 44; forward trades: 164; forward PnL: -327.88; avg/trade: -2.00.
+Incubating: 4; rejected: 19; active positive ratio: 50.0%.
 
 ## Action List
 
-- **critical**: Freeze auto-adds and real-money preparation until kill-switch clears. Reason: portfolio forward PnL -11580.78 <= -750
-- **high**: Quarantine or down-rank INJUSDT candidates until they recover in paper mode. Reason: INJUSDT forward PnL -2088.70 with no useful news dependency yet.
-- **high**: Quarantine or down-rank NEARUSDT candidates until they recover in paper mode. Reason: NEARUSDT forward PnL -1696.33; news dependency strong 24h down, avg -3.39%, agreement 100.0%.
-- **high**: Quarantine or down-rank AVAXUSDT candidates until they recover in paper mode. Reason: AVAXUSDT forward PnL -1549.14 with no useful news dependency yet.
-- **high**: Quarantine or down-rank APTUSDT candidates until they recover in paper mode. Reason: APTUSDT forward PnL -1402.63 with no useful news dependency yet.
-- **high**: Quarantine or down-rank BTCUSDT candidates until they recover in paper mode. Reason: BTCUSDT forward PnL -1321.16 with no useful news dependency yet.
-- **medium**: Reduce priority for 1h timeframe discovery. Reason: 1h is the weakest timeframe group: -6991.73 across 85 forward trades.
-- **medium**: Tighten validation or pause mean-reversion variants. Reason: mean-reversion is the weakest strategy group: -9274.38; blocked 8/8.
-- **medium**: Review stop/take parameters for repeated stop-loss candidates before adding more similar setups. Reason: 8 of the worst candidates already carry drawdown, loss-streak, or profit-factor alerts.
+- **medium**: Quarantine or down-rank LINKUSDT candidates until they recover in paper mode. Reason: LINKUSDT forward PnL -848.89 with no useful news dependency yet.
+- **medium**: Quarantine or down-rank ETHUSDT candidates until they recover in paper mode. Reason: ETHUSDT forward PnL -778.60; news dependency moderate 1h up, avg 0.662%, agreement 100.0%.
+- **medium**: Quarantine or down-rank SEIUSDT candidates until they recover in paper mode. Reason: SEIUSDT forward PnL -702.68 with no useful news dependency yet.
+- **medium**: Quarantine or down-rank LTCUSDT candidates until they recover in paper mode. Reason: LTCUSDT forward PnL -542.91 with no useful news dependency yet.
+- **medium**: Quarantine or down-rank SUIUSDT candidates until they recover in paper mode. Reason: SUIUSDT forward PnL -402.49 with no useful news dependency yet.
+- **medium**: Reduce priority for 1h timeframe discovery. Reason: 1h is the weakest timeframe group: -445.56 across 67 forward trades.
+- **medium**: Tighten validation or pause sma-rsi variants. Reason: sma-rsi is the weakest strategy group: -273.06; blocked 20/22.
+- **medium**: Review 40 phase-mismatch candidates — strategy does not match current market phase. Reason: NEARUSDT:4h:breakout:breakout on trending-up-strong market; TRXUSDT:4h:sma-rsi:sma-rsi on ranging-tight market; LINKUSDT:4h:sma-rsi:sma-rsi on ranging-tight market; LINKUSDT:4h:breakout:breakout on ranging-tight market; SUIUSDT:4h:breakout:breakout on trending-down-strong market
+- **medium**: Review stop/take parameters for repeated stop-loss candidates before adding more similar setups. Reason: 7 of the worst candidates already carry drawdown, loss-streak, or profit-factor alerts.
 
 ## Worst Candidates
 
 Candidate | Status | Forward Trades | Forward PnL | PF | Max DD | Loss Streak | Health
 --- | --- | ---: | ---: | ---: | ---: | ---: | ---
-NEARUSDT:1h:mean-reversion | quarantined | 15 | -1800.17 | 0.90 | 10.61% | 6 | Blocked
-AVAXUSDT:4h:mean-reversion | quarantined | 10 | -1549.14 | 1.12 | 9.81% | 3 | Blocked
-APTUSDT:1h:mean-reversion | quarantined | 15 | -1402.63 | 0.85 | 10.90% | 4 | Blocked
-BTCUSDT:1h:mean-reversion | quarantined | 13 | -1321.16 | 0.40 | 9.93% | 4 | Blocked
-ETHUSDT:1h:mean-reversion | quarantined | 14 | -1107.60 | 0.57 | 10.33% | 4 | Blocked
-INJUSDT:1h:mean-reversion | quarantined | 19 | -1098.48 | 1.49 | 10.34% | 6 | Blocked
-INJUSDT:4h:sma-rsi | quarantined | 6 | -990.22 | 1.94 | 5.74% | 3 | Healthy
-JUPUSDT:4h:sma-rsi | quarantined | 5 | -542.98 | 1.45 | 6.67% | 2 | Healthy
-LINKUSDT:4h:mean-reversion | quarantined | 5 | -506.04 | 0.91 | 9.37% | 5 | Blocked
-RENDERUSDT:4h:mean-reversion | quarantined | 7 | -489.16 | 1.45 | 8.87% | 4 | Caution
+ETHUSDT:4h:breakout | quarantined | 4 | -558.91 | 0.00 | 0.00% | 0 | Blocked
+LINKUSDT:4h:sma-rsi | quarantined | 4 | -408.40 | 1.77 | 4.27% | 4 | Caution
+SUIUSDT:4h:breakout | incubating | 2 | -402.49 | 2.07 | 6.77% | 6 | Caution
+LTCUSDT:1h:sma-rsi | rejected | 12 | -340.45 | 1.78 | 4.89% | 3 | Caution
+LTCUSDT:1d:sma-rsi | quarantined | 2 | -333.37 | 0.95 | 9.49% | 4 | Blocked
+SEIUSDT:4h:sma-rsi | quarantined | 4 | -294.32 | 0.68 | 8.72% | 3 | Blocked
+SEIUSDT:1h:breakout | quarantined | 2 | -276.46 | 0.70 | 9.31% | 6 | Blocked
+DOTUSDT:1h:breakout | quarantined | 2 | -264.22 | 0.49 | 10.07% | 3 | Blocked
+LINKUSDT:4h:breakout | quarantined | 4 | -236.86 | 0.00 | 0.00% | 0 | Blocked
+TRXUSDT:4h:sma-rsi | quarantined | 5 | -223.51 | 1.81 | 4.37% | 4 | Caution
 
 ## Attribution By Symbol
 
 Symbol | Candidates | Trades | PnL | Avg/Trade | Winrate | Max DD | Rejected
 --- | ---: | ---: | ---: | ---: | ---: | ---: | ---:
-INJUSDT | 2 | 25 | -2088.70 | -83.55 | 20.0% | 18.02% | 0
-NEARUSDT | 3 | 16 | -1696.33 | -106.02 | 18.8% | 20.13% | 0
-AVAXUSDT | 1 | 10 | -1549.14 | -154.91 | 10.0% | 16.32% | 0
-APTUSDT | 1 | 15 | -1402.63 | -93.51 | 26.7% | 17.13% | 0
-BTCUSDT | 1 | 13 | -1321.16 | -101.63 | 23.1% | 14.68% | 0
-ETHUSDT | 1 | 14 | -1107.60 | -79.11 | 35.7% | 12.59% | 0
-JUPUSDT | 2 | 7 | -1010.60 | -144.37 | 14.3% | 5.53% | 0
-LINKUSDT | 1 | 5 | -506.04 | -101.21 | 20.0% | 8.15% | 0
-RENDERUSDT | 1 | 7 | -489.16 | -69.88 | 28.6% | 8.26% | 0
-BNBUSDT | 1 | 5 | -246.58 | -49.32 | 20.0% | 3.15% | 1
-TRXUSDT | 1 | 2 | -246.32 | -123.16 | 0.0% | 2.59% | 1
-OPUSDT | 1 | 5 | -216.56 | -43.31 | 40.0% | 5.02% | 0
+LINKUSDT | 3 | 10 | -848.89 | -84.89 | 20.0% | 4.09% | 0
+ETHUSDT | 2 | 13 | -778.60 | -59.89 | 30.8% | 6.17% | 0
+SEIUSDT | 4 | 7 | -702.68 | -100.38 | 14.3% | 9.49% | 1
+LTCUSDT | 3 | 15 | -542.91 | -36.19 | 46.7% | 3.64% | 1
+SUIUSDT | 1 | 2 | -402.49 | -201.25 | 0.0% | 5.70% | 0
+TRXUSDT | 1 | 5 | -223.51 | -44.70 | 20.0% | 3.10% | 0
+ARBUSDT | 1 | 1 | -164.72 | -164.72 | 0.0% | 3.38% | 0
+ATOMUSDT | 1 | 3 | -129.31 | -43.10 | 33.3% | 2.12% | 1
+TIAUSDT | 1 | 3 | -50.26 | -16.75 | 33.3% | 1.45% | 0
+DOTUSDT | 3 | 7 | -23.52 | -3.36 | 42.9% | 2.64% | 1
+FILUSDT | 1 | 0 | +0.00 | +0.00 | 0.0% | 5.24% | 0
+ADAUSDT | 1 | 0 | +0.00 | +0.00 | 0.0% | 0.82% | 1
 
 ## Attribution By Timeframe
 
 Timeframe | Candidates | Trades | PnL | Avg/Trade | Winrate | Max DD | Rejected
 --- | ---: | ---: | ---: | ---: | ---: | ---: | ---:
-1h | 8 | 85 | -6991.73 | -82.26 | 27.1% | 20.13% | 0
-4h | 11 | 45 | -4342.73 | -96.51 | 22.2% | 16.32% | 3
-1d | 2 | 2 | -246.32 | -123.16 | 0.0% | 7.81% | 1
+1h | 14 | 67 | -445.56 | -6.65 | 44.8% | 9.52% | 9
+1d | 2 | 4 | -373.92 | -93.48 | 0.0% | 3.33% | 0
+4h | 28 | 910100100000 | +491.60 | +0.00 | 0.0% | 9.46% | 10
 
 ## Attribution By Strategy
 
 Strategy | Candidates | Trades | PnL | Avg/Trade | Winrate | Max DD | Blocked
 --- | ---: | ---: | ---: | ---: | ---: | ---: | ---:
-mean-reversion | 8 | 98 | -9274.38 | -94.64 | 23.5% | 20.13% | 8
-sma-rsi | 10 | 30 | -2239.57 | -74.65 | 26.7% | 9.90% | 8
-breakout | 3 | 4 | -66.83 | -16.71 | 50.0% | 4.68% | 3
+sma-rsi | 22 | 70010304000 | -273.06 | +0.00 | 0.0% | 9.52% | 20
+breakout | 22 | 86 | -54.82 | -0.64 | 39.5% | 9.46% | 20
 
 ## Exit Reasons
 
 Reason | Trades | PnL | Avg/Trade | Winrate
 --- | ---: | ---: | ---: | ---:
-stop | 89 | -16161.17 | -181.59 | 0.0%
-signal | 28 | +629.13 | +22.47 | 64.3%
-take | 15 | +3951.26 | +263.42 | 100.0%
+stop | 65 | -8592.32 | -132.19 | 13.8%
+signal | 69 | +470.14 | +6.81 | 46.4%
+take | 30 | +7794.29 | +259.81 | 100.0%
 
 ## News Context For Weak Symbols
 
 Symbol | Strength | Horizon | Direction | Avg Return | Agreement | Confidence
 --- | --- | --- | --- | ---: | ---: | ---:
-NEARUSDT | strong | 24h | down | -3.39% | 100.0% | 80
 ETHUSDT | moderate | 1h | up | 0.662% | 100.0% | 59
 
 ## Operator Rule

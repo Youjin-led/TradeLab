@@ -1,14 +1,14 @@
 # TradeLab Daily Discovery
 
-Generated: 2026-06-13T06:15:50.402Z
-Universe: 25 symbols x 3 intervals x 3 strategies
-Rules: trades >= 6, PF >= 1.6, DD <= 5.5%, health score >= 75
-Portfolio kill-switch: ACTIVE
-Quarantine skips: 61
+Generated: 2026-07-06T09:06:28.078Z
+Universe: 25 symbols x 3 intervals x 2 strategies
+Rules: trades >= 6, PF >= 1.8, DD <= 8%, health score >= 80
+Portfolio kill-switch: clear
+Quarantine skips: 1
 
 ## Added To Auto-Incubation
 
-No new candidates added because portfolio kill-switch is active: portfolio forward PnL -11806.16 <= -750
+No new candidates added today.
 
 ## Recovery Sandbox
 
@@ -20,61 +20,54 @@ No strict recovery ideas passed today.
 
 Symbol | TF | Strategy | Score | Test PnL | PF | DD | Trades | Reasons
 --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---
-FILUSDT | 1d | breakout | 4802.9 | 4874.69 | 3.85 | 10.30% | 5 | walk-forward weak; health Caution; health score 50 < 75; test trades 5 < 6; test DD 10.30% > 5.5%; test DD 10.30% > 6%; health Caution != Healthy
-FILUSDT | 1d | sma-rsi | 3793.3 | 3858.47 | 3.13 | 9.21% | 7 | walk-forward weak; health Caution; health score 50 < 75; test DD 9.21% > 5.5%; test DD 9.21% > 6%; test loss streak 5 > 3; health Caution != Healthy
-SEIUSDT | 1d | sma-rsi | 1316.3 | 1098.35 | Infinity | 0.00% | 2 | test trades 2 < 6
-DOTUSDT | 1d | sma-rsi | 1196.2 | 1240.76 | 2.62 | 7.65% | 8 | test DD 7.65% > 5.5%; test DD 7.65% > 6%
-XRPUSDT | 1d | breakout | 1099.4 | 913.39 | 6.16 | 1.82% | 4 | test trades 4 < 6
-DOGEUSDT | 1h | sma-rsi | 1051.6 | 829.60 | Infinity | 0.36% | 5 | test trades 5 < 6
-TIAUSDT | 1d | breakout | 784.0 | 907.73 | 1.60 | 9.63% | 8 | walk-forward weak; health Caution; health score 50 < 75; test DD 9.63% > 5.5%; test DD 9.63% > 6%; test loss streak 4 > 3; health Caution != Healthy
-RENDERUSDT | 1d | breakout | 616.0 | 742.96 | 1.44 | 9.52% | 8 | walk-forward weak; health Caution; health score 50 < 75; test PF 1.44 < 1.6; test DD 9.52% > 5.5%; test DD 9.52% > 6%; health Caution != Healthy
-TIAUSDT | 1h | sma-rsi | 588.4 | 443.52 | 5.60 | 3.05% | 4 | test trades 4 < 6
-TRXUSDT | 4h | breakout | 529.8 | 389.05 | 3.92 | 1.65% | 10 | health Caution; test loss streak 4 > 3; health Caution != Healthy
-DOTUSDT | 1h | sma-rsi | 447.4 | 243.54 | Infinity | 0.82% | 3 | test trades 3 < 6
-LINKUSDT | 1h | sma-rsi | 434.5 | 333.93 | 3.23 | 1.48% | 5 | test trades 5 < 6
+XRPUSDT | 1d | sma-rsi | 724.1 | 601.77 | 3.11 | 1.93% | 14 | walk-forward weak
+RENDERUSDT | 1d | sma-rsi | 598.8 | 505.19 | 2.86 | 2.47% | 12 | walk-forward weak
+ARBUSDT | 1d | sma-rsi | 426.0 | 367.63 | 1.80 | 2.58% | 13 | walk-forward weak
+APTUSDT | 1d | sma-rsi | 317.0 | 246.73 | 1.67 | 2.01% | 14 | test PF 1.67 < 1.8
+ETHUSDT | 1d | sma-rsi | 20.8 | 11.77 | 1.04 | 2.52% | 7 | walk-forward weak; health Blocked; health score 48 < 80; test PF 1.04 < 1.8; test PF 1.04 < 1.5; health Blocked != Healthy; health score 48 < 75
 
 ## Portfolio Kill-Switch
 
-- Active: yes
-- Forward PnL: -11806.16
-- Forward trades: 130
-- Rejected ratio: 23.8%
-- Blocker: portfolio forward PnL -11806.16 <= -750
+- Active: no
+- Forward PnL: -89.4
+- Forward trades: 79
+- Rejected ratio: 34.9%
 
 ## Quarantine Skips
 
 Symbol | TF | Strategy | Reason
 --- | --- | --- | ---
-BTCUSDT | all | all | weak symbol: PnL -1321.16, trades 13, winrate 23%, max DD 14.68%
-ETHUSDT | all | all | weak symbol: PnL -1107.6, trades 14, winrate 36%, max DD 12.59%
-SOLUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-SOLUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-SOLUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-BNBUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-BNBUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-BNBUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-XRPUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-XRPUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-XRPUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-ADAUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-ADAUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-ADAUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-DOGEUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-DOGEUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-DOGEUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-LINKUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-LINKUSDT | 4h | mean-reversion | weak candidate: forward PnL -506.04, PF 0.91, max DD 9.37%, health Blocked
-LINKUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-AVAXUSDT | all | all | weak symbol: PnL -1549.14, trades 10, winrate 10%, max DD 16.32%
-DOTUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-DOTUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-DOTUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-TRXUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-TRXUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-TRXUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-LTCUSDT | 1h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-LTCUSDT | 4h | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
-LTCUSDT | 1d | mean-reversion | weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
+LINKUSDT | 1d | sma-rsi | weak symbol: PnL -848.89, trades 10, winrate 20%, max DD 4.09%
+
+## Market Phase Overview
+
+Symbol | TF | Phase | ADX | ATR% | BB Width | Volatility | Recommended Strategy
+--- | --- | --- | ---: | ---: | ---: | --- | ---
+BTCUSDT | 1h | ranging-tight | 19 | 0.57% | 2.3% | low | sma-rsi
+BTCUSDT | 4h | trending-up-strong | 32.5 | 0.9% | 3.01% | low | breakout
+BTCUSDT | 1d | trending-down | 24.6 | 3.53% | 11.55% | normal | breakout
+ETHUSDT | 1h | ranging-tight | 18.5 | 0.75% | 1.69% | low | sma-rsi
+ETHUSDT | 4h | trending-up | 29.8 | 1.3% | 4.34% | low | breakout
+ETHUSDT | 1d | ranging | 10.5 | 4.66% | 18.4% | high | sma-rsi
+SOLUSDT | 1h | ranging-tight | 4.4 | 0.83% | 2.45% | low | sma-rsi
+SOLUSDT | 4h | ranging-tight | 3.4 | 1.5% | 3.54% | low | sma-rsi
+SOLUSDT | 1d | trending-up | 26.9 | 5.5% | 25.66% | extreme | breakout
+BNBUSDT | 1h | trending-down-strong | 61.2 | 0.59% | 2.35% | low | breakout
+BNBUSDT | 4h | trending-up | 23.9 | 1.18% | 5.36% | low | breakout
+BNBUSDT | 1d | trending-down | 23.2 | 3.46% | 10.47% | normal | breakout
+XRPUSDT | 1h | ranging-tight | 21.6 | 0.83% | 2.63% | low | sma-rsi
+XRPUSDT | 4h | trending-up | 25 | 1.61% | 5.79% | low | breakout
+XRPUSDT | 1d | ranging | 9.9 | 4.22% | 16.96% | high | sma-rsi
+ADAUSDT | 1h | trending-down | 29.1 | 1.23% | 4.87% | low | breakout
+ADAUSDT | 4h | trending-up-strong | 35 | 3.16% | 17.55% | high | breakout
+ADAUSDT | 1d | trending-up-strong | 41.3 | 6.36% | 37.75% | extreme | breakout
+DOGEUSDT | 1h | ranging-tight | 4 | 0.87% | 2.4% | low | sma-rsi
+DOGEUSDT | 4h | ranging-tight | 20.2 | 1.64% | 4.39% | low | sma-rsi
+DOGEUSDT | 1d | trending-down-strong | 45.3 | 4.91% | 21.61% | extreme | breakout
+LINKUSDT | 1h | ranging-tight | 11.2 | 0.79% | 2.62% | low | sma-rsi
+LINKUSDT | 4h | ranging-tight | 17 | 1.45% | 3.88% | low | sma-rsi
+LINKUSDT | 1d | ranging | 1.5 | 4.71% | 16.5% | high | sma-rsi
+AVAXUSDT | 1h | ranging-tight | 0.5 | 0.93% | 1.47% | low | sma-rsi
 
 ## Best Qualified Rows
 

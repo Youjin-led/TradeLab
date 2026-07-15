@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { evaluateGate } = require('./tradelab_real_money_gate');
+const { detectPhase } = require('./tradelab_market_phase');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const REPORT_PATH = path.join(__dirname, '..', 'TRADELAB_INCUBATION_REPORT.md');
@@ -47,6 +48,13 @@ function makeReport() {
   const gateByKey = new Map((gate.candidates || []).map((candidate) => [candidate.key, candidate]));
   const generatedAt = new Date().toISOString();
 
+  // Определяем текущую фазу рынка
+  let marketPhase = 'unknown';
+  try {
+    const phase = detectPhase([]);
+    marketPhase = phase.phase || 'unknown';
+  } catch (_) { /* ignore */ }
+
   const lines = [
     '# TradeLab Incubation Report',
     '',
@@ -54,6 +62,7 @@ function makeReport() {
     `Incubation updated: ${state ? state.updatedAt || 'unknown' : 'missing'}`,
     `Real-money gate: **${gate.gate}**`,
     `Portfolio kill-switch: **${gate.portfolioKillSwitch && gate.portfolioKillSwitch.active ? 'ACTIVE' : 'clear'}**`,
+    `Market phase: **${marketPhase}**`,
     '',
     'This report is paper-only. It does not approve automatic trading or exchange connectivity.',
     '',
@@ -73,7 +82,7 @@ function makeReport() {
     gate.portfolioKillSwitch
       ? `Forward PnL: ${gate.portfolioKillSwitch.metrics.forwardPnl}; forward trades: ${gate.portfolioKillSwitch.metrics.forwardTrades}; rejected ratio: ${(gate.portfolioKillSwitch.metrics.rejectedRatio * 100).toFixed(1)}%.`
       : 'No kill-switch data available.',
-    ...(gate.portfolioKillSwitch && gate.portfolioKillSwitch.reasons.length ? gate.portfolioKillSwitch.reasons.map((reason) => `- ${reason}`) : ['- clear']),
+    ...(gate.portfolioKillSwitch && (gate.portfolioKillSwitch.soft?.reasons || gate.portfolioKillSwitch.hard?.reasons || []).length ? (gate.portfolioKillSwitch.soft?.reasons || gate.portfolioKillSwitch.hard?.reasons || []).map((reason) => `- ${reason}`) : ['- clear']),
     '',
     '## Quarantine',
     '',

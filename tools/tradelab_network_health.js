@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const { detectPhase } = require('./tradelab_market_phase');
+
 const ROOT = path.join(__dirname, '..');
 const SCHEDULE_LOG_PATH = path.join(ROOT, 'TRADELAB_SCHEDULE_LOG.md');
 const JSON_PATH = path.join(ROOT, 'tradelab-network-health.json');
@@ -19,12 +21,14 @@ function parseRuns(logText) {
     const statusLine = lines.find((line) => line.includes('Status:')) || '';
     const errorLine = lines.find((line) => line.includes('Error:')) || '';
     const finishedLine = lines.find((line) => line.includes('Finished:')) || '';
+    const phaseLine = lines.find((line) => line.includes('Market phase:')) || '';
     const status = statusLine.includes('PASS') ? 'PASS' : statusLine.includes('FAIL') ? 'FAIL' : statusLine.includes('ERROR') ? 'ERROR' : 'UNKNOWN';
     return {
       startedAt,
       status,
       error: errorLine.replace(/^- Error:\s*/, ''),
-      finishedAt: finishedLine.replace(/^- Finished:\s*/, '')
+      finishedAt: finishedLine.replace(/^- Finished:\s*/, ''),
+      marketPhase: phaseLine.replace(/^- Market phase:\s*/, '').trim()
     };
   });
 }
@@ -34,6 +38,20 @@ function analyzeNetworkHealth() {
   const recent = runs.slice(-24);
   const failures = recent.filter((run) => run.status === 'FAIL' || run.status === 'ERROR');
   const fetchFailures = failures.filter((run) => /fetch|network|HTTP/i.test(run.error));
+
+  // Определяем текущую фазу рынка
+  let currentPhase = 'unknown';
+  try {
+    const phase = detectPhase([]);
+    currentPhase = phase.phase || 'unknown';
+  } catch (_) { /* ignore */ }
+
+  // Считаем смены фазы за последние 24 запуска
+  const phases = recent.map((r) => r.marketPhase).filter(Boolean);
+  const phaseChanges = phases.reduce((count, phase, index) => {
+    return index > 0 && phase !== phases[index - 1] ? count + 1 : count;
+  }, 0);
+
   const output = {
     generatedAt: new Date().toISOString(),
     totalRuns: runs.length,
@@ -43,6 +61,8 @@ function analyzeNetworkHealth() {
     recentFetchFailures: fetchFailures.length,
     lastRun: runs[runs.length - 1] || null,
     recentFailureRows: failures,
+    currentMarketPhase: currentPhase,
+    recentPhaseChanges: phaseChanges,
     status: failures.length ? 'WARN' : 'PASS'
   };
   fs.writeFileSync(JSON_PATH, `${JSON.stringify(output, null, 2)}\n`);
@@ -54,6 +74,8 @@ function analyzeNetworkHealth() {
     recentFailures: output.recentFailures,
     recentFetchFailures: output.recentFetchFailures,
     lastRun: output.lastRun,
+    currentMarketPhase: currentPhase,
+    recentPhaseChanges: phaseChanges,
     reportPath: REPORT_PATH
   };
 }

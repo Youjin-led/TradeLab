@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const { detectPhase } = require('./tradelab_market_phase');
+
 const ROOT = path.join(__dirname, '..');
 const INPUT_PATH = path.join(ROOT, 'tradelab-news-impact.json');
 const REPORT_PATH = path.join(ROOT, 'TRADELAB_NEWS_DEPENDENCIES.md');
@@ -135,6 +137,7 @@ function writeReport(output) {
     '# TradeLab News/Market Dependencies',
     '',
     `Generated: ${output.generatedAt}`,
+    `Market phase: ${output.marketPhase}`,
     `Input news-impact generated: ${output.inputGeneratedAt || 'unknown'}`,
     `Matched events: ${output.matchedEvents}`,
     '',
@@ -180,8 +183,15 @@ function analyzeDependencies() {
   const input = readInput();
   const events = Array.isArray(input.events) ? input.events : [];
   const rows = dependencyRows(events);
+  // Определяем фазу рынка
+  let marketPhase = 'unknown';
+  try {
+    const phase = detectPhase([]);
+    marketPhase = phase.phase || 'unknown';
+  } catch (_) { /* ignore */ }
   const output = {
     generatedAt: new Date().toISOString(),
+    marketPhase,
     inputGeneratedAt: input.generatedAt || null,
     matchedEvents: events.length,
     narratives: marketNarratives(rows),

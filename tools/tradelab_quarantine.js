@@ -8,11 +8,11 @@ const QUARANTINE_PATH = path.join(ROOT, 'tradelab-quarantine.json');
 const REPORT_PATH = path.join(ROOT, 'TRADELAB_QUARANTINE.md');
 
 const RULES = {
-  maxSymbolForwardPnl: -1000,
-  maxCandidateForwardPnl: -500,
-  maxStrategyForwardPnl: -3000,
-  minStrategyRejectedRatio: 0.75,
-  maxTimeframeForwardPnlForDownrank: -5000
+  maxSymbolForwardPnl: -750,
+  maxCandidateForwardPnl: -300,
+  maxStrategyForwardPnl: -2000,
+  minStrategyRejectedRatio: 0.60,
+  maxTimeframeForwardPnlForDownrank: -3000
 };
 
 function readJson(filePath, fallback) {
@@ -124,6 +124,14 @@ function applyQuarantineToState(state, quarantine = loadQuarantine()) {
   for (const candidate of Object.values(candidates)) {
     const reason = quarantineReason(candidate, quarantine);
     if (!reason) continue;
+    
+    // Защита от циклического анкарантина: не трогаем недавно разблокированных
+    const unquarantineCycleCount = candidate.quarantine?.unquarantineCycleCount;
+    if (unquarantineCycleCount !== undefined && unquarantineCycleCount < 3) {
+      // Пропускаем — кандидат недавно был разблокирован, даём ему время
+      continue;
+    }
+    
     if (candidate.status !== 'quarantined') {
       candidate.previousStatus = candidate.status;
       changed += 1;

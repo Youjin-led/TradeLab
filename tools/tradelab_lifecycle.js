@@ -12,8 +12,8 @@ const REPORT_PATH = path.join(ROOT, 'TRADELAB_LIFECYCLE.md');
 const RULES = {
   probationCyclesBeforeQuarantine: 3,
   probationMinForwardTrades: 3,
-  probationMaxForwardPnl: -120,
-  probationMaxDrawdownPct: 6,
+  probationMaxForwardPnl: -80,
+  probationMaxDrawdownPct: 5.0,
   probationMaxLossStreak: 2,
   quarantineMaxForwardPnl: -300,
   promotionMinProgress: 75,

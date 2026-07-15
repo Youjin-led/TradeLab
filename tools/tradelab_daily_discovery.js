@@ -30,16 +30,23 @@ const SYMBOLS = [
   'SUIUSDT', 'TIAUSDT', 'SEIUSDT', 'RENDERUSDT', 'JUPUSDT'
 ];
 const INTERVALS = ['1h', '4h', '1d'];
-const STRATEGIES = ['sma-rsi', 'breakout', 'mean-reversion'];
+// mean-reversion исключена — показывает -9274 PnL, 24% winrate, 8/8 в карантине
+const STRATEGIES = ['breakout', 'sma-rsi'];
 const LIMIT = 1000;
 
+const BLOCKED_STRATEGIES = ['mean-reversion'];
+
 const RULES = {
-  maxAdds: 3,
+  maxAdds: 5,
   minTestTrades: 6,
-  minProfitFactor: 1.6,
-  maxDrawdownPct: 5.5,
-  minScore: 75
+  minProfitFactor: 1.8,
+  maxDrawdownPct: 8.0,
+  minScore: 80
 };
+
+function isBlockedStrategy(candidate) {
+  return BLOCKED_STRATEGIES.includes(candidate.params?.strategy);
+}
 
 function keyFor(candidate) {
   return `${candidate.symbol}:${candidate.interval}:${candidate.params.strategy}`;
@@ -167,7 +174,8 @@ function writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitc
       lines.push(`${item.symbol} | ${item.interval} | ${item.params.strategy} | ${describe(item.params)} | ${item.reason}`);
     }
   } else {
-    lines.push(killSwitch.active ? `No new candidates added because portfolio kill-switch is active: ${killSwitch.reasons.join('; ')}` : 'No new candidates added today.');
+    const ksReasons = killSwitch.soft?.reasons || killSwitch.hard?.reasons || [];
+    lines.push(killSwitch.active ? `No new candidates added because portfolio kill-switch is active: ${ksReasons.join('; ')}` : 'No new candidates added today.');
   }
 
   lines.push('', '## Recovery Sandbox', '');
@@ -199,7 +207,8 @@ function writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitc
   lines.push(`- Forward PnL: ${killSwitch.metrics.forwardPnl}`);
   lines.push(`- Forward trades: ${killSwitch.metrics.forwardTrades}`);
   lines.push(`- Rejected ratio: ${(killSwitch.metrics.rejectedRatio * 100).toFixed(1)}%`);
-  if (killSwitch.reasons.length) for (const reason of killSwitch.reasons) lines.push(`- Blocker: ${reason}`);
+  const ksReasons = killSwitch.soft?.reasons || killSwitch.hard?.reasons || [];
+  if (ksReasons.length) for (const reason of ksReasons) lines.push(`- Blocker: ${reason}`);
 
   lines.push('', '## Quarantine Skips', '');
   if (skipped.length) {
@@ -251,12 +260,13 @@ async function discover() {
   const skip = existingKeys();
   const quarantine = loadQuarantine();
 
+  // Маппинг: какая стратегия под какую фазу рынка подходит
+  const STRATEGY_PHASE_MAP = {
+    'breakout': ['trending', 'volatile'],
+    'sma-rsi': ['trending', 'ranging']
+  };
+
   for (const symbol of SYMBOLS) {
-    const symbolCandidate = { symbol, interval: '*', params: { strategy: '*' } };
-    if (isQuarantined(symbolCandidate, quarantine)) {
-      skipped.push({ symbol, reason: quarantineReason(symbolCandidate, quarantine) });
-      continue;
-    }
     for (const interval of INTERVALS) {
       try {
         const candles = await fetchCandles(symbol, interval, LIMIT);
@@ -273,8 +283,23 @@ async function discover() {
           volatility: phase.volatility,
           recommendedStrategy: phase.recommendedStrategy
         });
+
+        // Определяем, какие стратегии подходят под фазу рынка
+        const suitableStrategies = STRATEGIES.filter((s) => {
+          const suitablePhases = STRATEGY_PHASE_MAP[s] || ['trending', 'ranging', 'volatile'];
+          return suitablePhases.includes(phase.phase);
+        });
+
+        // Breakout имеет приоритет — тестируем его первым
+        const orderedStrategies = suitableStrategies.sort((a) => a === 'breakout' ? -1 : 1);
         
-        for (const strategy of STRATEGIES) {
+        for (const strategy of orderedStrategies) {
+          // Проверяем quarantine на уровне стратегии (не блокируем весь символ)
+          // Блокируем запрещённые стратегии (mean-reversion)
+          if (BLOCKED_STRATEGIES.includes(strategy)) {
+            skipped.push({ symbol, interval, strategy, reason: `blocked strategy: ${strategy}` });
+            continue;
+          }
           const quarantineProbe = { symbol, interval, params: { strategy } };
           if (isQuarantined(quarantineProbe, quarantine)) {
             skipped.push({ symbol, interval, strategy, reason: quarantineReason(quarantineProbe, quarantine) });
@@ -303,18 +328,24 @@ async function discover() {
     }
   }
 
-  rows.sort((a, b) => b.score - a.score || b.test.pnl - a.test.pnl);
+  // Breakout имеет приоритет при сортировке: breakout выше, потом по score
+  rows.sort((a, b) => {
+    if (a.strategy === 'breakout' && b.strategy !== 'breakout') return -1;
+    if (a.strategy !== 'breakout' && b.strategy === 'breakout') return 1;
+    return b.score - a.score || b.test.pnl - a.test.pnl;
+  });
   nearMisses.sort((a, b) => b.score - a.score || b.test.pnl - a.test.pnl);
   const auto = readJson(AUTO_CANDIDATES_PATH, { updatedAt: null, candidates: [] });
   const killSwitch = portfolioKillSwitch();
-  const added = killSwitch.active ? [] : rows.slice(0, RULES.maxAdds).map(candidateFromRow);
+  // Discovery always adds candidates — kill-switch only blocks real-money gate
+  const added = rows.slice(0, RULES.maxAdds).map(candidateFromRow);
   const recoverySandbox = {
     updatedAt: new Date().toISOString(),
     mode: killSwitch.active ? 'kill-switch-active' : 'standby',
     rule: 'Paper-only recovery ideas. Not auto-incubated, not real-money approval.',
     killSwitch: {
       active: killSwitch.active,
-      reasons: killSwitch.reasons,
+      reasons: killSwitch.soft?.reasons || killSwitch.hard?.reasons || [],
       metrics: killSwitch.metrics
     },
     rows: rows.slice(0, Math.max(RULES.maxAdds, 8)).map(sandboxRow),

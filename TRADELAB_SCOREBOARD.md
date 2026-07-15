@@ -1,35 +1,35 @@
 # TradeLab Scoreboard
 
-Generated: 2026-06-13T11:32:38.379Z
-Incubation updated: 2026-06-13T11:32:32.570Z
+Generated: 2026-07-06T09:05:55.223Z
+Incubation updated: 2026-07-06T09:05:30.210Z
 Real-money gate: **BLOCKED**
-Portfolio kill-switch: **ACTIVE**
+Portfolio kill-switch: **clear**
 
 This report is paper-only. It tracks progress toward manual review; it does not approve real-money trading.
 
 ## Summary
 
-Live: 2; probation: 0; quarantined: 15; rejected: 4; ready for review: 0.
-Improving: 1; deteriorating: 0; collecting: 1.
-Portfolio forward PnL: -11580.78; forward trades: 132; avg/trade: -87.73.
+Live: 2; probation: 0; quarantined: 26; rejected: 15; ready for review: 0.
+Improving: 0; deteriorating: 0; collecting: 2.
+Portfolio forward PnL: -89.40; forward trades: 79; avg/trade: -1.13.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-SEIUSDT:1h:sma-rsi | 58% | improving | Healthy | 111 | 3 | +26.44 | 1.90 | 5.00% | 2 | status is incubating, expected ready-for-review
-ATOMUSDT:1h:sma-rsi | 52% | collecting | Healthy | 16 | 1 | -71.57 | 2.35 | 1.89% | 3 | status is incubating, expected ready-for-review
+LTCUSDT:1h:sma-rsi | 51% | collecting | Healthy | 13 | 2 | +9.53 | 2.44 | 3.30% | 2 | status is incubating, expected ready-for-review
+SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
 
 Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
-ATOMUSDT:1h:sma-rsi | 52% | collecting | -71.57 | status is incubating, expected ready-for-review; live observations 16 < 20; forward paper trades 1 < 10; loss streak 3 > 2
-SEIUSDT:1h:sma-rsi | 58% | improving | +26.44 | status is incubating, expected ready-for-review; forward paper trades 3 < 10
+SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
+LTCUSDT:1h:sma-rsi | 51% | collecting | +9.53 | status is incubating, expected ready-for-review; live observations 13 < 30; forward paper trades 2 < 15
 
 ## Quarantine Count
 
-Quarantined candidates: 15. They are excluded from live-progress scoring until quarantine clears.
+Quarantined candidates: 26. They are excluded from live-progress scoring until quarantine clears.
 
 ## Operator Rule
 

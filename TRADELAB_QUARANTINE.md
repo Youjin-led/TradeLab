@@ -1,39 +1,34 @@
 # TradeLab Quarantine
 
-Generated: 2026-06-13T11:32:38.344Z
-Diagnostics generated: 2026-06-13T11:32:38.342Z
+Generated: 2026-07-15T19:42:13.506Z
+Diagnostics generated: 2026-07-15T19:42:13.502Z
 
 This is a paper-only safety layer. Quarantine blocks weak candidates from further paper updates and prevents similar new candidates from auto-discovery.
 
 ## Blocked Symbols
 
-- INJUSDT: weak symbol: PnL -2088.7, trades 25, winrate 20%, max DD 18.02%
-- NEARUSDT: weak symbol: PnL -1696.33, trades 16, winrate 19%, max DD 20.13%
-- AVAXUSDT: weak symbol: PnL -1549.14, trades 10, winrate 10%, max DD 16.32%
-- APTUSDT: weak symbol: PnL -1402.63, trades 15, winrate 27%, max DD 17.13%
-- BTCUSDT: weak symbol: PnL -1321.16, trades 13, winrate 23%, max DD 14.68%
-- ETHUSDT: weak symbol: PnL -1107.6, trades 14, winrate 36%, max DD 12.59%
-- JUPUSDT: weak symbol: PnL -1010.6, trades 7, winrate 14%, max DD 5.53%
+- LINKUSDT: weak symbol: PnL -848.89, trades 10, winrate 20%, max DD 4.09%
+- ETHUSDT: weak symbol: PnL -778.6, trades 13, winrate 31%, max DD 6.17%
 
 ## Blocked Strategies
 
-- mean-reversion: weak strategy: PnL -9274.38, trades 98, winrate 24%, max DD 20.13%, blocked 8/8
+- none
 
 ## Blocked Candidates
 
-- NEARUSDT:1h:mean-reversion: weak candidate: forward PnL -1800.17, PF 0.9, max DD 10.61%, health Blocked
-- AVAXUSDT:4h:mean-reversion: weak candidate: forward PnL -1549.14, PF 1.12, max DD 9.81%, health Blocked
-- APTUSDT:1h:mean-reversion: weak candidate: forward PnL -1402.63, PF 0.85, max DD 10.9%, health Blocked
-- BTCUSDT:1h:mean-reversion: weak candidate: forward PnL -1321.16, PF 0.4, max DD 9.93%, health Blocked
-- ETHUSDT:1h:mean-reversion: weak candidate: forward PnL -1107.6, PF 0.57, max DD 10.33%, health Blocked
-- INJUSDT:1h:mean-reversion: weak candidate: forward PnL -1098.48, PF 1.49, max DD 10.34%, health Blocked
-- INJUSDT:4h:sma-rsi: weak candidate: forward PnL -990.22, PF 1.94, max DD 5.74%, health Healthy
-- JUPUSDT:4h:sma-rsi: weak candidate: forward PnL -542.98, PF 1.45, max DD 6.67%, health Healthy
-- LINKUSDT:4h:mean-reversion: weak candidate: forward PnL -506.04, PF 0.91, max DD 9.37%, health Blocked
+- ETHUSDT:4h:breakout: weak candidate: forward PnL -558.91, PF 0, max DD 0%, health Blocked
+- LINKUSDT:4h:sma-rsi: weak candidate: forward PnL -408.4, PF 1.77, max DD 4.27%, health Caution
+- SUIUSDT:4h:breakout: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution
+- LTCUSDT:1h:sma-rsi: weak candidate: forward PnL -340.45, PF 1.78, max DD 4.89%, health Caution
+- LTCUSDT:1d:sma-rsi: weak candidate: forward PnL -333.37, PF 0.95, max DD 9.49%, health Blocked
+- SEIUSDT:4h:sma-rsi: weak candidate: forward PnL -294.32, PF 0.68, max DD 8.72%, health Blocked
+- SEIUSDT:1h:breakout: weak candidate: forward PnL -276.46, PF 0.7, max DD 9.31%, health Blocked
+- DOTUSDT:1h:breakout: weak candidate: forward PnL -264.22, PF 0.49, max DD 10.07%, health Blocked
+- LINKUSDT:4h:breakout: weak candidate: forward PnL -236.86, PF 0, max DD 0%, health Blocked
 
 ## Downranked Timeframes
 
-- 1h: weak timeframe: PnL -6991.73, trades 85, winrate 27%, max DD 20.13%
+- none
 
 ## Operator Rule
 
