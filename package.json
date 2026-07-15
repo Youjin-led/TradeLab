@@ -4,7 +4,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "uv run python scene_agents.py",
+    "start": "node tools/tradelab_telegram_bot.js",
     "start:web": "uv run python multi_agent_site.py",
     "preview": "node serve_static.js",
     "start:python": "python scene_agents.py",
@@ -66,13 +66,7 @@
     "hf:infer": "python tools/hf_inference.py"
   },
   "dependencies": {
-    "ccxt": "^4.5.61",
-    "dotenv": "^17.4.2",
-    "puppeteer": "^22.15.0",
-    "three": "^0.164.1"
+    "dotenv": "^17.4.2"
   },
-  "devDependencies": {
-    "sharp": "^0.35.1",
-    "typescript": "^5.5.4"
-  }
+  "devDependencies": {}
 }
