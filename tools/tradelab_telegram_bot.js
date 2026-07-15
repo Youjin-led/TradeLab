@@ -221,12 +221,15 @@ async function handlePnl() {
 }
 
 async function handleHeat() {
-  // Dynamic import to avoid circular deps
-  const { calculatePortfolioHeat, RISK_CONFIG } = require('./tradelab_risk_manager');
-  const state = readState();
-  const candidates = Object.values(state.candidates || {});
-  const heat = calculatePortfolioHeat(candidates, 10000);
-  const maxHeat = 5.0;
+  var heat, maxHeat = 5.0;
+  try {
+    var rm = require('./tradelab_risk_manager');
+    var state = readState();
+    var candidates = Object.values(state.candidates || {});
+    heat = rm.calculatePortfolioHeat(candidates, 10000);
+  } catch (e) {
+    heat = 0;
+  }
 
   const bar = '█'.repeat(Math.min(20, Math.round(heat / maxHeat * 20)));
   const empty = '░'.repeat(20 - bar.length);
