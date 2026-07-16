@@ -1,0 +1,51 @@
+name: TradeLab Autonomous Agent
+
+on:
+  schedule:
+    # Каждые 4 часа
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # Ручной запуск
+
+jobs:
+  collect-and-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Collect market data
+        run: node tools/tradelab_cloud_collect.js
+        continue-on-error: true
+
+      - name: Run incubation
+        run: node tools/tradelab_incubate_once.js
+        continue-on-error: true
+
+      - name: Run risk manager
+        run: node tools/tradelab_risk_manager.js
+        continue-on-error: true
+
+      - name: Generate scoreboard
+        run: node tools/tradelab_scoreboard.js
+        continue-on-error: true
+
+      - name: Generate telemetry
+        run: node tools/tradelab_telemetry.js
+        continue-on-error: true
+
+      - name: Commit and push results
+        run: |
+          git config user.name "TradeLab Bot"
+          git config user.email "bot@tradelab.ai"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto-update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
