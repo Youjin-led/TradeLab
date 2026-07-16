@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-16T13:40:11.159Z
+Generated: 2026-07-16T17:23:55.918Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -947.68 USDT
+- **Total PnL:** -847.48 USDT
 
 ## Active Locks
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 89.05%
-- **Total PnL:** -947.68 USDT
-- **Total Exposure:** 8650.82 USDT
+- **Margin Level:** 90.32%
+- **Total PnL:** -847.48 USDT
+- **Total Exposure:** 8751.02 USDT
 - **Warnings:**
-  - 🔴 margin_call: 89.05% (threshold: 100%)
+  - 🔴 margin_call: 90.32% (threshold: 100%)
 
 ## Statistics
 
