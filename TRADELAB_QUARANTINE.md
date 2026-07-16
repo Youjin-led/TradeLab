@@ -1,7 +1,7 @@
 # TradeLab Quarantine
 
-Generated: 2026-07-15T19:42:13.506Z
-Diagnostics generated: 2026-07-15T19:42:13.502Z
+Generated: 2026-07-16T13:36:42.511Z
+Diagnostics generated: 2026-07-16T13:36:42.507Z
 
 This is a paper-only safety layer. Quarantine blocks weak candidates from further paper updates and prevents similar new candidates from auto-discovery.
 
@@ -25,6 +25,7 @@ This is a paper-only safety layer. Quarantine blocks weak candidates from furthe
 - SEIUSDT:1h:breakout: weak candidate: forward PnL -276.46, PF 0.7, max DD 9.31%, health Blocked
 - DOTUSDT:1h:breakout: weak candidate: forward PnL -264.22, PF 0.49, max DD 10.07%, health Blocked
 - LINKUSDT:4h:breakout: weak candidate: forward PnL -236.86, PF 0, max DD 0%, health Blocked
+- ATOMUSDT:1h:sma-rsi: weak candidate: forward PnL -224.46, PF 0.66, max DD 9.19%, health Blocked
 
 ## Downranked Timeframes
 

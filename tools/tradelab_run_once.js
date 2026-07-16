@@ -15,23 +15,31 @@ const DEFAULT_PARAMS = {
   rsiSell: 68,
   lookback: 42,
   deviationPct: 3.2,
-  riskPct: 1.2,
-  stopPct: 2.4,
-  takePct: 4.2,
-  maxDrawdownPct: 9,
+  // Risk: conservative for real money
+  riskPct: 0.5,              // 0.5% risk per trade (was 1.2%)
+  stopPct: 3.5,              // 3.5% stop loss (was 2.4%)
+  takePct: 5.0,              // 5.0% take profit (was 4.2%)
+  maxDrawdownPct: 8,         // Max drawdown 8% (was 9%)
   feePct: 0.06,
   slippagePct: 0.04,
-  // Dynamic mode: if true, stopPct/takePct/riskPct are computed from ATR
+  // Dynamic mode
   dynamicRisk: true,
-  // Market phase detection
   marketPhase: null,
-  // Трейлинг-стоп
-  trailingActivated: true,    // Включить трейлинг-стоп
-  trailPct: 0.8,              // Расстояние трейлинга от максимума (%)
-  trailActivatePct: 1.5,      // Активировать трейлинг при прибыли X%
-  // ATR-фильтр входа
-  minAtrPct: 0.3,             // Минимальный ATR% для входа (иначе рынок слишком тихий)
-  maxAtrPct: 5.0              // Максимальный ATR% для входа (иначе слишком волатильно)
+  // Trailing stop
+  trailingActivated: true,
+  trailPct: 0.8,
+  trailActivatePct: 1.5,
+  // ATR filter
+  minAtrPct: 0.3,
+  maxAtrPct: 5.0,
+  // Volume filter: require volume > 1.5x average
+  volumeFilter: true,
+  volumeMultiplier: 1.5,
+  // ADX filter: require ADX > 20
+  adxFilter: true,
+  adxThreshold: 20,
+  // Max concurrent positions
+  maxPositions: 3,
 };
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -132,6 +140,9 @@ function isStrategySuitable(candles, params) {
 
 function getSignal(candles, cursor, params) {
   const closes = candles.slice(0, cursor).map((candle) => candle.close);
+  const volumes = candles.slice(0, cursor).map((candle) => candle.volume || 0);
+  const highs = candles.slice(0, cursor).map((candle) => candle.high);
+  const lows = candles.slice(0, cursor).map((candle) => candle.low);
   const i = closes.length - 1;
   const fastNow = sma(closes, params.fast, i);
   const slowNow = sma(closes, params.slow, i);
@@ -143,27 +154,61 @@ function getSignal(candles, cursor, params) {
   const crossDown = fastPrev !== null && slowPrev !== null && fastPrev >= slowPrev && fastNow < slowNow;
   let action = 'WAIT';
 
+  // === FILTERS ===
+
+  // 1. Volume filter: require volume > 1.5x average
+  var avgVolume = 0;
+  var volumeCount = Math.min(20, volumes.length);
+  for (var v = volumes.length - volumeCount; v < volumes.length; v++) {
+    avgVolume += volumes[v];
+  }
+  avgVolume /= volumeCount;
+  var volumeOk = avgVolume > 0 ? volumes[i] > avgVolume * 1.5 : true;
+
+  // 2. ADX filter: require ADX > 20 for trend confirmation
+  var adxValue = 0;
+  if (highs.length >= 28) {
+    var plusDM = 0, minusDM = 0, trSum = 0;
+    for (var a = highs.length - 14; a < highs.length; a++) {
+      var upMove = highs[a] - highs[a - 1];
+      var downMove = lows[a - 1] - lows[a];
+      plusDM += upMove > downMove && upMove > 0 ? upMove : 0;
+      minusDM += downMove > upMove && downMove > 0 ? downMove : 0;
+      var tr = Math.max(highs[a] - lows[a], Math.abs(highs[a] - closes[a - 1]), Math.abs(lows[a] - closes[a - 1]));
+      trSum += tr;
+    }
+    var atrVal = trSum / 14;
+    if (atrVal > 0) {
+      var plusDI = (plusDM / 14) / atrVal * 100;
+      var minusDI = (minusDM / 14) / atrVal * 100;
+      var dx = Math.abs(plusDI - minusDI) / (plusDI + minusDI) * 100;
+      adxValue = dx;
+    }
+  }
+  var adxOk = adxValue > 20;
+
+  // 3. RSI filter: don't enter overbought/oversold
+  var rsiOk = currentRsi > 25 && currentRsi < 75;
+
+  // === STRATEGY SIGNALS ===
+
   if (params.strategy === 'breakout') {
     const rangeHigh = highest(closes, params.lookback, i);
     const rangeLow = lowest(closes, params.lookback, i);
     const previous = closes[i - 1];
-    if (rangeHigh !== null && previous <= rangeHigh && price > rangeHigh) action = 'BUY';
+    if (rangeHigh !== null && previous <= rangeHigh && price > rangeHigh && volumeOk && adxOk) action = 'BUY';
     else if ((rangeLow !== null && price < rangeLow) || currentRsi >= params.rsiSell + 5) action = 'SELL';
   } else if (params.strategy === 'mean-reversion') {
     const basis = sma(closes, params.lookback, i);
     const prevBasis = sma(closes, params.lookback, i - 1);
     const deviation = basis ? ((price - basis) / basis) * 100 : 0;
-    if (basis && deviation <= -params.deviationPct && currentRsi <= params.rsiBuy) action = 'BUY';
+    if (basis && deviation <= -params.deviationPct && currentRsi <= params.rsiBuy && volumeOk && rsiOk) action = 'BUY';
     else if ((basis && price >= basis) || (prevBasis && price < prevBasis * (1 - params.deviationPct / 100) && currentRsi > params.rsiBuy + 12)) action = 'SELL';
   } else {
-    // SMA+RSI: ослабленные условия для увеличения частоты forward сделок
-    // Оригинал: crossUp + RSI <= rsiSell (68)
-    // Теперь: crossUp + RSI <= 75 (больше BUY сигналов)
-    if (crossUp && currentRsi <= Math.min(params.rsiSell + 7, 80)) action = 'BUY';
-    // SELL: crossDown или RSI >= rsiSell - 5 (раньше было rsiSell = 68)
+    // SMA+RSI with filters: volume, ADX, RSI
+    if (crossUp && currentRsi <= Math.min(params.rsiSell + 7, 80) && volumeOk && adxOk && rsiOk) action = 'BUY';
     else if (crossDown || currentRsi >= Math.max(params.rsiSell - 5, 55)) action = 'SELL';
-    // Дополнительный BUY: fast > slow + RSI <= rsiBuy + 5 (раньше rsiBuy = 42)
-    else if (fastNow > slowNow && currentRsi <= Math.min(params.rsiBuy + 5, 55)) action = 'BUY';
+    else if (fastNow > slowNow && currentRsi <= Math.min(params.rsiBuy + 5, 55) && volumeOk && rsiOk) action = 'BUY';
   }
 
 

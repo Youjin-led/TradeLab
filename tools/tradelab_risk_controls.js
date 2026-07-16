@@ -5,14 +5,14 @@ const ROOT = path.join(__dirname, '..');
 const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
 
 const VALIDATOR_RULES = {
-  minTestTrades: 6,
-  minProfitFactor: 1.5,
-  maxDrawdownPct: 8.0,
-  maxLossStreak: 3,
-  minHealthScore: 75,
-  maxRiskPct: 1.5,
-  maxStopPct: 5,
-  minTakePct: 2
+  minTestTrades: 8,           // More trades needed (was 6)
+  minProfitFactor: 1.8,       // Higher PF required (was 1.5)
+  maxDrawdownPct: 8.0,        // Tighter drawdown (was 8.0)
+  maxLossStreak: 3,           // Max 3 losses in a row
+  minHealthScore: 80,         // Higher health required (was 75)
+  maxRiskPct: 0.8,            // Max 0.8% risk per trade (was 1.5%)
+  maxStopPct: 5,              // Max stop 5%
+  minTakePct: 3               // Min take 3% (was 2)
 };
 
 const KILL_SWITCH_RULES = {

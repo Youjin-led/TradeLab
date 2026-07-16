@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-15T19:42:13.506Z",
-  "diagnosticsGeneratedAt": "2026-07-15T19:42:13.502Z",
+  "generatedAt": "2026-07-16T13:36:42.511Z",
+  "diagnosticsGeneratedAt": "2026-07-16T13:36:42.507Z",
   "rules": {
     "maxSymbolForwardPnl": -750,
     "maxCandidateForwardPnl": -300,
@@ -55,6 +55,10 @@
     {
       "key": "LINKUSDT:4h:breakout",
       "reason": "weak candidate: forward PnL -236.86, PF 0, max DD 0%, health Blocked"
+    },
+    {
+      "key": "ATOMUSDT:1h:sma-rsi",
+      "reason": "weak candidate: forward PnL -224.46, PF 0.66, max DD 9.19%, health Blocked"
     }
   ],
   "downrankIntervals": [],

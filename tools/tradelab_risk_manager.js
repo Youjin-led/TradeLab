@@ -84,12 +84,12 @@ const RISK_CONFIG = {
 
   // Ограничения на количество позиций
   positionLimits: {
-    // Максимальное количество одновременных позиций
-    maxConcurrentPositions: 5,
+    // Максимальное количество одновременных позиций (conservative)
+    maxConcurrentPositions: 3,
     // Максимальное количество позиций в одном инструменте
     maxPositionsPerSymbol: 1,
     // Максимальная экспозиция на один инструмент (%)
-    maxExposurePerSymbol: 15,
+    maxExposurePerSymbol: 10,
   }
 };
 
