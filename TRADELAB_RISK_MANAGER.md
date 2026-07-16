@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-06T09:05:55.238Z
+Generated: 2026-07-16T12:55:21.327Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -89.40 USDT
+- **Total PnL:** -996.34 USDT
 
 ## Active Locks
 
@@ -21,59 +21,66 @@ Status: **EMERGENCY_STOP**
 | Weekly Loss Limit | ✅ Inactive |
 | Monthly Loss Limit | ✅ Inactive |
 
-## Position Sizing
+## Position Sizing (with Kelly Criterion)
 
-| Symbol | Interval | Strategy | Risk % | Size (USDT) | Stop Price | Stop Loss (USDT) |
+| Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| TRXUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| LINKUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| LINKUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| XRPUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| SUIUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| ATOMUSDT | 1h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| INJUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| DOTUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| DOTUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| LINKUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| SEIUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| ETHUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| SEIUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| FILUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| DOGEUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| SOLUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| AVAXUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| SOLUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| JUPUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| NEARUSDT | 1d | sma-rsi | 1.4% | 140 | 95 | 7 |
-| TIAUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| ARBUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| LTCUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| BCHUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| JUPUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| DOGEUSDT | 1h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| DOGEUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| LTCUSDT | 1h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| LTCUSDT | 1d | sma-rsi | 1.4% | 140 | 95 | 7 |
-| RENDERUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| AVAXUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| BCHUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| RENDERUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
-| DOTUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| ADAUSDT | 4h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| ETHUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| BNBUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| OPUSDT | 1h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| BTCUSDT | 4h | breakout | 1.4% | 140 | 95 | 7 |
-| SEIUSDT | 1h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| BCHUSDT | 1h | sma-rsi | 1.4% | 140 | 95 | 7 |
-| SEIUSDT | 1h | breakout | 1.4% | 140 | 95 | 7 |
+| NEARUSDT | breakout | 2.64% | 263.9 | 3.77 | 47.6% | 95 |
+| TRXUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SUIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| INJUSDT | sma-rsi | 5% | 500 | 25 | 70% | 95 |
+| LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SOLUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| JUPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| BCHUSDT | breakout | 5% | 500 | 8.23 | 47.4% | 95 |
+| DOGEUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOGEUSDT | breakout | 5% | 500 | 7.17 | 46.7% | 95 |
+| LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
+| LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOTUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| ETHUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 98 |
+| FILUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOGEUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| ADAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| ATOMUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| RENDERUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| ARBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| OPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| RENDERUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SOLUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| JUPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| BNBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+
+## Portfolio Heat
+
+- **Heat:** 0.08% / 5% max
+- **Status:** NORMAL
+- **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 2
-- **Sector Distribution:** {"alt_small":1,"other":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
 
 ## Trailing Stops
 
@@ -81,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 98.35%
-- **Total PnL:** -89.4 USDT
-- **Total Exposure:** 5412.2 USDT
+- **Margin Level:** 88.47%
+- **Total PnL:** -996.34 USDT
+- **Total Exposure:** 8639.72 USDT
 - **Warnings:**
-  - 🔴 margin_call: 98.35% (threshold: 100%)
+  - 🔴 margin_call: 88.47% (threshold: 100%)
 
 ## Statistics
 
