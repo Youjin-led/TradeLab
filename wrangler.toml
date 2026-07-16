@@ -1,5 +1,8 @@
 name = "tradelab-bot"
-main = "tools/tradelab_telegram_webhook.js"
+main = "tools/tradelab_cloud_agent.js"
 compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
 
-[vars]
+# Cron Trigger: collect data every hour
+[triggers]
+crons = ["0 * * * *"]
