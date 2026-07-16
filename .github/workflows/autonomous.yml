@@ -2,9 +2,11 @@ name: TradeLab Autonomous Agent
 
 on:
   schedule:
-    # Каждые 4 часа
     - cron: '0 */4 * * *'
-  workflow_dispatch: # Ручной запуск
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   collect-and-analyze:
@@ -48,4 +50,4 @@ jobs:
           git config user.email "bot@tradelab.ai"
           git add -A
           git diff --staged --quiet || git commit -m "Auto-update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
