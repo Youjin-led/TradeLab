@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-17T17:17:09.391Z",
+  "generatedAt": "2026-07-17T21:01:22.661Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 3,
+    "live": 4,
     "quarantined": 21,
-    "rejected": 20,
+    "rejected": 19,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,10 +41,10 @@
       "avgPnlPerTrade": -7.7
     },
     "sma-rsi": {
-      "totalPnl": -399.23839294655227,
-      "trades": 99,
-      "wins": 45,
-      "losses": 54,
+      "totalPnl": -276.4244685394958,
+      "trades": 101,
+      "wins": 46,
+      "losses": 55,
       "maxDd": 6.17,
       "symbols": [
         "TRXUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "JUPUSDT"
       ],
-      "forwardPnl": -399.24,
-      "forwardTrades": "77231426022",
+      "forwardPnl": -276.42999999999984,
+      "forwardTrades": "77231526122",
       "avgHoldBars": 0,
       "totalHoldBars": 0,
       "winRate": 45.5,
-      "avgPnlPerTrade": -4.03
+      "avgPnlPerTrade": -2.74
     }
   },
   "byTimeOfDay": {
@@ -160,9 +160,9 @@
       "avgPnl": -20.14
     },
     "17": {
-      "pnl": -131.5,
-      "trades": 4,
-      "avgPnl": -32.88
+      "pnl": -3.7,
+      "trades": 5,
+      "avgPnl": -0.74
     },
     "18": {
       "pnl": -10.12,
@@ -170,9 +170,9 @@
       "avgPnl": -3.37
     },
     "19": {
-      "pnl": 38.76,
-      "trades": 5,
-      "avgPnl": 7.75
+      "pnl": 33.78,
+      "trades": 6,
+      "avgPnl": 5.63
     },
     "20": {
       "pnl": -412.97,
@@ -222,9 +222,9 @@
       "avgPnl": 12.48
     },
     "Friday": {
-      "pnl": -405.58,
-      "trades": 29,
-      "avgPnl": -13.99
+      "pnl": -282.77,
+      "trades": 31,
+      "avgPnl": -9.12
     },
     "Saturday": {
       "pnl": 552.58,
@@ -1672,26 +1672,40 @@
       "pnl": -145.32,
       "symbol": "RENDERUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-07-17 19:00",
+      "equity": 8912.7,
+      "pnl": 127.8,
+      "symbol": "SEIUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-17 20:00",
+      "equity": 8907.71,
+      "pnl": -4.98,
+      "symbol": "ATOMUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.183,
-    "sortinoRatio": 0.213,
-    "calmarRatio": 0.533,
+    "sharpeRatio": 0.235,
+    "sortinoRatio": 0.273,
+    "calmarRatio": 0.645,
     "maxDrawdown": 19.46,
-    "avgDailyReturn": 0.0411,
-    "dailyVolatility": 2.7,
-    "annualizedReturn": 10.36,
-    "totalTrades": 205
+    "avgDailyReturn": 0.0498,
+    "dailyVolatility": 2.6897,
+    "annualizedReturn": 12.55,
+    "totalTrades": 207
   },
   "distribution": {
-    "totalTrades": 205,
+    "totalTrades": 207,
     "pnls": {
       "min": -308.14,
       "max": 386.51,
-      "median": -19.49,
-      "avg": -5.93,
-      "stdDev": 152.91
+      "median": -17.86,
+      "avg": -5.28,
+      "stdDev": 152.45
     },
     "holdTime": {
       "avgBars": 0,
@@ -1699,7 +1713,7 @@
       "maxBars": 0
     },
     "streaks": {
-      "maxWinStreak": 5,
+      "maxWinStreak": 6,
       "maxLossStreak": 7
     }
   }
