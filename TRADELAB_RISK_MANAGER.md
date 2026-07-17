@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-17T10:03:32.168Z
+Generated: 2026-07-17T13:49:06.214Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -1017.32 USDT
+- **Total PnL:** -1207.99 USDT
 
 ## Active Locks
 
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.05% / 5% max
+- **Heat:** 0.08% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 2
-- **Sector Distribution:** {"alt_small":1,"alt_mid":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 89.75%
-- **Total PnL:** -1017.32 USDT
-- **Total Exposure:** 9924.34 USDT
+- **Margin Level:** 88.46%
+- **Total PnL:** -1207.99 USDT
+- **Total Exposure:** 10468.97 USDT
 - **Warnings:**
-  - 🔴 margin_call: 89.75% (threshold: 100%)
+  - 🔴 margin_call: 88.46% (threshold: 100%)
 
 ## Statistics
 
