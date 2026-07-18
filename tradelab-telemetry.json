@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-18T13:26:25.589Z",
+  "generatedAt": "2026-07-18T17:01:55.646Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 3,
+    "live": 4,
     "quarantined": 21,
-    "rejected": 20,
+    "rejected": 19,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,10 +41,10 @@
       "avgPnlPerTrade": -10.33
     },
     "sma-rsi": {
-      "totalPnl": -343.6317500334952,
-      "trades": 105,
+      "totalPnl": -362.5867127719321,
+      "trades": 106,
       "wins": 47,
-      "losses": 58,
+      "losses": 59,
       "maxDd": 6.17,
       "symbols": [
         "TRXUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "JUPUSDT"
       ],
-      "forwardPnl": -343.64999999999964,
-      "forwardTrades": "79231626222",
+      "forwardPnl": -362.5999999999997,
+      "forwardTrades": "80231626222",
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 44.8,
-      "avgPnlPerTrade": -3.27
+      "winRate": 44.3,
+      "avgPnlPerTrade": -3.42
     }
   },
   "byTimeOfDay": {
@@ -100,9 +100,9 @@
       "avgPnl": 28.28
     },
     "5": {
-      "pnl": -410.42,
-      "trades": 7,
-      "avgPnl": -58.63
+      "pnl": -429.38,
+      "trades": 8,
+      "avgPnl": -53.67
     },
     "6": {
       "pnl": -161.94,
@@ -227,9 +227,9 @@
       "avgPnl": -15.82
     },
     "Saturday": {
-      "pnl": 451.85,
-      "trades": 14,
-      "avgPnl": 32.27
+      "pnl": 432.89,
+      "trades": 15,
+      "avgPnl": 28.86
     }
   },
   "equityCurve": [
@@ -1742,26 +1742,33 @@
       "pnl": -108.09,
       "symbol": "AVAXUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-07-18 15:00",
+      "equity": 8501.42,
+      "pnl": -18.95,
+      "symbol": "DOGEUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.083,
-    "sortinoRatio": 0.097,
-    "calmarRatio": 0.275,
-    "maxDrawdown": 21.89,
-    "avgDailyReturn": 0.0239,
-    "dailyVolatility": 2.6484,
-    "annualizedReturn": 6.01,
-    "totalTrades": 215
+    "sharpeRatio": 0.079,
+    "sortinoRatio": 0.092,
+    "calmarRatio": 0.264,
+    "maxDrawdown": 22.06,
+    "avgDailyReturn": 0.0231,
+    "dailyVolatility": 2.6423,
+    "annualizedReturn": 5.83,
+    "totalTrades": 216
   },
   "distribution": {
-    "totalTrades": 215,
+    "totalTrades": 216,
     "pnls": {
       "min": -308.14,
       "max": 386.51,
-      "median": -20.93,
-      "avg": -6.88,
-      "stdDev": 150.09
+      "median": -19.49,
+      "avg": -6.94,
+      "stdDev": 149.75
     },
     "holdTime": {
       "avgBars": 0,
