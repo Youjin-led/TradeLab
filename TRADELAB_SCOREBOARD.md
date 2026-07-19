@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-07-18T20:56:09.589Z
-Incubation updated: 2026-07-18T20:56:00.529Z
+Generated: 2026-07-19T03:23:04.625Z
+Incubation updated: 2026-07-19T03:22:57.008Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -9,16 +9,15 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 ## Summary
 
-Live: 4; probation: 0; quarantined: 21; rejected: 19; ready for review: 0.
-Improving: 0; deteriorating: 0; collecting: 4.
-Portfolio forward PnL: -1490.42; forward trades: 219; avg/trade: -6.81.
+Live: 3; probation: 0; quarantined: 21; rejected: 20; ready for review: 0.
+Improving: 0; deteriorating: 0; collecting: 3.
+Portfolio forward PnL: -1651.80; forward trades: 227; avg/trade: -7.28.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-LTCUSDT:4h:breakout | 53% | collecting | Healthy | 234 | 1 | +130.91 | 1.75 | 4.36% | 3 | status is incubating, expected ready-for-review
-XRPUSDT:4h:breakout | 44% | collecting | Healthy | 332 | 1 | +61.68 | 1.22 | 6.41% | 3 | status is incubating, expected ready-for-review
+LTCUSDT:4h:breakout | 58% | collecting | Healthy | 235 | 1 | +130.91 | 1.75 | 4.13% | 2 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | unknown | 0 |  | +0.00 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 
@@ -28,8 +27,7 @@ Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | +0.00 | status is incubating, expected ready-for-review; health is unknown, expected Healthy; live observations 0 < 30; forward paper trades  < 15; profit factor 0 < 1.6
 SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
-XRPUSDT:4h:breakout | 44% | collecting | +61.68 | status is incubating, expected ready-for-review; forward paper trades 1 < 15; profit factor 1.22 < 1.6; loss streak 3 > 2
-LTCUSDT:4h:breakout | 53% | collecting | +130.91 | status is incubating, expected ready-for-review; forward paper trades 1 < 15; loss streak 3 > 2
+LTCUSDT:4h:breakout | 58% | collecting | +130.91 | status is incubating, expected ready-for-review; forward paper trades 1 < 15
 
 ## Quarantine Count
 

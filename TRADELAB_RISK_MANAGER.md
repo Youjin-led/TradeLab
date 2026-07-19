@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-18T20:56:09.499Z
+Generated: 2026-07-19T03:23:04.539Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -1490.42 USDT
+- **Total PnL:** -1651.80 USDT
 
 ## Active Locks
 
@@ -30,7 +30,7 @@ Status: **EMERGENCY_STOP**
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| INJUSDT | sma-rsi | 5% | 500 | 25 | 76.9% | 95 |
+| INJUSDT | sma-rsi | 5% | 500 | 25 | 78.6% | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -42,8 +42,8 @@ Status: **EMERGENCY_STOP**
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 5% | 500 | 8.23 | 47.4% | 95 |
-| DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 54.5% | 95 |
-| DOGEUSDT | breakout | 5% | 500 | 7.74 | 47.1% | 95 |
+| DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
+| DOGEUSDT | breakout | 4.98% | 498.05 | 7.11 | 44.4% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.11% / 5% max
+- **Heat:** 0.08% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 4
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1,"alt_large":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 86.9%
-- **Total PnL:** -1490.42 USDT
-- **Total Exposure:** 11377.54 USDT
+- **Margin Level:** 85.79%
+- **Total PnL:** -1651.8 USDT
+- **Total Exposure:** 11624.26 USDT
 - **Warnings:**
-  - 🔴 margin_call: 86.9% (threshold: 100%)
+  - 🔴 margin_call: 85.79% (threshold: 100%)
 
 ## Statistics
 
