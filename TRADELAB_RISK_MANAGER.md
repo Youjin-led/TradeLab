@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-19T20:57:05.441Z
+Generated: 2026-07-20T03:37:41.992Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -2014.79 USDT
+- **Total PnL:** -2410.76 USDT
 
 ## Active Locks
 
@@ -41,9 +41,9 @@ Status: **EMERGENCY_STOP**
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| BCHUSDT | breakout | 5% | 500 | 8.23 | 47.4% | 95 |
+| BCHUSDT | breakout | 5% | 500 | 10.07 | 50% | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 46.2% | 95 |
-| DOGEUSDT | breakout | 3.9% | 390.3 | 5.58 | 42.1% | 95 |
+| DOGEUSDT | breakout | 2.56% | 256.26 | 3.66 | 40% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 82.58%
-- **Total PnL:** -2014.79 USDT
-- **Total Exposure:** 11564.93 USDT
+- **Margin Level:** 79.62%
+- **Total PnL:** -2410.76 USDT
+- **Total Exposure:** 11829.22 USDT
 - **Warnings:**
-  - 🔴 margin_call: 82.58% (threshold: 100%)
+  - 🔴 margin_call: 79.62% (threshold: 100%)
 
 ## Statistics
 
