@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-20T14:18:41.700Z
+Generated: 2026-07-20T18:09:38.568Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -2907.45 USDT
+- **Total PnL:** -3516.78 USDT
 
 ## Active Locks
 
@@ -25,12 +25,12 @@ Status: **EMERGENCY_STOP**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 2.64% | 263.9 | 3.77 | 47.6% | 95 |
+| NEARUSDT | breakout | 1.13% | 112.51 | 1.61 | 45.5% | 95 |
 | TRXUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| INJUSDT | sma-rsi | 5% | 500 | 25 | 73.3% | 95 |
+| INJUSDT | sma-rsi | 5% | 500 | 24.99 | 68.8% | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.08% / 5% max
+- **Heat:** 0.14% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
+- **Active Positions:** 5
+- **Sector Distribution:** {"alt_small":1,"other":2,"alt_mid":1,"alt_large":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 76.32%
-- **Total PnL:** -2907.45 USDT
-- **Total Exposure:** 12280.55 USDT
+- **Margin Level:** 70.97%
+- **Total PnL:** -3516.78 USDT
+- **Total Exposure:** 12113.16 USDT
 - **Warnings:**
-  - 🔴 margin_call: 76.32% (threshold: 100%)
+  - 🔴 margin_call: 70.97% (threshold: 100%)
 
 ## Statistics
 
