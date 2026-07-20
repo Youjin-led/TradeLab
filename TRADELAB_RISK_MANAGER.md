@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-20T18:09:38.568Z
+Generated: 2026-07-20T21:16:01.687Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3516.78 USDT
+- **Total PnL:** -3608.17 USDT
 
 ## Active Locks
 
@@ -42,8 +42,8 @@ Status: **EMERGENCY_STOP**
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 5% | 500 | 7.29 | 47.6% | 95 |
-| DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 46.2% | 95 |
-| DOGEUSDT | breakout | 1.4% | 140 | 0 | 36.4% | 95 |
+| DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 42.9% | 95 |
+| DOGEUSDT | breakout | 1.4% | 140 | 0 | 34.8% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.14% / 5% max
+- **Heat:** 0.08% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 5
-- **Sector Distribution:** {"alt_small":1,"other":2,"alt_mid":1,"alt_large":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 70.97%
-- **Total PnL:** -3516.78 USDT
-- **Total Exposure:** 12113.16 USDT
+- **Margin Level:** 71.33%
+- **Total PnL:** -3608.17 USDT
+- **Total Exposure:** 12586.73 USDT
 - **Warnings:**
-  - 🔴 margin_call: 70.97% (threshold: 100%)
+  - 🔴 margin_call: 71.33% (threshold: 100%)
 
 ## Statistics
 
