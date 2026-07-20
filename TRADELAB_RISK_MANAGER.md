@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-20T03:37:41.992Z
+Generated: 2026-07-20T06:52:53.287Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -2410.76 USDT
+- **Total PnL:** -2388.18 USDT
 
 ## Active Locks
 
@@ -30,7 +30,7 @@ Status: **EMERGENCY_STOP**
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| INJUSDT | sma-rsi | 5% | 500 | 25 | 78.6% | 95 |
+| INJUSDT | sma-rsi | 5% | 500 | 25 | 73.3% | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -43,7 +43,7 @@ Status: **EMERGENCY_STOP**
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 5% | 500 | 10.07 | 50% | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 46.2% | 95 |
-| DOGEUSDT | breakout | 2.56% | 256.26 | 3.66 | 40% | 95 |
+| DOGEUSDT | breakout | 0.71% | 70.81 | 1.01 | 38.1% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 79.62%
-- **Total PnL:** -2410.76 USDT
-- **Total Exposure:** 11829.22 USDT
+- **Margin Level:** 80.29%
+- **Total PnL:** -2388.18 USDT
+- **Total Exposure:** 12118.48 USDT
 - **Warnings:**
-  - 🔴 margin_call: 79.62% (threshold: 100%)
+  - 🔴 margin_call: 80.29% (threshold: 100%)
 
 ## Statistics
 

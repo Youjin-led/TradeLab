@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-07-20T03:37:42.075Z
-Incubation updated: 2026-07-20T03:37:32.329Z
+Generated: 2026-07-20T06:52:53.383Z
+Incubation updated: 2026-07-20T06:52:43.982Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -11,14 +11,14 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 Live: 4; probation: 0; quarantined: 21; rejected: 19; ready for review: 0.
 Improving: 0; deteriorating: 0; collecting: 2.
-Portfolio forward PnL: -2410.76; forward trades: 244; avg/trade: -9.88.
+Portfolio forward PnL: -2388.18; forward trades: 249; avg/trade: -9.59.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-BCHUSDT:1h:breakout | 67% | phase-mismatch | Healthy | 233 | 20 | +702.65 | 1.32 | 4.58% | 3 | status is incubating, expected ready-for-review
-LTCUSDT:4h:breakout | 55% | phase-mismatch | Healthy | 241 | 3 | +218.85 | 1.82 | 4.51% | 3 | status is incubating, expected ready-for-review
+BCHUSDT:1h:breakout | 78% | phase-mismatch | Healthy | 234 | 20 | +702.65 | 1.76 | 4.09% | 2 | status is incubating, expected ready-for-review
+LTCUSDT:4h:breakout | 61% | phase-mismatch | Healthy | 242 | 3 | +218.85 | 1.82 | 4.13% | 2 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | unknown | 0 |  | +0.00 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 
@@ -28,8 +28,8 @@ Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | +0.00 | status is incubating, expected ready-for-review; health is unknown, expected Healthy; live observations 0 < 30; forward paper trades  < 15; profit factor 0 < 1.6
 SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
-LTCUSDT:4h:breakout | 55% | phase-mismatch | +218.85 | status is incubating, expected ready-for-review; forward paper trades 3 < 15; loss streak 3 > 2
-BCHUSDT:1h:breakout | 67% | phase-mismatch | +702.65 | status is incubating, expected ready-for-review; profit factor 1.32 < 1.6; loss streak 3 > 2
+LTCUSDT:4h:breakout | 61% | phase-mismatch | +218.85 | status is incubating, expected ready-for-review; forward paper trades 3 < 15
+BCHUSDT:1h:breakout | 78% | phase-mismatch | +702.65 | status is incubating, expected ready-for-review
 
 ## Quarantine Count
 
