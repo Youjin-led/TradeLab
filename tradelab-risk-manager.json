@@ -1,6 +1,6 @@
 {
   "createdAt": "2026-06-16T18:21:36.924Z",
-  "updatedAt": "2026-07-21T14:05:02.279Z",
+  "updatedAt": "2026-07-21T17:26:29.259Z",
   "dailyLoss": 0,
   "dailyLossDate": "2026-07-21",
   "weeklyLoss": 0,
@@ -349,6 +349,15 @@
         "Portfolio PnL -6638.55 <= -5000 (max portfolio loss)"
       ],
       "action": "ALL_PAPER_POSITIONS_FROZEN"
+    },
+    {
+      "timestamp": "2026-07-21T17:26:29.257Z",
+      "type": "portfolio_stop_loss",
+      "totalPnl": -5090.03,
+      "reasons": [
+        "Portfolio PnL -5090.03 <= -5000 (max portfolio loss)"
+      ],
+      "action": "ALL_PAPER_POSITIONS_FROZEN"
     }
   ],
   "trailingStops": {},
@@ -359,7 +368,7 @@
     "portfolioStopLossLock": true
   },
   "stats": {
-    "totalStopLossesTriggered": 38,
+    "totalStopLossesTriggered": 39,
     "totalTrailingStopsTriggered": 0,
     "totalCorrelationBlocks": 0,
     "totalMarginWarnings": 0
