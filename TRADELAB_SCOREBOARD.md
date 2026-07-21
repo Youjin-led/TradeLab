@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-07-20T21:16:01.771Z
-Incubation updated: 2026-07-20T21:15:53.107Z
+Generated: 2026-07-21T03:18:03.182Z
+Incubation updated: 2026-07-21T03:17:55.033Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -11,13 +11,13 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 Live: 3; probation: 0; quarantined: 21; rejected: 20; ready for review: 0.
 Improving: 0; deteriorating: 0; collecting: 2.
-Portfolio forward PnL: -3608.17; forward trades: 271; avg/trade: -13.31.
+Portfolio forward PnL: -4025.66; forward trades: 280; avg/trade: -14.38.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-LTCUSDT:4h:breakout | 61% | phase-mismatch | Healthy | 246 | 3 | +218.85 | 2.32 | 3.74% | 2 | status is incubating, expected ready-for-review
+LTCUSDT:4h:breakout | 55% | phase-mismatch | Healthy | 247 | 3 | +218.85 | 1.82 | 4.37% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | unknown | 0 |  | +0.00 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 
@@ -27,7 +27,7 @@ Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | +0.00 | status is incubating, expected ready-for-review; health is unknown, expected Healthy; live observations 0 < 30; forward paper trades  < 15; profit factor 0 < 1.6
 SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
-LTCUSDT:4h:breakout | 61% | phase-mismatch | +218.85 | status is incubating, expected ready-for-review; forward paper trades 3 < 15
+LTCUSDT:4h:breakout | 55% | phase-mismatch | +218.85 | status is incubating, expected ready-for-review; forward paper trades 3 < 15; loss streak 3 > 2
 
 ## Quarantine Count
 
