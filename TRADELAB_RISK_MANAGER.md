@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-21T21:16:06.305Z
+Generated: 2026-07-22T03:16:01.621Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** 🔴 TRIGGERED
-- **Total PnL:** -5234.45 USDT
+- **Total PnL:** -5207.05 USDT
 
 ## Active Locks
 
@@ -43,7 +43,7 @@ Status: **EMERGENCY_STOP**
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 3.12% | 312.49 | 4.46 | 46.2% | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
-| DOGEUSDT | breakout | 1.4% | 140 | 0 | 30.8% | 95 |
+| DOGEUSDT | breakout | 1.4% | 140 | 0 | 29.6% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,22 +88,22 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 60.14%
-- **Total PnL:** -5234.45 USDT
-- **Total Exposure:** 13131.91 USDT
+- **Margin Level:** 60.35%
+- **Total PnL:** -5207.05 USDT
+- **Total Exposure:** 13133.45 USDT
 - **Warnings:**
-  - 🔴 margin_call: 60.14% (threshold: 100%)
+  - 🔴 margin_call: 60.35% (threshold: 100%)
 
 ## Statistics
 
-- **Total Stop-Losses Triggered:** 40
+- **Total Stop-Losses Triggered:** 41
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
 
 ## Recent Stop-Loss Events
 
-- 🔴 Portfolio PnL -5234.45 <= -5000 (max portfolio loss)
+- 🔴 Portfolio PnL -5207.05 <= -5000 (max portfolio loss)
 
 ---
 
