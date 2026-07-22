@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-22T14:07:52.083Z
+Generated: 2026-07-22T17:25:18.588Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** 🔴 TRIGGERED
-- **Total PnL:** -5056.75 USDT
+- **Total PnL:** -5573.24 USDT
 
 ## Active Locks
 
@@ -47,7 +47,7 @@ Status: **EMERGENCY_STOP**
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| DOTUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOTUSDT | sma-rsi | 5% | 500 | 25 | 70% | 95 |
 | ETHUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 98 |
 | FILUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -59,11 +59,11 @@ Status: **EMERGENCY_STOP**
 | ARBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| OPUSDT | sma-rsi | 1.4% | 140 | 0 | 45.5% | 95 |
+| OPUSDT | sma-rsi | 1.4% | 140 | 0 | 41.7% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| AVAXUSDT | breakout | 1.4% | 140 | 0 | 9.1% | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | 0 | 8.3% | 95 |
 | RENDERUSDT | breakout | 1.4% | 140 | 0 | 41.7% | 95 |
-| SOLUSDT | breakout | 1.4% | 140 | 0 | 40% | 95 |
+| SOLUSDT | breakout | 1.4% | 140 | 0 | 36.4% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | JUPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,22 +88,22 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 63.18%
-- **Total PnL:** -5056.75 USDT
-- **Total Exposure:** 13732.79 USDT
+- **Margin Level:** 60.2%
+- **Total PnL:** -5573.24 USDT
+- **Total Exposure:** 14003.92 USDT
 - **Warnings:**
-  - 🔴 margin_call: 63.18% (threshold: 100%)
+  - 🔴 margin_call: 60.2% (threshold: 100%)
 
 ## Statistics
 
-- **Total Stop-Losses Triggered:** 42
+- **Total Stop-Losses Triggered:** 43
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
 
 ## Recent Stop-Loss Events
 
-- 🔴 Portfolio PnL -5056.75 <= -5000 (max portfolio loss)
+- 🔴 Portfolio PnL -5573.24 <= -5000 (max portfolio loss)
 
 ---
 
