@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-22T10:30:05.941Z
+Generated: 2026-07-22T14:07:52.083Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -9,8 +9,8 @@ Status: **EMERGENCY_STOP**
 
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
-- **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -4984.61 USDT
+- **Portfolio Stop-Loss:** 🔴 TRIGGERED
+- **Total PnL:** -5056.75 USDT
 
 ## Active Locks
 
@@ -30,12 +30,12 @@ Status: **EMERGENCY_STOP**
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| INJUSDT | sma-rsi | 5% | 500 | 25 | 70.6% | 95 |
+| INJUSDT | sma-rsi | 5% | 500 | 25 | 72.2% | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SOLUSDT | breakout | 2.78% | 277.84 | 3.97 | 50% | 95 |
+| SOLUSDT | breakout | 3.13% | 312.73 | 4.47 | 54.5% | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | JUPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,18 +88,22 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 63.66%
-- **Total PnL:** -4984.61 USDT
-- **Total Exposure:** 13715.37 USDT
+- **Margin Level:** 63.18%
+- **Total PnL:** -5056.75 USDT
+- **Total Exposure:** 13732.79 USDT
 - **Warnings:**
-  - 🔴 margin_call: 63.66% (threshold: 100%)
+  - 🔴 margin_call: 63.18% (threshold: 100%)
 
 ## Statistics
 
-- **Total Stop-Losses Triggered:** 41
+- **Total Stop-Losses Triggered:** 42
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
+
+## Recent Stop-Loss Events
+
+- 🔴 Portfolio PnL -5056.75 <= -5000 (max portfolio loss)
 
 ---
 
