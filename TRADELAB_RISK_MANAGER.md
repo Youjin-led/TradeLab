@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-22T17:25:18.588Z
+Generated: 2026-07-22T21:14:40.471Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** 🔴 TRIGGERED
-- **Total PnL:** -5573.24 USDT
+- **Total PnL:** -5384.47 USDT
 
 ## Active Locks
 
@@ -59,7 +59,7 @@ Status: **EMERGENCY_STOP**
 | ARBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| OPUSDT | sma-rsi | 1.4% | 140 | 0 | 41.7% | 95 |
+| OPUSDT | sma-rsi | 1.4% | 140 | 0 | 38.5% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 8.3% | 95 |
 | RENDERUSDT | breakout | 1.4% | 140 | 0 | 41.7% | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.05% / 5% max
+- **Heat:** 0.08% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 2
-- **Sector Distribution:** {"alt_small":1,"alt_mid":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"alt_mid":1,"alt_large":1}
 
 ## Trailing Stops
 
@@ -88,22 +88,22 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 60.2%
-- **Total PnL:** -5573.24 USDT
-- **Total Exposure:** 14003.92 USDT
+- **Margin Level:** 61.02%
+- **Total PnL:** -5384.47 USDT
+- **Total Exposure:** 13815.15 USDT
 - **Warnings:**
-  - 🔴 margin_call: 60.2% (threshold: 100%)
+  - 🔴 margin_call: 61.02% (threshold: 100%)
 
 ## Statistics
 
-- **Total Stop-Losses Triggered:** 43
+- **Total Stop-Losses Triggered:** 44
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
 
 ## Recent Stop-Loss Events
 
-- 🔴 Portfolio PnL -5573.24 <= -5000 (max portfolio loss)
+- 🔴 Portfolio PnL -5384.47 <= -5000 (max portfolio loss)
 
 ---
 
