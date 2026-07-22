@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-22T03:16:01.621Z
+Generated: 2026-07-22T06:33:59.052Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -9,8 +9,8 @@ Status: **EMERGENCY_STOP**
 
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
-- **Portfolio Stop-Loss:** 🔴 TRIGGERED
-- **Total PnL:** -5207.05 USDT
+- **Portfolio Stop-Loss:** ✅ OK
+- **Total PnL:** -4992.03 USDT
 
 ## Active Locks
 
@@ -59,11 +59,11 @@ Status: **EMERGENCY_STOP**
 | ARBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| OPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| OPUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 9.1% | 95 |
-| RENDERUSDT | breakout | 1.4% | 140 | 0 | 36.4% | 95 |
-| SOLUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| RENDERUSDT | breakout | 1.4% | 140 | 0 | 41.7% | 95 |
+| SOLUSDT | breakout | 1.4% | 140 | 0 | 40% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | JUPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 60.35%
-- **Total PnL:** -5207.05 USDT
-- **Total Exposure:** 13133.45 USDT
+- **Margin Level:** 61.76%
+- **Total PnL:** -4992.03 USDT
+- **Total Exposure:** 13054.59 USDT
 - **Warnings:**
-  - 🔴 margin_call: 60.35% (threshold: 100%)
+  - 🔴 margin_call: 61.76% (threshold: 100%)
 
 ## Statistics
 
@@ -100,10 +100,6 @@ Status: **EMERGENCY_STOP**
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
-
-## Recent Stop-Loss Events
-
-- 🔴 Portfolio PnL -5207.05 <= -5000 (max portfolio loss)
 
 ---
 
