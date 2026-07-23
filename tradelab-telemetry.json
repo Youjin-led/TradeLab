@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-23T17:35:14.353Z",
+  "generatedAt": "2026-07-23T21:10:05.231Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 2,
+    "live": 4,
     "quarantined": 21,
-    "rejected": 21,
+    "rejected": 19,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": -4331.387978368727,
-      "trades": 183,
-      "wins": 64,
+      "totalPnl": -4038.4583260762347,
+      "trades": 184,
+      "wins": 65,
       "losses": 119,
       "maxDd": 10.07,
       "symbols": [
@@ -33,19 +33,19 @@
         "BTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": -4331.379999999999,
-      "forwardTrades": 183,
+      "forwardPnl": -4038.4500000000003,
+      "forwardTrades": 184,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 35,
-      "avgPnlPerTrade": -23.67
+      "winRate": 35.3,
+      "avgPnlPerTrade": -21.95
     },
     "sma-rsi": {
-      "totalPnl": -224.05987283429093,
-      "trades": 180,
-      "wins": 83,
+      "totalPnl": 102.90787027204235,
+      "trades": 182,
+      "wins": 85,
       "losses": 97,
-      "maxDd": 7.45,
+      "maxDd": 7.63,
       "symbols": [
         "TRXUSDT",
         "LINKUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "JUPUSDT"
       ],
-      "forwardPnl": -224.05999999999995,
-      "forwardTrades": "1023510118151079",
+      "forwardPnl": 102.91000000000008,
+      "forwardTrades": "1023510118161089",
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 46.1,
-      "avgPnlPerTrade": -1.24
+      "winRate": 46.7,
+      "avgPnlPerTrade": 0.57
     }
   },
   "byTimeOfDay": {
@@ -95,9 +95,9 @@
       "avgPnl": -74.01
     },
     "4": {
-      "pnl": 348.74,
-      "trades": 37,
-      "avgPnl": 9.43
+      "pnl": 436.95,
+      "trades": 38,
+      "avgPnl": 11.5
     },
     "5": {
       "pnl": -238.99,
@@ -105,9 +105,9 @@
       "avgPnl": -19.92
     },
     "6": {
-      "pnl": -713.35,
-      "trades": 8,
-      "avgPnl": -89.17
+      "pnl": -474.59,
+      "trades": 9,
+      "avgPnl": -52.73
     },
     "7": {
       "pnl": -94.21,
@@ -190,9 +190,9 @@
       "avgPnl": 19.5
     },
     "23": {
-      "pnl": 354.26,
-      "trades": 5,
-      "avgPnl": 70.85
+      "pnl": 647.19,
+      "trades": 6,
+      "avgPnl": 107.86
     }
   },
   "byDayOfWeek": {
@@ -212,14 +212,14 @@
       "avgPnl": -3.72
     },
     "Wednesday": {
-      "pnl": -195.34,
-      "trades": 68,
-      "avgPnl": -2.87
+      "pnl": 97.59,
+      "trades": 69,
+      "avgPnl": 1.41
     },
     "Thursday": {
-      "pnl": 435.9,
-      "trades": 38,
-      "avgPnl": 11.47
+      "pnl": 762.87,
+      "trades": 40,
+      "avgPnl": 19.07
     },
     "Friday": {
       "pnl": -922.02,
@@ -2778,26 +2778,47 @@
       "pnl": -78.03,
       "symbol": "BNBUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-07-23 17:00",
+      "equity": 5683.31,
+      "pnl": 238.76,
+      "symbol": "OPUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-23 17:00",
+      "equity": 5976.24,
+      "pnl": 292.93,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-07-23 20:00",
+      "equity": 6064.45,
+      "pnl": 88.21,
+      "symbol": "JUPUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": -0.439,
-    "sortinoRatio": -0.511,
-    "calmarRatio": -0.224,
+    "sharpeRatio": -0.265,
+    "sortinoRatio": -0.31,
+    "calmarRatio": -0.12,
     "maxDrawdown": 60.71,
-    "avgDailyReturn": -0.054,
-    "dailyVolatility": 2.3181,
-    "annualizedReturn": -13.62,
-    "totalTrades": 363
+    "avgDailyReturn": -0.0288,
+    "dailyVolatility": 2.3283,
+    "annualizedReturn": -7.26,
+    "totalTrades": 366
   },
   "distribution": {
-    "totalTrades": 363,
+    "totalTrades": 366,
     "pnls": {
       "min": -308.14,
       "max": 386.51,
-      "median": -21.74,
-      "avg": -12.55,
-      "stdDev": 136.26
+      "median": -20.93,
+      "avg": -10.75,
+      "stdDev": 137.36
     },
     "holdTime": {
       "avgBars": 0,
