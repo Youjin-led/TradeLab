@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-23T06:34:36.269Z
+Generated: 2026-07-23T10:28:14.966Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** 🔴 TRIGGERED
-- **Total PnL:** -5082.56 USDT
+- **Total PnL:** -5060.14 USDT
 
 ## Active Locks
 
@@ -52,7 +52,7 @@ Status: **EMERGENCY_STOP**
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 98 |
 | FILUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| ADAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| ADAUSDT | sma-rsi | 5% | 500 | 19.41 | 60% | 95 |
 | ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 9.1% | 95 |
 | RENDERUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -63,7 +63,7 @@ Status: **EMERGENCY_STOP**
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 7.7% | 95 |
 | RENDERUSDT | breakout | 1.4% | 140 | 0 | 41.7% | 95 |
-| SOLUSDT | breakout | 1.4% | 140 | 0 | 36.4% | 95 |
+| SOLUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | JUPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,22 +88,22 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 64.13%
-- **Total PnL:** -5082.56 USDT
-- **Total Exposure:** 14170.88 USDT
+- **Margin Level:** 64.9%
+- **Total PnL:** -5060.14 USDT
+- **Total Exposure:** 14416.74 USDT
 - **Warnings:**
-  - 🔴 margin_call: 64.13% (threshold: 100%)
+  - 🔴 margin_call: 64.9% (threshold: 100%)
 
 ## Statistics
 
-- **Total Stop-Losses Triggered:** 46
+- **Total Stop-Losses Triggered:** 47
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
 
 ## Recent Stop-Loss Events
 
-- 🔴 Portfolio PnL -5082.56 <= -5000 (max portfolio loss)
+- 🔴 Portfolio PnL -5060.14 <= -5000 (max portfolio loss)
 
 ---
 
