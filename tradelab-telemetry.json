@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-23T21:10:05.231Z",
+  "generatedAt": "2026-07-24T03:16:54.113Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 4,
+    "live": 3,
     "quarantined": 21,
-    "rejected": 19,
+    "rejected": 20,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,10 +41,10 @@
       "avgPnlPerTrade": -21.95
     },
     "sma-rsi": {
-      "totalPnl": 102.90787027204235,
-      "trades": 182,
-      "wins": 85,
-      "losses": 97,
+      "totalPnl": 232.38690942729053,
+      "trades": 184,
+      "wins": 86,
+      "losses": 98,
       "maxDd": 7.63,
       "symbols": [
         "TRXUSDT",
@@ -65,19 +65,19 @@
         "OPUSDT",
         "JUPUSDT"
       ],
-      "forwardPnl": 102.91000000000008,
-      "forwardTrades": "1023510118161089",
+      "forwardPnl": 232.37999999999994,
+      "forwardTrades": "1033511118161089",
       "avgHoldBars": 0,
       "totalHoldBars": 0,
       "winRate": 46.7,
-      "avgPnlPerTrade": 0.57
+      "avgPnlPerTrade": 1.26
     }
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": 553.85,
-      "trades": 31,
-      "avgPnl": 17.87
+      "pnl": 833.13,
+      "trades": 32,
+      "avgPnl": 26.04
     },
     "1": {
       "pnl": 0,
@@ -135,9 +135,9 @@
       "avgPnl": -51.24
     },
     "12": {
-      "pnl": -1318.02,
-      "trades": 51,
-      "avgPnl": -25.84
+      "pnl": -1467.82,
+      "trades": 52,
+      "avgPnl": -28.23
     },
     "13": {
       "pnl": 320.01,
@@ -217,9 +217,9 @@
       "avgPnl": 1.41
     },
     "Thursday": {
-      "pnl": 762.87,
-      "trades": 40,
-      "avgPnl": 19.07
+      "pnl": 892.34,
+      "trades": 42,
+      "avgPnl": 21.25
     },
     "Friday": {
       "pnl": -922.02,
@@ -2795,30 +2795,44 @@
     },
     {
       "time": "2026-07-23 20:00",
-      "equity": 6064.45,
+      "equity": 5826.44,
+      "pnl": -149.8,
+      "symbol": "ADAUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-23 20:00",
+      "equity": 5914.65,
       "pnl": 88.21,
       "symbol": "JUPUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-24 00:00",
+      "equity": 6193.93,
+      "pnl": 279.28,
+      "symbol": "INJUSDT",
       "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": -0.265,
-    "sortinoRatio": -0.31,
-    "calmarRatio": -0.12,
+    "sharpeRatio": -0.203,
+    "sortinoRatio": -0.239,
+    "calmarRatio": -0.083,
     "maxDrawdown": 60.71,
-    "avgDailyReturn": -0.0288,
-    "dailyVolatility": 2.3283,
-    "annualizedReturn": -7.26,
-    "totalTrades": 366
+    "avgDailyReturn": -0.02,
+    "dailyVolatility": 2.3382,
+    "annualizedReturn": -5.03,
+    "totalTrades": 368
   },
   "distribution": {
-    "totalTrades": 366,
+    "totalTrades": 368,
     "pnls": {
       "min": -308.14,
       "max": 386.51,
       "median": -20.93,
-      "avg": -10.75,
-      "stdDev": 137.36
+      "avg": -10.34,
+      "stdDev": 138
     },
     "holdTime": {
       "avgBars": 0,
