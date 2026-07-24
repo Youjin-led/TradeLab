@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-24T13:55:45.145Z
+Generated: 2026-07-24T17:42:03.793Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3340.37 USDT
+- **Total PnL:** -2945.43 USDT
 
 ## Active Locks
 
@@ -43,7 +43,7 @@ Status: **EMERGENCY_STOP**
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 4.79% | 479.25 | 6.85 | 48.1% | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 47.1% | 95 |
-| DOGEUSDT | breakout | 1.4% | 140 | 0 | 32.1% | 95 |
+| DOGEUSDT | breakout | 1.4% | 140 | 0 | 34.5% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -59,9 +59,9 @@ Status: **EMERGENCY_STOP**
 | ARBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| OPUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
+| OPUSDT | sma-rsi | 0.88% | 87.88 | 1.26 | 52.6% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| AVAXUSDT | breakout | 1.4% | 140 | 0 | 14.3% | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | 0 | 20% | 95 |
 | RENDERUSDT | breakout | 1.4% | 140 | 0 | 46.2% | 95 |
 | SOLUSDT | breakout | 1.4% | 140 | 0 | 38.5% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 76.23%
-- **Total PnL:** -3340.37 USDT
-- **Total Exposure:** 14050.93 USDT
+- **Margin Level:** 78.58%
+- **Total PnL:** -2945.43 USDT
+- **Total Exposure:** 13749.45 USDT
 - **Warnings:**
-  - 🔴 margin_call: 76.23% (threshold: 100%)
+  - 🔴 margin_call: 78.58% (threshold: 100%)
 
 ## Statistics
 
