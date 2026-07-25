@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-25T09:53:55.106Z
+Generated: 2026-07-25T13:46:02.067Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3074.19 USDT
+- **Total PnL:** -2874.71 USDT
 
 ## Active Locks
 
@@ -25,7 +25,7 @@ Status: **EMERGENCY_STOP**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 2.01% | 200.88 | 2.87 | 44% | 95 |
+| NEARUSDT | breakout | 2.88% | 288.38 | 4.12 | 46.2% | 95 |
 | TRXUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 77.26%
-- **Total PnL:** -3074.19 USDT
-- **Total Exposure:** 13516.83 USDT
+- **Margin Level:** 78.79%
+- **Total PnL:** -2874.71 USDT
+- **Total Exposure:** 13554.77 USDT
 - **Warnings:**
-  - 🔴 margin_call: 77.26% (threshold: 100%)
+  - 🔴 margin_call: 78.79% (threshold: 100%)
 
 ## Statistics
 
