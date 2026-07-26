@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-26T10:04:49.125Z
+Generated: 2026-07-26T13:39:50.300Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3124.84 USDT
+- **Total PnL:** -3283.19 USDT
 
 ## Active Locks
 
@@ -42,8 +42,8 @@ Status: **EMERGENCY_STOP**
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 5% | 500 | 7.71 | 50% | 95 |
-| DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 44.4% | 95 |
-| DOGEUSDT | breakout | 0.53% | 53.35 | 0.76 | 37.5% | 95 |
+| DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 42.1% | 95 |
+| DOGEUSDT | breakout | 1.4% | 140 | 0 | 36.4% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -62,10 +62,10 @@ Status: **EMERGENCY_STOP**
 | OPUSDT | sma-rsi | 1.4% | 140 | 0.29 | 52.2% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 30% | 95 |
-| RENDERUSDT | breakout | 1.4% | 140 | 0 | 40% | 95 |
+| RENDERUSDT | breakout | 1.4% | 140 | 0 | 37.5% | 95 |
 | SOLUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | sma-rsi | 5% | 500 | 13.42 | 58.3% | 95 |
+| SEIUSDT | sma-rsi | 5% | 500 | 14.41 | 61.5% | 95 |
 | JUPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BNBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 36.4% | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 76.07%
-- **Total PnL:** -3124.84 USDT
-- **Total Exposure:** 13056.92 USDT
+- **Margin Level:** 74.82%
+- **Total PnL:** -3283.19 USDT
+- **Total Exposure:** 13038.47 USDT
 - **Warnings:**
-  - 🔴 margin_call: 76.07% (threshold: 100%)
+  - 🔴 margin_call: 74.82% (threshold: 100%)
 
 ## Statistics
 

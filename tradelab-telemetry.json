@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T10:04:49.271Z",
+  "generatedAt": "2026-07-26T13:39:50.447Z",
   "summary": {
     "totalCandidates": 44,
     "live": 2,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": -2669.0299923888774,
-      "trades": 214,
+      "totalPnl": -2779.7317693343057,
+      "trades": 216,
       "wins": 84,
-      "losses": 130,
+      "losses": 132,
       "maxDd": 10.07,
       "symbols": [
         "NEARUSDT",
@@ -33,18 +33,18 @@
         "BTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": -2669.01,
-      "forwardTrades": 214,
+      "forwardPnl": -2779.7200000000003,
+      "forwardTrades": 216,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 39.3,
-      "avgPnlPerTrade": -12.47
+      "winRate": 38.9,
+      "avgPnlPerTrade": -12.87
     },
     "sma-rsi": {
-      "totalPnl": -455.8159376101595,
-      "trades": 205,
-      "wins": 95,
-      "losses": 110,
+      "totalPnl": -503.4600991803089,
+      "trades": 208,
+      "wins": 96,
+      "losses": 112,
       "maxDd": 8.06,
       "symbols": [
         "TRXUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "JUPUSDT"
       ],
-      "forwardPnl": -455.83000000000004,
-      "forwardTrades": "10736141292312811",
+      "forwardPnl": -503.46999999999986,
+      "forwardTrades": "10837141292313811",
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 46.3,
-      "avgPnlPerTrade": -2.22
+      "winRate": 46.2,
+      "avgPnlPerTrade": -2.42
     }
   },
   "byTimeOfDay": {
@@ -105,19 +105,19 @@
       "avgPnl": -19.92
     },
     "6": {
-      "pnl": -471.87,
-      "trades": 11,
-      "avgPnl": -42.9
+      "pnl": -538.21,
+      "trades": 12,
+      "avgPnl": -44.85
     },
     "7": {
-      "pnl": 195.86,
-      "trades": 7,
-      "avgPnl": 27.98
+      "pnl": 177.56,
+      "trades": 8,
+      "avgPnl": 22.2
     },
     "8": {
-      "pnl": 736.38,
-      "trades": 40,
-      "avgPnl": 18.41
+      "pnl": 696.52,
+      "trades": 41,
+      "avgPnl": 16.99
     },
     "9": {
       "pnl": -384.89,
@@ -125,9 +125,9 @@
       "avgPnl": -42.77
     },
     "10": {
-      "pnl": -258.6,
-      "trades": 7,
-      "avgPnl": -36.94
+      "pnl": -302.96,
+      "trades": 8,
+      "avgPnl": -37.87
     },
     "11": {
       "pnl": -256.21,
@@ -170,9 +170,9 @@
       "avgPnl": -31.21
     },
     "19": {
-      "pnl": -15.11,
-      "trades": 12,
-      "avgPnl": -1.26
+      "pnl": -4.6,
+      "trades": 13,
+      "avgPnl": -0.35
     },
     "20": {
       "pnl": -662.5,
@@ -197,9 +197,9 @@
   },
   "byDayOfWeek": {
     "Sunday": {
-      "pnl": -876.97,
-      "trades": 47,
-      "avgPnl": -18.66
+      "pnl": -1045.82,
+      "trades": 51,
+      "avgPnl": -20.51
     },
     "Monday": {
       "pnl": -3659.87,
@@ -227,9 +227,9 @@
       "avgPnl": -20.13
     },
     "Saturday": {
-      "pnl": 478.33,
-      "trades": 50,
-      "avgPnl": 9.57
+      "pnl": 488.84,
+      "trades": 51,
+      "avgPnl": 9.59
     }
   },
   "equityCurve": [
@@ -3166,30 +3166,65 @@
     },
     {
       "time": "2026-07-26 10:00",
-      "equity": 6875.15,
+      "equity": 6847.9,
+      "pnl": -44.36,
+      "symbol": "RENDERUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-07-26 10:00",
+      "equity": 6830.79,
       "pnl": -17.11,
       "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-07-26 11:00",
+      "equity": 6812.5,
+      "pnl": -18.29,
+      "symbol": "DOGEUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-26 12:00",
+      "equity": 6772.64,
+      "pnl": -39.86,
+      "symbol": "DOGEUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-26 12:00",
+      "equity": 6783.15,
+      "pnl": 10.51,
+      "symbol": "SEIUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-26 13:00",
+      "equity": 6716.81,
+      "pnl": -66.34,
+      "symbol": "DOGEUSDT",
       "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.117,
-    "sortinoRatio": 0.137,
-    "calmarRatio": 0.111,
+    "sharpeRatio": 0.09,
+    "sortinoRatio": 0.106,
+    "calmarRatio": 0.094,
     "maxDrawdown": 60.71,
-    "avgDailyReturn": 0.0267,
-    "dailyVolatility": 2.2685,
-    "annualizedReturn": 6.72,
-    "totalTrades": 419
+    "avgDailyReturn": 0.0227,
+    "dailyVolatility": 2.2557,
+    "annualizedReturn": 5.73,
+    "totalTrades": 424
   },
   "distribution": {
-    "totalTrades": 419,
+    "totalTrades": 424,
     "pnls": {
       "min": -308.14,
       "max": 386.51,
       "median": -18.95,
-      "avg": -7.46,
-      "stdDev": 135.11
+      "avg": -7.74,
+      "stdDev": 134.37
     },
     "holdTime": {
       "avgBars": 0,
