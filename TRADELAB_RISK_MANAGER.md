@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-27T07:38:07.219Z
+Generated: 2026-07-27T11:30:34.875Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3947.67 USDT
+- **Total PnL:** -4065.52 USDT
 
 ## Active Locks
 
@@ -53,7 +53,7 @@ Status: **EMERGENCY_STOP**
 | FILUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 1.4% | 140 | 0 | 42.9% | 95 |
-| ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 33.3% | 95 |
+| ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 31.3% | 95 |
 | RENDERUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -68,7 +68,7 @@ Status: **EMERGENCY_STOP**
 | SEIUSDT | sma-rsi | 5% | 500 | 14.38 | 60% | 95 |
 | JUPUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BNBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 33.3% | 95 |
+| BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 38.5% | 95 |
 
 ## Portfolio Heat
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 69.54%
-- **Total PnL:** -3947.67 USDT
-- **Total Exposure:** 12961.75 USDT
+- **Margin Level:** 69%
+- **Total PnL:** -4065.52 USDT
+- **Total Exposure:** 13112.92 USDT
 - **Warnings:**
-  - 🔴 margin_call: 69.54% (threshold: 100%)
+  - 🔴 margin_call: 69% (threshold: 100%)
 
 ## Statistics
 
