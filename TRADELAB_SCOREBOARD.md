@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-07-27T14:47:23.747Z
-Incubation updated: 2026-07-27T14:47:14.502Z
+Generated: 2026-07-27T17:46:47.144Z
+Incubation updated: 2026-07-27T17:46:39.240Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -11,13 +11,13 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 Live: 3; probation: 0; quarantined: 21; rejected: 20; ready for review: 0.
 Improving: 0; deteriorating: 0; collecting: 2.
-Portfolio forward PnL: -4639.20; forward trades: 455; avg/trade: -10.20.
+Portfolio forward PnL: -4195.88; forward trades: 462; avg/trade: -9.08.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-XRPUSDT:4h:breakout | 49% | phase-mismatch | Healthy | 385 | 6 | -132.17 | 1.28 | 7.54% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 49% | phase-mismatch | Healthy | 386 | 6 | -132.17 | 1.28 | 7.37% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | unknown | 0 |  | +0.00 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 
