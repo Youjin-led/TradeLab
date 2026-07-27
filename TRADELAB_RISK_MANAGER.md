@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-27T17:46:47.058Z
+Generated: 2026-07-27T21:16:22.486Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -4195.88 USDT
+- **Total PnL:** -4318.70 USDT
 
 ## Active Locks
 
@@ -36,7 +36,7 @@ Status: **EMERGENCY_STOP**
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SOLUSDT | breakout | 2.72% | 271.89 | 3.88 | 53.8% | 95 |
-| AVAXUSDT | breakout | 1.4% | 140 | 0 | 36.4% | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | 0 | 41.7% | 95 |
 | JUPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -65,7 +65,7 @@ Status: **EMERGENCY_STOP**
 | RENDERUSDT | breakout | 1.4% | 140 | 0 | 37.5% | 95 |
 | SOLUSDT | breakout | 1.4% | 140 | 0 | 31.8% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | sma-rsi | 5% | 500 | 18.11 | 62.5% | 95 |
+| SEIUSDT | sma-rsi | 5% | 500 | 18.75 | 64.7% | 95 |
 | JUPUSDT | sma-rsi | 1.4% | 140 | 0 | 70% | 95 |
 | BNBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 42.9% | 95 |
@@ -80,7 +80,7 @@ Status: **EMERGENCY_STOP**
 
 - **OK:** ✅
 - **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"alt_mid":1,"alt_large":1}
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 68.07%
-- **Total PnL:** -4195.88 USDT
-- **Total Exposure:** 13141.7 USDT
+- **Margin Level:** 67.44%
+- **Total PnL:** -4318.7 USDT
+- **Total Exposure:** 13264.86 USDT
 - **Warnings:**
-  - 🔴 margin_call: 68.07% (threshold: 100%)
+  - 🔴 margin_call: 67.44% (threshold: 100%)
 
 ## Statistics
 
