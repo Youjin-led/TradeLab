@@ -61,12 +61,17 @@
     "tradelab:portfolio:optimize": "node tools/tradelab_portfolio_optimizer.js",
     "tradelab:telemetry": "node tools/tradelab_telemetry.js",
     "tradelab:telemetry:dashboard": "node tools/tradelab_telemetry.js --dashboard",
+    "tradelab:ai:scan": "node tools/tradelab_ai_smart_scan.js",
+    "tradelab:ai:scan:top5": "node tools/tradelab_ai_smart_scan.js --top=5",
+    "tradelab:ai:cycle": "node tools/tradelab_ai_cycle.js",
+    "tradelab:ai:full": "node tools/tradelab_ai_full_scan.js",
+    "tradelab:ai:paper": "node tools/tradelab_ai_paper_trader.js",
+    "tradelab:ai:paper:loop": "node tools/tradelab_ai_paper_trader.js --loop",
     "scene:status": "set UV_CACHE_DIR=.uv-cache&& uv run python tools/scene_status.py",
     "scene:attempt": "set UV_CACHE_DIR=.uv-cache&& uv run python tools/scene_attempt.py",
     "hf:infer": "python tools/hf_inference.py"
   },
   "dependencies": {
     "dotenv": "^17.4.2"
-  },
-  "devDependencies": {}
+  }
 }
