@@ -147,9 +147,9 @@ async function runCycle() {
       // Close if opposite signal or low confidence
       var shouldClose = false;
       var reason = '';
-      if (pos.side === 'LONG' && decision.decision === 'SELL' && decision.confidence >= 50) {
+      if (pos.side === 'LONG' && decision.decision === 'SELL' && decision.confidence >= 40) {
         shouldClose = true; reason = 'AI SELL signal';
-      } else if (pos.side === 'SHORT' && decision.decision === 'BUY' && decision.confidence >= 50) {
+      } else if (pos.side === 'SHORT' && decision.decision === 'BUY' && decision.confidence >= 40) {
         shouldClose = true; reason = 'AI BUY signal';
       } else if (decision.confidence < 30 && decision.decision === 'HOLD') {
         shouldClose = true; reason = 'AI low confidence';
@@ -196,7 +196,7 @@ async function runCycle() {
 
       log('  SCAN ' + symbol + ' ' + interval + ' | AI: ' + decision2.decision + ' (' + decision2.confidence + '%)');
 
-      if ((decision2.decision === 'BUY' || decision2.decision === 'SELL') && decision2.confidence >= 60) {
+      if ((decision2.decision === 'BUY' || decision2.decision === 'SELL') && decision2.confidence >= 50) {
         var sizeUsd = paper.balance * (CONFIG.positionSizePct / 100);
         var qty = sizeUsd / price;
         var side = decision2.decision === 'BUY' ? 'LONG' : 'SHORT';
