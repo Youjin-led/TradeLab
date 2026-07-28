@@ -201,7 +201,7 @@ async function decide(symbol, interval, candles, options) {
 
   // Сбор контекста
   var startTime = Date.now();
-  var context = contextBuilder.buildContext(symbol, interval, candles);
+  var context = contextBuilder.buildContext(symbol, interval, candles, options.news);
   var prompt = contextBuilder.buildPrompt(context);
 
   // Fallback на классику если нет API ключа

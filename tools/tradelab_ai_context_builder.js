@@ -237,11 +237,11 @@ function loadPortfolioState() {
  * @param {Array} candles - Массив свечей [{ open, high, low, close, volume, timestamp }]
  * @returns {Object} Структурированный контекст для промпта
  */
-function buildContext(symbol, interval, candles) {
+function buildContext(symbol, interval, candles, newsParam) {
   var indicators = buildIndicators(candles);
   var phase = detectPhase(candles);
   var macro = loadMacroData();
-  var news = loadNewsData();
+  var news = newsParam || loadNewsData();
   var portfolio = loadPortfolioState();
 
   // Последние 10 свечей (для паттернов)
@@ -436,9 +436,67 @@ function buildPrompt(context) {
   return prompt;
 }
 
+/**
+ * Получить рыночный контекст (замена новостям).
+ * Использует CoinGecko global данные (free, no key, работает).
+ */
+function fetchNews(symbol) {
+  var baseSymbol = (symbol || '').replace('USDT', '').toLowerCase();
+
+  return Promise.all([
+    fetch('https://api.coingecko.com/api/v3/global', { signal: AbortSignal.timeout(5000) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { return d.data || {}; })
+      .catch(function () { return {}; }),
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true', { signal: AbortSignal.timeout(5000) })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return {}; })
+  ]).then(function (results) {
+    var globalData = results[0];
+    var prices = results[1];
+    var result = [];
+
+    // Top coins 24h change
+    var coins = {
+      bitcoin: prices.bitcoin,
+      ethereum: prices.ethereum,
+      solana: prices.solana
+    };
+
+    var coinNames = { bitcoin: 'BTC', ethereum: 'ETH', solana: 'SOL' };
+    Object.keys(coins).forEach(function (id) {
+      var c = coins[id];
+      if (c && c.usd_24h_change !== undefined) {
+        var change = c.usd_24h_change.toFixed(1);
+        var sentiment = change > 0 ? 'bullish' : 'bearish';
+        result.push({
+          headline: id.charAt(0).toUpperCase() + id.slice(1) + ' 24h: ' + change + '%',
+          sentiment: sentiment,
+          score: change > 2 ? 2 : (change < -2 ? -2 : (change > 0 ? 1 : -1)),
+          source: 'CoinGecko',
+          date: new Date().toISOString().substring(0, 10)
+        });
+      }
+    });
+
+    // Market-wide stats
+    if (globalData.total_market_cap && globalData.total_market_cap.usd) {
+      var btcDom = globalData.market_cap_percentage ? globalData.market_cap_percentage.btc : 0;
+      result.push({
+        headline: 'Total market cap: $' + (globalData.total_market_cap.usd / 1e12).toFixed(2) + 'T | BTC dominance: ' + btcDom.toFixed(1) + '%',
+        sentiment: 'neutral', score: 0,
+        source: 'CoinGecko', date: new Date().toISOString().substring(0, 10)
+      });
+    }
+
+    return result;
+  });
+}
+
 module.exports = {
   buildContext: buildContext,
   buildPrompt: buildPrompt,
   buildIndicators: buildIndicators,
-  detectPhase: detectPhase
+  detectPhase: detectPhase,
+  fetchNews: fetchNews
 };

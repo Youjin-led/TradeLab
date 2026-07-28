@@ -13,6 +13,7 @@ var fs = require('fs');
 var path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 var aiDecider = require('./tradelab_ai_decider');
+var contextBuilder = require('./tradelab_ai_context_builder');
 
 var ROOT = path.join(__dirname, '..');
 var STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
@@ -132,6 +133,10 @@ async function runCycle() {
   var candidates = getActiveCandidates();
   var now = new Date().toISOString();
 
+  // Получить свежие новости
+  var news = await contextBuilder.fetchNews('BTCUSDT').catch(function () { return []; });
+  log('News loaded: ' + news.length + ' items');
+
   log('Balance: $' + paper.balance.toFixed(2) + ' | PnL: $' + paper.totalPnl.toFixed(2) + ' | Positions: ' + paper.positions.length + ' | Candidates: ' + candidates.length);
 
   // 1. Check existing positions — close if AI says so
@@ -139,7 +144,7 @@ async function runCycle() {
     var pos = paper.positions[i];
     try {
       var candles = await fetchCandles(pos.symbol, pos.interval, 100);
-      var decision = await aiDecider.decide(pos.symbol, pos.interval, candles);
+      var decision = await aiDecider.decide(pos.symbol, pos.interval, candles, { news: news });
       var currentPrice = candles[candles.length - 1].close;
 
       log('  POS ' + pos.symbol + ' ' + pos.side + ' | AI: ' + decision.decision + ' (' + decision.confidence + '%)');
@@ -191,7 +196,7 @@ async function runCycle() {
 
     try {
       var candles2 = await fetchCandles(symbol, interval, 100);
-      var decision2 = await aiDecider.decide(symbol, interval, candles2);
+      var decision2 = await aiDecider.decide(symbol, interval, candles2, { news: news });
       var price = candles2[candles2.length - 1].close;
 
       log('  SCAN ' + symbol + ' ' + interval + ' | AI: ' + decision2.decision + ' (' + decision2.confidence + '%)');
