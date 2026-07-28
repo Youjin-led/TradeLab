@@ -106,6 +106,47 @@ function getScanPairs() {
   return SCAN_PAIRS;
 }
 
+function calculateATR(candles, period) {
+  period = period || 14;
+  if (!candles || candles.length < period + 1) return 0;
+  var sum = 0;
+  for (var i = candles.length - period; i < candles.length; i++) {
+    var c = candles[i];
+    var prev = candles[i - 1];
+    var tr = Math.max(c.high - c.low, Math.abs(c.high - prev.close), Math.abs(c.low - prev.close));
+    sum += tr;
+  }
+  return sum / period / candles[candles.length - 1].close * 100;
+}
+
+var CORRELATION_GROUPS = {
+  benchmarks: ['BTC', 'ETH', 'SOL', 'BNB'],
+  alts: ['XRP', 'DOGE', 'ADA', 'LINK', 'AVAX', 'SUI', 'LTC', 'NEAR', 'DOT', 'INJ', 'ARB', 'OP', 'RENDER']
+};
+
+function getGroup(symbol) {
+  var base = symbol.replace('USDT', '');
+  for (var g in CORRELATION_GROUPS) {
+    if (CORRELATION_GROUPS[g].indexOf(base) !== -1) return g;
+  }
+  return 'alts';
+}
+
+function canOpenForGroup(symbol, positions) {
+  var group = getGroup(symbol);
+  var groups = {};
+  positions.forEach(function (p) {
+    var g = getGroup(p.symbol);
+    groups[g] = (groups[g] || 0) + 1;
+  });
+  var maxPerGroup = { benchmarks: 1, alts: 2 };
+  return (groups[group] || 0) < (maxPerGroup[group] || 2);
+}
+
+function oppositeOf(decision) {
+  return decision === 'BUY' ? 'SELL' : 'BUY';
+}
+
 function closePosition(paper, idx, exitPrice, reason) {
   var pos = paper.positions[idx];
   var pnl = 0;
@@ -160,17 +201,18 @@ async function runCycle() {
         shouldClose = true; reason = 'AI low confidence';
       }
 
-      // Stop loss at -3%
+      // ATR-based stop loss / take profit
       var lossPct = pos.side === 'LONG'
         ? (currentPrice - pos.entry) / pos.entry * 100
         : (pos.entry - currentPrice) / pos.entry * 100;
-      if (lossPct < -3) {
-        shouldClose = true; reason = 'Stop loss -3%';
+      var atrPct = calculateATR(candles, 14);
+      var slPct = Math.max(atrPct * 1.5, 1.5);
+      var tpPct = Math.max(atrPct * 3, 3);
+      if (lossPct < -slPct) {
+        shouldClose = true; reason = 'Stop loss ' + slPct.toFixed(1) + '% (ATR*1.5=' + atrPct.toFixed(1) + '%)';
       }
-
-      // Take profit at +5%
-      if (lossPct > 5) {
-        shouldClose = true; reason = 'Take profit +5%';
+      if (lossPct > tpPct) {
+        shouldClose = true; reason = 'Take profit ' + tpPct.toFixed(1) + '% (ATR*3=' + atrPct.toFixed(1) + '%)';
       }
 
       if (shouldClose) {
@@ -183,46 +225,112 @@ async function runCycle() {
     }
   }
 
-  // 2. Open new positions — scan ALL pairs
-  var activeSymbols = paper.positions.map(function(p) { return p.symbol + ':' + p.interval; });
-  var scanPairs = getScanPairs();
+  // 2. Multi-timeframe scan — collect decisions per symbol
+  var uniqueSymbols = [];
+  var seenSymbol = {};
+  SCAN_PAIRS.forEach(function (p) {
+    var s = p.split(':')[0];
+    if (!seenSymbol[s]) { seenSymbol[s] = true; uniqueSymbols.push(s); }
+  });
 
-  for (var j = 0; j < scanPairs.length && paper.positions.length < CONFIG.maxPositions; j++) {
-    var parts = scanPairs[j].split(':');
-    var symbol = parts[0];
-    var interval = parts[1];
-    var key = symbol + ':' + interval;
-    if (activeSymbols.indexOf(key) !== -1) continue;
+  var signals = [];
+
+  for (var j = 0; j < uniqueSymbols.length && paper.positions.length < CONFIG.maxPositions; j++) {
+    var symbol = uniqueSymbols[j];
 
     try {
-      var candles2 = await fetchCandles(symbol, interval, 100);
-      var decision2 = await aiDecider.decide(symbol, interval, candles2, { news: news });
-      var price = candles2[candles2.length - 1].close;
+      // Scan both timeframes
+      var candles1h = await fetchCandles(symbol, '1h', 100);
+      var dec1h = await aiDecider.decide(symbol, '1h', candles1h, { news: news });
+      await sleep(1000);
+      var candles4h = await fetchCandles(symbol, '4h', 100);
+      var dec4h = await aiDecider.decide(symbol, '4h', candles4h, { news: news });
 
-      log('  SCAN ' + symbol + ' ' + interval + ' | AI: ' + decision2.decision + ' (' + decision2.confidence + '%)');
+      log('  SCAN ' + symbol + ' 1h=' + dec1h.decision + '(' + dec1h.confidence + '%) 4h=' + dec4h.decision + '(' + dec4h.confidence + '%)');
 
-      if ((decision2.decision === 'BUY' || decision2.decision === 'SELL') && decision2.confidence >= 50) {
-        var sizeUsd = paper.balance * (CONFIG.positionSizePct / 100);
-        var qty = sizeUsd / price;
-        var side = decision2.decision === 'BUY' ? 'LONG' : 'SHORT';
+      // Combine timeframes
+      var s1 = dec1h.decision === 'BUY' || dec1h.decision === 'SELL' ? dec1h : null;
+      var s4 = dec4h.decision === 'BUY' || dec4h.decision === 'SELL' ? dec4h : null;
+      var combined = null;
 
-        paper.balance -= sizeUsd;
-        paper.positions.push({
-          symbol: symbol, interval: interval, side: side,
-          entry: price, qty: qty, notional: sizeUsd,
-          fee: sizeUsd * 0.0004,
-          openedAt: now, aiConfidence: decision2.confidence,
-          aiReasoning: decision2.reasoning.substring(0, 200)
-        });
+      if (s1 && s4 && s1.decision === s4.decision) {
+        // Both timeframes agree — bonus confidence
+        combined = {
+          symbol: symbol,
+          side: s1.decision === 'BUY' ? 'LONG' : 'SHORT',
+          confidence: Math.min((s1.confidence + s4.confidence) / 2 + 10, 95),
+          sizeMultiplier: 1.0,
+          reasoning: 'TF agree: ' + s1.reasoning.substring(0, 60) + ' | ' + s4.reasoning.substring(0, 60),
+          candles: candles4h
+        };
+      } else if (s1 && (!s4 || s4.decision !== oppositeOf(s1.decision))) {
+        // Only 1h signal, 4h neutral
+        combined = {
+          symbol: symbol,
+          side: s1.decision === 'BUY' ? 'LONG' : 'SHORT',
+          confidence: s1.confidence * 0.9,
+          sizeMultiplier: 0.7,
+          reasoning: '1h only: ' + s1.reasoning.substring(0, 100),
+          candles: candles4h
+        };
+      } else if (s4 && (!s1 || s1.decision !== oppositeOf(s4.decision))) {
+        // Only 4h signal, 1h neutral
+        combined = {
+          symbol: symbol,
+          side: s4.decision === 'BUY' ? 'LONG' : 'SHORT',
+          confidence: s4.confidence * 0.9,
+          sizeMultiplier: 0.7,
+          reasoning: '4h only: ' + s4.reasoning.substring(0, 100),
+          candles: candles4h
+        };
+      }
 
-        log('  OPEN ' + symbol + ' ' + side + ' $' + sizeUsd.toFixed(2) + ' conf=' + decision2.confidence + '%');
-        log('    ' + decision2.reasoning.substring(0, 150));
+      if (combined && combined.confidence >= 50) {
+        signals.push(combined);
       }
 
       await sleep(1500);
     } catch (e) {
       log('  ERR ' + symbol + ': ' + e.message);
     }
+  }
+
+  // Sort by confidence descending
+  signals.sort(function (a, b) { return b.confidence - a.confidence; });
+
+  // Open positions respecting correlation groups
+  for (var k = 0; k < signals.length && paper.positions.length < CONFIG.maxPositions; k++) {
+    var sig = signals[k];
+
+    // Correlation check
+    if (!canOpenForGroup(sig.symbol, paper.positions)) {
+      log('  SKIP ' + sig.symbol + ' (group ' + getGroup(sig.symbol) + ' full)');
+      continue;
+    }
+
+    var price = sig.candles[sig.candles.length - 1].close;
+    var atrVal = calculateATR(sig.candles, 14);
+    var sizePct = CONFIG.positionSizePct * sig.sizeMultiplier;
+    var sizeUsd = paper.balance * (sizePct / 100);
+    var qty = sizeUsd / price;
+
+    paper.balance -= sizeUsd;
+    paper.positions.push({
+      symbol: sig.symbol,
+      interval: '1h',
+      side: sig.side,
+      entry: price,
+      qty: qty,
+      notional: sizeUsd,
+      fee: sizeUsd * 0.0004,
+      openedAt: now,
+      aiConfidence: Math.round(sig.confidence),
+      aiReasoning: sig.reasoning.substring(0, 200),
+      atrPct: atrVal
+    });
+
+    log('  OPEN ' + sig.symbol + ' ' + sig.side + ' $' + sizeUsd.toFixed(2) + ' conf=' + Math.round(sig.confidence) + '%' + ' (size=' + sizePct + '%)');
+    log('    ' + sig.reasoning.substring(0, 150));
   }
 
   // Update peak
