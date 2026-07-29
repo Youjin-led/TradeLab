@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-29T17:20:03.253Z
+Generated: 2026-07-29T21:01:48.386Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3344.01 USDT
+- **Total PnL:** -3198.20 USDT
 
 ## Active Locks
 
@@ -25,7 +25,7 @@ Status: **EMERGENCY_STOP**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 4.39% | 439.25 | 6.27 | 48.1% | 95 |
+| NEARUSDT | breakout | 5% | 500 | 7.17 | 50% | 95 |
 | TRXUSDT | sma-rsi | 1.4% | 140 | 0 | 40% | 95 |
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -66,21 +66,21 @@ Status: **EMERGENCY_STOP**
 | SOLUSDT | breakout | 1.4% | 140 | 0 | 34.8% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 5% | 500 | 12.72 | 63.2% | 95 |
-| JUPUSDT | sma-rsi | 4.57% | 456.7 | 6.52 | 66.7% | 95 |
+| JUPUSDT | sma-rsi | 1.4% | 140 | 0 | 61.5% | 95 |
 | BNBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 43.8% | 95 |
+| BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 47.1% | 95 |
 
 ## Portfolio Heat
 
-- **Heat:** 0.08% / 5% max
+- **Heat:** 0.11% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_mid":1}
+- **Active Positions:** 4
+- **Sector Distribution:** {"alt_small":1,"other":2,"alt_mid":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 77.21%
-- **Total PnL:** -3344.01 USDT
-- **Total Exposure:** 14673.41 USDT
+- **Margin Level:** 77.83%
+- **Total PnL:** -3198.2 USDT
+- **Total Exposure:** 14423.32 USDT
 - **Warnings:**
-  - 🔴 margin_call: 77.21% (threshold: 100%)
+  - 🔴 margin_call: 77.83% (threshold: 100%)
 
 ## Statistics
 
