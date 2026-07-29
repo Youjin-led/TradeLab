@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-29T06:36:00.106Z",
+  "generatedAt": "2026-07-29T10:44:11.277Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 4,
+    "live": 3,
     "quarantined": 21,
-    "rejected": 19,
+    "rejected": 20,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,10 +41,10 @@
       "avgPnlPerTrade": -10.09
     },
     "sma-rsi": {
-      "totalPnl": -734.4820240100433,
-      "trades": 246,
+      "totalPnl": -889.4712467445243,
+      "trades": 248,
       "wins": 116,
-      "losses": 130,
+      "losses": 132,
       "maxDd": 10.55,
       "symbols": [
         "TRXUSDT",
@@ -65,19 +65,19 @@
         "OPUSDT",
         "JUPUSDT"
       ],
-      "forwardPnl": -734.4799999999998,
-      "forwardTrades": "1184914161227191116",
+      "forwardPnl": -889.4599999999999,
+      "forwardTrades": "1184914161228191216",
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 47.2,
-      "avgPnlPerTrade": -2.99
+      "winRate": 46.8,
+      "avgPnlPerTrade": -3.59
     }
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": 607.86,
-      "trades": 42,
-      "avgPnl": 14.47
+      "pnl": 459.2,
+      "trades": 43,
+      "avgPnl": 10.68
     },
     "1": {
       "pnl": 4.78,
@@ -100,9 +100,9 @@
       "avgPnl": 3.57
     },
     "5": {
-      "pnl": -71.97,
-      "trades": 13,
-      "avgPnl": -5.54
+      "pnl": -78.31,
+      "trades": 14,
+      "avgPnl": -5.59
     },
     "6": {
       "pnl": -471.78,
@@ -212,9 +212,9 @@
       "avgPnl": -9.87
     },
     "Wednesday": {
-      "pnl": 216.31,
-      "trades": 70,
-      "avgPnl": 3.09
+      "pnl": 61.32,
+      "trades": 72,
+      "avgPnl": 0.85
     },
     "Thursday": {
       "pnl": 2127.48,
@@ -3674,26 +3674,40 @@
       "pnl": -7.68,
       "symbol": "BCHUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-29 04:00",
+      "equity": 6644.61,
+      "pnl": -148.66,
+      "symbol": "JUPUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-07-29 09:00",
+      "equity": 6638.28,
+      "pnl": -6.33,
+      "symbol": "OPUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.243,
-    "sortinoRatio": 0.283,
-    "calmarRatio": 0.184,
+    "sharpeRatio": 0.216,
+    "sortinoRatio": 0.252,
+    "calmarRatio": 0.168,
     "maxDrawdown": 60.71,
-    "avgDailyReturn": 0.0443,
-    "dailyVolatility": 2.2432,
-    "annualizedReturn": 11.16,
-    "totalTrades": 491
+    "avgDailyReturn": 0.0405,
+    "dailyVolatility": 2.2402,
+    "annualizedReturn": 10.21,
+    "totalTrades": 493
   },
   "distribution": {
-    "totalTrades": 491,
+    "totalTrades": 493,
     "pnls": {
       "min": -308.14,
       "max": 386.51,
       "median": -16.27,
-      "avg": -6.53,
-      "stdDev": 135.58
+      "avg": -6.82,
+      "stdDev": 135.45
     },
     "holdTime": {
       "avgBars": 0,
