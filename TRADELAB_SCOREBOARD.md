@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-07-30T02:45:27.802Z
-Incubation updated: 2026-07-30T02:45:19.444Z
+Generated: 2026-07-30T06:32:43.647Z
+Incubation updated: 2026-07-30T06:32:33.254Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -17,7 +17,7 @@ Portfolio forward PnL: -3629.48; forward trades: 506; avg/trade: -7.17.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-LTCUSDT:4h:breakout | 60% | phase-mismatch | Healthy | 302 | 7 | +108.96 | 1.69 | 4.52% | 3 | status is incubating, expected ready-for-review
+LTCUSDT:4h:breakout | 52% | phase-mismatch | Healthy | 303 | 7 | +108.96 | 1.12 | 5.45% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | unknown | 0 |  | +0.00 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 
@@ -27,7 +27,7 @@ Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
 NEARUSDT:4h:sma-rsi:auto | 25% | collecting | +0.00 | status is incubating, expected ready-for-review; health is unknown, expected Healthy; live observations 0 < 30; forward paper trades  < 15; profit factor 0 < 1.6
 SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
-LTCUSDT:4h:breakout | 60% | phase-mismatch | +108.96 | status is incubating, expected ready-for-review; forward paper trades 7 < 15; loss streak 3 > 2
+LTCUSDT:4h:breakout | 52% | phase-mismatch | +108.96 | status is incubating, expected ready-for-review; forward paper trades 7 < 15; profit factor 1.12 < 1.6; loss streak 3 > 2
 
 ## Quarantine Count
 
