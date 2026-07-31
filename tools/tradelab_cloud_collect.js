@@ -31,13 +31,26 @@ function sleep(ms) {
 
 // ===== Binance =====
 
+const BINANCE_HOSTS = ['data-api.binance.vision', 'api.binance.com'];
+const BINANCE_FUTURES_HOSTS = ['fapi.binance.com'];
+
+function fetchBinance(path) {
+  const urls = BINANCE_HOSTS.map(h => `https://${h}${path}`);
+  return urls.reduce((promise, url) =>
+    promise.then(async (result) => {
+      if (result !== undefined) return result;
+      const data = await fetchJSON(url);
+      return data !== undefined ? data : undefined;
+    }), Promise.resolve(undefined)).then((data) => data || null);
+}
+
 async function fetchPrices() {
-  const data = await fetchJSON('https://api.binance.com/api/v3/ticker/24hr');
-  if (!data) return null;
+  const data = await fetchBinance('/api/v3/ticker/24hr');
+  if (!Array.isArray(data)) return null;
   const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'DOGEUSDT', 'ADAUSDT', 'LINKUSDT', 'AVAXUSDT', 'SUIUSDT', 'LTCUSDT', 'NEARUSDT'];
   const result = {};
   for (const t of data) {
-    if (symbols.includes(t.symbol)) {
+    if (t && symbols.includes(t.symbol)) {
       result[t.symbol] = {
         price: parseFloat(t.lastPrice),
         change24h: parseFloat(t.priceChangePercent),
@@ -51,8 +64,8 @@ async function fetchPrices() {
 }
 
 async function fetchCandles(symbol, interval, limit) {
-  const data = await fetchJSON(`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`);
-  if (!data) return null;
+  const data = await fetchBinance(`/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`);
+  if (!Array.isArray(data)) return null;
   return data.map(k => ({
     time: k[0], open: parseFloat(k[1]), high: parseFloat(k[2]),
     low: parseFloat(k[3]), close: parseFloat(k[4]), volume: parseFloat(k[5])
@@ -63,7 +76,11 @@ async function fetchFundingRates() {
   const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'SUIUSDT'];
   const rates = {};
   for (const sym of symbols) {
-    const data = await fetchJSON(`https://fapi.binance.com/fapi/v1/fundingRate?symbol=${sym}&limit=1`);
+    let data = null;
+    for (const host of BINANCE_FUTURES_HOSTS) {
+      const res = await fetchJSON(`https://${host}/fapi/v1/fundingRate?symbol=${sym}&limit=1`);
+      if (Array.isArray(res)) { data = res; break; }
+    }
     if (data && data.length > 0) {
       rates[sym] = { rate: parseFloat(data[0].fundingRate), time: data[0].fundingTime };
     }
