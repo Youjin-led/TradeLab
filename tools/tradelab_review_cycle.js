@@ -12,6 +12,7 @@ const { discover } = require('./tradelab_daily_discovery');
 const { analyze: fetchNewsImpact } = require('./tradelab_news_impact');
 const { detectPhase } = require('./tradelab_market_phase');
 const { autoClean } = require('./tradelab_auto_cleaner');
+const aiFullScan = require('./tradelab_ai_full_scan');
 
 async function reviewCycle() {
   // Авто-чистка: удаляем безнадёжных, разблокируем сильных
@@ -109,8 +110,26 @@ async function reviewCycle() {
       articles: newsResult.articles || 0,
       matches: newsResult.matches || 0,
       errors: (newsResult.errors || []).length
-    } : null
+    } : null,
+    aiScan: null
   };
+
+  // AI Decider: DeepSeek анализирует все пары
+  try {
+    const aiResult = await aiFullScan.main();
+    result.aiScan = {
+      analyzed: (aiResult.results || []).length,
+      decisions: (aiResult.results || []).reduce(function (acc, r) {
+        acc[r.decision] = (acc[r.decision] || 0) + 1;
+        return acc;
+      }, {}),
+      source: aiResult.results && aiResult.results[0] ? aiResult.results[0].source : 'unknown'
+    };
+  } catch (error) {
+    result.aiScan = { error: error.message };
+  }
+
+  return result;
 }
 
 

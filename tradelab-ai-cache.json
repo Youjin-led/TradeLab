@@ -1,0 +1,94 @@
+{
+  "DOTUSDT:4h": {
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "decision": "HOLD",
+    "confidence": 0,
+    "source": "merge-both-hold",
+    "reasoning": "Оба источника: HOLD",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "classical": "HOLD",
+    "latencyMs": 1955,
+    "price": 0.843,
+    "indicators": {
+      "rsi": 65.7,
+      "adx": 15.2,
+      "trend": "bearish",
+      "atrPct": 1.59,
+      "volRatio": 0.04
+    },
+    "params": null,
+    "timestamp": "2026-07-22T20:31:10.695Z",
+    "fromCache": false
+  },
+  "SUIUSDT:4h": {
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "decision": "HOLD",
+    "confidence": 0,
+    "source": "merge-both-hold",
+    "reasoning": "Оба источника: HOLD",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "classical": "HOLD",
+    "latencyMs": 1830,
+    "price": 0.7665,
+    "indicators": {
+      "rsi": 50.7,
+      "adx": 41.9,
+      "trend": "bullish",
+      "atrPct": 1.49,
+      "volRatio": 0.23
+    },
+    "params": null,
+    "timestamp": "2026-07-22T21:56:23.504Z",
+    "fromCache": false
+  },
+  "LTCUSDT:4h": {
+    "symbol": "LTCUSDT",
+    "interval": "4h",
+    "decision": "HOLD",
+    "confidence": 0,
+    "source": "merge-both-hold",
+    "reasoning": "Оба источника: HOLD",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "classical": "HOLD",
+    "latencyMs": 1805,
+    "price": 47.47,
+    "indicators": {
+      "rsi": 49.8,
+      "adx": 52.4,
+      "trend": "bullish",
+      "atrPct": 1.13,
+      "volRatio": 0.31
+    },
+    "params": null,
+    "timestamp": "2026-07-22T21:56:26.003Z",
+    "fromCache": false
+  },
+  "AVAXUSDT:1h": {
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "decision": "HOLD",
+    "confidence": 0,
+    "source": "merge-both-hold",
+    "reasoning": "Оба источника: HOLD",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "classical": "HOLD",
+    "latencyMs": 1705,
+    "price": 6.649,
+    "indicators": {
+      "rsi": 78.4,
+      "adx": 25,
+      "trend": "bearish",
+      "atrPct": 0.66,
+      "volRatio": 0.5
+    },
+    "params": null,
+    "timestamp": "2026-07-22T21:56:20.989Z",
+    "fromCache": false
+  }
+}

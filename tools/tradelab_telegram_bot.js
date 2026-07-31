@@ -285,10 +285,87 @@ async function handleHelp() {
     '/pnl — PnL report',
     '/heat — Portfolio heat',
     '/risk — Risk locks',
+    '/ai — AI market analysis (BTCUSDT 1h)',
+    '/ai SOLUSDT 4h — AI analysis for specific pair',
     '/pause — Pause trading',
     '/resume — Resume trading',
     '/help — This message',
   ].join('\n'));
+}
+
+async function handleAI(args) {
+  const aiDecider = require('./tradelab_ai_decider');
+  const aiValidator = require('./tradelab_ai_validator');
+  const contextBuilder = require('./tradelab_ai_context_builder');
+
+  const symbol = (args[0] || 'BTCUSDT').toUpperCase();
+  const interval = (args[1] || '1h').toLowerCase();
+
+  await sendMessage(`🤖 AI анализ: ${symbol} ${interval}...`);
+
+  try {
+    // Fetch candles
+    const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=100`;
+    const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
+    if (!response.ok) throw new Error('Binance API ' + response.status);
+    const klines = await response.json();
+
+    const candles = klines.map(function(k) {
+      return {
+        timestamp: new Date(k[0]).toISOString().replace('T', ' ').substring(0, 16),
+        open: parseFloat(k[1]),
+        high: parseFloat(k[2]),
+        low: parseFloat(k[3]),
+        close: parseFloat(k[4]),
+        volume: parseFloat(k[5])
+      };
+    });
+
+    const lastPrice = candles[candles.length - 1].close;
+
+    // Run AI
+    const aiResult = await aiDecider.decide(symbol, interval, candles);
+
+    // Classical signal
+    const closes = candles.map(function(c) { return c.close; });
+    const idx = closes.length - 1;
+    var sma20 = 0;
+    for (var i = idx - 19; i <= idx; i++) sma20 += closes[i];
+    sma20 /= 20;
+    var classical = 'HOLD';
+    if (closes[idx] > sma20 && closes[idx - 1] <= sma20) classical = 'BUY';
+    if (closes[idx] < sma20 && closes[idx - 1] >= sma20) classical = 'SELL';
+
+    // Merge
+    const merged = aiValidator.processDecision(aiResult, { action: classical, price: lastPrice }, symbol, interval);
+    const indicators = contextBuilder.buildIndicators(candles);
+    const rateInfo = aiDecider.getRateLimitInfo();
+
+    const emoji = merged.decision === 'BUY' ? '🟢' : merged.decision === 'SELL' ? '🔴' : '⚪';
+    const confEmoji = merged.confidence >= 80 ? '🔥' : merged.confidence >= 65 ? '✅' : '⚠️';
+
+    await sendMessage([
+      `${emoji} *AI Decision: ${merged.decision}*`,
+      `📊 ${symbol} ${interval} — $${lastPrice}`,
+      ``,
+      `*Индикаторы:*`,
+      `RSI: ${indicators.rsi14} | ADX: ${indicators.adx14}`,
+      `ATR: ${indicators.atrPct}% | Volume: ${indicators.volumeRatio}x`,
+      `Trend: ${indicators.trendDirection}`,
+      indicators.bollinger ? `BB: ${indicators.bollinger.position}` : '',
+      ``,
+      `*AI:* ${confEmoji} ${merged.confidence}% — ${merged.reasoning.substring(0, 200)}`,
+      `*Classical:* ${classical}`,
+      `*Source:* ${merged.source}`,
+      merged.params ? `Stop: ${merged.params.stopPct}% | Take: ${merged.params.takePct}% | Risk: ${merged.params.riskPct}%` : '',
+      ``,
+      `⏱ AI latency: ${aiResult.latencyMs}ms`,
+      `📈 Rate limit: ${rateInfo.used}/${rateInfo.max}`,
+    ].filter(Boolean).join('\n'));
+
+  } catch (err) {
+    await sendMessage(`❌ AI ошибка: ${err.message}`);
+  }
 }
 
 // ===== Polling =====
@@ -313,12 +390,27 @@ async function handleUpdate(update) {
     '/help': handleHelp,
   };
 
-  const handler = commands[text];
+  const handler = commands[text.split(' ')[0]];
   if (handler) {
     try {
       await handler();
     } catch (err) {
       console.error('Command error:', err.message);
+      await sendMessage(`Error: ${err.message}`);
+    }
+  } else if (text.startsWith('/ai ')) {
+    const args = text.replace('/ai', '').trim().split(/\s+/);
+    try {
+      await handleAI(args);
+    } catch (err) {
+      console.error('AI command error:', err.message);
+      await sendMessage(`Error: ${err.message}`);
+    }
+  } else if (text === '/ai') {
+    try {
+      await handleAI([]);
+    } catch (err) {
+      console.error('AI command error:', err.message);
       await sendMessage(`Error: ${err.message}`);
     }
   }

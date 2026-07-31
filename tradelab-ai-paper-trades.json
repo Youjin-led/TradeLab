@@ -1,0 +1,36 @@
+{
+  "balance": 5530,
+  "peak": 10000,
+  "positions": [
+    {
+      "symbol": "NEARUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.646,
+      "qty": 1822.6002430133658,
+      "notional": 3000,
+      "fee": 1.2,
+      "openedAt": "2026-07-28T17:26:16.227Z",
+      "aiConfidence": 80,
+      "aiReasoning": "TF agree: Strong downtrend (ADX 79.6, bearish trend), price below SMA2 | Strong downtrend with RSI oversold but not yet extreme, ADX ",
+      "atrPct": 2.2999479257073445
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.0587,
+      "qty": 1388.4953244545197,
+      "notional": 1470,
+      "fee": 0.5880000000000001,
+      "openedAt": "2026-07-28T17:26:16.227Z",
+      "aiConfidence": 63,
+      "aiReasoning": "4h only: RSI14=32 (oversold but not extreme), MACD negative, price below SMA20 and SMA50, bearish trend, ADX>",
+      "atrPct": 1.2764981311311734
+    }
+  ],
+  "closedTrades": [],
+  "totalPnl": 0,
+  "wins": 0,
+  "losses": 0
+}

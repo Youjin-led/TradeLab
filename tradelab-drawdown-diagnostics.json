@@ -1,39 +1,37 @@
 {
-  "generatedAt": "2026-07-16T13:36:42.507Z",
-  "incubationUpdatedAt": "2026-07-16T13:36:24.921Z",
+  "generatedAt": "2026-07-22T20:42:09.600Z",
+  "incubationUpdatedAt": "2026-07-22T20:41:57.846Z",
   "summary": {
     "candidates": 44,
-    "incubating": 4,
-    "rejected": 21,
-    "forwardTrades": 154,
-    "forwardPnl": -682.47,
-    "avgPerTrade": -4.43,
-    "activePositiveRatio": 0.5
+    "incubating": 3,
+    "rejected": 11,
+    "forwardTrades": 793,
+    "forwardPnl": 23925.98,
+    "avgPerTrade": 30.17,
+    "activePositiveRatio": 0.333
   },
   "killSwitch": {
-    "active": true,
+    "active": false,
     "soft": {
-      "active": true,
-      "reasons": [
-        "portfolio forward PnL -682.47 <= -500"
-      ]
+      "active": false,
+      "reasons": []
     },
     "hard": {
       "active": false,
       "reasons": []
     },
-    "status": "soft",
+    "status": "ok",
     "blocksDiscovery": false,
-    "blocksRealMoney": true,
+    "blocksRealMoney": false,
     "metrics": {
       "candidates": 44,
-      "incubating": 4,
-      "rejected": 21,
-      "forwardTrades": 154,
-      "forwardPnl": -682.47,
-      "avgPerTrade": -4.43,
-      "rejectedRatio": 0.477,
-      "activePositiveRatio": 0.5
+      "incubating": 3,
+      "rejected": 11,
+      "forwardTrades": 793,
+      "forwardPnl": 23925.98,
+      "avgPerTrade": 30.17,
+      "rejectedRatio": 0.25,
+      "activePositiveRatio": 0.333
     },
     "rules": {
       "minForwardTrades": 8,
@@ -49,9 +47,9 @@
   },
   "actions": [
     {
-      "level": "critical",
-      "action": "Freeze auto-adds and real-money preparation until kill-switch clears.",
-      "reason": "portfolio forward PnL -682.47 <= -500"
+      "level": "high",
+      "action": "Quarantine or down-rank LTCUSDT candidates until they recover in paper mode.",
+      "reason": "LTCUSDT forward PnL -1061.56 with no useful news dependency yet."
     },
     {
       "level": "medium",
@@ -60,43 +58,38 @@
     },
     {
       "level": "medium",
+      "action": "Quarantine or down-rank DOGEUSDT candidates until they recover in paper mode.",
+      "reason": "DOGEUSDT forward PnL -809.27 with no useful news dependency yet."
+    },
+    {
+      "level": "medium",
       "action": "Quarantine or down-rank ETHUSDT candidates until they recover in paper mode.",
       "reason": "ETHUSDT forward PnL -778.60; news dependency moderate 1h up, avg 0.662%, agreement 100.0%."
     },
     {
       "level": "medium",
-      "action": "Quarantine or down-rank SEIUSDT candidates until they recover in paper mode.",
-      "reason": "SEIUSDT forward PnL -702.68 with no useful news dependency yet."
+      "action": "Quarantine or down-rank SOLUSDT candidates until they recover in paper mode.",
+      "reason": "SOLUSDT forward PnL -441.51 with no useful news dependency yet."
     },
     {
       "level": "medium",
-      "action": "Quarantine or down-rank LTCUSDT candidates until they recover in paper mode.",
-      "reason": "LTCUSDT forward PnL -542.91 with no useful news dependency yet."
+      "action": "Reduce priority for 1d timeframe discovery.",
+      "reason": "1d is the weakest timeframe group: -572.28 across 5 forward trades."
     },
     {
       "level": "medium",
-      "action": "Quarantine or down-rank SUIUSDT candidates until they recover in paper mode.",
-      "reason": "SUIUSDT forward PnL -402.49 with no useful news dependency yet."
+      "action": "Tighten validation or pause sma-rsi variants.",
+      "reason": "sma-rsi is the weakest strategy group: -2038.17; blocked 22/22."
     },
     {
       "level": "medium",
-      "action": "Reduce priority for 1h timeframe discovery.",
-      "reason": "1h is the weakest timeframe group: -758.26 across 52 forward trades."
-    },
-    {
-      "level": "medium",
-      "action": "Tighten validation or pause breakout variants.",
-      "reason": "breakout is the weakest strategy group: -703.03; blocked 20/22."
-    },
-    {
-      "level": "medium",
-      "action": "Review 41 phase-mismatch candidates — strategy does not match current market phase.",
-      "reason": "NEARUSDT:4h:breakout:breakout on trending-up-strong market; LINKUSDT:4h:sma-rsi:sma-rsi on ranging-tight market; LINKUSDT:4h:breakout:breakout on ranging-tight market; SUIUSDT:4h:breakout:breakout on trending-down-strong market; INJUSDT:4h:sma-rsi:sma-rsi on trending-up-strong market"
+      "action": "Review 40 phase-mismatch candidates — strategy does not match current market phase.",
+      "reason": "NEARUSDT:4h:breakout:breakout on trending-down-strong market; LINKUSDT:4h:sma-rsi:sma-rsi on ranging-tight market; LINKUSDT:4h:breakout:breakout on ranging-tight market; SUIUSDT:4h:breakout:breakout on trending-down-strong market; LINKUSDT:1h:breakout:breakout on trending-down-strong market"
     },
     {
       "level": "medium",
       "action": "Review stop/take parameters for repeated stop-loss candidates before adding more similar setups.",
-      "reason": "7 of the worst candidates already carry drawdown, loss-streak, or profit-factor alerts."
+      "reason": "6 of the worst candidates already carry drawdown, loss-streak, or profit-factor alerts."
     }
   ],
   "worstCandidates": [
@@ -124,6 +117,37 @@
           "weak profit factor",
           "drawdown inside limit",
           "walk-forward weak"
+        ]
+      }
+    },
+    {
+      "key": "DOGEUSDT:4h:sma-rsi",
+      "symbol": "DOGEUSDT",
+      "interval": "4h",
+      "strategy": "sma-rsi",
+      "status": "quarantined",
+      "forwardPaperTrades": 4,
+      "forwardPaperPnl": -532.1,
+      "totalPnl": -269.05,
+      "profitFactor": 0.92,
+      "maxDrawdownPct": 9.12,
+      "maxLossStreak": 5,
+      "alerts": [
+        "drawdown 9.12% >= limit 9%",
+        "loss streak 5",
+        "profit factor 0.92 < 1.05",
+        "walk-forward overfit risk",
+        "quarantine: weak candidate: forward PnL -532.1, PF 0.92, max DD 9.12%, health Blocked"
+      ],
+      "health": {
+        "score": 0,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown exceeds limit",
+          "walk-forward overfit risk",
+          "guardrails would block live entry"
         ]
       }
     },
@@ -169,6 +193,58 @@
       "health": {
         "status": "Caution",
         "reason": "Moved to probation — PF > 1.5 but negative PnL"
+      }
+    },
+    {
+      "key": "SOLUSDT:1h:breakout",
+      "symbol": "SOLUSDT",
+      "interval": "1h",
+      "strategy": "breakout",
+      "status": "quarantined",
+      "forwardPaperTrades": 4,
+      "forwardPaperPnl": -392.07,
+      "totalPnl": 0,
+      "profitFactor": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
+      "alerts": [
+        "low test sample: 0 trades",
+        "quarantine: weak candidate: forward PnL -315.94, PF 1.03, max DD 9.15%, health Blocked",
+        "quarantine: weak candidate: forward PnL -392.07, PF 0, max DD 0%, health Blocked"
+      ],
+      "health": {
+        "score": 42,
+        "status": "Blocked",
+        "reasons": [
+          "negative/flat backtest",
+          "weak profit factor",
+          "drawdown inside limit",
+          "walk-forward weak"
+        ]
+      }
+    },
+    {
+      "key": "LTCUSDT:4h:breakout",
+      "symbol": "LTCUSDT",
+      "interval": "4h",
+      "strategy": "breakout",
+      "status": "incubating",
+      "forwardPaperTrades": 6,
+      "forwardPaperPnl": -387.74,
+      "totalPnl": 452.75,
+      "profitFactor": 1.74,
+      "maxDrawdownPct": 3.93,
+      "maxLossStreak": 2,
+      "alerts": [],
+      "health": {
+        "score": 90,
+        "status": "Healthy",
+        "reasons": [
+          "positive backtest",
+          "strong profit factor",
+          "drawdown inside limit",
+          "walk-forward weak"
+        ]
       }
     },
     {
@@ -259,111 +335,24 @@
       }
     },
     {
-      "key": "SEIUSDT:1h:breakout",
-      "symbol": "SEIUSDT",
-      "interval": "1h",
-      "strategy": "breakout",
-      "status": "quarantined",
-      "forwardPaperTrades": 2,
-      "forwardPaperPnl": -276.46,
-      "totalPnl": -491.57,
-      "profitFactor": 0.7,
-      "maxDrawdownPct": 9.31,
-      "maxLossStreak": 6,
-      "alerts": [
-        "drawdown 9.31% >= limit 9%",
-        "loss streak 6",
-        "profit factor 0.70 < 1.05",
-        "quarantine: weak candidate: forward PnL -276.46, PF 0.7, max DD 9.31%, health Blocked"
-      ],
-      "health": {
-        "score": 2,
-        "status": "Blocked",
-        "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
-        ]
-      }
-    },
-    {
-      "key": "DOTUSDT:1h:breakout",
-      "symbol": "DOTUSDT",
-      "interval": "1h",
-      "strategy": "breakout",
-      "status": "quarantined",
-      "forwardPaperTrades": 2,
-      "forwardPaperPnl": -264.22,
-      "totalPnl": -645.33,
-      "profitFactor": 0.49,
-      "maxDrawdownPct": 10.07,
-      "maxLossStreak": 3,
-      "alerts": [
-        "drawdown 10.07% >= limit 9%",
-        "profit factor 0.49 < 1.05",
-        "quarantine: weak candidate: forward PnL -970.06, PF 0, max DD 0%, health Blocked",
-        "quarantine: weak candidate: forward PnL -264.22, PF 0.49, max DD 10.07%, health Blocked"
-      ],
-      "health": {
-        "score": 2,
-        "status": "Blocked",
-        "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
-        ]
-      }
-    },
-    {
-      "key": "LINKUSDT:4h:breakout",
-      "symbol": "LINKUSDT",
+      "key": "RENDERUSDT:4h:sma-rsi",
+      "symbol": "RENDERUSDT",
       "interval": "4h",
-      "strategy": "breakout",
-      "status": "quarantined",
-      "forwardPaperTrades": 4,
-      "forwardPaperPnl": -236.86,
-      "totalPnl": 0,
-      "profitFactor": 0,
-      "maxDrawdownPct": 0,
-      "maxLossStreak": 0,
-      "alerts": [
-        "low test sample: 0 trades",
-        "quarantine: weak candidate: forward PnL -107.34, PF 0, max DD 0%, health Blocked",
-        "quarantine: weak candidate: forward PnL -236.86, PF 0, max DD 0%, health Blocked",
-        "quarantine: weak symbol: PnL -848.89, trades 10, winrate 20%, max DD 4.09%"
-      ],
-      "health": {
-        "score": 42,
-        "status": "Blocked",
-        "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak"
-        ]
-      }
-    },
-    {
-      "key": "ATOMUSDT:1h:sma-rsi",
-      "symbol": "ATOMUSDT",
-      "interval": "1h",
       "strategy": "sma-rsi",
       "status": "quarantined",
-      "forwardPaperTrades": 4,
-      "forwardPaperPnl": -224.46,
-      "totalPnl": -524.24,
-      "profitFactor": 0.66,
-      "maxDrawdownPct": 9.19,
-      "maxLossStreak": 5,
+      "forwardPaperTrades": 3,
+      "forwardPaperPnl": -290.69,
+      "totalPnl": -954.08,
+      "profitFactor": 0.48,
+      "maxDrawdownPct": 9.54,
+      "maxLossStreak": 3,
       "alerts": [
-        "drawdown 9.19% >= limit 9%",
-        "loss streak 5",
-        "profit factor 0.66 < 1.05",
-        "quarantine: weak candidate: forward PnL -224.46, PF 0.66, max DD 9.19%, health Blocked"
+        "drawdown 9.54% >= limit 8%",
+        "profit factor 0.48 < 1.05",
+        "quarantine: weak candidate: forward PnL -227.71, PF 0.5, max DD 9.84%, health Blocked",
+        "quarantine: weak candidate: forward PnL -290.69, PF 0.48, max DD 9.54%, health Blocked",
+        "quarantine: weak strategy: PnL -2152.24, trades 472443105042112, winrate 0%, max DD 7.6%, blocked 19/22",
+        "quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "health": {
         "score": 2,
@@ -380,6 +369,21 @@
   ],
   "bySymbol": [
     {
+      "key": "LTCUSDT",
+      "count": 0,
+      "candidates": 3,
+      "trades": 20,
+      "pnl": -1061.56,
+      "wins": 9,
+      "losses": 11,
+      "maxDrawdownPct": 6.72,
+      "rejected": 1,
+      "incubating": 1,
+      "quarantined": 1,
+      "avgPerTrade": -53.08,
+      "winrate": 0.45
+    },
+    {
       "key": "LINKUSDT",
       "count": 0,
       "candidates": 3,
@@ -393,6 +397,21 @@
       "quarantined": 3,
       "avgPerTrade": -84.89,
       "winrate": 0.2
+    },
+    {
+      "key": "DOGEUSDT",
+      "count": 0,
+      "candidates": 3,
+      "trades": 9,
+      "pnl": -809.27,
+      "wins": 2,
+      "losses": 7,
+      "maxDrawdownPct": 7.6,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 3,
+      "avgPerTrade": -89.92,
+      "winrate": 0.222
     },
     {
       "key": "ETHUSDT",
@@ -410,34 +429,19 @@
       "winrate": 0.308
     },
     {
-      "key": "SEIUSDT",
+      "key": "SOLUSDT",
       "count": 0,
-      "candidates": 4,
-      "trades": 7,
-      "pnl": -702.68,
-      "wins": 1,
-      "losses": 6,
-      "maxDrawdownPct": 8.07,
+      "candidates": 2,
+      "trades": 6,
+      "pnl": -441.51,
+      "wins": 2,
+      "losses": 4,
+      "maxDrawdownPct": 5.45,
       "rejected": 1,
       "incubating": 0,
-      "quarantined": 3,
-      "avgPerTrade": -100.38,
-      "winrate": 0.143
-    },
-    {
-      "key": "LTCUSDT",
-      "count": 0,
-      "candidates": 3,
-      "trades": 15,
-      "pnl": -542.91,
-      "wins": 7,
-      "losses": 8,
-      "maxDrawdownPct": 3.64,
-      "rejected": 1,
-      "incubating": 1,
       "quarantined": 1,
-      "avgPerTrade": -36.19,
-      "winrate": 0.467
+      "avgPerTrade": -73.58,
+      "winrate": 0.333
     },
     {
       "key": "SUIUSDT",
@@ -455,109 +459,94 @@
       "winrate": 0
     },
     {
-      "key": "ATOMUSDT",
+      "key": "SEIUSDT",
       "count": 0,
-      "candidates": 1,
-      "trades": 4,
-      "pnl": -224.46,
+      "candidates": 4,
+      "trades": 5,
+      "pnl": -353.27,
       "wins": 1,
-      "losses": 3,
-      "maxDrawdownPct": 2.38,
-      "rejected": 0,
+      "losses": 4,
+      "maxDrawdownPct": 4.81,
+      "rejected": 2,
       "incubating": 0,
-      "quarantined": 1,
-      "avgPerTrade": -56.12,
-      "winrate": 0.25
-    },
-    {
-      "key": "TIAUSDT",
-      "count": 0,
-      "candidates": 1,
-      "trades": 4,
-      "pnl": -183.5,
-      "wins": 1,
-      "losses": 3,
-      "maxDrawdownPct": 2.39,
-      "rejected": 0,
-      "incubating": 0,
-      "quarantined": 1,
-      "avgPerTrade": -45.88,
-      "winrate": 0.25
-    },
-    {
-      "key": "ARBUSDT",
-      "count": 0,
-      "candidates": 1,
-      "trades": 2,
-      "pnl": -120.78,
-      "wins": 1,
-      "losses": 1,
-      "maxDrawdownPct": 3.38,
-      "rejected": 0,
-      "incubating": 0,
-      "quarantined": 1,
-      "avgPerTrade": -60.39,
-      "winrate": 0.5
-    },
-    {
-      "key": "DOTUSDT",
-      "count": 0,
-      "candidates": 3,
-      "trades": 9,
-      "pnl": -98.83,
-      "wins": 4,
-      "losses": 5,
-      "maxDrawdownPct": 2.64,
-      "rejected": 1,
-      "incubating": 1,
-      "quarantined": 1,
-      "avgPerTrade": -10.98,
-      "winrate": 0.444
-    },
-    {
-      "key": "AVAXUSDT",
-      "count": 0,
-      "candidates": 2,
-      "trades": 8,
-      "pnl": -87.83,
-      "wins": 2,
-      "losses": 6,
-      "maxDrawdownPct": 3.15,
-      "rejected": 1,
-      "incubating": 0,
-      "quarantined": 1,
-      "avgPerTrade": -10.98,
-      "winrate": 0.25
+      "quarantined": 2,
+      "avgPerTrade": -70.65,
+      "winrate": 0.2
     },
     {
       "key": "RENDERUSDT",
       "count": 0,
       "candidates": 2,
-      "trades": 0,
-      "pnl": 0,
+      "trades": 3,
+      "pnl": -290.69,
       "wins": 0,
-      "losses": 0,
-      "maxDrawdownPct": 9.64,
-      "rejected": 1,
+      "losses": 3,
+      "maxDrawdownPct": 9.27,
+      "rejected": 0,
       "incubating": 0,
-      "quarantined": 1,
-      "avgPerTrade": 0,
+      "quarantined": 2,
+      "avgPerTrade": -96.9,
       "winrate": 0
     },
     {
-      "key": "BTCUSDT",
+      "key": "ARBUSDT",
       "count": 0,
       "candidates": 1,
-      "trades": 0,
-      "pnl": 0,
-      "wins": 0,
-      "losses": 0,
-      "maxDrawdownPct": 9.24,
-      "rejected": 1,
+      "trades": 3,
+      "pnl": -254.05,
+      "wins": 1,
+      "losses": 2,
+      "maxDrawdownPct": 3.38,
+      "rejected": 0,
       "incubating": 0,
-      "quarantined": 0,
-      "avgPerTrade": 0,
+      "quarantined": 1,
+      "avgPerTrade": -84.68,
+      "winrate": 0.333
+    },
+    {
+      "key": "OPUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 2,
+      "pnl": -75.09,
+      "wins": 0,
+      "losses": 2,
+      "maxDrawdownPct": 1.33,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -37.55,
       "winrate": 0
+    },
+    {
+      "key": "INJUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 4,
+      "pnl": -61.06,
+      "wins": 2,
+      "losses": 2,
+      "maxDrawdownPct": 1.48,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -15.27,
+      "winrate": 0.5
+    },
+    {
+      "key": "ADAUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 4,
+      "pnl": -34.85,
+      "wins": 2,
+      "losses": 2,
+      "maxDrawdownPct": 2.67,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": -8.71,
+      "winrate": 0.5
     },
     {
       "key": "TRXUSDT",
@@ -568,9 +557,24 @@
       "wins": 0,
       "losses": 0,
       "maxDrawdownPct": 5.56,
-      "rejected": 1,
+      "rejected": 0,
       "incubating": 0,
-      "quarantined": 0,
+      "quarantined": 1,
+      "avgPerTrade": 0,
+      "winrate": 0
+    },
+    {
+      "key": "TIAUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 0,
+      "pnl": 0,
+      "wins": 0,
+      "losses": 0,
+      "maxDrawdownPct": 4.46,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 1,
       "avgPerTrade": 0,
       "winrate": 0
     },
@@ -582,7 +586,7 @@
       "pnl": 0,
       "wins": 0,
       "losses": 0,
-      "maxDrawdownPct": 8.16,
+      "maxDrawdownPct": 0,
       "rejected": 1,
       "incubating": 0,
       "quarantined": 0,
@@ -593,276 +597,261 @@
       "key": "FILUSDT",
       "count": 0,
       "candidates": 1,
-      "trades": 1,
-      "pnl": 11.51,
-      "wins": 1,
+      "trades": 2,
+      "pnl": 13.81,
+      "wins": 2,
       "losses": 0,
-      "maxDrawdownPct": 0.05,
+      "maxDrawdownPct": 0.39,
       "rejected": 0,
       "incubating": 0,
       "quarantined": 1,
-      "avgPerTrade": 11.51,
+      "avgPerTrade": 6.91,
       "winrate": 1
     },
     {
-      "key": "DOGEUSDT",
-      "count": 0,
-      "candidates": 3,
-      "trades": 1,
-      "pnl": 31.39,
-      "wins": 1,
-      "losses": 0,
-      "maxDrawdownPct": 9.32,
-      "rejected": 3,
-      "incubating": 0,
-      "quarantined": 0,
-      "avgPerTrade": 31.39,
-      "winrate": 1
-    },
-    {
-      "key": "ADAUSDT",
+      "key": "ATOMUSDT",
       "count": 0,
       "candidates": 1,
       "trades": 1,
-      "pnl": 39.75,
+      "pnl": 37.71,
       "wins": 1,
       "losses": 0,
-      "maxDrawdownPct": 0.82,
-      "rejected": 1,
-      "incubating": 0,
-      "quarantined": 0,
-      "avgPerTrade": 39.75,
-      "winrate": 1
-    },
-    {
-      "key": "XRPUSDT",
-      "count": 0,
-      "candidates": 1,
-      "trades": 1,
-      "pnl": 93.69,
-      "wins": 1,
-      "losses": 0,
-      "maxDrawdownPct": 0.61,
-      "rejected": 1,
-      "incubating": 0,
-      "quarantined": 0,
-      "avgPerTrade": 93.69,
-      "winrate": 1
-    },
-    {
-      "key": "OPUSDT",
-      "count": 0,
-      "candidates": 1,
-      "trades": 6,
-      "pnl": 131.41,
-      "wins": 3,
-      "losses": 3,
-      "maxDrawdownPct": 2,
-      "rejected": 1,
-      "incubating": 0,
-      "quarantined": 0,
-      "avgPerTrade": 21.9,
-      "winrate": 0.5
-    },
-    {
-      "key": "SOLUSDT",
-      "count": 0,
-      "candidates": 2,
-      "trades": 8,
-      "pnl": 244.03,
-      "wins": 4,
-      "losses": 4,
-      "maxDrawdownPct": 3.31,
-      "rejected": 1,
+      "maxDrawdownPct": 0.84,
+      "rejected": 0,
       "incubating": 0,
       "quarantined": 1,
-      "avgPerTrade": 30.5,
-      "winrate": 0.5
+      "avgPerTrade": 37.71,
+      "winrate": 1
     },
     {
       "key": "NEARUSDT",
       "count": 0,
       "candidates": 3,
-      "trades": "23",
-      "pnl": 272.05,
-      "wins": 11,
-      "losses": 12,
+      "trades": "26",
+      "pnl": 81.62,
+      "wins": 12,
+      "losses": 14,
       "maxDrawdownPct": 7.74,
       "rejected": 1,
-      "incubating": 1,
-      "quarantined": 1,
-      "avgPerTrade": 11.83,
-      "winrate": 0.478
-    },
-    {
-      "key": "JUPUSDT",
-      "count": 0,
-      "candidates": 2,
-      "trades": 4,
-      "pnl": 376.01,
-      "wins": 2,
-      "losses": 2,
-      "maxDrawdownPct": 9.03,
-      "rejected": 2,
       "incubating": 0,
-      "quarantined": 0,
-      "avgPerTrade": 94,
-      "winrate": 0.5
+      "quarantined": 2,
+      "avgPerTrade": 3.14,
+      "winrate": 0.462
     },
     {
       "key": "BCHUSDT",
       "count": 0,
       "candidates": 3,
-      "trades": 25,
-      "pnl": 839.56,
-      "wins": 12,
-      "losses": 13,
-      "maxDrawdownPct": 9.7,
+      "trades": 6,
+      "pnl": 284.41,
+      "wins": 3,
+      "losses": 3,
+      "maxDrawdownPct": 7.52,
+      "rejected": 0,
+      "incubating": 0,
+      "quarantined": 3,
+      "avgPerTrade": 47.4,
+      "winrate": 0.5
+    },
+    {
+      "key": "JUPUSDT",
+      "count": 0,
+      "candidates": 2,
+      "trades": 6,
+      "pnl": 290.02,
+      "wins": 3,
+      "losses": 3,
+      "maxDrawdownPct": 5.44,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 1,
+      "avgPerTrade": 48.34,
+      "winrate": 0.5
+    },
+    {
+      "key": "DOTUSDT",
+      "count": 0,
+      "candidates": 3,
+      "trades": 7,
+      "pnl": 448.4,
+      "wins": 5,
+      "losses": 2,
+      "maxDrawdownPct": 2.46,
       "rejected": 2,
       "incubating": 0,
       "quarantined": 1,
-      "avgPerTrade": 33.58,
-      "winrate": 0.48
+      "avgPerTrade": 64.06,
+      "winrate": 0.714
     },
     {
-      "key": "INJUSDT",
+      "key": "AVAXUSDT",
+      "count": 0,
+      "candidates": 2,
+      "trades": 136,
+      "pnl": 1646.75,
+      "wins": 64,
+      "losses": 72,
+      "maxDrawdownPct": 11.09,
+      "rejected": 0,
+      "incubating": 1,
+      "quarantined": 1,
+      "avgPerTrade": 12.11,
+      "winrate": 0.471
+    },
+    {
+      "key": "XRPUSDT",
       "count": 0,
       "candidates": 1,
-      "trades": 10,
-      "pnl": 1269.1,
-      "wins": 7,
-      "losses": 3,
-      "maxDrawdownPct": 3.87,
+      "trades": 46,
+      "pnl": 11810.35,
+      "wins": 26,
+      "losses": 20,
+      "maxDrawdownPct": 9.44,
       "rejected": 1,
       "incubating": 0,
       "quarantined": 0,
-      "avgPerTrade": 126.91,
-      "winrate": 0.7
+      "avgPerTrade": 256.75,
+      "winrate": 0.565
+    },
+    {
+      "key": "BTCUSDT",
+      "count": 0,
+      "candidates": 1,
+      "trades": 482,
+      "pnl": 14724.24,
+      "wins": 207,
+      "losses": 275,
+      "maxDrawdownPct": 33.27,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 0,
+      "avgPerTrade": 30.55,
+      "winrate": 0.429
     }
   ],
   "byInterval": [
     {
-      "key": "1h",
-      "count": 0,
-      "candidates": 14,
-      "trades": 52,
-      "pnl": -758.26,
-      "wins": 20,
-      "losses": 32,
-      "maxDrawdownPct": 9.7,
-      "rejected": 9,
-      "incubating": 0,
-      "quarantined": 5,
-      "avgPerTrade": -14.58,
-      "winrate": 0.385
-    },
-    {
       "key": "1d",
       "count": 0,
       "candidates": 2,
-      "trades": 4,
-      "pnl": -373.92,
+      "trades": 5,
+      "pnl": -572.28,
       "wins": 0,
-      "losses": 4,
+      "losses": 5,
       "maxDrawdownPct": 3.33,
       "rejected": 0,
       "incubating": 0,
       "quarantined": 2,
-      "avgPerTrade": -93.48,
+      "avgPerTrade": -114.46,
       "winrate": 0
+    },
+    {
+      "key": "1h",
+      "count": 0,
+      "candidates": 14,
+      "trades": 82,
+      "pnl": -188.06,
+      "wins": 41,
+      "losses": 41,
+      "maxDrawdownPct": 9.27,
+      "rejected": 3,
+      "incubating": 1,
+      "quarantined": 10,
+      "avgPerTrade": -2.29,
+      "winrate": 0.5
     },
     {
       "key": "4h",
       "count": 0,
       "candidates": 28,
-      "trades": "9111102110000",
-      "pnl": 449.71,
-      "wins": 46,
-      "losses": 52,
-      "maxDrawdownPct": 9.24,
-      "rejected": 12,
-      "incubating": 4,
-      "quarantined": 12,
+      "trades": "155244334648210042000",
+      "pnl": 24686.32,
+      "wins": 307,
+      "losses": 399,
+      "maxDrawdownPct": 33.27,
+      "rejected": 8,
+      "incubating": 2,
+      "quarantined": 18,
       "avgPerTrade": 0,
       "winrate": 0
     }
   ],
   "byStrategy": [
     {
-      "key": "breakout",
-      "count": 0,
-      "candidates": 22,
-      "trades": 82,
-      "pnl": -703.03,
-      "wins": 32,
-      "losses": 50,
-      "maxDrawdownPct": 9.64,
-      "rejected": 11,
-      "incubating": 2,
-      "quarantined": 9,
-      "avgPerTrade": -8.57,
-      "winrate": 0.39
-    },
-    {
       "key": "sma-rsi",
       "count": 0,
       "candidates": 22,
-      "trades": "5911140600000",
-      "pnl": 20.56,
-      "wins": 34,
-      "losses": 38,
-      "maxDrawdownPct": 9.7,
-      "rejected": 10,
-      "incubating": 2,
-      "quarantined": 10,
+      "trades": "472443100421120",
+      "pnl": -2038.17,
+      "wins": 30,
+      "losses": 41,
+      "maxDrawdownPct": 7.6,
+      "rejected": 1,
+      "incubating": 0,
+      "quarantined": 21,
       "avgPerTrade": 0,
       "winrate": 0
+    },
+    {
+      "key": "breakout",
+      "count": 0,
+      "candidates": 22,
+      "trades": 722,
+      "pnl": 25964.15,
+      "wins": 318,
+      "losses": 404,
+      "maxDrawdownPct": 33.27,
+      "rejected": 10,
+      "incubating": 3,
+      "quarantined": 9,
+      "avgPerTrade": 35.96,
+      "winrate": 0.44
     }
   ],
   "byExitReason": [
     {
       "key": "stop",
-      "count": 72,
+      "count": 457,
       "candidates": 0,
-      "trades": 72,
-      "pnl": -8682.21,
-      "wins": 13,
-      "losses": 59,
+      "trades": 457,
+      "pnl": -61635.75,
+      "wins": 99,
+      "losses": 358,
       "maxDrawdownPct": 0,
       "rejected": 0,
       "incubating": 0,
       "quarantined": 0,
-      "avgPerTrade": -120.59,
-      "winrate": 0.181
+      "avgPerTrade": -134.87,
+      "winrate": 0.217
     },
     {
       "key": "signal",
-      "count": 53,
+      "count": 128,
       "candidates": 0,
-      "trades": 53,
-      "pnl": 489.07,
-      "wins": 24,
-      "losses": 29,
+      "trades": 128,
+      "pnl": -1625.44,
+      "wins": 41,
+      "losses": 87,
       "maxDrawdownPct": 0,
       "rejected": 0,
       "incubating": 0,
       "quarantined": 0,
-      "avgPerTrade": 9.23,
-      "winrate": 0.453
+      "avgPerTrade": -12.7,
+      "winrate": 0.32
     },
     {
       "key": "take",
-      "count": 29,
+      "count": 208,
       "candidates": 0,
-      "trades": 29,
-      "pnl": 7510.64,
-      "wins": 29,
+      "trades": 208,
+      "pnl": 87187.16,
+      "wins": 208,
       "losses": 0,
       "maxDrawdownPct": 0,
       "rejected": 0,
       "incubating": 0,
       "quarantined": 0,
-      "avgPerTrade": 258.99,
+      "avgPerTrade": 419.17,
       "winrate": 1
     }
   ],

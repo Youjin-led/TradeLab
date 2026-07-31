@@ -1,0 +1,427 @@
+[
+  {
+    "timestamp": "2026-07-22T18:41:13.480Z",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-no-key",
+    "aiLatencyMs": 0,
+    "aiReasoning": "AI отключён: нет API ключа. Используйте классические стратегии.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T18:44:58.457Z",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1940,
+    "aiReasoning": "RSI 38.5 не экстремален, цена ниже SMA20 и SMA50, тренд нисходящий, но объем низкий. Открыто 17 позиций, лимит 3, поэтому новые сделки невозможны.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T18:45:35.031Z",
+    "symbol": "SOLUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1971,
+    "aiReasoning": "Цена около SMA20, RSI нейтральный, ADX высокий указывает на сильный тренд, но направление неясно. Объем ниже среднего. Уже есть открытый SHORT по SOL, что увеличивает риск. Недостаточно уверенности для входа.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T18:53:26.575Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1871,
+    "aiReasoning": "RSI (66.2) не перекуплен, но ADX (18.2) низкий, тренд медвежий, цена выше SMA20, но ниже SMA50. Объем ниже среднего, фаза mixed. Уже есть открытый SHORT по DOT, что увеличивает риск. Недостаточно уверенности для входа.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T18:53:29.077Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1858,
+    "aiReasoning": "Тренд восходящий, RSI 58 не перекуплен, но цена у верхней границы Боллинджера, объем ниже среднего, что снижает уверенность. Портфель уже имеет 17 открытых позиций, превышая лимит в 3, что требует осторожности.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T18:53:31.400Z",
+    "symbol": "LTCUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1675,
+    "aiReasoning": "Тренд восходящий, но цена ниже SMA20 и Bollinger mid, RSI нейтральный, объем низкий, фаза trending-down. Недостаточно сигналов для входа.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:04:21.815Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 7293,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:04:29.753Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 7110,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:04:37.652Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 7053,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:04:45.571Z",
+    "symbol": "LTCUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 7064,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:08:00.051Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 7405,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:08:08.023Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 7095,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:08:18.453Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 0,
+    "aiSource": "fallback-error",
+    "aiLatencyMs": 9529,
+    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:18:11.919Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2344,
+    "aiReasoning": "RSI at 70.1 is near overbought but not above 75; MACD positive but trend is bearish; ADX 30.2 indicates strong trend but bearish; price above SMA20 but near SMA50; already have an AVAXUSDT SHORT position open; portfolio has 17 positions (max 3? unclear but rule says portfolio full=HOLD); overall conflicting signals and existing position leads to HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:18:14.307Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1699,
+    "aiReasoning": "RSI neutral, MACD positive but ADX low (no trend), price above SMA20 but below SMA50, bearish trend, volume low, mixed market, portfolio has DOTUSDT SHORT already.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:18:16.839Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1837,
+    "aiReasoning": "Trend is bullish but RSI at 57.1 not overbought; price above SMA20/50; MACD positive; ADX 36.3 strong trend. However, volume below average (0.91x), no news, and portfolio has 17 positions (full). Also, no existing SUI position. Confidence below 70 due to mixed signals and portfolio limit.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:22:59.651Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2061,
+    "aiReasoning": "RSI 72.6 is high but below 75, MACD positive but weak, ADX 30.2 indicates trend strength, but trend is bearish and price above SMA20/SMA50. Already have AVAXUSDT SHORT open. Insufficient confirming signals for a new trade.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:23:02.037Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1627,
+    "aiReasoning": "Trend is bullish but RSI is neutral (57.5), price above SMA20/50, but volume is below average (0.92x). No strong confirmation from multiple indicators; ADX high but not extreme. Portfolio already has 17 positions, exceeding 3 limit, so HOLD per rules.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T19:23:04.131Z",
+    "symbol": "LTCUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1337,
+    "aiReasoning": "Already have LTCUSDT SHORT position; RSI 46.3 neutral; price near SMA20; no strong confirmation.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T20:31:08.088Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2189,
+    "aiReasoning": "RSI at 73.7 is near overbought but not above 75; trend is bearish despite price above SMA20/50; already have AVAXUSDT SHORT open; portfolio is full (16/3).",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T20:31:10.694Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1955,
+    "aiReasoning": "RSI at 65.7 not extreme; MACD positive but ADX low (15.2) indicates weak trend; price above SMA20/SMA50 but trend is bearish; volume low; already have DOTUSDT SHORT position open; mixed market phase; overall conflicting signals.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T20:31:13.305Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1923,
+    "aiReasoning": "Trend is bullish but RSI neutral, MACD positive but weak, ADX high indicating strong trend but volume low. Price above SMA20/SMA50 but near resistance. No clear confirmation from 3 indicators. Portfolio full (16 positions).",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T21:56:20.988Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1705,
+    "aiReasoning": "RSI overbought (78.4) suggests caution; already have AVAXUSDT SHORT open; trend bearish but price above SMA20/50; need more confirmation.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T21:56:23.503Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1830,
+    "aiReasoning": "Trend is bullish but RSI neutral, MACD positive, ADX strong. However, volume is low (0.23x), portfolio has 16 positions (max 3), and no clear entry signal with only 2 confirming indicators (trend, MACD).",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-07-22T21:56:26.002Z",
+    "symbol": "LTCUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1805,
+    "aiReasoning": "Trend is bullish but market phase is trending-down, RSI neutral, MACD slightly positive, ADX high indicating strong trend but direction uncertain. Already have LTCUSDT SHORT position, so HOLD per rules.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  }
+]

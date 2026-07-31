@@ -44,6 +44,13 @@ jobs:
         run: node tools/tradelab_telemetry.js
         continue-on-error: true
 
+      - name: Run AI Decider
+        run: node tools/tradelab_ai_full_scan.js
+        continue-on-error: true
+        env:
+          AI_PROVIDER: deepseek
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+
       - name: Commit and push results
         run: |
           git config user.name "TradeLab Bot"
