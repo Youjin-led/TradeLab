@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-31T06:49:19.692Z
+Generated: 2026-07-31T08:17:11.605Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -4619.52 USDT
+- **Total PnL:** -4707.32 USDT
 
 ## Active Locks
 
@@ -55,10 +55,10 @@ Status: **EMERGENCY_STOP**
 | ADAUSDT | sma-rsi | 1.4% | 140 | 0 | 41.2% | 95 |
 | ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 31.6% | 95 |
 | RENDERUSDT | sma-rsi | 1.4% | 140 | 0 | 25% | 95 |
-| DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| DOTUSDT | breakout | 1.4% | 140 | 0 | 38.1% | 95 |
 | ARBUSDT | breakout | 1.4% | 140 | 0 | 50% | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| SEIUSDT | breakout | 1.4% | 140 | 0 | 41.2% | 95 |
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 30.8% | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.11% / 5% max
+- **Heat:** 0.06% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 4
-- **Sector Distribution:** {"alt_small":1,"alt_mid":2,"other":1}
+- **Active Positions:** 2
+- **Sector Distribution:** {"alt_small":1,"other":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 70.22%
-- **Total PnL:** -4619.52 USDT
-- **Total Exposure:** 15512.96 USDT
+- **Margin Level:** 69.83%
+- **Total PnL:** -4707.32 USDT
+- **Total Exposure:** 15600.76 USDT
 - **Warnings:**
-  - 🔴 margin_call: 70.22% (threshold: 100%)
+  - 🔴 margin_call: 69.83% (threshold: 100%)
 
 ## Statistics
 

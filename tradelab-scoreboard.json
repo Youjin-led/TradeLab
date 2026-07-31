@@ -1,60 +1,32 @@
 {
-  "generatedAt": "2026-07-31T06:49:19.786Z",
-  "incubationUpdatedAt": "2026-07-31T06:49:10.237Z",
+  "generatedAt": "2026-07-31T08:17:11.704Z",
+  "incubationUpdatedAt": "2026-07-31T08:17:07.157Z",
   "gate": "BLOCKED",
   "killSwitch": {
     "active": true,
     "metrics": {
       "candidates": 44,
-      "incubating": 4,
-      "rejected": 19,
-      "forwardTrades": 533,
-      "forwardPnl": -4619.52,
-      "avgPerTrade": -8.67,
-      "rejectedRatio": 0.432,
+      "incubating": 2,
+      "rejected": 11,
+      "forwardTrades": 568,
+      "forwardPnl": -4707.32,
+      "avgPerTrade": -8.29,
+      "rejectedRatio": 0.25,
       "activePositiveRatio": 0.5
     }
   },
   "summary": {
     "candidates": 44,
-    "live": 4,
+    "live": 2,
     "probation": 0,
-    "quarantined": 21,
-    "rejected": 19,
+    "quarantined": 31,
+    "rejected": 11,
     "readyForReview": 0,
     "improving": 0,
     "deteriorating": 0,
-    "collecting": 2
+    "collecting": 1
   },
   "leaders": [
-    {
-      "key": "INJUSDT:4h:sma-rsi",
-      "symbol": "INJUSDT",
-      "interval": "4h",
-      "strategy": "sma-rsi",
-      "status": "incubating",
-      "decision": "watch",
-      "health": "Healthy",
-      "healthScore": 100,
-      "liveObservations": 360,
-      "forwardPaperTrades": 24,
-      "forwardPaperPnl": 1474.73,
-      "profitFactor": 1.4,
-      "maxDrawdownPct": 8.52,
-      "maxLossStreak": 3,
-      "lastSignal": "SELL",
-      "forwardOpenPosition": "SHORT",
-      "gateDecision": "blocked",
-      "gateBlockers": [
-        "status is incubating, expected ready-for-review",
-        "profit factor 1.4 < 1.6",
-        "drawdown 8.52% > 8%",
-        "loss streak 3 > 2"
-      ],
-      "progress": 60,
-      "trend": "phase-mismatch",
-      "nextStep": "status is incubating, expected ready-for-review"
-    },
     {
       "key": "LTCUSDT:4h:breakout",
       "symbol": "LTCUSDT",
@@ -110,70 +82,12 @@
         "critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50"
       ],
       "progress": 27,
-      "trend": "collecting",
-      "nextStep": "status is incubating, expected ready-for-review"
-    },
-    {
-      "key": "NEARUSDT:4h:sma-rsi:auto",
-      "symbol": "NEARUSDT",
-      "interval": "4h",
-      "strategy": "sma-rsi",
-      "status": "incubating",
-      "decision": "unknown",
-      "health": "unknown",
-      "healthScore": 0,
-      "liveObservations": 0,
-      "forwardPaperTrades": [],
-      "forwardPaperPnl": 0,
-      "profitFactor": 0,
-      "maxDrawdownPct": 0,
-      "maxLossStreak": 0,
-      "lastSignal": "unknown",
-      "forwardOpenPosition": "unknown",
-      "gateDecision": "blocked",
-      "gateBlockers": [
-        "status is incubating, expected ready-for-review",
-        "health is unknown, expected Healthy",
-        "live observations 0 < 30",
-        "forward paper trades  < 15",
-        "profit factor 0 < 1.6"
-      ],
-      "progress": 25,
       "trend": "collecting",
       "nextStep": "status is incubating, expected ready-for-review"
     }
   ],
   "risks": [
     {
-      "key": "NEARUSDT:4h:sma-rsi:auto",
-      "symbol": "NEARUSDT",
-      "interval": "4h",
-      "strategy": "sma-rsi",
-      "status": "incubating",
-      "decision": "unknown",
-      "health": "unknown",
-      "healthScore": 0,
-      "liveObservations": 0,
-      "forwardPaperTrades": [],
-      "forwardPaperPnl": 0,
-      "profitFactor": 0,
-      "maxDrawdownPct": 0,
-      "maxLossStreak": 0,
-      "lastSignal": "unknown",
-      "forwardOpenPosition": "unknown",
-      "gateDecision": "blocked",
-      "gateBlockers": [
-        "status is incubating, expected ready-for-review",
-        "health is unknown, expected Healthy",
-        "live observations 0 < 30",
-        "forward paper trades  < 15",
-        "profit factor 0 < 1.6"
-      ],
-      "progress": 25,
-      "trend": "collecting",
-      "nextStep": "status is incubating, expected ready-for-review"
-    },
-    {
       "key": "SUIUSDT:4h:breakout",
       "symbol": "SUIUSDT",
       "interval": "4h",
@@ -228,34 +142,6 @@
         "loss streak 3 > 2"
       ],
       "progress": 52,
-      "trend": "phase-mismatch",
-      "nextStep": "status is incubating, expected ready-for-review"
-    },
-    {
-      "key": "INJUSDT:4h:sma-rsi",
-      "symbol": "INJUSDT",
-      "interval": "4h",
-      "strategy": "sma-rsi",
-      "status": "incubating",
-      "decision": "watch",
-      "health": "Healthy",
-      "healthScore": 100,
-      "liveObservations": 360,
-      "forwardPaperTrades": 24,
-      "forwardPaperPnl": 1474.73,
-      "profitFactor": 1.4,
-      "maxDrawdownPct": 8.52,
-      "maxLossStreak": 3,
-      "lastSignal": "SELL",
-      "forwardOpenPosition": "SHORT",
-      "gateDecision": "blocked",
-      "gateBlockers": [
-        "status is incubating, expected ready-for-review",
-        "profit factor 1.4 < 1.6",
-        "drawdown 8.52% > 8%",
-        "loss streak 3 > 2"
-      ],
-      "progress": 60,
       "trend": "phase-mismatch",
       "nextStep": "status is incubating, expected ready-for-review"
     }
@@ -270,7 +156,7 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 376,
+      "liveObservations": 377,
       "forwardPaperTrades": 28,
       "forwardPaperPnl": 708.89,
       "profitFactor": 0,
@@ -312,7 +198,7 @@
         "forward paper trades 10 < 15",
         "profit factor 1.49 < 1.6",
         "loss streak 3 > 2",
-        "critical alerts: walk-forward overfit risk; quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21"
+        "critical alerts: walk-forward overfit risk; quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 39,
       "trend": "quarantined",
@@ -412,8 +298,8 @@
       "symbol": "INJUSDT",
       "interval": "4h",
       "strategy": "sma-rsi",
-      "status": "incubating",
-      "decision": "watch",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Healthy",
       "healthScore": 100,
       "liveObservations": 360,
@@ -426,14 +312,15 @@
       "forwardOpenPosition": "SHORT",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is incubating, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "profit factor 1.4 < 1.6",
         "drawdown 8.52% > 8%",
-        "loss streak 3 > 2"
+        "loss streak 3 > 2",
+        "critical alerts: quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
-      "progress": 60,
-      "trend": "phase-mismatch",
-      "nextStep": "status is incubating, expected ready-for-review"
+      "progress": 53,
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "LINKUSDT:1h:breakout",
@@ -476,7 +363,7 @@
       "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 374,
+      "liveObservations": 375,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": -131.9,
       "profitFactor": 0,
@@ -566,7 +453,7 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 448,
+      "liveObservations": 449,
       "forwardPaperTrades": 14,
       "forwardPaperPnl": 346.14,
       "profitFactor": 0,
@@ -594,7 +481,7 @@
       "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 474,
+      "liveObservations": 475,
       "forwardPaperTrades": 12,
       "forwardPaperPnl": -158.55,
       "profitFactor": 0,
@@ -623,7 +510,7 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 325,
+      "liveObservations": 326,
       "forwardPaperTrades": 8,
       "forwardPaperPnl": -150.02,
       "profitFactor": 0,
@@ -665,7 +552,7 @@
         "health is Blocked, expected Healthy",
         "forward paper trades 4 < 15",
         "profit factor 0 < 1.6",
-        "critical alerts: quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21"
+        "critical alerts: quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 38,
       "trend": "quarantined",
@@ -695,7 +582,7 @@
         "forward paper trades 6 < 15",
         "profit factor 1.16 < 1.6",
         "loss streak 5 > 2",
-        "critical alerts: loss streak 5; walk-forward overfit risk; quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21"
+        "critical alerts: loss streak 5; walk-forward overfit risk; quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 31,
       "trend": "quarantined",
@@ -737,12 +624,12 @@
       "status": "rejected",
       "decision": "reject",
       "health": "Blocked",
-      "healthScore": 33,
-      "liveObservations": 301,
+      "healthScore": 25,
+      "liveObservations": 302,
       "forwardPaperTrades": 33,
       "forwardPaperPnl": 152.04,
-      "profitFactor": 1.02,
-      "maxDrawdownPct": 8.03,
+      "profitFactor": 1.2,
+      "maxDrawdownPct": 9.04,
       "maxLossStreak": 6,
       "lastSignal": "WAIT",
       "forwardOpenPosition": "SHORT",
@@ -750,12 +637,12 @@
       "gateBlockers": [
         "status is rejected, expected ready-for-review",
         "health is Blocked, expected Healthy",
-        "profit factor 1.02 < 1.6",
-        "drawdown 8.03% > 8%",
+        "profit factor 1.2 < 1.6",
+        "drawdown 9.04% > 8%",
         "loss streak 6 > 2",
-        "critical alerts: loss streak 6; profit factor 1.02 < 1.05; walk-forward overfit risk"
+        "critical alerts: drawdown 9.04% >= limit 9%; loss streak 6; walk-forward overfit risk"
       ],
-      "progress": 36,
+      "progress": 38,
       "trend": "rejected",
       "nextStep": "do not revive without a new research pass"
     },
@@ -782,7 +669,7 @@
         "health is Blocked, expected Healthy",
         "profit factor 0.79 < 1.6",
         "loss streak 6 > 2",
-        "critical alerts: loss streak 6; profit factor 0.79 < 1.05; walk-forward overfit risk; quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21"
+        "critical alerts: loss streak 6; profit factor 0.79 < 1.05; walk-forward overfit risk; quarantine: weak strategy: PnL -5366.2, trades 107, winrate 34%, max DD 21.37%, blocked 19/21; quarantine: weak symbol: PnL -809.27, trades 9, winrate 22%, max DD 7.6%"
       ],
       "progress": 39,
       "trend": "quarantined",
@@ -793,8 +680,8 @@
       "symbol": "DOGEUSDT",
       "interval": "1h",
       "strategy": "breakout",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 42,
       "liveObservations": 582,
@@ -807,13 +694,14 @@
       "forwardOpenPosition": "LONG",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
-        "profit factor 0 < 1.6"
+        "profit factor 0 < 1.6",
+        "critical alerts: quarantine: weak symbol: PnL -809.27, trades 9, winrate 22%, max DD 7.6%"
       ],
-      "progress": 54,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "progress": 53,
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "LTCUSDT:1h:sma-rsi",
@@ -900,7 +788,7 @@
         "profit factor 0.92 < 1.6",
         "drawdown 9.64% > 8%",
         "loss streak 5 > 2",
-        "critical alerts: drawdown 9.64% >= limit 9%; loss streak 5; profit factor 0.92 < 1.05; walk-forward overfit risk; quarantine: weak candidate: forward PnL -1566.98, PF 1.4, max DD 8.26%, health Blocked"
+        "critical alerts: drawdown 9.64% >= limit 9%; loss streak 5; profit factor 0.92 < 1.05; walk-forward overfit risk; quarantine: weak candidate: forward PnL -1566.98, PF 1.4, max DD 8.26%, health Blocked; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 29,
       "trend": "quarantined",
@@ -930,7 +818,7 @@
         "profit factor 1.2 < 1.6",
         "drawdown 8.73% > 8%",
         "loss streak 4 > 2",
-        "critical alerts: loss streak 4; quarantine: weak candidate: forward PnL -468.08, PF 1.22, max DD 6.96%, health Blocked"
+        "critical alerts: loss streak 4; quarantine: weak candidate: forward PnL -468.08, PF 1.22, max DD 6.96%, health Blocked; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 38,
       "trend": "quarantined",
@@ -971,8 +859,8 @@
       "symbol": "NEARUSDT",
       "interval": "4h",
       "strategy": "sma-rsi",
-      "status": "incubating",
-      "decision": "unknown",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "unknown",
       "healthScore": 0,
       "liveObservations": 0,
@@ -985,15 +873,16 @@
       "forwardOpenPosition": "unknown",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is incubating, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is unknown, expected Healthy",
         "live observations 0 < 30",
         "forward paper trades  < 15",
-        "profit factor 0 < 1.6"
+        "profit factor 0 < 1.6",
+        "critical alerts: quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
-      "progress": 25,
-      "trend": "collecting",
-      "nextStep": "status is incubating, expected ready-for-review"
+      "progress": 20,
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "FILUSDT:4h:sma-rsi",
@@ -1019,7 +908,7 @@
         "forward paper trades 4 < 15",
         "profit factor 0.64 < 1.6",
         "loss streak 4 > 2",
-        "critical alerts: loss streak 4; profit factor 0.64 < 1.05; quarantine: weak candidate: forward PnL -218.6, PF 0.74, max DD 5.2%, health Blocked"
+        "critical alerts: loss streak 4; profit factor 0.64 < 1.05; quarantine: weak candidate: forward PnL -218.6, PF 0.74, max DD 5.2%, health Blocked; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 26,
       "trend": "quarantined",
@@ -1030,8 +919,8 @@
       "symbol": "DOGEUSDT",
       "interval": "4h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 0,
       "liveObservations": 454,
@@ -1044,25 +933,25 @@
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "forward paper trades 10 < 15",
         "profit factor 0.89 < 1.6",
         "drawdown 9.39% > 8%",
         "loss streak 4 > 2",
-        "critical alerts: drawdown 9.39% >= limit 9%; loss streak 4; profit factor 0.89 < 1.05; walk-forward overfit risk"
+        "critical alerts: drawdown 9.39% >= limit 9%; loss streak 4; profit factor 0.89 < 1.05; walk-forward overfit risk; quarantine: weak candidate: forward PnL -532.1, PF 0.92, max DD 9.12%, health Blocked"
       ],
       "progress": 29,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "ADAUSDT:4h:sma-rsi",
       "symbol": "ADAUSDT",
       "interval": "4h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 47,
       "liveObservations": 212,
@@ -1075,24 +964,24 @@
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "profit factor 1.07 < 1.6",
         "drawdown 8.34% > 8%",
         "loss streak 5 > 2",
-        "critical alerts: loss streak 5; walk-forward overfit risk"
+        "critical alerts: loss streak 5; walk-forward overfit risk; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 37,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "ATOMUSDT:1h:sma-rsi",
       "symbol": "ATOMUSDT",
       "interval": "1h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 24,
       "liveObservations": 206,
@@ -1105,15 +994,15 @@
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "profit factor 0.68 < 1.6",
         "loss streak 8 > 2",
-        "critical alerts: loss streak 8; profit factor 0.68 < 1.05"
+        "critical alerts: loss streak 8; profit factor 0.68 < 1.05; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 39,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "RENDERUSDT:4h:sma-rsi",
@@ -1140,7 +1029,7 @@
         "profit factor 0.75 < 1.6",
         "drawdown 9.27% > 8%",
         "loss streak 4 > 2",
-        "critical alerts: drawdown 9.27% >= limit 9%; loss streak 4; profit factor 0.75 < 1.05; quarantine: weak candidate: forward PnL -227.71, PF 0.5, max DD 9.84%, health Blocked"
+        "critical alerts: drawdown 9.27% >= limit 9%; loss streak 4; profit factor 0.75 < 1.05; quarantine: weak candidate: forward PnL -227.71, PF 0.5, max DD 9.84%, health Blocked; quarantine: weak candidate: forward PnL -290.69, PF 0.48, max DD 9.54%, health Blocked"
       ],
       "progress": 30,
       "trend": "quarantined",
@@ -1154,26 +1043,23 @@
       "status": "quarantined",
       "decision": "quarantine",
       "health": "Blocked",
-      "healthScore": 2,
-      "liveObservations": 53,
-      "forwardPaperTrades": 2,
-      "forwardPaperPnl": -264.22,
-      "profitFactor": 0.49,
-      "maxDrawdownPct": 10.07,
-      "maxLossStreak": 3,
+      "healthScore": 42,
+      "liveObservations": 54,
+      "forwardPaperTrades": 21,
+      "forwardPaperPnl": -324,
+      "profitFactor": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
       "lastSignal": "WAIT",
-      "forwardOpenPosition": "none",
+      "forwardOpenPosition": "SHORT",
       "gateDecision": "blocked",
       "gateBlockers": [
         "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
-        "forward paper trades 2 < 15",
-        "profit factor 0.49 < 1.6",
-        "drawdown 10.07% > 8%",
-        "loss streak 3 > 2",
-        "critical alerts: drawdown 10.07% >= limit 9%; profit factor 0.49 < 1.05; quarantine: weak candidate: forward PnL -970.06, PF 0, max DD 0%, health Blocked; quarantine: weak candidate: forward PnL -264.22, PF 0.49, max DD 10.07%, health Blocked"
+        "profit factor 0 < 1.6",
+        "critical alerts: quarantine: weak candidate: forward PnL -264.22, PF 0.49, max DD 10.07%, health Blocked"
       ],
-      "progress": 17,
+      "progress": 53,
       "trend": "quarantined",
       "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
@@ -1185,25 +1071,24 @@
       "status": "quarantined",
       "decision": "quarantine",
       "health": "Blocked",
-      "healthScore": 24,
-      "liveObservations": 195,
+      "healthScore": 42,
+      "liveObservations": 196,
       "forwardPaperTrades": 10,
       "forwardPaperPnl": -255.6,
-      "profitFactor": 0.94,
-      "maxDrawdownPct": 7.92,
-      "maxLossStreak": 4,
-      "lastSignal": "SELL",
+      "profitFactor": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
+      "lastSignal": "WAIT",
       "forwardOpenPosition": "SHORT",
       "gateDecision": "blocked",
       "gateBlockers": [
         "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "forward paper trades 10 < 15",
-        "profit factor 0.94 < 1.6",
-        "loss streak 4 > 2",
-        "critical alerts: loss streak 4; profit factor 0.94 < 1.05; quarantine: weak candidate: forward PnL -491.34, PF 0, max DD 0%, health Blocked"
+        "profit factor 0 < 1.6",
+        "critical alerts: quarantine: weak candidate: forward PnL -491.34, PF 0, max DD 0%, health Blocked"
       ],
-      "progress": 30,
+      "progress": 45,
       "trend": "quarantined",
       "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
@@ -1215,13 +1100,13 @@
       "status": "rejected",
       "decision": "reject",
       "health": "Blocked",
-      "healthScore": 47,
-      "liveObservations": 407,
+      "healthScore": 42,
+      "liveObservations": 408,
       "forwardPaperTrades": 7,
       "forwardPaperPnl": -140.72,
-      "profitFactor": 1.3,
-      "maxDrawdownPct": 4.92,
-      "maxLossStreak": 3,
+      "profitFactor": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
       "lastSignal": "WAIT",
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
@@ -1229,11 +1114,9 @@
         "status is rejected, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "forward paper trades 7 < 15",
-        "profit factor 1.3 < 1.6",
-        "loss streak 3 > 2",
-        "critical alerts: walk-forward overfit risk"
+        "profit factor 0 < 1.6"
       ],
-      "progress": 34,
+      "progress": 43,
       "trend": "rejected",
       "nextStep": "do not revive without a new research pass"
     },
@@ -1246,25 +1129,24 @@
       "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 2,
-      "liveObservations": 65,
-      "forwardPaperTrades": 2,
-      "forwardPaperPnl": -276.46,
-      "profitFactor": 0.7,
-      "maxDrawdownPct": 9.31,
-      "maxLossStreak": 6,
-      "lastSignal": "BUY",
-      "forwardOpenPosition": "none",
+      "liveObservations": 66,
+      "forwardPaperTrades": 17,
+      "forwardPaperPnl": -298.87,
+      "profitFactor": 0.69,
+      "maxDrawdownPct": 9.29,
+      "maxLossStreak": 3,
+      "lastSignal": "WAIT",
+      "forwardOpenPosition": "SHORT",
       "gateDecision": "blocked",
       "gateBlockers": [
         "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
-        "forward paper trades 2 < 15",
-        "profit factor 0.7 < 1.6",
-        "drawdown 9.31% > 8%",
-        "loss streak 6 > 2",
-        "critical alerts: drawdown 9.31% >= limit 9%; loss streak 6; profit factor 0.70 < 1.05; quarantine: weak candidate: forward PnL -276.46, PF 0.7, max DD 9.31%, health Blocked"
+        "profit factor 0.69 < 1.6",
+        "drawdown 9.29% > 8%",
+        "loss streak 3 > 2",
+        "critical alerts: drawdown 9.29% >= limit 9%; profit factor 0.69 < 1.05; quarantine: weak candidate: forward PnL -276.46, PF 0.7, max DD 9.31%, health Blocked"
       ],
-      "progress": 19,
+      "progress": 34,
       "trend": "quarantined",
       "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
@@ -1273,8 +1155,8 @@
       "symbol": "OPUSDT",
       "interval": "1h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 2,
       "liveObservations": 154,
@@ -1287,16 +1169,16 @@
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "profit factor 0.71 < 1.6",
         "drawdown 9% > 8%",
         "loss streak 3 > 2",
-        "critical alerts: drawdown 9.00% >= limit 9%; profit factor 0.71 < 1.05"
+        "critical alerts: drawdown 9.00% >= limit 9%; profit factor 0.71 < 1.05; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 34,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "DOTUSDT:4h:breakout",
@@ -1306,13 +1188,13 @@
       "status": "rejected",
       "decision": "reject",
       "health": "Blocked",
-      "healthScore": 42,
-      "liveObservations": 125,
+      "healthScore": 2,
+      "liveObservations": 126,
       "forwardPaperTrades": 9,
       "forwardPaperPnl": -447.89,
-      "profitFactor": 0,
-      "maxDrawdownPct": 0,
-      "maxLossStreak": 0,
+      "profitFactor": 0.6,
+      "maxDrawdownPct": 9.62,
+      "maxLossStreak": 5,
       "lastSignal": "WAIT",
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
@@ -1320,9 +1202,12 @@
         "status is rejected, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "forward paper trades 9 < 15",
-        "profit factor 0 < 1.6"
+        "profit factor 0.6 < 1.6",
+        "drawdown 9.62% > 8%",
+        "loss streak 5 > 2",
+        "critical alerts: drawdown 9.62% >= limit 8%; loss streak 5; profit factor 0.60 < 1.05"
       ],
-      "progress": 46,
+      "progress": 25,
       "trend": "rejected",
       "nextStep": "do not revive without a new research pass"
     },
@@ -1335,7 +1220,7 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 177,
+      "liveObservations": 178,
       "forwardPaperTrades": 26,
       "forwardPaperPnl": -798.67,
       "profitFactor": 0,
@@ -1362,7 +1247,7 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 120,
+      "liveObservations": 121,
       "forwardPaperTrades": 19,
       "forwardPaperPnl": -215.93,
       "profitFactor": 0,
@@ -1404,7 +1289,7 @@
         "profit factor 1.04 < 1.6",
         "drawdown 9.45% > 8%",
         "loss streak 5 > 2",
-        "critical alerts: drawdown 9.45% >= limit 9%; loss streak 5; profit factor 1.04 < 1.05; quarantine: weak candidate: forward PnL -315.94, PF 1.03, max DD 9.15%, health Blocked"
+        "critical alerts: drawdown 9.45% >= limit 9%; loss streak 5; profit factor 1.04 < 1.05; quarantine: weak candidate: forward PnL -315.94, PF 1.03, max DD 9.15%, health Blocked; quarantine: weak candidate: forward PnL -392.07, PF 0, max DD 0%, health Blocked"
       ],
       "progress": 36,
       "trend": "quarantined",
@@ -1419,7 +1304,7 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 42,
-      "liveObservations": 130,
+      "liveObservations": 131,
       "forwardPaperTrades": 3,
       "forwardPaperPnl": 126.12,
       "profitFactor": 0,
@@ -1443,8 +1328,8 @@
       "symbol": "SEIUSDT",
       "interval": "1h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 2,
       "liveObservations": 91,
@@ -1457,24 +1342,24 @@
       "forwardOpenPosition": "LONG",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "profit factor 0.8 < 1.6",
         "drawdown 9.36% > 8%",
         "loss streak 5 > 2",
-        "critical alerts: drawdown 9.36% >= limit 9%; loss streak 5; profit factor 0.80 < 1.05"
+        "critical alerts: drawdown 9.36% >= limit 9%; loss streak 5; profit factor 0.80 < 1.05; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 35,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "JUPUSDT:4h:sma-rsi",
       "symbol": "JUPUSDT",
       "interval": "4h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 2,
       "liveObservations": 91,
@@ -1487,17 +1372,17 @@
       "forwardOpenPosition": "SHORT",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "forward paper trades 14 < 15",
         "profit factor 0.58 < 1.6",
         "drawdown 9.67% > 8%",
         "loss streak 6 > 2",
-        "critical alerts: drawdown 9.67% >= limit 9%; loss streak 6; profit factor 0.58 < 1.05"
+        "critical alerts: drawdown 9.67% >= limit 9%; loss streak 6; profit factor 0.58 < 1.05; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 31,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     },
     {
       "key": "BNBUSDT:4h:breakout",
@@ -1508,25 +1393,25 @@
       "decision": "reject",
       "health": "Blocked",
       "healthScore": 2,
-      "liveObservations": 91,
-      "forwardPaperTrades": 8,
-      "forwardPaperPnl": -182.58,
-      "profitFactor": 0.52,
-      "maxDrawdownPct": 9.91,
+      "liveObservations": 92,
+      "forwardPaperTrades": 9,
+      "forwardPaperPnl": -188.19,
+      "profitFactor": 0.75,
+      "maxDrawdownPct": 9.25,
       "maxLossStreak": 7,
-      "lastSignal": "WAIT",
-      "forwardOpenPosition": "LONG",
+      "lastSignal": "SELL",
+      "forwardOpenPosition": "none",
       "gateDecision": "blocked",
       "gateBlockers": [
         "status is rejected, expected ready-for-review",
         "health is Blocked, expected Healthy",
-        "forward paper trades 8 < 15",
-        "profit factor 0.52 < 1.6",
-        "drawdown 9.91% > 8%",
+        "forward paper trades 9 < 15",
+        "profit factor 0.75 < 1.6",
+        "drawdown 9.25% > 8%",
         "loss streak 7 > 2",
-        "critical alerts: drawdown 9.91% >= limit 9%; loss streak 7; profit factor 0.52 < 1.05"
+        "critical alerts: drawdown 9.25% >= limit 8%; loss streak 7; profit factor 0.75 < 1.05"
       ],
-      "progress": 24,
+      "progress": 27,
       "trend": "rejected",
       "nextStep": "do not revive without a new research pass"
     },
@@ -1535,8 +1420,8 @@
       "symbol": "BCHUSDT",
       "interval": "1h",
       "strategy": "sma-rsi",
-      "status": "rejected",
-      "decision": "reject",
+      "status": "quarantined",
+      "decision": "quarantine",
       "health": "Blocked",
       "healthScore": 25,
       "liveObservations": 91,
@@ -1549,16 +1434,16 @@
       "forwardOpenPosition": "none",
       "gateDecision": "blocked",
       "gateBlockers": [
-        "status is rejected, expected ready-for-review",
+        "status is quarantined, expected ready-for-review",
         "health is Blocked, expected Healthy",
         "profit factor 1.07 < 1.6",
         "drawdown 11.11% > 8%",
         "loss streak 6 > 2",
-        "critical alerts: drawdown 11.11% >= limit 9%; loss streak 6; walk-forward overfit risk"
+        "critical alerts: drawdown 11.11% >= limit 9%; loss streak 6; walk-forward overfit risk; quarantine: weak strategy: PnL -2038.17, trades 472443100421120, winrate 0%, max DD 7.6%, blocked 22/22"
       ],
       "progress": 37,
-      "trend": "rejected",
-      "nextStep": "do not revive without a new research pass"
+      "trend": "quarantined",
+      "nextStep": "stay quarantined until drawdown diagnostics clear it"
     }
   ]
 }
