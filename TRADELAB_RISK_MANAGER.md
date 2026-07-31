@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-31T17:44:21.054Z
+Generated: 2026-07-31T21:12:10.869Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.09% / 5% max
+- **Heat:** 0.06% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
+- **Active Positions:** 2
+- **Sector Distribution:** {"alt_small":1,"other":1}
 
 ## Trailing Stops
 
