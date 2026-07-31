@@ -305,7 +305,7 @@ async function handleAI(args) {
 
   try {
     // Fetch candles
-    const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=100`;
+    const url = `https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=100`;
     const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new Error('Binance API ' + response.status);
     const klines = await response.json();

@@ -53,9 +53,10 @@ async function fetchJSON(url) {
 
 // 1. Binance prices
 async function fetchBinancePrices() {
-  const resp = await fetch('https://api.binance.com/api/v3/ticker/24hr');
+  const resp = await fetch('https://data-api.binance.vision/api/v3/ticker/24hr');
   if (!resp.ok) return null;
   const data = await resp.json();
+  if (!Array.isArray(data)) return null;
   const result = {};
   for (const ticker of data) {
     if (SYMBOLS.includes(ticker.symbol)) {
@@ -119,9 +120,10 @@ async function fetchMarketData() {
 
 // 5. Binance candles (for technical analysis)
 async function fetchCandles(symbol, interval, limit) {
-  const resp = await fetch(`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit || 100}`);
+  const resp = await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit || 100}`);
   if (!resp.ok) return null;
   const data = await resp.json();
+  if (!Array.isArray(data)) return null;
   return data.map(k => ({
     time: k[0],
     open: parseFloat(k[1]),

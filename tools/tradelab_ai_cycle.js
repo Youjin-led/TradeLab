@@ -26,7 +26,7 @@ var ROOT = path.join(__dirname, '..');
 
 async function fetchCandles(symbol, interval, limit) {
   limit = limit || 100;
-  var url = 'https://api.binance.com/api/v3/klines?symbol=' + symbol +
+  var url = 'https://data-api.binance.vision/api/v3/klines?symbol=' + symbol +
     '&interval=' + interval + '&limit=' + limit;
 
   var controller = new AbortController();

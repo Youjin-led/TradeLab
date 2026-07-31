@@ -11,7 +11,7 @@ var ROOT = require('path').join(__dirname, '..');
 
 async function fetchCandles(symbol, interval, limit) {
   limit = limit || 100;
-  var url = 'https://api.binance.com/api/v3/klines?symbol=' + symbol + '&interval=' + interval + '&limit=' + limit;
+  var url = 'https://data-api.binance.vision/api/v3/klines?symbol=' + symbol + '&interval=' + interval + '&limit=' + limit;
   var response = await fetch(url, { signal: AbortSignal.timeout(15000) });
   if (!response.ok) throw new Error('Binance ' + response.status);
   var data = await response.json();

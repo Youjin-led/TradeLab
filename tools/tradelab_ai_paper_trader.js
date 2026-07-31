@@ -32,7 +32,7 @@ function log(msg) { console.log('[' + new Date().toISOString() + '] ' + msg); }
 
 function fetchCandles(symbol, interval, limit) {
   limit = limit || 100;
-  var url = 'https://api.binance.com/api/v3/klines?symbol=' + symbol + '&interval=' + interval + '&limit=' + limit;
+  var url = 'https://data-api.binance.vision/api/v3/klines?symbol=' + symbol + '&interval=' + interval + '&limit=' + limit;
   return fetch(url, { signal: AbortSignal.timeout(15000) })
     .then(function(r) { if (!r.ok) throw new Error('Binance ' + r.status); return r.json(); })
     .then(function(data) {
