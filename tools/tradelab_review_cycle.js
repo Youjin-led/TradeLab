@@ -60,6 +60,22 @@ async function reviewCycle() {
     marketPhase = phase.phase || 'unknown';
   } catch (_) { /* ignore */ }
 
+  // AI Decider: DeepSeek анализирует все пары
+  let aiScan = null;
+  try {
+    const aiResult = await aiFullScan.main();
+    aiScan = {
+      analyzed: (aiResult.results || []).length,
+      decisions: (aiResult.results || []).reduce(function (acc, r) {
+        acc[r.decision] = (acc[r.decision] || 0) + 1;
+        return acc;
+      }, {}),
+      source: aiResult.results && aiResult.results[0] ? aiResult.results[0].source : 'unknown'
+    };
+  } catch (error) {
+    aiScan = { error: error.message };
+  }
+
   return {
     generatedAt: new Date().toISOString(),
     marketPhase,
@@ -111,27 +127,9 @@ async function reviewCycle() {
       matches: newsResult.matches || 0,
       errors: (newsResult.errors || []).length
     } : null,
-    aiScan: null
+    aiScan: aiScan
   };
-
-  // AI Decider: DeepSeek анализирует все пары
-  try {
-    const aiResult = await aiFullScan.main();
-    result.aiScan = {
-      analyzed: (aiResult.results || []).length,
-      decisions: (aiResult.results || []).reduce(function (acc, r) {
-        acc[r.decision] = (acc[r.decision] || 0) + 1;
-        return acc;
-      }, {}),
-      source: aiResult.results && aiResult.results[0] ? aiResult.results[0].source : 'unknown'
-    };
-  } catch (error) {
-    result.aiScan = { error: error.message };
-  }
-
-  return result;
 }
-
 
 async function main() {
   const result = await reviewCycle();
