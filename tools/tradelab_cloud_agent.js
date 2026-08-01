@@ -5,10 +5,12 @@
  * Работает 24/7 бесплатно на Cloudflare Workers.
  *
  * Источники данных:
- * - Binance: цены, funding rate, open interest
+ * - OKX: цены, funding rate, свечи (основной)
+ * - Bybit / Gate.io: фолбэки
  * - CoinGecko: BTC dominance, market cap, volume
  * - Alternative.me: Fear & Greed Index
- * - CryptoPanic: новости
+ *
+ * Binance блокирует Cloudflare Workers (403), поэтому здесь не используется.
  *
  * Cron Triggers:
  * - Каждый час: обновление цен и метрик
@@ -43,41 +45,82 @@ async function sendMessage(chatId, text) {
 
 // ===== DATA COLLECTION =====
 
-async function fetchJSON(url) {
+async function fetchJSON(url, timeoutMs) {
   try {
-    const resp = await fetch(url, { redirect: 'follow' });
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeoutMs || 15000);
+    const resp = await fetch(url, { redirect: 'follow', signal: ctrl.signal, headers: { 'User-Agent': 'TradeLab/1.0' } });
+    clearTimeout(t);
     if (!resp.ok) return null;
     return await resp.json();
   } catch { return null; }
 }
 
-// 1. Binance prices
-async function fetchBinancePrices() {
-  const resp = await fetch('https://data-api.binance.vision/api/v3/ticker/24hr');
-  if (!resp.ok) return null;
-  const data = await resp.json();
-  if (!Array.isArray(data)) return null;
-  const result = {};
-  for (const ticker of data) {
-    if (SYMBOLS.includes(ticker.symbol)) {
-      result[ticker.symbol] = {
-        price: parseFloat(ticker.lastPrice),
-        change24h: parseFloat(ticker.priceChangePercent),
-        volume: parseFloat(ticker.quoteVolume),
-        high: parseFloat(ticker.highPrice),
-        low: parseFloat(ticker.lowPrice)
-      };
+// Binance blocks Cloudflare IPs (403), so use OKX (primary), Bybit, Gate as fallbacks.
+function toOkx(symbol) { return symbol.replace('USDT', '-USDT'); }
+function toGate(symbol) { return symbol.replace('USDT', '_USDT'); }
+
+// 1. Prices — OKX → Bybit → Gate
+async function fetchPrices() {
+  const okx = await fetchJSON('https://www.okx.com/api/v5/market/tickers?instType=SPOT');
+  if (okx && okx.code === '0' && Array.isArray(okx.data)) {
+    const result = {};
+    for (const t of okx.data) {
+      const sym = t.instId.replace('-', '');
+      if (SYMBOLS.includes(sym)) {
+        const last = parseFloat(t.last);
+        const open = parseFloat(t.open24h);
+        result[sym] = {
+          price: last,
+          change24h: open ? Number(((last - open) / open * 100).toFixed(2)) : 0,
+          volume: parseFloat(t.volCcy24h || 0),
+          high: parseFloat(t.high24h || 0),
+          low: parseFloat(t.low24h || 0)
+        };
+      }
     }
+    if (Object.keys(result).length > 0) return result;
   }
-  return result;
+  const bybit = await fetchJSON('https://api.bybit.com/v5/market/tickers?category=spot');
+  if (bybit && bybit.retCode === 0 && Array.isArray(bybit.result?.list)) {
+    const result = {};
+    for (const t of bybit.result.list) {
+      if (SYMBOLS.includes(t.symbol)) {
+        result[t.symbol] = {
+          price: parseFloat(t.lastPrice || 0),
+          change24h: parseFloat(t.price24hPcnt || 0) * 100,
+          volume: parseFloat(t.turnover24h || 0),
+          high: parseFloat(t.highPrice24h || 0),
+          low: parseFloat(t.lowPrice24h || 0)
+        };
+      }
+    }
+    if (Object.keys(result).length > 0) return result;
+  }
+  const gate = await fetchJSON('https://api.gateio.ws/api/v4/spot/tickers');
+  if (Array.isArray(gate)) {
+    const result = {};
+    for (const t of gate) {
+      const sym = t.currency_pair.replace('_', '');
+      if (SYMBOLS.includes(sym)) {
+        result[sym] = {
+          price: parseFloat(t.last || 0),
+          change24h: parseFloat(t.change_percentage || 0),
+          volume: parseFloat(t.quote_volume || 0),
+          high: parseFloat(t.high_24h || 0),
+          low: parseFloat(t.low_24h || 0)
+        };
+      }
+    }
+    if (Object.keys(result).length > 0) return result;
+  }
+  return null;
 }
 
 // 2. Fear & Greed Index
 async function fetchFearGreed() {
-  const resp = await fetch('https://api.alternative.me/fng/?limit=7');
-  if (!resp.ok) return null;
-  const data = await resp.json();
-  if (!data.data) return null;
+  const data = await fetchJSON('https://api.alternative.me/fng/?limit=7');
+  if (!data || !data.data) return null;
   return data.data.map(d => ({
     value: parseInt(d.value),
     classification: d.value_classification,
@@ -85,53 +128,75 @@ async function fetchFearGreed() {
   }));
 }
 
-// 3. Binance funding rates
+// 3. Funding rates — OKX swaps
 async function fetchFundingRates() {
   const rates = {};
   for (const symbol of SYMBOLS) {
-    try {
-      const resp = await fetch(`https://fapi.binance.com/fapi/v1/fundingRate?symbol=${symbol}&limit=1`);
-      if (resp.ok) {
-        const data = await resp.json();
-        if (data.length > 0) {
-          rates[symbol] = {
-            rate: parseFloat(data[0].fundingRate),
-            time: data[0].fundingTime
-          };
-        }
-      }
-    } catch {}
+    const data = await fetchJSON(`https://www.okx.com/api/v5/public/funding-rate?instId=${toOkx(symbol)}-SWAP`);
+    if (data && data.code === '0' && data.data && data.data[0]) {
+      rates[symbol] = {
+        rate: parseFloat(data.data[0].fundingRate),
+        time: parseInt(data.data[0].fundingTime || 0)
+      };
+    }
   }
   return rates;
 }
 
-// 4. BTC Dominance from CoinGecko
+// 4. BTC Dominance from CoinGecko (rate-limited, retry once)
 async function fetchMarketData() {
-  const resp = await fetch('https://api.coingecko.com/api/v3/global');
-  if (!resp.ok) return null;
-  const data = await resp.json();
-  return {
-    btcDominance: data.data?.market_cap_percentage?.btc || 0,
-    totalMarketCap: data.data?.total_market_cap?.usd || 0,
-    totalVolume: data.data?.total_volume?.usd || 0,
-    marketCapChange24h: data.data?.market_cap_change_percentage_24h_usd || 0
-  };
+  for (let i = 0; i < 2; i++) {
+    const data = await fetchJSON('https://api.coingecko.com/api/v3/global', 20000);
+    if (data && data.data) {
+      return {
+        btcDominance: data.data.market_cap_percentage?.btc || 0,
+        totalMarketCap: data.data.total_market_cap?.usd || 0,
+        totalVolume: data.data.total_volume?.usd || 0,
+        marketCapChange24h: data.data.market_cap_change_percentage_24h_usd || 0
+      };
+    }
+  }
+  return null;
 }
 
-// 5. Binance candles (for technical analysis)
+// 5. Candles — OKX → Bybit → Gate (returns oldest→newest)
+const OKX_BARS = { '1h': '1H', '4h': '4H', '1d': '1D' };
+const BYBIT_MINUTES = { '1h': '60', '4h': '240', '1d': 'D' };
 async function fetchCandles(symbol, interval, limit) {
-  const resp = await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit || 100}`);
-  if (!resp.ok) return null;
-  const data = await resp.json();
-  if (!Array.isArray(data)) return null;
-  return data.map(k => ({
-    time: k[0],
-    open: parseFloat(k[1]),
-    high: parseFloat(k[2]),
-    low: parseFloat(k[3]),
-    close: parseFloat(k[4]),
-    volume: parseFloat(k[5])
-  }));
+  const okx = await fetchJSON(`https://www.okx.com/api/v5/market/candles?instId=${toOkx(symbol)}&bar=${OKX_BARS[interval] || '4H'}&limit=${limit || 100}`);
+  if (okx && okx.code === '0' && Array.isArray(okx.data)) {
+    return okx.data.map(k => ({
+      time: parseInt(k[0]),
+      open: parseFloat(k[1]),
+      high: parseFloat(k[2]),
+      low: parseFloat(k[3]),
+      close: parseFloat(k[4]),
+      volume: parseFloat(k[5])
+    })).reverse();
+  }
+  const bybit = await fetchJSON(`https://api.bybit.com/v5/market/kline?category=spot&symbol=${symbol}&interval=${BYBIT_MINUTES[interval] || '240'}&limit=${limit || 100}`);
+  if (bybit && bybit.retCode === 0 && Array.isArray(bybit.result?.list)) {
+    return bybit.result.list.map(k => ({
+      time: parseInt(k[0]),
+      open: parseFloat(k[1]),
+      high: parseFloat(k[2]),
+      low: parseFloat(k[3]),
+      close: parseFloat(k[4]),
+      volume: parseFloat(k[5])
+    })).reverse();
+  }
+  const gate = await fetchJSON(`https://api.gateio.ws/api/v4/spot/candlesticks?currency_pair=${toGate(symbol)}&interval=${interval || '4h'}&limit=${limit || 100}`);
+  if (Array.isArray(gate)) {
+    return gate.map(k => ({
+      time: parseInt(k[0]) * 1000,
+      open: parseFloat(k[5]),
+      high: parseFloat(k[3]),
+      low: parseFloat(k[4]),
+      close: parseFloat(k[2]),
+      volume: parseFloat(k[6])
+    }));
+  }
+  return null;
 }
 
 // ===== TECHNICAL ANALYSIS =====
@@ -185,7 +250,7 @@ async function collectAllData() {
   console.log('Collecting data...');
 
   const [prices, fearGreed, funding, market] = await Promise.all([
-    fetchBinancePrices(),
+    fetchPrices(),
     fetchFearGreed(),
     fetchFundingRates(),
     fetchMarketData()
