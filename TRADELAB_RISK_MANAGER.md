@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-01T03:27:15.396Z
+Generated: 2026-08-01T06:34:15.127Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3996.80 USDT
+- **Total PnL:** -4138.24 USDT
 
 ## Active Locks
 
@@ -62,7 +62,7 @@ Status: **EMERGENCY_STOP**
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 30.8% | 95 |
-| RENDERUSDT | breakout | 1.4% | 140 | 0.25 | 40% | 95 |
+| RENDERUSDT | breakout | 1.4% | 140 | 0 | 38.1% | 95 |
 | SOLUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 5% | 500 | 16.17 | 68.2% | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.09% / 5% max
+- **Heat:** 0.06% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
+- **Active Positions:** 2
+- **Sector Distribution:** {"alt_small":1,"other":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 74.77%
-- **Total PnL:** -3996.8 USDT
-- **Total Exposure:** 15841.92 USDT
+- **Margin Level:** 74.07%
+- **Total PnL:** -4138.24 USDT
+- **Total Exposure:** 15959.52 USDT
 - **Warnings:**
-  - 🔴 margin_call: 74.77% (threshold: 100%)
+  - 🔴 margin_call: 74.07% (threshold: 100%)
 
 ## Statistics
 
