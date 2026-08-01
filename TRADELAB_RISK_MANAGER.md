@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-07-31T21:12:10.869Z
+Generated: 2026-08-01T03:27:15.396Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3848.94 USDT
+- **Total PnL:** -3996.80 USDT
 
 ## Active Locks
 
@@ -56,7 +56,7 @@ Status: **EMERGENCY_STOP**
 | ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 31.6% | 95 |
 | RENDERUSDT | sma-rsi | 1.4% | 140 | 0 | 25% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | 0 | 40.9% | 95 |
-| ARBUSDT | breakout | 1.4% | 140 | 0 | 50% | 95 |
+| ARBUSDT | breakout | 1.4% | 140 | 0 | 45.5% | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | 0 | 44.4% | 95 |
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
@@ -72,15 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.06% / 5% max
+- **Heat:** 0.09% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 2
-- **Sector Distribution:** {"alt_small":1,"other":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 75.48%
-- **Total PnL:** -3848.94 USDT
-- **Total Exposure:** 15694.06 USDT
+- **Margin Level:** 74.77%
+- **Total PnL:** -3996.8 USDT
+- **Total Exposure:** 15841.92 USDT
 - **Warnings:**
-  - 🔴 margin_call: 75.48% (threshold: 100%)
+  - 🔴 margin_call: 74.77% (threshold: 100%)
 
 ## Statistics
 
