@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-01T17:05:49.298Z
+Generated: 2026-08-01T20:59:49.952Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -4192.50 USDT
+- **Total PnL:** -4057.06 USDT
 
 ## Active Locks
 
@@ -55,13 +55,13 @@ Status: **EMERGENCY_STOP**
 | ADAUSDT | sma-rsi | 1.4% | 140 | 0 | 41.2% | 95 |
 | ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 31.6% | 95 |
 | RENDERUSDT | sma-rsi | 1.4% | 140 | 0 | 25% | 95 |
-| DOTUSDT | breakout | 1.4% | 140 | 0 | 40.9% | 95 |
+| DOTUSDT | breakout | 1.4% | 140 | 0 | 43.5% | 95 |
 | ARBUSDT | breakout | 1.4% | 140 | 0 | 45.5% | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 1.4% | 140 | 0 | 44.4% | 95 |
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | 0 | 30% | 95 |
-| AVAXUSDT | breakout | 1.4% | 140 | 0 | 30.8% | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
 | RENDERUSDT | breakout | 1.4% | 140 | 0 | 38.1% | 95 |
 | SOLUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 73.82%
-- **Total PnL:** -4192.5 USDT
-- **Total Exposure:** 16013.78 USDT
+- **Margin Level:** 74.45%
+- **Total PnL:** -4057.06 USDT
+- **Total Exposure:** 15878.34 USDT
 - **Warnings:**
-  - 🔴 margin_call: 73.82% (threshold: 100%)
+  - 🔴 margin_call: 74.45% (threshold: 100%)
 
 ## Statistics
 
