@@ -341,9 +341,8 @@ async function scheduledHourly() {
     globalThis._lastUpdate = Date.now();
   }
 
-  // Send daily summary at 9:00 UTC
-  const hour = new Date().getUTCHours();
-  if (hour === 9 && CHAT_ID) {
+  // Send hourly market summary to Telegram
+  if (CHAT_ID) {
     await sendMessage(CHAT_ID, formatMarketOverview(data));
   }
 
@@ -409,6 +408,41 @@ async function handleStatus() {
   return lines.join('\n');
 }
 
+async function handlePnl() {
+  const state = await fetchJSON(`${GITHUB_RAW}/tradelab-incubation-state.json`);
+  if (!state || !state.candidates) return 'No PnL data yet.';
+
+  const candidates = Object.values(state.candidates);
+  let total = 0, wins = 0, losses = 0;
+  const perSym = [];
+
+  for (const c of candidates) {
+    const trades = (c.paperLedger && c.paperLedger.trades) || [];
+    let s = 0;
+    for (const t of trades) {
+      if (typeof t.pnl !== 'number') continue;
+      s += t.pnl;
+      total += t.pnl;
+      if (t.pnl >= 0) wins++; else losses++;
+    }
+    perSym.push({ sym: c.symbol, pnl: s, n: trades.length });
+  }
+
+  const lines = ['PnL Report', ''];
+  for (const p of perSym.sort((a, b) => b.pnl - a.pnl)) {
+    if (p.n > 0) {
+      lines.push(`${p.sym}: ${p.pnl >= 0 ? '+' : ''}${p.pnl.toFixed(2)} USDT (${p.n} trades)`);
+    }
+  }
+  lines.push('');
+  lines.push(`Total: ${total >= 0 ? '+' : ''}${total.toFixed(2)} USDT`);
+  const totalTrades = wins + losses;
+  const winrate = totalTrades > 0 ? ((wins / totalTrades) * 100).toFixed(0) : 0;
+  lines.push(`Wins: ${wins} | Losses: ${losses} | Winrate: ${winrate}%`);
+
+  return lines.join('\n');
+}
+
 async function handleSignals() {
   const data = getStoredData();
   if (!data || !data.analysis) return 'No signal data yet. Try /market first.';
@@ -458,8 +492,8 @@ function handleHelp() {
     '/pnl - PnL report',
     '/help - This message',
     '',
-    'Data: Binance, CoinGecko, Alternative.me',
-    'Auto-updates every hour.'
+    'Data: OKX, Bybit, Gate, CoinGecko',
+    'Hourly Telegram reports + on-demand commands.'
   ].join('\n');
 }
 
@@ -482,6 +516,7 @@ async function handleWebhook(request) {
       case '/market': response = await handleMarket(); break;
       case '/signals': response = await handleSignals(); break;
       case '/trades': response = await handleTrades(); break;
+      case '/pnl': response = await handlePnl(); break;
       case '/start':
       case '/help': response = handleHelp(); break;
       default: return new Response('ok');
