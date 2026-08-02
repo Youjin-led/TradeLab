@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-01T20:59:49.952Z
+Generated: 2026-08-02T03:26:47.325Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -4057.06 USDT
+- **Total PnL:** -3725.03 USDT
 
 ## Active Locks
 
@@ -35,13 +35,13 @@ Status: **EMERGENCY_STOP**
 | SEIUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SOLUSDT | breakout | 5% | 500 | 9.69 | 57.1% | 95 |
-| AVAXUSDT | breakout | 1.4% | 140 | 0 | 41.7% | 95 |
+| SOLUSDT | breakout | 5% | 500 | 11.46 | 60% | 95 |
+| AVAXUSDT | breakout | 1.4% | 140 | 0 | 46.2% | 95 |
 | JUPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| BCHUSDT | breakout | 3.71% | 371.14 | 5.3 | 44.1% | 95 |
+| BCHUSDT | breakout | 4.05% | 405.46 | 5.79 | 45.7% | 95 |
 | DOGEUSDT | sma-rsi | 1.4% | 140 | 0 | 39.1% | 95 |
 | DOGEUSDT | breakout | 0.91% | 90.69 | 1.3 | 40% | 95 |
 | LTCUSDT | sma-rsi | 1.4% | 140 | 0 | 50% | 95 |
@@ -58,7 +58,7 @@ Status: **EMERGENCY_STOP**
 | DOTUSDT | breakout | 1.4% | 140 | 0 | 43.5% | 95 |
 | ARBUSDT | breakout | 1.4% | 140 | 0 | 45.5% | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 1.4% | 140 | 0 | 44.4% | 95 |
+| SEIUSDT | breakout | 1.4% | 140 | 0 | 47.4% | 95 |
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | 0 | 30% | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
@@ -67,20 +67,20 @@ Status: **EMERGENCY_STOP**
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 5% | 500 | 16.17 | 68.2% | 95 |
 | JUPUSDT | sma-rsi | 0.52% | 51.68 | 0.74 | 64.3% | 95 |
-| BNBUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
+| BNBUSDT | breakout | 1.4% | 140 | 0 | 50% | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 47.6% | 95 |
 
 ## Portfolio Heat
 
-- **Heat:** 0.09% / 5% max
+- **Heat:** 0.06% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
+- **Active Positions:** 2
+- **Sector Distribution:** {"alt_small":1,"other":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 74.45%
-- **Total PnL:** -4057.06 USDT
-- **Total Exposure:** 15878.34 USDT
+- **Margin Level:** 76.39%
+- **Total PnL:** -3725.03 USDT
+- **Total Exposure:** 15776.85 USDT
 - **Warnings:**
-  - 🔴 margin_call: 74.45% (threshold: 100%)
+  - 🔴 margin_call: 76.39% (threshold: 100%)
 
 ## Statistics
 
