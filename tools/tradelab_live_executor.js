@@ -20,8 +20,15 @@ const { fetchCandles, getSignal, simulate, describe, applyDynamicParams, DEFAULT
 
 const ROOT = path.join(__dirname, '..');
 const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
-const TRADES_PATH = path.join(ROOT, 'tradelab-live-trades.json');
-const DAILY_PNL_PATH = path.join(ROOT, 'tradelab-daily-pnl.json');
+
+// Режим paper: торговля виртуальными деньгами (без API-ключей OKX).
+// В этом режиме весь live-путь исполняется как настоящий, но ордера фиктивны,
+// баланс виртуальный, а сделки пишутся в отдельные файлы paper-трейдов.
+const PAPER_MODE = String(process.env.LIVE_LOOP_MODE || 'paper').toLowerCase() === 'paper';
+const PAPER_STARTING_BALANCE_USD = Number(process.env.PAPER_STARTING_BALANCE_USD) || 1000;
+const PAPER_ACCOUNT_PATH = path.join(ROOT, 'tradelab-paper-account.json');
+const TRADES_PATH = path.join(ROOT, PAPER_MODE ? 'tradelab-paper-trades.json' : 'tradelab-live-trades.json');
+const DAILY_PNL_PATH = path.join(ROOT, PAPER_MODE ? 'tradelab-paper-daily-pnl.json' : 'tradelab-daily-pnl.json');
 
 // ============================================================
 // Конфигурация
@@ -97,6 +104,67 @@ function saveDailyPnl(data) {
   fs.writeFileSync(DAILY_PNL_PATH, JSON.stringify(data, null, 2) + '\n');
 }
 
+// ============================================================
+// Виртуальный баланс paper-режима
+// ============================================================
+
+function loadPaperAccount() {
+  if (!fs.existsSync(PAPER_ACCOUNT_PATH)) {
+    return {
+      startingBalance: PAPER_STARTING_BALANCE_USD,
+      free: PAPER_STARTING_BALANCE_USD,
+      locked: 0,
+      realizedPnl: 0,
+      openTrades: 0,
+      closedTrades: 0,
+      updatedAt: null
+    };
+  }
+  return JSON.parse(fs.readFileSync(PAPER_ACCOUNT_PATH, 'utf8'));
+}
+
+function savePaperAccount(account) {
+  account.updatedAt = new Date().toISOString();
+  fs.writeFileSync(PAPER_ACCOUNT_PATH, JSON.stringify(account, null, 2) + '\n');
+}
+
+function paperLockFunds(trade) {
+  if (!PAPER_MODE) return;
+  const acc = loadPaperAccount();
+  acc.free -= trade.valueUsd;
+  acc.locked += trade.valueUsd;
+  acc.openTrades += 1;
+  savePaperAccount(acc);
+}
+
+function paperReleaseFunds(trade) {
+  if (!PAPER_MODE) return;
+  const acc = loadPaperAccount();
+  acc.free += trade.exitPrice * trade.size;
+  acc.locked -= trade.entryPrice * trade.size;
+  acc.locked = Math.max(0, acc.locked);
+  acc.realizedPnl += trade.pnl;
+  acc.closedTrades += 1;
+  acc.openTrades = Math.max(0, acc.openTrades - 1);
+  savePaperAccount(acc);
+}
+
+function paperAccountStatus() {
+  if (!PAPER_MODE) return null;
+  const acc = loadPaperAccount();
+  const trades = loadTrades();
+  const open = trades.filter((t) => t.status === 'open');
+  const closed = trades.filter((t) => t.status === 'closed');
+  const closedPnl = closed.reduce((s, t) => s + (t.pnl || 0), 0);
+  return {
+    ...acc,
+    equity: Number((acc.free + acc.locked).toFixed(2)),
+    openPositions: open.length,
+    closedTradesTotal: closed.length,
+    closedPnl: Number(closedPnl.toFixed(2))
+  };
+}
+
 function logTrade(trade) {
   const trades = loadTrades();
   trades.push({
@@ -141,6 +209,11 @@ function checkDailyLossLimit() {
 // ============================================================
 
 function checkGate(candidateKey) {
+  // В paper-режиме gate не применяется — тестируем прибыльность виртуально
+  if (PAPER_MODE) {
+    return { allowed: true, paper: true, reason: 'Paper mode — gate not enforced' };
+  }
+
   // 1. Kill-switch
   const killSwitch = portfolioKillSwitch();
   if (killSwitch.blocksRealMoney) {
@@ -255,6 +328,12 @@ async function getLiveSignal(candidate) {
 // ============================================================
 
 async function placeOkxOrder(symbol, side, size, price = null) {
+  // Paper-режим: фиктивный ордер, без API-ключей
+  if (PAPER_MODE) {
+    console.log(`[PAPER] Order (virtual): ${side} ${size} ${symbol} @ ${price || 'market'}`);
+    return { data: [{ ordId: 'PAPER-' + Date.now() + '-' + Math.floor(Math.random() * 1000) }] };
+  }
+
   const client = getOkxClient();
   
   // Конвертируем символ в формат OKX (BTCUSDT -> BTC-USDT)
@@ -418,6 +497,7 @@ async function executeTrade(candidateKey) {
   };
   
   logTrade(trade);
+  paperLockFunds(trade);
   
   console.log(`\n[LiveExecutor] ✅ Trade executed successfully!`);
   console.log(`   Symbol: ${candidate.symbol}`);
@@ -439,6 +519,12 @@ async function executeTrade(candidateKey) {
 // ============================================================
 
 async function closePosition(symbol, side, size) {
+  // Paper-режим: фиктивное закрытие, без API-ключей
+  if (PAPER_MODE) {
+    console.log(`[PAPER] Close (virtual): ${side} ${size} ${symbol}`);
+    return { data: [{ ordId: 'PAPER-' + Date.now() + '-' + Math.floor(Math.random() * 1000) }] };
+  }
+
   const client = getOkxClient();
   const okxSymbol = symbol.replace('USDT', '-USDT');
   const closeSide = side === 'LONG' ? 'sell' : 'buy';
@@ -469,6 +555,12 @@ async function closePosition(symbol, side, size) {
 // ============================================================
 
 async function getAccountBalance() {
+  // Paper-режим: виртуальный баланс
+  if (PAPER_MODE) {
+    const acc = loadPaperAccount();
+    return { total: acc.free + acc.locked, free: acc.free, paper: true };
+  }
+
   const client = getOkxClient();
   try {
     let balance;
@@ -526,6 +618,9 @@ function exitReasonForLive(trade, signalAction, marketPrice) {
 }
 
 async function fetchMarketPrice(symbol) {
+  // Paper-режим: цена последней закрытой свечи (без сети)
+  if (PAPER_MODE) return null;
+
   const client = getOkxClient();
   try {
     const ticker = await client.fetchTicker(symbol.replace('USDT', '/USDT'));
@@ -573,6 +668,7 @@ async function monitorOpenPositions() {
         }
         daily.pnl += trade.pnl;
         saveDailyPnl(daily);
+        paperReleaseFunds(trade);
 
         closedNow.push(trade);
         results.push({
@@ -650,5 +746,6 @@ module.exports = {
   getAccountBalance,
   monitorOpenPositions,
   loadTrades,
-  loadDailyPnl
+  loadDailyPnl,
+  paperAccountStatus
 };

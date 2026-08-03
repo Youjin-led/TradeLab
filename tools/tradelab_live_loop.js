@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { executeTrade, checkGate, loadTrades, loadDailyPnl, monitorOpenPositions } = require('./tradelab_live_executor');
+const { executeTrade, checkGate, loadTrades, loadDailyPnl, monitorOpenPositions, paperAccountStatus } = require('./tradelab_live_executor');
 const { evaluateGate } = require('./tradelab_real_money_gate');
 const { evaluateSoftGate } = require('./tradelab_soft_gate');
 const { portfolioKillSwitch } = require('./tradelab_risk_controls');
@@ -75,6 +75,44 @@ async function runCycle(label) {
     }
   } catch (error) {
     log(`❌ Exit check error: ${error.message}`);
+  }
+
+  // Paper mode: торгуем виртуальными деньгами без gate.
+  // Открываем позиции по сигналам всех кандидатов, ведём виртуальный баланс,
+  // чтобы понять, работает ли система в плюс.
+  if (CONFIG.mode === 'paper') {
+    const state = JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+    const candidates = Object.values(state.candidates || {});
+    const openTrades = loadTrades().filter((t) => t.status === 'open');
+    const openSymbols = new Set(openTrades.map((t) => t.symbol));
+
+    const queue = candidates
+      .filter((c) => c && c.key && !openSymbols.has(c.symbol))
+      .sort((a, b) => (b.forwardPaperPnl || 0) - (a.forwardPaperPnl || 0))
+      .slice(0, CONFIG.maxTradesPerCycle);
+
+    log(`Paper: checking ${queue.length} candidate(s) for signals`);
+    const executed = [];
+    for (const candidate of queue) {
+      try {
+        const result = await executeTrade(candidate.key);
+        if (result.success) {
+          log(`   ✅ PAPER OPEN ${candidate.key} ${result.trade.side} @ ${result.trade.entryPrice}, size ${result.trade.size}`);
+          executed.push({ key: candidate.key, status: 'opened', side: result.trade.side, entry: result.trade.entryPrice });
+        } else if (result.reason && result.reason !== 'No signal (WAIT)') {
+          log(`   ⏭ ${candidate.key}: ${result.reason}`);
+        }
+      } catch (error) {
+        log(`   ❌ ${candidate.key}: ${error.message}`);
+      }
+      await sleep(2000);
+    }
+
+    const account = paperAccountStatus();
+    if (account) {
+      log(`Paper account: equity ${account.equity}$ (start ${account.startingBalance}$), realized PnL ${account.realizedPnl}$, open ${account.openPositions}, closed ${account.closedTradesTotal}`);
+    }
+    return { status: 'paper', executed, account };
   }
 
   // 1. Проверяем kill-switch
@@ -191,6 +229,15 @@ async function liveLoop() {
 
 async function main() {
   const mode = process.argv[2] || CONFIG.mode;
+
+  if (mode === '--status') {
+    const account = paperAccountStatus();
+    const trades = loadTrades();
+    const open = trades.filter((t) => t.status === 'open');
+    const recentClosed = trades.filter((t) => t.status === 'closed').slice(-15);
+    console.log(JSON.stringify({ account, openPositions: open, recentClosed }, null, 2));
+    return;
+  }
 
   if (mode === '--cycle') {
     const result = await runCycle('Live cycle (one shot)');
