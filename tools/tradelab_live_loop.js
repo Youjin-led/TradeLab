@@ -11,8 +11,10 @@ const { executeTrade, checkGate, loadTrades, loadDailyPnl, monitorOpenPositions,
 const { evaluateGate } = require('./tradelab_real_money_gate');
 const { evaluateSoftGate } = require('./tradelab_soft_gate');
 const { portfolioKillSwitch } = require('./tradelab_risk_controls');
+const { sendTelegram } = require('./tradelab_telegram_sender');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
+const REPORT_STATE_PATH = path.join(__dirname, '..', 'tradelab-paper-telegram-state.json');
 
 const CONFIG = {
   // Интервал проверки в минутах
@@ -24,6 +26,45 @@ const CONFIG = {
   // Только кандидаты с PnL выше порога
   minPnlThreshold: 0
 };
+
+function loadReportState() {
+  if (!fs.existsSync(REPORT_STATE_PATH)) return { lastDailyDate: null };
+  try {
+    return JSON.parse(fs.readFileSync(REPORT_STATE_PATH, 'utf8'));
+  } catch {
+    return { lastDailyDate: null };
+  }
+}
+
+function saveReportState(state) {
+  fs.writeFileSync(REPORT_STATE_PATH, JSON.stringify(state, null, 2) + '\n');
+}
+
+async function sendDailySummary() {
+  const today = new Date().toISOString().slice(0, 10);
+  const state = loadReportState();
+  if (state.lastDailyDate === today) return;
+  state.lastDailyDate = today;
+  saveReportState(state);
+
+  const account = paperAccountStatus();
+  if (!account) return;
+  const daily = loadDailyPnl();
+  const lines = [
+    `📊 *TradeLab — дневная сводка (виртуальная торговля)*`,
+    ``,
+    `Дата: ${today}`,
+    `Счёт: ${account.equity}$ (старт ${account.startingBalance}$)`,
+    `Реализованный PnL: ${account.realizedPnl >= 0 ? '+' : ''}${account.realizedPnl}$`,
+    `В позициях: ${account.locked}$`,
+    `Открытых позиций: ${account.openPositions}`,
+    `Всего закрыто: ${account.closedTradesTotal} (PnL закрытых: ${account.closedPnl >= 0 ? '+' : ''}${account.closedPnl}$)`,
+    `Сегодня: ${daily.pnl >= 0 ? '+' : ''}${daily.pnl}$ за ${daily.trades} сдел.`,
+    ``,
+    `Проверка статуса: npm run tradelab:paper:status`
+  ];
+  await sendTelegram(lines.join('\n'));
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -70,6 +111,14 @@ async function runCycle(label) {
       for (const r of exits.results) {
         if (r.action === 'close') {
           log(`   Closed ${r.key} ${r.side} ${r.reason} @ ${r.exitPrice}, PnL ${r.pnl}`);
+          const arrow = r.pnl >= 0 ? '📈' : '📉';
+          await sendTelegram(
+            `${arrow} *Paper закрыта позиция*\n` +
+            `${r.key}\n` +
+            `Сторона: ${r.side} | Выход: ${r.reason}\n` +
+            `Цена: ${r.exitPrice}\n` +
+            `PnL: ${r.pnl >= 0 ? '+' : ''}${r.pnl}$`
+          );
         }
       }
     }
@@ -99,6 +148,15 @@ async function runCycle(label) {
         if (result.success) {
           log(`   ✅ PAPER OPEN ${candidate.key} ${result.trade.side} @ ${result.trade.entryPrice}, size ${result.trade.size}`);
           executed.push({ key: candidate.key, status: 'opened', side: result.trade.side, entry: result.trade.entryPrice });
+          const emoji = result.trade.side === 'LONG' ? '🟢' : '🔴';
+          await sendTelegram(
+            `${emoji} *Paper открыта позиция*\n` +
+            `${result.trade.key}\n` +
+            `Сторона: ${result.trade.side}\n` +
+            `Цена: ${result.trade.entryPrice}\n` +
+            `Стоп: ${result.trade.stopPrice} | Тейк: ${result.trade.takePrice}\n` +
+            `Размер: ${result.trade.size}`
+          );
         } else if (result.reason && result.reason !== 'No signal (WAIT)') {
           log(`   ⏭ ${candidate.key}: ${result.reason}`);
         }
@@ -112,6 +170,7 @@ async function runCycle(label) {
     if (account) {
       log(`Paper account: equity ${account.equity}$ (start ${account.startingBalance}$), realized PnL ${account.realizedPnl}$, open ${account.openPositions}, closed ${account.closedTradesTotal}`);
     }
+    await sendDailySummary();
     return { status: 'paper', executed, account };
   }
 
@@ -208,6 +267,18 @@ async function liveLoop() {
   log(`Mode: ${CONFIG.mode}`);
   log(`Check interval: ${CONFIG.checkIntervalMinutes} min`);
   log('========================================\n');
+
+  if (CONFIG.mode === 'paper') {
+    const account = paperAccountStatus();
+    if (account) {
+      await sendTelegram(
+        `🤖 *TradeLab paper-торговля запущена*\n` +
+        `Виртуальный счёт: ${account.startingBalance}$\n` +
+        `Проверка каждые ${CONFIG.checkIntervalMinutes} мин\n` +
+        `Отчёты: при открытии/закрытии позиций и раз в день`
+      );
+    }
+  }
 
   let cycleCount = 0;
 
