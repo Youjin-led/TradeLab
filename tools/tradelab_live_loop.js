@@ -271,12 +271,21 @@ async function liveLoop() {
   if (CONFIG.mode === 'paper') {
     const account = paperAccountStatus();
     if (account) {
-      await sendTelegram(
-        `🤖 *TradeLab paper-торговля запущена*\n` +
-        `Виртуальный счёт: ${account.startingBalance}$\n` +
-        `Проверка каждые ${CONFIG.checkIntervalMinutes} мин\n` +
+      const openTrades = loadTrades().filter((t) => t.status === 'open');
+      let lines = [
+        `🤖 *TradeLab paper-торговля запущена*`,
+        `Счёт: ${account.startingBalance}$ | Баланс: ${account.equity}$`,
+        `Проверка каждые ${CONFIG.checkIntervalMinutes} мин`,
         `Отчёты: при открытии/закрытии позиций и раз в день`
-      );
+      ];
+      if (openTrades.length > 0) {
+        lines.push('', `Открытых позиций: ${openTrades.length}`);
+        for (const t of openTrades) {
+          const arrow = t.side === 'LONG' ? '🟢' : '🔴';
+          lines.push(`${arrow} ${t.symbol} ${t.side} @ ${t.entryPrice}`);
+        }
+      }
+      await sendTelegram(lines.join('\n'));
     }
   }
 
