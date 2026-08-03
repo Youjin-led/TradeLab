@@ -21,6 +21,8 @@ const {
 const { detectPhase } = require('./tradelab_market_phase');
 const { shouldAllowEntry, getNewsRiskAdjustment, getMarketSentiment } = require('./tradelab_news_filter');
 const { applyQuarantineToState, isQuarantined, loadQuarantine, quarantineReason } = require('./tradelab_quarantine');
+const { REQUIREMENTS } = require('./tradelab_real_money_gate');
+const { VALIDATOR_RULES } = require('./tradelab_risk_controls');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const AUTO_CANDIDATES_PATH = path.join(__dirname, '..', 'tradelab-auto-candidates.json');
@@ -193,7 +195,7 @@ function splitWalkForward(candles, params) {
   const train = simulate(candles.slice(0, split), params).summary;
   const test = simulate(candles.slice(split), params).summary;
   const ratio = train.pnl > 0 ? test.pnl / train.pnl : 0;
-  const stability = test.pnl > 0 && test.maxDd <= params.maxDrawdownPct && ratio > 0.12
+  const stability = test.pnl > 0 && test.maxDd <= params.maxDrawdownPct && ratio > 0.18
     ? 'stable'
     : train.pnl > 0 && test.pnl < 0
       ? 'overfit risk'
@@ -214,8 +216,8 @@ function evaluateGuardrails(summary, walk, params) {
 function nextDecision(record) {
   const criticalAlerts = record.alerts.filter((alert) => !alert.startsWith('low test sample'));
   if (criticalAlerts.length > 0 || record.health.status === 'Blocked') return 'reject';
-  if (record.testTrades < 8 || record.liveObservations < 20 || record.forwardPaperTrades < 10) return 'incubate';
-  if (record.health.status === 'Healthy' && record.profitFactor >= 1.4 && record.maxDrawdownPct <= 6) return 'promote-to-manual-review';
+  if (record.testTrades < VALIDATOR_RULES.minTestTrades || record.liveObservations < REQUIREMENTS.minLiveObservations || record.forwardPaperTrades < REQUIREMENTS.minClosedPaperTrades) return 'incubate';
+  if (record.health.status === 'Healthy' && record.profitFactor >= VALIDATOR_RULES.minProfitFactor && record.maxDrawdownPct <= VALIDATOR_RULES.maxDrawdownPct && record.maxLossStreak <= VALIDATOR_RULES.maxLossStreak && record.forwardPaperPnl > 0) return 'promote-to-manual-review';
   return 'watch';
 }
 
@@ -233,13 +235,13 @@ function makePaperLedger(prior, candles) {
 }
 
 function updatePaperLedger(ledger, candles, params) {
-  const processed = new Set(ledger.processedCloses || []);
+  const processed = new Set((ledger.processedCloses || []).map((key) => String(key).slice(0, 16)));
   const warmup = Math.max(params.slow + 2, params.lookback + 2, 20);
   let newBars = 0;
 
-  for (let cursor = warmup; cursor <= candles.length; cursor += 1) {
+  for (let cursor = warmup; cursor < candles.length; cursor += 1) {
     const candle = candles[cursor - 1];
-    const closeKey = `${candle.time}:${candle.close}`;
+    const closeKey = candle.time;
     if (processed.has(closeKey)) continue;
     processed.add(closeKey);
     newBars += 1;
@@ -278,12 +280,14 @@ function updatePaperLedger(ledger, candles, params) {
   return { ledger, newBars };
 }
 
-function mergeRecord(previous, candidate, candles, params, result, walk, currentSignal, alerts) {
+function mergeRecord(previous, candidate, candles, params, result, walk, alerts) {
   const lastCandle = candles[candles.length - 1];
   const prior = previous || {};
-  const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, params);
-  const observedCloses = new Set(prior.observedCloses || []);
-  const closeKey = `${lastCandle.time}:${lastCandle.close}`;
+  const effectiveParams = applyDynamicParams(candles, { ...params });
+  const currentSignal = getSignal(candles, candles.length, effectiveParams);
+  const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams);
+  const observedCloses = new Set((prior.observedCloses || []).map((key) => String(key).slice(0, 16)));
+  const closeKey = lastCandle.time;
   const isNewObservation = !observedCloses.has(closeKey);
   observedCloses.add(closeKey);
 
@@ -408,9 +412,8 @@ async function incubateOnce() {
       const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit);
       const result = simulate(candles, params);
       const walk = splitWalkForward(candles, params);
-      const currentSignal = getSignal(candles, candles.length, params);
       const alerts = evaluateGuardrails(result.summary, walk, params);
-      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, currentSignal, alerts);
+      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, alerts);
       state.candidates[key] = record;
       rows.push(record);
     } catch (error) {

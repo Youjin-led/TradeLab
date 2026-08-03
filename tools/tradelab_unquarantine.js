@@ -25,6 +25,8 @@ const {
   DEFAULT_PARAMS
 } = require('./tradelab_run_once');
 const { detectPhase } = require('./tradelab_market_phase');
+const { REQUIREMENTS } = require('./tradelab_real_money_gate');
+const { VALIDATOR_RULES } = require('./tradelab_risk_controls');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const SCOREBOARD_PATH = path.join(__dirname, '..', 'tradelab-scoreboard.json');
@@ -32,15 +34,15 @@ const SCOREBOARD_PATH = path.join(__dirname, '..', 'tradelab-scoreboard.json');
 // Пороги для автоматического выхода из карантина
 const UNQUARANTINE_THRESHOLDS = {
   // Должен набрать минимум forward сделок
-  minForwardTrades: 7,
+  minForwardTrades: REQUIREMENTS.minClosedPaperTrades,
   // Profit Factor должен быть >=
-  minProfitFactor: 1.5,
+  minProfitFactor: VALIDATOR_RULES.minProfitFactor,
   // Максимальная просадка
-  maxDrawdownPct: 6,
+  maxDrawdownPct: VALIDATOR_RULES.maxDrawdownPct,
   // Максимальная серия убытков
-  maxLossStreak: 2,
-  // Forward PnL должен быть положительным или не хуже -50
-  minForwardPnl: -50,
+  maxLossStreak: VALIDATOR_RULES.maxLossStreak,
+  // Forward PnL должен быть положительным
+  minForwardPnl: 0,
   // Здоровье должно быть не Blocked
   minHealthStatus: 'Healthy',
   // Минимальное количество циклов между авто-анкарантином (cooldown)
@@ -123,38 +125,55 @@ async function checkCandidate(candidate) {
       volatility: phase.volatility
     };
 
-    // Проверяем пороги
+    const ledger = candidate.paperLedger;
+    const forwardTrades = candidate.forwardPaperTrades || 0;
+    const forwardPnl = candidate.forwardPaperPnl || 0;
+    const forwardMaxDd = candidate.forwardPaperMaxDd || 0;
+    let forwardPF = 0;
+    if (ledger && Array.isArray(ledger.trades) && ledger.trades.length) {
+      const grossProfit = ledger.trades.filter((trade) => trade.pnl > 0).reduce((sum, trade) => sum + trade.pnl, 0);
+      const grossLoss = Math.abs(ledger.trades.filter((trade) => trade.pnl < 0).reduce((sum, trade) => sum + trade.pnl, 0));
+      forwardPF = grossLoss ? grossProfit / grossLoss : (grossProfit ? Infinity : 0);
+    }
+    const forwardMetrics = {
+      trades: forwardTrades,
+      profitFactor: forwardPF,
+      pnl: forwardPnl,
+      maxDd: forwardMaxDd
+    };
+
+    // Проверяем пороги по forward-бумаге (не по свежему бэктесту)
     const checks = [];
     const passed = [];
 
-    if (freshMetrics.tradeCount >= UNQUARANTINE_THRESHOLDS.minForwardTrades) {
-      passed.push(`trades ${freshMetrics.tradeCount} >= ${UNQUARANTINE_THRESHOLDS.minForwardTrades}`);
+    if (forwardMetrics.trades >= UNQUARANTINE_THRESHOLDS.minForwardTrades) {
+      passed.push(`forward trades ${forwardMetrics.trades} >= ${UNQUARANTINE_THRESHOLDS.minForwardTrades}`);
     } else {
-      checks.push(`trades ${freshMetrics.tradeCount} < ${UNQUARANTINE_THRESHOLDS.minForwardTrades}`);
+      checks.push(`forward trades ${forwardMetrics.trades} < ${UNQUARANTINE_THRESHOLDS.minForwardTrades}`);
     }
 
-    if (freshMetrics.profitFactor >= UNQUARANTINE_THRESHOLDS.minProfitFactor) {
-      passed.push(`PF ${freshMetrics.profitFactor.toFixed(2)} >= ${UNQUARANTINE_THRESHOLDS.minProfitFactor}`);
+    if (forwardMetrics.profitFactor >= UNQUARANTINE_THRESHOLDS.minProfitFactor) {
+      passed.push(`forward PF ${Number(forwardMetrics.profitFactor).toFixed(2)} >= ${UNQUARANTINE_THRESHOLDS.minProfitFactor}`);
     } else {
-      checks.push(`PF ${freshMetrics.profitFactor.toFixed(2)} < ${UNQUARANTINE_THRESHOLDS.minProfitFactor}`);
+      checks.push(`forward PF ${Number(forwardMetrics.profitFactor).toFixed(2)} < ${UNQUARANTINE_THRESHOLDS.minProfitFactor}`);
     }
 
-    if (freshMetrics.maxDd <= UNQUARANTINE_THRESHOLDS.maxDrawdownPct) {
-      passed.push(`DD ${freshMetrics.maxDd.toFixed(2)}% <= ${UNQUARANTINE_THRESHOLDS.maxDrawdownPct}%`);
+    if (forwardMetrics.maxDd <= UNQUARANTINE_THRESHOLDS.maxDrawdownPct) {
+      passed.push(`forward DD ${forwardMetrics.maxDd.toFixed(2)}% <= ${UNQUARANTINE_THRESHOLDS.maxDrawdownPct}%`);
     } else {
-      checks.push(`DD ${freshMetrics.maxDd.toFixed(2)}% > ${UNQUARANTINE_THRESHOLDS.maxDrawdownPct}%`);
+      checks.push(`forward DD ${forwardMetrics.maxDd.toFixed(2)}% > ${UNQUARANTINE_THRESHOLDS.maxDrawdownPct}%`);
+    }
+
+    if (forwardMetrics.pnl >= UNQUARANTINE_THRESHOLDS.minForwardPnl) {
+      passed.push(`forward PnL ${forwardMetrics.pnl.toFixed(2)} >= ${UNQUARANTINE_THRESHOLDS.minForwardPnl}`);
+    } else {
+      checks.push(`forward PnL ${forwardMetrics.pnl.toFixed(2)} < ${UNQUARANTINE_THRESHOLDS.minForwardPnl}`);
     }
 
     if (freshMetrics.maxLossStreak <= UNQUARANTINE_THRESHOLDS.maxLossStreak) {
-      passed.push(`loss streak ${freshMetrics.maxLossStreak} <= ${UNQUARANTINE_THRESHOLDS.maxLossStreak}`);
+      passed.push(`backtest loss streak ${freshMetrics.maxLossStreak} <= ${UNQUARANTINE_THRESHOLDS.maxLossStreak}`);
     } else {
-      checks.push(`loss streak ${freshMetrics.maxLossStreak} > ${UNQUARANTINE_THRESHOLDS.maxLossStreak}`);
-    }
-
-    if (freshMetrics.pnl >= UNQUARANTINE_THRESHOLDS.minForwardPnl) {
-      passed.push(`PnL ${freshMetrics.pnl.toFixed(2)} >= ${UNQUARANTINE_THRESHOLDS.minForwardPnl}`);
-    } else {
-      checks.push(`PnL ${freshMetrics.pnl.toFixed(2)} < ${UNQUARANTINE_THRESHOLDS.minForwardPnl}`);
+      checks.push(`backtest loss streak ${freshMetrics.maxLossStreak} > ${UNQUARANTINE_THRESHOLDS.maxLossStreak}`);
     }
 
     const canUnquarantine = checks.length === 0;
@@ -166,6 +185,7 @@ async function checkCandidate(candidate) {
       strategy: candidate.strategy,
       canUnquarantine,
       freshMetrics,
+      forwardMetrics,
       checks,
       passed,
       marketPhase: freshMetrics.marketPhase,
@@ -267,7 +287,8 @@ async function unquarantine() {
           action: 'unquarantine',
           reason: result.passed.join('; '),
           oldPnl: result.oldPnl,
-          newPnl: result.freshMetrics.pnl
+          newPnl: result.forwardMetrics.pnl,
+          forwardPF: Number(result.forwardMetrics.profitFactor).toFixed(2)
         });
       }
     }
@@ -303,6 +324,7 @@ async function unquarantine() {
       canUnquarantine: r.canUnquarantine,
       checks: r.checks,
       passed: r.passed,
+      forwardMetrics: r.forwardMetrics,
       marketPhase: r.marketPhase,
       volatility: r.volatility,
       error: r.error

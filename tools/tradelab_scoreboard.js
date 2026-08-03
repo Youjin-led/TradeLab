@@ -44,11 +44,17 @@ function trend(candidate) {
   const marketPhase = candidate.marketPhase || '';
   const PHASE_MAP = {
     'breakout': ['trending', 'volatile'],
-    'sma-rsi': ['trending', 'ranging'],
-    'mean-reversion': ['ranging']
+    'sma-rsi': ['trending', 'ranging', 'volatile'],
+    'mean-reversion': ['ranging', 'volatile']
   };
   const suitablePhases = PHASE_MAP[strategy] || ['trending', 'ranging', 'volatile'];
-  if (marketPhase && !suitablePhases.includes(marketPhase)) {
+  const phaseRoot = (phase) => {
+    if (phase.startsWith('trending')) return 'trending';
+    if (phase.startsWith('ranging')) return 'ranging';
+    if (phase.startsWith('volatile')) return 'volatile';
+    return phase;
+  };
+  if (marketPhase && !suitablePhases.includes(phaseRoot(marketPhase))) {
     return 'phase-mismatch';
   }
   
