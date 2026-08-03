@@ -310,6 +310,7 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts)
     strategy: candidate.params.strategy,
     source: candidate.source || prior.source || 'base',
     params: describe(params),
+    rawParams: params,
     status: prior.status || 'incubating',
     startedAt: prior.startedAt || new Date().toISOString(),
     updatedAt: new Date().toISOString(),

@@ -16,7 +16,7 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const { evaluateGate } = require('./tradelab_real_money_gate');
 const { portfolioKillSwitch } = require('./tradelab_risk_controls');
-const { fetchCandles, getSignal, simulate, describe } = require('./tradelab_run_once');
+const { fetchCandles, getSignal, simulate, describe, applyDynamicParams, DEFAULT_PARAMS } = require('./tradelab_run_once');
 
 const ROOT = path.join(__dirname, '..');
 const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
@@ -189,17 +189,65 @@ function checkGate(candidateKey) {
 // Получение сигнала для кандидата
 // ============================================================
 
+function parseParamsDescription(description) {
+  const params = { ...DEFAULT_PARAMS };
+
+  if (description.startsWith('SMA')) {
+    const match = description.match(/SMA (\d+)\/(\d+), RSI (\d+)/);
+    if (match) {
+      params.fast = Number(match[1]);
+      params.slow = Number(match[2]);
+      params.rsiBuy = Number(match[3]);
+      params.strategy = 'sma-rsi';
+    }
+  } else if (description.startsWith('Breakout')) {
+    const match = description.match(/Breakout LB (\d+)/);
+    if (match) {
+      params.lookback = Number(match[1]);
+      params.strategy = 'breakout';
+    }
+  } else if (description.startsWith('Mean Reversion')) {
+    const match = description.match(/Mean Reversion LB (\d+), dev ([\d.]+)%/);
+    if (match) {
+      params.lookback = Number(match[1]);
+      params.deviationPct = Number(match[2]);
+      params.strategy = 'mean-reversion';
+    }
+  }
+
+  const slMatch = description.match(/SL ([\d.]+)%/);
+  const tpMatch = description.match(/TP ([\d.]+)%/);
+  if (slMatch) params.stopPct = Number(slMatch[1]);
+  if (tpMatch) params.takePct = Number(tpMatch[1]);
+
+  return params;
+}
+
+function candidateBaseParams(candidate) {
+  const raw = candidate && candidate.rawParams;
+  if (raw && typeof raw === 'object' && raw.strategy) {
+    return { ...DEFAULT_PARAMS, ...raw };
+  }
+  if (candidate && typeof candidate.params === 'string') {
+    return parseParamsDescription(candidate.params);
+  }
+  return { ...DEFAULT_PARAMS, strategy: candidate ? candidate.strategy : 'sma-rsi' };
+}
+
 async function getLiveSignal(candidate) {
   const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit || 1000);
-  const params = { ...candidate.params };
-  const signal = getSignal(candles, candles.length, params);
-  
+  const baseParams = candidateBaseParams(candidate);
+  const effectiveParams = applyDynamicParams(candles, baseParams);
+  const closedBar = candles[candles.length - 2] || candles[candles.length - 1];
+  const signal = getSignal(candles, candles.length - 1, effectiveParams);
+
   return {
     signal,
     candles,
-    params,
-    lastCandle: candles[candles.length - 1],
-    price: candles[candles.length - 1].close
+    params: effectiveParams,
+    barTime: closedBar ? closedBar.time : null,
+    price: closedBar ? closedBar.close : null,
+    lastCandle: candles[candles.length - 1]
   };
 }
 
@@ -287,7 +335,7 @@ async function executeTrade(candidateKey) {
     return { success: false, reason: 'Candidate not found' };
   }
 
-  // 3. Получаем текущий сигнал
+  // 3. Получаем текущий сигнал (по закрытым свечам, как в бумаге)
   let liveData;
   try {
     liveData = await getLiveSignal(candidate);
@@ -296,7 +344,7 @@ async function executeTrade(candidateKey) {
     return { success: false, reason: `Signal error: ${error.message}` };
   }
 
-  const { signal, price, params } = liveData;
+  const { signal, price, params, barTime } = liveData;
   
   if (signal.action === 'WAIT') {
     console.log(`[LiveExecutor] ⏸️ No signal (WAIT). Price: ${price}`);
@@ -307,8 +355,30 @@ async function executeTrade(candidateKey) {
   const side = signal.action === 'BUY' ? 'LONG' : 'SHORT';
   console.log(`[LiveExecutor] 📊 Signal: ${signal.action} -> ${side} at ${price}`);
 
-  // 5. Расчёт размера позиции
-  const balance = CONFIG.maxPositionSizeUsd * 10; // Условный баланс
+  if (CONFIG.tradingMode === 'spot' && side === 'SHORT') {
+    console.log(`[LiveExecutor] ❌ SHORT is not allowed in spot mode`);
+    return { success: false, reason: 'SHORT not allowed in spot mode' };
+  }
+
+  // 5. Не открываем вторую позицию по тому же кандидату и той же свече
+  const existingTrades = loadTrades();
+  const openPosition = existingTrades.some((t) => t.key === candidateKey && t.status === 'open');
+  if (openPosition) {
+    console.log(`[LiveExecutor] ⏸️ Position already open for ${candidateKey}`);
+    return { success: false, reason: 'Position already open' };
+  }
+  const actedOnBar = existingTrades.some((t) => t.key === candidateKey && t.entryBar === barTime);
+  if (actedOnBar) {
+    console.log(`[LiveExecutor] ⏸️ Already acted on candle ${barTime} for ${candidateKey}`);
+    return { success: false, reason: `Already acted on candle ${barTime}` };
+  }
+
+  // 6. Расчёт размера позиции по реальному балансу счёта
+  const account = await getAccountBalance();
+  const balance = account ? account.free : CONFIG.maxPositionSizeUsd * 10;
+  if (!account) {
+    console.log(`[LiveExecutor] ⚠️ Balance unavailable, using fallback size cap`);
+  }
   const size = calculatePositionSize(price, balance, params);
   
   if (size * price < CONFIG.minTradeUsd) {
@@ -316,7 +386,7 @@ async function executeTrade(candidateKey) {
     return { success: false, reason: 'Trade too small' };
   }
 
-  // 6. Исполняем ордер на OKX
+  // 7. Исполняем ордер на OKX
   let orderResult;
   try {
     orderResult = await placeOkxOrder(candidate.symbol, side, size);
@@ -325,7 +395,8 @@ async function executeTrade(candidateKey) {
     return { success: false, reason: `Order failed: ${error.message}` };
   }
 
-  // 7. Логируем сделку
+  // 8. Логируем сделку с уровнями стоп/тейк для автозакрытия
+  const levels = positionLevels(side, price, params);
   const trade = {
     key: candidateKey,
     symbol: candidate.symbol,
@@ -333,9 +404,13 @@ async function executeTrade(candidateKey) {
     strategy: candidate.strategy,
     side,
     entryPrice: price,
+    entryBar: barTime,
+    stopPrice: Number(levels.stop.toFixed(6)),
+    takePrice: Number(levels.take.toFixed(6)),
     size,
     valueUsd: price * size,
-    params: describe(params),
+    params: { ...params },
+    candlesLimit: candidate.limit || 100,
     signal: signal.action,
     orderId: orderResult?.data?.[0]?.ordId || 'unknown',
     pnl: 0, // Будет обновлено при закрытии
@@ -391,6 +466,140 @@ async function closePosition(symbol, side, size) {
 }
 
 // ============================================================
+// Реальный баланс счёта
+// ============================================================
+
+async function getAccountBalance() {
+  const client = getOkxClient();
+  try {
+    let balance;
+    if (CONFIG.tradingMode === 'futures') {
+      try {
+        balance = await client.fetchBalance({ type: 'swap' });
+      } catch (err) {
+        balance = await client.fetchBalance();
+      }
+    } else {
+      balance = await client.fetchBalance();
+    }
+    const total = balance && balance.total ? Number(balance.total['USDT'] || 0) : 0;
+    const free = balance && balance.free ? Number(balance.free['USDT'] || 0) : 0;
+    if (total > 0) return { total, free };
+    return null;
+  } catch (error) {
+    console.error(`[OKX] Balance fetch failed: ${error.message}`);
+    return null;
+  }
+}
+
+// ============================================================
+// Уровни стоп/тейк и расчёт PnL закрытой сделки
+// ============================================================
+
+function positionLevels(side, entry, params) {
+  if (side === 'LONG') {
+    return { stop: entry * (1 - params.stopPct / 100), take: entry * (1 + params.takePct / 100) };
+  }
+  return { stop: entry * (1 + params.stopPct / 100), take: entry * (1 - params.takePct / 100) };
+}
+
+function computeTradePnl(trade, exitPrice) {
+  const entry = trade.entryPrice;
+  const qty = trade.size;
+  const feePct = (trade.params && trade.params.feePct) || 0.06;
+  const gross = trade.side === 'LONG' ? (exitPrice - entry) * qty : (entry - exitPrice) * qty;
+  const fees = (entry * qty + exitPrice * qty) * (feePct / 100);
+  return gross - fees;
+}
+
+function exitReasonForLive(trade, signalAction, marketPrice) {
+  if (!marketPrice) return '';
+  if (trade.side === 'LONG') {
+    if (marketPrice <= trade.stopPrice) return { reason: 'stop', price: marketPrice };
+    if (marketPrice >= trade.takePrice) return { reason: 'take', price: marketPrice };
+    if (signalAction === 'SELL') return { reason: 'signal', price: marketPrice };
+  } else {
+    if (marketPrice >= trade.stopPrice) return { reason: 'stop', price: marketPrice };
+    if (marketPrice <= trade.takePrice) return { reason: 'take', price: marketPrice };
+    if (signalAction === 'BUY') return { reason: 'signal', price: marketPrice };
+  }
+  return '';
+}
+
+async function fetchMarketPrice(symbol) {
+  const client = getOkxClient();
+  try {
+    const ticker = await client.fetchTicker(symbol.replace('USDT', '/USDT'));
+    if (ticker && ticker.last) return Number(ticker.last);
+  } catch (error) {
+    console.error(`[OKX] Ticker fetch failed for ${symbol}: ${error.message}`);
+  }
+  return null;
+}
+
+// ============================================================
+// Мониторинг открытых позиций: автозакрытие по стоп/тейк/сигналу
+// ============================================================
+
+async function monitorOpenPositions() {
+  const trades = loadTrades();
+  const open = trades.filter((t) => t.status === 'open');
+  const results = [];
+  const closedNow = [];
+
+  for (const trade of open) {
+    try {
+      const candles = await fetchCandles(trade.symbol, trade.interval, trade.candlesLimit || 100);
+      const effectiveParams = applyDynamicParams(candles, { ...(trade.params || {}) });
+      const signal = getSignal(candles, candles.length - 1, effectiveParams);
+      const lastClosed = candles[candles.length - 2] || candles[candles.length - 1];
+      const marketPrice = await fetchMarketPrice(trade.symbol) || lastClosed.close;
+      const exit = exitReasonForLive(trade, signal.action, marketPrice);
+
+      if (exit) {
+        await closePosition(trade.symbol, trade.side, trade.size);
+        const pnl = computeTradePnl(trade, exit.price);
+        trade.status = 'closed';
+        trade.exitPrice = Number(exit.price.toFixed(6));
+        trade.exitReason = exit.reason;
+        trade.pnl = Number(pnl.toFixed(2));
+        trade.closedAt = new Date().toISOString();
+
+        const today = new Date().toISOString().slice(0, 10);
+        const daily = loadDailyPnl();
+        if (daily.date !== today) {
+          daily.date = today;
+          daily.pnl = 0;
+          daily.trades = 0;
+        }
+        daily.pnl += trade.pnl;
+        saveDailyPnl(daily);
+
+        closedNow.push(trade);
+        results.push({
+          key: trade.key,
+          symbol: trade.symbol,
+          action: 'close',
+          side: trade.side,
+          exitPrice: trade.exitPrice,
+          reason: exit.reason,
+          pnl: trade.pnl
+        });
+        console.log(`[LiveExecutor] Closed ${trade.key} ${trade.side}: ${exit.reason} @ ${trade.exitPrice}, PnL ${trade.pnl}`);
+      } else {
+        results.push({ key: trade.key, symbol: trade.symbol, action: 'hold', price: marketPrice });
+      }
+    } catch (error) {
+      console.error(`[LiveExecutor] Exit check failed for ${trade.key}: ${error.message}`);
+      results.push({ key: trade.key, symbol: trade.symbol, action: 'error', error: error.message });
+    }
+  }
+
+  if (closedNow.length) saveTrades(trades);
+  return { checked: open.length, closed: closedNow.length, results };
+}
+
+// ============================================================
 // CLI entry point
 // ============================================================
 
@@ -439,6 +648,8 @@ module.exports = {
   executeTrade,
   checkGate,
   getLiveSignal,
+  getAccountBalance,
+  monitorOpenPositions,
   loadTrades,
   loadDailyPnl
 };

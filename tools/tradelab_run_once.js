@@ -581,5 +581,6 @@ module.exports = {
   tradePnl,
   floatingPnl,
   exitReason,
+  applyDynamicParams,
   runOnce
 };
