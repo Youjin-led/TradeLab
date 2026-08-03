@@ -68,9 +68,8 @@ function getOkxClient() {
     apiKey,
     secret: secretKey,
     password: passphrase,
-    // Используем демо-режим, если ключи не настроены
-    // В продакшене убрать demo: true
-    // demo: true
+    // Демо-режим OKX: включить через OKX_DEMO=true в .env
+    demo: String(process.env.OKX_DEMO || 'false').toLowerCase() === 'true'
   });
 
   return okxClient;
