@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-03T21:09:37.148Z
-Incubation updated: 2026-08-03T21:09:32.538Z
+Generated: 2026-08-04T02:57:21.629Z
+Incubation updated: 2026-08-04T02:57:17.174Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -11,14 +11,14 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 Live: 3; probation: 0; quarantined: 31; rejected: 10; ready for review: 0.
 Improving: 0; deteriorating: 2; collecting: 1.
-Portfolio forward PnL: -3854.94; forward trades: 593; avg/trade: -6.50.
+Portfolio forward PnL: -3957.61; forward trades: 595; avg/trade: -6.65.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-AVAXUSDT:1h:breakout | 66% | deteriorating | Healthy | 201 | 30 | -639.95 | 1.57 | 6.21% | 3 | status is incubating, expected ready-for-review
 LTCUSDT:4h:breakout | 52% | deteriorating | Healthy | 309 | 7 | +108.96 | 1.12 | 5.49% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 51% | deteriorating | Healthy | 432 | 7 | -140.72 | 1.42 | 7.37% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
@@ -26,8 +26,8 @@ SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.7
 Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
 SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
+XRPUSDT:4h:breakout | 51% | deteriorating | -140.72 | status is incubating, expected ready-for-review; forward paper trades 7 < 15; profit factor 1.42 < 1.6; loss streak 3 > 2
 LTCUSDT:4h:breakout | 52% | deteriorating | +108.96 | status is incubating, expected ready-for-review; forward paper trades 7 < 15; profit factor 1.12 < 1.6; loss streak 3 > 2
-AVAXUSDT:1h:breakout | 66% | deteriorating | -639.95 | status is incubating, expected ready-for-review; profit factor 1.57 < 1.6; loss streak 3 > 2
 
 ## Quarantine Count
 
