@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-04T02:57:21.629Z
-Incubation updated: 2026-08-04T02:57:17.174Z
+Generated: 2026-08-04T06:31:52.285Z
+Incubation updated: 2026-08-04T06:31:47.338Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -11,14 +11,14 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 Live: 3; probation: 0; quarantined: 31; rejected: 10; ready for review: 0.
 Improving: 0; deteriorating: 2; collecting: 1.
-Portfolio forward PnL: -3957.61; forward trades: 595; avg/trade: -6.65.
+Portfolio forward PnL: -3967.44; forward trades: 596; avg/trade: -6.66.
 
 ## Live Candidates
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
 LTCUSDT:4h:breakout | 52% | deteriorating | Healthy | 309 | 7 | +108.96 | 1.12 | 5.49% | 3 | status is incubating, expected ready-for-review
-XRPUSDT:4h:breakout | 51% | deteriorating | Healthy | 432 | 7 | -140.72 | 1.42 | 7.37% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 51% | deteriorating | Healthy | 433 | 7 | -140.72 | 1.42 | 7.51% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
