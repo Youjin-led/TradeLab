@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-04T14:27:45.436Z
-Incubation updated: 2026-08-04T14:27:40.855Z
+Generated: 2026-08-04T17:52:50.467Z
+Incubation updated: 2026-08-04T17:52:46.158Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -11,7 +11,7 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 
 Live: 2; probation: 0; quarantined: 31; rejected: 11; ready for review: 0.
 Improving: 0; deteriorating: 1; collecting: 1.
-Portfolio forward PnL: -3982.28; forward trades: 597; avg/trade: -6.67.
+Portfolio forward PnL: -3929.06; forward trades: 598; avg/trade: -6.57.
 
 ## Live Candidates
 
