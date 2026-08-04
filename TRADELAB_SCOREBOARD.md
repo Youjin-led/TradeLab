@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-04T10:44:35.824Z
-Incubation updated: 2026-08-04T10:44:31.368Z
+Generated: 2026-08-04T14:27:45.436Z
+Incubation updated: 2026-08-04T14:27:40.855Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
