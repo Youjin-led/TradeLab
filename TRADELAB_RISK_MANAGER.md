@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-05T10:41:36.088Z
+Generated: 2026-08-05T14:20:25.074Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3825.33 USDT
+- **Total PnL:** -3856.72 USDT
 
 ## Active Locks
 
@@ -67,20 +67,20 @@ Status: **EMERGENCY_STOP**
 | BTCUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 5% | 500 | 16.17 | 68.2% | 95 |
 | JUPUSDT | sma-rsi | 0.52% | 51.68 | 0.74 | 64.3% | 95 |
-| BNBUSDT | breakout | 1.4% | 140 | 0 | 50% | 95 |
+| BNBUSDT | breakout | 1.4% | 140 | 0 | 45.5% | 95 |
 | BCHUSDT | sma-rsi | 1.4% | 140 | 0 | 47.6% | 95 |
 
 ## Portfolio Heat
 
-- **Heat:** 0.06% / 5% max
+- **Heat:** 0.09% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ✅
-- **Active Positions:** 2
-- **Sector Distribution:** {"alt_small":1,"other":1}
+- **Active Positions:** 3
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
 
 ## Trailing Stops
 
@@ -88,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 76%
-- **Total PnL:** -3825.33 USDT
-- **Total Exposure:** 15939.65 USDT
+- **Margin Level:** 75.85%
+- **Total PnL:** -3856.72 USDT
+- **Total Exposure:** 15971.04 USDT
 - **Warnings:**
-  - 🔴 margin_call: 76% (threshold: 100%)
+  - 🔴 margin_call: 75.85% (threshold: 100%)
 
 ## Statistics
 
