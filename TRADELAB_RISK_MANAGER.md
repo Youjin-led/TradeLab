@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-05T06:33:01.442Z
+Generated: 2026-08-05T10:41:36.088Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3930.23 USDT
+- **Total PnL:** -3825.33 USDT
 
 ## Active Locks
 
@@ -25,7 +25,7 @@ Status: **EMERGENCY_STOP**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 5% | 500 | 7.17 | 50% | 95 |
+| NEARUSDT | breakout | 5% | 500 | 7.86 | 51.7% | 95 |
 | TRXUSDT | sma-rsi | 1.4% | 140 | 0 | 40% | 95 |
 | LINKUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -36,7 +36,7 @@ Status: **EMERGENCY_STOP**
 | ETHUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | SOLUSDT | breakout | 5% | 500 | 11.46 | 60% | 95 |
-| AVAXUSDT | breakout | 1.4% | 140 | 0 | 42.9% | 95 |
+| AVAXUSDT | breakout | 0.5% | 50 | 0.59 | 46.7% | 95 |
 | JUPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
 | TIAUSDT | sma-rsi | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
@@ -72,17 +72,15 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.12% / 5% max
+- **Heat:** 0.06% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
-- **OK:** ❌
-- **Active Positions:** 4
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":2}
-- **Blocks:**
-  - 🚫 max_concurrent_positions: 4/3
+- **OK:** ✅
+- **Active Positions:** 2
+- **Sector Distribution:** {"alt_small":1,"other":1}
 
 ## Trailing Stops
 
@@ -90,11 +88,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 75.24%
-- **Total PnL:** -3930.23 USDT
-- **Total Exposure:** 15870.47 USDT
+- **Margin Level:** 76%
+- **Total PnL:** -3825.33 USDT
+- **Total Exposure:** 15939.65 USDT
 - **Warnings:**
-  - 🔴 margin_call: 75.24% (threshold: 100%)
+  - 🔴 margin_call: 76% (threshold: 100%)
 
 ## Statistics
 
