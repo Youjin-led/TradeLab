@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-05T21:17:17.313Z
+Generated: 2026-08-06T02:56:58.138Z
 Status: **EMERGENCY_STOP**
 
 ---
@@ -10,7 +10,7 @@ Status: **EMERGENCY_STOP**
 - **Status:** EMERGENCY_STOP
 - **Next Action:** EMERGENCY: Portfolio stop-loss triggered. Manual review required before any new paper entries.
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3979.64 USDT
+- **Total PnL:** -4172.12 USDT
 
 ## Active Locks
 
@@ -55,10 +55,10 @@ Status: **EMERGENCY_STOP**
 | ADAUSDT | sma-rsi | 1.4% | 140 | 0 | 41.2% | 95 |
 | ATOMUSDT | sma-rsi | 1.4% | 140 | 0 | 31.6% | 95 |
 | RENDERUSDT | sma-rsi | 1.4% | 140 | 0 | 25% | 95 |
-| DOTUSDT | breakout | 1.4% | 140 | 0 | 42.9% | 95 |
+| DOTUSDT | breakout | 1.4% | 140 | 0 | 41.4% | 95 |
 | ARBUSDT | breakout | 1.4% | 140 | 0 | 46.2% | 95 |
 | XRPUSDT | breakout | 1.4% | 140 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 1.4% | 140 | 0 | 50% | 95 |
+| SEIUSDT | breakout | 1.4% | 140 | 0 | 47.6% | 95 |
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
 | DOTUSDT | breakout | 1.4% | 140 | 0 | 25% | 95 |
 | AVAXUSDT | breakout | 1.4% | 140 | 0 | 33.3% | 95 |
@@ -72,15 +72,17 @@ Status: **EMERGENCY_STOP**
 
 ## Portfolio Heat
 
-- **Heat:** 0.09% / 5% max
+- **Heat:** 0.12% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
-- **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
+- **OK:** ❌
+- **Active Positions:** 4
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":2}
+- **Blocks:**
+  - 🚫 max_concurrent_positions: 4/3
 
 ## Trailing Stops
 
@@ -88,11 +90,11 @@ Status: **EMERGENCY_STOP**
 
 ## Margin Monitor
 
-- **Margin Level:** 74.89%
-- **Total PnL:** -3979.64 USDT
-- **Total Exposure:** 15848.12 USDT
+- **Margin Level:** 73.99%
+- **Total PnL:** -4172.12 USDT
+- **Total Exposure:** 16040.6 USDT
 - **Warnings:**
-  - 🔴 margin_call: 74.89% (threshold: 100%)
+  - 🔴 margin_call: 73.99% (threshold: 100%)
 
 ## Statistics
 
