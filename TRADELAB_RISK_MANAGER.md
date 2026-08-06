@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-06T10:44:31.111Z
+Generated: 2026-08-06T14:24:10.586Z
 Status: **EMERGENCY_STOP**
 
 ---

@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-06T10:44:31.208Z
-Incubation updated: 2026-08-06T10:44:26.187Z
+Generated: 2026-08-06T14:24:10.667Z
+Incubation updated: 2026-08-06T14:24:05.053Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -17,7 +17,7 @@ Portfolio forward PnL: -4110.64; forward trades: 610; avg/trade: -6.74.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-XRPUSDT:4h:breakout | 58% | deteriorating | Healthy | 446 | 7 | -140.72 | 1.61 | 5.36% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 58% | deteriorating | Healthy | 447 | 7 | -140.72 | 1.61 | 5.43% | 3 | status is incubating, expected ready-for-review
 LTCUSDT:4h:breakout | 52% | deteriorating | Healthy | 309 | 7 | +108.96 | 1.12 | 5.49% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
