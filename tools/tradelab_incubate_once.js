@@ -15,6 +15,10 @@ const {
   tradePnl,
   floatingPnl,
   exitReason,
+  maybePartialTake,
+  partialTradePnl,
+  timeFilter,
+  confirmHigherTimeframe,
   applyDynamicParams,
   isStrategySuitable
 } = require('./tradelab_run_once');
@@ -26,6 +30,12 @@ const { VALIDATOR_RULES } = require('./tradelab_risk_controls');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const AUTO_CANDIDATES_PATH = path.join(__dirname, '..', 'tradelab-auto-candidates.json');
+const RISK_MANAGER_PATH = path.join(__dirname, '..', 'tradelab-risk-manager.json');
+
+// Loss-streak guardrail: a candidate that closes N losing trades in a row is quarantined.
+const MAX_CONSECUTIVE_LOSSES = 3;
+// Higher-timeframe confirmation interval per entry interval (multi-TF entry filter).
+const CONFIRM_INTERVAL = { '5m': '1h', '15m': '1h', '1h': '4h', '4h': '1d', '1d': '1d' };
 
 // MEAN-REVERSION is BLOCKED globally — it caused -11k+ PnL across 8 candidates.
 // Only SMA+RSI and Breakout are active. Mean-reversion candidates are removed.
@@ -173,6 +183,28 @@ function loadAutoCandidates() {
     }));
 }
 
+/**
+ * Read the portfolio-level entry gate produced by tradelab_risk_manager.js.
+ * When the risk manager has locked trading (portfolio stop-loss / daily loss limit),
+ * the incubator stops opening new paper positions.
+ */
+function readRiskGate() {
+  try {
+    if (!fs.existsSync(RISK_MANAGER_PATH)) return { allowNewEntries: true, reason: 'no risk manager state yet' };
+    const data = JSON.parse(fs.readFileSync(RISK_MANAGER_PATH, 'utf8'));
+    if (data.entryGate && typeof data.entryGate.allowNewEntries === 'boolean') {
+      return data.entryGate;
+    }
+    const locks = data.locks || {};
+    if (locks.portfolioStopLossLock || locks.dailyLossLock) {
+      return { allowNewEntries: false, reason: 'risk manager lock active' };
+    }
+    return { allowNewEntries: true, reason: 'risk limits OK' };
+  } catch {
+    return { allowNewEntries: true, reason: 'risk gate unreadable, allowing entries' };
+  }
+}
+
 function readState() {
   if (!fs.existsSync(STATE_PATH)) return { createdAt: new Date().toISOString(), candidates: {} };
   return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
@@ -234,10 +266,13 @@ function makePaperLedger(prior, candles) {
   };
 }
 
-function updatePaperLedger(ledger, candles, params) {
+function updatePaperLedger(ledger, candles, params, opts = {}) {
+  const { allowNewEntries = true, blockReason = '', confirmCandles = null } = opts;
   const processed = new Set((ledger.processedCloses || []).map((key) => String(key).slice(0, 16)));
   const warmup = Math.max(params.slow + 2, params.lookback + 2, 20);
   let newBars = 0;
+  let lossStreakBlocked = false;
+  ledger.consecutiveLosses = ledger.consecutiveLosses || 0;
 
   for (let cursor = warmup; cursor < candles.length; cursor += 1) {
     const candle = candles[cursor - 1];
@@ -253,6 +288,30 @@ function updatePaperLedger(ledger, candles, params) {
     ledger.maxDd = Math.max(ledger.maxDd, ((ledger.peak - equity) / ledger.peak) * 100);
 
     if (ledger.position) {
+      // Partial take profit: bank part of the position at the take target,
+      // move the stop to breakeven and trail the remainder.
+      if (!ledger.position.partialTaken) {
+        const partial = maybePartialTake(ledger.position, price, params);
+        if (partial) {
+          const exit = executionPrice(price, exitAction(ledger.position.side), params);
+          const result = partialTradePnl(ledger.position, exit, partial.partialQty, params);
+          ledger.balance += result.net;
+          ledger.trades.push({
+            side: ledger.position.side,
+            entry: ledger.position.entry,
+            exit,
+            pnl: result.net,
+            pnlPct: result.pct,
+            reason: 'partial-take',
+            entryTime: ledger.position.entryTime,
+            exitTime: candle.time
+          });
+          ledger.position.qty -= partial.partialQty;
+          ledger.position.entryFee -= result.entryFee;
+          ledger.position.partialTaken = true;
+          ledger.position.stop = ledger.position.entry;
+        }
+      }
       const reason = exitReason(ledger.position, signal, price);
       if (reason) {
         const exit = executionPrice(price, exitAction(ledger.position.side), params);
@@ -268,24 +327,67 @@ function updatePaperLedger(ledger, candles, params) {
           entryTime: ledger.position.entryTime,
           exitTime: candle.time
         });
+        if (result.net < 0) {
+          ledger.consecutiveLosses += 1;
+        } else {
+          ledger.consecutiveLosses = 0;
+        }
+        if (ledger.consecutiveLosses >= MAX_CONSECUTIVE_LOSSES) lossStreakBlocked = true;
         ledger.position = null;
       }
     } else {
       const side = signalToEntrySide(signal, params);
-      if (side) ledger.position = makePosition(side, price, ledger.balance, params, cursor, candle.time);
+      if (!side) continue;
+      if (ledger.consecutiveLosses >= MAX_CONSECUTIVE_LOSSES) {
+        lossStreakBlocked = true;
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = 'loss streak';
+        continue;
+      }
+      if (!allowNewEntries) {
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = blockReason || 'entry gate closed';
+        continue;
+      }
+      const tf = timeFilter(candle.time, params);
+      if (tf.blocked) {
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = tf.reason;
+        continue;
+      }
+      if (params.dynamicRisk && !isStrategySuitable(candles, params)) {
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = `phase mismatch (${params.marketPhase || 'unknown'})`;
+        continue;
+      }
+      const phase = detectPhase(candles);
+      const atrValue = phase.atrPct || 0;
+      if (!(atrValue >= (params.minAtrPct || 0.3) && atrValue <= (params.maxAtrPct || 5.0))) {
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = `atr filter ${atrValue.toFixed(2)}%`;
+        continue;
+      }
+      const htf = confirmHigherTimeframe(confirmCandles, side, params);
+      if (htf === false) {
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = 'htf confirmation failed';
+        continue;
+      }
+      ledger.position = makePosition(side, price, ledger.balance, params, cursor, candle.time, tf.qtyScale || 1);
+      ledger.entries = (ledger.entries || 0) + 1;
     }
   }
 
   ledger.processedCloses = Array.from(processed).slice(-2000);
-  return { ledger, newBars };
+  return { ledger, newBars, lossStreakBlocked };
 }
 
-function mergeRecord(previous, candidate, candles, params, result, walk, alerts) {
+function mergeRecord(previous, candidate, candles, params, result, walk, alerts, opts = {}) {
   const lastCandle = candles[candles.length - 1];
   const prior = previous || {};
   const effectiveParams = applyDynamicParams(candles, { ...params });
   const currentSignal = getSignal(candles, candles.length, effectiveParams);
-  const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams);
+  const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams, opts);
   const observedCloses = new Set((prior.observedCloses || []).map((key) => String(key).slice(0, 16)));
   const closeKey = lastCandle.time;
   const isNewObservation = !observedCloses.has(closeKey);
@@ -323,6 +425,10 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts)
     forwardPaperPnl: Number((paper.ledger.balance - 10000).toFixed(2)),
     forwardPaperMaxDd: Number(paper.ledger.maxDd.toFixed(2)),
     forwardOpenPosition: paper.ledger.position ? paper.ledger.position.side : 'none',
+    forwardOpenNotional: paper.ledger.position ? Number(paper.ledger.position.notional || 0) : 0,
+    consecutiveLosses: paper.ledger.consecutiveLosses || 0,
+    blockedEntries: paper.ledger.blockedEntries || 0,
+    lastBlockReason: paper.ledger.lastBlockReason || '',
     newForwardBars: paper.newBars,
     totalPnl: Number(result.summary.pnl.toFixed(2)),
     profitFactor: Number((Number.isFinite(result.summary.profitFactor) ? result.summary.profitFactor : 99).toFixed(2)),
@@ -365,6 +471,14 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts)
     };
     record.alerts = Array.from(new Set([...(record.alerts || []), `quarantine: ${record.quarantine.reason}`]));
   }
+  // Loss-streak guardrail: N consecutive losing trades quarantines the candidate.
+  if (paper.lossStreakBlocked && record.status !== 'quarantined') {
+    const reason = `loss streak: ${MAX_CONSECUTIVE_LOSSES} consecutive losing paper trades`;
+    record.status = 'quarantined';
+    record.decision = 'quarantine';
+    record.quarantine = { active: true, reason, updatedAt: new Date().toISOString() };
+    record.alerts = Array.from(new Set([...(record.alerts || []), `quarantine: ${reason}`]));
+  }
   return record;
 }
 
@@ -374,6 +488,7 @@ async function incubateOnce() {
   state.candidates = state.candidates || {};
   const quarantine = loadQuarantine();
   applyQuarantineToState(state, quarantine);
+  const riskGate = readRiskGate();
 
   const rows = [];
   const errors = [];
@@ -411,10 +526,26 @@ async function incubateOnce() {
     try {
       const params = baseParams(candidate);
       const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit);
+      const priorStatus = state.candidates[key] && state.candidates[key].status;
+      const allowNewEntries = riskGate.allowNewEntries && !['quarantined', 'rejected'].includes(priorStatus);
+      const blockReason = allowNewEntries
+        ? ''
+        : priorStatus === 'rejected'
+          ? 'candidate rejected — new entries paused'
+          : priorStatus === 'quarantined'
+            ? 'candidate quarantined — new entries paused'
+            : riskGate.reason || 'risk gate closed';
+      let confirmCandles = null;
+      const confirmInterval = CONFIRM_INTERVAL[candidate.interval];
+      if (confirmInterval && confirmInterval !== candidate.interval) {
+        try {
+          confirmCandles = await fetchCandles(candidate.symbol, confirmInterval, 200);
+        } catch (_) { /* HTF confirmation is optional — don't block on network */ }
+      }
       const result = simulate(candles, params);
       const walk = splitWalkForward(candles, params);
       const alerts = evaluateGuardrails(result.summary, walk, params);
-      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, alerts);
+      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, alerts, { allowNewEntries, blockReason, confirmCandles });
       state.candidates[key] = record;
       rows.push(record);
     } catch (error) {
@@ -491,4 +622,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { incubateOnce, CANDIDATES };
+module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, readRiskGate, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };

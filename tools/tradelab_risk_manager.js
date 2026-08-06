@@ -39,15 +39,26 @@ const RISK_CONFIG = {
   // Размер позиции
   positionSizing: {
     // Базовая риск-единица на одну позицию (% от портфеля)
-    baseRiskPerPosition: 2.0,
-    // Максимальная риск-единица на одну позицию
-    maxRiskPerPosition: 5.0,
+    baseRiskPerPosition: 1.0,
+    // Максимальная риск-единица на одну позицию (hard cap 2%)
+    maxRiskPerPosition: 2.0,
     // Минимальная риск-единица на одну позицию
-    minRiskPerPosition: 0.5,
+    minRiskPerPosition: 0.25,
     // Множитель для волатильных инструментов
     volatilityMultiplier: 0.5,
     // Множитель для низколиквидных инструментов
     liquidityMultiplier: 0.7,
+  },
+
+  // Жёсткий лимит экспозиции (USDT открытого нотациона)
+  hardExposure: {
+    maxPortfolioExposure: 30000,
+    maxExposurePerSymbol: 5000,
+  },
+
+  // Восстановление после портфельного стоп-лосса
+  recovery: {
+    portfolioStopLossCooldownHours: 48,
   },
 
   // Корреляционный guard
@@ -93,21 +104,7 @@ const RISK_CONFIG = {
   }
 };
 
-// ===== СОСТОЯНИЕ =====
-
-function readState() {
-  if (!fs.existsSync(STATE_PATH)) return { candidates: {}, summary: null };
-  return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
-}
-
-function readRiskState() {
-  if (!fs.existsSync(RISK_LOG_PATH)) return getDefaultRiskState();
-  try {
-    return JSON.parse(fs.readFileSync(RISK_LOG_PATH, 'utf8'));
-  } catch {
-    return getDefaultRiskState();
-  }
-}
+// ===== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ =====
 
 function getDefaultRiskState() {
   return {
@@ -156,6 +153,71 @@ function saveRiskState(riskState) {
   fs.writeFileSync(RISK_LOG_PATH, JSON.stringify(riskState, null, 2));
 }
 
+/**
+ * Realized paper PnL across all candidates for trades closed at/after `startIso`.
+ */
+function realizedPnlWindow(candidates, startIso) {
+  let sum = 0;
+  const start = Date.parse(startIso);
+  for (const c of candidates) {
+    const trades = (c.paperLedger && c.paperLedger.trades) || [];
+    for (const t of trades) {
+      const ts = t.exitTime ? Date.parse(t.exitTime) : 0;
+      if (ts && start && ts >= start) sum += t.pnl || 0;
+    }
+  }
+  return Number(sum.toFixed(2));
+}
+
+/**
+ * Current open exposure = sum of open position notionals across candidates.
+ */
+function computeExposure(candidates) {
+  let openNotional = 0;
+  const perSymbol = {};
+  for (const c of candidates) {
+    const n = c.forwardOpenNotional || 0;
+    if (n > 0) {
+      openNotional += n;
+      perSymbol[c.symbol] = (perSymbol[c.symbol] || 0) + n;
+    }
+  }
+  const maxSymbol = Object.entries(perSymbol).sort((a, b) => b[1] - a[1])[0];
+  return {
+    openNotional: Number(openNotional.toFixed(2)),
+    perSymbol,
+    maxSymbol: maxSymbol ? { symbol: maxSymbol[0], notional: Number(maxSymbol[1].toFixed(2)) } : null
+  };
+}
+
+/**
+ * Compute the portfolio-level entry gate consumed by tradelab_incubate_once.js.
+ */
+function computeEntryGate(locks) {
+  const blockedBy = [];
+  if (locks.portfolioStopLossLock) blockedBy.push('portfolio stop-loss');
+  if (locks.dailyLossLock) blockedBy.push('daily loss limit');
+  if (locks.weeklyLossLock) blockedBy.push('weekly loss limit');
+  if (locks.monthlyLossLock) blockedBy.push('monthly loss limit');
+  return blockedBy.length
+    ? { allowNewEntries: false, reason: `blocked by: ${blockedBy.join(', ')}` }
+    : { allowNewEntries: true, reason: 'all risk limits OK' };
+}
+
+function readState() {
+  if (!fs.existsSync(STATE_PATH)) return { candidates: {}, summary: null };
+  return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+}
+
+function readRiskState() {
+  if (!fs.existsSync(RISK_LOG_PATH)) return getDefaultRiskState();
+  try {
+    return JSON.parse(fs.readFileSync(RISK_LOG_PATH, 'utf8'));
+  } catch {
+    return getDefaultRiskState();
+  }
+}
+
 // ===== ПОРТФЕЛЬНЫЙ СТОП-ЛОСС =====
 
 function checkPortfolioStopLoss(state, riskState) {
@@ -164,49 +226,10 @@ function checkPortfolioStopLoss(state, riskState) {
   const config = RISK_CONFIG.portfolioStopLoss;
   const reasons = [];
 
-  // Проверка общего убытка портфеля
+  // Проверка общего убытка портфеля (реализованный forward PnL)
   if (totalPnl <= config.maxPortfolioLoss) {
     reasons.push(`Portfolio PnL ${totalPnl.toFixed(2)} <= ${config.maxPortfolioLoss} (max portfolio loss)`);
-  }
-
-  // Проверка дневного лимита
-  const today = new Date().toISOString().slice(0, 10);
-  if (riskState.dailyLossDate !== today) {
-    riskState.dailyLoss = 0;
-    riskState.dailyLossDate = today;
-    riskState.locks.dailyLossLock = false;
-  }
-  if (riskState.dailyLoss <= config.maxDailyLoss) {
-    riskState.locks.dailyLossLock = true;
-    reasons.push(`Daily loss ${riskState.dailyLoss.toFixed(2)} <= ${config.maxDailyLoss} (daily limit)`);
-  }
-
-  // Проверка недельного лимита
-  const currentWeek = getWeekNumber(new Date());
-  if (riskState.weeklyLossWeek !== currentWeek) {
-    riskState.weeklyLoss = 0;
-    riskState.weeklyLossWeek = currentWeek;
-    riskState.locks.weeklyLossLock = false;
-  }
-  if (riskState.weeklyLoss <= config.maxWeeklyLoss) {
-    riskState.locks.weeklyLossLock = true;
-    reasons.push(`Weekly loss ${riskState.weeklyLoss.toFixed(2)} <= ${config.maxWeeklyLoss} (weekly limit)`);
-  }
-
-  // Проверка месячного лимита
-  const currentMonth = new Date().getMonth();
-  if (riskState.monthlyLossMonth !== currentMonth) {
-    riskState.monthlyLoss = 0;
-    riskState.monthlyLossMonth = currentMonth;
-    riskState.locks.monthlyLossLock = false;
-  }
-  if (riskState.monthlyLoss <= config.maxMonthlyLoss) {
-    riskState.locks.monthlyLossLock = true;
-    reasons.push(`Monthly loss ${riskState.monthlyLoss.toFixed(2)} <= ${config.maxMonthlyLoss} (monthly limit)`);
-  }
-
-  const isTriggered = reasons.length > 0;
-  if (isTriggered) {
+    if (!riskState.locks.portfolioStopLossLock) riskState.portfolioStopLossTriggeredAt = new Date().toISOString();
     riskState.locks.portfolioStopLossLock = true;
     riskState.stats.totalStopLossesTriggered++;
     riskState.stopLossHistory.push({
@@ -216,7 +239,55 @@ function checkPortfolioStopLoss(state, riskState) {
       reasons,
       action: 'ALL_PAPER_POSITIONS_FROZEN'
     });
+  } else if (riskState.locks.portfolioStopLossLock) {
+    // Само-восстановление: латч снимается после cooldown, если PnL уже выше порога
+    const triggeredAt = riskState.portfolioStopLossTriggeredAt ? Date.parse(riskState.portfolioStopLossTriggeredAt) : 0;
+    const cooldownMs = (RISK_CONFIG.recovery.portfolioStopLossCooldownHours || 48) * 3600 * 1000;
+    if (!triggeredAt || (Date.now() - triggeredAt) >= cooldownMs) {
+      riskState.locks.portfolioStopLossLock = false;
+      riskState.portfolioStopLossTriggeredAt = null;
+      riskState.stats.autoRecovered = (riskState.stats.autoRecovered || 0) + 1;
+    }
   }
+
+  // Проверка дневного лимита (реализованный PnL закрытых сделок за сегодня, UTC)
+  const today = new Date().toISOString().slice(0, 10);
+  const todayPnl = realizedPnlWindow(candidates, `${today}T00:00:00Z`);
+  riskState.dailyLoss = todayPnl;
+  riskState.dailyLossDate = today;
+  if (todayPnl <= config.maxDailyLoss) {
+    riskState.locks.dailyLossLock = true;
+    reasons.push(`Daily loss ${todayPnl.toFixed(2)} <= ${config.maxDailyLoss} (daily limit)`);
+  } else {
+    riskState.locks.dailyLossLock = false;
+  }
+
+  // Проверка недельного лимита (rolling 7 дней)
+  const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+  const weeklyPnl = realizedPnlWindow(candidates, weekAgo);
+  riskState.weeklyLoss = weeklyPnl;
+  if (weeklyPnl <= config.maxWeeklyLoss) {
+    riskState.locks.weeklyLossLock = true;
+    reasons.push(`Weekly loss ${weeklyPnl.toFixed(2)} <= ${config.maxWeeklyLoss} (weekly limit)`);
+  } else {
+    riskState.locks.weeklyLossLock = false;
+  }
+
+  // Проверка месячного лимита (с начала месяца, UTC)
+  const now = new Date();
+  const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString();
+  const monthlyPnl = realizedPnlWindow(candidates, monthStart);
+  riskState.monthlyLoss = monthlyPnl;
+  if (monthlyPnl <= config.maxMonthlyLoss) {
+    riskState.locks.monthlyLossLock = true;
+    reasons.push(`Monthly loss ${monthlyPnl.toFixed(2)} <= ${config.maxMonthlyLoss} (monthly limit)`);
+  } else {
+    riskState.locks.monthlyLossLock = false;
+  }
+
+  const isTriggered = reasons.length > 0;
+
+  riskState.entryGate = computeEntryGate(riskState.locks);
 
   saveRiskState(riskState);
 
@@ -225,6 +296,13 @@ function checkPortfolioStopLoss(state, riskState) {
     totalPnl,
     reasons,
     locks: riskState.locks,
+    entryGate: riskState.entryGate,
+    windows: {
+      daily: todayPnl,
+      weekly: weeklyPnl,
+      monthly: monthlyPnl,
+      total: totalPnl
+    },
     action: isTriggered
       ? 'EMERGENCY: All paper positions frozen. Manual review required.'
       : 'OK: Portfolio within risk limits.'
@@ -576,12 +654,12 @@ function updateTrailingStops(state, riskState) {
 function checkMargin(candidates) {
   const config = RISK_CONFIG.marginMonitor;
   const totalPnl = candidates.reduce((sum, c) => sum + (c.forwardPaperPnl || 0), 0);
-  const totalExposure = candidates.reduce((sum, c) => sum + Math.abs(c.forwardPaperPnl || 0), 0);
-  
-  // Симулированная маржа (paper-only)
-  const marginLevel = totalExposure > 0 
-    ? ((totalExposure + totalPnl) / totalExposure) * 100 
-    : 100;
+  const exposure = computeExposure(candidates);
+  const totalExposure = exposure.openNotional || candidates.reduce((sum, c) => sum + Math.abs(c.forwardPaperPnl || 0), 0);
+  const equity = 10000 + totalPnl;
+
+  // Симулированная маржа (paper-only): equity / открытая экспозиция
+  const marginLevel = totalExposure > 0 ? (equity / totalExposure) * 100 : 100;
 
   const warnings = [];
   if (marginLevel <= config.marginCallLevel) {
@@ -612,6 +690,7 @@ function checkMargin(candidates) {
     marginLevel: Number(marginLevel.toFixed(2)),
     totalPnl: Number(totalPnl.toFixed(2)),
     totalExposure: Number(totalExposure.toFixed(2)),
+    openNotional: exposure.openNotional,
     warnings
   };
 }
@@ -649,6 +728,25 @@ function runRiskManager() {
     // 5. Маржинальный монитор
     marginMonitor: checkMargin(candidates),
 
+    // 5b. Жёсткий лимит экспозиции (open notional)
+    hardExposure: (() => {
+      const exposure = computeExposure(candidates);
+      const maxPortfolio = RISK_CONFIG.hardExposure.maxPortfolioExposure;
+      const maxSymbol = RISK_CONFIG.hardExposure.maxExposurePerSymbol;
+      const violations = [];
+      if (exposure.openNotional > maxPortfolio) violations.push(`portfolio exposure ${exposure.openNotional} > ${maxPortfolio}`);
+      if (exposure.maxSymbol && exposure.maxSymbol.notional > maxSymbol) violations.push(`${exposure.maxSymbol.symbol} exposure ${exposure.maxSymbol.notional} > ${maxSymbol}`);
+      return {
+        openNotional: exposure.openNotional,
+        perSymbol: exposure.perSymbol,
+        maxPortfolioExposure: maxPortfolio,
+        maxExposurePerSymbol: maxSymbol,
+        violated: violations.length > 0,
+        violations,
+        status: violations.length ? 'OVER_EXPOSED' : 'OK'
+      };
+    })(),
+
     // 6. Portfolio Heat
     portfolioHeat: {
       heat: Number(portfolioHeat.toFixed(2)),
@@ -666,6 +764,9 @@ function runRiskManager() {
 
     // 8. Блокировки
     locks: riskState.locks,
+
+    // 8b. Входной гейт (consumed by incubate_once)
+    entryGate: riskState.entryGate || computeEntryGate(riskState.locks),
 
     // Итоговый статус
     status: getOverallStatus(riskState),
@@ -719,8 +820,32 @@ function generateReport(result) {
   lines.push('');
   lines.push(`- **Status:** ${result.status}`);
   lines.push(`- **Next Action:** ${result.nextAction}`);
+  lines.push(`- **Entry Gate:** ${result.entryGate.allowNewEntries ? '✅ OPEN' : '🔴 CLOSED'} (${result.entryGate.reason})`);
   lines.push(`- **Portfolio Stop-Loss:** ${result.portfolioStopLoss.triggered ? '🔴 TRIGGERED' : '✅ OK'}`);
   lines.push(`- **Total PnL:** ${result.portfolioStopLoss.totalPnl.toFixed(2)} USDT`);
+  lines.push('');
+  
+  // Периоды потерь
+  lines.push('## Loss Windows (realized)');
+  lines.push('');
+  lines.push('| Window | PnL | Limit | Status |');
+  lines.push('| --- | --- | --- | --- |');
+  const w = result.portfolioStopLoss.windows;
+  lines.push(`| Daily (UTC) | ${w.daily.toFixed(2)} | ${result.config.portfolioStopLoss.maxDailyLoss} | ${result.locks.dailyLossLock ? '🔴 LOCKED' : '✅'} |`);
+  lines.push(`| Weekly (7d) | ${w.weekly.toFixed(2)} | ${result.config.portfolioStopLoss.maxWeeklyLoss} | ${result.locks.weeklyLossLock ? '🔴 LOCKED' : '✅'} |`);
+  lines.push(`| Monthly | ${w.monthly.toFixed(2)} | ${result.config.portfolioStopLoss.maxMonthlyLoss} | ${result.locks.monthlyLossLock ? '🔴 LOCKED' : '✅'} |`);
+  lines.push(`| Total (all time) | ${w.total.toFixed(2)} | ${result.config.portfolioStopLoss.maxPortfolioLoss} | ${result.locks.portfolioStopLossLock ? '🔴 LOCKED' : '✅'} |`);
+  lines.push('');
+
+  // Экспозиция
+  lines.push('## Hard Exposure');
+  lines.push('');
+  lines.push(`- **Open Notional:** ${result.hardExposure.openNotional} USDT (max ${result.hardExposure.maxPortfolioExposure})`);
+  lines.push(`- **Status:** ${result.hardExposure.status}`);
+  if (result.hardExposure.violations.length) {
+    lines.push('- **Violations:**');
+    for (const v of result.hardExposure.violations) lines.push(`  - 🚫 ${v}`);
+  }
   lines.push('');
   
   // Блокировки

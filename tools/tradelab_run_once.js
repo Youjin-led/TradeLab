@@ -40,6 +40,16 @@ const DEFAULT_PARAMS = {
   adxThreshold: 20,
   // Max concurrent positions
   maxPositions: 3,
+  // Partial take profit: bank this fraction at the take target, then trail the rest
+  partialTakePct: 0.5,
+  // Hard cap on position notional (% of account balance)
+  maxNotionalPct: 20,
+  // Time filters (UTC): skip these hours entirely, halve size on Mondays
+  blockedHours: [3, 10, 19, 20, 21, 22],
+  mondayMode: 'half',
+  mondayQtyScale: 0.5,
+  // Higher-timeframe confirmation SMA period
+  confirmSlow: 20,
 };
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -240,12 +250,27 @@ function positionLevels(entry, side, params) {
   return { stop: entry * (1 + params.stopPct / 100), take: entry * (1 - params.takePct / 100) };
 }
 
-function makePosition(side, rawPrice, balance, params, cursor, time) {
+function makePosition(side, rawPrice, balance, params, cursor, time, qtyScale = 1) {
   const entry = executionPrice(rawPrice, entryAction(side), params);
   const riskUsd = balance * (params.riskPct / 100);
-  const qty = riskUsd / (entry * (params.stopPct / 100));
+  let qty = riskUsd / (entry * (params.stopPct / 100));
+  if (Number.isFinite(qtyScale) && qtyScale > 0) qty *= qtyScale;
+  // Hard notional cap so no single position can dominate the account
+  const maxNotionalPct = params.maxNotionalPct || 20;
+  const maxNotional = balance * (maxNotionalPct / 100);
+  if (maxNotional > 0 && entry * qty > maxNotional) qty = maxNotional / entry;
   const entryFee = entry * qty * (params.feePct / 100);
-  return { side, entry, qty, entryFee, openedAt: cursor, entryTime: time, ...positionLevels(entry, side, params), trailingActivated: false, trailPct: params.trailPct || 0.8, trailActivatePct: params.trailActivatePct || 1.5 };
+  return {
+    side, entry, qty, entryFee,
+    initialQty: qty,
+    partialTaken: false,
+    notional: entry * qty,
+    openedAt: cursor, entryTime: time,
+    ...positionLevels(entry, side, params),
+    trailingActivated: false,
+    trailPct: params.trailPct || 0.8,
+    trailActivatePct: params.trailActivatePct || 1.5
+  };
 }
 
 function tradePnl(position, exit, params) {
@@ -261,6 +286,75 @@ function tradePnl(position, exit, params) {
 
 function floatingPnl(position, rawPrice, params) {
   return tradePnl(position, executionPrice(rawPrice, exitAction(position.side), params), params).net;
+}
+
+/**
+ * Partial take profit: once the take target is hit, bank a fraction of the position
+ * (partialTakePct of the original quantity). Returns the quantity to close, or null.
+ */
+function maybePartialTake(position, price, params) {
+  if (!position || position.partialTaken) return null;
+  const factor = params.partialTakePct || 0.5;
+  if (position.side === 'LONG' && price >= position.take) return { partialQty: position.initialQty * factor };
+  if (position.side === 'SHORT' && price <= position.take) return { partialQty: position.initialQty * factor };
+  return null;
+}
+
+/**
+ * PnL for a partial close, with entry/exit fees scaled to the closed quantity.
+ */
+function partialTradePnl(position, exit, partialQty, params) {
+  const share = position.initialQty > 0 ? partialQty / position.initialQty : 0;
+  const gross = position.side === 'LONG' ? (exit - position.entry) * partialQty : (position.entry - exit) * partialQty;
+  const exitFee = exit * partialQty * (params.feePct / 100);
+  const entryFee = position.entryFee * share;
+  return { gross, exitFee, entryFee, net: gross - entryFee - exitFee, pct: position.side === 'LONG' ? ((exit - position.entry) / position.entry) * 100 : ((position.entry - exit) / position.entry) * 100 };
+}
+
+const DEFAULT_BLOCKED_HOURS = [3, 10, 19, 20, 21, 22];
+
+/**
+ * Time filter based on entry candle time (UTC).
+ * Bad hours are skipped entirely; Mondays are traded at reduced size (or blocked).
+ */
+function timeFilter(timeStr, params = {}) {
+  const blockedHours = params.blockedHours || DEFAULT_BLOCKED_HOURS;
+  let hour = -1;
+  if (typeof timeStr === 'string') {
+    const m = timeStr.match(/(\d{2}):(\d{2})/);
+    if (m) hour = parseInt(m[1], 10);
+  }
+  if (blockedHours.includes(hour)) {
+    return { blocked: true, reason: `blocked hour ${hour}:00 UTC`, qtyScale: 0 };
+  }
+  let qtyScale = 1;
+  let reason = '';
+  if (typeof timeStr === 'string') {
+    const date = new Date(timeStr.replace(' ', 'T') + 'Z');
+    if (!isNaN(date.getTime()) && date.getUTCDay() === 1) {
+      if (params.mondayMode === 'block') return { blocked: true, reason: 'Monday blocked', qtyScale: 0 };
+      qtyScale = params.mondayQtyScale || 0.5;
+      reason = 'Monday half-size';
+    }
+  }
+  return { blocked: false, reason, qtyScale };
+}
+
+/**
+ * Higher-timeframe trend confirmation: require price and slope on the HTF chart
+ * to agree with the entry side. Returns true/false, or null when data is insufficient.
+ */
+function confirmHigherTimeframe(htfCandles, side, params = {}) {
+  if (!htfCandles || htfCandles.length < 30) return null;
+  const closes = htfCandles.map((c) => c.close);
+  const period = params.confirmSlow || 20;
+  const basis = sma(closes, period, closes.length - 1);
+  if (basis === null) return null;
+  const ref = closes[closes.length - 11];
+  const slope = ref > 0 ? ((closes[closes.length - 1] - ref) / ref) * 100 : 0;
+  if (side === 'LONG') return closes[closes.length - 1] > basis && slope > 0;
+  if (side === 'SHORT') return closes[closes.length - 1] < basis && slope < 0;
+  return null;
 }
 
 function exitReason(position, signal, rawPrice) {
@@ -345,6 +439,27 @@ function simulate(candles, params) {
     account.equity.push({ value: equity });
 
     if (account.position) {
+      const partial = maybePartialTake(account.position, price, effectiveParams);
+      if (partial) {
+        const exit = executionPrice(price, exitAction(account.position.side), effectiveParams);
+        const result = partialTradePnl(account.position, exit, partial.partialQty, effectiveParams);
+        account.balance += result.net;
+        account.trades.push({
+          side: account.position.side,
+          entry: account.position.entry,
+          exit,
+          pnl: result.net,
+          gross: result.gross,
+          fees: result.entryFee + result.exitFee,
+          pnlPct: result.pct,
+          bars: cursor - account.position.openedAt,
+          reason: 'partial-take'
+        });
+        account.position.qty -= partial.partialQty;
+        account.position.entryFee -= result.entryFee;
+        account.position.partialTaken = true;
+        account.position.stop = account.position.entry;
+      }
       const reason = exitReason(account.position, signal, price);
       if (reason) {
         const exit = executionPrice(price, exitAction(account.position.side), effectiveParams);
@@ -581,6 +696,11 @@ module.exports = {
   tradePnl,
   floatingPnl,
   exitReason,
+  maybePartialTake,
+  partialTradePnl,
+  timeFilter,
+  confirmHigherTimeframe,
   applyDynamicParams,
+  isStrategySuitable,
   runOnce
 };
