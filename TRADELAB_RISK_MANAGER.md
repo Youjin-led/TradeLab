@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-07T09:04:56.014Z
+Generated: 2026-08-07T13:15:05.655Z
 Status: **NORMAL**
 
 ---
@@ -11,16 +11,16 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3897.16 USDT
+- **Total PnL:** -3759.85 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -1000 | ✅ |
-| Weekly (7d) | 346.23 | -2500 | ✅ |
-| Monthly | 99.63 | -5000 | ✅ |
-| Total (all time) | -3897.16 | -5000 | ✅ |
+| Daily (UTC) | 137.30 | -1000 | ✅ |
+| Weekly (7d) | 255.68 | -2500 | ✅ |
+| Monthly | 236.93 | -5000 | ✅ |
+| Total (all time) | -3759.85 | -5000 | ✅ |
 
 ## Hard Exposure
 
@@ -50,7 +50,7 @@ Status: **NORMAL**
 | SEIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SOLUSDT | breakout | 2% | 200 | 11.46 | 60% | 95 |
+| SOLUSDT | breakout | 2% | 200 | 12.64 | 62.5% | 95 |
 | AVAXUSDT | breakout | 0.41% | 41.48 | 0.59 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -82,7 +82,7 @@ Status: **NORMAL**
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | sma-rsi | 2% | 200 | 16.17 | 68.2% | 95 |
 | JUPUSDT | sma-rsi | 0.52% | 51.68 | 0.74 | 64.3% | 95 |
-| BNBUSDT | breakout | 0.7% | 70 | 0 | 45.5% | 95 |
+| BNBUSDT | breakout | 0.7% | 70 | 0 | 50% | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | 0 | 47.6% | 95 |
 
 ## Portfolio Heat
@@ -105,11 +105,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 38.51%
-- **Total PnL:** -3897.16 USDT
-- **Total Exposure:** 15845.86 USDT
+- **Margin Level:** 39.52%
+- **Total PnL:** -3759.85 USDT
+- **Total Exposure:** 15790.99 USDT
 - **Warnings:**
-  - 🔴 margin_call: 38.51% (threshold: 100%)
+  - 🔴 margin_call: 39.52% (threshold: 100%)
 
 ## Statistics
 
