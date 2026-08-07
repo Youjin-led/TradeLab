@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-07T05:44:21.023Z
+Generated: 2026-08-07T09:04:56.014Z
 Status: **NORMAL**
 
 ---
@@ -18,7 +18,7 @@ Status: **NORMAL**
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
 | Daily (UTC) | 0.00 | -1000 | ✅ |
-| Weekly (7d) | 786.92 | -2500 | ✅ |
+| Weekly (7d) | 346.23 | -2500 | ✅ |
 | Monthly | 99.63 | -5000 | ✅ |
 | Total (all time) | -3897.16 | -5000 | ✅ |
 

@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-07T05:44:21.092Z
-Incubation updated: 2026-08-07T05:44:14.255Z
+Generated: 2026-08-07T09:04:56.111Z
+Incubation updated: 2026-08-07T09:04:48.659Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -17,8 +17,8 @@ Portfolio forward PnL: -3897.16; forward trades: 614; avg/trade: -6.35.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-AVAXUSDT:1h:breakout | 70% | deteriorating | Healthy | 219 | 34 | -457.60 | 1.21 | 1.94% | 3 | status is incubating, expected ready-for-review
-XRPUSDT:4h:breakout | 60% | deteriorating | Healthy | 449 | 7 | -140.72 | 1.49 | 2.51% | 3 | status is incubating, expected ready-for-review
+AVAXUSDT:1h:breakout | 70% | deteriorating | Healthy | 220 | 34 | -457.60 | 1.21 | 1.94% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 60% | deteriorating | Healthy | 450 | 7 | -140.72 | 1.49 | 2.51% | 3 | status is incubating, expected ready-for-review
 LTCUSDT:4h:breakout | 52% | deteriorating | Healthy | 309 | 7 | +108.96 | 1.12 | 5.49% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
