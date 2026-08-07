@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-07T16:57:56.257Z
-Incubation updated: 2026-08-07T16:57:48.182Z
+Generated: 2026-08-07T20:47:31.207Z
+Incubation updated: 2026-08-07T20:47:24.833Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -17,7 +17,7 @@ Portfolio forward PnL: -3759.85; forward trades: 617; avg/trade: -6.09.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-XRPUSDT:4h:breakout | 59% | deteriorating | Healthy | 452 | 8 | -108.42 | 1.25 | 2.58% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 59% | deteriorating | Healthy | 453 | 8 | -108.42 | 1.28 | 2.58% | 3 | status is incubating, expected ready-for-review
 LTCUSDT:4h:breakout | 52% | deteriorating | Healthy | 309 | 7 | +108.96 | 1.12 | 5.49% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
@@ -27,7 +27,7 @@ Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
 SUIUSDT:4h:breakout | 27% | collecting | -402.49 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 17 < 30; forward paper trades 2 < 15; loss streak 6 > 2; critical alerts: loss streak 6; quarantine: weak candidate: forward PnL -402.49, PF 2.07, max DD 6.77%, health Caution; auto-unquarantined: trades 9 >= 7; PF 4.22 >= 1.5; DD 2.67% <= 6%; loss streak 2 <= 2; PnL 992.48 >= -50
 LTCUSDT:4h:breakout | 52% | deteriorating | +108.96 | status is incubating, expected ready-for-review; forward paper trades 7 < 15; profit factor 1.12 < 1.6; loss streak 3 > 2
-XRPUSDT:4h:breakout | 59% | deteriorating | -108.42 | status is incubating, expected ready-for-review; forward paper trades 8 < 15; profit factor 1.25 < 1.6; loss streak 3 > 2
+XRPUSDT:4h:breakout | 59% | deteriorating | -108.42 | status is incubating, expected ready-for-review; forward paper trades 8 < 15; profit factor 1.28 < 1.6; loss streak 3 > 2
 
 ## Quarantine Count
 
