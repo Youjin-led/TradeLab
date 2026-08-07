@@ -1,11 +1,11 @@
 {
   "createdAt": "2026-06-16T18:21:36.924Z",
-  "updatedAt": "2026-08-06T14:24:10.588Z",
+  "updatedAt": "2026-08-07T00:54:28.138Z",
   "dailyLoss": 0,
-  "dailyLossDate": "2026-08-06",
-  "weeklyLoss": 0,
+  "dailyLossDate": "2026-08-07",
+  "weeklyLoss": 698.58,
   "weeklyLossWeek": 32,
-  "monthlyLoss": 0,
+  "monthlyLoss": 99.63,
   "monthlyLossMonth": 7,
   "stopLossHistory": [
     {
@@ -437,12 +437,18 @@
     "dailyLossLock": false,
     "weeklyLossLock": false,
     "monthlyLossLock": false,
-    "portfolioStopLossLock": true
+    "portfolioStopLossLock": false
   },
   "stats": {
     "totalStopLossesTriggered": 47,
     "totalTrailingStopsTriggered": 0,
     "totalCorrelationBlocks": 0,
-    "totalMarginWarnings": 0
+    "totalMarginWarnings": 0,
+    "autoRecovered": 1
+  },
+  "portfolioStopLossTriggeredAt": null,
+  "entryGate": {
+    "allowNewEntries": true,
+    "reason": "all risk limits OK"
   }
 }
