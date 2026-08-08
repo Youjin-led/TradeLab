@@ -1,92 +1,97 @@
 {
-  "_collectedAt": "2026-08-07T20:47:24.769Z",
+  "_collectedAt": "2026-08-08T01:57:19.998Z",
   "prices": {
     "BTCUSDT": {
-      "price": 64961.72,
-      "change24h": 0.776,
-      "volume": 771224492.948422,
+      "price": 64916.35,
+      "change24h": 0.794,
+      "volume": 770921866.8638457,
       "high": 65390.99,
       "low": 64166
     },
     "ETHUSDT": {
-      "price": 1915.76,
-      "change24h": 0.45,
-      "volume": 399676710.876125,
+      "price": 1914.46,
+      "change24h": 0.634,
+      "volume": 398026697.87631,
       "high": 1943.02,
       "low": 1894.35
     },
     "BNBUSDT": {
-      "price": 593.07,
-      "change24h": 0.291,
-      "volume": 55403859.75645,
+      "price": 591,
+      "change24h": -0.384,
+      "volume": 55385361.19684,
       "high": 594.68,
       "low": 585.3
     },
     "LTCUSDT": {
-      "price": 45.5,
-      "change24h": -0.066,
-      "volume": 9119257.68425,
+      "price": 45.55,
+      "change24h": -0.11,
+      "volume": 8919490.81301,
       "high": 46.07,
       "low": 45.28
     },
     "ADAUSDT": {
-      "price": 0.2025,
-      "change24h": 0.248,
-      "volume": 29497812.69277,
-      "high": 0.2056,
+      "price": 0.2008,
+      "change24h": 0.35,
+      "volume": 23790870.36405,
+      "high": 0.204,
       "low": 0.1966
     },
     "XRPUSDT": {
-      "price": 1.0244,
-      "change24h": -0.852,
-      "volume": 87156003.68513,
+      "price": 1.0302,
+      "change24h": -0.675,
+      "volume": 82967488.06906,
       "high": 1.0432,
       "low": 1.0128
     },
     "LINKUSDT": {
-      "price": 8.205,
-      "change24h": -0.11,
-      "volume": 8566311.43972,
+      "price": 8.192,
+      "change24h": -0.353,
+      "volume": 8445168.26382,
       "high": 8.318,
       "low": 8.106
     },
     "DOGEUSDT": {
-      "price": 0.06975,
-      "change24h": 1.16,
-      "volume": 25281680.43836,
+      "price": 0.06995,
+      "change24h": 1.025,
+      "volume": 24340837.68714,
       "high": 0.07034,
       "low": 0.06873
     },
     "SOLUSDT": {
-      "price": 73.87,
-      "change24h": 1.303,
-      "volume": 117958492.67883,
+      "price": 73.88,
+      "change24h": 1.651,
+      "volume": 112391017.64791,
       "high": 74.35,
-      "low": 72.34
+      "low": 72.43
     },
     "AVAXUSDT": {
-      "price": 6.448,
-      "change24h": -0.309,
-      "volume": 6635257.08265,
-      "high": 6.526,
+      "price": 6.556,
+      "change24h": 2.214,
+      "volume": 6619885.4181,
+      "high": 6.595,
       "low": 6.361
     },
     "NEARUSDT": {
-      "price": 1.597,
-      "change24h": -3.679,
-      "volume": 17658509.2352,
+      "price": 1.602,
+      "change24h": -3.61,
+      "volume": 18587804.1074,
       "high": 1.67,
       "low": 1.578
     },
     "SUIUSDT": {
-      "price": 0.672,
-      "change24h": -0.548,
-      "volume": 17886154.00794,
-      "high": 0.6797,
+      "price": 0.678,
+      "change24h": 0.489,
+      "volume": 17237620.35434,
+      "high": 0.6805,
       "low": 0.6643
     }
   },
   "fearGreed": [
+    {
+      "value": 30,
+      "classification": "Fear",
+      "timestamp": 1786147200000
+    },
     {
       "value": 29,
       "classification": "Fear",
@@ -116,67 +121,62 @@
       "value": 27,
       "classification": "Fear",
       "timestamp": 1785628800000
-    },
-    {
-      "value": 27,
-      "classification": "Fear",
-      "timestamp": 1785542400000
     }
   ],
   "funding": {},
   "market": {
-    "btcDominance": 56.78349517310784,
-    "totalMarketCap": 2294165738545.7163,
-    "totalVolume": 54299575817.54376,
-    "marketCapChange24h": 0.5230473389535459
+    "btcDominance": 56.763252085133054,
+    "totalMarketCap": 2293614237578.257,
+    "totalVolume": 53861777001.74087,
+    "marketCapChange24h": 0.5507016858169107
   },
   "analysis": {
     "BTCUSDT": {
       "symbol": "BTCUSDT",
-      "price": 64961.73,
-      "sma20": 64524.75,
-      "sma50": 63861.53,
-      "rsi": 61.5,
+      "price": 64916.35,
+      "sma20": 64556.97,
+      "sma50": 63863.09,
+      "rsi": 51.8,
       "signal": "BULLISH"
     },
     "ETHUSDT": {
       "symbol": "ETHUSDT",
-      "price": 1915.75,
-      "sma20": 1898.16,
-      "sma50": 1881.66,
-      "rsi": 68.4,
+      "price": 1914.46,
+      "sma20": 1900.05,
+      "sma50": 1881.44,
+      "rsi": 48.2,
       "signal": "BULLISH"
     },
     "SOLUSDT": {
       "symbol": "SOLUSDT",
-      "price": 73.88,
-      "sma20": 73.63,
-      "sma50": 73.43,
-      "rsi": 49.1,
+      "price": 73.89,
+      "sma20": 73.6,
+      "sma50": 73.41,
+      "rsi": 43.8,
       "signal": "BULLISH"
     },
     "BNBUSDT": {
       "symbol": "BNBUSDT",
-      "price": 593.07,
-      "sma20": 594.2,
-      "sma50": 589.92,
-      "rsi": 38.8,
+      "price": 590.99,
+      "sma20": 594.04,
+      "sma50": 589.84,
+      "rsi": 36.4,
       "signal": "WAIT"
     },
     "SUIUSDT": {
       "symbol": "SUIUSDT",
-      "price": 0.672,
+      "price": 0.678,
       "sma20": 0.68,
       "sma50": 0.69,
-      "rsi": 28.6,
-      "signal": "WAIT"
+      "rsi": 30.7,
+      "signal": "BEARISH"
     },
     "LTCUSDT": {
       "symbol": "LTCUSDT",
-      "price": 45.5,
-      "sma20": 45.24,
-      "sma50": 44.86,
-      "rsi": 58.1,
+      "price": 45.55,
+      "sma20": 45.29,
+      "sma50": 44.87,
+      "rsi": 55,
       "signal": "BULLISH"
     }
   }

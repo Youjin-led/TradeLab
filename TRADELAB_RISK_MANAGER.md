@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-07T20:47:31.112Z
+Generated: 2026-08-08T01:57:27.341Z
 Status: **NORMAL**
 
 ---
@@ -11,16 +11,16 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -3759.85 USDT
+- **Total PnL:** -3683.07 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 137.30 | -1000 | ✅ |
-| Weekly (7d) | 236.93 | -2500 | ✅ |
-| Monthly | 236.93 | -5000 | ✅ |
-| Total (all time) | -3759.85 | -5000 | ✅ |
+| Daily (UTC) | 0.00 | -1000 | ✅ |
+| Weekly (7d) | 313.71 | -2500 | ✅ |
+| Monthly | 313.71 | -5000 | ✅ |
+| Total (all time) | -3683.07 | -5000 | ✅ |
 
 ## Hard Exposure
 
@@ -75,7 +75,7 @@ Status: **NORMAL**
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 0.7% | 70 | 0 | 45.5% | 95 |
 | OPUSDT | sma-rsi | 0.84% | 83.56 | 1.19 | 48.4% | 95 |
-| DOTUSDT | breakout | 0.7% | 70 | 0 | 25% | 95 |
+| DOTUSDT | breakout | 0.7% | 70 | 0 | 30.8% | 95 |
 | AVAXUSDT | breakout | 0.7% | 70 | 0 | 35.3% | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | 0 | 43.5% | 95 |
 | SOLUSDT | breakout | 0.7% | 70 | 0 | 33.3% | 95 |
@@ -87,15 +87,17 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.09% / 5% max
+- **Heat:** 0.12% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
-- **OK:** ✅
-- **Active Positions:** 3
-- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":1}
+- **OK:** ❌
+- **Active Positions:** 4
+- **Sector Distribution:** {"alt_small":1,"other":1,"alt_large":2}
+- **Blocks:**
+  - 🚫 max_concurrent_positions: 4/3
 
 ## Trailing Stops
 
@@ -103,11 +105,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 39.52%
-- **Total PnL:** -3759.85 USDT
-- **Total Exposure:** 15790.99 USDT
+- **Margin Level:** 40.2%
+- **Total PnL:** -3683.07 USDT
+- **Total Exposure:** 15714.21 USDT
 - **Warnings:**
-  - 🔴 margin_call: 39.52% (threshold: 100%)
+  - 🔴 margin_call: 40.2% (threshold: 100%)
 
 ## Statistics
 
