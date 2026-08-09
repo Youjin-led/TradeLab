@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-09T05:10:38.830Z
-Incubation updated: 2026-08-09T05:10:30.694Z
+Generated: 2026-08-09T08:50:22.738Z
+Incubation updated: 2026-08-09T08:50:16.156Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **ACTIVE**
 
@@ -17,7 +17,7 @@ Portfolio forward PnL: -3542.43; forward trades: 619; avg/trade: -5.72.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-AVAXUSDT:1h:breakout | 71% | deteriorating | Healthy | 231 | 34 | -457.60 | 1.24 | 1.94% | 3 | status is incubating, expected ready-for-review
+AVAXUSDT:1h:breakout | 71% | deteriorating | Healthy | 232 | 34 | -457.60 | 1.24 | 1.94% | 3 | status is incubating, expected ready-for-review
 LTCUSDT:4h:breakout | 52% | deteriorating | Healthy | 309 | 7 | +108.96 | 1.12 | 5.49% | 3 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 27% | collecting | Caution | 17 | 2 | -402.49 | 2.07 | 6.77% | 6 | status is incubating, expected ready-for-review
 
