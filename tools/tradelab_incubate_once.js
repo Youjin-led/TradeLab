@@ -34,6 +34,12 @@ const RISK_MANAGER_PATH = path.join(__dirname, '..', 'tradelab-risk-manager.json
 
 // Loss-streak guardrail: a candidate that closes N losing trades in a row is quarantined.
 const MAX_CONSECUTIVE_LOSSES = 3;
+// After a loss streak, entries stay paused for this many bars, then the streak resets
+// so the candidate can resume paper trading instead of staying blocked forever.
+const LOSS_STREAK_COOLDOWN_BARS = 12;
+// A quarantine (from drawdown diagnostics) auto-expires after this many hours from its
+// last refresh, letting the candidate trade again unless the rule re-triggers.
+const QUARANTINE_COOLDOWN_HOURS = 48;
 // Higher-timeframe confirmation interval per entry interval (multi-TF entry filter).
 const CONFIRM_INTERVAL = { '5m': '1h', '15m': '1h', '1h': '4h', '4h': '1d', '1d': '1d' };
 
@@ -329,8 +335,10 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
         });
         if (result.net < 0) {
           ledger.consecutiveLosses += 1;
+          ledger.lastLossAtBar = cursor;
         } else {
           ledger.consecutiveLosses = 0;
+          ledger.lastLossAtBar = undefined;
         }
         if (ledger.consecutiveLosses >= MAX_CONSECUTIVE_LOSSES) lossStreakBlocked = true;
         ledger.position = null;
@@ -339,10 +347,18 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
       const side = signalToEntrySide(signal, params);
       if (!side) continue;
       if (ledger.consecutiveLosses >= MAX_CONSECUTIVE_LOSSES) {
-        lossStreakBlocked = true;
-        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
-        ledger.lastBlockReason = 'loss streak';
-        continue;
+        // Auto-expire the streak block after a cooldown window so the candidate can
+        // resume paper trading instead of staying frozen forever.
+        const barsSinceLastLoss = typeof ledger.lastLossAtBar === 'number' ? cursor - ledger.lastLossAtBar : LOSS_STREAK_COOLDOWN_BARS;
+        if (barsSinceLastLoss >= LOSS_STREAK_COOLDOWN_BARS) {
+          ledger.consecutiveLosses = 0;
+          ledger.lastLossAtBar = undefined;
+        } else {
+          lossStreakBlocked = true;
+          ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+          ledger.lastBlockReason = 'loss streak';
+          continue;
+        }
       }
       if (!allowNewEntries) {
         ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
@@ -462,14 +478,23 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
       ? 'ready-for-review'
       : 'incubating';
   if (prior.status === 'quarantined') {
-    record.status = 'quarantined';
-    record.decision = prior.decision || 'quarantine';
-    record.quarantine = prior.quarantine || {
-      active: true,
-      reason: 'preserved previous quarantine status',
-      updatedAt: new Date().toISOString()
-    };
-    record.alerts = Array.from(new Set([...(record.alerts || []), `quarantine: ${record.quarantine.reason}`]));
+    const qUpdated = prior.quarantine && prior.quarantine.updatedAt ? Date.parse(prior.quarantine.updatedAt) : NaN;
+    const qExpired = !Number.isNaN(qUpdated) && (Date.now() - qUpdated) >= QUARANTINE_COOLDOWN_HOURS * 3600e3;
+    if (qExpired) {
+      // Quarantine cooldown elapsed: let the candidate trade again so it can recover.
+      record.previousStatus = 'quarantined';
+      delete record.quarantine;
+      record.lastUnquarantine = { at: new Date().toISOString(), reason: 'quarantine cooldown expired' };
+    } else {
+      record.status = 'quarantined';
+      record.decision = prior.decision || 'quarantine';
+      record.quarantine = prior.quarantine || {
+        active: true,
+        reason: 'preserved previous quarantine status',
+        updatedAt: new Date().toISOString()
+      };
+      record.alerts = Array.from(new Set([...(record.alerts || []), `quarantine: ${record.quarantine.reason}`]));
+    }
   }
   // Loss-streak guardrail: N consecutive losing trades quarantines the candidate.
   if (paper.lossStreakBlocked && record.status !== 'quarantined') {
@@ -494,40 +519,42 @@ async function incubateOnce() {
   const errors = [];
   const candidateList = [...CANDIDATES, ...loadAutoCandidates()];
   for (const candidate of candidateList) {
-    if (isQuarantined(candidate, quarantine)) {
-      const key = keyFor(candidate);
-      const prior = state.candidates[key];
-      if (prior) rows.push(prior);
-      if (!prior) {
-        const quarantinedRecord = {
-          key,
-          symbol: candidate.symbol,
-          interval: candidate.interval,
-          strategy: candidate.params.strategy,
-          params: describe(baseParams(candidate)),
-          status: 'quarantined',
-          decision: 'quarantine',
-          startedAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          alerts: [`quarantine: ${quarantineReason(candidate, quarantine)}`],
-          health: { status: 'Blocked', score: 0, reasons: ['quarantined by drawdown diagnostics'] },
-          quarantine: {
-            active: true,
-            reason: quarantineReason(candidate, quarantine),
-            updatedAt: quarantine.generatedAt || new Date().toISOString()
-          }
-        };
-        state.candidates[key] = quarantinedRecord;
-        rows.push(quarantinedRecord);
-      }
+    const key = keyFor(candidate);
+    const quarantineHit = isQuarantined(candidate, quarantine);
+    if (quarantineHit && !state.candidates[key]) {
+      const quarantinedRecord = {
+        key,
+        symbol: candidate.symbol,
+        interval: candidate.interval,
+        strategy: candidate.params.strategy,
+        params: describe(baseParams(candidate)),
+        status: 'quarantined',
+        decision: 'quarantine',
+        startedAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        alerts: [`quarantine: ${quarantineReason(candidate, quarantine)}`],
+        health: { status: 'Blocked', score: 0, reasons: ['quarantined by drawdown diagnostics'] },
+        quarantine: {
+          active: true,
+          reason: quarantineReason(candidate, quarantine),
+          updatedAt: quarantine.generatedAt || new Date().toISOString()
+        }
+      };
+      state.candidates[key] = quarantinedRecord;
+      rows.push(quarantinedRecord);
       continue;
     }
-    const key = keyFor(candidate);
     try {
       const params = baseParams(candidate);
       const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit);
       const priorStatus = state.candidates[key] && state.candidates[key].status;
-      const allowNewEntries = riskGate.allowNewEntries && !['quarantined', 'rejected'].includes(priorStatus);
+      const priorQuarantine = state.candidates[key] && state.candidates[key].quarantine;
+      // A quarantine auto-expires after QUARANTINE_COOLDOWN_HOURS, so the candidate
+      // can resume paper trading. Otherwise quarantined/rejected candidates stay paused.
+      const quarantineExpired = priorStatus === 'quarantined' && priorQuarantine && priorQuarantine.updatedAt
+        ? (Date.now() - Date.parse(priorQuarantine.updatedAt)) >= QUARANTINE_COOLDOWN_HOURS * 3600e3
+        : false;
+      const allowNewEntries = riskGate.allowNewEntries && (!['quarantined', 'rejected'].includes(priorStatus) || quarantineExpired);
       const blockReason = allowNewEntries
         ? ''
         : priorStatus === 'rejected'
