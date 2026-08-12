@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-12T05:40:58.533Z
+Generated: 2026-08-12T09:16:49.285Z
 Status: **NORMAL**
 
 ---
@@ -95,7 +95,7 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 6
-- **Sector Distribution:** {"alt_mid":3,"alt_large":3}
+- **Sector Distribution:** {"alt_mid":3,"alt_large":2,"other":1}
 - **Blocks:**
   - 🚫 max_concurrent_positions: 6/3
 
