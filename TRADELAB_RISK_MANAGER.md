@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-13T02:23:19.874Z
+Generated: 2026-08-13T05:43:47.359Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1234.36 USDT
+- **Total PnL:** 1180.24 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -1000 | ✅ |
-| Weekly (7d) | 808.78 | -2500 | ✅ |
-| Monthly | 359.24 | -5000 | ✅ |
-| Total (all time) | 1234.36 | -5000 | ✅ |
+| Daily (UTC) | -54.12 | -1000 | ✅ |
+| Weekly (7d) | 709.04 | -2500 | ✅ |
+| Monthly | 305.13 | -5000 | ✅ |
+| Total (all time) | 1180.24 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 2117.47 USDT (max 30000)
+- **Open Notional:** 0 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -59,7 +59,7 @@ Status: **NORMAL**
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 98 |
 | FILUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 2% | 200 | 7.79 | 58.3% | 95 |
-| SEIUSDT | sma-rsi | 2% | 200 | 16.19 | 67.9% | 95 |
+| SEIUSDT | sma-rsi | 2% | 200 | 14.19 | 65.5% | 95 |
 | JUPUSDT | sma-rsi | 2% | 200 | 4.31 | 68.8% | 95 |
 | ATOMUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -95,7 +95,7 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 4
-- **Sector Distribution:** {"alt_mid":2,"alt_large":2}
+- **Sector Distribution:** {"alt_large":3,"alt_mid":1}
 - **Blocks:**
   - 🚫 max_concurrent_positions: 4/3
 
@@ -105,9 +105,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 530.56%
-- **Total PnL:** 1234.36 USDT
-- **Total Exposure:** 2117.47 USDT
+- **Margin Level:** 118.61%
+- **Total PnL:** 1180.24 USDT
+- **Total Exposure:** 9426.04 USDT
+- **Warnings:**
+  - ℹ️ low_margin: 118.61% (threshold: 150%)
 
 ## Statistics
 
