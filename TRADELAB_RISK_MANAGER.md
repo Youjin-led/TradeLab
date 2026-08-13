@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-12T20:51:51.576Z
+Generated: 2026-08-13T02:23:19.874Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1194.80 USDT
+- **Total PnL:** 1234.36 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
 | Daily (UTC) | 0.00 | -1000 | ✅ |
-| Weekly (7d) | 768.21 | -2500 | ✅ |
-| Monthly | 319.68 | -5000 | ✅ |
-| Total (all time) | 1194.80 | -5000 | ✅ |
+| Weekly (7d) | 808.78 | -2500 | ✅ |
+| Monthly | 359.24 | -5000 | ✅ |
+| Total (all time) | 1234.36 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 2109.56 USDT (max 30000)
+- **Open Notional:** 2117.47 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -59,7 +59,7 @@ Status: **NORMAL**
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 98 |
 | FILUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 2% | 200 | 7.79 | 58.3% | 95 |
-| SEIUSDT | sma-rsi | 2% | 200 | 15.33 | 66.7% | 95 |
+| SEIUSDT | sma-rsi | 2% | 200 | 16.19 | 67.9% | 95 |
 | JUPUSDT | sma-rsi | 2% | 200 | 4.31 | 68.8% | 95 |
 | ATOMUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -87,17 +87,17 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.14% / 5% max
+- **Heat:** 0.12% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 5
-- **Sector Distribution:** {"alt_mid":3,"alt_large":2}
+- **Active Positions:** 4
+- **Sector Distribution:** {"alt_mid":2,"alt_large":2}
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 5/3
+  - 🚫 max_concurrent_positions: 4/3
 
 ## Trailing Stops
 
@@ -105,9 +105,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 530.67%
-- **Total PnL:** 1194.8 USDT
-- **Total Exposure:** 2109.56 USDT
+- **Margin Level:** 530.56%
+- **Total PnL:** 1234.36 USDT
+- **Total Exposure:** 2117.47 USDT
 
 ## Statistics
 
