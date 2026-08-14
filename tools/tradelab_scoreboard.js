@@ -22,11 +22,14 @@ function clamp(value, min, max) {
 
 function progress(candidate, gateCandidate) {
   const fwdTrades = Number(candidate.forwardPaperTrades) || 0;
+  const hasForward = fwdTrades >= REQUIREMENTS.minClosedPaperTrades;
   const observation = clamp((candidate.liveObservations || 0) / REQUIREMENTS.minLiveObservations, 0, 1);
   const trades = clamp(fwdTrades / REQUIREMENTS.minClosedPaperTrades, 0, 1);
-  const pf = clamp((candidate.profitFactor || 0) / REQUIREMENTS.minProfitFactor, 0, 1);
-  const dd = clamp((REQUIREMENTS.maxDrawdownPct - (candidate.maxDrawdownPct || 0)) / REQUIREMENTS.maxDrawdownPct, 0, 1);
-  const streak = clamp((REQUIREMENTS.maxLossStreak + 1 - (candidate.maxLossStreak || 0)) / (REQUIREMENTS.maxLossStreak + 1), 0, 1);
+  // Once a candidate has enough forward paper trades, score it on forward metrics
+  // (real paper performance) instead of stale backtest numbers.
+  const pf = clamp((hasForward ? Number(candidate.forwardProfitFactor) || 0 : candidate.profitFactor || 0) / REQUIREMENTS.minProfitFactor, 0, 1);
+  const dd = clamp((REQUIREMENTS.maxDrawdownPct - (hasForward ? candidate.forwardPaperMaxDd || 0 : candidate.maxDrawdownPct || 0)) / REQUIREMENTS.maxDrawdownPct, 0, 1);
+  const streak = clamp((REQUIREMENTS.maxLossStreak + 1 - (hasForward ? candidate.forwardCurrentLossStreak || 0 : candidate.maxLossStreak || 0)) / (REQUIREMENTS.maxLossStreak + 1), 0, 1);
   const health = (candidate.health || {}).status === REQUIREMENTS.requiredHealth ? 1 : 0;
   const status = candidate.status === REQUIREMENTS.requiredStatus ? 1 : candidate.status === 'incubating' ? 0.5 : 0;
   const blockerPenalty = clamp(((gateCandidate || {}).blockers || []).length / 8, 0, 1);
@@ -58,15 +61,21 @@ function trend(candidate) {
   if (marketPhase && !suitablePhases.includes(phaseRoot(marketPhase))) {
     return 'phase-mismatch';
   }
+
+  const hasForward = (candidate.forwardPaperTrades || 0) >= REQUIREMENTS.minClosedPaperTrades;
+  const forwardPnl = Number(candidate.forwardPaperPnl) || 0;
+  const forwardDd = hasForward ? candidate.forwardPaperMaxDd || 0 : candidate.maxDrawdownPct || 0;
+  const forwardStreak = hasForward ? candidate.forwardCurrentLossStreak || 0 : candidate.maxLossStreak || 0;
+  const forwardPf = hasForward ? Number(candidate.forwardProfitFactor) || 0 : candidate.profitFactor || 0;
   
-  if ((candidate.forwardPaperPnl || 0) > 0 && (candidate.maxDrawdownPct || 0) <= REQUIREMENTS.maxDrawdownPct && (candidate.profitFactor || 0) >= REQUIREMENTS.minProfitFactor) return 'improving';
-  if ((candidate.forwardPaperPnl || 0) < -250 || (candidate.maxDrawdownPct || 0) > REQUIREMENTS.maxDrawdownPct || (candidate.maxLossStreak || 0) > REQUIREMENTS.maxLossStreak) return 'deteriorating';
+  if (forwardPnl > 0 && forwardDd <= REQUIREMENTS.maxDrawdownPct && forwardPf >= REQUIREMENTS.minProfitFactor) return 'improving';
+  if (forwardPnl < -250 || forwardDd > REQUIREMENTS.maxDrawdownPct || forwardStreak > REQUIREMENTS.maxLossStreak) return 'deteriorating';
   return 'watch';
 }
 
 function nextStep(row) {
   if (row.status === 'quarantined') return 'stay quarantined until drawdown diagnostics clear it';
-  if (row.status === 'rejected') return 'do not revive without a new research pass';
+  if (row.status === 'rejected') return 're-incubate automatically after reject cooldown (72h)';
   if (row.gateBlockers.length) return row.gateBlockers[0];
   if (row.progress >= 90) return 'manual review candidate, but only if portfolio kill-switch clears';
   return 'continue paper incubation';
@@ -88,6 +97,10 @@ function compactCandidate(candidate, gateCandidate) {
     profitFactor: Number((candidate.profitFactor || 0).toFixed(2)),
     maxDrawdownPct: Number((candidate.maxDrawdownPct || 0).toFixed(2)),
     maxLossStreak: candidate.maxLossStreak || 0,
+    forwardProfitFactor: Number((candidate.forwardProfitFactor || 0).toFixed(2)),
+    forwardPaperMaxDd: Number((candidate.forwardPaperMaxDd || 0).toFixed(2)),
+    forwardMaxLossStreak: candidate.forwardMaxLossStreak || 0,
+    forwardCurrentLossStreak: candidate.forwardCurrentLossStreak || 0,
     lastSignal: candidate.lastSignal || 'unknown',
     forwardOpenPosition: candidate.forwardOpenPosition || 'unknown',
     gateDecision: (gateCandidate || {}).decision || 'blocked',

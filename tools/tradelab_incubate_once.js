@@ -40,6 +40,9 @@ const LOSS_STREAK_COOLDOWN_BARS = 12;
 // A quarantine (from drawdown diagnostics) auto-expires after this many hours from its
 // last refresh, letting the candidate trade again unless the rule re-triggers.
 const QUARANTINE_COOLDOWN_HOURS = 48;
+// A rejection is NOT permanent. After this many hours the candidate is re-incubated and
+// re-evaluated on fresh data, so a stale backtest alert can't kill it forever.
+const REJECT_COOLDOWN_HOURS = 72;
 // Higher-timeframe confirmation interval per entry interval (multi-TF entry filter).
 const CONFIRM_INTERVAL = { '5m': '1h', '15m': '1h', '1h': '4h', '4h': '1d', '1d': '1d' };
 
@@ -241,20 +244,58 @@ function splitWalkForward(candles, params) {
   return { train, test, stability };
 }
 
-function evaluateGuardrails(summary, walk, params) {
+function forwardLedgerMetrics(ledger) {
+  const trades = (ledger && ledger.trades) || [];
+  let maxStreak = 0;
+  let current = 0;
+  let grossProfit = 0;
+  let grossLoss = 0;
+  for (const trade of trades) {
+    const pnl = Number(trade.pnl) || 0;
+    if (pnl > 0) grossProfit += pnl;
+    else if (pnl < 0) grossLoss += -pnl;
+    if (pnl < 0) {
+      current += 1;
+      maxStreak = Math.max(maxStreak, current);
+    } else {
+      current = 0;
+    }
+  }
+  return {
+    trades: trades.length,
+    maxLossStreak: maxStreak,
+    currentLossStreak: (ledger && ledger.consecutiveLosses) || 0,
+    profitFactor: grossLoss ? grossProfit / grossLoss : grossProfit ? Infinity : 0
+  };
+}
+
+function evaluateGuardrails(summary, walk, params, forward = {}) {
   const alerts = [];
-  if (summary.maxDd >= params.maxDrawdownPct) alerts.push(`drawdown ${summary.maxDd.toFixed(2)}% >= limit ${params.maxDrawdownPct}%`);
-  if (summary.maxLossStreak >= 4) alerts.push(`loss streak ${summary.maxLossStreak}`);
-  if (summary.tradeCount >= 3 && summary.profitFactor < 1.05) alerts.push(`profit factor ${summary.profitFactor.toFixed(2)} < 1.05`);
-  if (walk.stability === 'overfit risk') alerts.push('walk-forward overfit risk');
+  const hasForwardEvidence = (forward.forwardPaperTrades || 0) > 0;
+  // Forward paper evidence is the ground truth: a loss streak that was recovered in
+  // forward trading is history, not a current risk. Judge on the CURRENT streak.
+  const lossStreak = hasForwardEvidence
+    ? forward.currentLossStreak
+    : summary.maxLossStreak;
+  if (summary.maxDd >= params.maxDrawdownPct && !hasForwardEvidence) alerts.push(`drawdown ${summary.maxDd.toFixed(2)}% >= limit ${params.maxDrawdownPct}%`);
+  if (lossStreak >= 4) alerts.push(`loss streak ${lossStreak}`);
+  if (summary.tradeCount >= 3 && summary.profitFactor < 1.05 && !hasForwardEvidence) alerts.push(`profit factor ${summary.profitFactor.toFixed(2)} < 1.05`);
+  if (walk.stability === 'overfit risk' && !hasForwardEvidence) alerts.push('walk-forward overfit risk');
   if (walk.test.tradeCount < 3) alerts.push(`low test sample: ${walk.test.tradeCount} trades`);
   return alerts;
 }
 
 function nextDecision(record) {
-  const criticalAlerts = record.alerts.filter((alert) => !alert.startsWith('low test sample'));
-  if (criticalAlerts.length > 0 || record.health.status === 'Blocked') return 'reject';
-  if (record.testTrades < VALIDATOR_RULES.minTestTrades || record.liveObservations < REQUIREMENTS.minLiveObservations || record.forwardPaperTrades < REQUIREMENTS.minClosedPaperTrades) return 'incubate';
+  const forwardTrades = Number(record.forwardPaperTrades) || 0;
+  // Hard forward failure: enough real paper trades and clearly losing.
+  if (forwardTrades >= REQUIREMENTS.minClosedPaperTrades && Number(record.forwardPaperPnl) < -200) return 'reject';
+  if (forwardTrades >= REQUIREMENTS.minClosedPaperTrades && (Number(record.forwardPaperMaxDd) || 0) > REQUIREMENTS.maxDrawdownPct * 1.5) return 'reject';
+  // Before forward evidence exists, stale backtest alerts can reject a new candidate.
+  if (forwardTrades === 0) {
+    const criticalAlerts = record.alerts.filter((alert) => !alert.startsWith('low test sample'));
+    if (criticalAlerts.length > 0 || record.health.status === 'Blocked') return 'reject';
+  }
+  if (record.testTrades < VALIDATOR_RULES.minTestTrades || record.liveObservations < REQUIREMENTS.minLiveObservations || forwardTrades < REQUIREMENTS.minClosedPaperTrades) return 'incubate';
   if (record.health.status === 'Healthy' && record.profitFactor >= VALIDATOR_RULES.minProfitFactor && record.maxDrawdownPct <= VALIDATOR_RULES.maxDrawdownPct && record.maxLossStreak <= VALIDATOR_RULES.maxLossStreak && record.forwardPaperPnl > 0) return 'promote-to-manual-review';
   return 'watch';
 }
@@ -401,6 +442,7 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
 function mergeRecord(previous, candidate, candles, params, result, walk, alerts, opts = {}) {
   const lastCandle = candles[candles.length - 1];
   const prior = previous || {};
+  const { wasRejected = false, rejectExpired = false } = opts;
   const effectiveParams = applyDynamicParams(candles, { ...params });
   const currentSignal = getSignal(candles, candles.length, effectiveParams);
   const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams, opts);
@@ -440,6 +482,9 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
     forwardPaperTrades: paper.ledger.trades.length,
     forwardPaperPnl: Number((paper.ledger.balance - 10000).toFixed(2)),
     forwardPaperMaxDd: Number(paper.ledger.maxDd.toFixed(2)),
+    forwardMaxLossStreak: forwardLedgerMetrics(paper.ledger).maxLossStreak,
+    forwardCurrentLossStreak: forwardLedgerMetrics(paper.ledger).currentLossStreak,
+    forwardProfitFactor: Number(forwardLedgerMetrics(paper.ledger).profitFactor || 0),
     forwardOpenPosition: paper.ledger.position ? paper.ledger.position.side : 'none',
     forwardOpenNotional: paper.ledger.position ? Number(paper.ledger.position.notional || 0) : 0,
     consecutiveLosses: paper.ledger.consecutiveLosses || 0,
@@ -477,6 +522,31 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
     : record.decision === 'promote-to-manual-review'
       ? 'ready-for-review'
       : 'incubating';
+  if (record.status === 'rejected' && prior.status !== 'rejected') {
+    // Fresh rejection: stamp the freeze time so the cooldown is measured from now,
+    // not from updatedAt (which refreshes every cycle and would never expire).
+    record.rejectedAt = new Date().toISOString();
+  }
+  if (prior.status === 'rejected') {
+    if (rejectExpired) {
+      // Rejection cooldown elapsed: the candidate is re-incubated on fresh data.
+      // Fresh guardrail alerts were already computed above, so drop stale ones.
+      record.previousStatus = 'rejected';
+      record.status = 'incubating';
+      record.decision = 'incubate';
+      record.lastReincubated = { at: new Date().toISOString(), reason: 'reject cooldown expired' };
+      record.alerts = record.alerts.filter((alert) => alert.startsWith('low test sample'));
+      record.health = { status: 'Caution', score: 50, reasons: ['re-incubated after reject cooldown'] };
+    } else if (wasRejected) {
+      // Keep the rejection freeze but refresh metrics so the scoreboard shows progress.
+      // Preserve the original rejection alerts so the reason stays visible.
+      record.status = 'rejected';
+      record.decision = 'reject';
+      record.rejectedAt = prior.rejectedAt || prior.updatedAt;
+      record.alerts = prior.alerts || record.alerts;
+      record.health = prior.health || record.health;
+    }
+  }
   if (prior.status === 'quarantined') {
     const qUpdated = prior.quarantine && prior.quarantine.updatedAt ? Date.parse(prior.quarantine.updatedAt) : NaN;
     const qExpired = !Number.isNaN(qUpdated) && (Date.now() - qUpdated) >= QUARANTINE_COOLDOWN_HOURS * 3600e3;
@@ -547,20 +617,34 @@ async function incubateOnce() {
     try {
       const params = baseParams(candidate);
       const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit);
-      const priorStatus = state.candidates[key] && state.candidates[key].status;
-      const priorQuarantine = state.candidates[key] && state.candidates[key].quarantine;
-      // A quarantine auto-expires after QUARANTINE_COOLDOWN_HOURS, so the candidate
-      // can resume paper trading. Otherwise quarantined/rejected candidates stay paused.
+      const priorRow = state.candidates[key];
+      const priorStatus = priorRow && priorRow.status;
+      const priorQuarantine = priorRow && priorRow.quarantine;
+      // A quarantine auto-expires after QUARANTINE_COOLDOWN_HOURS and a rejection after
+      // REJECT_COOLDOWN_HOURS, so the candidate can resume paper trading. Otherwise
+      // quarantined/rejected candidates stay paused.
       const quarantineExpired = priorStatus === 'quarantined' && priorQuarantine && priorQuarantine.updatedAt
         ? (Date.now() - Date.parse(priorQuarantine.updatedAt)) >= QUARANTINE_COOLDOWN_HOURS * 3600e3
         : false;
-      const allowNewEntries = riskGate.allowNewEntries && (!['quarantined', 'rejected'].includes(priorStatus) || quarantineExpired);
+      // Cooldown is measured from the rejectedAt freeze timestamp (stamped when the
+      // candidate was rejected), NOT from updatedAt which refreshes every cycle.
+      const rejectFreezeAt = priorRow && (priorRow.rejectedAt || priorRow.updatedAt);
+      const rejectExpired = priorStatus === 'rejected' && rejectFreezeAt
+        ? (Date.now() - Date.parse(rejectFreezeAt)) >= REJECT_COOLDOWN_HOURS * 3600e3
+        : false;
+      const wasRejected = priorStatus === 'rejected' && !rejectExpired;
+      const allowNewEntries = riskGate.allowNewEntries
+        && (priorStatus === 'rejected'
+          ? rejectExpired
+          : priorStatus === 'quarantined'
+            ? quarantineExpired
+            : true);
       const blockReason = allowNewEntries
         ? ''
         : priorStatus === 'rejected'
-          ? 'candidate rejected — new entries paused'
+          ? 'candidate rejected — new entries paused until cooldown expires'
           : priorStatus === 'quarantined'
-            ? 'candidate quarantined — new entries paused'
+            ? 'candidate quarantined — new entries paused until cooldown expires'
             : riskGate.reason || 'risk gate closed';
       let confirmCandles = null;
       const confirmInterval = CONFIRM_INTERVAL[candidate.interval];
@@ -571,8 +655,9 @@ async function incubateOnce() {
       }
       const result = simulate(candles, params);
       const walk = splitWalkForward(candles, params);
-      const alerts = evaluateGuardrails(result.summary, walk, params);
-      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, alerts, { allowNewEntries, blockReason, confirmCandles });
+      const forwardMetrics = forwardLedgerMetrics(priorRow && priorRow.paperLedger);
+      const alerts = evaluateGuardrails(result.summary, walk, params, { forwardPaperTrades: forwardMetrics.trades, currentLossStreak: forwardMetrics.currentLossStreak });
+      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, alerts, { allowNewEntries, blockReason, confirmCandles, wasRejected, rejectExpired });
       state.candidates[key] = record;
       rows.push(record);
     } catch (error) {

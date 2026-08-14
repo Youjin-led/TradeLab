@@ -29,6 +29,11 @@ const KILL_SWITCH_RULES = {
   hardMinActivePositiveForwardRatio: 0.15
 };
 
+// Rejected candidates count against the rejected ratio only after they have enough
+// forward paper trades to actually be evaluated. Without this, candidates rejected on
+// stale backtest alerts with zero paper trades keep the kill-switch tripped forever.
+const MIN_FORWARD_TRADES_REJECTED = 15;
+
 
 function readIncubationState() {
   if (!fs.existsSync(STATE_PATH)) return { candidates: {}, summary: null };
@@ -67,7 +72,10 @@ function portfolioKillSwitch(state = readIncubationState()) {
   const candidates = Object.values(state.candidates || {});
   const forwardRows = candidates.filter((candidate) => num(candidate.forwardPaperTrades) > 0);
   const activeRows = candidates.filter((candidate) => candidate.status === 'incubating');
-  const rejectedRows = candidates.filter((candidate) => candidate.status === 'rejected');
+  // A candidate rejected before it ever paper-traded was judged only on stale backtest
+  // alerts, not on real forward performance. Only count rejected candidates with at
+  // least MIN_FORWARD_TRADES_REJECTED forward paper trades against the ratio.
+  const rejectedRows = candidates.filter((candidate) => candidate.status === 'rejected' && num(candidate.forwardPaperTrades) >= MIN_FORWARD_TRADES_REJECTED);
   const forwardTrades = forwardRows.reduce((sum, candidate) => sum + num(candidate.forwardPaperTrades), 0);
   const forwardPnl = forwardRows.reduce((sum, candidate) => sum + num(candidate.forwardPaperPnl), 0);
   const avgPerTrade = forwardTrades ? forwardPnl / forwardTrades : 0;
@@ -128,7 +136,8 @@ function portfolioKillSwitch(state = readIncubationState()) {
     metrics: {
       candidates: candidates.length,
       incubating: activeRows.length,
-      rejected: rejectedRows.length,
+      rejected: candidates.filter((candidate) => candidate.status === 'rejected').length,
+      rejectedEvaluated: rejectedRows.length,
       forwardTrades,
       forwardPnl: Number(forwardPnl.toFixed(2)),
       avgPerTrade: Number(avgPerTrade.toFixed(2)),
