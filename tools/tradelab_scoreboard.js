@@ -21,8 +21,9 @@ function clamp(value, min, max) {
 }
 
 function progress(candidate, gateCandidate) {
+  const fwdTrades = Number(candidate.forwardPaperTrades) || 0;
   const observation = clamp((candidate.liveObservations || 0) / REQUIREMENTS.minLiveObservations, 0, 1);
-  const trades = clamp((candidate.forwardPaperTrades || 0) / REQUIREMENTS.minClosedPaperTrades, 0, 1);
+  const trades = clamp(fwdTrades / REQUIREMENTS.minClosedPaperTrades, 0, 1);
   const pf = clamp((candidate.profitFactor || 0) / REQUIREMENTS.minProfitFactor, 0, 1);
   const dd = clamp((REQUIREMENTS.maxDrawdownPct - (candidate.maxDrawdownPct || 0)) / REQUIREMENTS.maxDrawdownPct, 0, 1);
   const streak = clamp((REQUIREMENTS.maxLossStreak + 1 - (candidate.maxLossStreak || 0)) / (REQUIREMENTS.maxLossStreak + 1), 0, 1);

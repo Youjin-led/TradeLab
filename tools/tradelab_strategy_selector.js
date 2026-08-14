@@ -68,7 +68,7 @@ function getHistoricalPerformance(candidates) {
     const strat = c.strategy;
     if (!perf[strat]) perf[strat] = { pnl: 0, trades: 0, wins: 0 };
     perf[strat].pnl += (c.forwardPaperPnl || 0);
-    perf[strat].trades += (c.forwardPaperTrades || 0);
+    perf[strat].trades += Number(c.forwardPaperTrades) || 0;
     if ((c.forwardPaperPnl || 0) > 0) perf[strat].wins++;
   }
   // Calculate win rate and score

@@ -9,6 +9,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var { detectPhase } = require('./tradelab_market_phase');
 
 var ROOT = path.join(__dirname, '..');
 var STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
@@ -455,6 +456,25 @@ function runScanner() {
  * @param {number} topN - Сколько лучших добавить
  * @returns {number} Количество добавленных
  */
+function phaseRoot(phase) {
+  if (!phase) return null;
+  if (phase.indexOf('trending') === 0) return 'trending';
+  if (phase.indexOf('ranging') === 0) return 'ranging';
+  if (phase.indexOf('volatile') === 0) return 'volatile';
+  return phase;
+}
+
+var PHASE_SUITABILITY = {
+  'breakout': ['trending', 'volatile'],
+  'sma-rsi': ['trending', 'ranging']
+};
+
+function isStrategySuitableForPhase(strategy, phase) {
+  var root = phaseRoot(phase);
+  var suitable = PHASE_SUITABILITY[strategy] || ['trending', 'ranging', 'volatile'];
+  return !root || suitable.indexOf(root) !== -1;
+}
+
 function applyNewStrategies(topN) {
   topN = topN || 5;
 
@@ -465,6 +485,15 @@ function applyNewStrategies(topN) {
   if (!state) return 0;
 
   var added = 0;
+
+  var phaseCache = {};
+  function currentPhase(symbol, interval) {
+    var cacheKey = symbol + ':' + interval;
+    if (phaseCache[cacheKey] !== undefined) return phaseCache[cacheKey];
+    var candles = collectHistoricalCandles(state, symbol, interval);
+    phaseCache[cacheKey] = candles && candles.length >= 50 ? detectPhase(candles).phase : null;
+    return phaseCache[cacheKey];
+  }
 
   for (var key in scanner.results) {
     if (!scanner.results.hasOwnProperty(key)) continue;
@@ -477,6 +506,10 @@ function applyNewStrategies(topN) {
         if (best.sim.profitFactor >= 1.5 && best.sim.trades >= 3) {
           var candidateKey = result.symbol + ':' + result.interval + ':sma-rsi:auto';
           if (!state.candidates[candidateKey]) {
+            var phase = currentPhase(result.symbol, result.interval);
+            if (!isStrategySuitableForPhase('sma-rsi', phase)) {
+              continue;
+            }
             state.candidates[candidateKey] = {
               key: candidateKey,
               symbol: result.symbol,
@@ -487,7 +520,7 @@ function applyNewStrategies(topN) {
               status: 'incubating',
               startedAt: new Date().toISOString(),
               updatedAt: new Date().toISOString(),
-              forwardPaperTrades: [],
+              forwardPaperTrades: 0,
               forwardPaperPnl: 0,
               profitFactor: 0,
               winratePct: 0,
@@ -506,6 +539,10 @@ function applyNewStrategies(topN) {
         if (best2.sim.profitFactor >= 1.5 && best2.sim.trades >= 10) {
           var candidateKey2 = result.symbol + ':' + result.interval + ':breakout:auto';
           if (!state.candidates[candidateKey2]) {
+            var phase2 = currentPhase(result.symbol, result.interval);
+            if (!isStrategySuitableForPhase('breakout', phase2)) {
+              continue;
+            }
             state.candidates[candidateKey2] = {
               key: candidateKey2,
               symbol: result.symbol,
@@ -516,7 +553,7 @@ function applyNewStrategies(topN) {
               status: 'incubating',
               startedAt: new Date().toISOString(),
               updatedAt: new Date().toISOString(),
-              forwardPaperTrades: [],
+              forwardPaperTrades: 0,
               forwardPaperPnl: 0,
               profitFactor: 0,
               winratePct: 0,

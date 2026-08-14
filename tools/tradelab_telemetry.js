@@ -54,7 +54,7 @@ function analyzeByStrategy(candidates) {
     }
 
     s.forwardPnl += c.forwardPaperPnl || 0;
-    s.forwardTrades += c.forwardPaperTrades || 0;
+    s.forwardTrades += Number(c.forwardPaperTrades) || 0;
     if ((c.forwardPaperMaxDd || 0) > s.maxDd) s.maxDd = c.forwardPaperMaxDd;
     if (!s.symbols.includes(c.symbol)) s.symbols.push(c.symbol);
   }

@@ -35,16 +35,20 @@ function addGroup(map, key, patch) {
     incubating: 0,
     quarantined: 0
   };
-  row.count += patch.count || 0;
-  row.candidates += patch.candidates || 0;
-  row.trades += patch.trades || 0;
-  row.pnl += patch.pnl || 0;
-  row.wins += patch.wins || 0;
-  row.losses += patch.losses || 0;
-  row.maxDrawdownPct = Math.max(row.maxDrawdownPct, patch.maxDrawdownPct || 0);
-  row.rejected += patch.rejected || 0;
-  row.incubating += patch.incubating || 0;
-  row.quarantined += patch.quarantined || 0;
+  const n = (value) => {
+    const num = Number(value);
+    return Number.isFinite(num) ? num : 0;
+  };
+  row.count += n(patch.count);
+  row.candidates += n(patch.candidates);
+  row.trades += n(patch.trades);
+  row.pnl += n(patch.pnl);
+  row.wins += n(patch.wins);
+  row.losses += n(patch.losses);
+  row.maxDrawdownPct = Math.max(row.maxDrawdownPct, n(patch.maxDrawdownPct));
+  row.rejected += n(patch.rejected);
+  row.incubating += n(patch.incubating);
+  row.quarantined += n(patch.quarantined);
   map.set(key, row);
 }
 
@@ -100,10 +104,12 @@ function groupCandidates(candidates, keyFn) {
     const trades = allTrades(candidate);
     const wins = trades.filter((trade) => (trade.pnl || 0) > 0).length;
     const losses = trades.filter((trade) => (trade.pnl || 0) < 0).length;
+    const fwdTrades = Number(candidate.forwardPaperTrades);
+    const forwardTrades = Number.isFinite(fwdTrades) ? fwdTrades : trades.length;
     addGroup(groups, keyFn(candidate), {
       candidates: 1,
-      trades: candidate.forwardPaperTrades || trades.length || 0,
-      pnl: candidate.forwardPaperPnl || 0,
+      trades: forwardTrades,
+      pnl: Number(candidate.forwardPaperPnl) || 0,
       wins,
       losses,
       maxDrawdownPct: candidate.forwardPaperMaxDd || candidate.maxDrawdownPct || 0,

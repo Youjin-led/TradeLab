@@ -58,13 +58,18 @@ function validateStrategy(rowOrCandidate) {
   };
 }
 
+function num(value) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
 function portfolioKillSwitch(state = readIncubationState()) {
   const candidates = Object.values(state.candidates || {});
-  const forwardRows = candidates.filter((candidate) => (candidate.forwardPaperTrades || 0) > 0);
+  const forwardRows = candidates.filter((candidate) => num(candidate.forwardPaperTrades) > 0);
   const activeRows = candidates.filter((candidate) => candidate.status === 'incubating');
   const rejectedRows = candidates.filter((candidate) => candidate.status === 'rejected');
-  const forwardTrades = forwardRows.reduce((sum, candidate) => sum + (candidate.forwardPaperTrades || 0), 0);
-  const forwardPnl = forwardRows.reduce((sum, candidate) => sum + (candidate.forwardPaperPnl || 0), 0);
+  const forwardTrades = forwardRows.reduce((sum, candidate) => sum + num(candidate.forwardPaperTrades), 0);
+  const forwardPnl = forwardRows.reduce((sum, candidate) => sum + num(candidate.forwardPaperPnl), 0);
   const avgPerTrade = forwardTrades ? forwardPnl / forwardTrades : 0;
   const rejectedRatio = candidates.length ? rejectedRows.length / candidates.length : 0;
   const activePositive = activeRows.filter((candidate) => (candidate.forwardPaperPnl || 0) > 0).length;
