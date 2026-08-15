@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-15T01:32:58.601Z
-Incubation updated: 2026-08-15T01:32:39.456Z
+Generated: 2026-08-15T04:36:41.506Z
+Incubation updated: 2026-08-15T04:36:21.314Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **clear**
 
@@ -17,18 +17,18 @@ Portfolio forward PnL: +1180.24; forward trades: 248; avg/trade: +4.76.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-DOTUSDT:4h:sma-rsi | 82% | improving | Healthy | 207 | 19 | +987.09 | 1.67 | 3.15% | 3 | status is incubating, expected ready-for-review
-SEIUSDT:1h:sma-rsi | 78% | improving | Healthy | 154 | 29 | +533.23 | 1.52 | 1.40% | 3 | status is incubating, expected ready-for-review
+DOTUSDT:4h:sma-rsi | 82% | improving | Healthy | 208 | 19 | +987.09 | 1.68 | 3.15% | 3 | status is incubating, expected ready-for-review
+SEIUSDT:1h:sma-rsi | 78% | improving | Healthy | 155 | 29 | +533.23 | 1.52 | 1.40% | 3 | status is incubating, expected ready-for-review
 NEARUSDT:1d:sma-rsi | 71% | improving | Healthy | 245 | 4 | +6.32 | 2.19 | 0.88% | 1 | status is incubating, expected ready-for-review
-XRPUSDT:4h:breakout | 52% | collecting | Healthy | 41 | 2 | +37.62 | 1.30 | 2.86% | 3 | status is incubating, expected ready-for-review
-BCHUSDT:1h:sma-rsi | 50% | collecting | Healthy | 29 | 0 | +0.00 | 1.38 | 1.54% | 3 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 52% | collecting | Healthy | 42 | 2 | +37.62 | 1.24 | 2.68% | 4 | status is incubating, expected ready-for-review
+BCHUSDT:1h:sma-rsi | 52% | collecting | Healthy | 30 | 0 | +0.00 | 1.35 | 1.54% | 3 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
 
 Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
-BCHUSDT:1h:sma-rsi | 50% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 29 < 30; forward paper trades 0 < 15; profit factor 1.38 < 1.6; loss streak 3 > 2
-XRPUSDT:4h:breakout | 52% | collecting | +37.62 | status is incubating, expected ready-for-review; forward paper trades 2 < 15; profit factor 1.3 < 1.6; loss streak 3 > 2
+BCHUSDT:1h:sma-rsi | 52% | collecting | +0.00 | status is incubating, expected ready-for-review; forward paper trades 0 < 15; profit factor 1.35 < 1.6; loss streak 3 > 2
+XRPUSDT:4h:breakout | 52% | collecting | +37.62 | status is incubating, expected ready-for-review; forward paper trades 2 < 15; profit factor 1.24 < 1.6; loss streak 4 > 2
 NEARUSDT:1d:sma-rsi | 71% | improving | +6.32 | status is incubating, expected ready-for-review; forward paper trades 4 < 15
 SEIUSDT:1h:sma-rsi | 78% | improving | +533.23 | status is incubating, expected ready-for-review; profit factor 1.52 < 1.6; loss streak 3 > 2
 DOTUSDT:4h:sma-rsi | 82% | improving | +987.09 | status is incubating, expected ready-for-review; loss streak 3 > 2
