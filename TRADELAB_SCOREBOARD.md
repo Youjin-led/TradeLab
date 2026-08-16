@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-16T04:40:35.643Z
-Incubation updated: 2026-08-16T04:40:16.300Z
+Generated: 2026-08-16T08:35:19.422Z
+Incubation updated: 2026-08-16T08:35:00.237Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **clear**
 
@@ -17,10 +17,10 @@ Portfolio forward PnL: +1180.24; forward trades: 248; avg/trade: +4.76.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-DOTUSDT:4h:sma-rsi | 82% | improving | Healthy | 214 | 19 | +987.09 | 1.73 | 3.15% | 3 | status is incubating, expected ready-for-review
-SEIUSDT:1h:sma-rsi | 81% | improving | Healthy | 161 | 29 | +533.23 | 1.65 | 1.40% | 3 | status is incubating, expected ready-for-review
+DOTUSDT:4h:sma-rsi | 82% | improving | Healthy | 215 | 19 | +987.09 | 1.68 | 3.15% | 3 | status is incubating, expected ready-for-review
+SEIUSDT:1h:sma-rsi | 81% | improving | Healthy | 162 | 29 | +533.23 | 1.65 | 1.40% | 3 | status is incubating, expected ready-for-review
 NEARUSDT:1d:sma-rsi | 71% | improving | Healthy | 246 | 4 | +6.32 | 2.19 | 0.88% | 1 | status is incubating, expected ready-for-review
-XRPUSDT:4h:breakout | 36% | collecting | Blocked | 48 | 2 | +37.62 | 0.95 | 2.29% | 4 | status is incubating, expected ready-for-review
+XRPUSDT:4h:breakout | 36% | collecting | Blocked | 49 | 2 | +37.62 | 0.95 | 2.29% | 4 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
 
