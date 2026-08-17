@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-17T16:33:33.287Z
+Generated: 2026-08-17T20:32:16.227Z
 Status: **NORMAL**
 
 ---
@@ -24,7 +24,7 @@ Status: **NORMAL**
 
 ## Hard Exposure
 
-- **Open Notional:** 2007.52 USDT (max 30000)
+- **Open Notional:** 4007.52 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,20 +87,22 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.37% / 5% max
+- **Heat:** 1.21% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 13
-- **Sector Distribution:** {"alt_large":6,"alt_mid":6,"blue_chip":1}
+- **Active Positions:** 42
+- **Sector Distribution:** {"alt_mid":15,"alt_large":15,"alt_small":3,"blue_chip":4,"other":5}
 - **Warnings:**
-  - ⚠️ alt_large: 6 positions (max 3)
-  - ⚠️ alt_mid: 6 positions (max 3)
+  - ⚠️ alt_mid: 15 positions (max 3)
+  - ⚠️ alt_large: 15 positions (max 3)
+  - ⚠️ blue_chip: 4 positions (max 3)
+  - ⚠️ other: 5 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 13/3
+  - 🚫 max_concurrent_positions: 42/3
 
 ## Trailing Stops
 
@@ -108,9 +110,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 559.43%
+- **Margin Level:** 280.24%
 - **Total PnL:** 1230.64 USDT
-- **Total Exposure:** 2007.52 USDT
+- **Total Exposure:** 4007.52 USDT
 
 ## Statistics
 

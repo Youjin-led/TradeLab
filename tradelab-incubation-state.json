@@ -49,13 +49,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-02T05:32:37.365Z",
-      "updatedAt": "2026-08-17T16:33:20.334Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1.636,
+      "updatedAt": "2026-08-17T20:32:01.049Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1.62,
       "lastSignal": "WAIT",
-      "liveObservations": 456,
+      "liveObservations": 457,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 30,
       "forwardPaperPnl": 919.28,
@@ -78,20 +78,16 @@
       "testTrades": 0,
       "walkForward": "weak",
       "alerts": [
-        "loss streak 5"
+        "low test sample: 0 trades"
       ],
       "health": {
-        "score": 62,
         "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "moderate profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "quarantine": {
         "active": false,
         "reason": "auto-unquarantined: strong performance",
@@ -1862,7 +1858,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-02T05:32:37.364Z",
         "consecutiveLosses": 0,
@@ -2040,17 +2037,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 3.1,
-      "marketAtrPct": 1.19,
+      "marketAdx": 11.4,
+      "marketAtrPct": 1.3,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:33.246Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:01.049Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "LINKUSDT:4h:sma-rsi": {
       "key": "LINKUSDT:4h:sma-rsi",
@@ -2102,12 +2103,12 @@
       },
       "status": "incubating",
       "startedAt": "2026-06-15T09:31:06.367Z",
-      "updatedAt": "2026-08-17T16:33:30.207Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 9.543,
+      "updatedAt": "2026-08-17T20:32:12.638Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 9.485,
       "lastSignal": "WAIT",
-      "liveObservations": 46,
-      "closedPaperTrades": 63,
+      "liveObservations": 47,
+      "closedPaperTrades": 64,
       "forwardPaperTrades": 4,
       "forwardPaperPnl": -408.4,
       "forwardPaperMaxDd": 4.09,
@@ -2120,21 +2121,21 @@
       "blockedEntries": 104,
       "lastBlockReason": "htf confirmation failed",
       "newForwardBars": 1,
-      "totalPnl": 428.24,
-      "profitFactor": 1.38,
-      "winratePct": 71.4,
+      "totalPnl": 539.82,
+      "profitFactor": 1.51,
+      "winratePct": 71.9,
       "maxDrawdownPct": 3.32,
       "maxLossStreak": 5,
-      "testPnl": 191.93,
-      "testTrades": 13,
+      "testPnl": 210.83,
+      "testTrades": 14,
       "walkForward": "stable",
       "alerts": [],
       "health": {
-        "score": 90,
+        "score": 100,
         "status": "Healthy",
         "reasons": [
           "positive backtest",
-          "moderate profit factor",
+          "strong profit factor",
           "drawdown inside limit",
           "walk-forward stable"
         ]
@@ -3566,7 +3567,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-15T09:31:06.366Z",
         "consecutiveLosses": 0,
@@ -3618,18 +3620,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up",
-      "marketAdx": 29.2,
-      "marketAtrPct": 1.41,
+      "marketPhase": "ranging",
+      "marketAdx": 14.1,
+      "marketAtrPct": 1.3,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:30.207Z",
+        "at": "2026-08-17T20:32:12.638Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -3681,14 +3684,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-22T08:00:43.845Z",
-      "updatedAt": "2026-08-17T16:33:21.112Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 9.544,
+      "updatedAt": "2026-08-17T20:32:01.968Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 9.48,
       "lastSignal": "WAIT",
-      "liveObservations": 95,
-      "closedPaperTrades": 27,
+      "liveObservations": 96,
+      "closedPaperTrades": 0,
       "forwardPaperTrades": 4,
       "forwardPaperPnl": -236.86,
       "forwardPaperMaxDd": 3.54,
@@ -3701,28 +3704,25 @@
       "blockedEntries": 74,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 1,
-      "totalPnl": -735.46,
-      "profitFactor": 0.31,
-      "winratePct": 37,
-      "maxDrawdownPct": 8.18,
-      "maxLossStreak": 8,
-      "testPnl": 159.93,
-      "testTrades": 20,
+      "totalPnl": 0,
+      "profitFactor": 0,
+      "winratePct": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
+      "testPnl": 0,
+      "testTrades": 0,
       "walkForward": "weak",
       "alerts": [
         "low test sample: 0 trades"
       ],
       "health": {
-        "score": 42,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 9763.13697272563,
         "peak": 10059.36863467379,
@@ -5107,7 +5107,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-22T08:00:43.840Z",
         "consecutiveLosses": 0,
@@ -5175,17 +5176,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up",
-      "marketAdx": 29.2,
-      "marketAtrPct": 1.41,
+      "marketPhase": "ranging",
+      "marketAdx": 14.1,
+      "marketAtrPct": 1.3,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:33.975Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:01.968Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "SUIUSDT:4h:breakout": {
       "key": "SUIUSDT:4h:breakout",
@@ -5235,14 +5240,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-23T13:53:53.382Z",
-      "updatedAt": "2026-08-17T16:33:31.397Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.6775,
+      "updatedAt": "2026-08-17T20:32:14.001Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.677,
       "lastSignal": "WAIT",
-      "liveObservations": 60,
-      "closedPaperTrades": 58,
+      "liveObservations": 61,
+      "closedPaperTrades": 57,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": -402.49,
       "forwardPaperMaxDd": 5.7,
@@ -5255,28 +5260,20 @@
       "blockedEntries": 31,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 1,
-      "totalPnl": 88.93,
-      "profitFactor": 1.07,
-      "winratePct": 56.9,
+      "totalPnl": 47.84,
+      "profitFactor": 1.04,
+      "winratePct": 56.1,
       "maxDrawdownPct": 3.88,
       "maxLossStreak": 4,
       "testPnl": -76.95,
       "testTrades": 10,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 4",
-        "profit factor 0.82 < 1.05",
-        "walk-forward overfit risk"
-      ],
+      "alerts": [],
       "health": {
-        "score": 9,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward overfit risk",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
       "probation": {
@@ -5285,7 +5282,7 @@
         "lastEvaluatedStateAt": "2026-06-30T08:54:02.714Z",
         "reason": "probation cleared by latest paper metrics"
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "quarantine": {
         "active": false,
         "reason": "auto-unquarantined: metrics improved",
@@ -6654,7 +6651,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-23T13:53:53.380Z",
         "consecutiveLosses": 0,
@@ -6711,17 +6709,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-strong",
-      "marketAdx": 47.3,
-      "marketAtrPct": 0.85,
+      "marketPhase": "trending-down-strong",
+      "marketAdx": 46.2,
+      "marketAtrPct": 0.87,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:43.834Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:14.001Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "INJUSDT:4h:sma-rsi": {
       "key": "INJUSDT:4h:sma-rsi",
@@ -6771,13 +6773,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-28T10:26:30.922Z",
-      "updatedAt": "2026-08-17T16:33:17.566Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 4.149,
+      "updatedAt": "2026-08-17T20:31:57.767Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 4.111,
       "lastSignal": "WAIT",
-      "liveObservations": 417,
+      "liveObservations": 418,
       "closedPaperTrades": 23,
       "forwardPaperTrades": 28,
       "forwardPaperPnl": 1330.6,
@@ -6791,30 +6793,23 @@
       "blockedEntries": 7,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 1,
-      "totalPnl": -522.82,
-      "profitFactor": 0.54,
+      "totalPnl": -537.7,
+      "profitFactor": 0.53,
       "winratePct": 52.2,
       "maxDrawdownPct": 8.95,
       "maxLossStreak": 3,
-      "testPnl": 22.37,
-      "testTrades": 15,
+      "testPnl": 22.8,
+      "testTrades": 16,
       "walkForward": "weak",
-      "alerts": [
-        "drawdown 8.40% >= limit 8%",
-        "profit factor 0.47 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 2,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 11330.596976694595,
         "peak": 11875.989981272178,
@@ -8403,7 +8398,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-28T11:27:59.195Z",
         "consecutiveLosses": 1,
@@ -8559,17 +8555,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-down-strong",
-      "marketAdx": 30.9,
-      "marketAtrPct": 1.7,
+      "marketPhase": "trending-down",
+      "marketAdx": 22,
+      "marketAtrPct": 1.62,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:30.624Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:31:57.767Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "LINKUSDT:1h:breakout": {
       "key": "LINKUSDT:1h:breakout",
@@ -8621,11 +8621,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-06-28T10:26:37.701Z",
-      "updatedAt": "2026-08-17T16:33:23.406Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 9.544,
+      "updatedAt": "2026-08-17T20:32:04.650Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 9.482,
       "lastSignal": "WAIT",
-      "liveObservations": 54,
+      "liveObservations": 55,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": -203.63,
@@ -8689,10 +8689,6 @@
           }
         ],
         "processedCloses": [
-          "2026-05-25 05:00",
-          "2026-05-25 06:00",
-          "2026-05-25 07:00",
-          "2026-05-25 08:00",
           "2026-05-25 09:00",
           "2026-05-25 10:00",
           "2026-05-25 11:00",
@@ -10688,7 +10684,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-06-28T10:26:37.698Z",
         "consecutiveLosses": 0,
@@ -10749,18 +10749,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 6.4,
-      "marketAtrPct": 0.79,
+      "marketAdx": 12.2,
+      "marketAtrPct": 0.8,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:23.406Z",
+        "at": "2026-08-17T20:32:04.650Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -10814,11 +10815,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-06-28T10:26:37.701Z",
-      "updatedAt": "2026-08-17T16:33:25.069Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.04005,
+      "updatedAt": "2026-08-17T20:32:06.606Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.03993,
       "lastSignal": "WAIT",
-      "liveObservations": 454,
+      "liveObservations": 455,
       "closedPaperTrades": 18,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": -131.9,
@@ -12172,7 +12173,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-28T11:28:05.720Z",
         "consecutiveLosses": 0
@@ -12346,18 +12348,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-strong",
-      "marketAdx": 33,
-      "marketAtrPct": 0.95,
+      "marketAdx": 44.7,
+      "marketAtrPct": 0.94,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:25.069Z",
+        "at": "2026-08-17T20:32:06.606Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -12409,13 +12412,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-28T11:28:11.189Z",
-      "updatedAt": "2026-08-17T16:33:32.161Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1908.55,
+      "updatedAt": "2026-08-17T20:32:14.920Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1907.92,
       "lastSignal": "SELL",
-      "liveObservations": 405,
+      "liveObservations": 406,
       "closedPaperTrades": 88,
       "forwardPaperTrades": 9,
       "forwardPaperPnl": -219.69,
@@ -12426,33 +12429,26 @@
       "forwardOpenPosition": "none",
       "forwardOpenNotional": 0,
       "consecutiveLosses": 0,
-      "blockedEntries": 77,
-      "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
+      "blockedEntries": 78,
+      "lastBlockReason": "htf confirmation failed",
       "newForwardBars": 1,
-      "totalPnl": 245.67,
-      "profitFactor": 1.18,
-      "winratePct": 61.4,
+      "totalPnl": 141.22,
+      "profitFactor": 1.1,
+      "winratePct": 60.2,
       "maxDrawdownPct": 2.16,
       "maxLossStreak": 7,
       "testPnl": -89.9,
       "testTrades": 21,
       "walkForward": "overfit risk",
-      "alerts": [
-        "loss streak 5",
-        "walk-forward overfit risk"
-      ],
+      "alerts": [],
       "health": {
-        "score": 57,
         "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "strong profit factor",
-          "drawdown inside limit",
-          "walk-forward overfit risk",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 9780.314404227162,
         "peak": 10197.076756767603,
@@ -13851,12 +13847,13 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-28T11:28:11.186Z",
         "consecutiveLosses": 0,
-        "blockedEntries": 77,
-        "lastBlockReason": "candidate rejected — new entries paused until cooldown expires"
+        "blockedEntries": 78,
+        "lastBlockReason": "htf confirmation failed"
       },
       "observedCloses": [
         "2026-07-13 16:00",
@@ -13902,17 +13899,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up-strong",
-      "marketAdx": 30,
+      "marketPhase": "trending-up",
+      "marketAdx": 25.6,
       "marketAtrPct": 0.6,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:44.573Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:14.920Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "SEIUSDT:4h:sma-rsi": {
       "key": "SEIUSDT:4h:sma-rsi",
@@ -13962,13 +13963,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-29T08:27:46.938Z",
-      "updatedAt": "2026-08-17T16:33:24.277Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.04005,
+      "updatedAt": "2026-08-17T20:32:05.706Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.03993,
       "lastSignal": "WAIT",
-      "liveObservations": 65,
+      "liveObservations": 66,
       "closedPaperTrades": 8,
       "forwardPaperTrades": 5,
       "forwardPaperPnl": -405.42,
@@ -13991,20 +13992,16 @@
       "testTrades": 1,
       "walkForward": "weak",
       "alerts": [
-        "profit factor 0.35 < 1.05"
+        "low test sample: 1 trades"
       ],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 9594.576027202398,
         "peak": 10196.504781050544,
@@ -15357,7 +15354,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-06-29T09:28:54.968Z",
         "consecutiveLosses": 1,
@@ -15417,17 +15415,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-strong",
-      "marketAdx": 33,
-      "marketAtrPct": 0.95,
+      "marketAdx": 44.7,
+      "marketAtrPct": 0.94,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:37.085Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:05.706Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "NEARUSDT:1d:sma-rsi": {
       "key": "NEARUSDT:1d:sma-rsi",
@@ -15479,9 +15481,9 @@
       },
       "status": "incubating",
       "startedAt": "2026-06-30T08:53:56.177Z",
-      "updatedAt": "2026-08-17T16:33:24.593Z",
+      "updatedAt": "2026-08-17T20:32:06.061Z",
       "lastCandle": "2026-08-17 00:00",
-      "lastClose": 1.636,
+      "lastClose": 1.62,
       "lastSignal": "WAIT",
       "liveObservations": 247,
       "closedPaperTrades": 7,
@@ -16648,7 +16650,7 @@
       ],
       "marketPhase": "trending-down",
       "marketAdx": 25,
-      "marketAtrPct": 3.91,
+      "marketAtrPct": 3.95,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
@@ -16703,13 +16705,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-30T08:53:57.344Z",
-      "updatedAt": "2026-08-17T16:33:26.312Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.3016,
+      "updatedAt": "2026-08-17T20:32:08.056Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.3047,
       "lastSignal": "WAIT",
-      "liveObservations": 477,
+      "liveObservations": 478,
       "closedPaperTrades": 9,
       "forwardPaperTrades": 6,
       "forwardPaperPnl": -301.76,
@@ -16731,22 +16733,15 @@
       "testPnl": -31.66,
       "testTrades": 3,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 4",
-        "profit factor 0.29 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 9698.242270239652,
         "peak": 10056.615501503678,
@@ -18071,7 +18066,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-07-05T19:50:38.955Z",
         "consecutiveLosses": 0,
@@ -18212,17 +18208,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-down",
-      "marketAdx": 27.9,
-      "marketAtrPct": 1.52,
+      "marketPhase": "ranging-tight",
+      "marketAdx": 11.7,
+      "marketAtrPct": 1.5,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:38.994Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:08.056Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "BCHUSDT:1h:breakout": {
       "key": "BCHUSDT:1h:breakout",
@@ -18272,14 +18272,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-06-30T08:54:00.787Z",
-      "updatedAt": "2026-08-17T16:33:30.592Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 205.7,
+      "updatedAt": "2026-08-17T20:32:13.065Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 204.3,
       "lastSignal": "WAIT",
-      "liveObservations": 402,
-      "closedPaperTrades": 0,
+      "liveObservations": 403,
+      "closedPaperTrades": 30,
       "forwardPaperTrades": 37,
       "forwardPaperPnl": 558.4,
       "forwardPaperMaxDd": 5.89,
@@ -18292,30 +18292,23 @@
       "blockedEntries": 26,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 4,
-      "totalPnl": 0,
-      "profitFactor": 0,
-      "winratePct": 0,
-      "maxDrawdownPct": 0,
-      "maxLossStreak": 0,
-      "testPnl": 0,
-      "testTrades": 0,
+      "totalPnl": -67.54,
+      "profitFactor": 0.84,
+      "winratePct": 46.7,
+      "maxDrawdownPct": 2.37,
+      "maxLossStreak": 6,
+      "testPnl": 55.82,
+      "testTrades": 4,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 6",
-        "profit factor 0.69 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "quarantine": {
         "active": false,
         "reason": "auto-unquarantined: strong performance",
@@ -18699,10 +18692,6 @@
           }
         ],
         "processedCloses": [
-          "2026-05-26 08:00",
-          "2026-05-26 09:00",
-          "2026-05-26 10:00",
-          "2026-05-26 11:00",
           "2026-05-26 12:00",
           "2026-05-26 13:00",
           "2026-05-26 14:00",
@@ -20698,7 +20687,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-06-30T08:54:00.785Z",
         "consecutiveLosses": 0,
@@ -20904,17 +20897,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "ranging-tight",
-      "marketAdx": 1.9,
-      "marketAtrPct": 0.45,
+      "marketPhase": "trending-strong",
+      "marketAdx": 33.3,
+      "marketAtrPct": 0.48,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:43.036Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:13.065Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "LTCUSDT:1h:sma-rsi": {
       "key": "LTCUSDT:1h:sma-rsi",
@@ -20964,14 +20961,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-07-01T08:31:19.847Z",
-      "updatedAt": "2026-08-17T16:33:32.932Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 44.46,
+      "updatedAt": "2026-08-17T20:32:15.825Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 44.5,
       "lastSignal": "WAIT",
-      "liveObservations": 202,
-      "closedPaperTrades": 37,
+      "liveObservations": 203,
+      "closedPaperTrades": 38,
       "forwardPaperTrades": 13,
       "forwardPaperPnl": -473.48,
       "forwardPaperMaxDd": 4.83,
@@ -20984,30 +20981,23 @@
       "blockedEntries": 215,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 4,
-      "totalPnl": -36.08,
-      "profitFactor": 0.91,
-      "winratePct": 54.1,
+      "totalPnl": -69.63,
+      "profitFactor": 0.85,
+      "winratePct": 52.6,
       "maxDrawdownPct": 2.21,
       "maxLossStreak": 4,
-      "testPnl": -28.19,
+      "testPnl": -43.78,
       "testTrades": 6,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 4",
-        "profit factor 1.00 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "quarantine": {
         "active": false,
         "reason": "auto-unquarantined: metrics improved",
@@ -21157,10 +21147,6 @@
           }
         ],
         "processedCloses": [
-          "2026-05-26 08:00",
-          "2026-05-26 09:00",
-          "2026-05-26 10:00",
-          "2026-05-26 11:00",
           "2026-05-26 12:00",
           "2026-05-26 13:00",
           "2026-05-26 14:00",
@@ -23156,7 +23142,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-07-05T19:50:44.257Z",
         "consecutiveLosses": 1,
@@ -23228,17 +23218,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 4.5,
-      "marketAtrPct": 0.39,
+      "marketAdx": 16,
+      "marketAtrPct": 0.42,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:45.300Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:15.826Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "LTCUSDT:1d:sma-rsi": {
       "key": "LTCUSDT:1d:sma-rsi",
@@ -23288,11 +23282,11 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-07-05T19:50:44.607Z",
-      "updatedAt": "2026-08-17T16:33:33.157Z",
+      "updatedAt": "2026-08-17T20:32:16.085Z",
       "lastCandle": "2026-08-17 00:00",
-      "lastClose": 44.46,
+      "lastClose": 44.5,
       "lastSignal": "WAIT",
       "liveObservations": 96,
       "closedPaperTrades": 34,
@@ -23316,23 +23310,15 @@
       "testPnl": 100.78,
       "testTrades": 12,
       "walkForward": "weak",
-      "alerts": [
-        "drawdown 9.38% >= limit 9%",
-        "loss streak 6",
-        "profit factor 0.67 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 2,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 9666.631102591271,
         "peak": 10000,
@@ -24426,13 +24412,16 @@
       ],
       "marketPhase": "ranging-tight",
       "marketAdx": 0.5,
-      "marketAtrPct": 1.93,
+      "marketAtrPct": 1.96,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:45.515Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:16.085Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "DOTUSDT:4h:sma-rsi": {
       "key": "DOTUSDT:4h:sma-rsi",
@@ -24484,11 +24473,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-07-05T20:51:39.578Z",
-      "updatedAt": "2026-08-17T16:33:29.821Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.758,
+      "updatedAt": "2026-08-17T20:32:12.182Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.759,
       "lastSignal": "WAIT",
-      "liveObservations": 223,
+      "liveObservations": 224,
       "closedPaperTrades": 61,
       "forwardPaperTrades": 19,
       "forwardPaperPnl": 987.09,
@@ -24502,8 +24491,8 @@
       "blockedEntries": 0,
       "lastBlockReason": "",
       "newForwardBars": 1,
-      "totalPnl": 644.21,
-      "profitFactor": 1.59,
+      "totalPnl": 640.84,
+      "profitFactor": 1.58,
       "winratePct": 65.6,
       "maxDrawdownPct": 3.22,
       "maxLossStreak": 3,
@@ -25980,7 +25969,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-07-05T21:52:46.160Z",
         "consecutiveLosses": 0
@@ -26141,11 +26131,12 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-down-strong",
-      "marketAdx": 45.5,
-      "marketAtrPct": 0.99,
+      "marketAdx": 36.2,
+      "marketAtrPct": 0.98,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
@@ -26202,11 +26193,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-07-05T22:53:46.381Z",
-      "updatedAt": "2026-08-17T16:33:19.534Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1908.61,
+      "updatedAt": "2026-08-17T20:32:00.117Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1907.91,
       "lastSignal": "WAIT",
-      "liveObservations": 55,
+      "liveObservations": 56,
       "closedPaperTrades": 94,
       "forwardPaperTrades": 4,
       "forwardPaperPnl": -558.91,
@@ -26225,7 +26216,7 @@
       "winratePct": 55.3,
       "maxDrawdownPct": 5.37,
       "maxLossStreak": 4,
-      "testPnl": -311.13,
+      "testPnl": -276.12,
       "testTrades": 22,
       "walkForward": "weak",
       "alerts": [],
@@ -27543,7 +27534,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-07-05T22:53:46.379Z",
         "consecutiveLosses": 0,
@@ -27598,10 +27590,11 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up-strong",
-      "marketAdx": 30,
+      "marketPhase": "trending-up",
+      "marketAdx": 25.6,
       "marketAtrPct": 0.6,
       "newsSentiment": "no-data",
       "newsScore": 0,
@@ -27609,7 +27602,7 @@
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:19.534Z",
+        "at": "2026-08-17T20:32:00.117Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -27697,11 +27690,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-07-13T08:25:10.662Z",
-      "updatedAt": "2026-08-17T16:33:25.525Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.6688,
+      "updatedAt": "2026-08-17T20:32:07.137Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.6717,
       "lastSignal": "WAIT",
-      "liveObservations": 185,
+      "liveObservations": 186,
       "closedPaperTrades": 15,
       "forwardPaperTrades": 4,
       "forwardPaperPnl": -259.99,
@@ -27715,10 +27708,10 @@
       "blockedEntries": 3,
       "lastBlockReason": "candidate quarantined — new entries paused",
       "newForwardBars": 1,
-      "totalPnl": -15,
-      "profitFactor": 0.92,
+      "totalPnl": -47.72,
+      "profitFactor": 0.79,
       "winratePct": 53.3,
-      "maxDrawdownPct": 1.37,
+      "maxDrawdownPct": 1.46,
       "maxLossStreak": 2,
       "testPnl": 10.77,
       "testTrades": 6,
@@ -28993,7 +28986,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-07-13T08:25:28.357Z",
         "consecutiveLosses": 0,
@@ -29138,18 +29132,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-down-strong",
-      "marketAdx": 57.7,
-      "marketAtrPct": 1.25,
+      "marketAdx": 61.2,
+      "marketAtrPct": 1.22,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:25.525Z",
+        "at": "2026-08-17T20:32:07.137Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -29201,14 +29196,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-07-13T08:25:13.566Z",
-      "updatedAt": "2026-08-17T16:33:28.654Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.07044,
+      "updatedAt": "2026-08-17T20:32:10.817Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.07019,
       "lastSignal": "WAIT",
-      "liveObservations": 511,
-      "closedPaperTrades": 87,
+      "liveObservations": 512,
+      "closedPaperTrades": 85,
       "forwardPaperTrades": 12,
       "forwardPaperPnl": 137.9,
       "forwardPaperMaxDd": 2.72,
@@ -29221,30 +29216,23 @@
       "blockedEntries": 11,
       "lastBlockReason": "candidate rejected — new entries paused",
       "newForwardBars": 1,
-      "totalPnl": 24.48,
-      "profitFactor": 1.02,
-      "winratePct": 62.1,
+      "totalPnl": 7.82,
+      "profitFactor": 1.01,
+      "winratePct": 62.4,
       "maxDrawdownPct": 4.98,
       "maxLossStreak": 7,
-      "testPnl": 169.01,
-      "testTrades": 17,
+      "testPnl": 142.41,
+      "testTrades": 16,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 5",
-        "profit factor 0.82 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10137.900173457307,
         "peak": 10244.445160599706,
@@ -30583,7 +30571,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-07-13T08:25:13.561Z",
         "consecutiveLosses": 0,
@@ -30738,17 +30727,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "ranging-tight",
-      "marketAdx": 20.7,
-      "marketAtrPct": 0.64,
+      "marketPhase": "trending",
+      "marketAdx": 26.6,
+      "marketAtrPct": 0.65,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:41.216Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:10.817Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "SEIUSDT:1h:sma-rsi": {
       "key": "SEIUSDT:1h:sma-rsi",
@@ -30800,11 +30793,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-07-16T12:55:12.866Z",
-      "updatedAt": "2026-08-17T16:33:16.809Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.04005,
+      "updatedAt": "2026-08-17T20:31:56.886Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.03993,
       "lastSignal": "WAIT",
-      "liveObservations": 170,
+      "liveObservations": 171,
       "closedPaperTrades": 40,
       "forwardPaperTrades": 30,
       "forwardPaperPnl": 553.67,
@@ -30818,12 +30811,12 @@
       "blockedEntries": 41,
       "lastBlockReason": "htf confirmation failed",
       "newForwardBars": 4,
-      "totalPnl": 235.11,
-      "profitFactor": 1.55,
+      "totalPnl": 232.68,
+      "profitFactor": 1.54,
       "winratePct": 72.5,
-      "maxDrawdownPct": 1.4,
+      "maxDrawdownPct": 1.39,
       "maxLossStreak": 3,
-      "testPnl": 108.27,
+      "testPnl": 111.28,
       "testTrades": 9,
       "walkForward": "stable",
       "alerts": [],
@@ -32921,7 +32914,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-07-16T12:55:12.864Z",
         "consecutiveLosses": 0,
@@ -33099,11 +33096,12 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up-strong",
-      "marketAdx": 36.6,
-      "marketAtrPct": 0.49,
+      "marketPhase": "ranging-tight",
+      "marketAdx": 5.6,
+      "marketAtrPct": 0.52,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
@@ -33158,13 +33156,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-07-16T12:55:13.627Z",
-      "updatedAt": "2026-08-17T16:33:17.926Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.1685,
+      "updatedAt": "2026-08-17T20:31:58.189Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.1674,
       "lastSignal": "WAIT",
-      "liveObservations": 148,
+      "liveObservations": 149,
       "closedPaperTrades": 43,
       "forwardPaperTrades": 16,
       "forwardPaperPnl": 105.46,
@@ -33186,23 +33184,15 @@
       "testPnl": 370.51,
       "testTrades": 15,
       "walkForward": "weak",
-      "alerts": [
-        "drawdown 8.30% >= limit 8%",
-        "loss streak 4",
-        "profit factor 0.60 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 2,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10105.464683237844,
         "peak": 10365.264271304066,
@@ -34562,7 +34552,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-07-16T12:55:13.625Z",
         "consecutiveLosses": 0,
@@ -34715,17 +34706,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "ranging-tight",
-      "marketAdx": 21.7,
-      "marketAtrPct": 1.03,
+      "marketPhase": "trending-down",
+      "marketAdx": 24.8,
+      "marketAtrPct": 1.05,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:30.970Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:31:58.189Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "ATOMUSDT:1h:sma-rsi": {
       "key": "ATOMUSDT:1h:sma-rsi",
@@ -34775,13 +34770,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:02.839Z",
-      "updatedAt": "2026-08-17T16:33:17.208Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1.413,
+      "updatedAt": "2026-08-17T20:31:57.351Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1.418,
       "lastSignal": "WAIT",
-      "liveObservations": 79,
+      "liveObservations": 80,
       "closedPaperTrades": 39,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": 136.24,
@@ -34795,31 +34790,23 @@
       "blockedEntries": 72,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 4,
-      "totalPnl": -34.87,
-      "profitFactor": 0.94,
-      "winratePct": 59,
-      "maxDrawdownPct": 4.05,
+      "totalPnl": 14.11,
+      "profitFactor": 1.02,
+      "winratePct": 61.5,
+      "maxDrawdownPct": 4.01,
       "maxLossStreak": 3,
-      "testPnl": -78.23,
+      "testPnl": -85.62,
       "testTrades": 13,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 6",
-        "profit factor 0.65 < 1.05",
-        "walk-forward overfit risk"
-      ],
+      "alerts": [],
       "health": {
-        "score": 9,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward overfit risk",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10136.241576124115,
         "peak": 10136.241576124115,
@@ -36163,7 +36150,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-04T11:24:19.610Z",
         "consecutiveLosses": 0,
@@ -36249,17 +36240,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-down-strong",
-      "marketAdx": 60.7,
-      "marketAtrPct": 0.74,
+      "marketAdx": 60,
+      "marketAtrPct": 0.82,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:30.277Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:31:57.351Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "RENDERUSDT:4h:sma-rsi": {
       "key": "RENDERUSDT:4h:sma-rsi",
@@ -36309,14 +36304,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:02.839Z",
-      "updatedAt": "2026-08-17T16:33:18.719Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1.271,
+      "updatedAt": "2026-08-17T20:31:59.123Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1.27,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
-      "closedPaperTrades": 57,
+      "liveObservations": 58,
+      "closedPaperTrades": 56,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
       "forwardPaperMaxDd": 0,
@@ -36329,29 +36324,23 @@
       "blockedEntries": 3,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 1,
-      "totalPnl": -363.96,
-      "profitFactor": 0.79,
-      "winratePct": 59.6,
+      "totalPnl": -317.64,
+      "profitFactor": 0.81,
+      "winratePct": 60.7,
       "maxDrawdownPct": 8.18,
       "maxLossStreak": 6,
       "testPnl": 121.72,
       "testTrades": 12,
       "walkForward": "weak",
-      "alerts": [
-        "profit factor 1.04 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 48,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -37437,7 +37426,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:21.619Z",
         "consecutiveLosses": 0,
@@ -37501,17 +37491,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
       "marketAdx": 8.1,
-      "marketAtrPct": 0.98,
+      "marketAtrPct": 0.99,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:31.780Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:31:59.124Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "DOTUSDT:4h:breakout": {
       "key": "DOTUSDT:4h:breakout",
@@ -37563,11 +37557,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-08-04T11:24:08.941Z",
-      "updatedAt": "2026-08-17T16:33:21.508Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.758,
+      "updatedAt": "2026-08-17T20:32:02.428Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.759,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
+      "liveObservations": 58,
       "closedPaperTrades": 76,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": -21.54,
@@ -37586,8 +37580,8 @@
       "winratePct": 59.2,
       "maxDrawdownPct": 3.57,
       "maxLossStreak": 3,
-      "testPnl": 149.41,
-      "testTrades": 18,
+      "testPnl": 121.64,
+      "testTrades": 17,
       "walkForward": "weak",
       "alerts": [],
       "health": {
@@ -38707,7 +38701,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:08.939Z",
         "consecutiveLosses": 0,
@@ -38771,18 +38766,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-down-strong",
-      "marketAdx": 45.5,
-      "marketAtrPct": 0.99,
+      "marketAdx": 36.2,
+      "marketAtrPct": 0.98,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:21.508Z",
+        "at": "2026-08-17T20:32:02.428Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -38834,13 +38830,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:09.340Z",
-      "updatedAt": "2026-08-17T16:33:21.873Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 6.312,
+      "updatedAt": "2026-08-17T20:32:02.857Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 6.326,
       "lastSignal": "SELL",
-      "liveObservations": 57,
+      "liveObservations": 58,
       "closedPaperTrades": 28,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
@@ -38862,22 +38858,15 @@
       "testPnl": -75.01,
       "testTrades": 15,
       "walkForward": "weak",
-      "alerts": [
-        "drawdown 8.20% >= limit 8%",
-        "loss streak 5",
-        "profit factor 0.37 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 2,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -39963,7 +39952,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:09.337Z",
         "consecutiveLosses": 0,
@@ -40027,17 +40017,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-down-strong",
-      "marketAdx": 57.1,
-      "marketAtrPct": 1.3,
+      "marketAdx": 51.8,
+      "marketAtrPct": 1.31,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:34.694Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:02.857Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "SOLUSDT:1h:breakout": {
       "key": "SOLUSDT:1h:breakout",
@@ -40089,11 +40083,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-08-04T11:24:09.340Z",
-      "updatedAt": "2026-08-17T16:33:22.266Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 76.04,
+      "updatedAt": "2026-08-17T20:32:03.321Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 75.78,
       "lastSignal": "WAIT",
-      "liveObservations": 79,
+      "liveObservations": 80,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": 8.52,
@@ -41472,7 +41466,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-04T11:24:26.393Z",
         "consecutiveLosses": 0,
@@ -41559,10 +41557,11 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 18.2,
+      "marketAdx": 11.4,
       "marketAtrPct": 0.47,
       "newsSentiment": "no-data",
       "newsScore": 0,
@@ -41570,7 +41569,7 @@
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:22.266Z",
+        "at": "2026-08-17T20:32:03.321Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -41622,13 +41621,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:09.883Z",
-      "updatedAt": "2026-08-17T16:33:22.654Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 6.312,
+      "updatedAt": "2026-08-17T20:32:03.766Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 6.326,
       "lastSignal": "WAIT",
-      "liveObservations": 79,
+      "liveObservations": 80,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": 289.05,
@@ -41654,15 +41653,13 @@
         "low test sample: 0 trades"
       ],
       "health": {
-        "score": 42,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10289.050230477511,
         "peak": 10289.050230477511,
@@ -42996,7 +42993,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-04T11:24:09.881Z",
         "consecutiveLosses": 0,
@@ -43082,17 +43083,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 19.4,
-      "marketAtrPct": 0.54,
+      "marketAdx": 12.6,
+      "marketAtrPct": 0.56,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:35.469Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:03.766Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "DOTUSDT:1h:breakout": {
       "key": "DOTUSDT:1h:breakout",
@@ -43142,14 +43147,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:10.286Z",
-      "updatedAt": "2026-08-17T16:33:23.025Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.758,
+      "updatedAt": "2026-08-17T20:32:04.204Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.759,
       "lastSignal": "WAIT",
-      "liveObservations": 79,
-      "closedPaperTrades": 49,
+      "liveObservations": 80,
+      "closedPaperTrades": 48,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": 52.64,
       "forwardPaperMaxDd": 1.54,
@@ -43162,28 +43167,23 @@
       "blockedEntries": 39,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 4,
-      "totalPnl": -161.49,
-      "profitFactor": 0.77,
-      "winratePct": 55.1,
+      "totalPnl": -128.68,
+      "profitFactor": 0.81,
+      "winratePct": 56.3,
       "maxDrawdownPct": 1.96,
       "maxLossStreak": 3,
       "testPnl": -54.74,
       "testTrades": 8,
       "walkForward": "weak",
-      "alerts": [
-        "profit factor 1.04 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 48,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10052.642454017016,
         "peak": 10116.534706616307,
@@ -44527,7 +44527,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-04T11:24:10.284Z",
         "consecutiveLosses": 0,
@@ -44613,17 +44617,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-strong",
-      "marketAdx": 30,
+      "marketPhase": "trending-down",
+      "marketAdx": 29.4,
       "marketAtrPct": 0.57,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:35.825Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:04.204Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "JUPUSDT:4h:breakout": {
       "key": "JUPUSDT:4h:breakout",
@@ -44673,14 +44681,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:10.790Z",
-      "updatedAt": "2026-08-17T16:33:23.801Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.1685,
+      "updatedAt": "2026-08-17T20:32:05.162Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.1673,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
-      "closedPaperTrades": 0,
+      "liveObservations": 58,
+      "closedPaperTrades": 29,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
       "forwardPaperMaxDd": 0,
@@ -44693,29 +44701,25 @@
       "blockedEntries": 0,
       "lastBlockReason": "",
       "newForwardBars": 1,
-      "totalPnl": 0,
-      "profitFactor": 0,
-      "winratePct": 0,
-      "maxDrawdownPct": 0,
-      "maxLossStreak": 0,
-      "testPnl": 0,
-      "testTrades": 0,
+      "totalPnl": -322.55,
+      "profitFactor": 0.64,
+      "winratePct": 55.2,
+      "maxDrawdownPct": 3.35,
+      "maxLossStreak": 2,
+      "testPnl": -58.81,
+      "testTrades": 1,
       "walkForward": "weak",
       "alerts": [
-        "profit factor 0.50 < 1.05",
-        "low test sample: 2 trades"
+        "low test sample: 1 trades"
       ],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -45801,7 +45805,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:10.788Z",
         "consecutiveLosses": 0
@@ -45863,17 +45868,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "ranging-tight",
-      "marketAdx": 21.7,
-      "marketAtrPct": 1.03,
+      "marketPhase": "trending-down",
+      "marketAdx": 24.8,
+      "marketAtrPct": 1.05,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:36.622Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:05.162Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "ARBUSDT:4h:breakout": {
       "key": "ARBUSDT:4h:breakout",
@@ -45923,13 +45932,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:12.005Z",
-      "updatedAt": "2026-08-17T16:33:27.088Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.0748,
+      "updatedAt": "2026-08-17T20:32:08.961Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.0755,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
+      "liveObservations": 58,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": 29.36,
@@ -45952,21 +45961,16 @@
       "testTrades": 0,
       "walkForward": "weak",
       "alerts": [
-        "loss streak 4",
-        "profit factor 1.00 < 1.05",
-        "walk-forward overfit risk"
+        "low test sample: 0 trades"
       ],
       "health": {
-        "score": 33,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward overfit risk",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10029.358230254646,
         "peak": 10057.093582662324,
@@ -47063,7 +47067,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:12.003Z",
         "consecutiveLosses": 0,
@@ -47127,17 +47132,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 4.3,
-      "marketAtrPct": 1.38,
+      "marketAdx": 4.2,
+      "marketAtrPct": 1.39,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:39.734Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:08.961Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "SEIUSDT:1h:breakout": {
       "key": "SEIUSDT:1h:breakout",
@@ -47189,12 +47198,12 @@
       },
       "status": "incubating",
       "startedAt": "2026-08-04T11:24:13.109Z",
-      "updatedAt": "2026-08-17T16:33:29.413Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.04005,
+      "updatedAt": "2026-08-17T20:32:11.708Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.03993,
       "lastSignal": "WAIT",
-      "liveObservations": 79,
-      "closedPaperTrades": 39,
+      "liveObservations": 80,
+      "closedPaperTrades": 0,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": -161.87,
       "forwardPaperMaxDd": 1.77,
@@ -47207,23 +47216,25 @@
       "blockedEntries": 33,
       "lastBlockReason": "blocked hour 21:00 UTC",
       "newForwardBars": 4,
-      "totalPnl": -114.15,
-      "profitFactor": 0.8,
-      "winratePct": 48.7,
-      "maxDrawdownPct": 2.16,
-      "maxLossStreak": 6,
-      "testPnl": -18.8,
-      "testTrades": 10,
-      "walkForward": "overfit risk",
-      "alerts": [],
+      "totalPnl": 0,
+      "profitFactor": 0,
+      "winratePct": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
+      "testPnl": 0,
+      "testTrades": 0,
+      "walkForward": "weak",
+      "alerts": [
+        "low test sample: 0 trades"
+      ],
       "health": {
-        "score": 27,
+        "score": 42,
         "status": "Blocked",
         "reasons": [
           "negative/flat backtest",
           "weak profit factor",
           "drawdown inside limit",
-          "walk-forward overfit risk"
+          "walk-forward weak"
         ]
       },
       "previousStatus": "quarantined",
@@ -48560,7 +48571,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-04T11:24:13.107Z",
         "consecutiveLosses": 0,
@@ -48646,18 +48661,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up-strong",
-      "marketAdx": 36.6,
-      "marketAtrPct": 0.49,
+      "marketPhase": "ranging-tight",
+      "marketAdx": 5.6,
+      "marketAtrPct": 0.52,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:29.414Z",
+        "at": "2026-08-17T20:32:11.709Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -48711,11 +48727,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-08-04T11:24:14.421Z",
-      "updatedAt": "2026-08-17T16:33:30.978Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1.0046,
+      "updatedAt": "2026-08-17T20:32:13.513Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1.0014,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
+      "liveObservations": 58,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": 37.62,
@@ -49871,7 +49887,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:14.419Z",
         "consecutiveLosses": 0,
@@ -49936,11 +49953,12 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 11.5,
-      "marketAtrPct": 0.64,
+      "marketAdx": 9,
+      "marketAtrPct": 0.67,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
@@ -49995,14 +50013,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:14.421Z",
-      "updatedAt": "2026-08-17T16:33:32.561Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.1747,
+      "updatedAt": "2026-08-17T20:32:15.390Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.1736,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
-      "closedPaperTrades": 67,
+      "liveObservations": 58,
+      "closedPaperTrades": 66,
       "forwardPaperTrades": 2,
       "forwardPaperPnl": 99.4,
       "forwardPaperMaxDd": 0.21,
@@ -50015,29 +50033,23 @@
       "blockedEntries": 5,
       "lastBlockReason": "candidate rejected — new entries paused",
       "newForwardBars": 1,
-      "totalPnl": 338.58,
-      "profitFactor": 1.2,
-      "winratePct": 68.7,
+      "totalPnl": 299.55,
+      "profitFactor": 1.18,
+      "winratePct": 68.2,
       "maxDrawdownPct": 6.58,
       "maxLossStreak": 5,
-      "testPnl": 182.67,
+      "testPnl": 200.79,
       "testTrades": 17,
       "walkForward": "stable",
-      "alerts": [
-        "loss streak 5"
-      ],
+      "alerts": [],
       "health": {
-        "score": 72,
         "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "moderate profit factor",
-          "drawdown inside limit",
-          "walk-forward stable",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10099.398159232664,
         "peak": 10120.796594391044,
@@ -51144,7 +51156,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:24:35.179Z",
         "consecutiveLosses": 0,
@@ -51208,17 +51221,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-down-strong",
-      "marketAdx": 42.1,
-      "marketAtrPct": 1.43,
+      "marketAdx": 43.1,
+      "marketAtrPct": 1.44,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:44.947Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:15.390Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "TRXUSDT:4h:sma-rsi": {
       "key": "TRXUSDT:4h:sma-rsi",
@@ -51270,11 +51287,11 @@
       },
       "status": "incubating",
       "startedAt": "2026-08-04T11:24:48.417Z",
-      "updatedAt": "2026-08-17T16:33:26.697Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.3304,
+      "updatedAt": "2026-08-17T20:32:08.503Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.3313,
       "lastSignal": "WAIT",
-      "liveObservations": 57,
+      "liveObservations": 58,
       "closedPaperTrades": 11,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": -3.59,
@@ -52404,7 +52421,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-04T11:25:11.961Z",
         "consecutiveLosses": 0
@@ -52466,18 +52484,19 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
       "marketAdx": 11.9,
-      "marketAtrPct": 0.32,
+      "marketAtrPct": 0.33,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
       "decision": "incubate",
       "lastUnquarantine": {
-        "at": "2026-08-17T16:33:26.697Z",
+        "at": "2026-08-17T20:32:08.503Z",
         "reason": "quarantine cooldown expired"
       }
     },
@@ -52529,14 +52548,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-04T11:24:54.728Z",
-      "updatedAt": "2026-08-17T16:33:31.759Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.07043,
+      "updatedAt": "2026-08-17T20:32:14.450Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.07019,
       "lastSignal": "WAIT",
-      "liveObservations": 79,
-      "closedPaperTrades": 32,
+      "liveObservations": 80,
+      "closedPaperTrades": 0,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": 72.03,
       "forwardPaperMaxDd": 0.74,
@@ -52549,28 +52568,25 @@
       "blockedEntries": 35,
       "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
       "newForwardBars": 4,
-      "totalPnl": 40.96,
-      "profitFactor": 1.13,
-      "winratePct": 62.5,
-      "maxDrawdownPct": 1.25,
-      "maxLossStreak": 3,
-      "testPnl": -71.32,
-      "testTrades": 9,
-      "walkForward": "overfit risk",
+      "totalPnl": 0,
+      "profitFactor": 0,
+      "winratePct": 0,
+      "maxDrawdownPct": 0,
+      "maxLossStreak": 0,
+      "testPnl": 0,
+      "testTrades": 0,
+      "walkForward": "weak",
       "alerts": [
         "low test sample: 0 trades"
       ],
       "health": {
-        "score": 42,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak"
+          "re-incubated after reject cooldown"
         ]
       },
-      "previousStatus": "quarantined",
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10072.028832631953,
         "peak": 10138.341087712379,
@@ -53904,7 +53920,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-04T11:24:54.724Z",
         "consecutiveLosses": 0,
@@ -53990,17 +54010,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up",
-      "marketAdx": 26.6,
+      "marketPhase": "ranging-tight",
+      "marketAdx": 3.3,
       "marketAtrPct": 0.36,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:44.203Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:14.450Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "BTCUSDT:4h:breakout": {
       "key": "BTCUSDT:4h:breakout",
@@ -54050,14 +54074,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-07T12:00:28.390Z",
-      "updatedAt": "2026-08-17T16:33:19.120Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 64108.28,
+      "updatedAt": "2026-08-17T20:31:59.611Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 64368.01,
       "lastSignal": "SELL",
-      "liveObservations": 45,
-      "closedPaperTrades": 75,
+      "liveObservations": 46,
+      "closedPaperTrades": 74,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
       "forwardPaperMaxDd": 0,
@@ -54067,33 +54091,26 @@
       "forwardOpenPosition": "none",
       "forwardOpenNotional": 0,
       "consecutiveLosses": 0,
-      "blockedEntries": 15,
-      "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
+      "blockedEntries": 16,
+      "lastBlockReason": "htf confirmation failed",
       "newForwardBars": 1,
-      "totalPnl": -576.02,
-      "profitFactor": 0.59,
-      "winratePct": 45.3,
+      "totalPnl": -665.06,
+      "profitFactor": 0.54,
+      "winratePct": 43.2,
       "maxDrawdownPct": 7.22,
       "maxLossStreak": 6,
-      "testPnl": -98.95,
+      "testPnl": -103.71,
       "testTrades": 12,
       "walkForward": "weak",
-      "alerts": [
-        "drawdown 8.24% >= limit 8%",
-        "loss streak 6",
-        "profit factor 0.49 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 2,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -55160,12 +55177,13 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-07T12:00:28.385Z",
         "consecutiveLosses": 0,
-        "blockedEntries": 15,
-        "lastBlockReason": "candidate rejected — new entries paused until cooldown expires"
+        "blockedEntries": 16,
+        "lastBlockReason": "htf confirmation failed"
       },
       "observedCloses": [
         "2026-08-07 12:00",
@@ -55212,17 +55230,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-up-strong",
-      "marketAdx": 37.1,
-      "marketAtrPct": 0.45,
+      "marketAdx": 46.1,
+      "marketAtrPct": 0.5,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:32.146Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:31:59.611Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "RENDERUSDT:1h:breakout": {
       "key": "RENDERUSDT:1h:breakout",
@@ -55272,13 +55294,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-07T12:05:12.800Z",
-      "updatedAt": "2026-08-17T16:33:27.871Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 1.271,
+      "updatedAt": "2026-08-17T20:32:09.894Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 1.27,
       "lastSignal": "WAIT",
-      "liveObservations": 48,
+      "liveObservations": 49,
       "closedPaperTrades": 33,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
@@ -55300,19 +55322,15 @@
       "testPnl": -20.76,
       "testTrades": 6,
       "walkForward": "weak",
-      "alerts": [
-        "low test sample: 0 trades"
-      ],
+      "alerts": [],
       "health": {
-        "score": 42,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -56562,7 +56580,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-07T12:05:12.794Z",
         "consecutiveLosses": 0,
@@ -56617,17 +56639,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up-strong",
-      "marketAdx": 31.3,
-      "marketAtrPct": 0.55,
+      "marketPhase": "trending",
+      "marketAdx": 29.7,
+      "marketAtrPct": 0.6,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:40.467Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:09.894Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "OPUSDT:1h:sma-rsi": {
       "key": "OPUSDT:1h:sma-rsi",
@@ -56677,53 +56703,63 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-10T12:51:28.991Z",
-      "updatedAt": "2026-08-17T16:33:18.322Z",
-      "lastCandle": "2026-08-17 16:00",
+      "updatedAt": "2026-08-17T20:31:58.655Z",
+      "lastCandle": "2026-08-17 20:00",
       "lastClose": 0.0839,
       "lastSignal": "WAIT",
-      "liveObservations": 46,
-      "closedPaperTrades": 52,
+      "liveObservations": 47,
+      "closedPaperTrades": 55,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
       "forwardPaperMaxDd": 0,
       "forwardMaxLossStreak": 0,
       "forwardCurrentLossStreak": 0,
       "forwardProfitFactor": 0,
-      "forwardOpenPosition": "none",
-      "forwardOpenNotional": 0,
+      "forwardOpenPosition": "SHORT",
+      "forwardOpenNotional": 2000,
       "consecutiveLosses": 0,
-      "blockedEntries": 22,
-      "lastBlockReason": "candidate rejected — new entries paused until cooldown expires",
+      "blockedEntries": 23,
+      "lastBlockReason": "htf confirmation failed",
       "newForwardBars": 4,
-      "totalPnl": 118.63,
-      "profitFactor": 1.15,
-      "winratePct": 57.7,
-      "maxDrawdownPct": 2.35,
+      "totalPnl": 31.04,
+      "profitFactor": 1.04,
+      "winratePct": 52.7,
+      "maxDrawdownPct": 2.39,
       "maxLossStreak": 4,
-      "testPnl": 71.86,
-      "testTrades": 13,
+      "testPnl": 15.48,
+      "testTrades": 15,
       "walkForward": "stable",
-      "alerts": [
-        "loss streak 5"
-      ],
+      "alerts": [],
       "health": {
-        "score": 72,
         "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "moderate profit factor",
-          "drawdown inside limit",
-          "walk-forward stable",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
-        "peak": 10000,
+        "peak": 10000.772658240889,
         "maxDd": 0,
-        "position": null,
+        "position": {
+          "side": "SHORT",
+          "entry": 0.08386644,
+          "qty": 23847.441241097153,
+          "entryFee": 1.2,
+          "initialQty": 23847.441241097153,
+          "partialTaken": false,
+          "notional": 2000,
+          "openedAt": 998,
+          "entryTime": "2026-08-17 18:00",
+          "stop": 0.08518734,
+          "take": 0.08148881999999999,
+          "trailingActivated": false,
+          "trailPct": 0.8,
+          "trailActivatePct": 1.5
+        },
         "trades": [],
         "processedCloses": [
           "2026-06-29 21:00",
@@ -57896,12 +57932,17 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-10T12:51:28.988Z",
         "consecutiveLosses": 0,
-        "blockedEntries": 22,
-        "lastBlockReason": "candidate rejected — new entries paused until cooldown expires"
+        "blockedEntries": 23,
+        "lastBlockReason": "htf confirmation failed",
+        "entries": 1
       },
       "observedCloses": [
         "2026-08-10 12:00",
@@ -57949,17 +57990,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "ranging-tight",
-      "marketAdx": 0,
-      "marketAtrPct": 0.68,
+      "marketPhase": "trending-down-strong",
+      "marketAdx": 35.7,
+      "marketAtrPct": 0.63,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:31.354Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:31:58.655Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "LTCUSDT:4h:breakout": {
       "key": "LTCUSDT:4h:breakout",
@@ -58009,13 +58054,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-10T12:52:46.190Z",
-      "updatedAt": "2026-08-17T16:33:28.254Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 44.46,
+      "updatedAt": "2026-08-17T20:32:10.346Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 44.5,
       "lastSignal": "WAIT",
-      "liveObservations": 44,
+      "liveObservations": 45,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
@@ -58038,19 +58083,16 @@
       "testTrades": 0,
       "walkForward": "weak",
       "alerts": [
-        "loss streak 4"
+        "low test sample: 0 trades"
       ],
       "health": {
-        "score": 72,
         "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "moderate profit factor",
-          "drawdown inside limit",
-          "walk-forward stable",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -59099,7 +59141,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-10T12:52:46.184Z",
         "consecutiveLosses": 0,
@@ -59150,17 +59193,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 19.3,
+      "marketAdx": 18.8,
       "marketAtrPct": 0.68,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:40.848Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:10.346Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "BCHUSDT:1h:sma-rsi": {
       "key": "BCHUSDT:1h:sma-rsi",
@@ -59212,11 +59259,11 @@
       },
       "status": "rejected",
       "startedAt": "2026-08-10T13:00:21.329Z",
-      "updatedAt": "2026-08-17T16:33:29.026Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 205.7,
+      "updatedAt": "2026-08-17T20:32:11.251Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 204.3,
       "lastSignal": "WAIT",
-      "liveObservations": 45,
+      "liveObservations": 46,
       "closedPaperTrades": 37,
       "forwardPaperTrades": 1,
       "forwardPaperPnl": 29.96,
@@ -59235,8 +59282,8 @@
       "winratePct": 62.2,
       "maxDrawdownPct": 1.54,
       "maxLossStreak": 3,
-      "testPnl": 80.14,
-      "testTrades": 6,
+      "testPnl": 104.53,
+      "testTrades": 5,
       "walkForward": "stable",
       "alerts": [
         "walk-forward overfit risk"
@@ -60439,7 +60486,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-10T13:00:21.323Z",
         "consecutiveLosses": 0,
@@ -60492,11 +60543,12 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "ranging-tight",
-      "marketAdx": 1.9,
-      "marketAtrPct": 0.45,
+      "marketPhase": "trending-strong",
+      "marketAdx": 33.3,
+      "marketAtrPct": 0.48,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
@@ -60552,13 +60604,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-10T16:58:17.488Z",
-      "updatedAt": "2026-08-17T16:33:19.928Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 76.04,
+      "updatedAt": "2026-08-17T20:32:00.576Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 75.77,
       "lastSignal": "WAIT",
-      "liveObservations": 43,
+      "liveObservations": 44,
       "closedPaperTrades": 0,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
@@ -60581,21 +60633,16 @@
       "testTrades": 0,
       "walkForward": "weak",
       "alerts": [
-        "drawdown 8.09% >= limit 8%",
-        "loss streak 9",
-        "profit factor 0.35 < 1.05"
+        "low test sample: 0 trades"
       ],
       "health": {
-        "score": 2,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown exceeds limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -61643,7 +61690,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-10T16:58:17.486Z",
         "consecutiveLosses": 0,
@@ -61693,17 +61741,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "ranging-tight",
-      "marketAdx": 4.1,
-      "marketAtrPct": 0.77,
+      "marketAdx": 15,
+      "marketAtrPct": 0.78,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:32.866Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:00.576Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "BNBUSDT:4h:breakout": {
       "key": "BNBUSDT:4h:breakout",
@@ -61753,13 +61805,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-10T16:58:18.173Z",
-      "updatedAt": "2026-08-17T16:33:20.752Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 607.39,
+      "updatedAt": "2026-08-17T20:32:01.508Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 605.5,
       "lastSignal": "WAIT",
-      "liveObservations": 43,
+      "liveObservations": 44,
       "closedPaperTrades": 75,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
@@ -61781,21 +61833,15 @@
       "testPnl": -158.81,
       "testTrades": 14,
       "walkForward": "overfit risk",
-      "alerts": [
-        "loss streak 6",
-        "walk-forward overfit risk"
-      ],
+      "alerts": [],
       "health": {
-        "score": 47,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "positive backtest",
-          "moderate profit factor",
-          "drawdown inside limit",
-          "walk-forward overfit risk",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -62843,7 +62889,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-10T16:58:18.171Z",
         "consecutiveLosses": 0,
@@ -62893,17 +62940,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
       "marketPhase": "trending-strong",
-      "marketAdx": 45.4,
-      "marketAtrPct": 0.5,
+      "marketAdx": 41.3,
+      "marketAtrPct": 0.49,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:33.622Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:01.508Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "DOGEUSDT:1h:sma-rsi": {
       "key": "DOGEUSDT:1h:sma-rsi",
@@ -62953,13 +63004,13 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-10T16:58:22.605Z",
-      "updatedAt": "2026-08-17T16:33:25.916Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 0.07044,
+      "updatedAt": "2026-08-17T20:32:07.589Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 0.0702,
       "lastSignal": "WAIT",
-      "liveObservations": 43,
+      "liveObservations": 44,
       "closedPaperTrades": 12,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
@@ -62981,21 +63032,15 @@
       "testPnl": -64.11,
       "testTrades": 4,
       "walkForward": "weak",
-      "alerts": [
-        "loss streak 8",
-        "profit factor 0.11 < 1.05"
-      ],
+      "alerts": [],
       "health": {
-        "score": 24,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward weak",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -64169,7 +64214,11 @@
           "2026-08-17 12:00",
           "2026-08-17 13:00",
           "2026-08-17 14:00",
-          "2026-08-17 15:00"
+          "2026-08-17 15:00",
+          "2026-08-17 16:00",
+          "2026-08-17 17:00",
+          "2026-08-17 18:00",
+          "2026-08-17 19:00"
         ],
         "initializedAt": "2026-08-10T16:58:22.604Z",
         "consecutiveLosses": 0,
@@ -64219,17 +64268,21 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending-up",
-      "marketAdx": 26.6,
+      "marketPhase": "ranging-tight",
+      "marketAdx": 3.3,
       "marketAtrPct": 0.36,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:38.624Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:07.589Z",
+        "reason": "reject cooldown expired"
+      }
     },
     "BCHUSDT:4h:sma-rsi": {
       "key": "BCHUSDT:4h:sma-rsi",
@@ -64279,14 +64332,14 @@
         "mondayQtyScale": 0.5,
         "confirmSlow": 20
       },
-      "status": "rejected",
+      "status": "incubating",
       "startedAt": "2026-08-10T16:58:23.932Z",
-      "updatedAt": "2026-08-17T16:33:27.488Z",
-      "lastCandle": "2026-08-17 16:00",
-      "lastClose": 205.7,
+      "updatedAt": "2026-08-17T20:32:09.424Z",
+      "lastCandle": "2026-08-17 20:00",
+      "lastClose": 204.3,
       "lastSignal": "WAIT",
-      "liveObservations": 43,
-      "closedPaperTrades": 64,
+      "liveObservations": 44,
+      "closedPaperTrades": 63,
       "forwardPaperTrades": 0,
       "forwardPaperPnl": 0,
       "forwardPaperMaxDd": 0,
@@ -64299,29 +64352,23 @@
       "blockedEntries": 1,
       "lastBlockReason": "candidate rejected — new entries paused",
       "newForwardBars": 1,
-      "totalPnl": -275.12,
-      "profitFactor": 0.82,
-      "winratePct": 59.4,
+      "totalPnl": -404.18,
+      "profitFactor": 0.74,
+      "winratePct": 57.1,
       "maxDrawdownPct": 6.24,
       "maxLossStreak": 8,
-      "testPnl": 141.18,
-      "testTrades": 11,
-      "walkForward": "stable",
-      "alerts": [
-        "loss streak 5",
-        "profit factor 0.78 < 1.05"
-      ],
+      "testPnl": 7.93,
+      "testTrades": 10,
+      "walkForward": "weak",
+      "alerts": [],
       "health": {
-        "score": 34,
-        "status": "Blocked",
+        "status": "Caution",
+        "score": 50,
         "reasons": [
-          "negative/flat backtest",
-          "weak profit factor",
-          "drawdown inside limit",
-          "walk-forward stable",
-          "guardrails would block live entry"
+          "re-incubated after reject cooldown"
         ]
       },
+      "previousStatus": "rejected",
       "paperLedger": {
         "balance": 10000,
         "peak": 10000,
@@ -65369,7 +65416,8 @@
           "2026-08-17 00:00",
           "2026-08-17 04:00",
           "2026-08-17 08:00",
-          "2026-08-17 12:00"
+          "2026-08-17 12:00",
+          "2026-08-17 16:00"
         ],
         "initializedAt": "2026-08-10T16:58:23.931Z",
         "consecutiveLosses": 0,
@@ -65419,26 +65467,30 @@
         "2026-08-17 04:00",
         "2026-08-17 08:00",
         "2026-08-17 12:00",
-        "2026-08-17 16:00"
+        "2026-08-17 16:00",
+        "2026-08-17 20:00"
       ],
-      "marketPhase": "trending",
-      "marketAdx": 25,
-      "marketAtrPct": 0.8,
+      "marketPhase": "trending-strong",
+      "marketAdx": 32.5,
+      "marketAtrPct": 0.77,
       "newsSentiment": "no-data",
       "newsScore": 0,
       "newsRiskMultiplier": 1,
       "newsStopMultiplier": 1,
-      "decision": "reject",
-      "rejectedAt": "2026-08-14T16:58:40.098Z"
+      "decision": "incubate",
+      "lastReincubated": {
+        "at": "2026-08-17T20:32:09.424Z",
+        "reason": "reject cooldown expired"
+      }
     }
   },
-  "updatedAt": "2026-08-17T16:33:15.609Z",
+  "updatedAt": "2026-08-17T20:31:55.483Z",
   "summary": {
-    "updatedAt": "2026-08-17T16:33:15.609Z",
+    "updatedAt": "2026-08-17T20:31:55.483Z",
     "total": 44,
-    "incubating": 13,
+    "incubating": 42,
     "readyForReview": 0,
-    "rejected": 30,
+    "rejected": 1,
     "quarantined": 1,
     "marketPhase": "ranging-tight",
     "networkErrors": 0,
