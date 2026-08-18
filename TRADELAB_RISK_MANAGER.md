@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-18T04:40:32.504Z
+Generated: 2026-08-18T08:42:31.565Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1291.09 USDT
+- **Total PnL:** 1327.34 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 60.45 | -1000 | ✅ |
-| Weekly (7d) | 113.80 | -2500 | ✅ |
-| Monthly | 415.97 | -5000 | ✅ |
-| Total (all time) | 1291.09 | -5000 | ✅ |
+| Daily (UTC) | 96.70 | -1000 | ✅ |
+| Weekly (7d) | 150.05 | -2500 | ✅ |
+| Monthly | 452.21 | -5000 | ✅ |
+| Total (all time) | 1327.34 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 14026.01 USDT (max 30000)
+- **Open Notional:** 14036.57 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,20 +87,21 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.86% / 5% max
+- **Heat:** 0.89% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 30
-- **Sector Distribution:** {"alt_mid":10,"alt_large":12,"alt_small":3,"blue_chip":2,"other":3}
+- **Active Positions:** 31
+- **Sector Distribution:** {"alt_mid":10,"alt_large":12,"alt_small":3,"blue_chip":2,"other":4}
 - **Warnings:**
   - ⚠️ alt_mid: 10 positions (max 3)
   - ⚠️ alt_large: 12 positions (max 3)
+  - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 30/3
+  - 🚫 max_concurrent_positions: 31/3
 
 ## Trailing Stops
 
@@ -108,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 80.5%
-- **Total PnL:** 1291.09 USDT
-- **Total Exposure:** 14026.01 USDT
+- **Margin Level:** 80.7%
+- **Total PnL:** 1327.34 USDT
+- **Total Exposure:** 14036.57 USDT
 - **Warnings:**
-  - 🔴 margin_call: 80.5% (threshold: 100%)
+  - 🔴 margin_call: 80.7% (threshold: 100%)
 
 ## Statistics
 
