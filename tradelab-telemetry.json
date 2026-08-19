@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T16:36:49.892Z",
+  "generatedAt": "2026-08-19T20:33:45.191Z",
   "summary": {
     "totalCandidates": 44,
     "live": 29,
@@ -9,9 +9,9 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": -118.38912330925947,
-      "trades": 101,
-      "wins": 44,
+      "totalPnl": -19.726232527806708,
+      "trades": 104,
+      "wins": 47,
       "losses": 57,
       "maxDd": 7.74,
       "symbols": [
@@ -33,18 +33,18 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": -118.39000000000003,
-      "forwardTrades": 101,
+      "forwardPnl": -19.72000000000004,
+      "forwardTrades": 104,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 43.6,
-      "avgPnlPerTrade": -1.17
+      "winRate": 45.2,
+      "avgPnlPerTrade": -0.19
     },
     "sma-rsi": {
-      "totalPnl": 888.3247011353684,
-      "trades": 166,
+      "totalPnl": 687.1733072355602,
+      "trades": 168,
       "wins": 89,
-      "losses": 77,
+      "losses": 79,
       "maxDd": 6.17,
       "symbols": [
         "LINKUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": 888.3199999999999,
-      "forwardTrades": 166,
+      "forwardPnl": 687.1600000000002,
+      "forwardTrades": 168,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 53.6,
-      "avgPnlPerTrade": 5.35
+      "winRate": 53,
+      "avgPnlPerTrade": 4.09
     }
   },
   "byTimeOfDay": {
@@ -95,9 +95,9 @@
       "avgPnl": -72.26
     },
     "4": {
-      "pnl": 99.71,
-      "trades": 22,
-      "avgPnl": 4.53
+      "pnl": -52.98,
+      "trades": 23,
+      "avgPnl": -2.3
     },
     "5": {
       "pnl": -169.01,
@@ -130,9 +130,9 @@
       "avgPnl": -12.55
     },
     "11": {
-      "pnl": -12.37,
-      "trades": 2,
-      "avgPnl": -6.18
+      "pnl": -60.84,
+      "trades": 3,
+      "avgPnl": -20.28
     },
     "12": {
       "pnl": 127.79,
@@ -145,9 +145,9 @@
       "avgPnl": 36.26
     },
     "14": {
-      "pnl": 276.32,
-      "trades": 7,
-      "avgPnl": 39.47
+      "pnl": 374.99,
+      "trades": 10,
+      "avgPnl": 37.5
     },
     "15": {
       "pnl": 5.02,
@@ -212,9 +212,9 @@
       "avgPnl": -0.79
     },
     "Wednesday": {
-      "pnl": -38.05,
-      "trades": 49,
-      "avgPnl": -0.78
+      "pnl": -140.54,
+      "trades": 54,
+      "avgPnl": -2.6
     },
     "Thursday": {
       "pnl": 924.72,
@@ -2106,26 +2106,61 @@
       "pnl": -36.67,
       "symbol": "BCHUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-08-19 16:00",
+      "equity": 10617.25,
+      "pnl": -152.68,
+      "symbol": "INJUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-08-19 16:00",
+      "equity": 10630.3,
+      "pnl": 13.05,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-19 16:00",
+      "equity": 10666.55,
+      "pnl": 36.25,
+      "symbol": "DOGEUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-19 17:00",
+      "equity": 10715.92,
+      "pnl": 49.37,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-19 18:00",
+      "equity": 10667.45,
+      "pnl": -48.47,
+      "symbol": "ATOMUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.733,
-    "sortinoRatio": 0.783,
-    "calmarRatio": 1.773,
+    "sharpeRatio": 0.634,
+    "sortinoRatio": 0.668,
+    "calmarRatio": 1.562,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.1339,
-    "dailyVolatility": 2.6858,
-    "annualizedReturn": 33.75,
-    "totalTrades": 267
+    "avgDailyReturn": 0.118,
+    "dailyVolatility": 2.7025,
+    "annualizedReturn": 29.73,
+    "totalTrades": 272
   },
   "distribution": {
-    "totalTrades": 267,
+    "totalTrades": 272,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": -0.26,
-      "avg": 2.88,
-      "stdDev": 141.45
+      "median": 0.17,
+      "avg": 2.45,
+      "stdDev": 140.54
     },
     "holdTime": {
       "avgBars": 0,

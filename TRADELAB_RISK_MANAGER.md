@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-19T16:36:49.741Z
+Generated: 2026-08-19T20:33:45.034Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 769.93 USDT
+- **Total PnL:** 667.44 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -553.86 | -1000 | ✅ |
-| Weekly (7d) | -424.85 | -2500 | ✅ |
-| Monthly | -105.17 | -5000 | ✅ |
-| Total (all time) | 769.93 | -5000 | ✅ |
+| Daily (UTC) | -656.35 | -1000 | ✅ |
+| Weekly (7d) | -527.34 | -2500 | ✅ |
+| Monthly | -207.66 | -5000 | ✅ |
+| Total (all time) | 667.44 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 24479.71 USDT (max 30000)
+- **Open Notional:** 18095.56 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -44,7 +44,7 @@ Status: **NORMAL**
 | LINKUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| INJUSDT | sma-rsi | 2% | 200 | 13.74 | 60.7% | 95 |
+| INJUSDT | sma-rsi | 2% | 200 | 11.75 | 58.6% | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 44%
-- **Total PnL:** 769.93 USDT
-- **Total Exposure:** 24479.71 USDT
+- **Margin Level:** 58.95%
+- **Total PnL:** 667.44 USDT
+- **Total Exposure:** 18095.56 USDT
 - **Warnings:**
-  - 🔴 margin_call: 44% (threshold: 100%)
+  - 🔴 margin_call: 58.95% (threshold: 100%)
 
 ## Statistics
 
