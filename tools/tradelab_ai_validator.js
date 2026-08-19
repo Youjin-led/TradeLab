@@ -15,7 +15,7 @@ var DECISIONS_LOG = path.join(ROOT, 'tradelab-ai-decisions.json');
 
 // ===== VALIDATION RULES =====
 
-var MIN_CONFIDENCE = 70;        // минимальная уверенность (повышена с 65)
+var MIN_CONFIDENCE = 50;        // минимальная уверенность (было 70 — отсекало все умеренные BUY/SELL)
 var MAX_CONFIDENCE = 100;
 var MIN_STOP_PCT = 1.0;
 var MAX_STOP_PCT = 5.0;

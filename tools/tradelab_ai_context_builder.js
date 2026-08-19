@@ -367,71 +367,47 @@ function buildPrompt(context) {
   }
 
   var prompt =
-    'Crypto trader: analyze and decide BUY/SELL/HOLD.\n\n' +
+    'You are a professional crypto futures trader analyzing a single trading pair.\n' +
+    'Give a decisive BUY or SELL call whenever the indicators align; HOLD only when data is genuinely neutral or conflicting.\n\n' +
 
-    'PAIR: ' + context.symbol + ' ' + context.interval + ' | Price: ' + context.indicators.price + '\n\n' +
+    'PAIR: ' + context.symbol + ' ' + context.interval + '\n' +
+    'LAST PRICE: ' + context.indicators.price + '\n\n' +
 
     'INDICATORS:\n' +
-    'RSI14=' + context.indicators.rsi14 + ' MACD=' + context.indicators.macdLine + ' ADX=' + context.indicators.adx14 + '\n' +
-    'ATR=' + context.indicators.atrPct + '% SMA20=' + context.indicators.sma20 + ' SMA50=' + context.indicators.sma50 + '\n' +
-    'Trend=' + context.indicators.trendDirection + ' Volume=' + context.indicators.volumeRatio + 'x\n' +
+    'RSI14=' + context.indicators.rsi14 + ' (overbought > 70, oversold < 30)\n' +
+    'MACD line=' + context.indicators.macdLine + ' (positive = bullish momentum)\n' +
+    'ADX14=' + context.indicators.adx14 + ' (trend strength: < 20 weak/choppy, > 25 trending)\n' +
+    'ATR=' + context.indicators.atrPct + '% ' +
+    'SMA20=' + context.indicators.sma20 + ' SMA50=' + context.indicators.sma50 + '\n' +
+    'Trend=' + context.indicators.trendDirection + '\n' +
+    'Volume ratio=' + context.indicators.volumeRatio + 'x of 20-bar average\n' +
     (context.indicators.bollinger ?
-      'BB=[' + context.indicators.bollinger.lower + ' ' + context.indicators.bollinger.mid + ' ' + context.indicators.bollinger.upper + '] pos=' + context.indicators.bollinger.position + '\n' : '') +
-    'S/R: support=' + supportVal.toFixed(6) + ' resistance=' + resistanceVal.toFixed(6) + '\n\n' +
+      'Bollinger pos=' + context.indicators.bollinger.position + '\n' : '') +
+    'Support=' + supportVal.toFixed(6) + ' Resistance=' + resistanceVal.toFixed(6) + '\n\n' +
 
-    'MARKET: phase=' + context.marketPhase + ' FearGreed=' + fearGreedDesc + ' Funding=' + fundingDesc + '\n' +
+    'MARKET: phase=' + context.marketPhase + ' | Fear&Greed=' + fearGreedDesc + ' | Funding=' + fundingDesc + '\n' +
     'NEWS: ' + newsDesc + '\n\n' +
 
-    'PORTFOLIO: positions=' + context.portfolio.positionCount + '/' + context.portfolio.maxPositions + ' PnL=$' + context.portfolio.totalPnl + '\n' +
-    'Positions: ' + posDesc + '\n\n' +
-
-    'RULES:\n' +
-    '- confidence >= 60 = BUY/SELL, confidence < 50 = HOLD\n' +
-    '- portfolio full (3 positions) = HOLD\n' +
-    '- already have this pair = can add on strong signal\n' +
-    '- RSI > 80 buy or RSI < 20 sell = wait for reversal\n' +
-    '- need >= 2 indicators confirming direction\n' +
-    '- stop loss mandatory, risk/reward >= 1.3\n' +
-    '- volatile market = smaller position\n' +
-    '- if mixed signals = HOLD\n\n' +
-
-    'JSON response:\n' +
-    '{"decision":"BUY|SELL|HOLD","confidence":0-100,"reasoning":"brief reason","stopPct":2.5-5.0,"takePct":3.0-8.0,"riskPct":0.3-1.0}\n';
-
-    '=== РЫНОК ===\n' +
-    'Фаза: ' + context.marketPhase + '\n' +
-    'Fear&Greed: ' + fearGreedDesc + ' | Funding: ' + fundingDesc + '\n' +
-    'Новости: ' + newsDesc + '\n\n' +
-
-    '=== ПОСЛЕДНИЕ 5 СВЕЧЕЙ ===\n' +
+    'RECENT CANDLES (last 5):\n' +
     context.recentCandles.slice(-5).map(function (c) {
       return c.time + ' O:' + c.open + ' H:' + c.high + ' L:' + c.low + ' C:' + c.close;
     }).join('\n') + '\n\n' +
 
-    '=== ПОРТФЕЛЬ ===\n' +
-    'Позиций: ' + context.portfolio.positionCount + '/' + context.portfolio.maxPositions +
-    ' | PnL: $' + context.portfolio.totalPnl + '\n' +
-    'Позиции: ' + posDesc + '\n\n' +
+    'PORTFOLIO: open positions=' + context.portfolio.positionCount + '/' + context.portfolio.maxPositions +
+    ' | total PnL=$' + context.portfolio.totalPnl + '\n' +
+    'Open positions: ' + posDesc + '\n\n' +
 
-    '=== ПРАВИЛА (строго!) ===\n' +
-    '1. confidence >= 60 → BUY/SELL, < 50 → HOLD\n' +
-    '2. НЕ ВХОДИ если портфель полон (3 позиции)\n' +
-    '3. Можно добавить к существующей позиции при сильном сигнале\n' +
-    '4. RSI > 80 покупка или RSI < 20 продажа = подожди разворота\n' +
-    '5. ВХОДИ если >= 2 индикатора подтверждают направление\n' +
-    '6. Стоп обязателен. Risk/Reward >= 1.3\n' +
-    '7. Вolatile рынок = уменьшай размер\n' +
-    '8. Если сигналы разнонаправлены — HOLD\n\n' +
+    'DECISION RULES:\n' +
+    '1. BUY when at least 2 of these confirm bullish: price above SMA20 and SMA50, rising trend, MACD > 0, RSI 45-65 ticking up, breakout above nearest resistance.\n' +
+    '2. SELL when at least 2 of these confirm bearish: price below SMA20 and SMA50, falling trend, MACD < 0, RSI 35-55 ticking down, breakdown below nearest support.\n' +
+    '3. HOLD only when indicators conflict or trend is clearly absent (ADX < 18).\n' +
+    '4. Do not fight a strong trend: if ADX > 25 and price is above SMA50, do not SELL against it.\n' +
+    '5. Use the full 0-100 confidence range: 51-70 moderate signal, 71-100 strong confirmation.\n' +
+    '6. Set stopPct per ATR regime (tight 2.5-3.5 for calm, wider 4.0-5.0 for volatile), takePct 1.5-2x the stop, riskPct 0.3-1.0.\n' +
+    '7. If portfolio is full (3 positions) or you already hold this pair, prefer HOLD.\n\n' +
 
-    'ОТВЕТЬ СТРОГО В JSON:\n' +
-    '{\n' +
-    '  "decision": "BUY или SELL или HOLD",\n' +
-    '  "confidence": 0-100,\n' +
-    '  "reasoning": "обоснование (какие индикаторы подтверждают)",\n' +
-    '  "stopPct": 2.5-5.0,\n' +
-    '  "takePct": 3.0-8.0,\n' +
-    '  "riskPct": 0.3-1.0\n' +
-    '}\n';
+    'Respond with strict JSON only (no markdown, no comments):\n' +
+    '{"decision":"BUY|SELL|HOLD","confidence":0-100,"reasoning":"brief multi-factor reasoning","stopPct":2.5-5.0,"takePct":3.0-8.0,"riskPct":0.3-1.0}\n';
 
   return prompt;
 }
