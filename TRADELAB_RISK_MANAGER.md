@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-18T20:29:29.601Z
+Generated: 2026-08-19T01:36:04.700Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1330.62 USDT
+- **Total PnL:** 1345.29 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 99.98 | -1000 | ✅ |
-| Weekly (7d) | 135.82 | -2500 | ✅ |
-| Monthly | 455.50 | -5000 | ✅ |
-| Total (all time) | 1330.62 | -5000 | ✅ |
+| Daily (UTC) | 21.48 | -1000 | ✅ |
+| Weekly (7d) | 150.49 | -2500 | ✅ |
+| Monthly | 470.17 | -5000 | ✅ |
+| Total (all time) | 1345.29 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 19965.65 USDT (max 30000)
+- **Open Notional:** 16054.35 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -52,7 +52,7 @@ Status: **NORMAL**
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TIAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | breakout | 2% | 200 | 4.84 | 45.9% | 95 |
-| LTCUSDT | sma-rsi | 0.7% | 70 | 0 | 46.2% | 95 |
+| LTCUSDT | sma-rsi | 0.7% | 70 | 0 | 42.9% | 95 |
 | LTCUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | sma-rsi | 2% | 200 | 19.4 | 63.2% | 95 |
 | ETHUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -109,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 56.75%
-- **Total PnL:** 1330.62 USDT
-- **Total Exposure:** 19965.65 USDT
+- **Margin Level:** 70.67%
+- **Total PnL:** 1345.29 USDT
+- **Total Exposure:** 16054.35 USDT
 - **Warnings:**
-  - 🔴 margin_call: 56.75% (threshold: 100%)
+  - 🔴 margin_call: 70.67% (threshold: 100%)
 
 ## Statistics
 
