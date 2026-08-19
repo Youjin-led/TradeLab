@@ -423,5 +423,175 @@
     "validationReasons": [
       "HOLD — пропуск"
     ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:14.018Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1594,
+    "aiReasoning": "Mixed signals: RSI high but not overbought, price above upper BB, ADX low, portfolio full, already long NEAR, no fresh news.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:15.875Z",
+    "symbol": "ARBUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1378,
+    "aiReasoning": "RSI overbought (86.5) suggests wait for reversal; portfolio full (6/3) and already hold ARBUSDT; mixed signals with price above upper Bollinger Band and no fresh news.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:17.934Z",
+    "symbol": "DOTUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1580,
+    "aiReasoning": "RSI overbought at 78.1, price above upper BB, ADX strong but volume low, portfolio full and already holding DOTUSDT long, mixed signals suggest wait for pullback.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:19.687Z",
+    "symbol": "ADAUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1275,
+    "aiReasoning": "RSI overbought, price above upper BB, bearish trend, mixed signals, portfolio full, already have ADA short",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:21.687Z",
+    "symbol": "LINKUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1522,
+    "aiReasoning": "RSI overbought (90.5) suggests reversal risk, price above upper Bollinger Band, mixed signals with high volume and bullish trend but overextended. Portfolio full (6/3) and already holding LINKUSDT long, so no new position.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:23.727Z",
+    "symbol": "ETHUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1561,
+    "aiReasoning": "RSI overbought (92) suggests wait for reversal; price above upper Bollinger Band; portfolio full (6/3) and already have ETHUSDT long; mixed signals with high RSI and strong trend.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:25.579Z",
+    "symbol": "NEARUSDT",
+    "interval": "1d",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1376,
+    "aiReasoning": "Mixed signals: price above SMA20 but below SMA50, MACD negative, RSI neutral, ADX shows trend but bearish. Portfolio full (6/3) and already long NEAR, limiting new positions.",
+    "mergedDecision": "BUY",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (45%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:27.475Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1421,
+    "aiReasoning": "Trend bearish but price above upper BB, RSI 69.5 near overbought, MACD positive but weak, ADX 28.2 indicates trend but mixed signals. Portfolio full with 6 positions, already holding DOTUSDT long. Risk/reward not favorable.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:28.988Z",
+    "symbol": "SEIUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1038,
+    "aiReasoning": "RSI overbought, price above upper BB, portfolio full, mixed signals",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-19T21:06:30.875Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 45,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1412,
+    "aiReasoning": "RSI overbought (79.1), price above upper Bollinger Band, portfolio full (6/3), mixed signals with overbought conditions and no fresh news.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
   }
 ]

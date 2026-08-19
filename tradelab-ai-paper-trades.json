@@ -1,36 +1,32 @@
 {
-  "balance": 5530,
+  "balance": 9761.471891053714,
   "peak": 10000,
-  "positions": [
-    {
-      "symbol": "NEARUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.646,
-      "qty": 1822.6002430133658,
-      "notional": 3000,
-      "fee": 1.2,
-      "openedAt": "2026-07-28T17:26:16.227Z",
-      "aiConfidence": 80,
-      "aiReasoning": "TF agree: Strong downtrend (ADX 79.6, bearish trend), price below SMA2 | Strong downtrend with RSI oversold but not yet extreme, ADX ",
-      "atrPct": 2.2999479257073445
-    },
+  "positions": [],
+  "closedTrades": [
     {
       "symbol": "XRPUSDT",
-      "interval": "1h",
       "side": "SHORT",
+      "interval": "1h",
       "entry": 1.0587,
-      "qty": 1388.4953244545197,
-      "notional": 1470,
-      "fee": 0.5880000000000001,
+      "exit": 1.1045,
+      "pnl": -64.18108586001709,
+      "reason": "timeout 532h (maxHoldHours)",
       "openedAt": "2026-07-28T17:26:16.227Z",
-      "aiConfidence": 63,
-      "aiReasoning": "4h only: RSI14=32 (oversold but not extreme), MACD negative, price below SMA20 and SMA50, bearish trend, ADX>",
-      "atrPct": 1.2764981311311734
+      "closedAt": "2026-08-19T21:06:32.065Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.646,
+      "exit": 1.741,
+      "pnl": -174.3470230862701,
+      "reason": "timeout 532h (maxHoldHours)",
+      "openedAt": "2026-07-28T17:26:16.227Z",
+      "closedAt": "2026-08-19T21:06:33.233Z"
     }
   ],
-  "closedTrades": [],
-  "totalPnl": 0,
+  "totalPnl": -238.5281089462872,
   "wins": 0,
-  "losses": 0
+  "losses": 2
 }
