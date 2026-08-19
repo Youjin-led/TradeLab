@@ -1,7 +1,47 @@
 {
-  "balance": 9761.471891053714,
+  "balance": 4264.494225044636,
   "peak": 10000,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.1075,
+      "qty": 2644.1910314366723,
+      "notional": 2928.4415673161143,
+      "fee": 1.1713766269264458,
+      "openedAt": "2026-08-19T21:13:14.101Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: RSI at 92 is extremely overbought, price is above upper Boll | RSI at 85.2 is extremely overbought, price is above upper Bo",
+      "atrPct": 1.4163173169945151
+    },
+    {
+      "symbol": "SOLUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 86.17,
+      "qty": 16.652389091155804,
+      "notional": 1434.9363679848957,
+      "fee": 0.5739745471939584,
+      "openedAt": "2026-08-19T21:13:14.101Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: RSI is extremely overbought at 96.8, price is above upper Bollinger band, and recent candles show a ",
+      "atrPct": 1.6097746978563983
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.1887,
+      "qty": 6007.41775679951,
+      "notional": 1133.5997307080677,
+      "fee": 0.4534398922832271,
+      "openedAt": "2026-08-19T21:13:14.101Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Price is above upper Bollinger Band and RSI is overbought at 76.2, indicating a potential pullback. ",
+      "atrPct": 1.7980165038988583
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
