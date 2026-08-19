@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T01:36:04.823Z",
+  "generatedAt": "2026-08-19T04:41:43.901Z",
   "summary": {
     "totalCandidates": 44,
     "live": 31,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 289.21542075564554,
-      "trades": 94,
+      "totalPnl": 277.11733163908684,
+      "trades": 95,
       "wins": 44,
-      "losses": 50,
+      "losses": 51,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 289.23,
-      "forwardTrades": 94,
+      "forwardPnl": 277.13,
+      "forwardTrades": 95,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 46.8,
-      "avgPnlPerTrade": 3.08
+      "winRate": 46.3,
+      "avgPnlPerTrade": 2.92
     },
     "sma-rsi": {
       "totalPnl": 1056.0604548462986,
@@ -155,9 +155,9 @@
       "avgPnl": 1.26
     },
     "16": {
-      "pnl": 239.98,
-      "trades": 34,
-      "avgPnl": 7.06
+      "pnl": 227.88,
+      "trades": 35,
+      "avgPnl": 6.51
     },
     "17": {
       "pnl": 661.82,
@@ -207,9 +207,9 @@
       "avgPnl": -19.45
     },
     "Tuesday": {
-      "pnl": 349.6,
-      "trades": 47,
-      "avgPnl": 7.44
+      "pnl": 337.5,
+      "trades": 48,
+      "avgPnl": 7.03
     },
     "Wednesday": {
       "pnl": 9.8,
@@ -2029,26 +2029,33 @@
       "pnl": 21.48,
       "symbol": "BCHUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-08-19 01:00",
+      "equity": 11333.18,
+      "pnl": -12.1,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.42,
-    "sortinoRatio": 1.549,
-    "calmarRatio": 3.272,
+    "sharpeRatio": 1.406,
+    "sortinoRatio": 1.536,
+    "calmarRatio": 3.235,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.2471,
-    "dailyVolatility": 2.651,
-    "annualizedReturn": 62.27,
-    "totalTrades": 256
+    "avgDailyReturn": 0.2443,
+    "dailyVolatility": 2.6462,
+    "annualizedReturn": 61.56,
+    "totalTrades": 257
   },
   "distribution": {
-    "totalTrades": 256,
+    "totalTrades": 257,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 6.1,
-      "avg": 5.25,
-      "stdDev": 143.73
+      "median": 6.03,
+      "avg": 5.19,
+      "stdDev": 143.46
     },
     "holdTime": {
       "avgBars": 0,
