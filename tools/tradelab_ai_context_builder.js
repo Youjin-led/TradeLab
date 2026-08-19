@@ -401,7 +401,8 @@ function buildPrompt(context) {
     '1. BUY when at least 2 of these confirm bullish: price above SMA20 and SMA50, rising trend, MACD > 0, RSI 45-65 ticking up, breakout above nearest resistance.\n' +
     '2. SELL when at least 2 of these confirm bearish: price below SMA20 and SMA50, falling trend, MACD < 0, RSI 35-55 ticking down, breakdown below nearest support.\n' +
     '3. HOLD only when indicators conflict or trend is clearly absent (ADX < 18).\n' +
-    '4. Do not fight a strong trend: if ADX > 25 and price is above SMA50, do not SELL against it.\n' +
+    '4. Do not fight a strong trend: if ADX > 25 and price is above SMA50, do not SELL against it. ' +
+    'If ADX >= 40 (strong trend) and SMA20 > SMA50, SELL is BANNED; if SMA20 < SMA50, BUY is BANNED.\n' +
     '5. Use the full 0-100 confidence range: 51-70 moderate signal, 71-100 strong confirmation.\n' +
     '6. Set stopPct per ATR regime (tight 2.5-3.5 for calm, wider 4.0-5.0 for volatile), takePct 1.5-2x the stop, riskPct 0.3-1.0.\n' +
     '7. If portfolio is full (3 positions) or you already hold this pair, prefer HOLD.\n\n' +

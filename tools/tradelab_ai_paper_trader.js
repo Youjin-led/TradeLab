@@ -124,6 +124,64 @@ function calculateATR(candles, period) {
   return sum / period / candles[candles.length - 1].close * 100;
 }
 
+function calculateADX(candles, period) {
+  period = period || 14;
+  if (!candles || candles.length < period * 2 + 1) return 0;
+  var trValues = [], plusDM = [], minusDM = [];
+  for (var i = candles.length - period * 2; i <= candles.length - 1; i++) {
+    var high = candles[i].high, low = candles[i].low;
+    var prevHigh = candles[i - 1].high, prevLow = candles[i - 1].low;
+    var prevClose = candles[i - 1].close;
+    var tr = Math.max(high - low, Math.abs(high - prevClose), Math.abs(low - prevClose));
+    trValues.push(tr);
+    var pDM = high - prevHigh;
+    var mDM = prevLow - low;
+    plusDM.push(pDM > mDM && pDM > 0 ? pDM : 0);
+    minusDM.push(mDM > pDM && mDM > 0 ? mDM : 0);
+  }
+  var smoothTR = 0, smoothPDM = 0, smoothMDM = 0;
+  for (i = 0; i < period; i++) {
+    smoothTR += trValues[i]; smoothPDM += plusDM[i]; smoothMDM += minusDM[i];
+  }
+  var diPlus = 0, diMinus = 0;
+  if (smoothTR > 0) { diPlus = (smoothPDM / smoothTR) * 100; diMinus = (smoothMDM / smoothTR) * 100; }
+  var dxValues = [];
+  for (i = period; i < trValues.length; i++) {
+    smoothTR = smoothTR - smoothTR / period + trValues[i];
+    smoothPDM = smoothPDM - smoothPDM / period + plusDM[i];
+    smoothMDM = smoothMDM - smoothMDM / period + minusDM[i];
+    diPlus = smoothTR > 0 ? (smoothPDM / smoothTR) * 100 : 0;
+    diMinus = smoothTR > 0 ? (smoothMDM / smoothTR) * 100 : 0;
+    var diSum = diPlus + diMinus;
+    dxValues.push(diSum > 0 ? Math.abs(diPlus - diMinus) / diSum * 100 : 0);
+  }
+  if (dxValues.length === 0) return 0;
+  var adx = 0;
+  for (i = 0; i < dxValues.length; i++) adx += dxValues[i];
+  return adx / dxValues.length;
+}
+
+// Trend filter: блокирует контртрендовые сделки на сильном тренде.
+// side: 'LONG' | 'SHORT'. Возвращает причину блокировки или '' если можно.
+function trendBlockReason(candles, side) {
+  if (!candles || candles.length < 55) return '';
+  var closes = candles.map(function (c) { return c.close; });
+  var idx = candles.length - 1;
+  var sum20 = 0, sum50 = 0;
+  for (var i = idx - 19; i <= idx; i++) sum20 += closes[i];
+  for (var j = idx - 49; j <= idx; j++) sum50 += closes[j];
+  var sma20 = sum20 / 20;
+  var sma50 = sum50 / 50;
+  var adx = calculateADX(candles, 14);
+  var bullish = sma20 > sma50;
+  // Сильный тренд (ADX >= 40): шортить в аптренде или лонжить в даунтренде запрещено.
+  if (adx >= 40) {
+    if (bullish && side === 'SHORT') return 'counter-trend: strong uptrend ADX=' + Math.round(adx) + ' (SMA20>SMA50)';
+    if (!bullish && side === 'LONG') return 'counter-trend: strong downtrend ADX=' + Math.round(adx) + ' (SMA20<SMA50)';
+  }
+  return '';
+}
+
 var CORRELATION_GROUPS = {
   benchmarks: ['BTC', 'ETH', 'SOL', 'BNB'],
   alts: ['XRP', 'DOGE', 'ADA', 'LINK', 'AVAX', 'SUI', 'LTC', 'NEAR', 'DOT', 'INJ', 'ARB', 'OP', 'RENDER']
@@ -326,6 +384,13 @@ async function runCycle() {
     // Correlation check
     if (!canOpenForGroup(sig.symbol, paper.positions)) {
       log('  SKIP ' + sig.symbol + ' (group ' + getGroup(sig.symbol) + ' full)');
+      continue;
+    }
+
+    // Trend filter: не открываем контртрендовые сделки на сильном тренде
+    var trendBlock = trendBlockReason(sig.candles, sig.side);
+    if (trendBlock) {
+      log('  SKIP ' + sig.symbol + ' ' + sig.side + ' (' + trendBlock + ')');
       continue;
     }
 
