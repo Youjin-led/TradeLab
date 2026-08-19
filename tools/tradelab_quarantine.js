@@ -12,7 +12,10 @@ const RULES = {
   maxCandidateForwardPnl: -300,
   maxStrategyForwardPnl: -2000,
   minStrategyRejectedRatio: 0.60,
-  maxTimeframeForwardPnlForDownrank: -3000
+  maxTimeframeForwardPnlForDownrank: -3000,
+  // Ужесточение: кандидат с отрицательным форвардным PnL и PF ниже 1.2
+  // отправляется в карантин раньше, чем дотянет до maxCandidateForwardPnl.
+  minForwardProfitFactor: 1.2
 };
 
 function readJson(filePath, fallback) {
@@ -65,7 +68,12 @@ function buildQuarantineFromDiagnostics(diagnostics = readJson(DIAGNOSTICS_PATH,
     }));
 
   const blockedCandidates = (diagnostics.worstCandidates || [])
-    .filter((row) => row.forwardPaperPnl <= RULES.maxCandidateForwardPnl || (row.health || {}).status === 'Blocked')
+    .filter((row) => {
+      const weakPnl = row.forwardPaperPnl <= RULES.maxCandidateForwardPnl || (row.health || {}).status === 'Blocked';
+      // Новое правило: отрицательный форвардный PnL + PF < 1.2 (недостаточно подтверждённая прибыльность).
+      const lowPf = row.forwardPaperPnl < 0 && row.profitFactor > 0 && row.profitFactor < RULES.minForwardProfitFactor;
+      return weakPnl || lowPf;
+    })
     .map((row) => ({
       key: row.key,
       reason: `weak candidate: forward PnL ${row.forwardPaperPnl}, PF ${row.profitFactor}, max DD ${row.maxDrawdownPct}%, health ${(row.health || {}).status || 'unknown'}`

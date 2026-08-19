@@ -23,7 +23,12 @@ var CONFIG = {
   maxPositions: 3,
   positionSizePct: 30,
   initialBalance: 10000,
-  checkIntervalMinutes: 60
+  checkIntervalMinutes: 60,
+  // Timeout: позиции, висящие дольше этого срока, закрываются по рынку
+  // независимо от сигналов AI (защита от заморозки при недоступности API-ключа).
+  maxHoldHours: 72,
+  // Допустимый максимальный плавающий убыток по позиции (%), при превышении — принудительный выход.
+  maxFloatingLossPct: 12
 };
 
 function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
@@ -185,8 +190,27 @@ async function runCycle() {
     var pos = paper.positions[i];
     try {
       var candles = await fetchCandles(pos.symbol, pos.interval, 100);
-      var decision = await aiDecider.decide(pos.symbol, pos.interval, candles, { news: news });
       var currentPrice = candles[candles.length - 1].close;
+
+      // Safety checks first — не тратим AI-запрос на позиции,
+      // которые должны быть закрыты принудительно.
+      var heldHours = (Date.now() - Date.parse(pos.openedAt)) / 3600e3;
+      var lossPct = pos.side === 'LONG'
+        ? (currentPrice - pos.entry) / pos.entry * 100
+        : (pos.entry - currentPrice) / pos.entry * 100;
+
+      if (heldHours >= CONFIG.maxHoldHours) {
+        closePosition(paper, i, currentPrice, 'timeout ' + Math.round(heldHours) + 'h (maxHoldHours)');
+        await sleep(1000);
+        continue;
+      }
+      if (lossPct <= -CONFIG.maxFloatingLossPct) {
+        closePosition(paper, i, currentPrice, 'stop loss ' + lossPct.toFixed(1) + '% (maxFloatingLoss)');
+        await sleep(1000);
+        continue;
+      }
+
+      var decision = await aiDecider.decide(pos.symbol, pos.interval, candles, { news: news });
 
       log('  POS ' + pos.symbol + ' ' + pos.side + ' | AI: ' + decision.decision + ' (' + decision.confidence + '%)');
 
@@ -202,9 +226,6 @@ async function runCycle() {
       }
 
       // ATR-based stop loss / take profit
-      var lossPct = pos.side === 'LONG'
-        ? (currentPrice - pos.entry) / pos.entry * 100
-        : (pos.entry - currentPrice) / pos.entry * 100;
       var atrPct = calculateATR(candles, 14);
       var slPct = Math.max(atrPct * 1.5, 1.5);
       var tpPct = Math.max(atrPct * 3, 3);
@@ -345,9 +366,26 @@ async function runCycle() {
 
 async function main() {
   var loop = process.argv.indexOf('--loop') !== -1;
+  var emergencyClose = process.argv.indexOf('--emergency-close') !== -1;
 
   log('=== AI Paper Trader ===');
-  log('Mode: ' + (loop ? 'continuous' : 'single cycle'));
+  log('Mode: ' + (loop ? 'continuous' : emergencyClose ? 'emergency close' : 'single cycle'));
+
+  if (emergencyClose) {
+    var state = loadPaperState();
+    for (var i = state.positions.length - 1; i >= 0; i--) {
+      var pos = state.positions[i];
+      var candles = await fetchCandles(pos.symbol, pos.interval, 100);
+      var price = candles[candles.length - 1].close;
+      closePosition(state, i, price, 'emergency close');
+      await sleep(1000);
+    }
+    savePaperState(state);
+    console.log('\n=== EMERGENCY SUMMARY ===');
+    console.log('Balance: $' + state.balance.toFixed(2));
+    console.log('Remaining positions: ' + state.positions.length);
+    return;
+  }
 
   if (loop) {
     while (true) {

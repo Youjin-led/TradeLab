@@ -11,7 +11,13 @@ flyctl launch --no-deploy
 if errorlevel 1 (echo LAUNCH FAILED & pause & exit /b 1)
 
 echo === Step 3: Set secrets ===
-flyctl secrets set TELEGRAM_BOT_TOKEN=8361892404:AAFQfQ-sCLQwAvhEKKwQZN8Y3FZ6zNJiWN4 TELEGRAM_CHAT_ID=6868031409
+echo Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID via environment variables before deploying.
+echo Example:
+echo   set TELEGRAM_BOT_TOKEN=123456:ABC...DEF
+echo   set TELEGRAM_CHAT_ID=6868031409
+if not defined TELEGRAM_BOT_TOKEN (echo ERROR: TELEGRAM_BOT_TOKEN is not set & pause & exit /b 1)
+if not defined TELEGRAM_CHAT_ID (echo ERROR: TELEGRAM_CHAT_ID is not set & pause & exit /b 1)
+flyctl secrets set TELEGRAM_BOT_TOKEN=%TELEGRAM_BOT_TOKEN% TELEGRAM_CHAT_ID=%TELEGRAM_CHAT_ID%
 if errorlevel 1 (echo SECRETS FAILED & pause & exit /b 1)
 
 echo === Step 4: Deploy ===
