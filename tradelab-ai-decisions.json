@@ -1613,5 +1613,175 @@
     "validationReasons": [
       "HOLD — пропуск"
     ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:07.185Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1696,
+    "aiReasoning": "RSI overbought and volume low suggest caution, but trend is bullish with price above SMAs and MACD positive. Portfolio is full and already holds NEARUSDT, so prefer HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:09.508Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1843,
+    "aiReasoning": "Price is above SMA20/SMA50 and trend is bullish, but RSI is overbought (80.2) and price is above upper Bollinger Band, suggesting potential pullback. MACD positive and ADX strong (60.8) indicate strong trend, but overbought conditions and proximity to resistance (7.163) limit upside. Portfolio already holds AVAXUSDT, and open positions are at max (7/3), so prefer HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:11.296Z",
+    "symbol": "DOGEUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1309,
+    "aiReasoning": "Strong uptrend (ADX 70) and price above SMAs, but RSI 86.8 is extremely overbought and price is above upper Bollinger, suggesting pullback risk. Portfolio already holds DOGEUSDT and is full (7/3), so HOLD is preferred.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:13.738Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1965,
+    "aiReasoning": "RSI is extremely overbought (90.5) and price is above upper Bollinger Band, suggesting a pullback risk. However, MACD is positive and ADX=44.9 indicates a strong uptrend, with price above both SMAs. Volume is low (0.29x), and portfolio already holds SUIUSDT LONG, so per rule 7 prefer HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:15.903Z",
+    "symbol": "ETHUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1689,
+    "aiReasoning": "Strong uptrend (ADX 61.4, price above SMAs, MACD positive) but RSI at 97.4 is extremely overbought, volume is low (0.35x), and price is near resistance. Portfolio is full (7/3) and already holds ETHUSDT, so per rule 7 prefer HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:18.167Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1792,
+    "aiReasoning": "Strong uptrend (ADX 37, price above SMAs, MACD positive) but RSI 93.8 is extremely overbought, price above upper Bollinger, volume only 0.18x average, and price at resistance. Portfolio already holds DOTUSDT and is full (7/3). Rules favor HOLD due to overbought conditions and existing position.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:20.571Z",
+    "symbol": "XRPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1929,
+    "aiReasoning": "Price is above SMA20 and SMA50, MACD positive, strong uptrend (ADX 53.6), but RSI at 94.9 is extremely overbought, price above upper Bollinger, and volume is below average. Portfolio is full (7/3) and already holds XRPUSDT, so prefer HOLD. Strong trend bans SELL, but overbought conditions and full portfolio warrant HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:22.532Z",
+    "symbol": "NEARUSDT",
+    "interval": "1d",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1484,
+    "aiReasoning": "Price above SMA20 but below SMA50, MACD positive, RSI 61.5 not overbought, ADX 31.1 indicates trend but mixed signals; portfolio full (7/3) and already holding NEARUSDT long, so prefer HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:24.602Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1592,
+    "aiReasoning": "RSI is extremely overbought at 93.8, price is above upper Bollinger Band, and volume is very low (0.18x), suggesting weak participation. However, strong uptrend (ADX=37, price above SMA20/50, MACD positive) and rule 4 bans SELL. Portfolio already holds DOTUSDT and is full (7/3), so HOLD is preferred.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-20T16:40:26.827Z",
+    "symbol": "INJUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1749,
+    "aiReasoning": "RSI is extremely overbought (84.7) suggesting a pullback risk, but MACD is positive and price is above SMA20/SMA50. ADX=40.4 indicates a strong trend, and SMA20>SMA50, so SELL is banned. However, volume is low (0.44x) and price is near resistance (4.893) with a recent rejection. Portfolio is full (7/3), so prefer HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
   }
 ]
