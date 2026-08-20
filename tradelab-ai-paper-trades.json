@@ -1,20 +1,7 @@
 {
-  "balance": 4699.289598264725,
+  "balance": 4844.071934559908,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "AVAXUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 6.917,
-      "qty": 309.46780901605695,
-      "notional": 2140.588834964066,
-      "fee": 0.8562355339856264,
-      "openedAt": "2026-08-20T08:46:01.708Z",
-      "aiConfidence": 84,
-      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, RSI overbought b | Price above SMA20 and SMA50, bullish trend with ADX 29.7, MA",
-      "atrPct": 1.823664264028583
-    },
     {
       "symbol": "SOLUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 49.7 indicates strong uptrend, RSI 56.8 not overboug",
       "atrPct": 2.4543080939947797
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1973,
+      "qty": 10522.203898110005,
+      "notional": 2076.030829097104,
+      "fee": 0.8304123316388415,
+      "openedAt": "2026-08-20T20:34:50.625Z",
+      "aiConfidence": 87,
+      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 52 indicates | Price above SMA20 and SMA50, MACD positive, ADX 44.8 indicat",
+      "atrPct": 2.8165954673810742
     }
   ],
   "closedTrades": [
@@ -108,9 +108,20 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-08-19T21:13:14.101Z",
       "closedAt": "2026-08-20T12:58:23.957Z"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 6.917,
+      "exit": 7.179,
+      "pnl": 80.22433042822144,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-20T08:46:01.708Z",
+      "closedAt": "2026-08-20T20:34:59.626Z"
     }
   ],
-  "totalPnl": -329.7050309793333,
-  "wins": 1,
+  "totalPnl": -249.48070055111185,
+  "wins": 2,
   "losses": 5
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T16:40:04.640Z",
+  "generatedAt": "2026-08-20T20:34:19.883Z",
   "summary": {
     "totalCandidates": 44,
     "live": 30,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 815.418647602147,
-      "trades": 122,
-      "wins": 62,
-      "losses": 60,
+      "totalPnl": 1125.093168842779,
+      "trades": 130,
+      "wins": 69,
+      "losses": 61,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 815.4300000000001,
-      "forwardTrades": 122,
+      "forwardPnl": 1125.11,
+      "forwardTrades": 130,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 50.8,
-      "avgPnlPerTrade": 6.68
+      "winRate": 53.1,
+      "avgPnlPerTrade": 8.65
     },
     "sma-rsi": {
       "totalPnl": 555.7725713043767,
@@ -115,9 +115,9 @@
       "avgPnl": 88.32
     },
     "8": {
-      "pnl": 11.09,
-      "trades": 43,
-      "avgPnl": 0.26
+      "pnl": 91.53,
+      "trades": 47,
+      "avgPnl": 1.95
     },
     "9": {
       "pnl": -49.34,
@@ -135,9 +135,9 @@
       "avgPnl": -8.83
     },
     "12": {
-      "pnl": 517.25,
-      "trades": 39,
-      "avgPnl": 13.26
+      "pnl": 599.59,
+      "trades": 40,
+      "avgPnl": 14.99
     },
     "13": {
       "pnl": 290.12,
@@ -145,14 +145,14 @@
       "avgPnl": 36.26
     },
     "14": {
-      "pnl": 404.41,
-      "trades": 11,
-      "avgPnl": 36.76
+      "pnl": 522.96,
+      "trades": 13,
+      "avgPnl": 40.23
     },
     "15": {
-      "pnl": 37.21,
-      "trades": 5,
-      "avgPnl": 7.44
+      "pnl": 65.56,
+      "trades": 6,
+      "avgPnl": 10.93
     },
     "16": {
       "pnl": 116.13,
@@ -212,14 +212,14 @@
       "avgPnl": -0.79
     },
     "Wednesday": {
-      "pnl": 519.07,
-      "trades": 67,
-      "avgPnl": 7.75
+      "pnl": 601.41,
+      "trades": 68,
+      "avgPnl": 8.84
     },
     "Thursday": {
-      "pnl": 968.86,
-      "trades": 50,
-      "avgPnl": 19.38
+      "pnl": 1196.19,
+      "trades": 57,
+      "avgPnl": 20.99
     },
     "Friday": {
       "pnl": 151.81,
@@ -2281,26 +2281,82 @@
       "pnl": 25.5,
       "symbol": "DOTUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11453.53,
+      "pnl": 82.34,
+      "symbol": "NEARUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11442.73,
+      "pnl": -10.8,
+      "symbol": "SUIUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11456.86,
+      "pnl": 14.13,
+      "symbol": "ETHUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11481.82,
+      "pnl": 24.96,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11533.97,
+      "pnl": 52.16,
+      "symbol": "XRPUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11593.24,
+      "pnl": 59.27,
+      "symbol": "DOGEUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 16:00",
+      "equity": 11652.52,
+      "pnl": 59.27,
+      "symbol": "DOGEUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-20 18:00",
+      "equity": 11680.87,
+      "pnl": 28.35,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.855,
-    "sortinoRatio": 2.171,
-    "calmarRatio": 4.845,
+    "sharpeRatio": 2.194,
+    "sortinoRatio": 2.584,
+    "calmarRatio": 5.719,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.3659,
-    "dailyVolatility": 3.0464,
-    "annualizedReturn": 92.21,
-    "totalTrades": 292
+    "avgDailyReturn": 0.432,
+    "dailyVolatility": 3.0537,
+    "annualizedReturn": 108.85,
+    "totalTrades": 300
   },
   "distribution": {
-    "totalTrades": 292,
+    "totalTrades": 300,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 6.03,
-      "avg": 4.7,
-      "stdDev": 136.7
+      "median": 10.36,
+      "avg": 5.6,
+      "stdDev": 135.05
     },
     "holdTime": {
       "avgBars": 0,
@@ -2308,7 +2364,7 @@
       "maxBars": 0
     },
     "streaks": {
-      "maxWinStreak": 6,
+      "maxWinStreak": 8,
       "maxLossStreak": 9
     }
   }

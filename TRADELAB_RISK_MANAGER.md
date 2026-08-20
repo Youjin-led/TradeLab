@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-20T16:40:04.494Z
+Generated: 2026-08-20T20:34:19.789Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1371.19 USDT
+- **Total PnL:** 1680.87 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -93.10 | -500 | ✅ |
-| Weekly (7d) | 190.96 | -2500 | ✅ |
-| Monthly | 496.08 | -5000 | ✅ |
-| Total (all time) | 1371.19 | -5000 | ✅ |
+| Daily (UTC) | 216.57 | -500 | ✅ |
+| Weekly (7d) | 500.63 | -2500 | ✅ |
+| Monthly | 805.76 | -5000 | ✅ |
+| Total (all time) | 1680.87 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 12924.95 USDT (max 30000)
+- **Open Notional:** 0 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -40,7 +40,7 @@ Status: **NORMAL**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 2% | 200 | 9.14 | 53.3% | 95 |
+| NEARUSDT | breakout | 2% | 200 | 9.93 | 54.8% | 95 |
 | LINKUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 87.98%
-- **Total PnL:** 1371.19 USDT
-- **Total Exposure:** 12924.95 USDT
+- **Margin Level:** 122.73%
+- **Total PnL:** 1680.87 USDT
+- **Total Exposure:** 9517.27 USDT
 - **Warnings:**
-  - 🔴 margin_call: 87.98% (threshold: 100%)
+  - ℹ️ low_margin: 122.73% (threshold: 150%)
 
 ## Statistics
 
