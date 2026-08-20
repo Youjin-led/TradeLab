@@ -1,5 +1,5 @@
 {
-  "balance": 5052.559334861533,
+  "balance": 4994.70728158282,
   "peak": 10000,
   "positions": [
     {
@@ -29,17 +29,17 @@
       "atrPct": 1.7980165038988583
     },
     {
-      "symbol": "ADAUSDT",
+      "symbol": "AVAXUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1827,
-      "qty": 11852.121357873639,
-      "notional": 2165.382572083514,
-      "fee": 0.8661530288334056,
-      "openedAt": "2026-08-20T04:42:19.447Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price is below SMA20 and SMA50, recent candles show a downtr | Price below SMA20 and SMA50, bearish trend, MACD positive bu",
-      "atrPct": 2.1502854015169306
+      "side": "LONG",
+      "entry": 6.917,
+      "qty": 309.46780901605695,
+      "notional": 2140.588834964066,
+      "fee": 0.8562355339856264,
+      "openedAt": "2026-08-20T08:46:01.708Z",
+      "aiConfidence": 84,
+      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, RSI overbought b | Price above SMA20 and SMA50, bullish trend with ADX 29.7, MA",
+      "atrPct": 1.823664264028583
     }
   ],
   "closedTrades": [
@@ -75,9 +75,20 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-08-19T21:13:14.101Z",
       "closedAt": "2026-08-20T04:42:28.309Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1827,
+      "exit": 0.1896,
+      "pnl": -82.6457903981614,
+      "reason": "Stop loss 2.5% (ATR*1.5=1.7%)",
+      "openedAt": "2026-08-20T04:42:19.447Z",
+      "closedAt": "2026-08-20T08:46:04.641Z"
     }
   ],
-  "totalPnl": -213.52199436199055,
+  "totalPnl": -296.16778476015196,
   "wins": 1,
-  "losses": 2
+  "losses": 3
 }
