@@ -1,20 +1,7 @@
 {
-  "balance": 4264.494225044636,
+  "balance": 5052.559334861533,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.1075,
-      "qty": 2644.1910314366723,
-      "notional": 2928.4415673161143,
-      "fee": 1.1713766269264458,
-      "openedAt": "2026-08-19T21:13:14.101Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: RSI at 92 is extremely overbought, price is above upper Boll | RSI at 85.2 is extremely overbought, price is above upper Bo",
-      "atrPct": 1.4163173169945151
-    },
     {
       "symbol": "SOLUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "4h only: Price is above upper Bollinger Band and RSI is overbought at 76.2, indicating a potential pullback. ",
       "atrPct": 1.7980165038988583
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.1827,
+      "qty": 11852.121357873639,
+      "notional": 2165.382572083514,
+      "fee": 0.8661530288334056,
+      "openedAt": "2026-08-20T04:42:19.447Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price is below SMA20 and SMA50, recent candles show a downtr | Price below SMA20 and SMA50, bearish trend, MACD positive bu",
+      "atrPct": 2.1502854015169306
     }
   ],
   "closedTrades": [
@@ -64,9 +64,20 @@
       "reason": "timeout 532h (maxHoldHours)",
       "openedAt": "2026-07-28T17:26:16.227Z",
       "closedAt": "2026-08-19T21:06:33.233Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.1075,
+      "exit": 1.0976,
+      "pnl": 25.006114584296665,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-08-19T21:13:14.101Z",
+      "closedAt": "2026-08-20T04:42:28.309Z"
     }
   ],
-  "totalPnl": -238.5281089462872,
-  "wins": 0,
+  "totalPnl": -213.52199436199055,
+  "wins": 1,
   "losses": 2
 }
