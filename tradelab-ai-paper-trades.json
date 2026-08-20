@@ -1,33 +1,7 @@
 {
-  "balance": 4994.70728158282,
+  "balance": 4699.289598264725,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "SOLUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 86.17,
-      "qty": 16.652389091155804,
-      "notional": 1434.9363679848957,
-      "fee": 0.5739745471939584,
-      "openedAt": "2026-08-19T21:13:14.101Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI is extremely overbought at 96.8, price is above upper Bollinger band, and recent candles show a ",
-      "atrPct": 1.6097746978563983
-    },
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1887,
-      "qty": 6007.41775679951,
-      "notional": 1133.5997307080677,
-      "fee": 0.4534398922832271,
-      "openedAt": "2026-08-19T21:13:14.101Z",
-      "aiConfidence": 65,
-      "aiReasoning": "4h only: Price is above upper Bollinger Band and RSI is overbought at 76.2, indicating a potential pullback. ",
-      "atrPct": 1.7980165038988583
-    },
     {
       "symbol": "AVAXUSDT",
       "interval": "1h",
@@ -40,6 +14,32 @@
       "aiConfidence": 84,
       "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, RSI overbought b | Price above SMA20 and SMA50, bullish trend with ADX 29.7, MA",
       "atrPct": 1.823664264028583
+    },
+    {
+      "symbol": "SOLUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 87.05,
+      "qty": 18.164713247006162,
+      "notional": 1581.2382881518863,
+      "fee": 0.6324953152607545,
+      "openedAt": "2026-08-20T12:58:13.487Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, strong uptrend (ADX 77.9), MACD positive, RSI 64.3 not overbought, rece",
+      "atrPct": 1.9061294822351689
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1915,
+      "qty": 6523.1240085639165,
+      "notional": 1249.17824763999,
+      "fee": 0.49967129905599605,
+      "openedAt": "2026-08-20T12:58:13.487Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 49.7 indicates strong uptrend, RSI 56.8 not overboug",
+      "atrPct": 2.4543080939947797
     }
   ],
   "closedTrades": [
@@ -86,9 +86,31 @@
       "reason": "Stop loss 2.5% (ATR*1.5=1.7%)",
       "openedAt": "2026-08-20T04:42:19.447Z",
       "closedAt": "2026-08-20T08:46:04.641Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1887,
+      "exit": 0.1917,
+      "pnl": -18.475693162681775,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-08-19T21:13:14.101Z",
+      "closedAt": "2026-08-20T12:58:20.543Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 86.17,
+      "exit": 87.04,
+      "pnl": -15.061553056499584,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-08-19T21:13:14.101Z",
+      "closedAt": "2026-08-20T12:58:23.957Z"
     }
   ],
-  "totalPnl": -296.16778476015196,
+  "totalPnl": -329.7050309793333,
   "wins": 1,
-  "losses": 3
+  "losses": 5
 }
