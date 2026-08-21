@@ -1,5 +1,5 @@
 {
-  "balance": 4883.357347959676,
+  "balance": 5588.698586007437,
   "peak": 10000,
   "positions": [
     {
@@ -16,19 +16,6 @@
       "atrPct": 1.9061294822351689
     },
     {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.1973,
-      "qty": 10522.203898110005,
-      "notional": 2076.030829097104,
-      "fee": 0.8304123316388415,
-      "openedAt": "2026-08-20T20:34:50.625Z",
-      "aiConfidence": 87,
-      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 52 indicates | Price above SMA20 and SMA50, MACD positive, ADX 44.8 indicat",
-      "atrPct": 2.8165954673810742
-    },
-    {
       "symbol": "XRPUSDT",
       "interval": "1h",
       "side": "LONG",
@@ -40,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 54.2 indicates strong uptrend, RSI 67.4 not overboug",
       "atrPct": 3.3605611293616278
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.08214,
+      "qty": 18086.235958082707,
+      "notional": 1485.6034215969137,
+      "fee": 0.5942413686387655,
+      "openedAt": "2026-08-21T04:44:19.515Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 41.5 indicates strong uptrend, RSI 62.4 not overboug",
+      "atrPct": 2.513130891509268
     }
   ],
   "closedTrades": [
@@ -130,9 +130,20 @@
       "reason": "Take profit 6.0% (ATR*3=2.0%)",
       "openedAt": "2026-08-20T12:58:13.487Z",
       "closedAt": "2026-08-21T01:39:59.341Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.1973,
+      "exit": 0.2083,
+      "pnl": 114.91383054757132,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-20T20:34:50.625Z",
+      "closedAt": "2026-08-21T04:44:25.145Z"
     }
   ],
-  "totalPnl": -161.26588533369858,
-  "wins": 3,
+  "totalPnl": -46.352054786127255,
+  "wins": 4,
   "losses": 5
 }
