@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-21T08:47:41.719Z
+Generated: 2026-08-21T12:57:00.359Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1900.48 USDT
+- **Total PnL:** 2150.91 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 219.61 | -500 | ✅ |
-| Weekly (7d) | 720.25 | -2500 | ✅ |
-| Monthly | 1025.37 | -5000 | ✅ |
-| Total (all time) | 1900.48 | -5000 | ✅ |
+| Daily (UTC) | 470.05 | -500 | ✅ |
+| Weekly (7d) | 970.68 | -2500 | ✅ |
+| Monthly | 1275.81 | -5000 | ✅ |
+| Total (all time) | 2150.91 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 17695.13 USDT (max 30000)
+- **Open Notional:** 13330.5 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -40,7 +40,7 @@ Status: **NORMAL**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 2% | 200 | 9.93 | 54.8% | 95 |
+| NEARUSDT | breakout | 2% | 200 | 10.65 | 56.3% | 95 |
 | LINKUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -51,7 +51,7 @@ Status: **NORMAL**
 | SEIUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TIAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| BCHUSDT | breakout | 2% | 200 | 5.61 | 48.7% | 95 |
+| BCHUSDT | breakout | 2% | 200 | 6.89 | 50% | 95 |
 | LTCUSDT | sma-rsi | 0.7% | 70 | 0 | 40% | 95 |
 | LTCUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | sma-rsi | 2% | 200 | 19.4 | 63.2% | 95 |
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 67.25%
-- **Total PnL:** 1900.48 USDT
-- **Total Exposure:** 17695.13 USDT
+- **Margin Level:** 91.15%
+- **Total PnL:** 2150.91 USDT
+- **Total Exposure:** 13330.5 USDT
 - **Warnings:**
-  - 🔴 margin_call: 67.25% (threshold: 100%)
+  - 🔴 margin_call: 91.15% (threshold: 100%)
 
 ## Statistics
 

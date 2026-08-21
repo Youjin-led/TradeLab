@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T08:47:41.858Z",
+  "generatedAt": "2026-08-21T12:57:00.506Z",
   "summary": {
     "totalCandidates": 44,
     "live": 32,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 1344.7067270411048,
-      "trades": 136,
-      "wins": 75,
-      "losses": 61,
+      "totalPnl": 1595.1437444951466,
+      "trades": 144,
+      "wins": 80,
+      "losses": 64,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 1344.7199999999998,
-      "forwardTrades": 136,
+      "forwardPnl": 1595.1500000000003,
+      "forwardTrades": 144,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 55.1,
-      "avgPnlPerTrade": 9.89
+      "winRate": 55.6,
+      "avgPnlPerTrade": 11.08
     },
     "sma-rsi": {
       "totalPnl": 555.7725713043767,
@@ -75,9 +75,9 @@
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": 99.39,
-      "trades": 38,
-      "avgPnl": 2.62
+      "pnl": 237.57,
+      "trades": 41,
+      "avgPnl": 5.79
     },
     "1": {
       "pnl": -26.52,
@@ -100,9 +100,9 @@
       "avgPnl": -2.3
     },
     "5": {
-      "pnl": -169.01,
-      "trades": 5,
-      "avgPnl": -33.8
+      "pnl": 1.72,
+      "trades": 6,
+      "avgPnl": 0.29
     },
     "6": {
       "pnl": -43.49,
@@ -110,14 +110,14 @@
       "avgPnl": -43.49
     },
     "7": {
-      "pnl": 264.95,
-      "trades": 3,
-      "avgPnl": 88.32
+      "pnl": 298.41,
+      "trades": 4,
+      "avgPnl": 74.6
     },
     "8": {
-      "pnl": 91.53,
-      "trades": 47,
-      "avgPnl": 1.95
+      "pnl": -0.42,
+      "trades": 50,
+      "avgPnl": -0.01
     },
     "9": {
       "pnl": -49.34,
@@ -222,9 +222,9 @@
       "avgPnl": 20.99
     },
     "Friday": {
-      "pnl": 371.42,
-      "trades": 33,
-      "avgPnl": 11.26
+      "pnl": 621.86,
+      "trades": 41,
+      "avgPnl": 15.17
     },
     "Saturday": {
       "pnl": 195.02,
@@ -2379,26 +2379,82 @@
       "pnl": 58.48,
       "symbol": "LINKUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 08:00",
+      "equity": 11973.28,
+      "pnl": 72.8,
+      "symbol": "NEARUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 08:00",
+      "equity": 12019.97,
+      "pnl": 46.69,
+      "symbol": "LINKUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 08:00",
+      "equity": 12038.67,
+      "pnl": 18.7,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 09:00",
+      "equity": 11991.61,
+      "pnl": -47.06,
+      "symbol": "LINKUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 09:00",
+      "equity": 12162.34,
+      "pnl": 170.73,
+      "symbol": "BCHUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 09:00",
+      "equity": 12123.77,
+      "pnl": -38.58,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 09:00",
+      "equity": 12117.45,
+      "pnl": -6.32,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-21 09:00",
+      "equity": 12150.92,
+      "pnl": 33.47,
+      "symbol": "SEIUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 2.444,
-    "sortinoRatio": 2.885,
-    "calmarRatio": 6.371,
+    "sharpeRatio": 2.629,
+    "sortinoRatio": 3.15,
+    "calmarRatio": 6.9,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.4811,
-    "dailyVolatility": 3.06,
-    "annualizedReturn": 121.25,
-    "totalTrades": 306
+    "avgDailyReturn": 0.5211,
+    "dailyVolatility": 3.0863,
+    "annualizedReturn": 131.32,
+    "totalTrades": 314
   },
   "distribution": {
-    "totalTrades": 306,
+    "totalTrades": 314,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 10.51,
-      "avg": 6.21,
-      "stdDev": 133.82
+      "avg": 6.85,
+      "stdDev": 132.57
     },
     "holdTime": {
       "avgBars": 0,

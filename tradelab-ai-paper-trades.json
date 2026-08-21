@@ -1,5 +1,5 @@
 {
-  "balance": 8053.8772796571775,
+  "balance": 5026.424810234044,
   "peak": 10194.781366654655,
   "positions": [
     {
@@ -14,6 +14,32 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: RSI at 95.9 is extremely overbought, price is above upper Bollinger Band, and volume is high, sugges",
       "atrPct": 2.854177477944993
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 77185.24,
+      "qty": 0.021912404868184736,
+      "notional": 1691.3142287280073,
+      "fee": 0.6765256914912029,
+      "openedAt": "2026-08-21T12:57:23.824Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 67.6 indicates strong uptrend, RSI 70.6 slightly ove",
+      "atrPct": 2.349406440920571
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.215,
+      "qty": 6214.596468349422,
+      "notional": 1336.1382406951257,
+      "fee": 0.5344552962780503,
+      "openedAt": "2026-08-21T12:57:23.824Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, strong uptrend (ADX 59.5), RSI overbought but trend stro",
+      "atrPct": 3.4950166112956795
     }
   ],
   "closedTrades": [
