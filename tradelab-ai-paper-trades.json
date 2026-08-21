@@ -1,45 +1,19 @@
 {
-  "balance": 5588.698586007437,
-  "peak": 10000,
+  "balance": 8053.8772796571775,
+  "peak": 10194.781366654655,
   "positions": [
     {
-      "symbol": "SOLUSDT",
+      "symbol": "NEARUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 87.05,
-      "qty": 18.164713247006162,
-      "notional": 1581.2382881518863,
-      "fee": 0.6324953152607545,
-      "openedAt": "2026-08-20T12:58:13.487Z",
+      "side": "SHORT",
+      "entry": 1.927,
+      "qty": 1111.0036777361065,
+      "notional": 2140.9040869974774,
+      "fee": 0.856361634798991,
+      "openedAt": "2026-08-21T08:48:02.641Z",
       "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, strong uptrend (ADX 77.9), MACD positive, RSI 64.3 not overbought, rece",
-      "atrPct": 1.9061294822351689
-    },
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.2872,
-      "qty": 1008.4739352529798,
-      "notional": 1298.1076494576355,
-      "fee": 0.5192430597830542,
-      "openedAt": "2026-08-21T01:39:53.258Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 54.2 indicates strong uptrend, RSI 67.4 not overboug",
-      "atrPct": 3.3605611293616278
-    },
-    {
-      "symbol": "DOGEUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.08214,
-      "qty": 18086.235958082707,
-      "notional": 1485.6034215969137,
-      "fee": 0.5942413686387655,
-      "openedAt": "2026-08-21T04:44:19.515Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 41.5 indicates strong uptrend, RSI 62.4 not overboug",
-      "atrPct": 2.513130891509268
+      "aiReasoning": "1h only: RSI at 95.9 is extremely overbought, price is above upper Bollinger Band, and volume is high, sugges",
+      "atrPct": 2.854177477944993
     }
   ],
   "closedTrades": [
@@ -141,9 +115,42 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-20T20:34:50.625Z",
       "closedAt": "2026-08-21T04:44:25.145Z"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.08214,
+      "exit": 0.085,
+      "pnl": 51.132393471477805,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-21T04:44:19.515Z",
+      "closedAt": "2026-08-21T08:48:05.522Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.2872,
+      "exit": 1.3775,
+      "pnl": 90.54595329356107,
+      "reason": "Take profit 5.5% (ATR*3=1.8%)",
+      "openedAt": "2026-08-21T01:39:53.258Z",
+      "closedAt": "2026-08-21T08:48:09.205Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 87.05,
+      "exit": 92.56,
+      "pnl": 99.45507467574329,
+      "reason": "Take profit 3.5% (ATR*3=1.2%)",
+      "openedAt": "2026-08-20T12:58:13.487Z",
+      "closedAt": "2026-08-21T08:48:12.259Z"
     }
   ],
-  "totalPnl": -46.352054786127255,
-  "wins": 4,
+  "totalPnl": 194.7813666546549,
+  "wins": 7,
   "losses": 5
 }
