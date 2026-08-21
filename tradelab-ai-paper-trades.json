@@ -1,5 +1,5 @@
 {
-  "balance": 4844.071934559908,
+  "balance": 4883.357347959676,
   "peak": 10000,
   "positions": [
     {
@@ -19,19 +19,6 @@
       "symbol": "ADAUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 0.1915,
-      "qty": 6523.1240085639165,
-      "notional": 1249.17824763999,
-      "fee": 0.49967129905599605,
-      "openedAt": "2026-08-20T12:58:13.487Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 49.7 indicates strong uptrend, RSI 56.8 not overboug",
-      "atrPct": 2.4543080939947797
-    },
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "LONG",
       "entry": 0.1973,
       "qty": 10522.203898110005,
       "notional": 2076.030829097104,
@@ -40,6 +27,19 @@
       "aiConfidence": 87,
       "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 52 indicates | Price above SMA20 and SMA50, MACD positive, ADX 44.8 indicat",
       "atrPct": 2.8165954673810742
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 1.2872,
+      "qty": 1008.4739352529798,
+      "notional": 1298.1076494576355,
+      "fee": 0.5192430597830542,
+      "openedAt": "2026-08-21T01:39:53.258Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 54.2 indicates strong uptrend, RSI 67.4 not overboug",
+      "atrPct": 3.3605611293616278
     }
   ],
   "closedTrades": [
@@ -119,9 +119,20 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-20T08:46:01.708Z",
       "closedAt": "2026-08-20T20:34:59.626Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.1915,
+      "exit": 0.2051,
+      "pnl": 88.21481521741327,
+      "reason": "Take profit 6.0% (ATR*3=2.0%)",
+      "openedAt": "2026-08-20T12:58:13.487Z",
+      "closedAt": "2026-08-21T01:39:59.341Z"
     }
   ],
-  "totalPnl": -249.48070055111185,
-  "wins": 2,
+  "totalPnl": -161.26588533369858,
+  "wins": 3,
   "losses": 5
 }
