@@ -1,20 +1,7 @@
 {
-  "balance": 5026.424810234044,
-  "peak": 10194.781366654655,
+  "balance": 4733.847523405539,
+  "peak": 10251.61716436189,
   "positions": [
-    {
-      "symbol": "NEARUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.927,
-      "qty": 1111.0036777361065,
-      "notional": 2140.9040869974774,
-      "fee": 0.856361634798991,
-      "openedAt": "2026-08-21T08:48:02.641Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI at 95.9 is extremely overbought, price is above upper Bollinger Band, and volume is high, sugges",
-      "atrPct": 2.854177477944993
-    },
     {
       "symbol": "BTCUSDT",
       "interval": "1h",
@@ -29,17 +16,30 @@
       "atrPct": 2.349406440920571
     },
     {
+      "symbol": "AVAXUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 7.623,
+      "qty": 336.8871678722505,
+      "notional": 2568.0908806901652,
+      "fee": 1.0272363522760661,
+      "openedAt": "2026-08-21T16:40:16.321Z",
+      "aiConfidence": 87,
+      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 59.4 indicat | Strong bullish trend with price above SMA20 and SMA50, MACD ",
+      "atrPct": 2.9600269860010116
+    },
+    {
       "symbol": "ADAUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 0.215,
-      "qty": 6214.596468349422,
-      "notional": 1336.1382406951257,
-      "fee": 0.5344552962780503,
-      "openedAt": "2026-08-21T12:57:23.824Z",
+      "entry": 0.2197,
+      "qty": 5727.649210460542,
+      "notional": 1258.3645315381812,
+      "fee": 0.5033458126152724,
+      "openedAt": "2026-08-21T16:40:16.321Z",
       "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, strong uptrend (ADX 59.5), RSI overbought but trend stro",
-      "atrPct": 3.4950166112956795
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 53.5 indicates strong uptrend, RSI overbought but mo",
+      "atrPct": 3.5763053514532785
     }
   ],
   "closedTrades": [
@@ -174,9 +174,31 @@
       "reason": "Take profit 3.5% (ATR*3=1.2%)",
       "openedAt": "2026-08-20T12:58:13.487Z",
       "closedAt": "2026-08-21T08:48:12.259Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.215,
+      "exit": 0.2199,
+      "pnl": 29.917067398634213,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-21T12:57:23.824Z",
+      "closedAt": "2026-08-21T16:40:19.088Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.927,
+      "exit": 1.902,
+      "pnl": 26.91873030860382,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-08-21T08:48:02.641Z",
+      "closedAt": "2026-08-21T16:40:25.915Z"
     }
   ],
-  "totalPnl": 194.7813666546549,
-  "wins": 7,
+  "totalPnl": 251.61716436189292,
+  "wins": 9,
   "losses": 5
 }
