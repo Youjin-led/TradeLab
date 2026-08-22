@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-08-22T12:37:46.635Z
-Incubation updated: 2026-08-22T12:37:27.320Z
+Generated: 2026-08-22T12:48:53.876Z
+Incubation updated: 2026-08-22T12:48:34.119Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **clear**
 
@@ -10,7 +10,7 @@ This report is paper-only. It tracks progress toward manual review; it does not 
 ## Summary
 
 Live: 32; probation: 0; quarantined: 2; rejected: 10; ready for review: 0.
-Improving: 3; deteriorating: 15; collecting: 2.
+Improving: 3; deteriorating: 14; collecting: 2.
 Portfolio forward PnL: +1724.12; forward trades: 331; avg/trade: +5.21.
 
 ## Live Candidates
@@ -18,7 +18,7 @@ Portfolio forward PnL: +1724.12; forward trades: 331; avg/trade: +5.21.
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
 DOTUSDT:4h:sma-rsi | 65% | improving | Blocked | 252 | 19 | +987.09 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
-SEIUSDT:1h:sma-rsi | 62% | improving | Blocked | 200 | 31 | +506.33 | 0.76 | 4.38% | 4 | status is incubating, expected ready-for-review
+SEIUSDT:1h:sma-rsi | 62% | improving | Blocked | 200 | 31 | +506.33 | 0.76 | 4.39% | 4 | status is incubating, expected ready-for-review
 SEIUSDT:4h:breakout | 61% | watch | Healthy | 483 | 5 | -115.04 | 1.10 | 1.47% | 2 | status is incubating, expected ready-for-review
 BCHUSDT:1h:breakout | 59% | watch | Blocked | 432 | 41 | +825.64 | 0.54 | 4.67% | 4 | status is incubating, expected ready-for-review
 JUPUSDT:4h:sma-rsi | 57% | watch | Blocked | 177 | 17 | +28.92 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
@@ -30,6 +30,7 @@ ETHUSDT:4h:sma-rsi | 50% | watch | Blocked | 434 | 9 | -219.69 | 0.00 | 0.00% | 
 DOTUSDT:1h:breakout | 49% | phase-mismatch | Blocked | 109 | 8 | +177.35 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 SOLUSDT:1h:breakout | 49% | phase-mismatch | Blocked | 109 | 8 | -9.91 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 XRPUSDT:4h:breakout | 48% | watch | Blocked | 86 | 7 | -91.07 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
+DOGEUSDT:1h:breakout | 46% | phase-mismatch | Blocked | 109 | 6 | +215.60 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 TIAUSDT:4h:sma-rsi | 46% | deteriorating | Blocked | 506 | 6 | -301.76 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 SUIUSDT:4h:breakout | 46% | deteriorating | Blocked | 89 | 6 | -555.68 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 SEIUSDT:4h:sma-rsi | 45% | deteriorating | Blocked | 94 | 5 | -405.42 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
@@ -38,8 +39,7 @@ FILUSDT:4h:sma-rsi | 44% | deteriorating | Blocked | 214 | 4 | -259.99 | 0.00 | 
 LINKUSDT:4h:sma-rsi | 44% | deteriorating | Blocked | 75 | 4 | -408.40 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 ADAUSDT:4h:sma-rsi | 43% | watch | Blocked | 86 | 3 | -36.29 | 0.00 | 0.00% | 0 | status is incubating, expected ready-for-review
 LTCUSDT:1d:sma-rsi | 43% | deteriorating | Healthy | 101 | 3 | -553.84 | 1.10 | 7.99% | 6 | status is incubating, expected ready-for-review
-DOGEUSDT:1h:breakout | 38% | deteriorating | Blocked | 109 | 6 | +215.60 | 0.66 | 2.02% | 4 | status is incubating, expected ready-for-review
-LINKUSDT:1h:breakout | 38% | deteriorating | Blocked | 84 | 7 | +20.83 | 0.74 | 3.19% | 6 | status is incubating, expected ready-for-review
+LINKUSDT:1h:breakout | 38% | deteriorating | Blocked | 84 | 7 | +20.83 | 0.74 | 3.21% | 6 | status is incubating, expected ready-for-review
 ETHUSDT:4h:breakout | 37% | deteriorating | Blocked | 84 | 7 | -397.62 | 0.91 | 4.86% | 4 | status is incubating, expected ready-for-review
 DOTUSDT:4h:breakout | 36% | deteriorating | Blocked | 86 | 6 | -138.56 | 0.80 | 4.15% | 3 | status is incubating, expected ready-for-review
 BCHUSDT:1h:sma-rsi | 35% | watch | Blocked | 75 | 3 | +14.77 | 0.69 | 4.76% | 2 | status is incubating, expected ready-for-review
@@ -48,7 +48,7 @@ TRXUSDT:4h:sma-rsi | 33% | collecting | Blocked | 86 | 2 | +0.70 | 0.58 | 1.82% 
 AVAXUSDT:1h:breakout | 32% | deteriorating | Blocked | 109 | 4 | +227.69 | 0.66 | 4.49% | 5 | status is incubating, expected ready-for-review
 SEIUSDT:1h:breakout | 31% | deteriorating | Blocked | 109 | 7 | -142.21 | 0.37 | 5.85% | 7 | status is incubating, expected ready-for-review
 OPUSDT:1h:sma-rsi | 29% | collecting | Blocked | 76 | 2 | +60.45 | 0.47 | 3.93% | 6 | status is incubating, expected ready-for-review
-ATOMUSDT:1h:sma-rsi | 26% | deteriorating | Blocked | 109 | 3 | +87.77 | 0.42 | 6.21% | 5 | status is incubating, expected ready-for-review
+ATOMUSDT:1h:sma-rsi | 26% | deteriorating | Blocked | 109 | 3 | +87.77 | 0.42 | 6.23% | 5 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
 

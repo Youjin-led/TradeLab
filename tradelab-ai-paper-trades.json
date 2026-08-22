@@ -1,19 +1,45 @@
 {
-  "balance": 8290.994997894235,
+  "balance": 5174.194530054216,
   "peak": 10640.312139906338,
   "positions": [
     {
       "symbol": "ETHUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 2429.02,
-      "qty": 0.9073352130435628,
-      "notional": 2203.935379187075,
-      "fee": 0.88157415167483,
-      "openedAt": "2026-08-22T12:38:11.577Z",
+      "entry": 2429.46,
+      "qty": 0.907133113287992,
+      "notional": 2203.843613408645,
+      "fee": 0.881537445363458,
+      "openedAt": "2026-08-22T12:49:18.301Z",
       "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI oversold at 20.3, price above SMA50, MACD positive, ADX 33.7 indicates strong trend, but price b",
-      "atrPct": 2.712322547482408
+      "aiReasoning": "1h only: RSI oversold at 20.4 suggests bounce potential, MACD positive, price above SMA50, ADX 33.7 indicates",
+      "atrPct": 2.7118313181882883
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 1.5107,
+      "qty": 1152.4700169410407,
+      "notional": 1741.03645459283,
+      "fee": 0.696414581837132,
+      "openedAt": "2026-08-22T12:49:18.301Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, trend bullish, RSI 56.3 not overbought, ADX 29.5 confirm",
+      "atrPct": 6.950893152653927
+    },
+    {
+      "symbol": "OPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1098,
+      "qty": 12526.582870021275,
+      "notional": 1375.4187991283359,
+      "fee": 0.5501675196513344,
+      "openedAt": "2026-08-22T12:49:18.301Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, RSI neutral-bullish, trend bullish, and price near resis",
+      "atrPct": 5.692167577413478
     }
   ],
   "closedTrades": [
@@ -225,9 +251,20 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-21T12:57:23.824Z",
       "closedAt": "2026-08-22T12:38:14.378Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 2429.02,
+      "exit": 2429.51,
+      "pnl": -0.4369798972832697,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-22T12:38:11.577Z",
+      "closedAt": "2026-08-22T12:49:21.348Z"
     }
   ],
-  "totalPnl": 494.93037708130834,
+  "totalPnl": 494.49339718402507,
   "wins": 13,
-  "losses": 6
+  "losses": 7
 }
