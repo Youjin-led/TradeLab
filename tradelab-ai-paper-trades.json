@@ -1,19 +1,19 @@
 {
-  "balance": 8802.890718381326,
+  "balance": 8290.994997894235,
   "peak": 10640.312139906338,
   "positions": [
     {
-      "symbol": "BTCUSDT",
+      "symbol": "ETHUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 77185.24,
-      "qty": 0.021912404868184736,
-      "notional": 1691.3142287280073,
-      "fee": 0.6765256914912029,
-      "openedAt": "2026-08-21T12:57:23.824Z",
+      "entry": 2429.02,
+      "qty": 0.9073352130435628,
+      "notional": 2203.935379187075,
+      "fee": 0.88157415167483,
+      "openedAt": "2026-08-22T12:38:11.577Z",
       "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 67.6 indicates strong uptrend, RSI 70.6 slightly ove",
-      "atrPct": 2.349406440920571
+      "aiReasoning": "1h only: RSI oversold at 20.3, price above SMA50, MACD positive, ADX 33.7 indicates strong trend, but price b",
+      "atrPct": 2.712322547482408
     }
   ],
   "closedTrades": [
@@ -214,9 +214,20 @@
       "reason": "Stop loss 4.5% (ATR*1.5=3.0%)",
       "openedAt": "2026-08-22T04:38:38.163Z",
       "closedAt": "2026-08-22T08:36:05.307Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 77185.24,
+      "exit": 77249.22,
+      "pnl": 0.7254299719751672,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-21T12:57:23.824Z",
+      "closedAt": "2026-08-22T12:38:14.378Z"
     }
   ],
-  "totalPnl": 494.20494710933315,
-  "wins": 12,
+  "totalPnl": 494.93037708130834,
+  "wins": 13,
   "losses": 6
 }

@@ -1,11 +1,11 @@
 {
   "createdAt": "2026-06-16T18:21:36.924Z",
-  "updatedAt": "2026-08-22T08:35:40.572Z",
-  "dailyLoss": -176.79,
+  "updatedAt": "2026-08-22T12:37:46.542Z",
+  "dailyLoss": -538.03,
   "dailyLossDate": "2026-08-22",
-  "weeklyLoss": 905.14,
+  "weeklyLoss": 543.9,
   "weeklyLossWeek": 32,
-  "monthlyLoss": 1210.27,
+  "monthlyLoss": 849.03,
   "monthlyLossMonth": 7,
   "stopLossHistory": [
     {
@@ -434,7 +434,7 @@
   ],
   "trailingStops": {},
   "locks": {
-    "dailyLossLock": false,
+    "dailyLossLock": true,
     "weeklyLossLock": false,
     "monthlyLossLock": false,
     "portfolioStopLossLock": false
@@ -448,7 +448,7 @@
   },
   "portfolioStopLossTriggeredAt": null,
   "entryGate": {
-    "allowNewEntries": true,
-    "reason": "all risk limits OK"
+    "allowNewEntries": false,
+    "reason": "blocked by: daily loss limit"
   }
 }

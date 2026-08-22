@@ -1,30 +1,30 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-22T08:35:40.362Z
-Status: **NORMAL**
+Generated: 2026-08-22T12:37:46.536Z
+Status: **LIMIT_HIT**
 
 ---
 
 ## Overall Status
 
-- **Status:** NORMAL
-- **Next Action:** Normal operation. All risk limits within bounds.
-- **Entry Gate:** ✅ OPEN (all risk limits OK)
-- **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 2085.37 USDT
+- **Status:** LIMIT_HIT
+- **Next Action:** Daily loss limit reached. Paper trading paused until tomorrow.
+- **Entry Gate:** 🔴 CLOSED (blocked by: daily loss limit)
+- **Portfolio Stop-Loss:** 🔴 TRIGGERED
+- **Total PnL:** 1724.12 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -176.79 | -500 | ✅ |
-| Weekly (7d) | 905.14 | -2500 | ✅ |
-| Monthly | 1210.27 | -5000 | ✅ |
-| Total (all time) | 2085.37 | -5000 | ✅ |
+| Daily (UTC) | -538.03 | -500 | 🔴 LOCKED |
+| Weekly (7d) | 543.90 | -2500 | ✅ |
+| Monthly | 849.03 | -5000 | ✅ |
+| Total (all time) | 1724.12 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 4456.87 USDT (max 30000)
+- **Open Notional:** 0 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -32,7 +32,7 @@ Status: **NORMAL**
 | Lock | Status |
 | --- | --- |
 | Portfolio Stop-Loss | ✅ Inactive |
-| Daily Loss Limit | ✅ Inactive |
+| Daily Loss Limit | 🔴 Active |
 | Weekly Loss Limit | ✅ Inactive |
 | Monthly Loss Limit | ✅ Inactive |
 
@@ -40,7 +40,7 @@ Status: **NORMAL**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 2% | 200 | 10.65 | 56.3% | 95 |
+| NEARUSDT | breakout | 2% | 200 | 8.77 | 54.5% | 95 |
 | LINKUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -108,9 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 271.16%
-- **Total PnL:** 2085.37 USDT
-- **Total Exposure:** 4456.87 USDT
+- **Margin Level:** 117.15%
+- **Total PnL:** 1724.12 USDT
+- **Total Exposure:** 10007.46 USDT
+- **Warnings:**
+  - ℹ️ low_margin: 117.15% (threshold: 150%)
 
 ## Statistics
 
@@ -118,6 +120,10 @@ Status: **NORMAL**
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
+
+## Recent Stop-Loss Events
+
+- 🔴 Daily loss -538.03 <= -500 (daily limit)
 
 ---
 

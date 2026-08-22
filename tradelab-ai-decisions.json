@@ -1,175 +1,5 @@
 [
   {
-    "timestamp": "2026-07-22T18:53:31.400Z",
-    "symbol": "LTCUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 55,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1675,
-    "aiReasoning": "Тренд восходящий, но цена ниже SMA20 и Bollinger mid, RSI нейтральный, объем низкий, фаза trending-down. Недостаточно сигналов для входа.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:04:21.815Z",
-    "symbol": "AVAXUSDT",
-    "interval": "1h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 7293,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:04:29.753Z",
-    "symbol": "DOTUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 7110,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:04:37.652Z",
-    "symbol": "SUIUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 7053,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:04:45.571Z",
-    "symbol": "LTCUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 7064,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:08:00.051Z",
-    "symbol": "AVAXUSDT",
-    "interval": "1h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 7405,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:08:08.023Z",
-    "symbol": "DOTUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 7095,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:08:18.453Z",
-    "symbol": "SUIUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 0,
-    "aiSource": "fallback-error",
-    "aiLatencyMs": 9529,
-    "aiReasoning": "AI ошибка: LLM API error 400: {\"error\":{\"message\":\"Failed to deserialize the JSON body into the target type: messages[0]: missing field `content` at line 1 column 53\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_request_error\"}}. Fallback на классику.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:18:11.919Z",
-    "symbol": "AVAXUSDT",
-    "interval": "1h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 60,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 2344,
-    "aiReasoning": "RSI at 70.1 is near overbought but not above 75; MACD positive but trend is bearish; ADX 30.2 indicates strong trend but bearish; price above SMA20 but near SMA50; already have an AVAXUSDT SHORT position open; portfolio has 17 positions (max 3? unclear but rule says portfolio full=HOLD); overall conflicting signals and existing position leads to HOLD.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-07-22T19:18:14.307Z",
-    "symbol": "DOTUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 65,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1699,
-    "aiReasoning": "RSI neutral, MACD positive but ADX low (no trend), price above SMA20 but below SMA50, bearish trend, volume low, mixed market, portfolio has DOTUSDT SHORT already.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
     "timestamp": "2026-07-22T19:18:16.839Z",
     "symbol": "SUIUSDT",
     "interval": "4h",
@@ -3394,6 +3224,176 @@
     "mergedDecision": "SELL",
     "mergedSource": "merge-classical",
     "mergedReasoning": "[Class] Классика: . AI: HOLD (55%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:37:49.477Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2001,
+    "aiReasoning": "Strong uptrend (ADX 49.8, SMA20>SMA50) forbids SELL. Price above SMAs and MACD positive suggest bullish, but recent candles show a sharp reversal from 2.147 to 1.916, with high volatility (ATR 5.56%) and low volume (0.19x) indicating weak confirmation. RSI 61.9 not overbought but not ticking up clearly. Breakout above resistance failed, so signals conflict. HOLD due to rule 4 and mixed signals.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:37:52.177Z",
+    "symbol": "NEARUSDT",
+    "interval": "1d",
+    "aiDecision": "SELL",
+    "aiConfidence": 72,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2235,
+    "aiReasoning": "Price is above upper Bollinger and RSI is overbought at 74.6, suggesting a pullback. MACD is positive but ADX=25.9 indicates a trending market, and the trend is bearish. Volume is high, and price has fallen from the high of 2.147 to 1.915, showing selling pressure. The price is above SMA20 and SMA50, but the bearish trend and overbought conditions favor a sell. However, rule 4: ADX>25 and price above SMA50, so SELL is avoided? Actually, ADX=25.9 is >25 and price is above SMA50, so per rule 4, avoid SELL. Therefore, decision must be HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-fallback",
+    "mergedReasoning": "Неопределенное состояние",
+    "validationValid": true,
+    "validationReasons": [
+      "прошло все проверки"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:37:54.213Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 72,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1571,
+    "aiReasoning": "Strong uptrend (ADX=66.8) with price above SMA20/SMA50 and MACD>0, but RSI=72.1 is overbought and volume is very low (0.09x), suggesting weak participation. Recent candles show a pullback from highs. Rule 4 forbids SELL in a strong uptrend, and BUY is risky due to overbought conditions and low volume. HOLD is appropriate.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:37:56.641Z",
+    "symbol": "DOGEUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1961,
+    "aiReasoning": "Strong uptrend (ADX 78.7, price above SMA20/SMA50) with RSI overbought at 76.8 and MACD positive. However, volume is very low (0.11x) and recent candles show a pullback from highs, indicating potential consolidation. Hard block rule forbids SELL in strong uptrend, and overbought RSI reduces BUY conviction.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:37:59.243Z",
+    "symbol": "JUPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2136,
+    "aiReasoning": "ADX=72.1 indicates a very strong trend, and SMA20>SMA50 confirms bullish alignment. Per rule 4, SELL is forbidden. While price is above SMAs and MACD positive, RSI at 64.4 is not overbought but volume is extremely low (0.06x), suggesting weak participation. Recent candles show a pullback from highs, and price is near support. Given the strong uptrend and no opposing signals, a BUY could be considered, but low volume and proximity to resistance (0.2261) create uncertainty. HOLD is safest to avoid fighting the trend or entering on weak momentum.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:38:01.493Z",
+    "symbol": "DOTUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1788,
+    "aiReasoning": "Price below SMA20 but above SMA50, MACD positive, RSI neutral, ADX 39.2 indicates strong trend, but rule 4 forbids SELL (ADX>=40, SMA20>SMA50) and BUY is not confirmed (price below SMA20, volume low, Bollinger below mid). Indicators conflict, so HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:38:04.126Z",
+    "symbol": "ARBUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 65,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2169,
+    "aiReasoning": "Strong uptrend (ADX 76, SMA20>SMA50) forbids SELL. RSI 67 near overbought and volume is very low (0.06x), suggesting weak participation. Price is above SMAs and MACD positive, but recent candles show a pullback from highs. Indicators are mixed: bullish trend vs. overbought RSI and low volume. Rule 4 hard block: ADX>=40 and SMA20>SMA50, so SELL is forbidden. BUY not confirmed due to low volume and RSI not ticking up. HOLD is appropriate.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:38:06.542Z",
+    "symbol": "LINKUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 60,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1954,
+    "aiReasoning": "Strong uptrend (ADX 71.6, SMA20>SMA50) but RSI near overbought and volume is very low, indicating weak participation. Price pulled back from resistance and is above SMAs, but MACD positive. Hard block: ADX>=40 and SMA20>SMA50 forbids SELL; BUY is possible but low volume and overbought RSI reduce conviction. HOLD due to conflicting signals and rule 4.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:38:08.898Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 72,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1892,
+    "aiReasoning": "Strong uptrend (ADX=58.1, SMA20>SMA50) with price above both MAs and MACD positive, but RSI near overbought (68.6) and volume very low (0.15x) suggest weak participation. Recent candles show a sharp reversal from highs (0.954 to 0.8333) indicating potential pullback. Hard block: ADX>=40 and SMA20>SMA50 forbids SELL, and BUY is not confirmed due to low volume and overbought RSI. Hence HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-08-22T12:38:11.200Z",
+    "symbol": "ETHUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 80,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1839,
+    "aiReasoning": "ADX=84.5 indicates a very strong trend, and SMA20>SMA50 confirms an uptrend. Rule 4 forbids SELL in this condition. Although RSI is overbought and price is near resistance, the strong trend and MACD positive suggest momentum, but the overbought RSI and low volume ratio create conflicting signals. Therefore, HOLD is the only valid decision.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
     "validationValid": true,
     "validationReasons": [
       "HOLD — пропуск"
