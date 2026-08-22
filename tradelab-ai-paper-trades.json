@@ -1,5 +1,5 @@
 {
-  "balance": 7069.708349830882,
+  "balance": 8802.890718381326,
   "peak": 10640.312139906338,
   "positions": [
     {
@@ -14,19 +14,6 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 67.6 indicates strong uptrend, RSI 70.6 slightly ove",
       "atrPct": 2.349406440920571
-    },
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 5.275,
-      "qty": 356.26342395212316,
-      "notional": 1879.2895613474498,
-      "fee": 0.7517158245389799,
-      "openedAt": "2026-08-22T04:38:38.163Z",
-      "aiConfidence": 74,
-      "aiReasoning": "1h only: Strong uptrend (ADX 44.8, price above SMA20/50), MACD positive, RSI overbought but momentum strong, ",
-      "atrPct": 3.2566012186865256
     }
   ],
   "closedTrades": [
@@ -216,9 +203,20 @@
       "reason": "Take profit 5.0% (ATR*3=1.7%)",
       "openedAt": "2026-08-21T16:40:16.321Z",
       "closedAt": "2026-08-22T04:38:43.844Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 5.275,
+      "exit": 4.867,
+      "pnl": -146.10719279700538,
+      "reason": "Stop loss 4.5% (ATR*1.5=3.0%)",
+      "openedAt": "2026-08-22T04:38:38.163Z",
+      "closedAt": "2026-08-22T08:36:05.307Z"
     }
   ],
-  "totalPnl": 640.3121399063385,
+  "totalPnl": 494.20494710933315,
   "wins": 12,
-  "losses": 5
+  "losses": 6
 }

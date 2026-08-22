@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T04:38:15.952Z",
+  "generatedAt": "2026-08-22T08:35:41.108Z",
   "summary": {
     "totalCandidates": 44,
     "live": 32,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 1976.045789328273,
-      "trades": 154,
+      "totalPnl": 1750.0672469193698,
+      "trades": 157,
       "wins": 90,
-      "losses": 64,
+      "losses": 67,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 1976.0499999999995,
-      "forwardTrades": 154,
+      "forwardPnl": 1750.0799999999997,
+      "forwardTrades": 157,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 58.4,
-      "avgPnlPerTrade": 12.83
+      "winRate": 57.3,
+      "avgPnlPerTrade": 11.15
     },
     "sma-rsi": {
       "totalPnl": 335.304953534273,
@@ -75,9 +75,9 @@
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": 129.47,
-      "trades": 44,
-      "avgPnl": 2.94
+      "pnl": -96.51,
+      "trades": 47,
+      "avgPnl": -2.05
     },
     "1": {
       "pnl": 22.66,
@@ -227,9 +227,9 @@
       "avgPnl": 19.07
     },
     "Saturday": {
-      "pnl": 244.21,
-      "trades": 20,
-      "avgPnl": 12.21
+      "pnl": 18.23,
+      "trades": 23,
+      "avgPnl": 0.79
     }
   },
   "equityCurve": [
@@ -2512,26 +2512,47 @@
       "pnl": 49.19,
       "symbol": "DOTUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-22 04:00",
+      "equity": 12230.65,
+      "pnl": -80.7,
+      "symbol": "SUIUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-22 04:00",
+      "equity": 12168.8,
+      "pnl": -61.86,
+      "symbol": "SEIUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-22 04:00",
+      "equity": 12085.37,
+      "pnl": -83.42,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 2.688,
-    "sortinoRatio": 3.065,
-    "calmarRatio": 7.137,
+    "sharpeRatio": 2.406,
+    "sortinoRatio": 2.702,
+    "calmarRatio": 6.465,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.539,
-    "dailyVolatility": 3.1238,
-    "annualizedReturn": 135.83,
-    "totalTrades": 325
+    "avgDailyReturn": 0.4882,
+    "dailyVolatility": 3.1548,
+    "annualizedReturn": 123.03,
+    "totalTrades": 328
   },
   "distribution": {
-    "totalTrades": 325,
+    "totalTrades": 328,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 11.49,
-      "avg": 7.11,
-      "stdDev": 131.08
+      "median": 10.97,
+      "avg": 6.36,
+      "stdDev": 130.72
     },
     "holdTime": {
       "avgBars": 0,
