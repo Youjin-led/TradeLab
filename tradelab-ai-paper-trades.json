@@ -1,6 +1,6 @@
 {
-  "balance": 4239.5018016465165,
-  "peak": 10315.83625462748,
+  "balance": 7069.708349830882,
+  "peak": 10640.312139906338,
   "positions": [
     {
       "symbol": "BTCUSDT",
@@ -16,30 +16,17 @@
       "atrPct": 2.349406440920571
     },
     {
-      "symbol": "AVAXUSDT",
+      "symbol": "INJUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 7.623,
-      "qty": 336.8871678722505,
-      "notional": 2568.0908806901652,
-      "fee": 1.0272363522760661,
-      "openedAt": "2026-08-21T16:40:16.321Z",
-      "aiConfidence": 87,
-      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 59.4 indicat | Strong bullish trend with price above SMA20 and SMA50, MACD ",
-      "atrPct": 2.9600269860010116
-    },
-    {
-      "symbol": "NEARUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.983,
-      "qty": 916.2528207578379,
-      "notional": 1816.9293435627926,
-      "fee": 0.726771737425117,
-      "openedAt": "2026-08-22T01:28:56.579Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 47.2 indicat | Price above SMA20 and SMA50, MACD positive, ADX 50.4 indicat",
-      "atrPct": 3.2742597795547876
+      "entry": 5.275,
+      "qty": 356.26342395212316,
+      "notional": 1879.2895613474498,
+      "fee": 0.7517158245389799,
+      "openedAt": "2026-08-22T04:38:38.163Z",
+      "aiConfidence": 74,
+      "aiReasoning": "1h only: Strong uptrend (ADX 44.8, price above SMA20/50), MACD positive, RSI overbought but momentum strong, ",
+      "atrPct": 3.2566012186865256
     }
   ],
   "closedTrades": [
@@ -207,9 +194,31 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-21T16:40:16.321Z",
       "closedAt": "2026-08-22T01:29:00.120Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.983,
+      "exit": 2.128,
+      "pnl": 132.1298872724614,
+      "reason": "Take profit 6.4% (ATR*3=2.1%)",
+      "openedAt": "2026-08-22T01:28:56.579Z",
+      "closedAt": "2026-08-22T04:38:40.559Z"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 7.623,
+      "exit": 8.197,
+      "pnl": 192.34599800639535,
+      "reason": "Take profit 5.0% (ATR*3=1.7%)",
+      "openedAt": "2026-08-21T16:40:16.321Z",
+      "closedAt": "2026-08-22T04:38:43.844Z"
     }
   ],
-  "totalPnl": 315.8362546274818,
-  "wins": 10,
+  "totalPnl": 640.3121399063385,
+  "wins": 12,
   "losses": 5
 }
