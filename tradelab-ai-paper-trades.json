@@ -1,6 +1,6 @@
 {
-  "balance": 4733.847523405539,
-  "peak": 10251.61716436189,
+  "balance": 4239.5018016465165,
+  "peak": 10315.83625462748,
   "positions": [
     {
       "symbol": "BTCUSDT",
@@ -29,17 +29,17 @@
       "atrPct": 2.9600269860010116
     },
     {
-      "symbol": "ADAUSDT",
+      "symbol": "NEARUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 0.2197,
-      "qty": 5727.649210460542,
-      "notional": 1258.3645315381812,
-      "fee": 0.5033458126152724,
-      "openedAt": "2026-08-21T16:40:16.321Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 53.5 indicates strong uptrend, RSI overbought but mo",
-      "atrPct": 3.5763053514532785
+      "entry": 1.983,
+      "qty": 916.2528207578379,
+      "notional": 1816.9293435627926,
+      "fee": 0.726771737425117,
+      "openedAt": "2026-08-22T01:28:56.579Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 47.2 indicat | Price above SMA20 and SMA50, MACD positive, ADX 50.4 indicat",
+      "atrPct": 3.2742597795547876
     }
   ],
   "closedTrades": [
@@ -196,9 +196,20 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-08-21T08:48:02.641Z",
       "closedAt": "2026-08-21T16:40:25.915Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.2197,
+      "exit": 0.231,
+      "pnl": 64.21909026558887,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-21T16:40:16.321Z",
+      "closedAt": "2026-08-22T01:29:00.120Z"
     }
   ],
-  "totalPnl": 251.61716436189292,
-  "wins": 9,
+  "totalPnl": 315.8362546274818,
+  "wins": 10,
   "losses": 5
 }
