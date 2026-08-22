@@ -375,15 +375,28 @@ async function handleStatus() {
 
   const lines = ['TradeLab Agent', now, ''];
 
-  // Portfolio from GitHub
+  // Live paper-trader equity (живой портфель AI, файл в репозитории)
+  const paper = await fetchJSON(`${GITHUB_RAW}/tradelab-ai-paper-trades.json`).catch(() => null);
+  if (paper && typeof paper.balance === 'number') {
+    let notional = 0;
+    const positions = Array.isArray(paper.positions) ? paper.positions : [];
+    for (const pos of positions) notional += (pos.notional || 0);
+    const equity = paper.balance + notional;
+    lines.push(`Live Paper Equity: $${equity.toFixed(2)}`);
+    lines.push(`  Cash: $${paper.balance.toFixed(2)} | In positions: $${notional.toFixed(2)} | Open: ${positions.length}`);
+    lines.push(`  Realized PnL: ${paper.totalPnl >= 0 ? '+' : ''}${(paper.totalPnl || 0).toFixed(2)} USDT`);
+    lines.push('');
+  }
+
+  // Incubation state (параллельные бэктесты стратегий)
   if (state && state.candidates) {
     const candidates = Object.values(state.candidates);
     const live = candidates.filter(c => c.status === 'incubating');
     const totalPnl = candidates.reduce((s, c) => s + (c.forwardPaperPnl || 0), 0);
-    lines.push(`Portfolio: ${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)} USDT`);
+    lines.push(`Incubation PnL: ${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)} USDT`);
     lines.push(`Live: ${live.length} | Total: ${candidates.length}`);
   } else {
-    lines.push('Portfolio: loading...');
+    lines.push('Incubation: loading...');
   }
 
   // Market data
@@ -412,6 +425,20 @@ async function handlePnl() {
   const state = await fetchJSON(`${GITHUB_RAW}/tradelab-incubation-state.json`);
   if (!state || !state.candidates) return 'No PnL data yet.';
 
+  const lines = ['PnL Report', ''];
+
+  // Live paper-trader equity (живой портфель AI)
+  const paper = await fetchJSON(`${GITHUB_RAW}/tradelab-ai-paper-trades.json`).catch(() => null);
+  if (paper && typeof paper.balance === 'number') {
+    let notional = 0;
+    const positions = Array.isArray(paper.positions) ? paper.positions : [];
+    for (const pos of positions) notional += (pos.notional || 0);
+    const equity = paper.balance + notional;
+    lines.push(`Live Paper Equity: $${equity.toFixed(2)}`);
+    lines.push(`  Realized PnL: ${(paper.totalPnl || 0) >= 0 ? '+' : ''}${(paper.totalPnl || 0).toFixed(2)} USDT (${(paper.closedTrades || []).length} trades)`);
+    lines.push('');
+  }
+
   const candidates = Object.values(state.candidates);
   let total = 0, wins = 0, losses = 0;
   const perSym = [];
@@ -428,14 +455,14 @@ async function handlePnl() {
     perSym.push({ sym: c.symbol, pnl: s, n: trades.length });
   }
 
-  const lines = ['PnL Report', ''];
+  lines.push('Incubation PnL:');
   for (const p of perSym.sort((a, b) => b.pnl - a.pnl)) {
     if (p.n > 0) {
       lines.push(`${p.sym}: ${p.pnl >= 0 ? '+' : ''}${p.pnl.toFixed(2)} USDT (${p.n} trades)`);
     }
   }
   lines.push('');
-  lines.push(`Total: ${total >= 0 ? '+' : ''}${total.toFixed(2)} USDT`);
+  lines.push(`Incubation Total: ${total >= 0 ? '+' : ''}${total.toFixed(2)} USDT`);
   const totalTrades = wins + losses;
   const winrate = totalTrades > 0 ? ((wins / totalTrades) * 100).toFixed(0) : 0;
   lines.push(`Wins: ${wins} | Losses: ${losses} | Winrate: ${winrate}%`);

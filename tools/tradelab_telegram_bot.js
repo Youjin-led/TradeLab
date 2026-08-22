@@ -31,6 +31,7 @@ const ROOT = path.join(__dirname, '..');
 const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
 const RISK_PATH = path.join(ROOT, 'tradelab-risk-manager.json');
 const PAUSE_PATH = path.join(ROOT, 'tradelab-paused.json');
+const PAPER_PATH = path.join(ROOT, 'tradelab-ai-paper-trades.json');
 const CONFIG_PATH = path.join(ROOT, '.env');
 
 // ===== Config =====
@@ -120,6 +121,27 @@ function readJSON(filepath, fallback) {
 function readState() { return readJSON(STATE_PATH, { candidates: {} }); }
 function readRisk() { return readJSON(RISK_PATH, { locks: {}, stats: {} }); }
 
+/**
+ * Прочитать равновесие бумажного трейдера (tradelab-ai-paper-trades.json).
+ * Equity = свободный баланс + ноционал открытых позиций.
+ * Возвращает null, если файла нет.
+ */
+function readPaperEquity() {
+  const p = readJSON(PAPER_PATH, null);
+  if (!p || typeof p.balance !== 'number') return null;
+  let notional = 0;
+  if (Array.isArray(p.positions)) {
+    for (const pos of p.positions) notional += (pos.notional || 0);
+  }
+  return {
+    balance: p.balance,
+    notional: notional,
+    equity: p.balance + notional,
+    positions: Array.isArray(p.positions) ? p.positions.length : 0,
+    totalPnl: typeof p.totalPnl === 'number' ? p.totalPnl : 0
+  };
+}
+
 function isPaused() {
   const p = readJSON(PAUSE_PATH, { paused: false });
   return p.paused;
@@ -138,18 +160,29 @@ async function handleStatus() {
   const quarantined = candidates.filter(c => c.status === 'quarantined');
   const rejected = candidates.filter(c => c.status === 'rejected');
 
-  const totalPnl = candidates.reduce((s, c) => s + (c.forwardPaperPnl || 0), 0);
-  const totalTrades = candidates.reduce((s, c) => s + (c.forwardPaperTrades || 0), 0);
-
   const lines = [
     '*TradeLab Status*',
     `_${new Date().toLocaleString('ru-RU')}_`,
     '',
-    `*Portfolio:* ${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)} USDT`,
-    `*Forward trades:* ${totalTrades}`,
-    `*Live:* ${live.length} | *Quarantined:* ${quarantined.length} | *Rejected:* ${rejected.length}`,
-    '',
   ];
+
+  // Live paper-trader equity (живой портфель AI)
+  const eq = readPaperEquity();
+  if (eq) {
+    lines.push(`*Live Paper Equity:* $${eq.equity.toFixed(2)}`);
+    lines.push(`  Cash: $${eq.balance.toFixed(2)} | In positions: $${eq.notional.toFixed(2)} | Open: ${eq.positions}`);
+    lines.push(`  Realized PnL: ${eq.totalPnl >= 0 ? '+' : ''}${eq.totalPnl.toFixed(2)} USDT`);
+    lines.push('');
+  }
+
+  // Incubation state (параллельные бэктесты стратегий)
+  const totalPnl = candidates.reduce((s, c) => s + (c.forwardPaperPnl || 0), 0);
+  const totalTrades = candidates.reduce((s, c) => s + (c.forwardPaperTrades || 0), 0);
+
+  lines.push(`*Incubation PnL:* ${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)} USDT`);
+  lines.push(`*Forward trades:* ${totalTrades}`);
+  lines.push(`*Live:* ${live.length} | *Quarantined:* ${quarantined.length} | *Rejected:* ${rejected.length}`);
+  lines.push('');
 
   if (isPaused()) lines.push('*TRADING:* PAUSED');
 
@@ -204,18 +237,21 @@ async function handlePnl() {
   const lines = [
     '*PnL Report*',
     '',
-    `*Portfolio Forward PnL:* ${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)} USDT`,
-    `*Daily Loss:* ${dailyLoss.toFixed(2)} USDT`,
-    `*Weekly Loss:* ${weeklyLoss.toFixed(2)} USDT`,
-    `*Monthly Loss:* ${monthlyLoss.toFixed(2)} USDT`,
-    '',
-    '*By Candidate:*',
   ];
 
-  for (const c of candidates) {
-    const pnl = (c.forwardPaperPnl || 0);
-    lines.push(`  ${c.symbol}: ${pnl >= 0 ? '+' : ''}${pnl.toFixed(2)}`);
+  // Live paper-trader equity (живой портфель AI)
+  const eq = readPaperEquity();
+  if (eq) {
+    lines.push(`*Live Paper Equity:* $${eq.equity.toFixed(2)}`);
+    lines.push(`  Realized PnL: ${eq.totalPnl >= 0 ? '+' : ''}${eq.totalPnl.toFixed(2)} USDT`);
+    lines.push('');
   }
+
+  lines.push(`*Incubation PnL:* ${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)} USDT`);
+  lines.push(`*Daily Loss:* ${dailyLoss.toFixed(2)} USDT`);
+  lines.push(`*Weekly Loss:* ${weeklyLoss.toFixed(2)} USDT`);
+  lines.push(`*Monthly Loss:* ${monthlyLoss.toFixed(2)} USDT`);
+  lines.push('');
 
   await sendMessage(lines.join('\n'));
 }
