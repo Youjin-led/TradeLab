@@ -26,6 +26,32 @@ var MAX_RISK_PCT = 1.0;
 var MAX_POSITIONS = 3;
 
 /**
+ * Детерминированный анти-контртренд guard (правило 4 промпта).
+ * Не зависит от текста модели: считает по индикаторам из контекста.
+ *
+ * - SELL запрещён при сильном восходящем тренде: ADX >= 40 и SMA20 > SMA50.
+ * - BUY запрещён при сильном нисходящем тренде: ADX >= 40 и SMA20 < SMA50.
+ *
+ * @param {Object} aiResult - Результат AI с context.indicators
+ * @returns {string|null} Причина блокировки или null
+ */
+function antitrendReason(aiResult) {
+  var ind = aiResult && aiResult.context && aiResult.context.indicators;
+  if (!ind) return null;
+  var adx = ind.adx14;
+  var sma20 = ind.sma20;
+  var sma50 = ind.sma50;
+  if (!adx || !sma20 || !sma50) return null;
+  if (aiResult.decision === 'SELL' && adx >= 40 && sma20 > sma50) {
+    return 'анти-контртренд: SELL при ADX ' + adx + ' >= 40 и SMA20 > SMA50 (сильный аптренд)';
+  }
+  if (aiResult.decision === 'BUY' && adx >= 40 && sma20 < sma50) {
+    return 'анти-контртренд: BUY при ADX ' + adx + ' >= 40 и SMA20 < SMA50 (сильный даунтренд)';
+  }
+  return null;
+}
+
+/**
  * Проверить решение LLM.
  * @returns {{ valid: boolean, reasons: string[] }}
  */
@@ -48,6 +74,13 @@ function validateDecision(aiResult, portfolioState) {
   // 3. HOLD всегда валиден
   if (aiResult.decision === 'HOLD') {
     return { valid: true, reasons: ['HOLD — пропуск'] };
+  }
+
+  // 3b. Анти-контртренд guard (правило 4): блокирует BUY/SELL против сильного тренда
+  var antitrend = antitrendReason(aiResult);
+  if (antitrend) {
+    reasons.push(antitrend);
+    valid = false;
   }
 
   // 4. Params check (только для BUY/SELL)
@@ -290,6 +323,7 @@ module.exports = {
   mergeSignals: mergeSignals,
   processDecision: processDecision,
   logDecision: logDecision,
+  antitrendReason: antitrendReason,
   MIN_CONFIDENCE: MIN_CONFIDENCE,
   MAX_RISK_PCT: MAX_RISK_PCT,
   MAX_POSITIONS: MAX_POSITIONS
