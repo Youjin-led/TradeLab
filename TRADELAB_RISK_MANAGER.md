@@ -1,23 +1,23 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-22T20:28:12.005Z
-Status: **LIMIT_HIT**
+Generated: 2026-08-23T01:42:23.408Z
+Status: **NORMAL**
 
 ---
 
 ## Overall Status
 
-- **Status:** LIMIT_HIT
-- **Next Action:** Daily loss limit reached. Paper trading paused until tomorrow.
-- **Entry Gate:** 🔴 CLOSED (blocked by: daily loss limit)
-- **Portfolio Stop-Loss:** 🔴 TRIGGERED
+- **Status:** NORMAL
+- **Next Action:** Normal operation. All risk limits within bounds.
+- **Entry Gate:** ✅ OPEN (all risk limits OK)
+- **Portfolio Stop-Loss:** ✅ OK
 - **Total PnL:** 1724.12 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -538.03 | -500 | 🔴 LOCKED |
+| Daily (UTC) | 0.00 | -500 | ✅ |
 | Weekly (7d) | 543.90 | -2500 | ✅ |
 | Monthly | 849.03 | -5000 | ✅ |
 | Total (all time) | 1724.12 | -5000 | ✅ |
@@ -32,7 +32,7 @@ Status: **LIMIT_HIT**
 | Lock | Status |
 | --- | --- |
 | Portfolio Stop-Loss | ✅ Inactive |
-| Daily Loss Limit | 🔴 Active |
+| Daily Loss Limit | ✅ Inactive |
 | Weekly Loss Limit | ✅ Inactive |
 | Monthly Loss Limit | ✅ Inactive |
 
@@ -120,10 +120,6 @@ Status: **LIMIT_HIT**
 - **Total Trailing Stops Triggered:** 0
 - **Total Correlation Blocks:** 0
 - **Total Margin Warnings:** 0
-
-## Recent Stop-Loss Events
-
-- 🔴 Daily loss -538.03 <= -500 (daily limit)
 
 ---
 
