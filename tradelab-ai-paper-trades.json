@@ -1,20 +1,7 @@
 {
-  "balance": 5174.194530054216,
+  "balance": 8674.566399008469,
   "peak": 10640.312139906338,
   "positions": [
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 2429.46,
-      "qty": 0.907133113287992,
-      "notional": 2203.843613408645,
-      "fee": 0.881537445363458,
-      "openedAt": "2026-08-22T12:49:18.301Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI oversold at 20.4 suggests bounce potential, MACD positive, price above SMA50, ADX 33.7 indicates",
-      "atrPct": 2.7118313181882883
-    },
     {
       "symbol": "XRPUSDT",
       "interval": "1h",
@@ -27,19 +14,6 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, trend bullish, RSI 56.3 not overbought, ADX 29.5 confirm",
       "atrPct": 6.950893152653927
-    },
-    {
-      "symbol": "OPUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.1098,
-      "qty": 12526.582870021275,
-      "notional": 1375.4187991283359,
-      "fee": 0.5501675196513344,
-      "openedAt": "2026-08-22T12:49:18.301Z",
-      "aiConfidence": 56,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, RSI neutral-bullish, trend bullish, and price near resis",
-      "atrPct": 5.692167577413478
     }
   ],
   "closedTrades": [
@@ -262,9 +236,31 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-22T12:38:11.577Z",
       "closedAt": "2026-08-22T12:49:21.348Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.1098,
+      "exit": 0.1055,
+      "pnl": -54.414473860742795,
+      "reason": "Stop loss 3.1% (ATR*1.5=2.0%)",
+      "openedAt": "2026-08-22T12:49:18.301Z",
+      "closedAt": "2026-08-23T04:42:40.875Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 2429.46,
+      "exit": 2403.45,
+      "pnl": -24.476069721984327,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-22T12:49:18.301Z",
+      "closedAt": "2026-08-23T04:42:46.707Z"
     }
   ],
-  "totalPnl": 494.49339718402507,
+  "totalPnl": 415.6028536012979,
   "wins": 13,
-  "losses": 7
+  "losses": 9
 }
