@@ -1,20 +1,7 @@
 {
-  "balance": 6852.90745521669,
+  "balance": 6742.596684772668,
   "peak": 10640.312139906338,
   "positions": [
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.5107,
-      "qty": 1152.4700169410407,
-      "notional": 1741.03645459283,
-      "fee": 0.696414581837132,
-      "openedAt": "2026-08-22T12:49:18.301Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, trend bullish, RSI 56.3 not overbought, ADX 29.5 confirm",
-      "atrPct": 6.950893152653927
-    },
     {
       "symbol": "INJUSDT",
       "interval": "1h",
@@ -27,6 +14,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20/SMA50, MACD positive, strong uptrend with ADX 28.5, volume 2.42x, breakout above r",
       "atrPct": 4.645958043466538
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 11.503,
+      "qty": 155.81464205840197,
+      "notional": 1792.3358275977978,
+      "fee": 0.7169343310391192,
+      "openedAt": "2026-08-24T08:54:36.950Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: RSI 27.7 oversold but price below SMA20 and above SMA50, trend bullish but ADX 33.8 and price below ",
+      "atrPct": 3.667366277120254
     }
   ],
   "closedTrades": [
@@ -271,9 +271,20 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-22T12:49:18.301Z",
       "closedAt": "2026-08-23T04:42:46.707Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.5107,
+      "exit": 1.4601,
+      "pnl": -59.011397439053766,
+      "reason": "Stop loss 2.9% (ATR*1.5=1.9%)",
+      "openedAt": "2026-08-22T12:49:18.301Z",
+      "closedAt": "2026-08-24T08:54:42.557Z"
     }
   ],
-  "totalPnl": 415.6028536012979,
+  "totalPnl": 356.5914561622441,
   "wins": 13,
-  "losses": 9
+  "losses": 10
 }
