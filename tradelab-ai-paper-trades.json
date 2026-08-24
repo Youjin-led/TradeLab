@@ -1,20 +1,7 @@
 {
-  "balance": 6742.596684772668,
+  "balance": 8778.082491775542,
   "peak": 10640.312139906338,
   "positions": [
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 5.298,
-      "qty": 343.83898523816123,
-      "notional": 1821.6589437917783,
-      "fee": 0.7286635775167113,
-      "openedAt": "2026-08-23T16:32:19.319Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20/SMA50, MACD positive, strong uptrend with ADX 28.5, volume 2.42x, breakout above r",
-      "atrPct": 4.645958043466538
-    },
     {
       "symbol": "LINKUSDT",
       "interval": "1h",
@@ -282,9 +269,20 @@
       "reason": "Stop loss 2.9% (ATR*1.5=1.9%)",
       "openedAt": "2026-08-22T12:49:18.301Z",
       "closedAt": "2026-08-24T08:54:42.557Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 5.298,
+      "exit": 5.922,
+      "pnl": 213.8268632110958,
+      "reason": "Take profit 6.9% (ATR*3=2.3%)",
+      "openedAt": "2026-08-23T16:32:19.319Z",
+      "closedAt": "2026-08-24T16:43:48.603Z"
     }
   ],
-  "totalPnl": 356.5914561622441,
-  "wins": 13,
+  "totalPnl": 570.41831937334,
+  "wins": 14,
   "losses": 10
 }
