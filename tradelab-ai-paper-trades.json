@@ -1,5 +1,5 @@
 {
-  "balance": 8690.310879453946,
+  "balance": 6865.345594768617,
   "peak": 10640.312139906338,
   "positions": [
     {
@@ -14,6 +14,19 @@
       "aiConfidence": 74,
       "aiReasoning": "1h only: Price below both SMA20 and SMA50, bearish trend, MACD negative, ADX 55.8 indicates strong downtrend,",
       "atrPct": 3.2146535236133573
+    },
+    {
+      "symbol": "NEARUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.931,
+      "qty": 945.0881847153436,
+      "notional": 1824.9652846853285,
+      "fee": 0.7299861138741314,
+      "openedAt": "2026-08-25T08:50:10.787Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price below SMA20 and SMA50, bearish trend, MACD negative, RSI below 50, breakdown below mid-Bolling",
+      "atrPct": 4.220611082340757
     }
   ],
   "closedTrades": [
