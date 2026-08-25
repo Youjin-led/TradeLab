@@ -1,5 +1,5 @@
 {
-  "balance": 6865.345594768617,
+  "balance": 5423.623019867207,
   "peak": 10640.312139906338,
   "positions": [
     {
@@ -27,6 +27,19 @@
       "aiConfidence": 56,
       "aiReasoning": "1h only: Price below SMA20 and SMA50, bearish trend, MACD negative, RSI below 50, breakdown below mid-Bolling",
       "atrPct": 4.220611082340757
+    },
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 2454.57,
+      "qty": 0.5873625828154867,
+      "notional": 1441.7225749014094,
+      "fee": 0.5766890299605638,
+      "openedAt": "2026-08-25T20:35:05.463Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price below both SMA20 and SMA50, MACD negative, RSI near oversold but not yet oversold, ADX below 2",
+      "atrPct": 1.7578871830329312
     }
   ],
   "closedTrades": [
