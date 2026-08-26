@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-26T08:50:45.169Z
+Generated: 2026-08-26T13:01:51.839Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1715.57 USDT
+- **Total PnL:** 1667.66 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 60.27 | -500 | ✅ |
-| Weekly (7d) | 468.32 | -2500 | ✅ |
-| Monthly | 840.49 | -5000 | ✅ |
-| Total (all time) | 1715.57 | -5000 | ✅ |
+| Daily (UTC) | 12.37 | -500 | ✅ |
+| Weekly (7d) | 769.63 | -2500 | ✅ |
+| Monthly | 792.59 | -5000 | ✅ |
+| Total (all time) | 1667.66 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 13602.1 USDT (max 30000)
+- **Open Notional:** 13617.4 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -110,11 +110,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 86.13%
-- **Total PnL:** 1715.57 USDT
-- **Total Exposure:** 13602.1 USDT
+- **Margin Level:** 85.68%
+- **Total PnL:** 1667.66 USDT
+- **Total Exposure:** 13617.4 USDT
 - **Warnings:**
-  - 🔴 margin_call: 86.13% (threshold: 100%)
+  - 🔴 margin_call: 85.68% (threshold: 100%)
 
 ## Statistics
 
