@@ -1,5 +1,5 @@
 {
-  "balance": 5556.784170077673,
+  "balance": 4908.220478204012,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -29,17 +29,17 @@
       "atrPct": 3.0276274095590203
     },
     {
-      "symbol": "NEARUSDT",
+      "symbol": "DOTUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 1.849,
-      "qty": 798.8749825196727,
-      "notional": 1477.1198426788749,
-      "fee": 0.59084793707155,
-      "openedAt": "2026-08-26T13:02:17.118Z",
-      "aiConfidence": 65,
-      "aiReasoning": "4h only: RSI deeply oversold at 21.6 suggests a bounce; price near SMA50 support, MACD slightly negative but ",
-      "atrPct": 3.29135440006181
+      "side": "SHORT",
+      "entry": 0.834,
+      "qty": 2522.2099065796565,
+      "notional": 2103.5230620874336,
+      "fee": 0.8414092248349735,
+      "openedAt": "2026-08-26T16:51:37.158Z",
+      "aiConfidence": 92,
+      "aiReasoning": "TF agree: Price below SMA20/SMA50, bearish trend, MACD negative, RSI n | Price below SMA20 and SMA50, MACD negative, RSI oversold but",
+      "atrPct": 2.6207605344296017
     }
   ],
   "closedTrades": [
@@ -339,9 +339,20 @@
       "reason": "Take profit 3.6% (ATR*3=1.2%)",
       "openedAt": "2026-08-25T08:50:10.787Z",
       "closedAt": "2026-08-26T13:02:26.786Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.849,
+      "exit": 1.822,
+      "pnl": -22.160472465102643,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-08-26T13:02:17.118Z",
+      "closedAt": "2026-08-26T16:51:40.009Z"
     }
   ],
-  "totalPnl": 677.1538407845342,
+  "totalPnl": 654.9933683194315,
   "wins": 16,
-  "losses": 11
+  "losses": 12
 }
