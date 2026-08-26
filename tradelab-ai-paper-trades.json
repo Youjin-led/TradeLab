@@ -1,5 +1,5 @@
 {
-  "balance": 4908.220478204012,
+  "balance": 4867.023912250695,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -29,17 +29,17 @@
       "atrPct": 3.0276274095590203
     },
     {
-      "symbol": "DOTUSDT",
+      "symbol": "OPUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 0.834,
-      "qty": 2522.2099065796565,
-      "notional": 2103.5230620874336,
-      "fee": 0.8414092248349735,
-      "openedAt": "2026-08-26T16:51:37.158Z",
-      "aiConfidence": 92,
-      "aiReasoning": "TF agree: Price below SMA20/SMA50, bearish trend, MACD negative, RSI n | Price below SMA20 and SMA50, MACD negative, RSI oversold but",
-      "atrPct": 2.6207605344296017
+      "entry": 0.0984,
+      "qty": 21197.839339070968,
+      "notional": 2085.867390964583,
+      "fee": 0.8343469563858333,
+      "openedAt": "2026-08-26T23:10:14.014Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, RSI oversold at 13, MACD negati",
+      "atrPct": 2.8745644599303155
     }
   ],
   "closedTrades": [
@@ -350,9 +350,20 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-08-26T13:02:17.118Z",
       "closedAt": "2026-08-26T16:51:40.009Z"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.834,
+      "exit": 0.857,
+      "pnl": -58.85223707616713,
+      "reason": "Stop loss 1.7% (ATR*1.5=1.1%)",
+      "openedAt": "2026-08-26T16:51:37.158Z",
+      "closedAt": "2026-08-26T23:10:16.555Z"
     }
   ],
-  "totalPnl": 654.9933683194315,
+  "totalPnl": 596.1411312432643,
   "wins": 16,
-  "losses": 12
+  "losses": 13
 }
