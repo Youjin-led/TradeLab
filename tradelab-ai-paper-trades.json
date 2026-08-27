@@ -1,33 +1,7 @@
 {
-  "balance": 4867.023912250695,
+  "balance": 6633.599535200947,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 2454.57,
-      "qty": 0.5873625828154867,
-      "notional": 1441.7225749014094,
-      "fee": 0.5766890299605638,
-      "openedAt": "2026-08-25T20:35:05.463Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price below both SMA20 and SMA50, MACD negative, RSI near oversold but not yet oversold, ADX below 2",
-      "atrPct": 1.7578871830329312
-    },
-    {
-      "symbol": "DOGEUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.08656,
-      "qty": 25433.540354974313,
-      "notional": 2201.5272531265764,
-      "fee": 0.8806109012506306,
-      "openedAt": "2026-08-26T01:40:47.273Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, trend bearish, MACD negati | Price below SMA20 and SMA50, MACD negative, RSI near oversol",
-      "atrPct": 3.0276274095590203
-    },
     {
       "symbol": "OPUSDT",
       "interval": "1h",
@@ -40,6 +14,19 @@
       "aiConfidence": 82,
       "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, RSI oversold at 13, MACD negati",
       "atrPct": 2.8745644599303155
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.4382,
+      "qty": 1226.0894880839082,
+      "notional": 1763.3619017622768,
+      "fee": 0.7053447607049108,
+      "openedAt": "2026-08-27T08:33:27.955Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: RSI is overbought at 71, price is above upper Bollinger Band, and MACD positive but trend is bearish",
+      "atrPct": 2.6754673500605923
     }
   ],
   "closedTrades": [
@@ -361,9 +348,31 @@
       "reason": "Stop loss 1.7% (ATR*1.5=1.1%)",
       "openedAt": "2026-08-26T16:51:37.158Z",
       "closedAt": "2026-08-26T23:10:16.555Z"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.08656,
+      "exit": 0.08897,
+      "pnl": -62.175443156738616,
+      "reason": "Stop loss 1.6% (ATR*1.5=1.1%)",
+      "openedAt": "2026-08-26T01:40:47.273Z",
+      "closedAt": "2026-08-27T08:33:33.261Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 2454.57,
+      "exit": 2540.65,
+      "pnl": -51.13686015871762,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.8%)",
+      "openedAt": "2026-08-25T20:35:05.463Z",
+      "closedAt": "2026-08-27T08:33:36.771Z"
     }
   ],
-  "totalPnl": 596.1411312432643,
+  "totalPnl": 482.82882792780805,
   "wins": 16,
-  "losses": 13
+  "losses": 15
 }
