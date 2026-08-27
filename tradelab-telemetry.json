@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-27T08:33:06.591Z",
+  "generatedAt": "2026-08-27T22:04:06.412Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 34,
+    "live": 40,
     "quarantined": 3,
-    "rejected": 7,
+    "rejected": 1,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 1112.928174622248,
-      "trades": 176,
-      "wins": 97,
+      "totalPnl": 1267.0690929907137,
+      "trades": 178,
+      "wins": 99,
       "losses": 79,
       "maxDd": 7.74,
       "symbols": [
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 1112.9199999999998,
-      "forwardTrades": 176,
+      "forwardPnl": 1267.0600000000002,
+      "forwardTrades": 178,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 55.1,
-      "avgPnlPerTrade": 6.32
+      "winRate": 55.6,
+      "avgPnlPerTrade": 7.12
     },
     "sma-rsi": {
       "totalPnl": 189.20063307224396,
@@ -75,9 +75,9 @@
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": -325.84,
-      "trades": 50,
-      "avgPnl": -6.52
+      "pnl": -182.84,
+      "trades": 51,
+      "avgPnl": -3.59
     },
     "1": {
       "pnl": 16.29,
@@ -115,9 +115,9 @@
       "avgPnl": 55.42
     },
     "8": {
-      "pnl": 46.24,
-      "trades": 53,
-      "avgPnl": 0.87
+      "pnl": 57.38,
+      "trades": 54,
+      "avgPnl": 1.06
     },
     "9": {
       "pnl": -131.18,
@@ -207,9 +207,9 @@
       "avgPnl": -16.55
     },
     "Tuesday": {
-      "pnl": -131.92,
-      "trades": 64,
-      "avgPnl": -2.06
+      "pnl": 11.08,
+      "trades": 65,
+      "avgPnl": 0.17
     },
     "Wednesday": {
       "pnl": 296.09,
@@ -217,9 +217,9 @@
       "avgPnl": 4.06
     },
     "Thursday": {
-      "pnl": 969.35,
-      "trades": 59,
-      "avgPnl": 16.43
+      "pnl": 980.49,
+      "trades": 60,
+      "avgPnl": 16.34
     },
     "Friday": {
       "pnl": 953.57,
@@ -2729,26 +2729,40 @@
       "pnl": -6.37,
       "symbol": "DOTUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-27 16:00",
+      "equity": 11313.27,
+      "pnl": 11.14,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-27 16:00",
+      "equity": 11456.27,
+      "pnl": 143,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.603,
-    "sortinoRatio": 1.708,
-    "calmarRatio": 4.414,
+    "sharpeRatio": 1.7,
+    "sortinoRatio": 1.82,
+    "calmarRatio": 4.695,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.3334,
-    "dailyVolatility": 3.2031,
-    "annualizedReturn": 84.02,
-    "totalTrades": 356
+    "avgDailyReturn": 0.3545,
+    "dailyVolatility": 3.217,
+    "annualizedReturn": 89.35,
+    "totalTrades": 358
   },
   "distribution": {
-    "totalTrades": 356,
+    "totalTrades": 358,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 10.36,
-      "avg": 3.66,
-      "stdDev": 126.76
+      "median": 10.38,
+      "avg": 4.07,
+      "stdDev": 126.62
     },
     "holdTime": {
       "avgBars": 0,

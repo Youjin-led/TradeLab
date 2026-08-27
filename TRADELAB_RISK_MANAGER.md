@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-08-27T08:33:06.452Z
+Generated: 2026-08-27T22:04:06.272Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1302.09 USDT
+- **Total PnL:** 1456.23 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -106.56 | -500 | ✅ |
-| Weekly (7d) | -24.93 | -2500 | ✅ |
-| Monthly | 427.02 | -5000 | ✅ |
-| Total (all time) | 1302.09 | -5000 | ✅ |
+| Daily (UTC) | 47.58 | -500 | ✅ |
+| Weekly (7d) | -224.60 | -2500 | ✅ |
+| Monthly | 581.16 | -5000 | ✅ |
+| Total (all time) | 1456.23 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 1920.46 USDT (max 30000)
+- **Open Notional:** 11246.09 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,22 +87,22 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.98% / 5% max
+- **Heat:** 1.15% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 34
-- **Sector Distribution:** {"alt_mid":12,"alt_large":11,"alt_small":3,"blue_chip":4,"other":4}
+- **Active Positions:** 40
+- **Sector Distribution:** {"alt_mid":15,"alt_large":13,"alt_small":3,"blue_chip":4,"other":5}
 - **Warnings:**
-  - ⚠️ alt_mid: 12 positions (max 3)
-  - ⚠️ alt_large: 11 positions (max 3)
+  - ⚠️ alt_mid: 15 positions (max 3)
+  - ⚠️ alt_large: 13 positions (max 3)
   - ⚠️ blue_chip: 4 positions (max 3)
-  - ⚠️ other: 4 positions (max 3)
+  - ⚠️ other: 5 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 34/3
+  - 🚫 max_concurrent_positions: 40/3
 
 ## Trailing Stops
 
@@ -110,9 +110,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 588.51%
-- **Total PnL:** 1302.09 USDT
-- **Total Exposure:** 1920.46 USDT
+- **Margin Level:** 101.87%
+- **Total PnL:** 1456.23 USDT
+- **Total Exposure:** 11246.09 USDT
+- **Warnings:**
+  - ⚠️ critical_margin: 101.87% (threshold: 110%)
 
 ## Statistics
 
