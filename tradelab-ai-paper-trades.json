@@ -1,20 +1,7 @@
 {
-  "balance": 6633.599535200947,
+  "balance": 6974.800461580127,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "OPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.0984,
-      "qty": 21197.839339070968,
-      "notional": 2085.867390964583,
-      "fee": 0.8343469563858333,
-      "openedAt": "2026-08-26T23:10:14.014Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, RSI oversold at 13, MACD negati",
-      "atrPct": 2.8745644599303155
-    },
     {
       "symbol": "XRPUSDT",
       "interval": "1h",
@@ -27,6 +14,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: RSI is overbought at 71, price is above upper Bollinger Band, and MACD positive but trend is bearish",
       "atrPct": 2.6754673500605923
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 7.394,
+      "qty": 250.75208036139918,
+      "notional": 1854.0608821921855,
+      "fee": 0.7416243528768742,
+      "openedAt": "2026-08-28T10:46:42.915Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price below SMA20 and SMA50, RSI oversold but momentum bearish, MACD negative, ADX 24.7 indicates tr",
+      "atrPct": 1.9455929518142117
     }
   ],
   "closedTrades": [
@@ -370,9 +370,20 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.8%)",
       "openedAt": "2026-08-25T20:35:05.463Z",
       "closedAt": "2026-08-27T08:33:36.771Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.0984,
+      "exit": 0.0932,
+      "pnl": 109.39441760678312,
+      "reason": "Take profit 4.9% (ATR*3=1.6%)",
+      "openedAt": "2026-08-26T23:10:14.014Z",
+      "closedAt": "2026-08-28T10:46:48.889Z"
     }
   ],
-  "totalPnl": 482.82882792780805,
-  "wins": 16,
+  "totalPnl": 592.2232455345911,
+  "wins": 17,
   "losses": 15
 }
