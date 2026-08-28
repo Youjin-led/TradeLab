@@ -1,20 +1,7 @@
 {
-  "balance": 6974.800461580127,
+  "balance": 4320.224654145757,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.4382,
-      "qty": 1226.0894880839082,
-      "notional": 1763.3619017622768,
-      "fee": 0.7053447607049108,
-      "openedAt": "2026-08-27T08:33:27.955Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI is overbought at 71, price is above upper Bollinger Band, and MACD positive but trend is bearish",
-      "atrPct": 2.6754673500605923
-    },
     {
       "symbol": "AVAXUSDT",
       "interval": "1h",
@@ -27,6 +14,32 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price below SMA20 and SMA50, RSI oversold but momentum bearish, MACD negative, ADX 24.7 indicates tr",
       "atrPct": 1.9455929518142117
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 77394.43,
+      "qty": 0.034176044742990144,
+      "notional": 2645.035502538218,
+      "fee": 1.0580142010152873,
+      "openedAt": "2026-08-28T22:01:51.366Z",
+      "aiConfidence": 87,
+      "aiReasoning": "TF agree: Price below both SMAs, bearish trend, MACD negative, RSI ove | Price below SMA20 and SMA50, MACD negative, ADX 30.8 indicat",
+      "atrPct": 1.3084311844442258
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.2003,
+      "qty": 9243.758620952334,
+      "notional": 1851.5248517767527,
+      "fee": 0.7406099407107011,
+      "openedAt": "2026-08-28T22:01:51.366Z",
+      "aiConfidence": 87,
+      "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, bearish trend, MACD negative, R",
+      "atrPct": 2.706654304257898
     }
   ],
   "closedTrades": [
@@ -381,9 +394,20 @@
       "reason": "Take profit 4.9% (ATR*3=1.6%)",
       "openedAt": "2026-08-26T23:10:14.014Z",
       "closedAt": "2026-08-28T10:46:48.889Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.4382,
+      "exit": 1.3735,
+      "pnl": 78.62264511832393,
+      "reason": "Take profit 4.3% (ATR*3=1.4%)",
+      "openedAt": "2026-08-27T08:33:27.955Z",
+      "closedAt": "2026-08-28T22:01:57.389Z"
     }
   ],
-  "totalPnl": 592.2232455345911,
-  "wins": 17,
+  "totalPnl": 670.845890652915,
+  "wins": 18,
   "losses": 15
 }
