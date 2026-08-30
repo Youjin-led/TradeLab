@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-08-30T13:42:16.679Z",
+  "generatedAt": "2026-08-30T19:13:10.343Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 36,
-    "quarantined": 2,
+    "live": 33,
+    "quarantined": 5,
     "rejected": 6,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 1106.3210588481163,
-      "trades": 186,
+      "totalPnl": 1087.8667745954192,
+      "trades": 188,
       "wins": 103,
-      "losses": 83,
+      "losses": 85,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 1106.3299999999997,
-      "forwardTrades": 186,
+      "forwardPnl": 1087.8699999999997,
+      "forwardTrades": 188,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 55.4,
-      "avgPnlPerTrade": 5.95
+      "winRate": 54.8,
+      "avgPnlPerTrade": 5.79
     },
     "sma-rsi": {
       "totalPnl": 74.66626688306974,
@@ -140,9 +140,9 @@
       "avgPnl": 16.09
     },
     "13": {
-      "pnl": 384.42,
-      "trades": 10,
-      "avgPnl": 38.44
+      "pnl": 376.54,
+      "trades": 11,
+      "avgPnl": 34.23
     },
     "14": {
       "pnl": 322.57,
@@ -155,9 +155,9 @@
       "avgPnl": 10.18
     },
     "16": {
-      "pnl": -111.97,
-      "trades": 44,
-      "avgPnl": -2.54
+      "pnl": -122.55,
+      "trades": 45,
+      "avgPnl": -2.72
     },
     "17": {
       "pnl": 691.85,
@@ -197,9 +197,9 @@
   },
   "byDayOfWeek": {
     "Sunday": {
-      "pnl": 418.5,
-      "trades": 32,
-      "avgPnl": 13.08
+      "pnl": 400.05,
+      "trades": 34,
+      "avgPnl": 11.77
     },
     "Monday": {
       "pnl": -860.46,
@@ -2869,26 +2869,40 @@
       "pnl": 2.49,
       "symbol": "SEIUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-30 15:00",
+      "equity": 11173.11,
+      "pnl": -7.88,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-08-30 17:00",
+      "equity": 11162.53,
+      "pnl": -10.58,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.434,
-    "sortinoRatio": 1.506,
-    "calmarRatio": 3.979,
+    "sharpeRatio": 1.421,
+    "sortinoRatio": 1.497,
+    "calmarRatio": 3.935,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.3005,
-    "dailyVolatility": 3.2167,
-    "annualizedReturn": 75.74,
-    "totalTrades": 376
+    "avgDailyReturn": 0.2972,
+    "dailyVolatility": 3.2086,
+    "annualizedReturn": 74.89,
+    "totalTrades": 378
   },
   "distribution": {
-    "totalTrades": 376,
+    "totalTrades": 378,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 8.34,
-      "avg": 3.14,
-      "stdDev": 124.2
+      "median": 7.01,
+      "avg": 3.08,
+      "stdDev": 123.87
     },
     "holdTime": {
       "avgBars": 0,
