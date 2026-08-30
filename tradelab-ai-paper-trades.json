@@ -1,45 +1,45 @@
 {
-  "balance": 4320.224654145757,
+  "balance": 4098.905248406972,
   "peak": 10677.153840784533,
   "positions": [
     {
-      "symbol": "AVAXUSDT",
+      "symbol": "SOLUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 107.01,
+      "qty": 29.685310677876885,
+      "notional": 3176.6250956396057,
+      "fee": 1.2706500382558423,
+      "openedAt": "2026-08-30T13:42:36.258Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price above both SMAs, MACD positive, RSI 66.9 below overbou | Price above SMA20 and SMA50, MACD positive, RSI 53.5 in bull",
+      "atrPct": 1.5606018129146806
+    },
+    {
+      "symbol": "LTCUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 7.394,
-      "qty": 250.75208036139918,
-      "notional": 1854.0608821921855,
-      "fee": 0.7416243528768742,
-      "openedAt": "2026-08-28T10:46:42.915Z",
+      "entry": 49.77,
+      "qty": 44.67827138733623,
+      "notional": 2223.6375669477243,
+      "fee": 0.8894550267790897,
+      "openedAt": "2026-08-30T13:42:36.258Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price is above upper Bollinger band and RSI is overbought (7 | Price below SMA50, trend bearish, MACD negative, ADX>25 indi",
+      "atrPct": 1.1897586038634882
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 1.4015,
+      "qty": 777.4401768136889,
+      "notional": 1089.582407804385,
+      "fee": 0.435832963121754,
+      "openedAt": "2026-08-30T13:42:36.258Z",
       "aiConfidence": 65,
-      "aiReasoning": "1h only: Price below SMA20 and SMA50, RSI oversold but momentum bearish, MACD negative, ADX 24.7 indicates tr",
-      "atrPct": 1.9455929518142117
-    },
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 77394.43,
-      "qty": 0.034176044742990144,
-      "notional": 2645.035502538218,
-      "fee": 1.0580142010152873,
-      "openedAt": "2026-08-28T22:01:51.366Z",
-      "aiConfidence": 87,
-      "aiReasoning": "TF agree: Price below both SMAs, bearish trend, MACD negative, RSI ove | Price below SMA20 and SMA50, MACD negative, ADX 30.8 indicat",
-      "atrPct": 1.3084311844442258
-    },
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.2003,
-      "qty": 9243.758620952334,
-      "notional": 1851.5248517767527,
-      "fee": 0.7406099407107011,
-      "openedAt": "2026-08-28T22:01:51.366Z",
-      "aiConfidence": 87,
-      "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, bearish trend, MACD negative, R",
-      "atrPct": 2.706654304257898
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, RSI 55.1 in bullish zone, ADX 27.5 indicates trending ma",
+      "atrPct": 1.4805565465572599
     }
   ],
   "closedTrades": [
@@ -405,9 +405,42 @@
       "reason": "Take profit 4.3% (ATR*3=1.4%)",
       "openedAt": "2026-08-27T08:33:27.955Z",
       "closedAt": "2026-08-28T22:01:57.389Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.2003,
+      "exit": 0.2035,
+      "pnl": -30.32063752775799,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.6%)",
+      "openedAt": "2026-08-28T22:01:51.366Z",
+      "closedAt": "2026-08-30T13:42:39.187Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 77394.43,
+      "exit": 78731.99,
+      "pnl": -46.7705246074496,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.3%)",
+      "openedAt": "2026-08-28T22:01:51.366Z",
+      "closedAt": "2026-08-30T13:42:42.409Z"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 7.394,
+      "exit": 7.411,
+      "pnl": -5.004409719020525,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-08-28T10:46:42.915Z",
+      "closedAt": "2026-08-30T13:42:45.571Z"
     }
   ],
-  "totalPnl": 670.845890652915,
+  "totalPnl": 588.750318798687,
   "wins": 18,
-  "losses": 15
+  "losses": 18
 }
