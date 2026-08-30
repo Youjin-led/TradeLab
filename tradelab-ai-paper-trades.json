@@ -1,20 +1,7 @@
 {
-  "balance": 4098.905248406972,
+  "balance": 5019.668368994517,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "SOLUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 107.01,
-      "qty": 29.685310677876885,
-      "notional": 3176.6250956396057,
-      "fee": 1.2706500382558423,
-      "openedAt": "2026-08-30T13:42:36.258Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price above both SMAs, MACD positive, RSI 66.9 below overbou | Price above SMA20 and SMA50, MACD positive, RSI 53.5 in bull",
-      "atrPct": 1.5606018129146806
-    },
     {
       "symbol": "LTCUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, RSI 55.1 in bullish zone, ADX 27.5 indicates trending ma",
       "atrPct": 1.4805565465572599
+    },
+    {
+      "symbol": "SOLUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 103.51,
+      "qty": 20.783368214228506,
+      "notional": 2151.2864438547927,
+      "fee": 0.8605145775419171,
+      "openedAt": "2026-08-30T22:34:51.871Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, recent candles show a clea | Price below SMA20 and SMA50, bearish trend with ADX 34.2, MA",
+      "atrPct": 1.4863988296506898
     }
   ],
   "closedTrades": [
@@ -438,9 +438,20 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-08-28T10:46:42.915Z",
       "closedAt": "2026-08-30T13:42:45.571Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 107.01,
+      "exit": 103.53,
+      "pnl": -104.57553119726751,
+      "reason": "Stop loss 1.6% (ATR*1.5=1.0%)",
+      "openedAt": "2026-08-30T13:42:36.258Z",
+      "closedAt": "2026-08-30T22:35:00.231Z"
     }
   ],
-  "totalPnl": 588.750318798687,
+  "totalPnl": 484.17478760141944,
   "wins": 18,
-  "losses": 18
+  "losses": 19
 }
