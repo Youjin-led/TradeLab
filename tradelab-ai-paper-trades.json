@@ -1,5 +1,5 @@
 {
-  "balance": 5019.668368994517,
+  "balance": 4247.381850937635,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -16,19 +16,6 @@
       "atrPct": 1.1897586038634882
     },
     {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.4015,
-      "qty": 777.4401768136889,
-      "notional": 1089.582407804385,
-      "fee": 0.435832963121754,
-      "openedAt": "2026-08-30T13:42:36.258Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, RSI 55.1 in bullish zone, ADX 27.5 indicates trending ma",
-      "atrPct": 1.4805565465572599
-    },
-    {
       "symbol": "SOLUSDT",
       "interval": "1h",
       "side": "SHORT",
@@ -40,6 +27,19 @@
       "aiConfidence": 77,
       "aiReasoning": "TF agree: Price below both SMA20 and SMA50, recent candles show a clea | Price below SMA20 and SMA50, bearish trend with ADX 34.2, MA",
       "atrPct": 1.4863988296506898
+    },
+    {
+      "symbol": "SUIUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.7131,
+      "qty": 2552.666537014024,
+      "notional": 1820.3065075447005,
+      "fee": 0.7281226030178802,
+      "openedAt": "2026-08-31T04:50:06.106Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, trend bearish, MACD negati | Price below SMA20 and SMA50, MACD negative, ADX 34.8 indicat",
+      "atrPct": 2.0764469018570844
     }
   ],
   "closedTrades": [
@@ -449,9 +449,20 @@
       "reason": "Stop loss 1.6% (ATR*1.5=1.0%)",
       "openedAt": "2026-08-30T13:42:36.258Z",
       "closedAt": "2026-08-30T22:35:00.231Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.4015,
+      "exit": 1.3486,
+      "pnl": -41.56241831656586,
+      "reason": "Stop loss 2.3% (ATR*1.5=1.6%)",
+      "openedAt": "2026-08-30T13:42:36.258Z",
+      "closedAt": "2026-08-31T04:50:15.822Z"
     }
   ],
-  "totalPnl": 484.17478760141944,
+  "totalPnl": 442.61236928485357,
   "wins": 18,
-  "losses": 19
+  "losses": 20
 }
