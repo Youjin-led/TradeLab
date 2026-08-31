@@ -1,5 +1,5 @@
 {
-  "balance": 4247.381850937635,
+  "balance": 4223.106839655922,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -29,17 +29,17 @@
       "atrPct": 1.4863988296506898
     },
     {
-      "symbol": "SUIUSDT",
+      "symbol": "INJUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 0.7131,
-      "qty": 2552.666537014024,
-      "notional": 1820.3065075447005,
-      "fee": 0.7281226030178802,
-      "openedAt": "2026-08-31T04:50:06.106Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, trend bearish, MACD negati | Price below SMA20 and SMA50, MACD negative, ADX 34.8 indicat",
-      "atrPct": 2.0764469018570844
+      "entry": 4.932,
+      "qty": 366.97139725894345,
+      "notional": 1809.9029312811092,
+      "fee": 0.7239611725124437,
+      "openedAt": "2026-08-31T23:41:01.881Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, MACD negative, bearish trend, R",
+      "atrPct": 2.6054339010543384
     }
   ],
   "closedTrades": [
@@ -460,9 +460,20 @@
       "reason": "Stop loss 2.3% (ATR*1.5=1.6%)",
       "openedAt": "2026-08-30T13:42:36.258Z",
       "closedAt": "2026-08-31T04:50:15.822Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.7131,
+      "exit": 0.7264,
+      "pnl": -34.67858754530463,
+      "reason": "Stop loss 1.8% (ATR*1.5=1.2%)",
+      "openedAt": "2026-08-31T04:50:06.106Z",
+      "closedAt": "2026-08-31T23:41:03.958Z"
     }
   ],
-  "totalPnl": 442.61236928485357,
+  "totalPnl": 407.9337817395489,
   "wins": 18,
-  "losses": 20
+  "losses": 21
 }
