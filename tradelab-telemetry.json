@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-08-31T23:40:40.964Z",
+  "generatedAt": "2026-09-01T04:29:39.498Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 37,
-    "quarantined": 3,
+    "live": 36,
+    "quarantined": 4,
     "rejected": 4,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 988.689341263763,
-      "trades": 190,
-      "wins": 103,
-      "losses": 87,
+      "totalPnl": 1022.4126932347536,
+      "trades": 193,
+      "wins": 105,
+      "losses": 88,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,18 +33,18 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 988.6999999999998,
-      "forwardTrades": 190,
+      "forwardPnl": 1022.4199999999998,
+      "forwardTrades": 193,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 54.2,
-      "avgPnlPerTrade": 5.2
+      "winRate": 54.4,
+      "avgPnlPerTrade": 5.3
     },
     "sma-rsi": {
-      "totalPnl": 75.06747105404207,
-      "trades": 191,
+      "totalPnl": 34.8968008917339,
+      "trades": 192,
       "wins": 99,
-      "losses": 92,
+      "losses": 93,
       "maxDd": 6.17,
       "symbols": [
         "LINKUSDT",
@@ -65,19 +65,19 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": 75.0400000000001,
-      "forwardTrades": 191,
+      "forwardPnl": 34.87000000000015,
+      "forwardTrades": 192,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.8,
-      "avgPnlPerTrade": 0.39
+      "winRate": 51.6,
+      "avgPnlPerTrade": 0.18
     }
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": -182.44,
-      "trades": 52,
-      "avgPnl": -3.51
+      "pnl": -222.61,
+      "trades": 53,
+      "avgPnl": -4.2
     },
     "1": {
       "pnl": 16.29,
@@ -155,9 +155,9 @@
       "avgPnl": 10.18
     },
     "16": {
-      "pnl": -168.69,
-      "trades": 46,
-      "avgPnl": -3.67
+      "pnl": -49.73,
+      "trades": 48,
+      "avgPnl": -1.04
     },
     "17": {
       "pnl": 691.85,
@@ -190,21 +190,21 @@
       "avgPnl": -157.37
     },
     "23": {
-      "pnl": 488.02,
-      "trades": 10,
-      "avgPnl": 48.8
+      "pnl": 402.78,
+      "trades": 11,
+      "avgPnl": 36.62
     }
   },
   "byDayOfWeek": {
     "Sunday": {
-      "pnl": 300.87,
-      "trades": 36,
-      "avgPnl": 8.36
+      "pnl": 215.63,
+      "trades": 37,
+      "avgPnl": 5.83
     },
     "Monday": {
-      "pnl": -860.06,
-      "trades": 53,
-      "avgPnl": -16.23
+      "pnl": -781.27,
+      "trades": 56,
+      "avgPnl": -13.95
     },
     "Tuesday": {
       "pnl": 11.08,
@@ -2904,26 +2904,54 @@
       "pnl": 0.4,
       "symbol": "OPUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-01 00:00",
+      "equity": 11123.24,
+      "pnl": 59.48,
+      "symbol": "ARBUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-01 00:00",
+      "equity": 11182.72,
+      "pnl": 59.48,
+      "symbol": "ARBUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-01 01:00",
+      "equity": 11142.55,
+      "pnl": -40.17,
+      "symbol": "SEIUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-01 02:00",
+      "equity": 11057.31,
+      "pnl": -85.24,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.354,
-    "sortinoRatio": 1.427,
-    "calmarRatio": 3.748,
+    "sharpeRatio": 1.575,
+    "sortinoRatio": 1.751,
+    "calmarRatio": 4.571,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.2831,
-    "dailyVolatility": 3.2015,
-    "annualizedReturn": 71.33,
-    "totalTrades": 381
+    "avgDailyReturn": 0.3452,
+    "dailyVolatility": 3.3789,
+    "annualizedReturn": 87,
+    "totalTrades": 385
   },
   "distribution": {
-    "totalTrades": 381,
+    "totalTrades": 385,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 6.1,
-      "avg": 2.79,
-      "stdDev": 123.44
+      "avg": 2.75,
+      "stdDev": 122.97
     },
     "holdTime": {
       "avgBars": 0,
