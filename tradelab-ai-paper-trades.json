@@ -1,33 +1,7 @@
 {
-  "balance": 4223.106839655922,
+  "balance": 4258.512980878582,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "LTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 49.77,
-      "qty": 44.67827138733623,
-      "notional": 2223.6375669477243,
-      "fee": 0.8894550267790897,
-      "openedAt": "2026-08-30T13:42:36.258Z",
-      "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price is above upper Bollinger band and RSI is overbought (7 | Price below SMA50, trend bearish, MACD negative, ADX>25 indi",
-      "atrPct": 1.1897586038634882
-    },
-    {
-      "symbol": "SOLUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 103.51,
-      "qty": 20.783368214228506,
-      "notional": 2151.2864438547927,
-      "fee": 0.8605145775419171,
-      "openedAt": "2026-08-30T22:34:51.871Z",
-      "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, recent candles show a clea | Price below SMA20 and SMA50, bearish trend with ADX 34.2, MA",
-      "atrPct": 1.4863988296506898
-    },
     {
       "symbol": "INJUSDT",
       "interval": "1h",
@@ -40,6 +14,32 @@
       "aiConfidence": 77,
       "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, MACD negative, bearish trend, R",
       "atrPct": 2.6054339010543384
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 77245.18,
+      "qty": 0.03375295190503624,
+      "notional": 2607.2528454358667,
+      "fee": 1.0429011381743467,
+      "openedAt": "2026-09-01T19:18:49.584Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, trend bearish, MACD negati | Price below SMA20 and SMA50, MACD negative, bearish trend, A",
+      "atrPct": 1.2311225854388026
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.3572,
+      "qty": 1344.7369524057667,
+      "notional": 1825.0769918051067,
+      "fee": 0.7300307967220427,
+      "openedAt": "2026-09-01T19:18:49.584Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price below both SMAs, MACD negative, RSI near oversold but  | Price below SMA20 and SMA50, MACD negative, bearish trend, R",
+      "atrPct": 2.2067491895078115
     }
   ],
   "closedTrades": [
@@ -471,9 +471,31 @@
       "reason": "Stop loss 1.8% (ATR*1.5=1.2%)",
       "openedAt": "2026-08-31T04:50:06.106Z",
       "closedAt": "2026-08-31T23:41:03.958Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 103.51,
+      "exit": 99.82,
+      "pnl": 75.83011413296151,
+      "reason": "Take profit 3.1% (ATR*3=1.0%)",
+      "openedAt": "2026-08-30T22:34:51.871Z",
+      "closedAt": "2026-09-01T19:18:55.387Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 49.77,
+      "exit": 49.37,
+      "pnl": 16.981853528155657,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-08-30T13:42:36.258Z",
+      "closedAt": "2026-09-01T19:18:58.340Z"
     }
   ],
-  "totalPnl": 407.9337817395489,
-  "wins": 18,
+  "totalPnl": 500.7457494006661,
+  "wins": 20,
   "losses": 21
 }

@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-01T13:20:33.124Z
+Generated: 2026-09-01T19:18:24.960Z
 Status: **NORMAL**
 
 ---
@@ -11,16 +11,16 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 786.23 USDT
+- **Total PnL:** 804.20 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -277.51 | -500 | ✅ |
-| Weekly (7d) | -819.00 | -2500 | ✅ |
-| Monthly | -277.51 | -5000 | ✅ |
-| Total (all time) | 786.23 | -5000 | ✅ |
+| Daily (UTC) | -259.55 | -500 | ✅ |
+| Weekly (7d) | -821.09 | -2500 | ✅ |
+| Monthly | -259.55 | -5000 | ✅ |
+| Total (all time) | 804.20 | -5000 | ✅ |
 
 ## Hard Exposure
 
@@ -70,7 +70,7 @@ Status: **NORMAL**
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 0.7% | 70 | 0 | 50% | 95 |
+| SEIUSDT | breakout | 0.7% | 70 | 0 | 54.5% | 95 |
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -110,8 +110,8 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 270.14%
-- **Total PnL:** 786.23 USDT
+- **Margin Level:** 270.59%
+- **Total PnL:** 804.2 USDT
 - **Total Exposure:** 3992.85 USDT
 
 ## Statistics
