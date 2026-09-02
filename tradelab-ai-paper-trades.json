@@ -1,5 +1,5 @@
 {
-  "balance": 4258.512980878582,
+  "balance": 4279.840487427946,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -32,14 +32,14 @@
       "symbol": "XRPUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 1.3572,
-      "qty": 1344.7369524057667,
-      "notional": 1825.0769918051067,
-      "fee": 0.7300307967220427,
-      "openedAt": "2026-09-01T19:18:49.584Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price below both SMAs, MACD negative, RSI near oversold but  | Price below SMA20 and SMA50, MACD negative, bearish trend, R",
-      "atrPct": 2.2067491895078115
+      "entry": 1.3333,
+      "qty": 1375.6974062512818,
+      "notional": 1834.217351754834,
+      "fee": 0.7336869407019336,
+      "openedAt": "2026-09-02T08:39:33.967Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, MACD negative, RSI at 34.9 | Price below both SMA20 and SMA50, trend is bearish, MACD neg",
+      "atrPct": 1.7630797912804963
     }
   ],
   "closedTrades": [
@@ -493,9 +493,20 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-08-30T13:42:36.258Z",
       "closedAt": "2026-09-01T19:18:58.340Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.3572,
+      "exit": 1.334,
+      "pnl": 30.467866499091592,
+      "reason": "AI low confidence",
+      "openedAt": "2026-09-01T19:18:49.584Z",
+      "closedAt": "2026-09-02T08:39:39.167Z"
     }
   ],
-  "totalPnl": 500.7457494006661,
-  "wins": 20,
+  "totalPnl": 531.2136158997577,
+  "wins": 21,
   "losses": 21
 }

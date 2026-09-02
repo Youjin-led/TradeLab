@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-02T03:52:27.246Z
+Generated: 2026-09-02T08:39:13.304Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 725.48 USDT
+- **Total PnL:** 734.36 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | -990.11 | -2500 | ✅ |
-| Monthly | -338.27 | -5000 | ✅ |
-| Total (all time) | 725.48 | -5000 | ✅ |
+| Daily (UTC) | 8.89 | -500 | ✅ |
+| Weekly (7d) | -981.23 | -2500 | ✅ |
+| Monthly | -329.38 | -5000 | ✅ |
+| Total (all time) | 734.36 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 2044.62 USDT (max 30000)
+- **Open Notional:** 0 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -74,7 +74,7 @@ Status: **NORMAL**
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| DOGEUSDT | breakout | 2% | 200 | 25 | 80% | 95 |
+| DOGEUSDT | breakout | 2% | 200 | 25 | 81.8% | 95 |
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | OPUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -87,22 +87,22 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.95% / 5% max
+- **Heat:** 1.01% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 33
-- **Sector Distribution:** {"alt_mid":13,"alt_large":9,"alt_small":3,"blue_chip":4,"other":4}
+- **Active Positions:** 35
+- **Sector Distribution:** {"alt_mid":13,"alt_large":11,"alt_small":3,"blue_chip":4,"other":4}
 - **Warnings:**
   - ⚠️ alt_mid: 13 positions (max 3)
-  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ alt_large: 11 positions (max 3)
   - ⚠️ blue_chip: 4 positions (max 3)
   - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 33/3
+  - 🚫 max_concurrent_positions: 35/3
 
 ## Trailing Stops
 
@@ -110,9 +110,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 524.57%
-- **Total PnL:** 725.48 USDT
-- **Total Exposure:** 2044.62 USDT
+- **Margin Level:** 101.73%
+- **Total PnL:** 734.36 USDT
+- **Total Exposure:** 10552.08 USDT
+- **Warnings:**
+  - ⚠️ critical_margin: 101.73% (threshold: 110%)
 
 ## Statistics
 
