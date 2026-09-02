@@ -1,20 +1,7 @@
 {
-  "balance": 4279.840487427946,
+  "balance": 4314.974015782238,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 4.932,
-      "qty": 366.97139725894345,
-      "notional": 1809.9029312811092,
-      "fee": 0.7239611725124437,
-      "openedAt": "2026-08-31T23:41:01.881Z",
-      "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price below SMA20 and SMA50, bearish trend, MACD negative, R | Price below SMA20 and SMA50, MACD negative, bearish trend, R",
-      "atrPct": 2.6054339010543384
-    },
     {
       "symbol": "BTCUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 77,
       "aiReasoning": "TF agree: Price below both SMA20 and SMA50, MACD negative, RSI at 34.9 | Price below both SMA20 and SMA50, trend is bearish, MACD neg",
       "atrPct": 1.7630797912804963
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.08097,
+      "qty": 22839.009240365416,
+      "notional": 1849.2745781923877,
+      "fee": 0.7397098312769551,
+      "openedAt": "2026-09-02T22:29:31.358Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price below SMA20 and SMA50, trend bearish, MACD negative, A | Price below SMA20 and SMA50, bearish trend, MACD negative, R",
+      "atrPct": 1.5428994865823336
     }
   ],
   "closedTrades": [
@@ -504,9 +504,20 @@
       "reason": "AI low confidence",
       "openedAt": "2026-09-01T19:18:49.584Z",
       "closedAt": "2026-09-02T08:39:39.167Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 4.932,
+      "exit": 4.727,
+      "pnl": 74.50517526557098,
+      "reason": "Take profit 3.4% (ATR*3=1.1%)",
+      "openedAt": "2026-08-31T23:41:01.881Z",
+      "closedAt": "2026-09-02T22:29:39.455Z"
     }
   ],
-  "totalPnl": 531.2136158997577,
-  "wins": 21,
+  "totalPnl": 605.7187911653286,
+  "wins": 22,
   "losses": 21
 }
