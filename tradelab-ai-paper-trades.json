@@ -1,5 +1,5 @@
 {
-  "balance": 4314.974015782238,
+  "balance": 4374.625608699577,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -16,30 +16,30 @@
       "atrPct": 1.2311225854388026
     },
     {
-      "symbol": "XRPUSDT",
+      "symbol": "OPUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.3333,
-      "qty": 1375.6974062512818,
-      "notional": 1834.217351754834,
-      "fee": 0.7336869407019336,
-      "openedAt": "2026-09-02T08:39:33.967Z",
+      "side": "LONG",
+      "entry": 0.098,
+      "qty": 24216.47567276586,
+      "notional": 2373.2146159310546,
+      "fee": 0.9492858463724219,
+      "openedAt": "2026-09-03T03:51:48.465Z",
       "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, MACD negative, RSI at 34.9 | Price below both SMA20 and SMA50, trend is bearish, MACD neg",
-      "atrPct": 1.7630797912804963
+      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 32 indicates | Price above SMA20/SMA50, MACD positive, ADX 36.6 confirms st",
+      "atrPct": 4.271137026239067
     },
     {
-      "symbol": "DOGEUSDT",
+      "symbol": "SUIUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.08097,
-      "qty": 22839.009240365416,
-      "notional": 1849.2745781923877,
-      "fee": 0.7397098312769551,
-      "openedAt": "2026-09-02T22:29:31.358Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price below SMA20 and SMA50, trend bearish, MACD negative, A | Price below SMA20 and SMA50, bearish trend, MACD negative, R",
-      "atrPct": 1.5428994865823336
+      "side": "LONG",
+      "entry": 0.7682,
+      "qty": 1513.7661569984598,
+      "notional": 1162.8751618062167,
+      "fee": 0.4651500647224867,
+      "openedAt": "2026-09-03T03:51:48.465Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 27.4 indicates trending, RSI overbought but momentum",
+      "atrPct": 2.36545542455462
     }
   ],
   "closedTrades": [
@@ -515,9 +515,31 @@
       "reason": "Take profit 3.4% (ATR*3=1.1%)",
       "openedAt": "2026-08-31T23:41:01.881Z",
       "closedAt": "2026-09-02T22:29:39.455Z"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.08097,
+      "exit": 0.08279,
+      "pnl": -42.306706648742065,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.9%)",
+      "openedAt": "2026-09-02T22:29:31.358Z",
+      "closedAt": "2026-09-03T03:51:50.477Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.3333,
+      "exit": 1.3658,
+      "pnl": -45.44385264386856,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.9%)",
+      "openedAt": "2026-09-02T08:39:33.967Z",
+      "closedAt": "2026-09-03T03:51:53.621Z"
     }
   ],
-  "totalPnl": 605.7187911653286,
+  "totalPnl": 517.968231872718,
   "wins": 22,
-  "losses": 21
+  "losses": 23
 }
