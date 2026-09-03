@@ -1,5 +1,5 @@
 {
-  "balance": 6853.8771997016665,
+  "balance": 5414.562987764317,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -27,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 and SMA50, MACD positive, ADX 27.4 indicates trending, RSI overbought but momentum",
       "atrPct": 2.36545542455462
+    },
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 722.1,
+      "qty": 1.9932339176531642,
+      "notional": 1439.31421193735,
+      "fee": 0.57572568477494,
+      "openedAt": "2026-09-03T22:31:25.966Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Price is above SMA20/SMA50 but RSI is overbought at 75.2, MACD positive but momentum may be stalling",
+      "atrPct": 1.2350881357944103
     }
   ],
   "closedTrades": [
