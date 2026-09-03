@@ -1,20 +1,7 @@
 {
-  "balance": 4374.625608699577,
+  "balance": 6853.8771997016665,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 77245.18,
-      "qty": 0.03375295190503624,
-      "notional": 2607.2528454358667,
-      "fee": 1.0429011381743467,
-      "openedAt": "2026-09-01T19:18:49.584Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price below both SMA20 and SMA50, trend bearish, MACD negati | Price below SMA20 and SMA50, MACD negative, bearish trend, A",
-      "atrPct": 1.2311225854388026
-    },
     {
       "symbol": "OPUSDT",
       "interval": "1h",
@@ -537,9 +524,20 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.9%)",
       "openedAt": "2026-09-02T08:39:33.967Z",
       "closedAt": "2026-09-03T03:51:53.621Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 77245.18,
+      "exit": 81006.58,
+      "pnl": -128.00125443377794,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.7%)",
+      "openedAt": "2026-09-01T19:18:49.584Z",
+      "closedAt": "2026-09-03T16:10:55.321Z"
     }
   ],
-  "totalPnl": 517.968231872718,
+  "totalPnl": 389.96697743894003,
   "wins": 22,
-  "losses": 23
+  "losses": 24
 }
