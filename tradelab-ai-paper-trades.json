@@ -1,20 +1,7 @@
 {
-  "balance": 5414.562987764317,
+  "balance": 5472.816815356517,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "OPUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.098,
-      "qty": 24216.47567276586,
-      "notional": 2373.2146159310546,
-      "fee": 0.9492858463724219,
-      "openedAt": "2026-09-03T03:51:48.465Z",
-      "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price above SMA20 and SMA50, MACD positive, ADX 32 indicates | Price above SMA20/SMA50, MACD positive, ADX 36.6 confirms st",
-      "atrPct": 4.271137026239067
-    },
     {
       "symbol": "SUIUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "4h only: Price is above SMA20/SMA50 but RSI is overbought at 75.2, MACD positive but momentum may be stalling",
       "atrPct": 1.2350881357944103
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 4.814,
+      "qty": 487.22329058310726,
+      "notional": 2345.4929208670783,
+      "fee": 0.9381971683468313,
+      "openedAt": "2026-09-04T08:47:11.311Z",
+      "aiConfidence": 82,
+      "aiReasoning": "TF agree: Price below SMA20 and SMA50, MACD negative, RSI oversold but | Price below SMA20 and SMA50, MACD negative, bearish trend wi",
+      "atrPct": 2.3962846459730525
     }
   ],
   "closedTrades": [
@@ -548,9 +548,20 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.7%)",
       "openedAt": "2026-09-01T19:18:49.584Z",
       "closedAt": "2026-09-03T16:10:55.321Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.098,
+      "exit": 0.0993,
+      "pnl": 30.53213252822309,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-09-03T03:51:48.465Z",
+      "closedAt": "2026-09-04T08:47:20.203Z"
     }
   ],
-  "totalPnl": 389.96697743894003,
-  "wins": 22,
+  "totalPnl": 420.4991099671631,
+  "wins": 23,
   "losses": 24
 }
