@@ -1,20 +1,7 @@
 {
-  "balance": 6370.645728978165,
+  "balance": 6689.834935643985,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.2131,
-      "qty": 10059.23877608845,
-      "notional": 2143.6237831844487,
-      "fee": 0.8574495132737795,
-      "openedAt": "2026-09-05T08:14:44.211Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price below SMA20 and SMA50, bearish trend with ADX 54.1 indicating strong downtrend, MACD negative.",
-      "atrPct": 2.8725615070054333
-    },
     {
       "symbol": "SUIUSDT",
       "interval": "1h",
@@ -27,6 +14,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: RSI overbought at 80.3, price above upper Bollinger, volume declining, and price near resistance wit",
       "atrPct": 2.5194640593880147
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.2178,
+      "qty": 8164.878569848292,
+      "notional": 1778.3105525129579,
+      "fee": 0.7113242210051832,
+      "openedAt": "2026-09-05T14:55:28.281Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Price above SMA20 and SMA50, MACD positive, RSI 63.5 in bullish zone, ADX 30.1 confirms trend, recen",
+      "atrPct": 2.922077922077925
     }
   ],
   "closedTrades": [
@@ -590,9 +590,20 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.5%)",
       "openedAt": "2026-09-03T22:31:25.966Z",
       "closedAt": "2026-09-05T08:14:53.522Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.2131,
+      "exit": 0.2176,
+      "pnl": -46.124024005671565,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.8%)",
+      "openedAt": "2026-09-05T08:14:44.211Z",
+      "closedAt": "2026-09-05T14:55:33.625Z"
     }
   ],
-  "totalPnl": 207.7323008783287,
+  "totalPnl": 161.60827687265711,
   "wins": 23,
-  "losses": 28
+  "losses": 29
 }
