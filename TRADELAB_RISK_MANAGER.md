@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-05T18:01:32.458Z
+Generated: 2026-09-05T21:59:35.738Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1210.00 USDT
+- **Total PnL:** 1218.62 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 321.81 | -500 | ✅ |
-| Weekly (7d) | -241.47 | -2500 | ✅ |
-| Monthly | 146.24 | -5000 | ✅ |
-| Total (all time) | 1210.00 | -5000 | ✅ |
+| Daily (UTC) | 330.43 | -500 | ✅ |
+| Weekly (7d) | -232.84 | -2500 | ✅ |
+| Monthly | 154.87 | -5000 | ✅ |
+| Total (all time) | 1218.62 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 9856.96 USDT (max 30000)
+- **Open Notional:** 7746.38 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -59,7 +59,7 @@ Status: **NORMAL**
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 98 |
 | FILUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 2% | 200 | 7.79 | 58.3% | 95 |
-| SEIUSDT | sma-rsi | 2% | 200 | 13.58 | 65.7% | 95 |
+| SEIUSDT | sma-rsi | 2% | 200 | 13.9 | 66.7% | 95 |
 | JUPUSDT | sma-rsi | 0.93% | 92.95 | 1.33 | 66.7% | 95 |
 | ATOMUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -109,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 113.73%
-- **Total PnL:** 1210 USDT
-- **Total Exposure:** 9856.96 USDT
+- **Margin Level:** 144.82%
+- **Total PnL:** 1218.62 USDT
+- **Total Exposure:** 7746.38 USDT
 - **Warnings:**
-  - ℹ️ low_margin: 113.73% (threshold: 150%)
+  - ℹ️ low_margin: 144.82% (threshold: 150%)
 
 ## Statistics
 
