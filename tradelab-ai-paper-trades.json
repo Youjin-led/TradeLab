@@ -1,5 +1,5 @@
 {
-  "balance": 6689.834935643985,
+  "balance": 6708.6237517199315,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,15 +18,15 @@
     {
       "symbol": "ADAUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 0.2178,
-      "qty": 8164.878569848292,
-      "notional": 1778.3105525129579,
-      "fee": 0.7113242210051832,
-      "openedAt": "2026-09-05T14:55:28.281Z",
+      "side": "SHORT",
+      "entry": 0.2206,
+      "qty": 8083.885076725074,
+      "notional": 1783.3050479255512,
+      "fee": 0.7133220191702205,
+      "openedAt": "2026-09-05T18:01:51.817Z",
       "aiConfidence": 65,
-      "aiReasoning": "4h only: Price above SMA20 and SMA50, MACD positive, RSI 63.5 in bullish zone, ADX 30.1 confirms trend, recen",
-      "atrPct": 2.922077922077925
+      "aiReasoning": "1h only: RSI 82.4 overbought, price above SMA20/SMA50 but trend is bearish, MACD positive but volume very low",
+      "atrPct": 2.8817510685144447
     }
   ],
   "closedTrades": [
@@ -601,9 +601,20 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.8%)",
       "openedAt": "2026-09-05T08:14:44.211Z",
       "closedAt": "2026-09-05T14:55:33.625Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.2178,
+      "exit": 0.2208,
+      "pnl": 23.783311488539717,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-09-05T14:55:28.281Z",
+      "closedAt": "2026-09-05T18:01:54.070Z"
     }
   ],
-  "totalPnl": 161.60827687265711,
-  "wins": 23,
+  "totalPnl": 185.39158836119682,
+  "wins": 24,
   "losses": 29
 }
