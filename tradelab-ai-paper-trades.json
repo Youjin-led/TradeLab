@@ -1,20 +1,7 @@
 {
-  "balance": 5299.812763858746,
+  "balance": 6946.237208984628,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.789,
-      "qty": 2146.340670108637,
-      "notional": 1693.4627887157146,
-      "fee": 0.6773851154862859,
-      "openedAt": "2026-09-05T08:14:44.211Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI overbought at 80.3, price above upper Bollinger, volume declining, and price near resistance wit",
-      "atrPct": 2.5194640593880147
-    },
     {
       "symbol": "ADAUSDT",
       "interval": "1h",
@@ -625,9 +612,20 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-09-05T14:55:28.281Z",
       "closedAt": "2026-09-05T18:01:54.070Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.789,
+      "exit": 0.8106,
+      "pnl": -47.03834358983274,
+      "reason": "Stop loss 1.8% (ATR*1.5=1.2%)",
+      "openedAt": "2026-09-05T08:14:44.211Z",
+      "closedAt": "2026-09-06T22:02:33.655Z"
     }
   ],
-  "totalPnl": 185.39158836119682,
+  "totalPnl": 138.35324477136407,
   "wins": 24,
-  "losses": 29
+  "losses": 30
 }
