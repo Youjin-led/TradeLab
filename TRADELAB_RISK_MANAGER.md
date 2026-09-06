@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-05T21:59:35.738Z
+Generated: 2026-09-06T03:55:47.741Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1218.62 USDT
+- **Total PnL:** 1224.57 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 330.43 | -500 | ✅ |
-| Weekly (7d) | -232.84 | -2500 | ✅ |
-| Monthly | 154.87 | -5000 | ✅ |
-| Total (all time) | 1218.62 | -5000 | ✅ |
+| Daily (UTC) | -67.17 | -500 | ✅ |
+| Weekly (7d) | -72.52 | -2500 | ✅ |
+| Monthly | 160.82 | -5000 | ✅ |
+| Total (all time) | 1224.57 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 7746.38 USDT (max 30000)
+- **Open Notional:** 5716.22 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -70,7 +70,7 @@ Status: **NORMAL**
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 0.7% | 70 | 0 | 58.3% | 95 |
+| SEIUSDT | breakout | 0.7% | 70 | 0 | 53.8% | 95 |
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -109,11 +109,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 144.82%
-- **Total PnL:** 1218.62 USDT
-- **Total Exposure:** 7746.38 USDT
-- **Warnings:**
-  - ℹ️ low_margin: 144.82% (threshold: 150%)
+- **Margin Level:** 196.36%
+- **Total PnL:** 1224.57 USDT
+- **Total Exposure:** 5716.22 USDT
 
 ## Statistics
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T21:59:35.893Z",
+  "generatedAt": "2026-09-06T03:55:47.876Z",
   "summary": {
     "totalCandidates": 44,
     "live": 33,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 1231.171385246207,
-      "trades": 207,
-      "wins": 114,
-      "losses": 93,
+      "totalPnl": 1237.118859991869,
+      "trades": 209,
+      "wins": 115,
+      "losses": 94,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 1231.17,
-      "forwardTrades": 207,
+      "forwardPnl": 1237.12,
+      "forwardTrades": 209,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 55.1,
-      "avgPnlPerTrade": 5.95
+      "winRate": 55,
+      "avgPnlPerTrade": 5.92
     },
     "sma-rsi": {
       "totalPnl": -12.546616728104794,
@@ -95,9 +95,9 @@
       "avgPnl": -72.26
     },
     "4": {
-      "pnl": -233.12,
-      "trades": 28,
-      "avgPnl": -8.33
+      "pnl": -160,
+      "trades": 29,
+      "avgPnl": -5.52
     },
     "5": {
       "pnl": -71.24,
@@ -135,9 +135,9 @@
       "avgPnl": -8.83
     },
     "12": {
-      "pnl": 723.94,
-      "trades": 45,
-      "avgPnl": 16.09
+      "pnl": 656.77,
+      "trades": 46,
+      "avgPnl": 14.28
     },
     "13": {
       "pnl": 323.5,
@@ -222,14 +222,14 @@
       "avgPnl": 10.4
     },
     "Friday": {
-      "pnl": 1374.34,
-      "trades": 62,
-      "avgPnl": 22.17
+      "pnl": 1307.18,
+      "trades": 63,
+      "avgPnl": 20.75
     },
     "Saturday": {
-      "pnl": -290.05,
-      "trades": 32,
-      "avgPnl": -9.06
+      "pnl": -216.94,
+      "trades": 33,
+      "avgPnl": -6.57
     }
   },
   "equityCurve": [
@@ -3065,26 +3065,40 @@
       "pnl": 8.62,
       "symbol": "SEIUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-05 20:00",
+      "equity": 11291.74,
+      "pnl": 73.11,
+      "symbol": "BNBUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-06 00:00",
+      "equity": 11224.57,
+      "pnl": -67.17,
+      "symbol": "SEIUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.689,
-    "sortinoRatio": 1.885,
-    "calmarRatio": 4.922,
+    "sharpeRatio": 1.685,
+    "sortinoRatio": 1.88,
+    "calmarRatio": 4.912,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.3717,
-    "dailyVolatility": 3.3993,
-    "annualizedReturn": 93.67,
-    "totalTrades": 404
+    "avgDailyReturn": 0.371,
+    "dailyVolatility": 3.4,
+    "annualizedReturn": 93.49,
+    "totalTrades": 406
   },
   "distribution": {
-    "totalTrades": 404,
+    "totalTrades": 406,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 7.01,
       "avg": 3.02,
-      "stdDev": 120.81
+      "stdDev": 120.61
     },
     "holdTime": {
       "avgBars": 0,
