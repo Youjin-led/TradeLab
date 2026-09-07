@@ -1,5 +1,5 @@
 {
-  "balance": 6946.237208984628,
+  "balance": 5487.527395097855,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -27,6 +27,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price below SMA20 and SMA50, MACD negative, RSI below 50, bearish trend, breakdown below support, AD",
       "atrPct": 0.7237828625019334
+    },
+    {
+      "symbol": "ARBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1652,
+      "qty": 8829.962553794017,
+      "notional": 1458.7098138867718,
+      "fee": 0.5834839255547087,
+      "openedAt": "2026-09-07T09:11:23.889Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: RSI oversold at 21.8, price below SMA20/SMA50 but trend is bullish and MACD positive; recent candles",
+      "atrPct": 8.643203043929438
     }
   ],
   "closedTrades": [
