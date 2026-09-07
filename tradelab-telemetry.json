@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T22:02:06.293Z",
+  "generatedAt": "2026-09-07T03:54:50.737Z",
   "summary": {
     "totalCandidates": 44,
     "live": 33,
@@ -9,10 +9,10 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 1213.224873192173,
-      "trades": 211,
+      "totalPnl": 1201.8014604915988,
+      "trades": 212,
       "wins": 115,
-      "losses": 96,
+      "losses": 97,
       "maxDd": 7.74,
       "symbols": [
         "NEARUSDT",
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 1213.23,
-      "forwardTrades": 211,
+      "forwardPnl": 1201.8,
+      "forwardTrades": 212,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 54.5,
-      "avgPnlPerTrade": 5.75
+      "winRate": 54.2,
+      "avgPnlPerTrade": 5.67
     },
     "sma-rsi": {
       "totalPnl": -12.546616728104794,
@@ -115,9 +115,9 @@
       "avgPnl": 48.73
     },
     "8": {
-      "pnl": 163.36,
-      "trades": 64,
-      "avgPnl": 2.55
+      "pnl": 151.94,
+      "trades": 65,
+      "avgPnl": 2.34
     },
     "9": {
       "pnl": -131.18,
@@ -197,9 +197,9 @@
   },
   "byDayOfWeek": {
     "Sunday": {
-      "pnl": 132.22,
-      "trades": 41,
-      "avgPnl": 3.22
+      "pnl": 120.8,
+      "trades": 42,
+      "avgPnl": 2.88
     },
     "Monday": {
       "pnl": -983.93,
@@ -3093,26 +3093,33 @@
       "pnl": -18.49,
       "symbol": "JUPUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-06 20:00",
+      "equity": 11189.25,
+      "pnl": -11.42,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.661,
-    "sortinoRatio": 1.857,
-    "calmarRatio": 4.832,
+    "sharpeRatio": 1.652,
+    "sortinoRatio": 1.85,
+    "calmarRatio": 4.801,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.3649,
-    "dailyVolatility": 3.393,
-    "annualizedReturn": 91.96,
-    "totalTrades": 408
+    "avgDailyReturn": 0.3626,
+    "dailyVolatility": 3.3891,
+    "annualizedReturn": 91.37,
+    "totalTrades": 409
   },
   "distribution": {
-    "totalTrades": 408,
+    "totalTrades": 409,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 6.91,
-      "avg": 2.94,
-      "stdDev": 120.32
+      "median": 6.1,
+      "avg": 2.91,
+      "stdDev": 120.17
     },
     "holdTime": {
       "avgBars": 0,
