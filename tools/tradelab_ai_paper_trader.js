@@ -28,7 +28,22 @@ var CONFIG = {
   // независимо от сигналов AI (защита от заморозки при недоступности API-ключа).
   maxHoldHours: 72,
   // Допустимый максимальный плавающий убыток по позиции (%), при превышении — принудительный выход.
-  maxFloatingLossPct: 12
+  maxFloatingLossPct: 12,
+  // Минимальная суммарная уверенность для входа (после бонуса согласования ТФ).
+  entryMinConfidence: 58,
+  // Минимальная «сырая» уверенность, если сигнал подтверждён только одним таймфреймом.
+  singleSignalMinConfidence: 68,
+  // Дневной стоп-аут: если реализованный PnL за текущий UTC-день дошёл до этого уровня,
+  // новые входы блокируются до конца дня (защита от кластерных стопов в один рыночный день).
+  maxDailyLoss: 300,
+  // После закрытия позиции с убытком символ не открывается повторно это количество часов.
+  reopenCooldownHours: 12,
+  // Целевой ATR% для нормализации размера позиции: чем волатильнее символ, тем меньше лот.
+  baseAtrPct: 2.5,
+  // Нижняя граница фактора волатильности (не уменьшать лот сильнее).
+  minSizeFactor: 0.35,
+  // Жёсткий потолок доли баланса на одну позицию (%). Берётся из balance до исключения из баланса.
+  maxPositionPct: 35
 };
 
 function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
@@ -63,7 +78,9 @@ function loadPaperState() {
       closedTrades: [],
       totalPnl: 0,
       wins: 0,
-      losses: 0
+      losses: 0,
+      stats: { todayDate: '', todayPnl: 0 },
+      lastClosed: {}
     };
   }
 }
@@ -195,15 +212,64 @@ function getGroup(symbol) {
   return 'alts';
 }
 
-function canOpenForGroup(symbol, positions) {
+// Лимит одновременных позиций по группе учитывает ещё и направление:
+// в одну и ту же сторону по «бенчмаркам» только 1 позиция, по альтам — не больше 2.
+function canOpenForGroup(symbol, side, positions) {
   var group = getGroup(symbol);
-  var groups = {};
+  var count = 0;
   positions.forEach(function (p) {
-    var g = getGroup(p.symbol);
-    groups[g] = (groups[g] || 0) + 1;
+    if (getGroup(p.symbol) === group && p.side === side) count++;
   });
-  var maxPerGroup = { benchmarks: 1, alts: 2 };
-  return (groups[group] || 0) < (maxPerGroup[group] || 2);
+  var maxPerGroupSide = { benchmarks: 1, alts: 2 };
+  return count < (maxPerGroupSide[group] || 2);
+}
+
+// Инициализация/восстановление сохранённых стопов и тейк-профитов позиции.
+// Уровни фиксируются при открытии и больше не «плывут» от цикла к циклу —
+// оценка идёт по внутрисвечным high/low, а не только по цене закрытия.
+function ensureStopLevels(pos, candles) {
+  if (pos.slPrice && pos.tpPrice) return;
+  var atrPct = calculateATR(candles, 14) || 1.5;
+  var slPct = Math.max(atrPct * 1.5, 1.5);
+  var tpPct = Math.max(atrPct * 3, 3);
+  pos.slPercent = slPct;
+  pos.tpPercent = tpPct;
+  pos.slPrice = pos.side === 'LONG' ? pos.entry * (1 - slPct / 100) : pos.entry * (1 + slPct / 100);
+  pos.tpPrice = pos.side === 'LONG' ? pos.entry * (1 + tpPct / 100) : pos.entry * (1 - tpPct / 100);
+}
+
+// Возвращает { price, reason }, если с момента открытия позиции свечи касались
+// уровня стопа или тейка. Стрим стопа/ТП как настоящий ордер:
+// при гэпе через уровень фил по цене открытия свечи, иначе — по самому уровню.
+function evalIntrabarExit(candles, pos) {
+  var startT = pos.openedAt.replace('T', ' ').substring(0, 16);
+  var started = false;
+  for (var n = 0; n < candles.length; n++) {
+    var c = candles[n];
+    if (!started && c.timestamp >= startT) started = true;
+    if (!started) continue;
+    var sl = pos.slPrice, tp = pos.tpPrice;
+    if (pos.side === 'LONG') {
+      if (c.low <= sl) {
+        var fill = c.open <= sl ? c.open : sl;
+        return { price: fill, reason: 'Stop loss ' + (pos.slPercent || '').toFixed(1) + '% (ATR*1.5) hit intrabar' };
+      }
+      if (c.high >= tp) {
+        var tpFill = c.open >= tp ? c.open : tp;
+        return { price: tpFill, reason: 'Take profit ' + (pos.tpPercent || '').toFixed(1) + '% (ATR*3) hit intrabar' };
+      }
+    } else {
+      if (c.high >= sl) {
+        var sFill = c.open >= sl ? c.open : sl;
+        return { price: sFill, reason: 'Stop loss ' + (pos.slPercent || '').toFixed(1) + '% (ATR*1.5) hit intrabar' };
+      }
+      if (c.low <= tp) {
+        var tFill = c.open <= tp ? c.open : tp;
+        return { price: tFill, reason: 'Take profit ' + (pos.tpPercent || '').toFixed(1) + '% (ATR*3) hit intrabar' };
+      }
+    }
+  }
+  return null;
 }
 
 function oppositeOf(decision) {
@@ -229,6 +295,18 @@ function closePosition(paper, idx, exitPrice, reason) {
     closedAt: new Date().toISOString()
   });
   paper.positions.splice(idx, 1);
+
+  // Дневной PnL (UTC) для circuit breaker и кулдаун повторного входа по символу.
+  paper.stats = paper.stats || { todayDate: '', todayPnl: 0 };
+  var today = new Date().toISOString().substring(0, 10);
+  if (paper.stats.todayDate !== today) {
+    paper.stats.todayDate = today;
+    paper.stats.todayPnl = 0;
+  }
+  paper.stats.todayPnl += pnl;
+  paper.lastClosed = paper.lastClosed || {};
+  paper.lastClosed[pos.symbol] = new Date().toISOString();
+
   log('  CLOSED ' + pos.symbol + ' ' + pos.side + ' PnL: ' + pnl.toFixed(2) + ' (' + reason + ')');
 }
 
@@ -268,6 +346,16 @@ async function runCycle() {
         continue;
       }
 
+      // Фиксируем стоп/ТП на сделку и проверяем касание уровня по свечам
+      // с момента открытия (фил по уровню, а не по цене закрытия следующего цикла).
+      ensureStopLevels(pos, candles);
+      var levelExit = evalIntrabarExit(candles, pos);
+      if (levelExit) {
+        closePosition(paper, i, levelExit.price, levelExit.reason);
+        await sleep(1000);
+        continue;
+      }
+
       var decision = await aiDecider.decide(pos.symbol, pos.interval, candles, { news: news });
 
       log('  POS ' + pos.symbol + ' ' + pos.side + ' | AI: ' + decision.decision + ' (' + decision.confidence + '%)');
@@ -281,17 +369,6 @@ async function runCycle() {
         shouldClose = true; reason = 'AI BUY signal';
       } else if (decision.confidence < 30 && decision.decision === 'HOLD') {
         shouldClose = true; reason = 'AI low confidence';
-      }
-
-      // ATR-based stop loss / take profit
-      var atrPct = calculateATR(candles, 14);
-      var slPct = Math.max(atrPct * 1.5, 1.5);
-      var tpPct = Math.max(atrPct * 3, 3);
-      if (lossPct < -slPct) {
-        shouldClose = true; reason = 'Stop loss ' + slPct.toFixed(1) + '% (ATR*1.5=' + atrPct.toFixed(1) + '%)';
-      }
-      if (lossPct > tpPct) {
-        shouldClose = true; reason = 'Take profit ' + tpPct.toFixed(1) + '% (ATR*3=' + atrPct.toFixed(1) + '%)';
       }
 
       if (shouldClose) {
@@ -343,28 +420,32 @@ async function runCycle() {
           candles: candles4h
         };
       } else if (s1 && (!s4 || s4.decision !== oppositeOf(s1.decision))) {
-        // Only 1h signal, 4h neutral
-        combined = {
-          symbol: symbol,
-          side: s1.decision === 'BUY' ? 'LONG' : 'SHORT',
-          confidence: s1.confidence * 0.9,
-          sizeMultiplier: 0.7,
-          reasoning: '1h only: ' + s1.reasoning.substring(0, 100),
-          candles: candles4h
-        };
+        // Only 1h signal, 4h neutral — берём только если «сырая» уверенность достаточно высокая.
+        if (s1.confidence >= CONFIG.singleSignalMinConfidence) {
+          combined = {
+            symbol: symbol,
+            side: s1.decision === 'BUY' ? 'LONG' : 'SHORT',
+            confidence: s1.confidence * 0.9,
+            sizeMultiplier: 0.7,
+            reasoning: '1h only: ' + s1.reasoning.substring(0, 100),
+            candles: candles4h
+          };
+        }
       } else if (s4 && (!s1 || s1.decision !== oppositeOf(s4.decision))) {
-        // Only 4h signal, 1h neutral
-        combined = {
-          symbol: symbol,
-          side: s4.decision === 'BUY' ? 'LONG' : 'SHORT',
-          confidence: s4.confidence * 0.9,
-          sizeMultiplier: 0.7,
-          reasoning: '4h only: ' + s4.reasoning.substring(0, 100),
-          candles: candles4h
-        };
+        // Only 4h signal, 1h neutral — берём только если «сырая» уверенность достаточно высокая.
+        if (s4.confidence >= CONFIG.singleSignalMinConfidence) {
+          combined = {
+            symbol: symbol,
+            side: s4.decision === 'BUY' ? 'LONG' : 'SHORT',
+            confidence: s4.confidence * 0.9,
+            sizeMultiplier: 0.7,
+            reasoning: '4h only: ' + s4.reasoning.substring(0, 100),
+            candles: candles4h
+          };
+        }
       }
 
-      if (combined && combined.confidence >= 50) {
+      if (combined && combined.confidence >= CONFIG.entryMinConfidence) {
         signals.push(combined);
       }
 
@@ -377,13 +458,37 @@ async function runCycle() {
   // Sort by confidence descending
   signals.sort(function (a, b) { return b.confidence - a.confidence; });
 
+  // Дневной circuit breaker: превышенный дневной убыток блокирует все новые входы до конца дня.
+  paper.stats = paper.stats || { todayDate: '', todayPnl: 0 };
+  var todayStr = new Date().toISOString().substring(0, 10);
+  if (paper.stats.todayDate !== todayStr) {
+    paper.stats.todayDate = todayStr;
+    paper.stats.todayPnl = 0;
+  }
+  var dailyLimitHit = paper.stats.todayPnl <= -CONFIG.maxDailyLoss;
+
   // Open positions respecting correlation groups
   for (var k = 0; k < signals.length && paper.positions.length < CONFIG.maxPositions; k++) {
     var sig = signals[k];
 
-    // Correlation check
-    if (!canOpenForGroup(sig.symbol, paper.positions)) {
-      log('  SKIP ' + sig.symbol + ' (group ' + getGroup(sig.symbol) + ' full)');
+    if (dailyLimitHit) {
+      log('  BLOCK new entries: daily PnL $' + paper.stats.todayPnl.toFixed(2) + ' <= -$' + CONFIG.maxDailyLoss);
+      break;
+    }
+
+    // Cooldown: после убыточной сделки символ не открывается повторно какое-то время.
+    var lastClosedAt = paper.lastClosed && paper.lastClosed[sig.symbol];
+    if (lastClosedAt) {
+      var sinceHours = (Date.now() - Date.parse(lastClosedAt)) / 3600e3;
+      if (sinceHours < CONFIG.reopenCooldownHours) {
+        log('  SKIP ' + sig.symbol + ' (reopen cooldown ' + sinceHours.toFixed(1) + 'h < ' + CONFIG.reopenCooldownHours + 'h)');
+        continue;
+      }
+    }
+
+    // Correlation check (с учётом направления сигнала)
+    if (!canOpenForGroup(sig.symbol, sig.side, paper.positions)) {
+      log('  SKIP ' + sig.symbol + ' ' + sig.side + ' (group ' + getGroup(sig.symbol) + ' full)');
       continue;
     }
 
@@ -395,10 +500,20 @@ async function runCycle() {
     }
 
     var price = sig.candles[sig.candles.length - 1].close;
-    var atrVal = calculateATR(sig.candles, 14);
-    var sizePct = CONFIG.positionSizePct * sig.sizeMultiplier;
-    var sizeUsd = paper.balance * (sizePct / 100);
+    var atrVal = calculateATR(sig.candles, 14) || CONFIG.baseAtrPct;
+    // Размер позиции нормируется по волатильности: высокий ATR => меньший лот,
+    // чтобы каждый лот нёс сопоставимый долларовый риск.
+    var volFactor = Math.max(CONFIG.minSizeFactor, Math.min(1.0, CONFIG.baseAtrPct / atrVal));
+    var sizePct = CONFIG.positionSizePct * sig.sizeMultiplier * volFactor;
+    var sizeUsd = Math.min(
+      paper.balance * (CONFIG.maxPositionPct / 100),
+      paper.balance * (sizePct / 100)
+    );
     var qty = sizeUsd / price;
+
+    // Уровни стопа/ТП фиксируются при открытии (вместе с позицией сохраняются).
+    var slPct = Math.max(atrVal * 1.5, 1.5);
+    var tpPct = Math.max(atrVal * 3, 3);
 
     paper.balance -= sizeUsd;
     paper.positions.push({
@@ -412,10 +527,14 @@ async function runCycle() {
       openedAt: now,
       aiConfidence: Math.round(sig.confidence),
       aiReasoning: sig.reasoning.substring(0, 200),
-      atrPct: atrVal
+      atrPct: atrVal,
+      slPercent: slPct,
+      tpPercent: tpPct,
+      slPrice: sig.side === 'LONG' ? price * (1 - slPct / 100) : price * (1 + slPct / 100),
+      tpPrice: sig.side === 'LONG' ? price * (1 + tpPct / 100) : price * (1 - tpPct / 100)
     });
 
-    log('  OPEN ' + sig.symbol + ' ' + sig.side + ' $' + sizeUsd.toFixed(2) + ' conf=' + Math.round(sig.confidence) + '%' + ' (size=' + sizePct + '%)');
+    log('  OPEN ' + sig.symbol + ' ' + sig.side + ' $' + sizeUsd.toFixed(2) + ' conf=' + Math.round(sig.confidence) + '%' + ' (size=' + sizePct.toFixed(1) + '%, sl=' + slPct.toFixed(1) + '%, tp=' + tpPct.toFixed(1) + '%)');
     log('    ' + sig.reasoning.substring(0, 150));
   }
 
