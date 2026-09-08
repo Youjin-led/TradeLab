@@ -1,5 +1,5 @@
 {
-  "balance": 7216.765479497851,
+  "balance": 6944.414835046816,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -13,20 +13,28 @@
       "openedAt": "2026-09-06T15:15:35.437Z",
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price below SMA20 and SMA50, MACD negative, RSI below 50, bearish trend, breakdown below support, AD",
-      "atrPct": 0.7237828625019334
+      "atrPct": 0.7237828625019334,
+      "slPercent": 1.5,
+      "tpPercent": 3,
+      "slPrice": 80759.47985,
+      "tpPrice": 77179.01030000001
     },
     {
-      "symbol": "ARBUSDT",
+      "symbol": "XRPUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 0.1652,
-      "qty": 8829.962553794017,
-      "notional": 1458.7098138867718,
-      "fee": 0.5834839255547087,
-      "openedAt": "2026-09-07T09:11:23.889Z",
+      "entry": 1.4186,
+      "qty": 1301.27145800712,
+      "notional": 1845.9836903289004,
+      "fee": 0.7383934761315601,
+      "openedAt": "2026-09-08T22:29:48.152Z",
       "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI oversold at 21.8, price below SMA20/SMA50 but trend is bullish and MACD positive; recent candles",
-      "atrPct": 8.643203043929438
+      "aiReasoning": "4h only: Price above SMA20 and SMA50, MACD positive, RSI 52.4 in bullish zone, ADX 29.7 indicates trending ma",
+      "atrPct": 1.677710418722685,
+      "slPercent": 2.5165656280840274,
+      "tpPercent": 5.033131256168055,
+      "slPrice": 1.3829000000000002,
+      "tpPrice": 1.49
     }
   ],
   "closedTrades": [
@@ -634,9 +642,27 @@
       "reason": "Stop loss 2.3% (ATR*1.5=1.5%)",
       "openedAt": "2026-09-05T18:01:51.817Z",
       "closedAt": "2026-09-08T16:23:47.052Z"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.1652,
+      "exit": 0.178281223755249,
+      "pnl": 114.92323199109453,
+      "reason": "Take profit 7.9% (ATR*3) hit intrabar",
+      "openedAt": "2026-09-07T09:11:23.889Z",
+      "closedAt": "2026-09-08T22:29:48.995Z"
     }
   ],
-  "totalPnl": 84.28628124580818,
-  "wins": 24,
-  "losses": 31
+  "totalPnl": 199.2095132369027,
+  "wins": 25,
+  "losses": 31,
+  "stats": {
+    "todayDate": "2026-09-08",
+    "todayPnl": 114.92323199109453
+  },
+  "lastClosed": {
+    "ARBUSDT": "2026-09-08T22:29:48.995Z"
+  }
 }
