@@ -1,20 +1,7 @@
 {
-  "balance": 5487.527395097855,
+  "balance": 7216.765479497851,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.2206,
-      "qty": 8083.885076725074,
-      "notional": 1783.3050479255512,
-      "fee": 0.7133220191702205,
-      "openedAt": "2026-09-05T18:01:51.817Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: RSI 82.4 overbought, price above SMA20/SMA50 but trend is bearish, MACD positive but volume very low",
-      "atrPct": 2.8817510685144447
-    },
     {
       "symbol": "BTCUSDT",
       "interval": "1h",
@@ -636,9 +623,20 @@
       "reason": "Stop loss 1.8% (ATR*1.5=1.2%)",
       "openedAt": "2026-09-05T08:14:44.211Z",
       "closedAt": "2026-09-06T22:02:33.655Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.2206,
+      "exit": 0.2272,
+      "pnl": -54.06696352555589,
+      "reason": "Stop loss 2.3% (ATR*1.5=1.5%)",
+      "openedAt": "2026-09-05T18:01:51.817Z",
+      "closedAt": "2026-09-08T16:23:47.052Z"
     }
   ],
-  "totalPnl": 138.35324477136407,
+  "totalPnl": 84.28628124580818,
   "wins": 24,
-  "losses": 30
+  "losses": 31
 }
