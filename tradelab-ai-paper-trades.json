@@ -1,24 +1,7 @@
 {
-  "balance": 5462.781246015876,
+  "balance": 5617.978737509659,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.4186,
-      "qty": 1301.27145800712,
-      "notional": 1845.9836903289004,
-      "fee": 0.7383934761315601,
-      "openedAt": "2026-09-08T22:29:48.152Z",
-      "aiConfidence": 65,
-      "aiReasoning": "4h only: Price above SMA20 and SMA50, MACD positive, RSI 52.4 in bullish zone, ADX 29.7 indicates trending ma",
-      "atrPct": 1.677710418722685,
-      "slPercent": 2.5165656280840274,
-      "tpPercent": 5.033131256168055,
-      "slPrice": 1.3829000000000002,
-      "tpPrice": 1.49
-    },
     {
       "symbol": "LINKUSDT",
       "interval": "1h",
@@ -52,6 +35,23 @@
       "tpPercent": 4.15152702173355,
       "slPrice": 755.6975000000001,
       "tpPrice": 709.595
+    },
+    {
+      "symbol": "SUIUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.7715,
+      "qty": 2130.3855013715247,
+      "notional": 1643.592414308131,
+      "fee": 0.6574369657232525,
+      "openedAt": "2026-09-09T22:23:55.821Z",
+      "aiConfidence": 87,
+      "aiReasoning": "TF agree: Price is below both SMA20 and SMA50, trend is bearish, RSI a | Price below SMA20 and SMA50, MACD negative, ADX 32 indicates",
+      "atrPct": 3.3135820757337253,
+      "slPercent": 4.970373113600588,
+      "tpPercent": 9.940746227201176,
+      "slPrice": 0.8098464285714284,
+      "tpPrice": 0.6948071428571428
     }
   ],
   "closedTrades": [
@@ -681,17 +681,29 @@
       "reason": "timeout 76h (maxHoldHours)",
       "openedAt": "2026-09-06T15:15:35.437Z",
       "closedAt": "2026-09-09T19:11:06.276Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.4186,
+      "exit": 1.3829000000000002,
+      "pnl": -47.19378452698554,
+      "reason": "Stop loss 2.5% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-08T22:29:48.152Z",
+      "closedAt": "2026-09-09T22:24:03.437Z"
     }
   ],
-  "totalPnl": 219.2237753290818,
+  "totalPnl": 172.02999080209628,
   "wins": 26,
-  "losses": 31,
+  "losses": 32,
   "stats": {
     "todayDate": "2026-09-09",
-    "todayPnl": 20.01426209217911
+    "todayPnl": -27.17952243480643
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
-    "BTCUSDT": "2026-09-09T19:11:06.276Z"
+    "BTCUSDT": "2026-09-09T19:11:06.276Z",
+    "XRPUSDT": "2026-09-09T22:24:03.437Z"
   }
 }
