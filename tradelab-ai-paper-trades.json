@@ -1,24 +1,7 @@
 {
-  "balance": 5486.087719686984,
+  "balance": 5462.781246015876,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 79565.99,
-      "qty": 0.01770619567306566,
-      "notional": 1408.8109878611856,
-      "fee": 0.5635243951444743,
-      "openedAt": "2026-09-06T15:15:35.437Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price below SMA20 and SMA50, MACD negative, RSI below 50, bearish trend, breakdown below support, AD",
-      "atrPct": 0.7237828625019334,
-      "slPercent": 1.5,
-      "tpPercent": 3,
-      "slPrice": 80759.47985,
-      "tpPrice": 77179.01030000001
-    },
     {
       "symbol": "XRPUSDT",
       "interval": "1h",
@@ -52,6 +35,23 @@
       "tpPercent": 7.455631699174141,
       "slPrice": 12.649607142857144,
       "tpPrice": 11.285785714285714
+    },
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 740.33,
+      "qty": 1.961465459490326,
+      "notional": 1452.1317236244731,
+      "fee": 0.5808526894497893,
+      "openedAt": "2026-09-09T19:10:59.015Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price below SMA20 and SMA50, MACD negative, RSI near oversold but not yet, ADX 30 indicates downtren",
+      "atrPct": 1.38384234057785,
+      "slPercent": 2.075763510866775,
+      "tpPercent": 4.15152702173355,
+      "slPrice": 755.6975000000001,
+      "tpPrice": 709.595
     }
   ],
   "closedTrades": [
@@ -670,16 +670,28 @@
       "reason": "Take profit 7.9% (ATR*3) hit intrabar",
       "openedAt": "2026-09-07T09:11:23.889Z",
       "closedAt": "2026-09-08T22:29:48.995Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 79565.99,
+      "exit": 78403.81,
+      "pnl": 20.01426209217911,
+      "reason": "timeout 76h (maxHoldHours)",
+      "openedAt": "2026-09-06T15:15:35.437Z",
+      "closedAt": "2026-09-09T19:11:06.276Z"
     }
   ],
-  "totalPnl": 199.2095132369027,
-  "wins": 25,
+  "totalPnl": 219.2237753290818,
+  "wins": 26,
   "losses": 31,
   "stats": {
     "todayDate": "2026-09-09",
-    "todayPnl": 0
+    "todayPnl": 20.01426209217911
   },
   "lastClosed": {
-    "ARBUSDT": "2026-09-08T22:29:48.995Z"
+    "ARBUSDT": "2026-09-08T22:29:48.995Z",
+    "BTCUSDT": "2026-09-09T19:11:06.276Z"
   }
 }
