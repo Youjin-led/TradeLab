@@ -1,5 +1,5 @@
 {
-  "balance": 6944.414835046816,
+  "balance": 5486.087719686984,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 5.033131256168055,
       "slPrice": 1.3829000000000002,
       "tpPrice": 1.49
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 12.195,
+      "qty": 119.58401929969915,
+      "notional": 1458.3271153598312,
+      "fee": 0.5833308461439325,
+      "openedAt": "2026-09-09T12:51:18.180Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price below SMA20 and SMA50, bearish trend, MACD negative, RSI 34.7 near oversold but not yet overso",
+      "atrPct": 2.4852105663913804,
+      "slPercent": 3.7278158495870706,
+      "tpPercent": 7.455631699174141,
+      "slPrice": 12.649607142857144,
+      "tpPrice": 11.285785714285714
     }
   ],
   "closedTrades": [
