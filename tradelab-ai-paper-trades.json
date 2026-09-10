@@ -1,5 +1,5 @@
 {
-  "balance": 5617.978737509659,
+  "balance": 5632.554046980273,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -20,23 +20,6 @@
       "tpPrice": 11.285785714285714
     },
     {
-      "symbol": "BNBUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 740.33,
-      "qty": 1.961465459490326,
-      "notional": 1452.1317236244731,
-      "fee": 0.5808526894497893,
-      "openedAt": "2026-09-09T19:10:59.015Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price below SMA20 and SMA50, MACD negative, RSI near oversold but not yet, ADX 30 indicates downtren",
-      "atrPct": 1.38384234057785,
-      "slPercent": 2.075763510866775,
-      "tpPercent": 4.15152702173355,
-      "slPrice": 755.6975000000001,
-      "tpPrice": 709.595
-    },
-    {
       "symbol": "SUIUSDT",
       "interval": "1h",
       "side": "SHORT",
@@ -52,6 +35,23 @@
       "tpPercent": 9.940746227201176,
       "slPrice": 0.8098464285714284,
       "tpPrice": 0.6948071428571428
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 76996,
+      "qty": 0.019445960859808882,
+      "notional": 1497.2612023618447,
+      "fee": 0.5989044809447379,
+      "openedAt": "2026-09-10T12:49:19.846Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price (76996) is below both SMA20 (78599) and SMA50 (79140) with a bearish trend and ADX 35.7 confir",
+      "atrPct": 1.0487177441499742,
+      "slPercent": 1.5730766162249612,
+      "tpPercent": 3.1461532324499224,
+      "slPrice": 78207.20607142858,
+      "tpPrice": 74573.58785714286
     }
   ],
   "closedTrades": [
@@ -692,18 +692,30 @@
       "reason": "Stop loss 2.5% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-08T22:29:48.152Z",
       "closedAt": "2026-09-09T22:24:03.437Z"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 740.33,
+      "exit": 709.595,
+      "pnl": 59.7047882079854,
+      "reason": "Take profit 4.2% (ATR*3) hit intrabar",
+      "openedAt": "2026-09-09T19:10:59.015Z",
+      "closedAt": "2026-09-10T12:49:23.914Z"
     }
   ],
-  "totalPnl": 172.02999080209628,
-  "wins": 26,
+  "totalPnl": 231.7347790100817,
+  "wins": 27,
   "losses": 32,
   "stats": {
     "todayDate": "2026-09-10",
-    "todayPnl": 0
+    "todayPnl": 59.7047882079854
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
     "BTCUSDT": "2026-09-09T19:11:06.276Z",
-    "XRPUSDT": "2026-09-09T22:24:03.437Z"
+    "XRPUSDT": "2026-09-09T22:24:03.437Z",
+    "BNBUSDT": "2026-09-10T12:49:23.914Z"
   }
 }
