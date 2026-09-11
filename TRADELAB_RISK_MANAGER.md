@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-10T22:22:38.832Z
+Generated: 2026-09-11T03:58:34.882Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 792.86 USDT
+- **Total PnL:** 673.52 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -107.78 | -500 | ✅ |
-| Weekly (7d) | -1.92 | -2500 | ✅ |
-| Monthly | -270.90 | -5000 | ✅ |
-| Total (all time) | 792.86 | -5000 | ✅ |
+| Daily (UTC) | 0.00 | -500 | ✅ |
+| Weekly (7d) | -121.25 | -2500 | ✅ |
+| Monthly | -390.23 | -5000 | ✅ |
+| Total (all time) | 673.52 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 17436.67 USDT (max 30000)
+- **Open Notional:** 15841.58 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,22 +87,22 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.98% / 5% max
+- **Heat:** 0.92% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 34
-- **Sector Distribution:** {"alt_mid":12,"alt_large":11,"alt_small":3,"blue_chip":4,"other":4}
+- **Active Positions:** 32
+- **Sector Distribution:** {"alt_mid":12,"alt_large":9,"alt_small":3,"blue_chip":4,"other":4}
 - **Warnings:**
   - ⚠️ alt_mid: 12 positions (max 3)
-  - ⚠️ alt_large: 11 positions (max 3)
+  - ⚠️ alt_large: 9 positions (max 3)
   - ⚠️ blue_chip: 4 positions (max 3)
   - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 34/3
+  - 🚫 max_concurrent_positions: 32/3
 
 ## Trailing Stops
 
@@ -110,11 +110,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 61.9%
-- **Total PnL:** 792.86 USDT
-- **Total Exposure:** 17436.67 USDT
+- **Margin Level:** 67.38%
+- **Total PnL:** 673.52 USDT
+- **Total Exposure:** 15841.58 USDT
 - **Warnings:**
-  - 🔴 margin_call: 61.9% (threshold: 100%)
+  - 🔴 margin_call: 67.38% (threshold: 100%)
 
 ## Statistics
 
