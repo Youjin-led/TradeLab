@@ -1,24 +1,7 @@
 {
-  "balance": 5632.554046980273,
+  "balance": 8672.134562207117,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "LINKUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 12.195,
-      "qty": 119.58401929969915,
-      "notional": 1458.3271153598312,
-      "fee": 0.5833308461439325,
-      "openedAt": "2026-09-09T12:51:18.180Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price below SMA20 and SMA50, bearish trend, MACD negative, RSI 34.7 near oversold but not yet overso",
-      "atrPct": 2.4852105663913804,
-      "slPercent": 3.7278158495870706,
-      "tpPercent": 7.455631699174141,
-      "slPrice": 12.649607142857144,
-      "tpPrice": 11.285785714285714
-    },
     {
       "symbol": "SUIUSDT",
       "interval": "1h",
@@ -35,23 +18,6 @@
       "tpPercent": 9.940746227201176,
       "slPrice": 0.8098464285714284,
       "tpPrice": 0.6948071428571428
-    },
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 76996,
-      "qty": 0.019445960859808882,
-      "notional": 1497.2612023618447,
-      "fee": 0.5989044809447379,
-      "openedAt": "2026-09-10T12:49:19.846Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price (76996) is below both SMA20 (78599) and SMA50 (79140) with a bearish trend and ADX 35.7 confir",
-      "atrPct": 1.0487177441499742,
-      "slPercent": 1.5730766162249612,
-      "tpPercent": 3.1461532324499224,
-      "slPrice": 78207.20607142858,
-      "tpPrice": 74573.58785714286
     }
   ],
   "closedTrades": [
@@ -703,19 +669,42 @@
       "reason": "Take profit 4.2% (ATR*3) hit intrabar",
       "openedAt": "2026-09-09T19:10:59.015Z",
       "closedAt": "2026-09-10T12:49:23.914Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 76996,
+      "exit": 78207.20607142858,
+      "pnl": -24.151970339107713,
+      "reason": "Stop loss 1.6% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-10T12:49:19.846Z",
+      "closedAt": "2026-09-11T16:13:11.247Z"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 12.195,
+      "exit": 11.285785714285714,
+      "pnl": 108.14416784427547,
+      "reason": "Take profit 7.5% (ATR*3) hit intrabar",
+      "openedAt": "2026-09-09T12:51:18.180Z",
+      "closedAt": "2026-09-11T16:13:15.736Z"
     }
   ],
-  "totalPnl": 231.7347790100817,
-  "wins": 27,
-  "losses": 32,
+  "totalPnl": 315.7269765152495,
+  "wins": 28,
+  "losses": 33,
   "stats": {
     "todayDate": "2026-09-11",
-    "todayPnl": 0
+    "todayPnl": 83.99219750516775
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
-    "BTCUSDT": "2026-09-09T19:11:06.276Z",
+    "BTCUSDT": "2026-09-11T16:13:11.247Z",
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
-    "BNBUSDT": "2026-09-10T12:49:23.914Z"
+    "BNBUSDT": "2026-09-10T12:49:23.914Z",
+    "LINKUSDT": "2026-09-11T16:13:15.736Z"
   }
 }
