@@ -1,5 +1,5 @@
 {
-  "balance": 8672.134562207117,
+  "balance": 4795.690412900536,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,6 +18,40 @@
       "tpPercent": 9.940746227201176,
       "slPrice": 0.8098464285714284,
       "tpPrice": 0.6948071428571428
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 7.394,
+      "qty": 351.85831331649104,
+      "notional": 2601.6403686621347,
+      "fee": 1.040656147464854,
+      "openedAt": "2026-09-12T22:04:48.176Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 7.394 is below both SMA20 (7.4234) and SMA50 (7.46736) | Price (7.394) is below both SMA20 (7.546) and SMA50 (7.696) ",
+      "atrPct": 1.919510027435374,
+      "slPercent": 2.879265041153061,
+      "tpPercent": 5.758530082306122,
+      "slPrice": 7.606892857142857,
+      "tpPrice": 6.968214285714286
+    },
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 2523.84,
+      "qty": 0.5051048325743495,
+      "notional": 1274.8037806444463,
+      "fee": 0.5099215122577786,
+      "openedAt": "2026-09-12T22:04:48.176Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price above SMA20 (2491) and SMA50 (2487), bullish trend with ADX 36 confirming strength, MACD posit",
+      "atrPct": 1.6167823633827818,
+      "slPercent": 2.4251735450741725,
+      "tpPercent": 4.850347090148345,
+      "slPrice": 2462.6325,
+      "tpPrice": 2646.2550000000006
     }
   ],
   "closedTrades": [
