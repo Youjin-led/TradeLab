@@ -1,175 +1,5 @@
 [
   {
-    "timestamp": "2026-09-08T16:23:15.471Z",
-    "symbol": "SEIUSDT",
-    "interval": "1h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 45,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 2155,
-    "aiReasoning": "Price above SMA20/SMA50 and MACD positive suggest bullish bias, but ADX=20.2 indicates weak trend, RSI neutral, volume below average, and price near resistance. Portfolio already has multiple SEIUSDT longs, so adding is not preferred.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:17.827Z",
-    "symbol": "LTCUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 55,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1795,
-    "aiReasoning": "ADX=55 indicates strong trend, SMA20>SMA50, price below SMA20 but above SMA50. Rule 4 forbids SELL in strong uptrend; BUY lacks confirmation (price below SMA20, volume low, RSI neutral, MACD positive but weak). Portfolio already holds LTCUSDT positions.",
-    "mergedDecision": "SELL",
-    "mergedSource": "merge-classical",
-    "mergedReasoning": "[Class] Классика: . AI: HOLD (55%)",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:20.501Z",
-    "symbol": "SEIUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 62,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 2110,
-    "aiReasoning": "Trend is bullish (price above SMA20/50, MACD positive, ADX 31) but volume is very low (0.23x) and RSI at 60 with price above upper Bollinger suggests overextension. Portfolio already holds multiple SEIUSDT longs, and rule 7 prefers HOLD when pair is already held. No clear SELL signal due to strong uptrend, and BUY is not ideal due to low volume and overbought conditions.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:23.048Z",
-    "symbol": "LTCUSDT",
-    "interval": "1d",
-    "aiDecision": "HOLD",
-    "aiConfidence": 60,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1987,
-    "aiReasoning": "Strong uptrend (ADX=45.1, SMA20>SMA50) forbids SELL per rule 4. RSI=68.5 near overbought and price pulled back from resistance (59.46) to 54.57, showing short-term weakness. MACD positive but volume low (0.74x) suggests limited momentum. Portfolio already holds LTCUSDT SHORT and LONG, and is over capacity (8/3). Conflicting signals and existing exposure favor HOLD.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:25.022Z",
-    "symbol": "ETHUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 55,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1414,
-    "aiReasoning": "ADX 9.5 indicates weak/choppy trend; price near SMA20 and above SMA50, MACD positive but volume very low (0.11x) and RSI neutral. Portfolio already has ETHUSDT longs, and open positions exceed limit (8/3), so prefer HOLD.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:27.088Z",
-    "symbol": "ETHUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 55,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1507,
-    "aiReasoning": "ADX=9.5 indicates weak/choppy trend, conflicting signals: price above SMA20/SMA50 and MACD positive but RSI neutral and volume very low. Portfolio already has 2 ETHUSDT longs, and open positions exceed limit.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:29.510Z",
-    "symbol": "SEIUSDT",
-    "interval": "1h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 45,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1859,
-    "aiReasoning": "Price above SMA20/SMA50 and MACD positive suggest bullish bias, but ADX 20.2 indicates weak trend, volume is low (0.69x), and RSI near 59 not overbought. Recent candle shows rejection from resistance 0.0517. Portfolio already has multiple SEIUSDT longs, and open positions exceed limit (8/3), so prefer HOLD. No strong trend to force action.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:31.482Z",
-    "symbol": "BCHUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 55,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1411,
-    "aiReasoning": "ADX=10.1 indicates weak/choppy trend, conflicting signals: price above SMA20/SMA50 and MACD positive (bullish), but RSI neutral and volume very low. Portfolio already holds BCHUSDT LONG, and open positions exceed limit, so HOLD is appropriate.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:33.575Z",
-    "symbol": "INJUSDT",
-    "interval": "4h",
-    "aiDecision": "HOLD",
-    "aiConfidence": 100,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1535,
-    "aiReasoning": "ADX=55.3 indicates a very strong trend, and SMA20>SMA50 with price above both, so SELL is forbidden by rule 4. RSI is overbought at 82.9, and volume is extremely low (0.1x), suggesting weak participation. MACD is positive but overbought conditions and low volume create conflicting signals. Portfolio is full (8/3), so prefer HOLD.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
-    "timestamp": "2026-09-08T16:23:35.895Z",
-    "symbol": "NEARUSDT",
-    "interval": "1d",
-    "aiDecision": "HOLD",
-    "aiConfidence": 65,
-    "aiSource": "ai-deepseek",
-    "aiLatencyMs": 1760,
-    "aiReasoning": "Strong bullish trend (ADX 54, SMA20>SMA50) forbids SELL, but RSI overbought and price above upper Bollinger suggest pullback risk; volume low and portfolio full. Conflicting signals warrant HOLD.",
-    "mergedDecision": "HOLD",
-    "mergedSource": "merge-both-hold",
-    "mergedReasoning": "Оба источника: HOLD",
-    "validationValid": true,
-    "validationReasons": [
-      "HOLD — пропуск"
-    ]
-  },
-  {
     "timestamp": "2026-09-08T22:29:31.858Z",
     "symbol": "ETHUSDT",
     "interval": "4h",
@@ -3397,6 +3227,176 @@
     "validationValid": true,
     "validationReasons": [
       "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:22.900Z",
+    "symbol": "DOGEUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1575,
+    "aiReasoning": "ADX=19.4 indicates weak/choppy trend, and indicators conflict: price below SMA20/SMA50 and MACD<0 (bearish), but RSI=46.7 neutral and volume extremely thin (0.14x). Already holding DOGE shorts and portfolio is over-full (6/3), so no new entry.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:25.114Z",
+    "symbol": "DOGEUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1747,
+    "aiReasoning": "RSI14 at 23.1 is deeply oversold and price is sitting just above support 0.0823, so a fresh SELL here is poor risk/reward. Bearish structure (price below SMA20/SMA50, MACD<0, trending-down phase, ADX 30.3) argues against a BUY, and volume is only 0.14x average, showing no conviction. Portfolio already holds two DOGE shorts and is over the 3-position limit, so adding exposure is not warranted. Conflicting signals plus existing pair exposure = HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:26.942Z",
+    "symbol": "OPUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1363,
+    "aiReasoning": "ADX 24.6 is below the 25 trending threshold, so no strong trend to fight; price is below both SMA20 (0.09562) and SMA50 (0.096234) with MACD negative, which is bearish, but RSI 48.4 is neutral and volume is only 0.31x average, showing no conviction. Already holding an OPUSDT SHORT at 0.09586 and portfolio is over its 3-position limit (6 open), so adding or reversing is not justified. Mixed/choppy conditions favor standing pat.",
+    "mergedDecision": "SELL",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (55%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:29.209Z",
+    "symbol": "SUIUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1802,
+    "aiReasoning": "Strong downtrend (ADX 55.1, price below SMA20/SMA50, MACD negative) would normally favor SELL, but Rule 4 hard-blocks SELL when ADX>=40 and SMA20<SMA50. Already holding a SUIUSDT SHORT (entry 0.7164, now 0.7103 in profit) and portfolio is over-allocated (6/3), so no new entry. RSI 32.7 near oversold and volume 0.12x drying up suggest exhaustion; hold existing short, no fresh action.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:31.125Z",
+    "symbol": "LTCUSDT",
+    "interval": "1d",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1454,
+    "aiReasoning": "Strong uptrend (ADX 55.6, SMA20>SMA50, price above both), so SELL is forbidden by rule 4. But BUY is not justified: RSI 71.4 overbought, volume only 0.36x average, price stalling below resistance 59.46, and portfolio is already full (6/3) with an existing LTC short. Rule 7 prefers HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:33.485Z",
+    "symbol": "TRXUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1895,
+    "aiReasoning": "Bullish structure (price above SMA20/SMA50, MACD>0, ADX 31 trending-up) but volume is only 0.09x average, giving no confirmation of the move. Already holding TRXUSDT LONG from 0.3359 and portfolio is over the 3-position limit (6 open), so adding is not warranted. RSI 60.3 is elevated, price sits just below resistance 0.3442, and Fear&Greed at 24 signals weak risk appetite. Trend is intact but momentum lacks volume backing, so hold existing long rather than add.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:35.928Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1977,
+    "aiReasoning": "Price 2.31 sits below both SMA20 (2.4057) and SMA50 (2.3778), MACD is negative, and RSI at 39.4 is weak — bearish-leaning. However, ADX 22.8 signals a weak/choppy trend, volume is extremely thin (0.17x), and the stated trend is bullish, creating conflicting signals. Portfolio is already over-allocated (6/3 positions) with heavy short exposure, so no new position is warranted.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:37.991Z",
+    "symbol": "NEARUSDT",
+    "interval": "1d",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1597,
+    "aiReasoning": "Strong bullish trend (ADX 66.6, SMA20>SMA50, price above both SMAs) forbids SELL per rule 4. But BUY is not justified: RSI 70.7 is overbought, volume is only 0.41x average (weak conviction), price rejected at 2.728 resistance and has printed lower highs/lower closes over the last 4 sessions. Portfolio is also over-allocated (6/3 positions). Conflicting signals = HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:40.032Z",
+    "symbol": "ARBUSDT",
+    "interval": "4h",
+    "aiDecision": "SELL",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1576,
+    "aiReasoning": "Price below SMA20 (0.1425) and SMA50 (0.1577), trend bearish, MACD negative (-0.0055), RSI 38.4 weak and ticking down. ADX 19.8 below 25 so no strong-trend block. Volume very thin (0.28x) and price near support 0.1312, but 2+ bearish confirmations align for a short continuation.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-fallback",
+    "mergedReasoning": "Неопределенное состояние",
+    "validationValid": true,
+    "validationReasons": [
+      "прошло все проверки"
+    ]
+  },
+  {
+    "timestamp": "2026-09-13T13:13:41.900Z",
+    "symbol": "LINKUSDT",
+    "interval": "4h",
+    "aiDecision": "SELL",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1405,
+    "aiReasoning": "Price 11.25 below SMA20 (11.52) and SMA50 (12.05), trend bearish, MACD negative, RSI 39.7 ticking down, Bollinger below-lower, ADX 27.6 confirms trending-down phase. Breakdown near support 11.225 supports short. Volume thin (0.17x) and Fear&Greed 24 caution, but 2+ bearish confirmations align. Rule 4 not triggered (ADX<40, price below SMA50).",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-fallback",
+    "mergedReasoning": "Неопределенное состояние",
+    "validationValid": true,
+    "validationReasons": [
+      "прошло все проверки"
     ]
   }
 ]

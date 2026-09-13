@@ -1,5 +1,5 @@
 {
-  "balance": 6539.605663007955,
+  "balance": 4577.7239641055685,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 4.850347090148345,
       "slPrice": 2462.6325,
       "tpPrice": 2646.2550000000006
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.2053,
+      "qty": 9556.16998978269,
+      "notional": 1961.8816989023862,
+      "fee": 0.7847526795609545,
+      "openedAt": "2026-09-13T13:13:42.273Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 0.2054 below both SMA20 (0.2065) and SMA50 (0.2074), t | Price 0.2053 is below both SMA20 (0.20742) and SMA50 (0.2141",
+      "atrPct": 1.9727228446176324,
+      "slPercent": 2.9590842669264488,
+      "tpPercent": 5.9181685338528975,
+      "slPrice": 0.21137500000000004,
+      "tpPrice": 0.19315000000000002
     }
   ],
   "closedTrades": [
