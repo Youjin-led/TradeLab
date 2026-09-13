@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-13T18:40:42.521Z
+Generated: 2026-09-13T22:15:51.790Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 368.97 USDT
+- **Total PnL:** 397.63 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -58.11 | -500 | ✅ |
-| Weekly (7d) | -831.69 | -2500 | ✅ |
-| Monthly | -694.77 | -5000 | ✅ |
-| Total (all time) | 368.97 | -5000 | ✅ |
+| Daily (UTC) | -29.45 | -500 | ✅ |
+| Weekly (7d) | -791.61 | -2500 | ✅ |
+| Monthly | -666.11 | -5000 | ✅ |
+| Total (all time) | 397.63 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 13076.18 USDT (max 30000)
+- **Open Notional:** 13092.03 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,21 +87,21 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.98% / 5% max
+- **Heat:** 0.95% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 34
-- **Sector Distribution:** {"alt_mid":12,"alt_large":12,"alt_small":3,"other":4,"blue_chip":3}
+- **Active Positions:** 33
+- **Sector Distribution:** {"alt_mid":12,"alt_large":11,"alt_small":3,"other":4,"blue_chip":3}
 - **Warnings:**
   - ⚠️ alt_mid: 12 positions (max 3)
-  - ⚠️ alt_large: 12 positions (max 3)
+  - ⚠️ alt_large: 11 positions (max 3)
   - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 34/3
+  - 🚫 max_concurrent_positions: 33/3
 
 ## Trailing Stops
 
@@ -109,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 79.3%
-- **Total PnL:** 368.97 USDT
-- **Total Exposure:** 13076.18 USDT
+- **Margin Level:** 79.42%
+- **Total PnL:** 397.63 USDT
+- **Total Exposure:** 13092.03 USDT
 - **Warnings:**
-  - 🔴 margin_call: 79.3% (threshold: 100%)
+  - 🔴 margin_call: 79.42% (threshold: 100%)
 
 ## Statistics
 
