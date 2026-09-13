@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-13T13:13:20.408Z
+Generated: 2026-09-13T18:40:42.521Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 427.08 USDT
+- **Total PnL:** 368.97 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | -773.58 | -2500 | ✅ |
-| Monthly | -636.66 | -5000 | ✅ |
-| Total (all time) | 427.08 | -5000 | ✅ |
+| Daily (UTC) | -58.11 | -500 | ✅ |
+| Weekly (7d) | -831.69 | -2500 | ✅ |
+| Monthly | -694.77 | -5000 | ✅ |
+| Total (all time) | 368.97 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 11161.92 USDT (max 30000)
+- **Open Notional:** 13076.18 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -59,7 +59,7 @@ Status: **NORMAL**
 | NEARUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 98 |
 | FILUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 2% | 200 | 7.79 | 58.3% | 95 |
-| SEIUSDT | sma-rsi | 2% | 200 | 12.22 | 66.7% | 95 |
+| SEIUSDT | sma-rsi | 2% | 200 | 12.39 | 67.5% | 95 |
 | JUPUSDT | sma-rsi | 0.93% | 92.95 | 1.33 | 66.7% | 95 |
 | ATOMUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -77,7 +77,7 @@ Status: **NORMAL**
 | DOGEUSDT | breakout | 2% | 200 | 25 | 82.4% | 95 |
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| OPUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
+| OPUSDT | sma-rsi | 2% | 200 | 14.27 | 70% | 95 |
 | LTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SOLUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -87,20 +87,21 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.86% / 5% max
+- **Heat:** 0.98% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 30
-- **Sector Distribution:** {"alt_mid":12,"alt_large":9,"alt_small":3,"other":3,"blue_chip":3}
+- **Active Positions:** 34
+- **Sector Distribution:** {"alt_mid":12,"alt_large":12,"alt_small":3,"other":4,"blue_chip":3}
 - **Warnings:**
   - ⚠️ alt_mid: 12 positions (max 3)
-  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ alt_large: 12 positions (max 3)
+  - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 30/3
+  - 🚫 max_concurrent_positions: 34/3
 
 ## Trailing Stops
 
@@ -108,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 93.42%
-- **Total PnL:** 427.08 USDT
-- **Total Exposure:** 11161.92 USDT
+- **Margin Level:** 79.3%
+- **Total PnL:** 368.97 USDT
+- **Total Exposure:** 13076.18 USDT
 - **Warnings:**
-  - 🔴 margin_call: 93.42% (threshold: 100%)
+  - 🔴 margin_call: 79.3% (threshold: 100%)
 
 ## Statistics
 

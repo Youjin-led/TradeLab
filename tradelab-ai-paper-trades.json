@@ -1,5 +1,5 @@
 {
-  "balance": 4577.7239641055685,
+  "balance": 4521.138968669372,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -20,23 +20,6 @@
       "tpPrice": 6.968214285714286
     },
     {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 2523.84,
-      "qty": 0.5051048325743495,
-      "notional": 1274.8037806444463,
-      "fee": 0.5099215122577786,
-      "openedAt": "2026-09-12T22:04:48.176Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price above SMA20 (2491) and SMA50 (2487), bullish trend with ADX 36 confirming strength, MACD posit",
-      "atrPct": 1.6167823633827818,
-      "slPercent": 2.4251735450741725,
-      "tpPercent": 4.850347090148345,
-      "slPrice": 2462.6325,
-      "tpPrice": 2646.2550000000006
-    },
-    {
       "symbol": "ADAUSDT",
       "interval": "1h",
       "side": "SHORT",
@@ -52,6 +35,23 @@
       "tpPercent": 5.9181685338528975,
       "slPrice": 0.21137500000000004,
       "tpPrice": 0.19315000000000002
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 6.187,
+      "qty": 210.1119525664442,
+      "notional": 1299.9626505285903,
+      "fee": 0.5199850602114362,
+      "openedAt": "2026-09-13T18:41:03.546Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price 6.187 above SMA20 (5.964) and SMA50 (5.940), trend bul | Price 6.187 above SMA20 5.941 and SMA50 5.863, trend bullish",
+      "atrPct": 3.3584243459788956,
+      "slPercent": 5.037636518968343,
+      "tpPercent": 10.075273037936686,
+      "slPrice": 5.875321428571429,
+      "tpPrice": 6.810357142857144
     }
   ],
   "closedTrades": [
@@ -736,14 +736,25 @@
       "reason": "timeout 78h (maxHoldHours)",
       "openedAt": "2026-09-09T22:23:55.821Z",
       "closedAt": "2026-09-13T04:11:09.981Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 2523.84,
+      "exit": 2462.6325,
+      "pnl": -31.426125552052266,
+      "reason": "Stop loss 2.4% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-12T22:04:48.176Z",
+      "closedAt": "2026-09-13T18:41:07.274Z"
     }
   ],
-  "totalPnl": 416.0498123145365,
+  "totalPnl": 384.6236867624842,
   "wins": 29,
-  "losses": 33,
+  "losses": 34,
   "stats": {
     "todayDate": "2026-09-13",
-    "todayPnl": 100.32283579928702
+    "todayPnl": 68.89671024723475
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -751,6 +762,7 @@
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
     "BNBUSDT": "2026-09-10T12:49:23.914Z",
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
-    "SUIUSDT": "2026-09-13T04:11:09.981Z"
+    "SUIUSDT": "2026-09-13T04:11:09.981Z",
+    "ETHUSDT": "2026-09-13T18:41:07.274Z"
   }
 }
