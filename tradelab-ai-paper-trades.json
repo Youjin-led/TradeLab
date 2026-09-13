@@ -1,24 +1,7 @@
 {
-  "balance": 4795.690412900536,
+  "balance": 6539.605663007955,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.7715,
-      "qty": 2130.3855013715247,
-      "notional": 1643.592414308131,
-      "fee": 0.6574369657232525,
-      "openedAt": "2026-09-09T22:23:55.821Z",
-      "aiConfidence": 87,
-      "aiReasoning": "TF agree: Price is below both SMA20 and SMA50, trend is bearish, RSI a | Price below SMA20 and SMA50, MACD negative, ADX 32 indicates",
-      "atrPct": 3.3135820757337253,
-      "slPercent": 4.970373113600588,
-      "tpPercent": 9.940746227201176,
-      "slPrice": 0.8098464285714284,
-      "tpPrice": 0.6948071428571428
-    },
     {
       "symbol": "AVAXUSDT",
       "interval": "1h",
@@ -725,20 +708,32 @@
       "reason": "Take profit 7.5% (ATR*3) hit intrabar",
       "openedAt": "2026-09-09T12:51:18.180Z",
       "closedAt": "2026-09-11T16:13:15.736Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.7715,
+      "exit": 0.7241,
+      "pnl": 100.32283579928702,
+      "reason": "timeout 78h (maxHoldHours)",
+      "openedAt": "2026-09-09T22:23:55.821Z",
+      "closedAt": "2026-09-13T04:11:09.981Z"
     }
   ],
-  "totalPnl": 315.7269765152495,
-  "wins": 28,
+  "totalPnl": 416.0498123145365,
+  "wins": 29,
   "losses": 33,
   "stats": {
-    "todayDate": "2026-09-12",
-    "todayPnl": 0
+    "todayDate": "2026-09-13",
+    "todayPnl": 100.32283579928702
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
     "BTCUSDT": "2026-09-11T16:13:11.247Z",
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
     "BNBUSDT": "2026-09-10T12:49:23.914Z",
-    "LINKUSDT": "2026-09-11T16:13:15.736Z"
+    "LINKUSDT": "2026-09-11T16:13:15.736Z",
+    "SUIUSDT": "2026-09-13T04:11:09.981Z"
   }
 }
