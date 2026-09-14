@@ -1,5 +1,5 @@
 {
-  "balance": 5755.094240921773,
+  "balance": 7658.137454456668,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,23 +18,6 @@
       "tpPercent": 5.758530082306122,
       "slPrice": 7.606892857142857,
       "tpPrice": 6.968214285714286
-    },
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.2053,
-      "qty": 9556.16998978269,
-      "notional": 1961.8816989023862,
-      "fee": 0.7847526795609545,
-      "openedAt": "2026-09-13T13:13:42.273Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price 0.2054 below both SMA20 (0.2065) and SMA50 (0.2074), t | Price 0.2053 is below both SMA20 (0.20742) and SMA50 (0.2141",
-      "atrPct": 1.9727228446176324,
-      "slPercent": 2.9590842669264488,
-      "tpPercent": 5.9181685338528975,
-      "slPrice": 0.21137500000000004,
-      "tpPrice": 0.19315000000000002
     }
   ],
   "closedTrades": [
@@ -741,14 +724,25 @@
       "reason": "Stop loss 5.0% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-13T18:41:03.546Z",
       "closedAt": "2026-09-14T04:18:38.905Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.2053,
+      "exit": 0.21137500000000004,
+      "pnl": -58.838485367491025,
+      "reason": "Stop loss 3.0% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-13T13:13:42.273Z",
+      "closedAt": "2026-09-14T14:54:15.876Z"
     }
   ],
-  "totalPnl": 318.6163084862957,
+  "totalPnl": 259.77782311880463,
   "wins": 29,
-  "losses": 35,
+  "losses": 36,
   "stats": {
     "todayDate": "2026-09-14",
-    "todayPnl": -66.00737827618858
+    "todayPnl": -124.84586364367959
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -758,6 +752,7 @@
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
     "SUIUSDT": "2026-09-13T04:11:09.981Z",
     "ETHUSDT": "2026-09-13T18:41:07.274Z",
-    "INJUSDT": "2026-09-14T04:18:38.905Z"
+    "INJUSDT": "2026-09-14T04:18:38.905Z",
+    "ADAUSDT": "2026-09-14T14:54:15.876Z"
   }
 }

@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-14T04:18:18.343Z
+Generated: 2026-09-14T14:53:53.050Z
 Status: **NORMAL**
 
 ---
@@ -18,13 +18,13 @@ Status: **NORMAL**
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
 | Daily (UTC) | 83.67 | -500 | ✅ |
-| Weekly (7d) | -751.77 | -2500 | ✅ |
+| Weekly (7d) | -786.62 | -2500 | ✅ |
 | Monthly | -635.50 | -5000 | ✅ |
 | Total (all time) | 428.25 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 3132.03 USDT (max 30000)
+- **Open Notional:** 7256.53 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -95,10 +95,10 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 33
-- **Sector Distribution:** {"alt_mid":14,"alt_large":9,"alt_small":3,"other":4,"blue_chip":3}
+- **Sector Distribution:** {"alt_mid":13,"alt_large":10,"alt_small":3,"other":4,"blue_chip":3}
 - **Warnings:**
-  - ⚠️ alt_mid: 14 positions (max 3)
-  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ alt_mid: 13 positions (max 3)
+  - ⚠️ alt_large: 10 positions (max 3)
   - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
   - 🚫 max_concurrent_positions: 33/3
@@ -109,9 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 332.95%
+- **Margin Level:** 143.71%
 - **Total PnL:** 428.25 USDT
-- **Total Exposure:** 3132.03 USDT
+- **Total Exposure:** 7256.53 USDT
+- **Warnings:**
+  - ℹ️ low_margin: 143.71% (threshold: 150%)
 
 ## Statistics
 
