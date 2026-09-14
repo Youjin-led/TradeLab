@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-14T14:53:53.050Z
+Generated: 2026-09-14T20:13:52.218Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 428.25 USDT
+- **Total PnL:** 489.83 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 83.67 | -500 | ✅ |
-| Weekly (7d) | -786.62 | -2500 | ✅ |
-| Monthly | -635.50 | -5000 | ✅ |
-| Total (all time) | 428.25 | -5000 | ✅ |
+| Daily (UTC) | 145.25 | -500 | ✅ |
+| Weekly (7d) | -706.42 | -2500 | ✅ |
+| Monthly | -573.92 | -5000 | ✅ |
+| Total (all time) | 489.83 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 7256.53 USDT (max 30000)
+- **Open Notional:** 7234.41 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -61,7 +61,7 @@ Status: **NORMAL**
 | DOGEUSDT | sma-rsi | 2% | 200 | 8.31 | 61.5% | 95 |
 | SEIUSDT | sma-rsi | 2% | 200 | 12.39 | 67.5% | 95 |
 | JUPUSDT | sma-rsi | 0.93% | 92.95 | 1.33 | 66.7% | 95 |
-| ATOMUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
+| ATOMUSDT | sma-rsi | 2% | 200 | 18.66 | 70% | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -95,11 +95,11 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 33
-- **Sector Distribution:** {"alt_mid":13,"alt_large":10,"alt_small":3,"other":4,"blue_chip":3}
+- **Sector Distribution:** {"alt_mid":13,"alt_large":9,"alt_small":3,"other":5,"blue_chip":3}
 - **Warnings:**
   - ⚠️ alt_mid: 13 positions (max 3)
-  - ⚠️ alt_large: 10 positions (max 3)
-  - ⚠️ other: 4 positions (max 3)
+  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ other: 5 positions (max 3)
 - **Blocks:**
   - 🚫 max_concurrent_positions: 33/3
 
@@ -109,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 143.71%
-- **Total PnL:** 428.25 USDT
-- **Total Exposure:** 7256.53 USDT
+- **Margin Level:** 145%
+- **Total PnL:** 489.83 USDT
+- **Total Exposure:** 7234.41 USDT
 - **Warnings:**
-  - ℹ️ low_margin: 143.71% (threshold: 150%)
+  - ℹ️ low_margin: 145% (threshold: 150%)
 
 ## Statistics
 

@@ -1,25 +1,7 @@
 {
-  "balance": 7658.137454456668,
+  "balance": 10183.829045339924,
   "peak": 10677.153840784533,
-  "positions": [
-    {
-      "symbol": "AVAXUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 7.394,
-      "qty": 351.85831331649104,
-      "notional": 2601.6403686621347,
-      "fee": 1.040656147464854,
-      "openedAt": "2026-09-12T22:04:48.176Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price 7.394 is below both SMA20 (7.4234) and SMA50 (7.46736) | Price (7.394) is below both SMA20 (7.546) and SMA50 (7.696) ",
-      "atrPct": 1.919510027435374,
-      "slPercent": 2.879265041153061,
-      "tpPercent": 5.758530082306122,
-      "slPrice": 7.606892857142857,
-      "tpPrice": 6.968214285714286
-    }
-  ],
+  "positions": [],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
@@ -735,14 +717,25 @@
       "reason": "Stop loss 3.0% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-13T13:13:42.273Z",
       "closedAt": "2026-09-14T14:54:15.876Z"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 7.394,
+      "exit": 7.606892857142857,
+      "pnl": -75.94877777887928,
+      "reason": "Stop loss 2.9% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-12T22:04:48.176Z",
+      "closedAt": "2026-09-14T21:29:07.786Z"
     }
   ],
-  "totalPnl": 259.77782311880463,
+  "totalPnl": 183.82904533992536,
   "wins": 29,
-  "losses": 36,
+  "losses": 37,
   "stats": {
     "todayDate": "2026-09-14",
-    "todayPnl": -124.84586364367959
+    "todayPnl": -200.79464142255887
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -753,6 +746,7 @@
     "SUIUSDT": "2026-09-13T04:11:09.981Z",
     "ETHUSDT": "2026-09-13T18:41:07.274Z",
     "INJUSDT": "2026-09-14T04:18:38.905Z",
-    "ADAUSDT": "2026-09-14T14:54:15.876Z"
+    "ADAUSDT": "2026-09-14T14:54:15.876Z",
+    "AVAXUSDT": "2026-09-14T21:29:07.786Z"
   }
 }
