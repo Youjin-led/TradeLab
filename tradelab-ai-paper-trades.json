@@ -1,5 +1,5 @@
 {
-  "balance": 4521.138968669372,
+  "balance": 5755.094240921773,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,23 +35,6 @@
       "tpPercent": 5.9181685338528975,
       "slPrice": 0.21137500000000004,
       "tpPrice": 0.19315000000000002
-    },
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 6.187,
-      "qty": 210.1119525664442,
-      "notional": 1299.9626505285903,
-      "fee": 0.5199850602114362,
-      "openedAt": "2026-09-13T18:41:03.546Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price 6.187 above SMA20 (5.964) and SMA50 (5.940), trend bul | Price 6.187 above SMA20 5.941 and SMA50 5.863, trend bullish",
-      "atrPct": 3.3584243459788956,
-      "slPercent": 5.037636518968343,
-      "tpPercent": 10.075273037936686,
-      "slPrice": 5.875321428571429,
-      "tpPrice": 6.810357142857144
     }
   ],
   "closedTrades": [
@@ -747,14 +730,25 @@
       "reason": "Stop loss 2.4% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-12T22:04:48.176Z",
       "closedAt": "2026-09-13T18:41:07.274Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 6.187,
+      "exit": 5.875321428571429,
+      "pnl": -66.00737827618858,
+      "reason": "Stop loss 5.0% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-13T18:41:03.546Z",
+      "closedAt": "2026-09-14T04:18:38.905Z"
     }
   ],
-  "totalPnl": 384.6236867624842,
+  "totalPnl": 318.6163084862957,
   "wins": 29,
-  "losses": 34,
+  "losses": 35,
   "stats": {
-    "todayDate": "2026-09-13",
-    "todayPnl": 68.89671024723475
+    "todayDate": "2026-09-14",
+    "todayPnl": -66.00737827618858
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -763,6 +757,7 @@
     "BNBUSDT": "2026-09-10T12:49:23.914Z",
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
     "SUIUSDT": "2026-09-13T04:11:09.981Z",
-    "ETHUSDT": "2026-09-13T18:41:07.274Z"
+    "ETHUSDT": "2026-09-13T18:41:07.274Z",
+    "INJUSDT": "2026-09-14T04:18:38.905Z"
   }
 }
