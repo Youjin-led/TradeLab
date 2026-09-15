@@ -1,7 +1,59 @@
 {
-  "balance": 10183.829045339924,
+  "balance": 3832.251017938888,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 2405.75,
+      "qty": 1.2699360754866371,
+      "notional": 3055.1487136019773,
+      "fee": 1.222059485440791,
+      "openedAt": "2026-09-15T19:37:03.804Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price 2405.76 below SMA20 (2467) and SMA50 (2496), trend bea | Price (2405.75) is below both SMA20 (2498.20) and SMA50 (249",
+      "atrPct": 1.9255949288163765,
+      "slPercent": 2.8883923932245645,
+      "tpPercent": 5.776784786449129,
+      "slPrice": 2475.2374999999997,
+      "tpPrice": 2266.775
+    },
+    {
+      "symbol": "SUIUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.6871,
+      "qty": 2807.6197855682117,
+      "notional": 1929.1155546639184,
+      "fee": 0.7716462218655674,
+      "openedAt": "2026-09-15T19:37:03.804Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Trend bearish with price below SMA20 (0.7083) and SMA50 (0.7 | Price below SMA20 (0.716) and SMA50 (0.751), bearish trend, ",
+      "atrPct": 2.771482628854187,
+      "slPercent": 4.157223943281281,
+      "tpPercent": 8.314447886562562,
+      "slPrice": 0.7156642857142858,
+      "tpPrice": 0.6299714285714287
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.1971,
+      "qty": 6937.157580594323,
+      "notional": 1367.313759135141,
+      "fee": 0.5469255036540565,
+      "openedAt": "2026-09-15T19:37:03.804Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 0.1971 is below SMA20 (0.2041) and SMA50 (0.2069), tre | Price 0.1971 below SMA20 (0.2064) and SMA50 (0.2108), trend ",
+      "atrPct": 2.852069290425454,
+      "slPercent": 4.278103935638181,
+      "tpPercent": 8.556207871276362,
+      "slPrice": 0.20553214285714286,
+      "tpPrice": 0.1802357142857143
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
