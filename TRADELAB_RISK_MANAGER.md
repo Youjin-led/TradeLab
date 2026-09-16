@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-15T22:47:19.806Z
+Generated: 2026-09-16T04:14:13.546Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 441.86 USDT
+- **Total PnL:** 568.63 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -30.18 | -500 | ✅ |
-| Weekly (7d) | -815.40 | -2500 | ✅ |
-| Monthly | -621.88 | -5000 | ✅ |
-| Total (all time) | 441.86 | -5000 | ✅ |
+| Daily (UTC) | 112.65 | -500 | ✅ |
+| Weekly (7d) | -688.64 | -2500 | ✅ |
+| Monthly | -495.13 | -5000 | ✅ |
+| Total (all time) | 568.63 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 18206.48 USDT (max 30000)
+- **Open Notional:** 12902.84 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -44,7 +44,7 @@ Status: **NORMAL**
 | LINKUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| INJUSDT | sma-rsi | 2% | 200 | 12.13 | 60% | 95 |
+| INJUSDT | sma-rsi | 2% | 200 | 11.13 | 58.1% | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SEIUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ETHUSDT | sma-rsi | 0.7% | 70 | 0 | 33.3% | 95 |
@@ -61,7 +61,7 @@ Status: **NORMAL**
 | DOGEUSDT | sma-rsi | 2% | 200 | 8.31 | 61.5% | 95 |
 | SEIUSDT | sma-rsi | 2% | 200 | 11.66 | 65.9% | 95 |
 | JUPUSDT | sma-rsi | 0.93% | 92.95 | 1.33 | 66.7% | 95 |
-| ATOMUSDT | sma-rsi | 2% | 200 | 18.66 | 70% | 95 |
+| ATOMUSDT | sma-rsi | 2% | 200 | 24.32 | 75% | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -70,7 +70,7 @@ Status: **NORMAL**
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 0.7% | 70 | 0 | 52.6% | 95 |
+| SEIUSDT | breakout | 0.7% | 70 | 0 | 55% | 95 |
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 57.35%
-- **Total PnL:** 441.86 USDT
-- **Total Exposure:** 18206.48 USDT
+- **Margin Level:** 81.91%
+- **Total PnL:** 568.63 USDT
+- **Total Exposure:** 12902.84 USDT
 - **Warnings:**
-  - 🔴 margin_call: 57.35% (threshold: 100%)
+  - 🔴 margin_call: 81.91% (threshold: 100%)
 
 ## Statistics
 
