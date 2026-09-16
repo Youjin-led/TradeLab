@@ -1,5 +1,5 @@
 {
-  "balance": 3832.251017938888,
+  "balance": 4118.672352661828,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -20,23 +20,6 @@
       "tpPrice": 2266.775
     },
     {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.6871,
-      "qty": 2807.6197855682117,
-      "notional": 1929.1155546639184,
-      "fee": 0.7716462218655674,
-      "openedAt": "2026-09-15T19:37:03.804Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Trend bearish with price below SMA20 (0.7083) and SMA50 (0.7 | Price below SMA20 (0.716) and SMA50 (0.751), bearish trend, ",
-      "atrPct": 2.771482628854187,
-      "slPercent": 4.157223943281281,
-      "tpPercent": 8.314447886562562,
-      "slPrice": 0.7156642857142858,
-      "tpPrice": 0.6299714285714287
-    },
-    {
       "symbol": "ADAUSDT",
       "interval": "1h",
       "side": "SHORT",
@@ -52,6 +35,23 @@
       "tpPercent": 8.556207871276362,
       "slPrice": 0.20553214285714286,
       "tpPrice": 0.1802357142857143
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.1935,
+      "qty": 8070.929819054577,
+      "notional": 1561.7249199870607,
+      "fee": 0.6246899679948243,
+      "openedAt": "2026-09-16T22:47:57.856Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Trend is bearish with price below SMA20 (0.19387) and SMA50  | Price 0.1935 is below both SMA20 (0.20207) and SMA50 (0.2071",
+      "atrPct": 2.727943890734588,
+      "slPercent": 4.091915836101882,
+      "tpPercent": 8.183831672203764,
+      "slPrice": 0.20141785714285715,
+      "tpPrice": 0.17766428571428572
     }
   ],
   "closedTrades": [
@@ -780,14 +780,25 @@
       "reason": "Stop loss 2.9% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-12T22:04:48.176Z",
       "closedAt": "2026-09-14T21:29:07.786Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.6871,
+      "exit": 0.7156642857142858,
+      "pnl": -80.96929995391754,
+      "reason": "Stop loss 4.2% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-15T19:37:03.804Z",
+      "closedAt": "2026-09-16T22:48:01.759Z"
     }
   ],
-  "totalPnl": 183.82904533992536,
+  "totalPnl": 102.85974538600782,
   "wins": 29,
-  "losses": 37,
+  "losses": 38,
   "stats": {
     "todayDate": "2026-09-16",
-    "todayPnl": 0
+    "todayPnl": -80.96929995391754
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -795,7 +806,7 @@
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
     "BNBUSDT": "2026-09-10T12:49:23.914Z",
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
-    "SUIUSDT": "2026-09-13T04:11:09.981Z",
+    "SUIUSDT": "2026-09-16T22:48:01.759Z",
     "ETHUSDT": "2026-09-13T18:41:07.274Z",
     "INJUSDT": "2026-09-14T04:18:38.905Z",
     "ADAUSDT": "2026-09-14T14:54:15.876Z",
