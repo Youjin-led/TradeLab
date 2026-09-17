@@ -1,24 +1,7 @@
 {
-  "balance": 4118.672352661828,
+  "balance": 8581.550084434753,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 2405.75,
-      "qty": 1.2699360754866371,
-      "notional": 3055.1487136019773,
-      "fee": 1.222059485440791,
-      "openedAt": "2026-09-15T19:37:03.804Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price 2405.76 below SMA20 (2467) and SMA50 (2496), trend bea | Price (2405.75) is below both SMA20 (2498.20) and SMA50 (249",
-      "atrPct": 1.9255949288163765,
-      "slPercent": 2.8883923932245645,
-      "tpPercent": 5.776784786449129,
-      "slPrice": 2475.2374999999997,
-      "tpPrice": 2266.775
-    },
     {
       "symbol": "ADAUSDT",
       "interval": "1h",
@@ -35,23 +18,6 @@
       "tpPercent": 8.556207871276362,
       "slPrice": 0.20553214285714286,
       "tpPrice": 0.1802357142857143
-    },
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1935,
-      "qty": 8070.929819054577,
-      "notional": 1561.7249199870607,
-      "fee": 0.6246899679948243,
-      "openedAt": "2026-09-16T22:47:57.856Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Trend is bearish with price below SMA20 (0.19387) and SMA50  | Price 0.1935 is below both SMA20 (0.20207) and SMA50 (0.2071",
-      "atrPct": 2.727943890734588,
-      "slPercent": 4.091915836101882,
-      "tpPercent": 8.183831672203764,
-      "slPrice": 0.20141785714285715,
-      "tpPrice": 0.17766428571428572
     }
   ],
   "closedTrades": [
@@ -791,14 +757,36 @@
       "reason": "Stop loss 4.2% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-15T19:37:03.804Z",
       "closedAt": "2026-09-16T22:48:01.759Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1935,
+      "exit": 0.20141785714285715,
+      "pnl": -64.52915928529481,
+      "reason": "Stop loss 4.1% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-16T22:47:57.856Z",
+      "closedAt": "2026-09-17T13:15:50.735Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 2405.75,
+      "exit": 2475.2374999999997,
+      "pnl": -89.46674253081815,
+      "reason": "Stop loss 2.9% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-15T19:37:03.804Z",
+      "closedAt": "2026-09-17T13:15:55.108Z"
     }
   ],
-  "totalPnl": 102.85974538600782,
+  "totalPnl": -51.136156430105146,
   "wins": 29,
-  "losses": 38,
+  "losses": 40,
   "stats": {
     "todayDate": "2026-09-17",
-    "todayPnl": 0
+    "todayPnl": -153.99590181611296
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -807,9 +795,9 @@
     "BNBUSDT": "2026-09-10T12:49:23.914Z",
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
     "SUIUSDT": "2026-09-16T22:48:01.759Z",
-    "ETHUSDT": "2026-09-13T18:41:07.274Z",
+    "ETHUSDT": "2026-09-17T13:15:55.108Z",
     "INJUSDT": "2026-09-14T04:18:38.905Z",
-    "ADAUSDT": "2026-09-14T14:54:15.876Z",
+    "ADAUSDT": "2026-09-17T13:15:50.735Z",
     "AVAXUSDT": "2026-09-14T21:29:07.786Z"
   }
 }
