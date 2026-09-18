@@ -1,5 +1,5 @@
 {
-  "balance": 9145.832419120066,
+  "balance": 6251.330794390638,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,6 +18,40 @@
       "tpPercent": 20.93641315046919,
       "slPrice": 0.1949107142857143,
       "tpPrice": 0.2632785714285714
+    },
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 764.2,
+      "qty": 2.513248898214098,
+      "notional": 1920.6248080152138,
+      "fee": 0.7682499232060855,
+      "openedAt": "2026-09-18T22:25:46.247Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Strong bullish trend: ADX=66 with SMA20(756.88) > SMA50(740.09) and price above both, so SELL is for",
+      "atrPct": 1.254252813399632,
+      "slPercent": 1.881379220099448,
+      "tpPercent": 3.762758440198896,
+      "slPrice": 749.8225000000001,
+      "tpPrice": 792.9549999999999
+    },
+    {
+      "symbol": "OPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1159,
+      "qty": 8402.73353506656,
+      "notional": 973.8768167142143,
+      "fee": 0.38955072668568574,
+      "openedAt": "2026-09-18T22:25:46.247Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Strong uptrend: ADX=66 with SMA20(0.1124) > SMA50(0.1041) and price above both, so SELL is forbidden",
+      "atrPct": 3.894983360039443,
+      "slPercent": 5.842475040059164,
+      "tpPercent": 11.684950080118329,
+      "slPrice": 0.10912857142857142,
+      "tpPrice": 0.12944285714285717
     }
   ],
   "closedTrades": [
