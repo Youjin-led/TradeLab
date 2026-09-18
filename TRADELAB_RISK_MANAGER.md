@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-18T04:04:24.847Z
+Generated: 2026-09-18T12:50:22.896Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 169.29 USDT
+- **Total PnL:** 334.73 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -432.72 | -500 | ✅ |
-| Weekly (7d) | -621.54 | -2500 | ✅ |
-| Monthly | -894.44 | -5000 | ✅ |
-| Total (all time) | 169.29 | -5000 | ✅ |
+| Daily (UTC) | -267.29 | -500 | ✅ |
+| Weekly (7d) | -348.26 | -2500 | ✅ |
+| Monthly | -729.01 | -5000 | ✅ |
+| Total (all time) | 334.73 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 11310.2 USDT (max 30000)
+- **Open Notional:** 7285.83 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -70,11 +70,11 @@ Status: **NORMAL**
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 0.7% | 70 | 0 | 55% | 95 |
+| SEIUSDT | breakout | 0.7% | 70 | 0 | 58.3% | 95 |
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| DOGEUSDT | breakout | 2% | 200 | 25 | 80% | 95 |
+| DOGEUSDT | breakout | 2% | 200 | 25 | 81.8% | 95 |
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | OPUSDT | sma-rsi | 2% | 200 | 20.77 | 72.7% | 95 |
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 89.91%
-- **Total PnL:** 169.29 USDT
-- **Total Exposure:** 11310.2 USDT
+- **Margin Level:** 141.85%
+- **Total PnL:** 334.73 USDT
+- **Total Exposure:** 7285.83 USDT
 - **Warnings:**
-  - 🔴 margin_call: 89.91% (threshold: 100%)
+  - ℹ️ low_margin: 141.85% (threshold: 150%)
 
 ## Statistics
 
