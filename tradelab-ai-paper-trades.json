@@ -1,7 +1,25 @@
 {
-  "balance": 9889.821814324157,
+  "balance": 9145.832419120066,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "ARBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.2177,
+      "qty": 3417.4983702530585,
+      "notional": 743.9893952040909,
+      "fee": 0.29759575808163635,
+      "openedAt": "2026-09-18T18:57:27.236Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Strong uptrend: ADX 66.4 with SMA20 (0.2086) > SMA50 (0.1840) and price 0.2177 above both, so SELL i",
+      "atrPct": 6.97880438348973,
+      "slPercent": 10.468206575234595,
+      "tpPercent": 20.93641315046919,
+      "slPrice": 0.1949107142857143,
+      "tpPrice": 0.2632785714285714
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
