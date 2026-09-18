@@ -1,25 +1,7 @@
 {
-  "balance": 8581.550084434753,
+  "balance": 9889.821814324157,
   "peak": 10677.153840784533,
-  "positions": [
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1971,
-      "qty": 6937.157580594323,
-      "notional": 1367.313759135141,
-      "fee": 0.5469255036540565,
-      "openedAt": "2026-09-15T19:37:03.804Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price 0.1971 is below SMA20 (0.2041) and SMA50 (0.2069), tre | Price 0.1971 below SMA20 (0.2064) and SMA50 (0.2108), trend ",
-      "atrPct": 2.852069290425454,
-      "slPercent": 4.278103935638181,
-      "tpPercent": 8.556207871276362,
-      "slPrice": 0.20553214285714286,
-      "tpPrice": 0.1802357142857143
-    }
-  ],
+  "positions": [],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
@@ -779,14 +761,25 @@
       "reason": "Stop loss 2.9% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-15T19:37:03.804Z",
       "closedAt": "2026-09-17T13:15:55.108Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1971,
+      "exit": 0.20553214285714286,
+      "pnl": -59.04202924573693,
+      "reason": "Stop loss 4.3% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-15T19:37:03.804Z",
+      "closedAt": "2026-09-18T04:04:46.507Z"
     }
   ],
-  "totalPnl": -51.136156430105146,
+  "totalPnl": -110.17818567584207,
   "wins": 29,
-  "losses": 40,
+  "losses": 41,
   "stats": {
-    "todayDate": "2026-09-17",
-    "todayPnl": -153.99590181611296
+    "todayDate": "2026-09-18",
+    "todayPnl": -59.04202924573693
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -797,7 +790,7 @@
     "SUIUSDT": "2026-09-16T22:48:01.759Z",
     "ETHUSDT": "2026-09-17T13:15:55.108Z",
     "INJUSDT": "2026-09-14T04:18:38.905Z",
-    "ADAUSDT": "2026-09-17T13:15:50.735Z",
+    "ADAUSDT": "2026-09-18T04:04:46.507Z",
     "AVAXUSDT": "2026-09-14T21:29:07.786Z"
   }
 }

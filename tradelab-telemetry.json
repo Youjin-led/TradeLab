@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-09-17T22:45:21.685Z",
+  "generatedAt": "2026-09-18T04:04:25.012Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 35,
-    "quarantined": 6,
+    "live": 27,
+    "quarantined": 14,
     "rejected": 3,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 950.0722544362812,
-      "trades": 244,
-      "wins": 129,
-      "losses": 115,
-      "maxDd": 8.01,
+      "totalPnl": 605.0336910111412,
+      "trades": 249,
+      "wins": 131,
+      "losses": 118,
+      "maxDd": 8.19,
       "symbols": [
         "NEARUSDT",
         "LINKUSDT",
@@ -33,18 +33,18 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 950.0599999999998,
-      "forwardTrades": 244,
+      "forwardPnl": 605.0200000000003,
+      "forwardTrades": 249,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 52.9,
-      "avgPnlPerTrade": 3.89
+      "winRate": 52.6,
+      "avgPnlPerTrade": 2.43
     },
     "sma-rsi": {
-      "totalPnl": -219.06832087273256,
-      "trades": 220,
+      "totalPnl": -435.7141127845182,
+      "trades": 223,
       "wins": 115,
-      "losses": 105,
+      "losses": 108,
       "maxDd": 6.33,
       "symbols": [
         "LINKUSDT",
@@ -65,19 +65,19 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -219.08000000000018,
-      "forwardTrades": 220,
+      "forwardPnl": -435.73000000000025,
+      "forwardTrades": 223,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 52.3,
-      "avgPnlPerTrade": -1
+      "winRate": 51.6,
+      "avgPnlPerTrade": -1.95
     }
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": -329.94,
-      "trades": 59,
-      "avgPnl": -5.59
+      "pnl": -414.05,
+      "trades": 61,
+      "avgPnl": -6.79
     },
     "1": {
       "pnl": -51.11,
@@ -135,9 +135,9 @@
       "avgPnl": 5.14
     },
     "12": {
-      "pnl": 432.16,
-      "trades": 58,
-      "avgPnl": 7.45
+      "pnl": 112.92,
+      "trades": 60,
+      "avgPnl": 1.88
     },
     "13": {
       "pnl": 334.45,
@@ -155,9 +155,9 @@
       "avgPnl": 9.34
     },
     "16": {
-      "pnl": 236.54,
-      "trades": 57,
-      "avgPnl": 4.15
+      "pnl": 78.2,
+      "trades": 61,
+      "avgPnl": 1.28
     },
     "17": {
       "pnl": 691.85,
@@ -207,19 +207,19 @@
       "avgPnl": -15.9
     },
     "Tuesday": {
-      "pnl": -362.38,
-      "trades": 81,
-      "avgPnl": -4.47
+      "pnl": -626.66,
+      "trades": 83,
+      "avgPnl": -7.55
     },
     "Wednesday": {
-      "pnl": 302.45,
-      "trades": 85,
-      "avgPnl": 3.56
+      "pnl": 115.75,
+      "trades": 86,
+      "avgPnl": 1.35
     },
     "Thursday": {
-      "pnl": 624.92,
-      "trades": 77,
-      "avgPnl": 8.12
+      "pnl": 522.43,
+      "trades": 81,
+      "avgPnl": 6.45
     },
     "Friday": {
       "pnl": 1242.69,
@@ -227,9 +227,9 @@
       "avgPnl": 18.01
     },
     "Saturday": {
-      "pnl": -219.11,
-      "trades": 35,
-      "avgPnl": -6.26
+      "pnl": -227.31,
+      "trades": 36,
+      "avgPnl": -6.31
     }
   },
   "equityCurve": [
@@ -3452,59 +3452,115 @@
       "strategy": "breakout"
     },
     {
+      "time": "2026-09-17 00:00",
+      "equity": 10492.13,
+      "pnl": -8.21,
+      "symbol": "LTCUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
       "time": "2026-09-17 01:00",
-      "equity": 10494.93,
+      "equity": 10486.72,
       "pnl": -5.41,
       "symbol": "RENDERUSDT",
       "strategy": "breakout"
     },
     {
       "time": "2026-09-17 16:00",
-      "equity": 10652.25,
+      "equity": 10644.05,
       "pnl": 157.32,
       "symbol": "NEARUSDT",
       "strategy": "breakout"
     },
     {
       "time": "2026-09-17 16:00",
-      "equity": 10809.58,
+      "equity": 10801.37,
       "pnl": 157.32,
       "symbol": "NEARUSDT",
       "strategy": "breakout"
     },
     {
       "time": "2026-09-17 16:00",
-      "equity": 10800.62,
+      "equity": 10792.41,
       "pnl": -8.96,
       "symbol": "DOTUSDT",
       "strategy": "sma-rsi"
     },
     {
       "time": "2026-09-17 16:00",
-      "equity": 10731,
+      "equity": 10722.8,
       "pnl": -69.61,
       "symbol": "BNBUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-17 20:00",
+      "equity": 10602.04,
+      "pnl": -120.76,
+      "symbol": "SUIUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-18 00:00",
+      "equity": 10415.33,
+      "pnl": -186.7,
+      "symbol": "LINKUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-18 00:00",
+      "equity": 10339.43,
+      "pnl": -75.91,
+      "symbol": "SEIUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-18 00:00",
+      "equity": 10195.9,
+      "pnl": -143.52,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-18 00:00",
+      "equity": 10063.37,
+      "pnl": -132.53,
+      "symbol": "BCHUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-18 01:00",
+      "equity": 10116.34,
+      "pnl": 52.97,
+      "symbol": "RENDERUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-18 01:00",
+      "equity": 10169.32,
+      "pnl": 52.97,
+      "symbol": "RENDERUSDT",
       "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.416,
-    "sortinoRatio": 1.619,
-    "calmarRatio": 4.428,
+    "sharpeRatio": 1.144,
+    "sortinoRatio": 1.275,
+    "calmarRatio": 3.667,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.3344,
-    "dailyVolatility": 3.637,
-    "annualizedReturn": 84.28,
-    "totalTrades": 464
+    "avgDailyReturn": 0.277,
+    "dailyVolatility": 3.7047,
+    "annualizedReturn": 69.79,
+    "totalTrades": 472
   },
   "distribution": {
-    "totalTrades": 464,
+    "totalTrades": 472,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 4.29,
-      "avg": 1.58,
-      "stdDev": 115.02
+      "median": 3.59,
+      "avg": 0.36,
+      "stdDev": 114.97
     },
     "holdTime": {
       "avgBars": 0,
