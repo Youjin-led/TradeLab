@@ -191,10 +191,19 @@ function trendBlockReason(candles, side) {
   var sma50 = sum50 / 50;
   var adx = calculateADX(candles, 14);
   var bullish = sma20 > sma50;
-  // Сильный тренд (ADX >= 40): шортить в аптренде или лонжить в даунтренде запрещено.
-  if (adx >= 40) {
+  // Порог сильного тренда приведён в соответствие с tradelab_market_phase.js (adxStrong=30).
+  // Ранее стояло 40, из-за чего в фазе 'trending-up-strong' (ADX 30-39) контртрендовые
+  // шорты не блокировались и давали стабильные убытки (сентябрь: 24 SHORT, 8 win, -512).
+  var smaSpreadPct = Math.abs(sma20 - sma50) / sma50 * 100;
+  if (adx >= 30) {
     if (bullish && side === 'SHORT') return 'counter-trend: strong uptrend ADX=' + Math.round(adx) + ' (SMA20>SMA50)';
     if (!bullish && side === 'LONG') return 'counter-trend: strong downtrend ADX=' + Math.round(adx) + ' (SMA20<SMA50)';
+  }
+  // Дополнительно: выраженное расхождение SMA20/SMA50 (>=1.5%) при ADX >= 22
+  // (порог adxTrending из market_phase) также блокирует контртрендовые входы.
+  if (adx >= 22 && smaSpreadPct >= 1.5) {
+    if (bullish && side === 'SHORT') return 'counter-trend: uptrend SMA20/SMA50 spread=' + smaSpreadPct.toFixed(2) + '% ADX=' + Math.round(adx);
+    if (!bullish && side === 'LONG') return 'counter-trend: downtrend SMA20/SMA50 spread=' + smaSpreadPct.toFixed(2) + '% ADX=' + Math.round(adx);
   }
   return '';
 }
