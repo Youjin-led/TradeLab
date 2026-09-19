@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-19T04:01:35.668Z
+Generated: 2026-09-19T12:22:57.572Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 133.74 USDT
+- **Total PnL:** 170.37 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | -268.98 | -2500 | ✅ |
-| Monthly | -930.01 | -5000 | ✅ |
-| Total (all time) | 133.74 | -5000 | ✅ |
+| Daily (UTC) | 36.63 | -500 | ✅ |
+| Weekly (7d) | -232.35 | -2500 | ✅ |
+| Monthly | -893.38 | -5000 | ✅ |
+| Total (all time) | 170.37 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 5087.78 USDT (max 30000)
+- **Open Notional:** 4592.74 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,20 +87,20 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.78% / 5% max
+- **Heat:** 0.81% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 27
-- **Sector Distribution:** {"alt_mid":13,"alt_large":8,"alt_small":2,"other":2,"blue_chip":2}
+- **Active Positions:** 28
+- **Sector Distribution:** {"alt_mid":12,"alt_large":10,"alt_small":2,"other":2,"blue_chip":2}
 - **Warnings:**
-  - ⚠️ alt_mid: 13 positions (max 3)
-  - ⚠️ alt_large: 8 positions (max 3)
+  - ⚠️ alt_mid: 12 positions (max 3)
+  - ⚠️ alt_large: 10 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 27/3
+  - 🚫 max_concurrent_positions: 28/3
 
 ## Trailing Stops
 
@@ -108,9 +108,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 199.18%
-- **Total PnL:** 133.74 USDT
-- **Total Exposure:** 5087.78 USDT
+- **Margin Level:** 221.44%
+- **Total PnL:** 170.37 USDT
+- **Total Exposure:** 4592.74 USDT
 
 ## Statistics
 
