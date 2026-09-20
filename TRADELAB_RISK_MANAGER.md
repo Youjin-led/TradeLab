@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-20T12:58:05.523Z
+Generated: 2026-09-20T18:35:37.238Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 110.07 USDT
+- **Total PnL:** 41.90 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 16.68 | -500 | ✅ |
-| Weekly (7d) | -317.00 | -2500 | ✅ |
-| Monthly | -953.66 | -5000 | ✅ |
-| Total (all time) | 110.07 | -5000 | ✅ |
+| Daily (UTC) | -51.49 | -500 | ✅ |
+| Weekly (7d) | -355.72 | -2500 | ✅ |
+| Monthly | -1021.84 | -5000 | ✅ |
+| Total (all time) | 41.90 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 3233.92 USDT (max 30000)
+- **Open Notional:** 2953.01 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -70,11 +70,11 @@ Status: **NORMAL**
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 0.7% | 70 | 0 | 60% | 95 |
+| SEIUSDT | breakout | 0.7% | 70 | 0 | 57.7% | 95 |
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| DOGEUSDT | breakout | 2% | 200 | 25 | 79.2% | 95 |
+| DOGEUSDT | breakout | 2% | 200 | 23.4 | 76% | 95 |
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | OPUSDT | sma-rsi | 2% | 200 | 20.77 | 72.7% | 95 |
@@ -108,9 +108,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 312.63%
-- **Total PnL:** 110.07 USDT
-- **Total Exposure:** 3233.92 USDT
+- **Margin Level:** 340.06%
+- **Total PnL:** 41.9 USDT
+- **Total Exposure:** 2953.01 USDT
 
 ## Statistics
 
