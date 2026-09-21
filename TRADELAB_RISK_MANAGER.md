@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-20T22:18:39.886Z
+Generated: 2026-09-21T04:18:27.655Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 36.17 USDT
+- **Total PnL:** 31.89 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -57.23 | -500 | ✅ |
-| Weekly (7d) | -308.39 | -2500 | ✅ |
-| Monthly | -1027.57 | -5000 | ✅ |
-| Total (all time) | 36.17 | -5000 | ✅ |
+| Daily (UTC) | -4.28 | -500 | ✅ |
+| Weekly (7d) | -396.34 | -2500 | ✅ |
+| Monthly | -1031.84 | -5000 | ✅ |
+| Total (all time) | 31.89 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 1134.79 USDT (max 30000)
+- **Open Notional:** 5031.83 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -70,7 +70,7 @@ Status: **NORMAL**
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
 | JUPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ARBUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SEIUSDT | breakout | 0.7% | 70 | 0 | 57.7% | 95 |
+| SEIUSDT | breakout | 0.7% | 70 | 0 | 55.6% | 95 |
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -95,9 +95,9 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 28
-- **Sector Distribution:** {"alt_mid":11,"alt_large":10,"alt_small":2,"other":2,"blue_chip":3}
+- **Sector Distribution:** {"alt_mid":12,"alt_large":10,"alt_small":2,"other":2,"blue_chip":2}
 - **Warnings:**
-  - ⚠️ alt_mid: 11 positions (max 3)
+  - ⚠️ alt_mid: 12 positions (max 3)
   - ⚠️ alt_large: 10 positions (max 3)
 - **Blocks:**
   - 🚫 max_concurrent_positions: 28/3
@@ -108,9 +108,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 884.41%
-- **Total PnL:** 36.17 USDT
-- **Total Exposure:** 1134.79 USDT
+- **Margin Level:** 199.37%
+- **Total PnL:** 31.89 USDT
+- **Total Exposure:** 5031.83 USDT
 
 ## Statistics
 
