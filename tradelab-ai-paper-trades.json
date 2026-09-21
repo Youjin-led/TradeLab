@@ -1,5 +1,5 @@
 {
-  "balance": 6008.869413353615,
+  "balance": 6500.920801764255,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -20,38 +20,38 @@
       "tpPrice": 0.2632785714285714
     },
     {
-      "symbol": "SOLUSDT",
+      "symbol": "ETHUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 109.99,
-      "qty": 17.607881211794805,
-      "notional": 1936.6908544853104,
-      "fee": 0.7746763417941241,
-      "openedAt": "2026-09-20T18:35:56.272Z",
+      "entry": 2737.43,
+      "qty": 0.7247194963159582,
+      "notional": 1983.8688908001934,
+      "fee": 0.7935475563200775,
+      "openedAt": "2026-09-21T14:59:07.233Z",
       "aiConfidence": 65,
-      "aiReasoning": "4h only: Strong bullish trend: price above SMA20 (108.67) and SMA50 (103.52), MACD positive (3.40), ADX 64.8 ",
-      "atrPct": 1.9138103463951248,
-      "slPercent": 2.8707155195926872,
-      "tpPercent": 5.7414310391853745,
-      "slPrice": 106.8325,
-      "tpPrice": 116.30499999999999
+      "aiReasoning": "1h only: Strong bullish trend: price above SMA20 (2678) and SMA50 (2637), MACD positive (35.9), ADX 66.6 conf",
+      "atrPct": 1.5299804143719786,
+      "slPercent": 2.294970621557968,
+      "tpPercent": 4.589941243115936,
+      "slPrice": 2674.6067857142857,
+      "tpPrice": 2863.0764285714286
     },
     {
-      "symbol": "ADAUSDT",
+      "symbol": "OPUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 0.2277,
-      "qty": 5607.277709583125,
-      "notional": 1276.7771344720777,
-      "fee": 0.5107108537888311,
-      "openedAt": "2026-09-20T18:35:56.272Z",
+      "entry": 0.1277,
+      "qty": 7534.886652558426,
+      "notional": 962.205025531711,
+      "fee": 0.3848820102126844,
+      "openedAt": "2026-09-21T14:59:07.233Z",
       "aiConfidence": 65,
-      "aiReasoning": "4h only: Strong uptrend: ADX 61.7 with SMA20 (0.2199) > SMA50 (0.2097) and price 0.2277 above both, so SELL i",
-      "atrPct": 2.995796474057343,
-      "slPercent": 4.493694711086015,
-      "tpPercent": 8.98738942217203,
-      "slPrice": 0.21746785714285716,
-      "tpPrice": 0.24816428571428573
+      "aiReasoning": "4h only: Strong bullish trend: price 0.1277 above SMA20 (0.12293) and SMA50 (0.10805), MACD positive at 0.006",
+      "atrPct": 4.072043852779954,
+      "slPercent": 6.108065779169931,
+      "tpPercent": 12.216131558339862,
+      "slPrice": 0.1199,
+      "tpPrice": 0.1433
     }
   ],
   "closedTrades": [
@@ -846,14 +846,36 @@
       "reason": "Take profit 11.7% (ATR*3) hit intrabar",
       "openedAt": "2026-09-18T22:25:46.247Z",
       "closedAt": "2026-09-20T18:35:56.990Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.2277,
+      "exit": 0.24816428571428573,
+      "pnl": 114.23822227446583,
+      "reason": "Take profit 9.0% (ATR*3) hit intrabar",
+      "openedAt": "2026-09-20T18:35:56.272Z",
+      "closedAt": "2026-09-21T14:59:07.950Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 109.99,
+      "exit": 116.30499999999999,
+      "pnl": 110.41909351069003,
+      "reason": "Take profit 5.7% (ATR*3) hit intrabar",
+      "openedAt": "2026-09-20T18:35:56.272Z",
+      "closedAt": "2026-09-21T14:59:09.066Z"
     }
   ],
-  "totalPnl": -33.67320248490532,
-  "wins": 30,
+  "totalPnl": 190.98411330025056,
+  "wins": 32,
   "losses": 42,
   "stats": {
     "todayDate": "2026-09-21",
-    "todayPnl": 0
+    "todayPnl": 224.65731578515584
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-08T22:29:48.995Z",
@@ -864,8 +886,9 @@
     "SUIUSDT": "2026-09-16T22:48:01.759Z",
     "ETHUSDT": "2026-09-17T13:15:55.108Z",
     "INJUSDT": "2026-09-14T04:18:38.905Z",
-    "ADAUSDT": "2026-09-18T04:04:46.507Z",
+    "ADAUSDT": "2026-09-21T14:59:07.950Z",
     "AVAXUSDT": "2026-09-14T21:29:07.786Z",
-    "OPUSDT": "2026-09-20T18:35:56.990Z"
+    "OPUSDT": "2026-09-20T18:35:56.990Z",
+    "SOLUSDT": "2026-09-21T14:59:09.066Z"
   }
 }
