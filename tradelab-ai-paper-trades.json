@@ -1,24 +1,7 @@
 {
-  "balance": 6500.920801764255,
+  "balance": 7264.775841594757,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "ARBUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.2177,
-      "qty": 3417.4983702530585,
-      "notional": 743.9893952040909,
-      "fee": 0.29759575808163635,
-      "openedAt": "2026-09-18T18:57:27.236Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Strong uptrend: ADX 66.4 with SMA20 (0.2086) > SMA50 (0.1840) and price 0.2177 above both, so SELL i",
-      "atrPct": 6.97880438348973,
-      "slPercent": 10.468206575234595,
-      "tpPercent": 20.93641315046919,
-      "slPrice": 0.1949107142857143,
-      "tpPrice": 0.2632785714285714
-    },
     {
       "symbol": "ETHUSDT",
       "interval": "1h",
@@ -868,17 +851,28 @@
       "reason": "Take profit 5.7% (ATR*3) hit intrabar",
       "openedAt": "2026-09-20T18:35:56.272Z",
       "closedAt": "2026-09-21T14:59:09.066Z"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.2177,
+      "exit": 0.2236,
+      "pnl": 19.865644626411367,
+      "reason": "timeout 73h (maxHoldHours)",
+      "openedAt": "2026-09-18T18:57:27.236Z",
+      "closedAt": "2026-09-21T20:20:55.175Z"
     }
   ],
-  "totalPnl": 190.98411330025056,
-  "wins": 32,
+  "totalPnl": 210.84975792666194,
+  "wins": 33,
   "losses": 42,
   "stats": {
     "todayDate": "2026-09-21",
-    "todayPnl": 224.65731578515584
+    "todayPnl": 244.52296041156723
   },
   "lastClosed": {
-    "ARBUSDT": "2026-09-08T22:29:48.995Z",
+    "ARBUSDT": "2026-09-21T20:20:55.175Z",
     "BTCUSDT": "2026-09-11T16:13:11.247Z",
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
     "BNBUSDT": "2026-09-20T04:21:04.905Z",
