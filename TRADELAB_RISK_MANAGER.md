@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-22T04:14:06.275Z
+Generated: 2026-09-22T13:15:33.863Z
 Status: **NORMAL**
 
 ---
@@ -11,16 +11,16 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 238.72 USDT
+- **Total PnL:** 253.18 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 75.16 | -500 | ✅ |
-| Weekly (7d) | -233.30 | -2500 | ✅ |
-| Monthly | -825.00 | -5000 | ✅ |
-| Total (all time) | 238.72 | -5000 | ✅ |
+| Daily (UTC) | 89.62 | -500 | ✅ |
+| Weekly (7d) | -218.84 | -2500 | ✅ |
+| Monthly | -810.55 | -5000 | ✅ |
+| Total (all time) | 253.18 | -5000 | ✅ |
 
 ## Hard Exposure
 
@@ -61,7 +61,7 @@ Status: **NORMAL**
 | DOGEUSDT | sma-rsi | 2% | 200 | 2.86 | 57.1% | 95 |
 | SEIUSDT | sma-rsi | 2% | 200 | 8.92 | 62.8% | 95 |
 | JUPUSDT | sma-rsi | 0.93% | 92.95 | 1.33 | 66.7% | 95 |
-| ATOMUSDT | sma-rsi | 2% | 200 | 25 | 76.9% | 95 |
+| ATOMUSDT | sma-rsi | 2% | 200 | 25 | 78.6% | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -95,10 +95,10 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 27
-- **Sector Distribution:** {"alt_mid":11,"alt_large":9,"alt_small":2,"other":3,"blue_chip":2}
+- **Sector Distribution:** {"alt_mid":11,"alt_large":10,"alt_small":2,"other":2,"blue_chip":2}
 - **Warnings:**
   - ⚠️ alt_mid: 11 positions (max 3)
-  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ alt_large: 10 positions (max 3)
 - **Blocks:**
   - 🚫 max_concurrent_positions: 27/3
 
@@ -108,8 +108,8 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 546.33%
-- **Total PnL:** 238.72 USDT
+- **Margin Level:** 547.1%
+- **Total PnL:** 253.18 USDT
 - **Total Exposure:** 1874.08 USDT
 
 ## Statistics
