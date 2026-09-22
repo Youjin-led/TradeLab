@@ -1,5 +1,5 @@
 {
-  "balance": 7264.775841594757,
+  "balance": 5466.851287898303,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 12.216131558339862,
       "slPrice": 0.1199,
       "tpPrice": 0.1433
+    },
+    {
+      "symbol": "DOTUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 1.195,
+      "qty": 1504.5393754782044,
+      "notional": 1797.9245536964545,
+      "fee": 0.7191698214785819,
+      "openedAt": "2026-09-22T04:14:26.736Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price 1.195 above SMA20 (1.188) and SMA50 (1.151), trend bul | Price 1.195 above SMA20 1.1466 and SMA50 1.0757, trend bulli",
+      "atrPct": 3.030484160191272,
+      "slPercent": 4.545726240286909,
+      "tpPercent": 9.091452480573817,
+      "slPrice": 1.1406785714285714,
+      "tpPrice": 1.303642857142857
     }
   ],
   "closedTrades": [
@@ -868,8 +885,8 @@
   "wins": 33,
   "losses": 42,
   "stats": {
-    "todayDate": "2026-09-21",
-    "todayPnl": 244.52296041156723
+    "todayDate": "2026-09-22",
+    "todayPnl": 0
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",

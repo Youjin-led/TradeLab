@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-21T20:20:28.780Z
+Generated: 2026-09-22T04:14:06.275Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 163.57 USDT
+- **Total PnL:** 238.72 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 127.40 | -500 | ✅ |
-| Weekly (7d) | -308.46 | -2500 | ✅ |
-| Monthly | -900.16 | -5000 | ✅ |
-| Total (all time) | 163.57 | -5000 | ✅ |
+| Daily (UTC) | 75.16 | -500 | ✅ |
+| Weekly (7d) | -233.30 | -2500 | ✅ |
+| Monthly | -825.00 | -5000 | ✅ |
+| Total (all time) | 238.72 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 6214.16 USDT (max 30000)
+- **Open Notional:** 1874.08 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -42,7 +42,7 @@ Status: **NORMAL**
 | --- | --- | --- | --- | --- | --- | --- |
 | NEARUSDT | breakout | 2% | 200 | 10.27 | 55% | 95 |
 | LINKUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| LINKUSDT | breakout | 0.7% | 70 | 0 | 60% | 95 |
+| LINKUSDT | breakout | 0.7% | 70 | 0 | 63.6% | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | 0 | 20% | 95 |
 | INJUSDT | sma-rsi | 2% | 200 | 11.13 | 58.1% | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -87,20 +87,20 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.75% / 5% max
+- **Heat:** 0.78% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 26
-- **Sector Distribution:** {"alt_mid":11,"alt_large":9,"alt_small":2,"other":2,"blue_chip":2}
+- **Active Positions:** 27
+- **Sector Distribution:** {"alt_mid":11,"alt_large":9,"alt_small":2,"other":3,"blue_chip":2}
 - **Warnings:**
   - ⚠️ alt_mid: 11 positions (max 3)
   - ⚠️ alt_large: 9 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 26/3
+  - 🚫 max_concurrent_positions: 27/3
 
 ## Trailing Stops
 
@@ -108,9 +108,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 163.56%
-- **Total PnL:** 163.57 USDT
-- **Total Exposure:** 6214.16 USDT
+- **Margin Level:** 546.33%
+- **Total PnL:** 238.72 USDT
+- **Total Exposure:** 1874.08 USDT
 
 ## Statistics
 
