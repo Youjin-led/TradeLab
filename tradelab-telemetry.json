@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T22:49:54.041Z",
+  "generatedAt": "2026-09-23T04:11:24.355Z",
   "summary": {
     "totalCandidates": 44,
     "live": 28,
@@ -41,11 +41,11 @@
       "avgPnlPerTrade": 2.7
     },
     "sma-rsi": {
-      "totalPnl": -509.92921923399115,
-      "trades": 227,
+      "totalPnl": -606.58836311314,
+      "trades": 228,
       "wins": 117,
-      "losses": 110,
-      "maxDd": 6.33,
+      "losses": 111,
+      "maxDd": 6.4,
       "symbols": [
         "LINKUSDT",
         "INJUSDT",
@@ -65,19 +65,19 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -509.9400000000002,
-      "forwardTrades": 227,
+      "forwardPnl": -606.6000000000004,
+      "forwardTrades": 228,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.5,
-      "avgPnlPerTrade": -2.25
+      "winRate": 51.3,
+      "avgPnlPerTrade": -2.66
     }
   },
   "byTimeOfDay": {
     "0": {
-      "pnl": -295.79,
-      "trades": 69,
-      "avgPnl": -4.29
+      "pnl": -392.45,
+      "trades": 70,
+      "avgPnl": -5.61
     },
     "1": {
       "pnl": -51.11,
@@ -222,9 +222,9 @@
       "avgPnl": 7.19
     },
     "Friday": {
-      "pnl": 1440.72,
-      "trades": 84,
-      "avgPnl": 17.15
+      "pnl": 1344.06,
+      "trades": 85,
+      "avgPnl": 15.81
     },
     "Saturday": {
       "pnl": -261.18,
@@ -3810,51 +3810,58 @@
     },
     {
       "time": "2026-09-22 00:00",
-      "equity": 10210.89,
+      "equity": 10092.75,
+      "pnl": -96.66,
+      "symbol": "LTCUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-22 00:00",
+      "equity": 10114.23,
       "pnl": 21.48,
       "symbol": "XRPUSDT",
       "strategy": "breakout"
     },
     {
       "time": "2026-09-22 00:00",
-      "equity": 10238.75,
+      "equity": 10142.09,
       "pnl": 27.87,
       "symbol": "BNBUSDT",
       "strategy": "breakout"
     },
     {
       "time": "2026-09-22 08:00",
-      "equity": 10253.21,
+      "equity": 10156.55,
       "pnl": 14.46,
       "symbol": "ATOMUSDT",
       "strategy": "sma-rsi"
     },
     {
       "time": "2026-09-22 16:00",
-      "equity": 10265.1,
+      "equity": 10168.44,
       "pnl": 11.89,
       "symbol": "XRPUSDT",
       "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.254,
-    "sortinoRatio": 1.37,
-    "calmarRatio": 3.922,
+    "sharpeRatio": 1.175,
+    "sortinoRatio": 1.275,
+    "calmarRatio": 3.698,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.2962,
-    "dailyVolatility": 3.6226,
-    "annualizedReturn": 74.64,
-    "totalTrades": 514
+    "avgDailyReturn": 0.2793,
+    "dailyVolatility": 3.6393,
+    "annualizedReturn": 70.39,
+    "totalTrades": 515
   },
   "distribution": {
-    "totalTrades": 514,
+    "totalTrades": 515,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 6.03,
-      "avg": 0.52,
-      "stdDev": 110.89
+      "median": 4.78,
+      "avg": 0.33,
+      "stdDev": 110.86
     },
     "holdTime": {
       "avgBars": 0,
