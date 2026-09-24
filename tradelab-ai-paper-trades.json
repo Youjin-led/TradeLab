@@ -1,7 +1,25 @@
 {
-  "balance": 10053.061652826895,
+  "balance": 7937.28392429067,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "RENDERUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 1.826,
+      "qty": 1158.6953606441539,
+      "notional": 2115.777728536225,
+      "fee": 0.84631109141449,
+      "openedAt": "2026-09-24T13:26:08.214Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price 1.826 is above SMA20 (1.760) and SMA50 (1.795), MACD p | Strong uptrend: ADX=44 with SMA20(1.803) > SMA50(1.629) and ",
+      "atrPct": 3.563605069629166,
+      "slPercent": 5.345407604443749,
+      "tpPercent": 10.690815208887498,
+      "slPrice": 1.728392857142857,
+      "tpPrice": 2.021214285714286
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
