@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T22:50:44.440Z",
+  "generatedAt": "2026-09-24T04:06:20.635Z",
   "summary": {
     "totalCandidates": 44,
     "live": 31,
@@ -9,9 +9,9 @@
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 704.5924965976791,
-      "trades": 288,
-      "wins": 157,
+      "totalPnl": 747.2879071223401,
+      "trades": 289,
+      "wins": 158,
       "losses": 131,
       "maxDd": 8.19,
       "symbols": [
@@ -33,18 +33,18 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 704.58,
-      "forwardTrades": 288,
+      "forwardPnl": 747.2800000000001,
+      "forwardTrades": 289,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 54.5,
-      "avgPnlPerTrade": 2.45
+      "winRate": 54.7,
+      "avgPnlPerTrade": 2.59
     },
     "sma-rsi": {
-      "totalPnl": -606.58836311314,
-      "trades": 228,
-      "wins": 117,
-      "losses": 111,
+      "totalPnl": -569.6489473761965,
+      "trades": 232,
+      "wins": 120,
+      "losses": 112,
       "maxDd": 6.4,
       "symbols": [
         "LINKUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -606.6000000000004,
-      "forwardTrades": 228,
+      "forwardPnl": -569.6700000000003,
+      "forwardTrades": 232,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.3,
-      "avgPnlPerTrade": -2.66
+      "winRate": 51.7,
+      "avgPnlPerTrade": -2.46
     }
   },
   "byTimeOfDay": {
@@ -135,9 +135,9 @@
       "avgPnl": 7.73
     },
     "12": {
-      "pnl": -114.79,
-      "trades": 68,
-      "avgPnl": -1.69
+      "pnl": -91.14,
+      "trades": 70,
+      "avgPnl": -1.3
     },
     "13": {
       "pnl": 335.54,
@@ -145,14 +145,14 @@
       "avgPnl": 22.37
     },
     "14": {
-      "pnl": 246.49,
-      "trades": 26,
-      "avgPnl": 9.48
+      "pnl": 289.19,
+      "trades": 27,
+      "avgPnl": 10.71
     },
     "15": {
-      "pnl": 121.48,
-      "trades": 13,
-      "avgPnl": 9.34
+      "pnl": 137.8,
+      "trades": 14,
+      "avgPnl": 9.84
     },
     "16": {
       "pnl": 60.92,
@@ -160,9 +160,9 @@
       "avgPnl": 0.97
     },
     "17": {
-      "pnl": 693.43,
-      "trades": 6,
-      "avgPnl": 115.57
+      "pnl": 690.39,
+      "trades": 7,
+      "avgPnl": 98.63
     },
     "18": {
       "pnl": -73.16,
@@ -212,9 +212,9 @@
       "avgPnl": -8.32
     },
     "Wednesday": {
-      "pnl": -39.77,
-      "trades": 87,
-      "avgPnl": -0.46
+      "pnl": 39.86,
+      "trades": 92,
+      "avgPnl": 0.43
     },
     "Thursday": {
       "pnl": 589.67,
@@ -3849,26 +3849,61 @@
       "pnl": -70.44,
       "symbol": "JUPUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-23 20:00",
+      "equity": 10099.2,
+      "pnl": 1.2,
+      "symbol": "DOTUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-23 23:00",
+      "equity": 10141.9,
+      "pnl": 42.7,
+      "symbol": "DOGEUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-24 00:00",
+      "equity": 10164.35,
+      "pnl": 22.45,
+      "symbol": "JUPUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-24 02:00",
+      "equity": 10180.68,
+      "pnl": 16.32,
+      "symbol": "ATOMUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-24 02:00",
+      "equity": 10177.64,
+      "pnl": -3.04,
+      "symbol": "OPUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.086,
-    "sortinoRatio": 1.169,
-    "calmarRatio": 3.45,
+    "sharpeRatio": 1.124,
+    "sortinoRatio": 1.206,
+    "calmarRatio": 3.549,
     "maxDrawdown": 19.03,
-    "avgDailyReturn": 0.2605,
-    "dailyVolatility": 3.6607,
-    "annualizedReturn": 65.65,
-    "totalTrades": 516
+    "avgDailyReturn": 0.268,
+    "dailyVolatility": 3.645,
+    "annualizedReturn": 67.55,
+    "totalTrades": 521
   },
   "distribution": {
-    "totalTrades": 516,
+    "totalTrades": 521,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 4.78,
-      "avg": 0.19,
-      "stdDev": 110.8
+      "avg": 0.34,
+      "stdDev": 110.29
     },
     "holdTime": {
       "avgBars": 0,
