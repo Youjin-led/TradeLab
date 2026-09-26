@@ -1,24 +1,7 @@
 {
-  "balance": 6848.204662058629,
+  "balance": 7143.520506604906,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "RENDERUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.826,
-      "qty": 1158.6953606441539,
-      "notional": 2115.777728536225,
-      "fee": 0.84631109141449,
-      "openedAt": "2026-09-24T13:26:08.214Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price 1.826 is above SMA20 (1.760) and SMA50 (1.795), MACD p | Strong uptrend: ADX=44 with SMA20(1.803) > SMA50(1.629) and ",
-      "atrPct": 3.563605069629166,
-      "slPercent": 5.345407604443749,
-      "tpPercent": 10.690815208887498,
-      "slPrice": 1.728392857142857,
-      "tpPrice": 2.021214285714286
-    },
     {
       "symbol": "OPUSDT",
       "interval": "1h",
@@ -35,6 +18,23 @@
       "tpPercent": 12.107291049199773,
       "slPrice": 0.1358464285714286,
       "tpPrice": 0.16210714285714287
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 10.824,
+      "qty": 189.00678677819099,
+      "notional": 2045.809460087139,
+      "fee": 0.8183237840348557,
+      "openedAt": "2026-09-26T12:51:46.161Z",
+      "aiConfidence": 78,
+      "aiReasoning": "TF agree: Price 10.824 above SMA20 (10.642) and SMA50 (10.450), trend  | Price above SMA20 (10.46) and SMA50 (10.32), trend bullish, ",
+      "atrPct": 3.3688364481047404,
+      "slPercent": 5.05325467215711,
+      "tpPercent": 10.10650934431422,
+      "slPrice": 10.277035714285713,
+      "tpPrice": 11.917928571428572
     }
   ],
   "closedTrades": [
@@ -906,14 +906,25 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-09-24T19:55:17.092Z",
       "closedAt": "2026-09-26T04:24:56.500Z"
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.826,
+      "exit": 2.021214285714286,
+      "pnl": 225.34757609719102,
+      "reason": "Take profit 10.7% (ATR*3) hit intrabar",
+      "openedAt": "2026-09-24T13:26:08.214Z",
+      "closedAt": "2026-09-26T12:51:49.864Z"
     }
   ],
-  "totalPnl": -11.936306262480059,
-  "wins": 33,
+  "totalPnl": 213.41126983471096,
+  "wins": 34,
   "losses": 46,
   "stats": {
     "todayDate": "2026-09-26",
-    "todayPnl": -64.99795908937514
+    "todayPnl": 160.34961700781588
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -928,6 +939,7 @@
     "AVAXUSDT": "2026-09-14T21:29:07.786Z",
     "OPUSDT": "2026-09-24T04:06:42.388Z",
     "SOLUSDT": "2026-09-21T14:59:09.066Z",
-    "DOTUSDT": "2026-09-23T19:35:26.545Z"
+    "DOTUSDT": "2026-09-23T19:35:26.545Z",
+    "RENDERUSDT": "2026-09-26T12:51:49.864Z"
   }
 }
