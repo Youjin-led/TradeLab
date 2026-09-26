@@ -1,5 +1,5 @@
 {
-  "balance": 6908.7432300149085,
+  "balance": 6848.204662058629,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -20,21 +20,21 @@
       "tpPrice": 2.021214285714286
     },
     {
-      "symbol": "INJUSDT",
+      "symbol": "OPUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 8.281,
-      "qty": 124.20489002243228,
-      "notional": 1028.5406942757618,
-      "fee": 0.41141627771030476,
-      "openedAt": "2026-09-24T19:55:17.092Z",
-      "aiConfidence": 78,
-      "aiReasoning": "TF agree: Bullish trend confirmed: price 8.293 above SMA20 8.047 and S | Price 8.281 above SMA20 (7.894) and SMA50 (7.231), trend bul",
-      "atrPct": 5.787775803474388,
-      "slPercent": 8.681663705211582,
-      "tpPercent": 17.363327410423164,
-      "slPrice": 7.562071428571429,
-      "tpPrice": 9.718857142857143
+      "entry": 0.1446,
+      "qty": 7082.16668840018,
+      "notional": 1024.081303142666,
+      "fee": 0.4096325212570664,
+      "openedAt": "2026-09-26T04:24:54.415Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Strong uptrend: ADX=58.5 with SMA20(0.1411) > SMA50(0.1342) and price above both, so SELL is forbidd",
+      "atrPct": 4.035763683066591,
+      "slPercent": 6.053645524599887,
+      "tpPercent": 12.107291049199773,
+      "slPrice": 0.1358464285714286,
+      "tpPrice": 0.16210714285714287
     }
   ],
   "closedTrades": [
@@ -895,14 +895,25 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-09-21T14:59:07.233Z",
       "closedAt": "2026-09-24T04:06:42.388Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 8.281,
+      "exit": 7.761,
+      "pnl": -64.99795908937514,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-09-24T19:55:17.092Z",
+      "closedAt": "2026-09-26T04:24:56.500Z"
     }
   ],
-  "totalPnl": 53.061652826895084,
+  "totalPnl": -11.936306262480059,
   "wins": 33,
-  "losses": 45,
+  "losses": 46,
   "stats": {
-    "todayDate": "2026-09-25",
-    "todayPnl": 0
+    "todayDate": "2026-09-26",
+    "todayPnl": -64.99795908937514
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -912,7 +923,7 @@
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
     "SUIUSDT": "2026-09-16T22:48:01.759Z",
     "ETHUSDT": "2026-09-23T19:35:30.587Z",
-    "INJUSDT": "2026-09-14T04:18:38.905Z",
+    "INJUSDT": "2026-09-26T04:24:56.500Z",
     "ADAUSDT": "2026-09-21T14:59:07.950Z",
     "AVAXUSDT": "2026-09-14T21:29:07.786Z",
     "OPUSDT": "2026-09-24T04:06:42.388Z",
