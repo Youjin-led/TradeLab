@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-09-26T12:51:26.816Z
+Generated: 2026-09-26T19:08:08.760Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 178.36 USDT
+- **Total PnL:** 155.08 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | 8.02 | -2500 | ✅ |
-| Monthly | -885.36 | -5000 | ✅ |
-| Total (all time) | 178.36 | -5000 | ✅ |
+| Daily (UTC) | -23.27 | -500 | ✅ |
+| Weekly (7d) | -28.46 | -2500 | ✅ |
+| Monthly | -908.63 | -5000 | ✅ |
+| Total (all time) | 155.08 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 2103.69 USDT (max 30000)
+- **Open Notional:** 0 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -74,7 +74,7 @@ Status: **NORMAL**
 | XRPUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | ADAUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | TRXUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| DOGEUSDT | breakout | 2% | 200 | 25 | 79.3% | 95 |
+| DOGEUSDT | breakout | 2% | 200 | 23.95 | 76.7% | 95 |
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | 0 | 40% | 95 |
 | OPUSDT | sma-rsi | 2% | 200 | 18.55 | 66.7% | 95 |
@@ -95,10 +95,11 @@ Status: **NORMAL**
 
 - **OK:** ❌
 - **Active Positions:** 29
-- **Sector Distribution:** {"alt_mid":11,"alt_large":10,"alt_small":2,"other":3,"blue_chip":3}
+- **Sector Distribution:** {"alt_mid":11,"alt_large":9,"alt_small":2,"other":4,"blue_chip":3}
 - **Warnings:**
   - ⚠️ alt_mid: 11 positions (max 3)
-  - ⚠️ alt_large: 10 positions (max 3)
+  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
   - 🚫 max_concurrent_positions: 29/3
 
@@ -108,9 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 483.83%
-- **Total PnL:** 178.36 USDT
-- **Total Exposure:** 2103.69 USDT
+- **Margin Level:** 79.12%
+- **Total PnL:** 155.08 USDT
+- **Total Exposure:** 12834.68 USDT
+- **Warnings:**
+  - 🔴 margin_call: 79.12% (threshold: 100%)
 
 ## Statistics
 
