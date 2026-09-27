@@ -1,5 +1,5 @@
 {
-  "balance": 5643.381200217876,
+  "balance": 7098.966069007088,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,23 +35,6 @@
       "tpPercent": 10.10650934431422,
       "slPrice": 10.277035714285713,
       "tpPrice": 11.917928571428572
-    },
-    {
-      "symbol": "DOGEUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.09566,
-      "qty": 15681.99149474211,
-      "notional": 1500.13930638703,
-      "fee": 0.6000557225548121,
-      "openedAt": "2026-09-27T04:42:30.650Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Price (0.09566) is below both SMA20 (0.097048) and SMA50 (0.097266), trend is bearish, MACD is negat",
-      "atrPct": 1.9533466742331431,
-      "slPercent": 2.930020011349715,
-      "tpPercent": 5.86004002269943,
-      "slPrice": 0.09846285714285714,
-      "tpPrice": 0.09005428571428573
     }
   ],
   "closedTrades": [
@@ -934,14 +917,25 @@
       "reason": "Take profit 10.7% (ATR*3) hit intrabar",
       "openedAt": "2026-09-24T13:26:08.214Z",
       "closedAt": "2026-09-26T12:51:49.864Z"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.09566,
+      "exit": 0.09846285714285714,
+      "pnl": -44.55443759781779,
+      "reason": "Stop loss 2.9% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-27T04:42:30.650Z",
+      "closedAt": "2026-09-27T13:44:38.027Z"
     }
   ],
-  "totalPnl": 213.41126983471096,
+  "totalPnl": 168.85683223689318,
   "wins": 34,
-  "losses": 46,
+  "losses": 47,
   "stats": {
     "todayDate": "2026-09-27",
-    "todayPnl": 0
+    "todayPnl": -44.55443759781779
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -957,6 +951,7 @@
     "OPUSDT": "2026-09-24T04:06:42.388Z",
     "SOLUSDT": "2026-09-21T14:59:09.066Z",
     "DOTUSDT": "2026-09-23T19:35:26.545Z",
-    "RENDERUSDT": "2026-09-26T12:51:49.864Z"
+    "RENDERUSDT": "2026-09-26T12:51:49.864Z",
+    "DOGEUSDT": "2026-09-27T13:44:38.027Z"
   }
 }
