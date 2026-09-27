@@ -1,5 +1,5 @@
 {
-  "balance": 7143.520506604906,
+  "balance": 5643.381200217876,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 10.10650934431422,
       "slPrice": 10.277035714285713,
       "tpPrice": 11.917928571428572
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.09566,
+      "qty": 15681.99149474211,
+      "notional": 1500.13930638703,
+      "fee": 0.6000557225548121,
+      "openedAt": "2026-09-27T04:42:30.650Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price (0.09566) is below both SMA20 (0.097048) and SMA50 (0.097266), trend is bearish, MACD is negat",
+      "atrPct": 1.9533466742331431,
+      "slPercent": 2.930020011349715,
+      "tpPercent": 5.86004002269943,
+      "slPrice": 0.09846285714285714,
+      "tpPrice": 0.09005428571428573
     }
   ],
   "closedTrades": [
@@ -923,8 +940,8 @@
   "wins": 34,
   "losses": 46,
   "stats": {
-    "todayDate": "2026-09-26",
-    "todayPnl": 160.34961700781588
+    "todayDate": "2026-09-27",
+    "todayPnl": 0
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
