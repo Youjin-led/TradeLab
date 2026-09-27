@@ -1,5 +1,5 @@
 {
-  "balance": 7098.966069007088,
+  "balance": 4969.276248304961,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 10.10650934431422,
       "slPrice": 10.277035714285713,
       "tpPrice": 11.917928571428572
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 84764.01,
+      "qty": 0.025124930034599903,
+      "notional": 2129.6898207021263,
+      "fee": 0.8518759282808506,
+      "openedAt": "2026-09-27T19:40:27.721Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price above SMA20 (84635) and SMA50 (84286), trend bullish,  | Price above SMA20 (84308) and SMA50 (84024), trend bullish, ",
+      "atrPct": 0.621786803823259,
+      "slPercent": 1.5,
+      "tpPercent": 3,
+      "slPrice": 83492.54985,
+      "tpPrice": 87306.93029999999
     }
   ],
   "closedTrades": [
