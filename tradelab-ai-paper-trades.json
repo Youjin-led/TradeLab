@@ -1,5 +1,5 @@
 {
-  "balance": 4969.276248304961,
+  "balance": 7790.442267918055,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -20,38 +20,21 @@
       "tpPrice": 0.16210714285714287
     },
     {
-      "symbol": "AVAXUSDT",
+      "symbol": "SUIUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 10.824,
-      "qty": 189.00678677819099,
-      "notional": 2045.809460087139,
-      "fee": 0.8183237840348557,
-      "openedAt": "2026-09-26T12:51:46.161Z",
-      "aiConfidence": 78,
-      "aiReasoning": "TF agree: Price 10.824 above SMA20 (10.642) and SMA50 (10.450), trend  | Price above SMA20 (10.46) and SMA50 (10.32), trend bullish, ",
-      "atrPct": 3.3688364481047404,
-      "slPercent": 5.05325467215711,
-      "tpPercent": 10.10650934431422,
-      "slPrice": 10.277035714285713,
-      "tpPrice": 11.917928571428572
-    },
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 84764.01,
-      "qty": 0.025124930034599903,
-      "notional": 2129.6898207021263,
-      "fee": 0.8518759282808506,
-      "openedAt": "2026-09-27T19:40:27.721Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price above SMA20 (84635) and SMA50 (84286), trend bullish,  | Price above SMA20 (84308) and SMA50 (84024), trend bullish, ",
-      "atrPct": 0.621786803823259,
-      "slPercent": 1.5,
-      "tpPercent": 3,
-      "slPrice": 83492.54985,
-      "tpPrice": 87306.93029999999
+      "entry": 1.2327,
+      "qty": 1053.1564099348739,
+      "notional": 1298.225906526719,
+      "fee": 0.5192903626106876,
+      "openedAt": "2026-09-28T04:44:04.630Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Strong uptrend: ADX 64 with SMA20 (1.177) above SMA50 (1.053) and price above both, so SELL is forbi",
+      "atrPct": 3.6754395114093357,
+      "slPercent": 5.513159267114004,
+      "tpPercent": 11.026318534228007,
+      "slPrice": 1.1647392857142858,
+      "tpPrice": 1.3686214285714284
     }
   ],
   "closedTrades": [
@@ -945,18 +928,40 @@
       "reason": "Stop loss 2.9% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-27T04:42:30.650Z",
       "closedAt": "2026-09-27T13:44:38.027Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 84764.01,
+      "exit": 83492.54985,
+      "pnl": -32.79722323881272,
+      "reason": "Stop loss 1.5% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-27T19:40:27.721Z",
+      "closedAt": "2026-09-28T04:44:05.393Z"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 10.824,
+      "exit": 10.705,
+      "pnl": -23.310131410639542,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-09-26T12:51:46.161Z",
+      "closedAt": "2026-09-28T04:44:07.753Z"
     }
   ],
-  "totalPnl": 168.85683223689318,
+  "totalPnl": 112.74947758744094,
   "wins": 34,
-  "losses": 47,
+  "losses": 49,
   "stats": {
-    "todayDate": "2026-09-27",
-    "todayPnl": -44.55443759781779
+    "todayDate": "2026-09-28",
+    "todayPnl": -56.10735464945226
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
-    "BTCUSDT": "2026-09-11T16:13:11.247Z",
+    "BTCUSDT": "2026-09-28T04:44:05.393Z",
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
     "BNBUSDT": "2026-09-20T04:21:04.905Z",
     "LINKUSDT": "2026-09-11T16:13:15.736Z",
@@ -964,7 +969,7 @@
     "ETHUSDT": "2026-09-23T19:35:30.587Z",
     "INJUSDT": "2026-09-26T04:24:56.500Z",
     "ADAUSDT": "2026-09-21T14:59:07.950Z",
-    "AVAXUSDT": "2026-09-14T21:29:07.786Z",
+    "AVAXUSDT": "2026-09-28T04:44:07.753Z",
     "OPUSDT": "2026-09-24T04:06:42.388Z",
     "SOLUSDT": "2026-09-21T14:59:09.066Z",
     "DOTUSDT": "2026-09-23T19:35:26.545Z",
