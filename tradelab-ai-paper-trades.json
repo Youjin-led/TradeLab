@@ -1,7 +1,25 @@
 {
-  "balance": 9978.25304085386,
+  "balance": 8470.884514862784,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 15.421,
+      "qty": 97.74778068809258,
+      "notional": 1507.3685259910756,
+      "fee": 0.6029474103964303,
+      "openedAt": "2026-09-29T10:32:28.623Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price 15.42 above SMA20 (15.15) and SMA50 (14.50), trend bullish, MACD positive (0.358), RSI 52.1 ne",
+      "atrPct": 3.4753165905490664,
+      "slPercent": 5.212974885823599,
+      "tpPercent": 10.425949771647199,
+      "slPrice": 14.617107142857142,
+      "tpPrice": 17.028785714285714
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
