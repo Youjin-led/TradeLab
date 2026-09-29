@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-09-29T10:32:08.765Z",
+  "generatedAt": "2026-09-29T17:55:42.168Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 29,
+    "live": 30,
     "quarantined": 11,
-    "rejected": 4,
+    "rejected": 3,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 543.5566285453367,
-      "trades": 296,
+      "totalPnl": 440.629272902991,
+      "trades": 298,
       "wins": 160,
-      "losses": 136,
+      "losses": 138,
       "maxDd": 8.19,
       "symbols": [
         "NEARUSDT",
@@ -33,17 +33,17 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 543.55,
-      "forwardTrades": 296,
+      "forwardPnl": 440.6199999999999,
+      "forwardTrades": 298,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 54.1,
-      "avgPnlPerTrade": 1.84
+      "winRate": 53.7,
+      "avgPnlPerTrade": 1.48
     },
     "sma-rsi": {
-      "totalPnl": -582.025253848652,
-      "trades": 238,
-      "wins": 123,
+      "totalPnl": -578.0567619070935,
+      "trades": 239,
+      "wins": 124,
       "losses": 115,
       "maxDd": 6.4,
       "symbols": [
@@ -65,12 +65,12 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -582.05,
-      "forwardTrades": 238,
+      "forwardPnl": -578.0799999999999,
+      "forwardTrades": 239,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.7,
-      "avgPnlPerTrade": -2.45
+      "winRate": 51.9,
+      "avgPnlPerTrade": -2.42
     }
   },
   "byTimeOfDay": {
@@ -95,9 +95,9 @@
       "avgPnl": -72.26
     },
     "4": {
-      "pnl": -364.89,
-      "trades": 41,
-      "avgPnl": -8.9
+      "pnl": -399.47,
+      "trades": 42,
+      "avgPnl": -9.51
     },
     "5": {
       "pnl": -113.41,
@@ -130,9 +130,9 @@
       "avgPnl": -12.55
     },
     "11": {
-      "pnl": 23.08,
-      "trades": 7,
-      "avgPnl": 3.3
+      "pnl": 27.05,
+      "trades": 8,
+      "avgPnl": 3.38
     },
     "12": {
       "pnl": -126.96,
@@ -145,9 +145,9 @@
       "avgPnl": 22.37
     },
     "14": {
-      "pnl": 289.19,
-      "trades": 27,
-      "avgPnl": 10.71
+      "pnl": 220.84,
+      "trades": 28,
+      "avgPnl": 7.89
     },
     "15": {
       "pnl": 137.8,
@@ -202,14 +202,14 @@
       "avgPnl": -2.47
     },
     "Monday": {
-      "pnl": -872.13,
-      "trades": 85,
-      "avgPnl": -10.26
+      "pnl": -940.48,
+      "trades": 86,
+      "avgPnl": -10.94
     },
     "Tuesday": {
-      "pnl": -747.62,
-      "trades": 87,
-      "avgPnl": -8.59
+      "pnl": -778.23,
+      "trades": 89,
+      "avgPnl": -8.74
     },
     "Wednesday": {
       "pnl": 38.86,
@@ -3975,26 +3975,47 @@
       "pnl": 1.93,
       "symbol": "JUPUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-09-29 11:00",
+      "equity": 9893.18,
+      "pnl": -68.35,
+      "symbol": "DOGEUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-29 12:00",
+      "equity": 9858.6,
+      "pnl": -34.58,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-09-29 14:00",
+      "equity": 9862.57,
+      "pnl": 3.97,
+      "symbol": "ATOMUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.965,
-    "sortinoRatio": 1.021,
-    "calmarRatio": 3.06,
-    "maxDrawdown": 19.11,
-    "avgDailyReturn": 0.232,
-    "dailyVolatility": 3.6524,
-    "annualizedReturn": 58.47,
-    "totalTrades": 534
+    "sharpeRatio": 0.915,
+    "sortinoRatio": 0.968,
+    "calmarRatio": 2.785,
+    "maxDrawdown": 19.92,
+    "avgDailyReturn": 0.2202,
+    "dailyVolatility": 3.6478,
+    "annualizedReturn": 55.49,
+    "totalTrades": 537
   },
   "distribution": {
-    "totalTrades": 534,
+    "totalTrades": 537,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 3.59,
-      "avg": -0.07,
-      "stdDev": 109.24
+      "median": 3.29,
+      "avg": -0.26,
+      "stdDev": 108.99
     },
     "holdTime": {
       "avgBars": 0,
@@ -4002,7 +4023,7 @@
       "maxBars": 0
     },
     "streaks": {
-      "maxWinStreak": 8,
+      "maxWinStreak": 9,
       "maxLossStreak": 9
     }
   }
