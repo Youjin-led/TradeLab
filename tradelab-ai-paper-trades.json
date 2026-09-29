@@ -1,5 +1,5 @@
 {
-  "balance": 7073.736522167287,
+  "balance": 5815.384129562741,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,6 +18,23 @@
       "tpPercent": 7.883281766776911,
       "slPrice": 69.58892857142858,
       "tpPrice": 61.672142857142866
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 11.446,
+      "qty": 109.93817863048628,
+      "notional": 1258.352392604546,
+      "fee": 0.5033409570418184,
+      "openedAt": "2026-09-29T23:34:28.320Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price above SMA20 (11.33) and SMA50 (10.86), trend bullish,  | Price (11.446) is above both SMA20 (10.90) and SMA50 (10.76)",
+      "atrPct": 4.216070492498939,
+      "slPercent": 6.324105738748408,
+      "tpPercent": 12.648211477496815,
+      "slPrice": 10.722142857142856,
+      "tpPrice": 12.893714285714285
     }
   ],
   "closedTrades": [
