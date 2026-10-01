@@ -1,5 +1,5 @@
 {
-  "balance": 4242.115543086601,
+  "balance": 5159.4492393749115,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,23 +18,6 @@
       "tpPercent": 7.883281766776911,
       "slPrice": 69.58892857142858,
       "tpPrice": 61.672142857142866
-    },
-    {
-      "symbol": "NEARUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 5.256,
-      "qty": 189.71215444378558,
-      "notional": 997.127083756537,
-      "fee": 0.3988508335026148,
-      "openedAt": "2026-09-30T14:47:24.593Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price 5.252 above SMA20 (5.058) and SMA50 (4.928), trend bul | Price above SMA20 (5.0385) and SMA50 (4.8169), bullish trend",
-      "atrPct": 5.308219178082193,
-      "slPercent": 7.962328767123289,
-      "tpPercent": 15.924657534246577,
-      "slPrice": 4.8375,
-      "tpPrice": 6.093
     },
     {
       "symbol": "LTCUSDT",
@@ -1011,14 +994,25 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-09-29T23:34:28.320Z",
       "closedAt": "2026-09-30T04:57:47.525Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 5.256,
+      "exit": 4.8375,
+      "pnl": -79.79338746822687,
+      "reason": "Stop loss 8.0% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-30T14:47:24.593Z",
+      "closedAt": "2026-10-01T15:17:21.396Z"
     }
   ],
-  "totalPnl": -117.37302611172215,
+  "totalPnl": -197.16641357994902,
   "wins": 34,
-  "losses": 53,
+  "losses": 54,
   "stats": {
     "todayDate": "2026-10-01",
-    "todayPnl": 0
+    "todayPnl": -79.79338746822687
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1035,6 +1029,7 @@
     "SOLUSDT": "2026-09-21T14:59:09.066Z",
     "DOTUSDT": "2026-09-23T19:35:26.545Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
-    "DOGEUSDT": "2026-09-27T13:44:38.027Z"
+    "DOGEUSDT": "2026-09-27T13:44:38.027Z",
+    "NEARUSDT": "2026-10-01T15:17:21.396Z"
   }
 }
