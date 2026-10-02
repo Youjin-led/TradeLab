@@ -1,7 +1,25 @@
 {
-  "balance": 9629.599418088277,
+  "balance": 7607.383540289739,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 776.94,
+      "qty": 2.6027954253848917,
+      "notional": 2022.215877798538,
+      "fee": 0.8088863511194152,
+      "openedAt": "2026-10-02T14:37:02.084Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price above SMA20 (775.32) and SMA50 (771.44), trend bullish, MACD positive (2.80), ADX 28.9 confirm",
+      "atrPct": 1.053399968374098,
+      "slPercent": 1.580099952561147,
+      "tpPercent": 3.160199905122294,
+      "slPrice": 764.6635714285715,
+      "tpPrice": 801.4928571428571
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
