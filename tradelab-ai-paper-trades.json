@@ -1,25 +1,7 @@
 {
-  "balance": 7607.383540289739,
+  "balance": 9596.83749961138,
   "peak": 10677.153840784533,
-  "positions": [
-    {
-      "symbol": "BNBUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 776.94,
-      "qty": 2.6027954253848917,
-      "notional": 2022.215877798538,
-      "fee": 0.8088863511194152,
-      "openedAt": "2026-10-02T14:37:02.084Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Price above SMA20 (775.32) and SMA50 (771.44), trend bullish, MACD positive (2.80), ADX 28.9 confirm",
-      "atrPct": 1.053399968374098,
-      "slPercent": 1.580099952561147,
-      "tpPercent": 3.160199905122294,
-      "slPrice": 764.6635714285715,
-      "tpPrice": 801.4928571428571
-    }
-  ],
+  "positions": [],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
@@ -1010,20 +992,31 @@
       "reason": "Stop loss 3.9% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-29T17:56:00.662Z",
       "closedAt": "2026-10-02T04:59:59.233Z"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 776.94,
+      "exit": 764.6635714285715,
+      "pnl": -32.761918476898146,
+      "reason": "Stop loss 1.6% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-02T14:37:02.084Z",
+      "closedAt": "2026-10-02T20:33:17.149Z"
     }
   ],
-  "totalPnl": -370.4005819117224,
+  "totalPnl": -403.1625003886205,
   "wins": 34,
-  "losses": 56,
+  "losses": 57,
   "stats": {
     "todayDate": "2026-10-02",
-    "todayPnl": -173.2341683317734
+    "todayPnl": -205.99608680867152
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
     "BTCUSDT": "2026-09-28T04:44:05.393Z",
     "XRPUSDT": "2026-09-09T22:24:03.437Z",
-    "BNBUSDT": "2026-09-20T04:21:04.905Z",
+    "BNBUSDT": "2026-10-02T20:33:17.149Z",
     "LINKUSDT": "2026-09-29T17:56:01.280Z",
     "SUIUSDT": "2026-09-28T16:38:28.629Z",
     "ETHUSDT": "2026-09-23T19:35:30.587Z",
