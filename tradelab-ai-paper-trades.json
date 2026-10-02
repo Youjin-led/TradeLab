@@ -1,42 +1,7 @@
 {
-  "balance": 5159.4492393749115,
+  "balance": 9629.599418088277,
   "peak": 10677.153840784533,
-  "positions": [
-    {
-      "symbol": "LTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 66.95,
-      "qty": 42.200669582964174,
-      "notional": 2825.334828579452,
-      "fee": 1.1301339314317809,
-      "openedAt": "2026-09-29T17:56:00.662Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price below SMA20 (68.33) and SMA50 (69.60), bearish trend,  | Price 66.95 is below both SMA20 (70.35) and SMA50 (67.99), M",
-      "atrPct": 2.627760588925637,
-      "slPercent": 3.9416408833884553,
-      "tpPercent": 7.883281766776911,
-      "slPrice": 69.58892857142858,
-      "tpPrice": 61.672142857142866
-    },
-    {
-      "symbol": "LTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 66.54,
-      "qty": 27.322655823049086,
-      "notional": 1818.0495184656863,
-      "fee": 0.7272198073862746,
-      "openedAt": "2026-09-30T20:41:03.339Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Trend is bearish with price below both SMA20 (67.04) and SMA | Price (66.54) is below both SMA20 (68.60) and SMA50 (68.75),",
-      "atrPct": 2.2006097299154077,
-      "slPercent": 3.3009145948731113,
-      "tpPercent": 6.601829189746223,
-      "slPrice": 68.73642857142858,
-      "tpPrice": 62.14714285714287
-    }
-  ],
+  "positions": [],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
@@ -1005,14 +970,36 @@
       "reason": "Stop loss 8.0% (ATR*1.5) hit intrabar",
       "openedAt": "2026-09-30T14:47:24.593Z",
       "closedAt": "2026-10-01T15:17:21.396Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 66.54,
+      "exit": 68.73642857142858,
+      "pnl": -60.739481704440465,
+      "reason": "Stop loss 3.3% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-30T20:41:03.339Z",
+      "closedAt": "2026-10-02T04:59:58.069Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 66.95,
+      "exit": 69.58892857142858,
+      "pnl": -112.49468662733292,
+      "reason": "Stop loss 3.9% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-09-29T17:56:00.662Z",
+      "closedAt": "2026-10-02T04:59:59.233Z"
     }
   ],
-  "totalPnl": -197.16641357994902,
+  "totalPnl": -370.4005819117224,
   "wins": 34,
-  "losses": 54,
+  "losses": 56,
   "stats": {
-    "todayDate": "2026-10-01",
-    "todayPnl": -79.79338746822687
+    "todayDate": "2026-10-02",
+    "todayPnl": -173.2341683317734
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1030,6 +1017,7 @@
     "DOTUSDT": "2026-09-23T19:35:26.545Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
     "DOGEUSDT": "2026-09-27T13:44:38.027Z",
-    "NEARUSDT": "2026-10-01T15:17:21.396Z"
+    "NEARUSDT": "2026-10-01T15:17:21.396Z",
+    "LTCUSDT": "2026-10-02T04:59:59.233Z"
   }
 }
