@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-03T13:12:03.718Z",
+  "generatedAt": "2026-10-03T19:07:08.995Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 27,
-    "quarantined": 15,
-    "rejected": 2,
+    "live": 30,
+    "quarantined": 11,
+    "rejected": 3,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,10 +41,10 @@
       "avgPnlPerTrade": 0.83
     },
     "sma-rsi": {
-      "totalPnl": -753.5847473373508,
-      "trades": 243,
+      "totalPnl": -811.2323406551309,
+      "trades": 244,
       "wins": 126,
-      "losses": 117,
+      "losses": 118,
       "maxDd": 6.4,
       "symbols": [
         "LINKUSDT",
@@ -65,12 +65,12 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -753.6100000000001,
-      "forwardTrades": 243,
+      "forwardPnl": -811.26,
+      "forwardTrades": 244,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.9,
-      "avgPnlPerTrade": -3.1
+      "winRate": 51.6,
+      "avgPnlPerTrade": -3.32
     }
   },
   "byTimeOfDay": {
@@ -115,9 +115,9 @@
       "avgPnl": 46.43
     },
     "8": {
-      "pnl": -183.54,
-      "trades": 80,
-      "avgPnl": -2.29
+      "pnl": -241.18,
+      "trades": 81,
+      "avgPnl": -2.98
     },
     "9": {
       "pnl": -194.04,
@@ -227,9 +227,9 @@
       "avgPnl": 13.52
     },
     "Saturday": {
-      "pnl": -261.18,
-      "trades": 41,
-      "avgPnl": -6.37
+      "pnl": -318.82,
+      "trades": 42,
+      "avgPnl": -7.59
     }
   },
   "equityCurve": [
@@ -4038,26 +4038,33 @@
       "pnl": 39.81,
       "symbol": "LINKUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-10-03 13:00",
+      "equity": 9437.23,
+      "pnl": -57.65,
+      "symbol": "ATOMUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.766,
-    "sortinoRatio": 0.804,
-    "calmarRatio": 2.025,
-    "maxDrawdown": 23.2,
-    "avgDailyReturn": 0.1864,
-    "dailyVolatility": 3.6576,
-    "annualizedReturn": 46.98,
-    "totalTrades": 543
+    "sharpeRatio": 0.743,
+    "sortinoRatio": 0.781,
+    "calmarRatio": 1.956,
+    "maxDrawdown": 23.35,
+    "avgDailyReturn": 0.1812,
+    "dailyVolatility": 3.6563,
+    "annualizedReturn": 45.66,
+    "totalTrades": 544
   },
   "distribution": {
-    "totalTrades": 543,
+    "totalTrades": 544,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 3.28,
-      "avg": -0.93,
-      "stdDev": 108.78
+      "avg": -1.03,
+      "stdDev": 108.71
     },
     "holdTime": {
       "avgBars": 0,
