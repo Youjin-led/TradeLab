@@ -48,24 +48,24 @@
   "LTCUSDT:4h": {
     "symbol": "LTCUSDT",
     "interval": "4h",
-    "decision": "HOLD",
-    "confidence": 0,
-    "source": "merge-both-hold",
-    "reasoning": "Оба источника: HOLD",
+    "decision": "SELL",
+    "confidence": 50,
+    "source": "merge-classical",
+    "reasoning": "[Class] Классика: . AI: HOLD (62%)",
     "aiDecision": "HOLD",
     "aiConfidence": 62,
-    "classical": "HOLD",
-    "latencyMs": 1100,
-    "price": 70.7,
+    "classical": "SELL",
+    "latencyMs": 1565,
+    "price": 69.91,
     "indicators": {
-      "rsi": 48.9,
-      "adx": 36.4,
+      "rsi": 50.1,
+      "adx": 32.2,
       "trend": "bullish",
-      "atrPct": 1.95,
-      "volRatio": 0.43
+      "atrPct": 1.62,
+      "volRatio": 0.18
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:39.741Z",
+    "timestamp": "2026-10-05T04:58:49.781Z",
     "fromCache": false
   },
   "AVAXUSDT:1h": {
@@ -99,42 +99,42 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 62,
+    "aiConfidence": 55,
     "classical": "HOLD",
-    "latencyMs": 1619,
-    "price": 4.966,
+    "latencyMs": 1251,
+    "price": 4.872,
     "indicators": {
-      "rsi": 59,
-      "adx": 11.5,
+      "rsi": 63.2,
+      "adx": 24.9,
       "trend": "bearish",
-      "atrPct": 2.77,
-      "volRatio": 0.47
+      "atrPct": 2.6,
+      "volRatio": 0.24
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:33.233Z",
+    "timestamp": "2026-10-05T04:58:47.739Z",
     "fromCache": false
   },
   "ARBUSDT:4h": {
     "symbol": "ARBUSDT",
     "interval": "4h",
-    "decision": "HOLD",
-    "confidence": 0,
-    "source": "merge-both-hold",
-    "reasoning": "Оба источника: HOLD",
+    "decision": "SELL",
+    "confidence": 50,
+    "source": "merge-classical",
+    "reasoning": "[Class] Классика: . AI: HOLD (62%)",
     "aiDecision": "HOLD",
     "aiConfidence": 62,
-    "classical": "HOLD",
-    "latencyMs": 1490,
-    "price": 0.2041,
+    "classical": "SELL",
+    "latencyMs": 1678,
+    "price": 0.2009,
     "indicators": {
-      "rsi": 50.3,
-      "adx": 18.8,
+      "rsi": 61.1,
+      "adx": 8.7,
       "trend": "bearish",
-      "atrPct": 2.41,
-      "volRatio": 0.52
+      "atrPct": 1.9,
+      "volRatio": 0.34
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:27.361Z",
+    "timestamp": "2026-10-05T04:58:38.718Z",
     "fromCache": false
   },
   "DOTUSDT:1h": {
@@ -237,19 +237,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 65,
+    "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1314,
-    "price": 4.966,
+    "latencyMs": 1394,
+    "price": 4.873,
     "indicators": {
-      "rsi": 61.7,
-      "adx": 70,
+      "rsi": 59.1,
+      "adx": 67.9,
       "trend": "bullish",
-      "atrPct": 11.62,
-      "volRatio": 0.31
+      "atrPct": 11.31,
+      "volRatio": 0.07
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:35.025Z",
+    "timestamp": "2026-10-05T04:58:44.344Z",
     "fromCache": false
   },
   "SEIUSDT:1h": {
@@ -278,24 +278,24 @@
   "BCHUSDT:1h": {
     "symbol": "BCHUSDT",
     "interval": "1h",
-    "decision": "BUY",
-    "confidence": 50,
-    "source": "merge-classical",
-    "reasoning": "[Class] Классика: . AI: HOLD (62%)",
+    "decision": "HOLD",
+    "confidence": 0,
+    "source": "merge-both-hold",
+    "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
     "aiConfidence": 62,
-    "classical": "BUY",
-    "latencyMs": 1126,
-    "price": 319.1,
+    "classical": "HOLD",
+    "latencyMs": 1193,
+    "price": 318.1,
     "indicators": {
-      "rsi": 54.7,
-      "adx": 41.9,
+      "rsi": 48.4,
+      "adx": 16.5,
       "trend": "bullish",
-      "atrPct": 0.49,
-      "volRatio": 1.19
+      "atrPct": 0.65,
+      "volRatio": 2.17
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:36.629Z",
+    "timestamp": "2026-10-05T04:58:46.014Z",
     "fromCache": false
   },
   "SEIUSDT:4h": {
@@ -306,19 +306,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 55,
+    "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1241,
-    "price": 0.07409,
+    "latencyMs": 1406,
+    "price": 0.07361,
     "indicators": {
-      "rsi": 60.1,
-      "adx": 33.3,
+      "rsi": 67.7,
+      "adx": 21.4,
       "trend": "bearish",
-      "atrPct": 2.51,
-      "volRatio": 0.72
+      "atrPct": 2.14,
+      "volRatio": 0.55
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:43.125Z",
+    "timestamp": "2026-10-05T04:58:51.662Z",
     "fromCache": false
   },
   "INJUSDT:4h": {
@@ -444,19 +444,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 62,
+    "aiConfidence": 65,
     "classical": "HOLD",
-    "latencyMs": 1269,
-    "price": 71.27,
+    "latencyMs": 1524,
+    "price": 69.91,
     "indicators": {
-      "rsi": 73.8,
-      "adx": 50.3,
+      "rsi": 67,
+      "adx": 43.5,
       "trend": "bullish",
-      "atrPct": 6.09,
-      "volRatio": 0.44
+      "atrPct": 5.73,
+      "volRatio": 0.07
     },
     "params": null,
-    "timestamp": "2026-10-04T19:22:16.468Z",
+    "timestamp": "2026-10-05T04:58:55.786Z",
     "fromCache": false
   },
   "DOGEUSDT:4h": {
@@ -536,19 +536,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 55,
+    "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1175,
-    "price": 0.4752,
+    "latencyMs": 1645,
+    "price": 0.4716,
     "indicators": {
-      "rsi": 51,
-      "adx": 38.8,
-      "trend": "bearish",
-      "atrPct": 3.57,
-      "volRatio": 0.37
+      "rsi": 62.2,
+      "adx": 40.3,
+      "trend": "bullish",
+      "atrPct": 2.85,
+      "volRatio": 0.27
     },
     "params": null,
-    "timestamp": "2026-10-04T19:22:14.749Z",
+    "timestamp": "2026-10-05T04:58:53.783Z",
     "fromCache": false
   },
   "ATOMUSDT:1h": {
@@ -584,17 +584,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1732,
-    "price": 0.1335,
+    "latencyMs": 1377,
+    "price": 0.1309,
     "indicators": {
-      "rsi": 67.6,
-      "adx": 27.3,
+      "rsi": 41.5,
+      "adx": 11.3,
       "trend": "bearish",
-      "atrPct": 1.54,
-      "volRatio": 1.49
+      "atrPct": 1.34,
+      "volRatio": 2.55
     },
     "params": null,
-    "timestamp": "2026-10-02T04:59:38.984Z",
+    "timestamp": "2026-10-05T04:58:42.474Z",
     "fromCache": false
   },
   "BTCUSDT:4h": {
@@ -628,19 +628,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 58,
+    "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1184,
-    "price": 121.7,
+    "latencyMs": 1425,
+    "price": 120.51,
     "indicators": {
-      "rsi": 62.1,
-      "adx": 37.1,
+      "rsi": 66.6,
+      "adx": 27.2,
       "trend": "bullish",
-      "atrPct": 0.92,
-      "volRatio": 0.72
+      "atrPct": 0.8,
+      "volRatio": 0.35
     },
     "params": null,
-    "timestamp": "2026-10-04T22:55:29.026Z",
+    "timestamp": "2026-10-05T04:58:40.621Z",
     "fromCache": false
   },
   "FILUSDT:4h": {
