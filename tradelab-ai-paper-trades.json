@@ -1,7 +1,42 @@
 {
-  "balance": 9596.83749961138,
+  "balance": 5825.692398278621,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.2772,
+      "qty": 8106.741250677354,
+      "notional": 2247.1886746877626,
+      "fee": 0.8988754698751051,
+      "openedAt": "2026-10-06T11:08:33.346Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price above SMA20 (0.2700) and SMA50 (0.2642), trend bullish | Price above SMA20/50, bullish trend, MACD positive, ADX 30.8",
+      "atrPct": 3.202947845804988,
+      "slPercent": 4.804421768707481,
+      "tpPercent": 9.608843537414963,
+      "slPrice": 0.2638821428571429,
+      "tpPrice": 0.30383571428571426
+    },
+    {
+      "symbol": "DOTUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 1.23,
+      "qty": 1238.9889647520295,
+      "notional": 1523.956426644996,
+      "fee": 0.6095825706579985,
+      "openedAt": "2026-10-06T11:08:33.346Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price 1.23 above SMA20 (1.206) and SMA50 (1.201), trend bullish, MACD positive (0.0076), ADX 33 conf",
+      "atrPct": 2.5319396051103418,
+      "slPercent": 3.7979094076655127,
+      "tpPercent": 7.595818815331025,
+      "slPrice": 1.1832857142857143,
+      "tpPrice": 1.3234285714285716
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
