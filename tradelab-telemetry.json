@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-05T16:59:41.998Z",
+  "generatedAt": "2026-10-06T01:13:56.803Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 29,
-    "quarantined": 14,
-    "rejected": 1,
+    "live": 32,
+    "quarantined": 10,
+    "rejected": 2,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,9 +41,9 @@
       "avgPnlPerTrade": 0.46
     },
     "sma-rsi": {
-      "totalPnl": -832.9219073813674,
-      "trades": 246,
-      "wins": 127,
+      "totalPnl": -800.4163530377218,
+      "trades": 248,
+      "wins": 129,
       "losses": 119,
       "maxDd": 6.4,
       "symbols": [
@@ -65,12 +65,12 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -832.94,
-      "forwardTrades": 246,
+      "forwardPnl": -800.4300000000001,
+      "forwardTrades": 248,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.6,
-      "avgPnlPerTrade": -3.39
+      "winRate": 52,
+      "avgPnlPerTrade": -3.23
     }
   },
   "byTimeOfDay": {
@@ -145,9 +145,9 @@
       "avgPnl": 22.37
     },
     "14": {
-      "pnl": 181.02,
-      "trades": 30,
-      "avgPnl": 6.03
+      "pnl": 182.51,
+      "trades": 31,
+      "avgPnl": 5.89
     },
     "15": {
       "pnl": 137.8,
@@ -155,9 +155,9 @@
       "avgPnl": 9.84
     },
     "16": {
-      "pnl": -169.77,
-      "trades": 68,
-      "avgPnl": -2.5
+      "pnl": -138.75,
+      "trades": 69,
+      "avgPnl": -2.01
     },
     "17": {
       "pnl": 693.31,
@@ -202,9 +202,9 @@
       "avgPnl": -2.07
     },
     "Monday": {
-      "pnl": -901.65,
-      "trades": 87,
-      "avgPnl": -10.36
+      "pnl": -869.15,
+      "trades": 89,
+      "avgPnl": -9.77
     },
     "Tuesday": {
       "pnl": -943.61,
@@ -4080,26 +4080,40 @@
       "pnl": 38.83,
       "symbol": "OPUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-10-05 18:00",
+      "equity": 9307.06,
+      "pnl": 1.49,
+      "symbol": "DOGEUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-10-05 20:00",
+      "equity": 9338.08,
+      "pnl": 31.02,
+      "symbol": "FILUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.675,
-    "sortinoRatio": 0.704,
-    "calmarRatio": 1.688,
+    "sharpeRatio": 0.706,
+    "sortinoRatio": 0.736,
+    "calmarRatio": 1.759,
     "maxDrawdown": 24.73,
-    "avgDailyReturn": 0.1657,
-    "dailyVolatility": 3.6618,
-    "annualizedReturn": 41.75,
-    "totalTrades": 549
+    "avgDailyReturn": 0.1727,
+    "dailyVolatility": 3.6587,
+    "annualizedReturn": 43.51,
+    "totalTrades": 551
   },
   "distribution": {
-    "totalTrades": 549,
+    "totalTrades": 551,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 3.21,
-      "avg": -1.26,
-      "stdDev": 108.41
+      "avg": -1.2,
+      "stdDev": 108.22
     },
     "holdTime": {
       "avgBars": 0,
