@@ -1,42 +1,7 @@
 {
-  "balance": 5825.692398278621,
+  "balance": 9429.486135203944,
   "peak": 10677.153840784533,
-  "positions": [
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.2772,
-      "qty": 8106.741250677354,
-      "notional": 2247.1886746877626,
-      "fee": 0.8988754698751051,
-      "openedAt": "2026-10-06T11:08:33.346Z",
-      "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price above SMA20 (0.2700) and SMA50 (0.2642), trend bullish | Price above SMA20/50, bullish trend, MACD positive, ADX 30.8",
-      "atrPct": 3.202947845804988,
-      "slPercent": 4.804421768707481,
-      "tpPercent": 9.608843537414963,
-      "slPrice": 0.2638821428571429,
-      "tpPrice": 0.30383571428571426
-    },
-    {
-      "symbol": "DOTUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1.23,
-      "qty": 1238.9889647520295,
-      "notional": 1523.956426644996,
-      "fee": 0.6095825706579985,
-      "openedAt": "2026-10-06T11:08:33.346Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price 1.23 above SMA20 (1.206) and SMA50 (1.201), trend bullish, MACD positive (0.0076), ADX 33 conf",
-      "atrPct": 2.5319396051103418,
-      "slPercent": 3.7979094076655127,
-      "tpPercent": 7.595818815331025,
-      "slPrice": 1.1832857142857143,
-      "tpPrice": 1.3234285714285716
-    }
-  ],
+  "positions": [],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
@@ -1038,14 +1003,36 @@
       "reason": "Stop loss 1.6% (ATR*1.5) hit intrabar",
       "openedAt": "2026-10-02T14:37:02.084Z",
       "closedAt": "2026-10-02T20:33:17.149Z"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1.23,
+      "exit": 1.1832857142857143,
+      "pnl": -58.488067066931364,
+      "reason": "Stop loss 3.8% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-06T11:08:33.346Z",
+      "closedAt": "2026-10-07T05:18:19.290Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.2772,
+      "exit": 0.2638821428571429,
+      "pnl": -108.86329734050284,
+      "reason": "Stop loss 4.8% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-06T11:08:33.346Z",
+      "closedAt": "2026-10-07T05:18:20.412Z"
     }
   ],
-  "totalPnl": -403.1625003886205,
+  "totalPnl": -570.5138647960547,
   "wins": 34,
-  "losses": 57,
+  "losses": 59,
   "stats": {
-    "todayDate": "2026-10-06",
-    "todayPnl": 0
+    "todayDate": "2026-10-07",
+    "todayPnl": -167.3513644074342
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1056,11 +1043,11 @@
     "SUIUSDT": "2026-09-28T16:38:28.629Z",
     "ETHUSDT": "2026-09-23T19:35:30.587Z",
     "INJUSDT": "2026-09-26T04:24:56.500Z",
-    "ADAUSDT": "2026-09-21T14:59:07.950Z",
+    "ADAUSDT": "2026-10-07T05:18:20.412Z",
     "AVAXUSDT": "2026-09-30T04:57:47.525Z",
     "OPUSDT": "2026-09-28T16:38:29.755Z",
     "SOLUSDT": "2026-09-21T14:59:09.066Z",
-    "DOTUSDT": "2026-09-23T19:35:26.545Z",
+    "DOTUSDT": "2026-10-07T05:18:19.290Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
     "DOGEUSDT": "2026-09-27T13:44:38.027Z",
     "NEARUSDT": "2026-10-01T15:17:21.396Z",
