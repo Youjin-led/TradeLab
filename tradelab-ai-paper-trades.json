@@ -1,7 +1,59 @@
 {
-  "balance": 9429.486135203944,
+  "balance": 4649.104414614817,
   "peak": 10677.153840784533,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 2560.28,
+      "qty": 0.7734279408474183,
+      "notional": 1980.1920883928283,
+      "fee": 0.7920768353571314,
+      "openedAt": "2026-10-07T15:23:43.278Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Price below SMA20/50, bearish trend, MACD<0, RSI deeply oversold but confirming downtrend, breakdown",
+      "atrPct": 1.2717359038855116,
+      "slPercent": 1.9076038558282673,
+      "tpPercent": 3.8152077116565346,
+      "slPrice": 2609.1200000000003,
+      "tpPrice": 2462.6000000000004
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.4237,
+      "qty": 1098.7931093842342,
+      "notional": 1564.3517498303343,
+      "fee": 0.6257406999321338,
+      "openedAt": "2026-10-07T15:23:43.278Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Price 1.4237 is below both SMA20 (1.4954) and SMA50 (1.4966), trend is bearish, MACD is negative, an",
+      "atrPct": 1.6385875836602806,
+      "slPercent": 2.457881375490421,
+      "tpPercent": 4.915762750980842,
+      "slPrice": 1.458692857142857,
+      "tpPrice": 1.3537142857142856
+    },
+    {
+      "symbol": "LTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 65.92,
+      "qty": 18.747540691231247,
+      "notional": 1235.8378823659639,
+      "fee": 0.4943351529463856,
+      "openedAt": "2026-10-07T15:23:43.278Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Price 65.92 is below both SMA20 (69.61) and SMA50 (68.92), MACD is negative (-0.79), RSI 23.5 is dee",
+      "atrPct": 1.7694608183079088,
+      "slPercent": 2.654191227461863,
+      "tpPercent": 5.308382454923726,
+      "slPrice": 67.66964285714286,
+      "tpPrice": 62.42071428571428
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
