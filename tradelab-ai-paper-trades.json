@@ -1,5 +1,5 @@
 {
-  "balance": 4352.785561578754,
+  "balance": 5798.776070845352,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,23 +18,6 @@
       "tpPercent": 8.315134533767361,
       "slPrice": 1.0833428571428572,
       "tpPrice": 0.9536142857142856
-    },
-    {
-      "symbol": "DOTUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.043,
-      "qty": 1462.8488813231531,
-      "notional": 1525.7513832200486,
-      "fee": 0.6103005532880195,
-      "openedAt": "2026-10-08T15:26:00.513Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price 1.042 is below SMA20 (1.1046) and SMA50 (1.1318), tren | Strong downtrend: price 1.043 far below SMA20 1.161 and SMA5",
-      "atrPct": 3.458430352006576,
-      "slPercent": 5.187645528009863,
-      "tpPercent": 10.375291056019726,
-      "slPrice": 1.0971071428571426,
-      "tpPrice": 0.9347857142857141
     },
     {
       "symbol": "BNBUSDT",
@@ -1110,14 +1093,25 @@
       "reason": "Take profit 3.8% (ATR*3) hit intrabar",
       "openedAt": "2026-10-07T15:23:43.278Z",
       "closedAt": "2026-10-08T15:26:03.366Z"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.043,
+      "exit": 1.0971071428571426,
+      "pnl": -79.76087395345122,
+      "reason": "Stop loss 5.2% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-08T15:26:00.513Z",
+      "closedAt": "2026-10-09T05:31:20.049Z"
     }
   ],
-  "totalPnl": -354.3747542910223,
+  "totalPnl": -434.13562824447354,
   "wins": 37,
-  "losses": 59,
+  "losses": 60,
   "stats": {
-    "todayDate": "2026-10-08",
-    "todayPnl": 216.13911050503242
+    "todayDate": "2026-10-09",
+    "todayPnl": -79.76087395345122
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1132,7 +1126,7 @@
     "AVAXUSDT": "2026-09-30T04:57:47.525Z",
     "OPUSDT": "2026-09-28T16:38:29.755Z",
     "SOLUSDT": "2026-09-21T14:59:09.066Z",
-    "DOTUSDT": "2026-10-07T05:18:19.290Z",
+    "DOTUSDT": "2026-10-09T05:31:20.049Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
     "DOGEUSDT": "2026-09-27T13:44:38.027Z",
     "NEARUSDT": "2026-10-01T15:17:21.396Z",
