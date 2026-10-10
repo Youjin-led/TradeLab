@@ -1,24 +1,7 @@
 {
-  "balance": 5798.776070845352,
+  "balance": 8299.237500592624,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.0401,
-      "qty": 2509.3920981155647,
-      "notional": 2610.018721249999,
-      "fee": 1.0440074884999997,
-      "openedAt": "2026-10-08T15:26:00.513Z",
-      "aiConfidence": 82,
-      "aiReasoning": "TF agree: Price 1.0416 is far below SMA20 (1.119) and SMA50 (1.137), t | Price 1.0401 is far below SMA20 (1.1588) and SMA50 (1.1708),",
-      "atrPct": 2.7717115112557873,
-      "slPercent": 4.157567266883681,
-      "tpPercent": 8.315134533767361,
-      "slPrice": 1.0833428571428572,
-      "tpPrice": 0.9536142857142856
-    },
     {
       "symbol": "BNBUSDT",
       "interval": "1h",
@@ -1104,14 +1087,25 @@
       "reason": "Stop loss 5.2% (ATR*1.5) hit intrabar",
       "openedAt": "2026-10-08T15:26:00.513Z",
       "closedAt": "2026-10-09T05:31:20.049Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.0401,
+      "exit": 1.0833428571428572,
+      "pnl": -109.55729150272592,
+      "reason": "Stop loss 4.2% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-08T15:26:00.513Z",
+      "closedAt": "2026-10-10T05:15:44.956Z"
     }
   ],
-  "totalPnl": -434.13562824447354,
+  "totalPnl": -543.6929197471994,
   "wins": 37,
-  "losses": 60,
+  "losses": 61,
   "stats": {
-    "todayDate": "2026-10-09",
-    "todayPnl": -79.76087395345122
+    "todayDate": "2026-10-10",
+    "todayPnl": -109.55729150272592
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1119,7 +1113,7 @@
     "XRPUSDT": "2026-10-08T15:26:02.251Z",
     "BNBUSDT": "2026-10-02T20:33:17.149Z",
     "LINKUSDT": "2026-09-29T17:56:01.280Z",
-    "SUIUSDT": "2026-09-28T16:38:28.629Z",
+    "SUIUSDT": "2026-10-10T05:15:44.956Z",
     "ETHUSDT": "2026-10-08T15:26:03.366Z",
     "INJUSDT": "2026-09-26T04:24:56.500Z",
     "ADAUSDT": "2026-10-07T05:18:20.412Z",
