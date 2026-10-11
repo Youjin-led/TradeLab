@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-10-11T05:05:44.445Z
+Generated: 2026-10-11T14:48:39.028Z
 Status: **NORMAL**
 
 ---
@@ -18,7 +18,7 @@ Status: **NORMAL**
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
 | Daily (UTC) | -21.00 | -500 | ✅ |
-| Weekly (7d) | 135.02 | -2500 | ✅ |
+| Weekly (7d) | 195.54 | -2500 | ✅ |
 | Monthly | -200.25 | -5000 | ✅ |
 | Total (all time) | -427.80 | -5000 | ✅ |
 
@@ -87,20 +87,21 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.72% / 5% max
+- **Heat:** 0.84% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 25
-- **Sector Distribution:** {"alt_mid":10,"alt_large":9,"alt_small":1,"other":3,"blue_chip":2}
+- **Active Positions:** 29
+- **Sector Distribution:** {"alt_mid":10,"alt_large":10,"alt_small":2,"other":4,"blue_chip":3}
 - **Warnings:**
   - ⚠️ alt_mid: 10 positions (max 3)
-  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ alt_large: 10 positions (max 3)
+  - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 25/3
+  - 🚫 max_concurrent_positions: 29/3
 
 ## Trailing Stops
 
