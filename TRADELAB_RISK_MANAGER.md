@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-10-12T05:19:26.980Z
+Generated: 2026-10-12T17:37:29.344Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -546.15 USDT
+- **Total PnL:** -627.57 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | 148.32 | -2500 | ✅ |
-| Monthly | -318.60 | -5000 | ✅ |
-| Total (all time) | -546.15 | -5000 | ✅ |
+| Daily (UTC) | -81.42 | -500 | ✅ |
+| Weekly (7d) | 66.90 | -2500 | ✅ |
+| Monthly | -400.02 | -5000 | ✅ |
+| Total (all time) | -627.57 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 11544.9 USDT (max 30000)
+- **Open Notional:** 11010.87 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -80,7 +80,7 @@ Status: **NORMAL**
 | OPUSDT | sma-rsi | 0.7% | 70 | 0 | 63.2% | 95 |
 | LTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SOLUSDT | breakout | 2% | 200 | 16.77 | 70% | 95 |
+| SOLUSDT | breakout | 2% | 200 | 8.81 | 63.6% | 95 |
 | BNBUSDT | breakout | 2% | 200 | 21.89 | 80% | 95 |
 | DOGEUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 81.89%
-- **Total PnL:** -546.15 USDT
-- **Total Exposure:** 11544.9 USDT
+- **Margin Level:** 85.12%
+- **Total PnL:** -627.57 USDT
+- **Total Exposure:** 11010.87 USDT
 - **Warnings:**
-  - 🔴 margin_call: 81.89% (threshold: 100%)
+  - 🔴 margin_call: 85.12% (threshold: 100%)
 
 ## Statistics
 
