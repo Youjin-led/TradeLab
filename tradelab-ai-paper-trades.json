@@ -1,5 +1,5 @@
 {
-  "balance": 6517.3892410807575,
+  "balance": 8201.15884236832,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,23 +18,6 @@
       "tpPercent": 7.050431987140843,
       "slPrice": 1.1040964285714285,
       "tpPrice": 0.9913071428571429
-    },
-    {
-      "symbol": "DOGEUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.08282,
-      "qty": 20918.504681908285,
-      "notional": 1732.4705577556442,
-      "fee": 0.6929882231022577,
-      "openedAt": "2026-10-13T01:55:43.730Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price below SMA20 (0.0858) and SMA50 (0.0886), trend bearish, MACD negative, RSI 35.7 ticking down, ",
-      "atrPct": 1.8473798599372129,
-      "slPercent": 2.771069789905819,
-      "tpPercent": 5.542139579811638,
-      "slPrice": 0.08511500000000001,
-      "tpPrice": 0.07823000000000001
     }
   ],
   "closedTrades": [
@@ -1148,14 +1131,25 @@
       "reason": "Take profit 4.2% (ATR*3) hit intrabar",
       "openedAt": "2026-10-12T17:37:49.135Z",
       "closedAt": "2026-10-13T01:55:48.694Z"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.08282,
+      "exit": 0.08511500000000001,
+      "pnl": -48.700956468081884,
+      "reason": "Stop loss 2.8% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-13T01:55:43.730Z",
+      "closedAt": "2026-10-13T11:35:29.767Z"
     }
   ],
-  "totalPnl": -363.3152937777209,
+  "totalPnl": -412.0162502458028,
   "wins": 39,
-  "losses": 62,
+  "losses": 63,
   "stats": {
     "todayDate": "2026-10-13",
-    "todayPnl": 202.5016627809403
+    "todayPnl": 153.80070631285844
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1172,7 +1166,7 @@
     "SOLUSDT": "2026-10-13T01:55:48.694Z",
     "DOTUSDT": "2026-10-09T05:31:20.049Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
-    "DOGEUSDT": "2026-09-27T13:44:38.027Z",
+    "DOGEUSDT": "2026-10-13T11:35:29.767Z",
     "NEARUSDT": "2026-10-01T15:17:21.396Z",
     "LTCUSDT": "2026-10-13T01:55:47.590Z"
   }
