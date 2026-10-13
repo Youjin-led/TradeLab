@@ -1,5 +1,5 @@
 {
-  "balance": 8201.15884236832,
+  "balance": 4998.890900090639,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,6 +18,40 @@
       "tpPercent": 7.050431987140843,
       "slPrice": 1.1040964285714285,
       "tpPrice": 0.9913071428571429
+    },
+    {
+      "symbol": "LTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 61.19,
+      "qty": 40.20832901961916,
+      "notional": 2460.3476527104963,
+      "fee": 0.9841390610841986,
+      "openedAt": "2026-10-13T23:40:39.888Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price below SMA20 (61.55) and SMA50 (62.78), bearish trend,  | Price 61.19 below SMA20 (63.20) and SMA50 (64.84), bearish t",
+      "atrPct": 2.20274087736091,
+      "slPercent": 3.3041113160413653,
+      "tpPercent": 6.608222632082731,
+      "slPrice": 63.2117857142857,
+      "tpPrice": 57.14642857142858
+    },
+    {
+      "symbol": "OPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1586,
+      "qty": 4677.9337299318195,
+      "notional": 741.9202895671865,
+      "fee": 0.2967681158268746,
+      "openedAt": "2026-10-13T23:40:39.888Z",
+      "aiConfidence": 65,
+      "aiReasoning": "4h only: Strong bullish trend: price above SMA20 (0.141) and SMA50 (0.133), MACD positive, ADX 44 confirms tr",
+      "atrPct": 4.0623311115114396,
+      "slPercent": 6.093496667267159,
+      "tpPercent": 12.186993334534318,
+      "slPrice": 0.14893571428571428,
+      "tpPrice": 0.17792857142857144
     }
   ],
   "closedTrades": [
