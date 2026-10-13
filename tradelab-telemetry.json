@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-12T17:37:29.457Z",
+  "generatedAt": "2026-10-13T01:55:23.076Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 25,
+    "live": 26,
     "quarantined": 18,
-    "rejected": 1,
+    "rejected": 0,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -41,9 +41,9 @@
       "avgPnlPerTrade": 1.55
     },
     "sma-rsi": {
-      "totalPnl": -1133.8694777502367,
-      "trades": 259,
-      "wins": 133,
+      "totalPnl": -955.9725504594551,
+      "trades": 262,
+      "wins": 136,
       "losses": 126,
       "maxDd": 7.22,
       "symbols": [
@@ -65,12 +65,12 @@
         "OPUSDT",
         "BCHUSDT"
       ],
-      "forwardPnl": -1133.8899999999999,
-      "forwardTrades": 259,
+      "forwardPnl": -955.9899999999998,
+      "forwardTrades": 262,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 51.4,
-      "avgPnlPerTrade": -4.38
+      "winRate": 51.9,
+      "avgPnlPerTrade": -3.65
     }
   },
   "byTimeOfDay": {
@@ -115,9 +115,9 @@
       "avgPnl": 46.43
     },
     "8": {
-      "pnl": -94.82,
-      "trades": 83,
-      "avgPnl": -1.14
+      "pnl": -30.27,
+      "trades": 84,
+      "avgPnl": -0.36
     },
     "9": {
       "pnl": -190.03,
@@ -135,9 +135,9 @@
       "avgPnl": 3.38
     },
     "12": {
-      "pnl": -357.71,
-      "trades": 79,
-      "avgPnl": -4.53
+      "pnl": -244.36,
+      "trades": 81,
+      "avgPnl": -3.02
     },
     "13": {
       "pnl": 335.54,
@@ -197,14 +197,14 @@
   },
   "byDayOfWeek": {
     "Sunday": {
-      "pnl": -189.26,
-      "trades": 62,
-      "avgPnl": -3.05
+      "pnl": -75.92,
+      "trades": 64,
+      "avgPnl": -1.19
     },
     "Monday": {
-      "pnl": -929.35,
-      "trades": 91,
-      "avgPnl": -10.21
+      "pnl": -864.8,
+      "trades": 92,
+      "avgPnl": -9.4
     },
     "Tuesday": {
       "pnl": -942.64,
@@ -4332,26 +4332,47 @@
       "pnl": -81.42,
       "symbol": "SOLUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-10-12 17:00",
+      "equity": 9437.02,
+      "pnl": 64.55,
+      "symbol": "OPUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-10-12 20:00",
+      "equity": 9493.7,
+      "pnl": 56.67,
+      "symbol": "DOGEUSDT",
+      "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-10-12 20:00",
+      "equity": 9550.37,
+      "pnl": 56.67,
+      "symbol": "DOGEUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 0.867,
-    "sortinoRatio": 0.909,
-    "calmarRatio": 2.089,
+    "sharpeRatio": 0.974,
+    "sortinoRatio": 1.024,
+    "calmarRatio": 2.34,
     "maxDrawdown": 25.85,
-    "avgDailyReturn": 0.2143,
-    "dailyVolatility": 3.74,
-    "annualizedReturn": 54.01,
-    "totalTrades": 585
+    "avgDailyReturn": 0.24,
+    "dailyVolatility": 3.7479,
+    "annualizedReturn": 60.49,
+    "totalTrades": 588
   },
   "distribution": {
-    "totalTrades": 585,
+    "totalTrades": 588,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
-      "median": 3.29,
-      "avg": -1.07,
-      "stdDev": 106.29
+      "median": 3.97,
+      "avg": -0.76,
+      "stdDev": 106.11
     },
     "holdTime": {
       "avgBars": 0,

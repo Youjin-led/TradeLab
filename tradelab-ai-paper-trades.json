@@ -1,41 +1,7 @@
 {
-  "balance": 3235.9247839003788,
+  "balance": 6517.3892410807575,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "SOLUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 107.3,
-      "qty": 26.377026216518182,
-      "notional": 2830.254913032401,
-      "fee": 1.1321019652129605,
-      "openedAt": "2026-10-12T17:37:49.135Z",
-      "aiConfidence": 80,
-      "aiReasoning": "TF agree: Price below SMA20 (111.02) and SMA50 (110.56), MACD negative | Price below SMA20 (110.11) and SMA50 (114.39), bearish trend",
-      "atrPct": 1.4165890027959023,
-      "slPercent": 2.1248835041938534,
-      "tpPercent": 4.249767008387707,
-      "slPrice": 109.58000000000001,
-      "tpPrice": 102.74
-    },
-    {
-      "symbol": "LTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 62.51,
-      "qty": 31.69378402051961,
-      "notional": 1981.1784391226809,
-      "fee": 0.7924713756490723,
-      "openedAt": "2026-10-12T17:37:49.135Z",
-      "aiConfidence": 78,
-      "aiReasoning": "TF agree: Price below SMA20 (64.56) and SMA50 (64.21), falling trend,  | Price 62.51 below SMA20 (63.94) and SMA50 (66.12), bearish t",
-      "atrPct": 1.4157734762437988,
-      "slPercent": 2.123660214365698,
-      "tpPercent": 4.247320428731396,
-      "slPrice": 63.8375,
-      "tpPrice": 59.855000000000004
-    },
     {
       "symbol": "SUIUSDT",
       "interval": "1h",
@@ -52,6 +18,23 @@
       "tpPercent": 7.050431987140843,
       "slPrice": 1.1040964285714285,
       "tpPrice": 0.9913071428571429
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.08282,
+      "qty": 20918.504681908285,
+      "notional": 1732.4705577556442,
+      "fee": 0.6929882231022577,
+      "openedAt": "2026-10-13T01:55:43.730Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price below SMA20 (0.0858) and SMA50 (0.0886), trend bearish, MACD negative, RSI 35.7 ticking down, ",
+      "atrPct": 1.8473798599372129,
+      "slPercent": 2.771069789905819,
+      "tpPercent": 5.542139579811638,
+      "slPrice": 0.08511500000000001,
+      "tpPrice": 0.07823000000000001
     }
   ],
   "closedTrades": [
@@ -1143,14 +1126,36 @@
       "reason": "Stop loss 1.9% (ATR*1.5) hit intrabar",
       "openedAt": "2026-10-08T15:26:00.513Z",
       "closedAt": "2026-10-10T14:22:29.574Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 62.51,
+      "exit": 59.855000000000004,
+      "pnl": 83.3545251988303,
+      "reason": "Take profit 4.2% (ATR*3) hit intrabar",
+      "openedAt": "2026-10-12T17:37:49.135Z",
+      "closedAt": "2026-10-13T01:55:47.590Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 107.3,
+      "exit": 102.74,
+      "pnl": 119.14713758211002,
+      "reason": "Take profit 4.2% (ATR*3) hit intrabar",
+      "openedAt": "2026-10-12T17:37:49.135Z",
+      "closedAt": "2026-10-13T01:55:48.694Z"
     }
   ],
-  "totalPnl": -565.8169565586612,
-  "wins": 37,
+  "totalPnl": -363.3152937777209,
+  "wins": 39,
   "losses": 62,
   "stats": {
-    "todayDate": "2026-10-12",
-    "todayPnl": 0
+    "todayDate": "2026-10-13",
+    "todayPnl": 202.5016627809403
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1164,11 +1169,11 @@
     "ADAUSDT": "2026-10-07T05:18:20.412Z",
     "AVAXUSDT": "2026-09-30T04:57:47.525Z",
     "OPUSDT": "2026-09-28T16:38:29.755Z",
-    "SOLUSDT": "2026-09-21T14:59:09.066Z",
+    "SOLUSDT": "2026-10-13T01:55:48.694Z",
     "DOTUSDT": "2026-10-09T05:31:20.049Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
     "DOGEUSDT": "2026-09-27T13:44:38.027Z",
     "NEARUSDT": "2026-10-01T15:17:21.396Z",
-    "LTCUSDT": "2026-10-08T15:26:01.136Z"
+    "LTCUSDT": "2026-10-13T01:55:47.590Z"
   }
 }
