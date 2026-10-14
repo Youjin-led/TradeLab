@@ -1,5 +1,5 @@
 {
-  "balance": 4998.890900090639,
+  "balance": 3986.7138733964102,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -37,21 +37,21 @@
       "tpPrice": 57.14642857142858
     },
     {
-      "symbol": "OPUSDT",
+      "symbol": "SOLUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 0.1586,
-      "qty": 4677.9337299318195,
-      "notional": 741.9202895671865,
-      "fee": 0.2967681158268746,
-      "openedAt": "2026-10-13T23:40:39.888Z",
-      "aiConfidence": 65,
-      "aiReasoning": "4h only: Strong bullish trend: price above SMA20 (0.141) and SMA50 (0.133), MACD positive, ADX 44 confirms tr",
-      "atrPct": 4.0623311115114396,
-      "slPercent": 6.093496667267159,
-      "tpPercent": 12.186993334534318,
-      "slPrice": 0.14893571428571428,
-      "tpPrice": 0.17792857142857144
+      "side": "SHORT",
+      "entry": 105.4,
+      "qty": 16.210547059080007,
+      "notional": 1708.591660027033,
+      "fee": 0.6834366640108133,
+      "openedAt": "2026-10-14T13:29:31.078Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price below SMA20/50, bearish trend, MACD<0, RSI 37 falling, | Price below SMA20 (108.73) and SMA50 (111.40), bearish trend",
+      "atrPct": 2.407156410951481,
+      "slPercent": 3.610734616427221,
+      "tpPercent": 7.221469232854442,
+      "slPrice": 109.20571428571431,
+      "tpPrice": 97.78857142857143
     }
   ],
   "closedTrades": [
@@ -1176,14 +1176,25 @@
       "reason": "Stop loss 2.8% (ATR*1.5) hit intrabar",
       "openedAt": "2026-10-13T01:55:43.730Z",
       "closedAt": "2026-10-13T11:35:29.767Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.1586,
+      "exit": 0.14893571428571428,
+      "pnl": -45.505656234382215,
+      "reason": "Stop loss 6.1% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-13T23:40:39.888Z",
+      "closedAt": "2026-10-14T13:29:31.852Z"
     }
   ],
-  "totalPnl": -412.0162502458028,
+  "totalPnl": -457.521906480185,
   "wins": 39,
-  "losses": 63,
+  "losses": 64,
   "stats": {
     "todayDate": "2026-10-14",
-    "todayPnl": 0
+    "todayPnl": -45.505656234382215
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1196,7 +1207,7 @@
     "INJUSDT": "2026-09-26T04:24:56.500Z",
     "ADAUSDT": "2026-10-07T05:18:20.412Z",
     "AVAXUSDT": "2026-09-30T04:57:47.525Z",
-    "OPUSDT": "2026-09-28T16:38:29.755Z",
+    "OPUSDT": "2026-10-14T13:29:31.852Z",
     "SOLUSDT": "2026-10-13T01:55:48.694Z",
     "DOTUSDT": "2026-10-09T05:31:20.049Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
