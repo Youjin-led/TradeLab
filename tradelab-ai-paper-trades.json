@@ -1,5 +1,5 @@
 {
-  "balance": 4663.286386940821,
+  "balance": 4743.566933171941,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -37,21 +37,21 @@
       "tpPrice": 97.78857142857143
     },
     {
-      "symbol": "ARBUSDT",
+      "symbol": "INJUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1727,
-      "qty": 4675.592418960518,
-      "notional": 807.4748107544815,
-      "fee": 0.32298992430179263,
-      "openedAt": "2026-10-15T13:13:30.706Z",
+      "side": "LONG",
+      "entry": 8.534,
+      "qty": 72.35322381009883,
+      "notional": 617.4624119953834,
+      "fee": 0.24698496479815335,
+      "openedAt": "2026-10-15T22:58:17.090Z",
       "aiConfidence": 61,
-      "aiReasoning": "4h only: Price 0.1727 is below both SMA20 (0.18432) and SMA50 (0.185158), trend is bearish, MACD is negative ",
-      "atrPct": 3.5569526015385904,
-      "slPercent": 5.335428902307886,
-      "tpPercent": 10.670857804615771,
-      "slPrice": 0.18191428571428572,
-      "tpPrice": 0.15427142857142856
+      "aiReasoning": "4h only: Price 8.534 above SMA20 (7.83) and SMA50 (7.55), bullish trend, MACD positive (0.095), RSI 62.4 in b",
+      "atrPct": 4.558237637684557,
+      "slPercent": 6.837356456526836,
+      "tpPercent": 13.674712913053671,
+      "slPrice": 7.950500000000001,
+      "tpPrice": 9.701
     }
   ],
   "closedTrades": [
@@ -1198,17 +1198,28 @@
       "reason": "Take profit 7.1% (ATR*3) hit intrabar",
       "openedAt": "2026-10-12T17:37:49.135Z",
       "closedAt": "2026-10-15T04:15:22.181Z"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1727,
+      "exit": 0.1961,
+      "pnl": -109.73185252797795,
+      "reason": "stop loss -13.5% (maxFloatingLoss)",
+      "openedAt": "2026-10-15T13:13:30.706Z",
+      "closedAt": "2026-10-15T22:58:18.046Z"
     }
   ],
-  "totalPnl": -360.2994895671692,
+  "totalPnl": -470.0313420951471,
   "wins": 40,
-  "losses": 64,
+  "losses": 65,
   "stats": {
     "todayDate": "2026-10-15",
-    "todayPnl": 97.2224169130158
+    "todayPnl": -12.509435614962143
   },
   "lastClosed": {
-    "ARBUSDT": "2026-09-21T20:20:55.175Z",
+    "ARBUSDT": "2026-10-15T22:58:18.046Z",
     "BTCUSDT": "2026-09-28T04:44:05.393Z",
     "XRPUSDT": "2026-10-08T15:26:02.251Z",
     "BNBUSDT": "2026-10-10T14:22:29.574Z",
