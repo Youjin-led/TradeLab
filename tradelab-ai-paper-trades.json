@@ -1,5 +1,5 @@
 {
-  "balance": 5470.761197695303,
+  "balance": 4663.286386940821,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 7.221469232854442,
       "slPrice": 109.20571428571431,
       "tpPrice": 97.78857142857143
+    },
+    {
+      "symbol": "ARBUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.1727,
+      "qty": 4675.592418960518,
+      "notional": 807.4748107544815,
+      "fee": 0.32298992430179263,
+      "openedAt": "2026-10-15T13:13:30.706Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price 0.1727 is below both SMA20 (0.18432) and SMA50 (0.185158), trend is bearish, MACD is negative ",
+      "atrPct": 3.5569526015385904,
+      "slPercent": 5.335428902307886,
+      "tpPercent": 10.670857804615771,
+      "slPrice": 0.18191428571428572,
+      "tpPrice": 0.15427142857142856
     }
   ],
   "closedTrades": [

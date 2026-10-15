@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-10-15T04:01:54.216Z",
+  "generatedAt": "2026-10-15T13:13:08.829Z",
   "summary": {
     "totalCandidates": 44,
-    "live": 26,
-    "quarantined": 17,
+    "live": 27,
+    "quarantined": 16,
     "rejected": 1,
     "readyForReview": 0
   },
   "byStrategy": {
     "breakout": {
-      "totalPnl": 562.3310531986086,
-      "trades": 328,
-      "wins": 179,
+      "totalPnl": 583.2206659505321,
+      "trades": 329,
+      "wins": 180,
       "losses": 149,
       "maxDd": 8.19,
       "symbols": [
@@ -33,12 +33,12 @@
         "LTCUSDT",
         "BNBUSDT"
       ],
-      "forwardPnl": 562.3199999999999,
-      "forwardTrades": 328,
+      "forwardPnl": 583.21,
+      "forwardTrades": 329,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 54.6,
-      "avgPnlPerTrade": 1.71
+      "winRate": 54.7,
+      "avgPnlPerTrade": 1.77
     },
     "sma-rsi": {
       "totalPnl": -935.4667553286429,
@@ -135,9 +135,9 @@
       "avgPnl": 3.38
     },
     "12": {
-      "pnl": -244.36,
-      "trades": 81,
-      "avgPnl": -3.02
+      "pnl": -223.47,
+      "trades": 82,
+      "avgPnl": -2.73
     },
     "13": {
       "pnl": 335.54,
@@ -212,9 +212,9 @@
       "avgPnl": -10.12
     },
     "Wednesday": {
-      "pnl": 700.86,
-      "trades": 106,
-      "avgPnl": 6.61
+      "pnl": 721.75,
+      "trades": 107,
+      "avgPnl": 6.75
     },
     "Thursday": {
       "pnl": 318.48,
@@ -4395,26 +4395,33 @@
       "pnl": -4.85,
       "symbol": "DOTUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-10-15 04:00",
+      "equity": 9647.75,
+      "pnl": 20.89,
+      "symbol": "NEARUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 1.007,
-    "sortinoRatio": 1.058,
-    "calmarRatio": 2.406,
+    "sharpeRatio": 1.018,
+    "sortinoRatio": 1.069,
+    "calmarRatio": 2.43,
     "maxDrawdown": 25.85,
-    "avgDailyReturn": 0.2469,
-    "dailyVolatility": 3.7324,
-    "annualizedReturn": 62.21,
-    "totalTrades": 594
+    "avgDailyReturn": 0.2493,
+    "dailyVolatility": 3.7297,
+    "annualizedReturn": 62.81,
+    "totalTrades": 595
   },
   "distribution": {
-    "totalTrades": 594,
+    "totalTrades": 595,
     "pnls": {
       "min": -308.14,
       "max": 463.91,
       "median": 3.97,
-      "avg": -0.63,
-      "stdDev": 105.61
+      "avg": -0.59,
+      "stdDev": 105.53
     },
     "holdTime": {
       "avgBars": 0,
