@@ -1,24 +1,7 @@
 {
-  "balance": 3986.7138733964102,
+  "balance": 5470.761197695303,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.0665,
-      "qty": 1300.3515306009156,
-      "notional": 1386.8249073858765,
-      "fee": 0.5547299629543506,
-      "openedAt": "2026-10-12T17:37:49.135Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price 1.0665 below SMA20 (1.1114) and SMA50 (1.1115), bearis | Price below SMA20 (1.1012) and SMA50 (1.1325), bearish trend",
-      "atrPct": 2.3501439957136143,
-      "slPercent": 3.5252159935704217,
-      "tpPercent": 7.050431987140843,
-      "slPrice": 1.1040964285714285,
-      "tpPrice": 0.9913071428571429
-    },
     {
       "symbol": "LTCUSDT",
       "interval": "1h",
@@ -1187,14 +1170,25 @@
       "reason": "Stop loss 6.1% (ATR*1.5) hit intrabar",
       "openedAt": "2026-10-13T23:40:39.888Z",
       "closedAt": "2026-10-14T13:29:31.852Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.0665,
+      "exit": 0.9913071428571429,
+      "pnl": 97.2224169130158,
+      "reason": "Take profit 7.1% (ATR*3) hit intrabar",
+      "openedAt": "2026-10-12T17:37:49.135Z",
+      "closedAt": "2026-10-15T04:15:22.181Z"
     }
   ],
-  "totalPnl": -457.521906480185,
-  "wins": 39,
+  "totalPnl": -360.2994895671692,
+  "wins": 40,
   "losses": 64,
   "stats": {
-    "todayDate": "2026-10-14",
-    "todayPnl": -45.505656234382215
+    "todayDate": "2026-10-15",
+    "todayPnl": 97.2224169130158
   },
   "lastClosed": {
     "ARBUSDT": "2026-09-21T20:20:55.175Z",
@@ -1202,7 +1196,7 @@
     "XRPUSDT": "2026-10-08T15:26:02.251Z",
     "BNBUSDT": "2026-10-10T14:22:29.574Z",
     "LINKUSDT": "2026-09-29T17:56:01.280Z",
-    "SUIUSDT": "2026-10-10T05:15:44.956Z",
+    "SUIUSDT": "2026-10-15T04:15:22.181Z",
     "ETHUSDT": "2026-10-08T15:26:03.366Z",
     "INJUSDT": "2026-09-26T04:24:56.500Z",
     "ADAUSDT": "2026-10-07T05:18:20.412Z",
