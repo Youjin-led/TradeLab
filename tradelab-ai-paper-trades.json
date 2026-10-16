@@ -1,5 +1,5 @@
 {
-  "balance": 8893.533092544803,
+  "balance": 5550.4540030572125,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,6 +18,40 @@
       "tpPercent": 13.674712913053671,
       "slPrice": 7.950500000000001,
       "tpPrice": 9.701
+    },
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 725.17,
+      "qty": 2.5754539617391905,
+      "notional": 1867.6419494344086,
+      "fee": 0.7470567797737635,
+      "openedAt": "2026-10-16T16:24:10.986Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Strong downtrend with ADX 57.8 and price below both SMA20 (732.14) and SMA50 (740.04), MACD negative",
+      "atrPct": 1.2694560290296473,
+      "slPercent": 1.904184043544471,
+      "tpPercent": 3.808368087088942,
+      "slPrice": 738.9785714285714,
+      "tpPrice": 697.5528571428571
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.3136,
+      "qty": 1123.2012332926179,
+      "notional": 1475.437140053183,
+      "fee": 0.5901748560212732,
+      "openedAt": "2026-10-16T16:24:10.986Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price 1.3136 is below SMA20 (1.340) and SMA50 (1.370), trend is bearish, MACD is negative, and marke",
+      "atrPct": 2.1478597529145618,
+      "slPercent": 3.221789629371843,
+      "tpPercent": 6.443579258743686,
+      "slPrice": 1.3559214285714287,
+      "tpPrice": 1.228957142857143
     }
   ],
   "closedTrades": [
