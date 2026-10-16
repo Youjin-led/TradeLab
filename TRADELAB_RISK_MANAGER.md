@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-10-16T03:58:51.990Z
+Generated: 2026-10-16T08:57:21.294Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -675.00 USDT
+- **Total PnL:** -635.63 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | -543.51 | -2500 | ✅ |
-| Monthly | -447.45 | -5000 | ✅ |
-| Total (all time) | -675.00 | -5000 | ✅ |
+| Daily (UTC) | 39.36 | -500 | ✅ |
+| Weekly (7d) | -308.67 | -2500 | ✅ |
+| Monthly | -408.09 | -5000 | ✅ |
+| Total (all time) | -635.63 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 3989.86 USDT (max 30000)
+- **Open Notional:** 2012.43 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -77,7 +77,7 @@ Status: **NORMAL**
 | DOGEUSDT | breakout | 2% | 200 | 14.52 | 71.4% | 95 |
 | BTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | RENDERUSDT | breakout | 0.7% | 70 | 0 | 40% | 95 |
-| OPUSDT | sma-rsi | 0.7% | 70 | 0 | 61.9% | 95 |
+| OPUSDT | sma-rsi | 0.7% | 70 | 0 | 63.6% | 95 |
 | LTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | SOLUSDT | breakout | 2% | 200 | 5.41 | 61.5% | 95 |
@@ -109,9 +109,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 233.72%
-- **Total PnL:** -675 USDT
-- **Total Exposure:** 3989.86 USDT
+- **Margin Level:** 465.33%
+- **Total PnL:** -635.63 USDT
+- **Total Exposure:** 2012.43 USDT
 
 ## Statistics
 
