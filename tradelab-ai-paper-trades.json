@@ -1,41 +1,7 @@
 {
-  "balance": 5260.696351447995,
+  "balance": 8609.294859517659,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "BNBUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 725.17,
-      "qty": 2.5754539617391905,
-      "notional": 1867.6419494344086,
-      "fee": 0.7470567797737635,
-      "openedAt": "2026-10-16T16:24:10.986Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Strong downtrend with ADX 57.8 and price below both SMA20 (732.14) and SMA50 (740.04), MACD negative",
-      "atrPct": 1.2694560290296473,
-      "slPercent": 1.904184043544471,
-      "tpPercent": 3.808368087088942,
-      "slPrice": 738.9785714285714,
-      "tpPrice": 697.5528571428571
-    },
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.3136,
-      "qty": 1123.2012332926179,
-      "notional": 1475.437140053183,
-      "fee": 0.5901748560212732,
-      "openedAt": "2026-10-16T16:24:10.986Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price 1.3136 is below SMA20 (1.340) and SMA50 (1.370), trend is bearish, MACD is negative, and marke",
-      "atrPct": 2.1478597529145618,
-      "slPercent": 3.221789629371843,
-      "tpPercent": 6.443579258743686,
-      "slPrice": 1.3559214285714287,
-      "tpPrice": 1.228957142857143
-    },
     {
       "symbol": "OPUSDT",
       "interval": "1h",
@@ -1242,20 +1208,42 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-10-15T22:58:17.090Z",
       "closedAt": "2026-10-18T08:45:01.863Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.3136,
+      "exit": 1.3008,
+      "pnl": 13.786800930124398,
+      "reason": "timeout 77h (maxHoldHours)",
+      "openedAt": "2026-10-16T16:24:10.986Z",
+      "closedAt": "2026-10-19T20:56:37.573Z"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 725.17,
+      "exit": 728.09,
+      "pnl": -8.267382348052386,
+      "reason": "timeout 77h (maxHoldHours)",
+      "openedAt": "2026-10-16T16:24:10.986Z",
+      "closedAt": "2026-10-19T20:56:38.679Z"
     }
   ],
-  "totalPnl": -496.3420963580009,
-  "wins": 41,
-  "losses": 67,
+  "totalPnl": -490.82267777592887,
+  "wins": 42,
+  "losses": 68,
   "stats": {
     "todayDate": "2026-10-19",
-    "todayPnl": 0
+    "todayPnl": 5.519418582072012
   },
   "lastClosed": {
     "ARBUSDT": "2026-10-15T22:58:18.046Z",
     "BTCUSDT": "2026-09-28T04:44:05.393Z",
-    "XRPUSDT": "2026-10-08T15:26:02.251Z",
-    "BNBUSDT": "2026-10-10T14:22:29.574Z",
+    "XRPUSDT": "2026-10-19T20:56:37.573Z",
+    "BNBUSDT": "2026-10-19T20:56:38.679Z",
     "LINKUSDT": "2026-09-29T17:56:01.280Z",
     "SUIUSDT": "2026-10-15T04:15:22.181Z",
     "ETHUSDT": "2026-10-08T15:26:03.366Z",
