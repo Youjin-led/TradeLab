@@ -1,42 +1,7 @@
 {
-  "balance": 6026.506401662361,
+  "balance": 9375.484759204626,
   "peak": 10677.153840784533,
-  "positions": [
-    {
-      "symbol": "OPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1258,
-      "qty": 7153.278717857019,
-      "notional": 899.882462706413,
-      "fee": 0.35995298508256524,
-      "openedAt": "2026-10-18T08:44:52.870Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price (0.1258) is below both SMA20 (0.1344) and SMA50 (0.1387) with a confirmed bearish trend and AD",
-      "atrPct": 3.594140358846239,
-      "slPercent": 5.391210538269358,
-      "tpPercent": 10.782421076538716,
-      "slPrice": 0.13258214285714284,
-      "tpPrice": 0.11223571428571429
-    },
-    {
-      "symbol": "AVAXUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 9.456,
-      "qty": 273.13752726896126,
-      "notional": 2582.7884578552976,
-      "fee": 1.0331153831421191,
-      "openedAt": "2026-10-20T13:27:48.747Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price below SMA20 (9.53) and SMA50 (9.60) with bearish trend | Price below SMA20 (9.669) and SMA50 (9.950), trend bearish, ",
-      "atrPct": 2.1626480541455106,
-      "slPercent": 3.243972081218266,
-      "tpPercent": 6.487944162436532,
-      "slPrice": 9.762749999999999,
-      "tpPrice": 8.842500000000001
-    }
-  ],
+  "positions": [],
   "closedTrades": [
     {
       "symbol": "XRPUSDT",
@@ -1247,14 +1212,36 @@
       "reason": "timeout 77h (maxHoldHours)",
       "openedAt": "2026-10-16T16:24:10.986Z",
       "closedAt": "2026-10-19T20:56:38.679Z"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 9.456,
+      "exit": 9.762749999999999,
+      "pnl": -84.81805187289577,
+      "reason": "Stop loss 3.2% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-20T13:27:48.747Z",
+      "closedAt": "2026-10-20T19:56:36.537Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1258,
+      "exit": 0.13258214285714284,
+      "pnl": -48.87451114654849,
+      "reason": "Stop loss 5.4% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-18T08:44:52.870Z",
+      "closedAt": "2026-10-20T19:56:37.702Z"
     }
   ],
-  "totalPnl": -490.82267777592887,
+  "totalPnl": -624.5152407953731,
   "wins": 42,
-  "losses": 68,
+  "losses": 70,
   "stats": {
     "todayDate": "2026-10-20",
-    "todayPnl": 0
+    "todayPnl": -133.69256301944426
   },
   "lastClosed": {
     "ARBUSDT": "2026-10-15T22:58:18.046Z",
@@ -1266,8 +1253,8 @@
     "ETHUSDT": "2026-10-08T15:26:03.366Z",
     "INJUSDT": "2026-10-18T08:45:01.863Z",
     "ADAUSDT": "2026-10-07T05:18:20.412Z",
-    "AVAXUSDT": "2026-09-30T04:57:47.525Z",
-    "OPUSDT": "2026-10-14T13:29:31.852Z",
+    "AVAXUSDT": "2026-10-20T19:56:36.537Z",
+    "OPUSDT": "2026-10-20T19:56:37.702Z",
     "SOLUSDT": "2026-10-16T08:57:52.226Z",
     "DOTUSDT": "2026-10-09T05:31:20.049Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
