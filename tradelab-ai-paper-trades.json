@@ -1,5 +1,5 @@
 {
-  "balance": 5184.643071840158,
+  "balance": 4026.5620177235833,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -35,6 +35,23 @@
       "tpPercent": 4.254528783620445,
       "slPrice": 2415.4221428571427,
       "tpPrice": 2264.4857142857145
+    },
+    {
+      "symbol": "DOTUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.036,
+      "qty": 1117.838855324879,
+      "notional": 1158.0810541165747,
+      "fee": 0.4632324216466299,
+      "openedAt": "2026-10-24T22:20:16.211Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price 1.036 is below SMA20 (1.0562) and SMA50 (1.10518) with | Price below SMA20/50 with bearish trend and MACD<0, RSI 31.8",
+      "atrPct": 3.3576944291230038,
+      "slPercent": 5.036541643684505,
+      "tpPercent": 10.07308328736901,
+      "slPrice": 1.0881785714285714,
+      "tpPrice": 0.9316428571428571
     }
   ],
   "closedTrades": [

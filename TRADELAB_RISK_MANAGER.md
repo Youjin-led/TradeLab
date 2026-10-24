@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-10-24T18:40:57.491Z
+Generated: 2026-10-24T22:19:55.246Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -792.50 USDT
+- **Total PnL:** -271.99 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | -156.88 | -2500 | ✅ |
-| Monthly | -564.97 | -5000 | ✅ |
-| Total (all time) | -792.50 | -5000 | ✅ |
+| Daily (UTC) | 520.52 | -500 | ✅ |
+| Weekly (7d) | 363.64 | -2500 | ✅ |
+| Monthly | -44.44 | -5000 | ✅ |
+| Total (all time) | -271.99 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 18804.2 USDT (max 30000)
+- **Open Notional:** 3657.53 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -40,9 +40,9 @@ Status: **NORMAL**
 
 | Symbol | Strategy | Risk % | Size (USDT) | Kelly | WinRate | Stop |
 | --- | --- | --- | --- | --- | --- | --- |
-| NEARUSDT | breakout | 2% | 200 | 8.38 | 55.6% | 95 |
-| LINKUSDT | sma-rsi | 0.7% | 70 | 0 | 40% | 95 |
-| LINKUSDT | breakout | 1.8% | 180.27 | 2.58 | 57.9% | 95 |
+| NEARUSDT | breakout | 2% | 200 | 8.86 | 56.5% | 95 |
+| LINKUSDT | sma-rsi | 0.7% | 70 | 0 | 45.5% | 95 |
+| LINKUSDT | breakout | 2% | 200 | 4.44 | 60% | 95 |
 | SUIUSDT | breakout | 0.7% | 70 | 0 | 20% | 95 |
 | INJUSDT | sma-rsi | 2% | 200 | 9.94 | 57.6% | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -60,11 +60,11 @@ Status: **NORMAL**
 | FILUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOGEUSDT | sma-rsi | 2% | 200 | 14.2 | 66.7% | 95 |
 | SEIUSDT | sma-rsi | 2% | 200 | 8.92 | 62.8% | 95 |
-| JUPUSDT | sma-rsi | 1.64% | 163.51 | 2.34 | 70% | 95 |
+| JUPUSDT | sma-rsi | 2% | 200 | 7.16 | 71.4% | 95 |
 | ATOMUSDT | sma-rsi | 2% | 200 | 11.1 | 71.4% | 95 |
 | RENDERUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| AVAXUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
+| AVAXUSDT | breakout | 0.7% | 70 | 0 | 50% | 95 |
 | SOLUSDT | breakout | 0.7% | 70 | 0 | 41.7% | 95 |
 | AVAXUSDT | breakout | 2% | 200 | 8.11 | 50% | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | 0 | 46.7% | 95 |
@@ -80,28 +80,28 @@ Status: **NORMAL**
 | OPUSDT | sma-rsi | 2% | 200 | 7.36 | 69.2% | 95 |
 | LTCUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SOLUSDT | breakout | 0.7% | 70 | 0 | 57.1% | 95 |
+| SOLUSDT | breakout | 1.07% | 107.3 | 1.53 | 60% | 95 |
 | BNBUSDT | breakout | 2% | 200 | 6.36 | 61.5% | 95 |
 | DOGEUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | BCHUSDT | sma-rsi | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 
 ## Portfolio Heat
 
-- **Heat:** 0.72% / 5% max
+- **Heat:** 0.86% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 25
-- **Sector Distribution:** {"alt_mid":10,"alt_large":9,"alt_small":1,"other":4,"blue_chip":1}
+- **Active Positions:** 30
+- **Sector Distribution:** {"alt_mid":10,"alt_large":12,"alt_small":2,"other":4,"blue_chip":2}
 - **Warnings:**
   - ⚠️ alt_mid: 10 positions (max 3)
-  - ⚠️ alt_large: 9 positions (max 3)
+  - ⚠️ alt_large: 12 positions (max 3)
   - ⚠️ other: 4 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 25/3
+  - 🚫 max_concurrent_positions: 30/3
 
 ## Trailing Stops
 
@@ -109,11 +109,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 48.97%
-- **Total PnL:** -792.5 USDT
-- **Total Exposure:** 18804.2 USDT
-- **Warnings:**
-  - 🔴 margin_call: 48.97% (threshold: 100%)
+- **Margin Level:** 265.97%
+- **Total PnL:** -271.99 USDT
+- **Total Exposure:** 3657.53 USDT
 
 ## Statistics
 
