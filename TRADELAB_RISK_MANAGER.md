@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-10-24T04:02:27.613Z
+Generated: 2026-10-24T12:32:00.029Z
 Status: **NORMAL**
 
 ---
@@ -24,7 +24,7 @@ Status: **NORMAL**
 
 ## Hard Exposure
 
-- **Open Notional:** 16799.84 USDT (max 30000)
+- **Open Notional:** 18804.2 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,21 +87,21 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.78% / 5% max
+- **Heat:** 0.81% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 27
-- **Sector Distribution:** {"alt_mid":10,"alt_large":9,"alt_small":2,"other":4,"blue_chip":2}
+- **Active Positions:** 28
+- **Sector Distribution:** {"alt_mid":10,"alt_large":9,"alt_small":2,"other":5,"blue_chip":2}
 - **Warnings:**
   - ⚠️ alt_mid: 10 positions (max 3)
   - ⚠️ alt_large: 9 positions (max 3)
-  - ⚠️ other: 4 positions (max 3)
+  - ⚠️ other: 5 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 27/3
+  - 🚫 max_concurrent_positions: 28/3
 
 ## Trailing Stops
 
@@ -109,11 +109,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 54.81%
+- **Margin Level:** 48.97%
 - **Total PnL:** -792.5 USDT
-- **Total Exposure:** 16799.84 USDT
+- **Total Exposure:** 18804.2 USDT
 - **Warnings:**
-  - 🔴 margin_call: 54.81% (threshold: 100%)
+  - 🔴 margin_call: 48.97% (threshold: 100%)
 
 ## Statistics
 
