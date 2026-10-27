@@ -1,5 +1,5 @@
 {
-  "balance": 8304.644327258935,
+  "balance": 5813.251029081255,
   "peak": 10677.153840784533,
   "positions": [
     {
@@ -18,6 +18,23 @@
       "tpPercent": 10.07308328736901,
       "slPrice": 1.0881785714285714,
       "tpPrice": 0.9316428571428571
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.671,
+      "qty": 1490.9594842475644,
+      "notional": 2491.39329817768,
+      "fee": 0.9965573192710722,
+      "openedAt": "2026-10-27T14:14:58.861Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price below SMA20 (1.689) and SMA50 (1.706), trend bearish,  | Price (1.671) sits below both SMA20 (1.7018) and SMA50 (1.77",
+      "atrPct": 2.2655381721809023,
+      "slPercent": 3.3983072582713536,
+      "tpPercent": 6.796614516542707,
+      "slPrice": 1.7277857142857143,
+      "tpPrice": 1.5574285714285714
     }
   ],
   "closedTrades": [
