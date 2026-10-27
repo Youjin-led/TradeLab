@@ -1,41 +1,7 @@
 {
-  "balance": 4026.5620177235833,
+  "balance": 8304.644327258935,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.2085,
-      "qty": 13489.90612835198,
-      "notional": 2812.645427761388,
-      "fee": 1.1250581711045553,
-      "openedAt": "2026-10-23T22:58:57.957Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price (0.2084) is below both SMA20 (0.2156) and SMA50 (0.216 | Price (0.2085) is below both SMA20 (0.21919) and SMA50 (0.22",
-      "atrPct": 2.223364165810208,
-      "slPercent": 3.3350462487153116,
-      "tpPercent": 6.670092497430623,
-      "slPrice": 0.21545357142857138,
-      "tpPrice": 0.19459285714285715
-    },
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 2365.11,
-      "qty": 0.5827197295699057,
-      "notional": 1378.1962596030799,
-      "fee": 0.551278503841232,
-      "openedAt": "2026-10-23T22:58:57.957Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Price 2365.98 is below both SMA20 (2402.10) and SMA50 (2411.92) with a bearish trend, MACD negative ",
-      "atrPct": 1.418176261206815,
-      "slPercent": 2.1272643918102223,
-      "tpPercent": 4.254528783620445,
-      "slPrice": 2415.4221428571427,
-      "tpPrice": 2264.4857142857145
-    },
     {
       "symbol": "DOTUSDT",
       "interval": "1h",
@@ -1286,14 +1252,36 @@
       "reason": "Stop loss 5.4% (ATR*1.5) hit intrabar",
       "openedAt": "2026-10-18T08:44:52.870Z",
       "closedAt": "2026-10-20T19:56:37.702Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 2365.11,
+      "exit": 2314.38,
+      "pnl": 29.010093377240096,
+      "reason": "timeout 77h (maxHoldHours)",
+      "openedAt": "2026-10-23T22:58:57.957Z",
+      "closedAt": "2026-10-27T04:28:08.381Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.2085,
+      "exit": 0.2041,
+      "pnl": 58.230528793643984,
+      "reason": "timeout 77h (maxHoldHours)",
+      "openedAt": "2026-10-23T22:58:57.957Z",
+      "closedAt": "2026-10-27T04:28:09.522Z"
     }
   ],
-  "totalPnl": -624.5152407953731,
-  "wins": 42,
+  "totalPnl": -537.274618624489,
+  "wins": 44,
   "losses": 70,
   "stats": {
-    "todayDate": "2026-10-26",
-    "todayPnl": 0
+    "todayDate": "2026-10-27",
+    "todayPnl": 87.24062217088408
   },
   "lastClosed": {
     "ARBUSDT": "2026-10-15T22:58:18.046Z",
@@ -1302,9 +1290,9 @@
     "BNBUSDT": "2026-10-19T20:56:38.679Z",
     "LINKUSDT": "2026-09-29T17:56:01.280Z",
     "SUIUSDT": "2026-10-15T04:15:22.181Z",
-    "ETHUSDT": "2026-10-08T15:26:03.366Z",
+    "ETHUSDT": "2026-10-27T04:28:08.381Z",
     "INJUSDT": "2026-10-18T08:45:01.863Z",
-    "ADAUSDT": "2026-10-07T05:18:20.412Z",
+    "ADAUSDT": "2026-10-27T04:28:09.522Z",
     "AVAXUSDT": "2026-10-20T19:56:36.537Z",
     "OPUSDT": "2026-10-20T19:56:37.702Z",
     "SOLUSDT": "2026-10-16T08:57:52.226Z",
