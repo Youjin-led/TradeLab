@@ -1,24 +1,7 @@
 {
-  "balance": 5813.251029081255,
+  "balance": 7004.404016435929,
   "peak": 10677.153840784533,
   "positions": [
-    {
-      "symbol": "DOTUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.036,
-      "qty": 1117.838855324879,
-      "notional": 1158.0810541165747,
-      "fee": 0.4632324216466299,
-      "openedAt": "2026-10-24T22:20:16.211Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price 1.036 is below SMA20 (1.0562) and SMA50 (1.10518) with | Price below SMA20/50 with bearish trend and MACD<0, RSI 31.8",
-      "atrPct": 3.3576944291230038,
-      "slPercent": 5.036541643684505,
-      "tpPercent": 10.07308328736901,
-      "slPrice": 1.0881785714285714,
-      "tpPrice": 0.9316428571428571
-    },
     {
       "symbol": "RENDERUSDT",
       "interval": "1h",
@@ -1291,14 +1274,25 @@
       "reason": "timeout 77h (maxHoldHours)",
       "openedAt": "2026-10-23T22:58:57.957Z",
       "closedAt": "2026-10-27T04:28:09.522Z"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.036,
+      "exit": 1.006,
+      "pnl": 33.07193323809977,
+      "reason": "timeout 79h (maxHoldHours)",
+      "openedAt": "2026-10-24T22:20:16.211Z",
+      "closedAt": "2026-10-28T04:58:44.216Z"
     }
   ],
-  "totalPnl": -537.274618624489,
-  "wins": 44,
+  "totalPnl": -504.20268538638925,
+  "wins": 45,
   "losses": 70,
   "stats": {
-    "todayDate": "2026-10-27",
-    "todayPnl": 87.24062217088408
+    "todayDate": "2026-10-28",
+    "todayPnl": 33.07193323809977
   },
   "lastClosed": {
     "ARBUSDT": "2026-10-15T22:58:18.046Z",
@@ -1313,7 +1307,7 @@
     "AVAXUSDT": "2026-10-20T19:56:36.537Z",
     "OPUSDT": "2026-10-20T19:56:37.702Z",
     "SOLUSDT": "2026-10-16T08:57:52.226Z",
-    "DOTUSDT": "2026-10-09T05:31:20.049Z",
+    "DOTUSDT": "2026-10-28T04:58:44.216Z",
     "RENDERUSDT": "2026-09-26T12:51:49.864Z",
     "DOGEUSDT": "2026-10-13T11:35:29.767Z",
     "NEARUSDT": "2026-10-01T15:17:21.396Z",
