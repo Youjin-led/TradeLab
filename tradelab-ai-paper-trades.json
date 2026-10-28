@@ -1,23 +1,23 @@
 {
-  "balance": 7004.404016435929,
+  "balance": 7434.007090828122,
   "peak": 10677.153840784533,
   "positions": [
     {
-      "symbol": "RENDERUSDT",
+      "symbol": "ARBUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.671,
-      "qty": 1490.9594842475644,
-      "notional": 2491.39329817768,
-      "fee": 0.9965573192710722,
-      "openedAt": "2026-10-27T14:14:58.861Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price below SMA20 (1.689) and SMA50 (1.706), trend bearish,  | Price (1.671) sits below both SMA20 (1.7018) and SMA50 (1.77",
-      "atrPct": 2.2655381721809023,
-      "slPercent": 3.3983072582713536,
-      "tpPercent": 6.796614516542707,
-      "slPrice": 1.7277857142857143,
-      "tpPrice": 1.5574285714285714
+      "side": "LONG",
+      "entry": 0.1752,
+      "qty": 11279.272072957529,
+      "notional": 1976.1284671821588,
+      "fee": 0.7904513868728635,
+      "openedAt": "2026-10-28T20:52:55.243Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price 0.1752 above SMA20 (0.1689) and SMA50 (0.1681), trend bullish, MACD positive (0.00102), ADX 25",
+      "atrPct": 2.28310502283105,
+      "slPercent": 3.424657534246575,
+      "tpPercent": 6.84931506849315,
+      "slPrice": 0.1692,
+      "tpPrice": 0.1872
     }
   ],
   "closedTrades": [
@@ -1285,14 +1285,25 @@
       "reason": "timeout 79h (maxHoldHours)",
       "openedAt": "2026-10-24T22:20:16.211Z",
       "closedAt": "2026-10-28T04:58:44.216Z"
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.671,
+      "exit": 1.7277857142857143,
+      "pnl": -85.6617566033291,
+      "reason": "Stop loss 3.4% (ATR*1.5) hit intrabar",
+      "openedAt": "2026-10-27T14:14:58.861Z",
+      "closedAt": "2026-10-28T20:52:55.870Z"
     }
   ],
-  "totalPnl": -504.20268538638925,
+  "totalPnl": -589.8644419897183,
   "wins": 45,
-  "losses": 70,
+  "losses": 71,
   "stats": {
     "todayDate": "2026-10-28",
-    "todayPnl": 33.07193323809977
+    "todayPnl": -52.58982336522933
   },
   "lastClosed": {
     "ARBUSDT": "2026-10-15T22:58:18.046Z",
@@ -1308,7 +1319,7 @@
     "OPUSDT": "2026-10-20T19:56:37.702Z",
     "SOLUSDT": "2026-10-16T08:57:52.226Z",
     "DOTUSDT": "2026-10-28T04:58:44.216Z",
-    "RENDERUSDT": "2026-09-26T12:51:49.864Z",
+    "RENDERUSDT": "2026-10-28T20:52:55.870Z",
     "DOGEUSDT": "2026-10-13T11:35:29.767Z",
     "NEARUSDT": "2026-10-01T15:17:21.396Z",
     "LTCUSDT": "2026-10-16T08:57:55.211Z"
