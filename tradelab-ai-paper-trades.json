@@ -1,7 +1,34 @@
 {
-  "balance": 10000,
+  "balance": 6241,
   "peak": 10000,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 748.27,
+      "qty": 2.8064735991019285,
+      "notional": 2100,
+      "fee": 0.8400000000000001,
+      "openedAt": "2026-10-29T15:04:43.254Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price 748.27 above SMA20 (746.46) and SMA50 (742.17), trend bullish, MACD positive (2.37), RSI 56.8 ",
+      "atrPct": 1.429010536685573
+    },
+    {
+      "symbol": "NEARUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 4.532,
+      "qty": 366.06354810238304,
+      "notional": 1659,
+      "fee": 0.6636000000000001,
+      "openedAt": "2026-10-29T15:04:43.254Z",
+      "aiConfidence": 52,
+      "aiReasoning": "4h only: Price (4.532) is below both SMA20 (4.564) and SMA50 (4.688), trend is bearish, and market phase is t",
+      "atrPct": 3.5871895095196074
+    }
+  ],
   "closedTrades": [],
   "totalPnl": 0,
   "wins": 0,
