@@ -42,18 +42,21 @@ function fetchCandles(symbol, interval, limit) {
 
 function loadPaperState() {
   try {
-    return JSON.parse(fs.readFileSync(LOG_PATH, 'utf8'));
+    const state = JSON.parse(fs.readFileSync(LOG_PATH, 'utf8'));
+    if (state.marketDataSource === 'okx-swap') return state;
   } catch (e) {
-    return {
-      balance: CONFIG.initialBalance,
-      peak: CONFIG.initialBalance,
-      positions: [],
-      closedTrades: [],
-      totalPnl: 0,
-      wins: 0,
-      losses: 0
-    };
+    // Start a fresh OKX ledger below.
   }
+  return {
+    balance: CONFIG.initialBalance,
+    peak: CONFIG.initialBalance,
+    positions: [],
+    closedTrades: [],
+    totalPnl: 0,
+    wins: 0,
+    losses: 0,
+    marketDataSource: 'okx-swap'
+  };
 }
 
 function savePaperState(state) {
