@@ -1,20 +1,7 @@
 {
-  "balance": 6241,
+  "balance": 4014.000556440857,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "BNBUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 748.27,
-      "qty": 2.8064735991019285,
-      "notional": 2100,
-      "fee": 0.8400000000000001,
-      "openedAt": "2026-10-29T15:04:43.254Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price 748.27 above SMA20 (746.46) and SMA50 (742.17), trend bullish, MACD positive (2.37), RSI 56.8 ",
-      "atrPct": 1.429010536685573
-    },
     {
       "symbol": "NEARUSDT",
       "interval": "1h",
@@ -27,11 +14,49 @@
       "aiConfidence": 52,
       "aiReasoning": "4h only: Price (4.532) is below both SMA20 (4.564) and SMA50 (4.688), trend is bearish, and market phase is t",
       "atrPct": 3.5871895095196074
+    },
+    {
+      "symbol": "LTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 54.65,
+      "qty": 44.96891786068141,
+      "notional": 2457.551361086239,
+      "fee": 0.9830205444344956,
+      "openedAt": "2026-10-29T20:57:26.062Z",
+      "aiConfidence": 78,
+      "aiReasoning": "TF agree: Price (54.66) is below both SMA20 (57.63) and SMA50 (57.80)  | Price (54.65) is below both SMA20 (57.31) and SMA50 (57.67),",
+      "atrPct": 2.4781074369363476
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 78971.8,
+      "qty": 0.021783547453146153,
+      "notional": 1720.2859527603673,
+      "fee": 0.6881143811041469,
+      "openedAt": "2026-10-29T20:57:26.062Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price (78939.5) is below both SMA20 (80319) and SMA50 (80728 | Price (78971.8) is below both SMA20 (80496.7) and SMA50 (809",
+      "atrPct": 1.3290006233689926
     }
   ],
-  "closedTrades": [],
-  "totalPnl": 0,
+  "closedTrades": [
+    {
+      "symbol": "BNBUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 748.27,
+      "exit": 695.42,
+      "pnl": -149.162129712537,
+      "reason": "Stop loss 2.1% (ATR*1.5=1.4%)",
+      "openedAt": "2026-10-29T15:04:43.254Z",
+      "closedAt": "2026-10-29T20:57:31.547Z"
+    }
+  ],
+  "totalPnl": -149.162129712537,
   "wins": 0,
-  "losses": 0,
+  "losses": 1,
   "marketDataSource": "okx-swap"
 }
