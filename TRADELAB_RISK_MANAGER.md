@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-10-28T20:52:34.512Z
+Generated: 2026-10-29T05:10:45.977Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** -530.44 USDT
+- **Total PnL:** -572.05 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | -246.16 | -500 | ✅ |
-| Weekly (7d) | 668.75 | -2500 | ✅ |
-| Monthly | -302.89 | -5000 | ✅ |
-| Total (all time) | -530.44 | -5000 | ✅ |
+| Daily (UTC) | -41.61 | -500 | ✅ |
+| Weekly (7d) | 627.14 | -2500 | ✅ |
+| Monthly | -344.50 | -5000 | ✅ |
+| Total (all time) | -572.05 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 11236.09 USDT (max 30000)
+- **Open Notional:** 9237.8 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -87,20 +87,20 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.81% / 5% max
+- **Heat:** 0.78% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 28
-- **Sector Distribution:** {"alt_mid":11,"alt_large":10,"alt_small":3,"other":2,"blue_chip":2}
+- **Active Positions:** 27
+- **Sector Distribution:** {"alt_mid":12,"alt_large":8,"alt_small":2,"other":2,"blue_chip":3}
 - **Warnings:**
-  - ⚠️ alt_mid: 11 positions (max 3)
-  - ⚠️ alt_large: 10 positions (max 3)
+  - ⚠️ alt_mid: 12 positions (max 3)
+  - ⚠️ alt_large: 8 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 28/3
+  - 🚫 max_concurrent_positions: 27/3
 
 ## Trailing Stops
 
@@ -108,11 +108,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 84.28%
-- **Total PnL:** -530.44 USDT
-- **Total Exposure:** 11236.09 USDT
+- **Margin Level:** 102.06%
+- **Total PnL:** -572.05 USDT
+- **Total Exposure:** 9237.8 USDT
 - **Warnings:**
-  - 🔴 margin_call: 84.28% (threshold: 100%)
+  - ⚠️ critical_margin: 102.06% (threshold: 110%)
 
 ## Statistics
 
