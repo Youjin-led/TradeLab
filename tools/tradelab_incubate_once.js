@@ -19,13 +19,14 @@ const {
   partialTradePnl,
   timeFilter,
   confirmHigherTimeframe,
+  shortEntryVolumeConfirmed,
   applyDynamicParams,
   isStrategySuitable
 } = require('./tradelab_run_once');
 const { detectPhase } = require('./tradelab_market_phase');
 const { shouldAllowEntry, getNewsRiskAdjustment, getMarketSentiment } = require('./tradelab_news_filter');
 const { applyQuarantineToState, isQuarantined, loadQuarantine, quarantineReason } = require('./tradelab_quarantine');
-const { REQUIREMENTS } = require('./tradelab_real_money_gate');
+const { REQUIREMENTS, isForwardProven } = require('./tradelab_real_money_gate');
 const { VALIDATOR_RULES } = require('./tradelab_risk_controls');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
@@ -176,6 +177,7 @@ function isBlockedStrategy(candidate) {
 function loadAutoCandidates() {
   if (!fs.existsSync(AUTO_CANDIDATES_PATH)) return [];
   const data = JSON.parse(fs.readFileSync(AUTO_CANDIDATES_PATH, 'utf8'));
+  if (data.marketDataSource !== 'okx-swap') return [];
   const rows = Array.isArray(data.candidates) ? data.candidates : [];
   const baseKeys = new Set(CANDIDATES.map(keyFor));
   return rows
@@ -215,8 +217,10 @@ function readRiskGate() {
 }
 
 function readState() {
-  if (!fs.existsSync(STATE_PATH)) return { createdAt: new Date().toISOString(), candidates: {} };
-  return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+  if (!fs.existsSync(STATE_PATH)) return { createdAt: new Date().toISOString(), marketDataSource: 'okx-swap', candidates: {} };
+  const state = JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+  return state.marketDataSource === 'okx-swap' ? state
+    : { createdAt: new Date().toISOString(), marketDataSource: 'okx-swap', candidates: {} };
 }
 
 function writeState(state) {
@@ -295,7 +299,24 @@ function nextDecision(record) {
     const criticalAlerts = record.alerts.filter((alert) => !alert.startsWith('low test sample'));
     if (criticalAlerts.length > 0 || record.health.status === 'Blocked') return 'reject';
   }
-  if (record.testTrades < VALIDATOR_RULES.minTestTrades || record.liveObservations < REQUIREMENTS.minLiveObservations || forwardTrades < REQUIREMENTS.minClosedPaperTrades) return 'incubate';
+  // Forward-доказанный кандидат повышается независимо от бэктеста:
+  // бэктест мог не торговаться в тестовом окне. Ветка стоит первой, чтобы
+  // кандидаты с формально-достаточными testTrades, но слабым бэктестом, не уходили в watch.
+  if (isForwardProven(record)) return 'promote-to-manual-review';
+  // A longer, stable forward record may qualify just below the standard PF 1.8.
+  // Keep the strict drawdown and current-loss requirements; the real-money gate
+  // and a fresh manual approval still apply after promotion.
+  if (forwardTrades >= 15 && Number(record.forwardProfitFactor) >= 1.5 &&
+      Number(record.forwardPaperPnl) > 0 && Number(record.forwardPaperMaxDd) <= 4 &&
+      Number(record.forwardCurrentLossStreak) === 0 &&
+      record.health?.status === 'Healthy' &&
+      Number(record.testTrades) >= VALIDATOR_RULES.minTestTrades &&
+      Number(record.liveObservations) >= REQUIREMENTS.minLiveObservations) {
+    return 'promote-to-manual-review';
+  }
+  if (record.testTrades < VALIDATOR_RULES.minTestTrades || record.liveObservations < REQUIREMENTS.minLiveObservations || forwardTrades < REQUIREMENTS.minClosedPaperTrades) {
+    return 'incubate';
+  }
   if (record.health.status === 'Healthy' && record.profitFactor >= VALIDATOR_RULES.minProfitFactor && record.maxDrawdownPct <= VALIDATOR_RULES.maxDrawdownPct && record.maxLossStreak <= VALIDATOR_RULES.maxLossStreak && record.forwardPaperPnl > 0) return 'promote-to-manual-review';
   return 'watch';
 }
@@ -387,6 +408,11 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
     } else {
       const side = signalToEntrySide(signal, params);
       if (!side) continue;
+      if (!shortEntryVolumeConfirmed(candles, cursor, params, side)) {
+        ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
+        ledger.lastBlockReason = 'short entry volume below threshold';
+        continue;
+      }
       if (ledger.consecutiveLosses >= MAX_CONSECUTIVE_LOSSES) {
         // Auto-expire the streak block after a cooldown window so the candidate can
         // resume paper trading instead of staying frozen forever.
@@ -412,22 +438,26 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
         ledger.lastBlockReason = tf.reason;
         continue;
       }
-      if (params.dynamicRisk && !isStrategySuitable(candles, params)) {
+      // Per-bar режим: пригодность и волатильность считаются по окну,
+      // заканчивающемуся на текущем баре, а не по всему массиву.
+      // Иначе одна фаза на весь прогон душит стратегии на чужих ногах рынка.
+      const windowToBar = candles.slice(0, cursor);
+      if (params.dynamicRisk && !isStrategySuitable(windowToBar, params)) {
         ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
         ledger.lastBlockReason = `phase mismatch (${params.marketPhase || 'unknown'})`;
         continue;
       }
-      const phase = detectPhase(candles);
+      const phase = detectPhase(windowToBar);
       const atrValue = phase.atrPct || 0;
       if (!(atrValue >= (params.minAtrPct || 0.3) && atrValue <= (params.maxAtrPct || 5.0))) {
         ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
         ledger.lastBlockReason = `atr filter ${atrValue.toFixed(2)}%`;
         continue;
       }
-      const htf = confirmHigherTimeframe(confirmCandles, side, params);
-      if (htf === false) {
+      const htf = opts.requireHtf ? confirmHigherTimeframe(confirmCandles, side, params) : true;
+      if (htf !== true) {
         ledger.blockedEntries = (ledger.blockedEntries || 0) + 1;
-        ledger.lastBlockReason = 'htf confirmation failed';
+        ledger.lastBlockReason = htf === null ? 'htf data insufficient' : 'htf confirmation failed';
         continue;
       }
       ledger.position = makePosition(side, price, ledger.balance, params, cursor, candle.time, tf.qtyScale || 1);
@@ -468,6 +498,7 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
     symbol: candidate.symbol,
     interval: candidate.interval,
     strategy: candidate.params.strategy,
+    marketDataSource: 'okx-swap',
     source: candidate.source || prior.source || 'base',
     params: describe(params),
     rawParams: params,
@@ -617,7 +648,7 @@ async function incubateOnce() {
     try {
       const params = baseParams(candidate);
       const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit);
-      const priorRow = state.candidates[key];
+      const priorRow = state.candidates[key]?.marketDataSource === 'okx-swap' ? state.candidates[key] : null;
       const priorStatus = priorRow && priorRow.status;
       const priorQuarantine = priorRow && priorRow.quarantine;
       // A quarantine auto-expires after QUARANTINE_COOLDOWN_HOURS and a rejection after
@@ -651,13 +682,13 @@ async function incubateOnce() {
       if (confirmInterval && confirmInterval !== candidate.interval) {
         try {
           confirmCandles = await fetchCandles(candidate.symbol, confirmInterval, 200);
-        } catch (_) { /* HTF confirmation is optional — don't block on network */ }
+        } catch (_) { /* Missing HTF data blocks new entries in updatePaperLedger. */ }
       }
       const result = simulate(candles, params);
       const walk = splitWalkForward(candles, params);
       const forwardMetrics = forwardLedgerMetrics(priorRow && priorRow.paperLedger);
       const alerts = evaluateGuardrails(result.summary, walk, params, { forwardPaperTrades: forwardMetrics.trades, currentLossStreak: forwardMetrics.currentLossStreak });
-      const record = mergeRecord(state.candidates[key], candidate, candles, params, result, walk, alerts, { allowNewEntries, blockReason, confirmCandles, wasRejected, rejectExpired });
+      const record = mergeRecord(priorRow, candidate, candles, params, result, walk, alerts, { allowNewEntries, blockReason, confirmCandles, requireHtf: !!confirmInterval && confirmInterval !== candidate.interval, wasRejected, rejectExpired });
       state.candidates[key] = record;
       rows.push(record);
     } catch (error) {
@@ -734,4 +765,5 @@ if (require.main === module) {
   });
 }
 
-module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, readRiskGate, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
+module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
+

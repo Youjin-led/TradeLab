@@ -37,7 +37,7 @@ async function reviewCycle() {
     riskManager = { error: error.message };
   }
   
-  // Discovery: ищем новые кандидаты (только каждый 4-й час, чтобы не нагружать Binance)
+  // Discovery: ищем новые кандидаты на OKX.
   let discoveryResult = null;
   try {
     discoveryResult = await discover();
@@ -144,3 +144,4 @@ if (require.main === module) {
 }
 
 module.exports = { reviewCycle };
+

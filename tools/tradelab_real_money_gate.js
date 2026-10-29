@@ -1,18 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const { portfolioKillSwitch } = require('./tradelab_risk_controls');
+const {
+  REQUIREMENTS,
+  VALIDATOR_RULES,
+  FORWARD_PROVEN,
+  FORWARD_PROVEN_MIN_TRADES
+} = require('./tradelab_thresholds');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
-
-const REQUIREMENTS = {
-  minLiveObservations: 30,
-  minClosedPaperTrades: 15,
-  minProfitFactor: 1.6,
-  maxDrawdownPct: 8,
-  maxLossStreak: 2,
-  requiredHealth: 'Healthy',
-  requiredStatus: 'ready-for-review'
-};
+const { readShadow, assessOkxEvidence } = require('./tradelab_okx_evidence_gate');
 
 function readState() {
   if (!fs.existsSync(STATE_PATH)) {
@@ -25,13 +22,38 @@ function criticalAlerts(candidate) {
   return (candidate.alerts || []).filter((alert) => !String(alert).startsWith('low test sample'));
 }
 
-function evaluateCandidate(candidate) {
+// Forward-доказательство сильнее бэктеста: при большой выборке paper-сделок
+// судим кандидата по forward-метрикам, а не по бэктестовым.
+// Пороги — строгие FORWARD_PROVEN из реестра (те же, что для промоута из инкубации).
+
+function isForwardProven(candidate) {
+  const c = candidate || {};
+  if ((Number(c.forwardPaperTrades) || 0) < FORWARD_PROVEN_MIN_TRADES) return false;
+  if ((Number(c.liveObservations) || 0) < REQUIREMENTS.minLiveObservations) return false;
+  if (!((Number(c.forwardPaperPnl) || 0) > 0)) return false;
+  if (!((Number(c.forwardProfitFactor) || 0) >= VALIDATOR_RULES.minProfitFactor)) return false;
+  if (!((Number(c.forwardPaperMaxDd) || 0) <= VALIDATOR_RULES.maxDrawdownPct)) return false;
+  const fwdStreak = Number(c.forwardCurrentLossStreak ?? c.forwardMaxLossStreak ?? 99);
+  if (!(fwdStreak <= VALIDATOR_RULES.maxLossStreak)) return false;
+  return true;
+}
+
+function evaluateCandidate(candidate, options = {}) {
   const blockers = [];
+  if (candidate.marketDataSource !== 'okx-swap') blockers.push('candidate evidence was not collected from OKX swaps');
   if (candidate.status !== REQUIREMENTS.requiredStatus) {
     blockers.push(`status is ${candidate.status}, expected ${REQUIREMENTS.requiredStatus}`);
   }
-  if ((candidate.health || {}).status !== REQUIREMENTS.requiredHealth) {
-    blockers.push(`health is ${(candidate.health || {}).status || 'unknown'}, expected ${REQUIREMENTS.requiredHealth}`);
+  // Forward-доказанный кандидат судится по forward-метрикам (бэктест мог не торговаться в тестовом окне).
+  const proven = isForwardProven(candidate);
+  const effPF = proven ? Number(candidate.forwardProfitFactor) : Number(candidate.profitFactor);
+  const effDD = proven ? Number(candidate.forwardPaperMaxDd) : Number(candidate.maxDrawdownPct);
+  const effStreak = proven
+    ? Number(candidate.forwardCurrentLossStreak ?? candidate.forwardMaxLossStreak ?? 99)
+    : Number(candidate.maxLossStreak);
+  const effHealth = proven ? 'Healthy' : ((candidate.health || {}).status || 'unknown');
+  if (effHealth !== REQUIREMENTS.requiredHealth) {
+    blockers.push(`health is ${effHealth}, expected ${REQUIREMENTS.requiredHealth}`);
   }
   if ((candidate.liveObservations || 0) < REQUIREMENTS.minLiveObservations) {
     blockers.push(`live observations ${candidate.liveObservations || 0} < ${REQUIREMENTS.minLiveObservations}`);
@@ -39,18 +61,22 @@ function evaluateCandidate(candidate) {
   if ((candidate.forwardPaperTrades || 0) < REQUIREMENTS.minClosedPaperTrades) {
     blockers.push(`forward paper trades ${candidate.forwardPaperTrades || 0} < ${REQUIREMENTS.minClosedPaperTrades}`);
   }
-  if ((candidate.profitFactor || 0) < REQUIREMENTS.minProfitFactor) {
-    blockers.push(`profit factor ${candidate.profitFactor || 0} < ${REQUIREMENTS.minProfitFactor}`);
+  if (!(effPF >= REQUIREMENTS.minProfitFactor)) {
+    blockers.push(`profit factor ${effPF} < ${REQUIREMENTS.minProfitFactor}`);
   }
-  if ((candidate.maxDrawdownPct || 0) > REQUIREMENTS.maxDrawdownPct) {
-    blockers.push(`drawdown ${candidate.maxDrawdownPct || 0}% > ${REQUIREMENTS.maxDrawdownPct}%`);
+  if (effDD > REQUIREMENTS.maxDrawdownPct) {
+    blockers.push(`drawdown ${effDD}% > ${REQUIREMENTS.maxDrawdownPct}%`);
   }
-  if ((candidate.maxLossStreak || 0) > REQUIREMENTS.maxLossStreak) {
-    blockers.push(`loss streak ${candidate.maxLossStreak || 0} > ${REQUIREMENTS.maxLossStreak}`);
+  if (effStreak > REQUIREMENTS.maxLossStreak) {
+    blockers.push(`loss streak ${effStreak} > ${REQUIREMENTS.maxLossStreak}`);
   }
   const alerts = criticalAlerts(candidate);
   if (alerts.length) {
     blockers.push(`critical alerts: ${alerts.join('; ')}`);
+  }
+  if (options.enforceOkxEvidence) {
+    const evidence = assessOkxEvidence(options.shadow?.candidates?.[candidate.key], options.shadow?.updatedAt);
+    if (!evidence.allowed) blockers.push(evidence.reason);
   }
   return {
     key: candidate.key,
@@ -73,7 +99,7 @@ function evaluateCandidate(candidate) {
   };
 }
 
-function evaluateGate() {
+function evaluateGate(options = {}) {
   const state = readState();
   if (!state) {
     return {
@@ -84,7 +110,9 @@ function evaluateGate() {
     };
   }
 
-  const candidates = Object.values(state.candidates || {}).map(evaluateCandidate);
+  const shadow = options.skipOkxEvidence ? null : readShadow();
+  const candidates = Object.values(state.candidates || {}).map((candidate) =>
+    evaluateCandidate(candidate, { ...options, enforceOkxEvidence: !options.skipOkxEvidence, shadow }));
   const allowed = candidates.filter((candidate) => candidate.decision === 'manual-review-allowed');
   const killSwitch = portfolioKillSwitch(state);
   return {
@@ -98,8 +126,8 @@ function evaluateGate() {
     nextAction: killSwitch.active
       ? `Portfolio kill-switch active: ${(killSwitch.soft?.reasons || killSwitch.hard?.reasons || []).join('; ')}`
       : allowed.length
-      ? 'Manual risk review only. Real orders still require explicit separate implementation and approval.'
-      : 'Continue paper incubation or research new candidates. Do not connect real money.'
+      ? 'Review eligible candidates and Telegram approvals. Live orders require manual approval and must pass all entry and risk checks.'
+      : 'Continue paper incubation or research new candidates. No candidate is currently eligible for a new live entry.'
   };
 }
 
@@ -111,4 +139,5 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { evaluateGate, REQUIREMENTS };
+module.exports = { evaluateGate, evaluateCandidate, isForwardProven, FORWARD_PROVEN_MIN_TRADES, REQUIREMENTS };
+

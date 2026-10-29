@@ -9,16 +9,7 @@ const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
 const QUEUE_PATH = path.join(ROOT, 'tradelab-promotion-queue.json');
 const REPORT_PATH = path.join(ROOT, 'TRADELAB_LIFECYCLE.md');
 
-const RULES = {
-  probationCyclesBeforeQuarantine: 3,
-  probationMinForwardTrades: 3,
-  probationMaxForwardPnl: -80,
-  probationMaxDrawdownPct: 5.0,
-  probationMaxLossStreak: 2,
-  quarantineMaxForwardPnl: -300,
-  promotionMinProgress: 75,
-  promotionMinForwardTrades: 8
-};
+const { LIFECYCLE_RULES: RULES } = require('./tradelab_thresholds');
 
 function writeJson(filePath, data) {
   fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`);
@@ -35,6 +26,12 @@ function isLive(candidate) {
 function shouldProbation(candidate, gateCandidate) {
   if (!isLive(candidate)) return false;
   if ((candidate.forwardPaperTrades || 0) < RULES.probationMinForwardTrades) return false;
+  // Бумага в плюсе с хорошим PF — probation не нужен: это защита от живых провалов,
+  // а не повод для бэктестовых придирок. Иначе unquarantine выпускает, а lifecycle тут же сажает обратно.
+  const fwdTrades = Number(candidate.forwardPaperTrades) || 0;
+  const fwdPF = Number(candidate.forwardProfitFactor) || 0;
+  const fwdDD = Number(candidate.forwardPaperMaxDd) || 0;
+  if (fwdTrades >= 3 && (Number(candidate.forwardPaperPnl) || 0) > 0 && fwdPF >= 1.5 && fwdDD <= REQUIREMENTS.maxDrawdownPct) return false;
   return (candidate.forwardPaperPnl || 0) <= RULES.probationMaxForwardPnl
     || (candidate.maxDrawdownPct || 0) > RULES.probationMaxDrawdownPct
     || (candidate.maxLossStreak || 0) > RULES.probationMaxLossStreak
@@ -158,6 +155,14 @@ function applyLifecycle() {
       actions.push({ key: candidate.key, action: 'clear-probation', reason: 'latest paper metrics no longer trigger probation' });
     }
 
+    // Промоут из инкубации: решение promote-to-manual-review переводит в ready-for-review,
+    // чтобы real-money gate мог допустить кандидата до ручного подтверждения.
+    if (candidate.decision === 'promote-to-manual-review' && candidate.status === 'incubating') {
+      candidate.previousStatus = candidate.status;
+      candidate.status = 'ready-for-review';
+      actions.push({ key: candidate.key, action: 'ready-for-review', reason: 'promoted by forward-proven paper evidence' });
+    }
+
     if (promotionReady(candidate)) queue.push(queueRow(candidate, 'ready-for-manual-review'));
     else if (promotionWatch(candidate)) queue.push(queueRow(candidate, 'watch'));
   }
@@ -204,7 +209,7 @@ function writeReport(output) {
     `Input state: ${output.inputUpdatedAt}`,
     `Real-money gate: **${output.gate}**`,
     '',
-    'This report manages paper-only candidate lifecycle: incubation, probation, quarantine, and promotion queue. It does not approve real-money trading.',
+    'This report manages paper candidate lifecycle. Live entries are separately controlled by the real-money gate and manual approval.',
     '',
     '## Summary',
     '',
@@ -237,7 +242,7 @@ function writeReport(output) {
     '',
     '## Operator Rule',
     '',
-    'Promotion queue means manual review only. It is not permission to connect API keys or place real orders.'
+    'Promotion queue means manual review only. Live entries also require gate eligibility, Telegram approval, and all execution checks.'
   );
 
   fs.writeFileSync(REPORT_PATH, `${lines.join('\n')}\n`);
@@ -252,3 +257,4 @@ if (require.main === module) {
 }
 
 module.exports = { applyLifecycle, RULES };
+

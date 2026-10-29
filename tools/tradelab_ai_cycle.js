@@ -25,32 +25,10 @@ var ROOT = path.join(__dirname, '..');
 // ===== FETCH CANDLES =====
 
 async function fetchCandles(symbol, interval, limit) {
-  limit = limit || 100;
-  var url = 'https://data-api.binance.vision/api/v3/klines?symbol=' + symbol +
-    '&interval=' + interval + '&limit=' + limit;
-
-  var controller = new AbortController();
-  var timeoutId = setTimeout(function () { controller.abort(); }, 15000);
-
   try {
-    var response = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeoutId);
-
-    if (!response.ok) throw new Error('Binance API ' + response.status);
-    var data = await response.json();
-
-    return data.map(function (k) {
-      return {
-        timestamp: new Date(k[0]).toISOString().replace('T', ' ').substring(0, 16),
-        open: parseFloat(k[1]),
-        high: parseFloat(k[2]),
-        low: parseFloat(k[3]),
-        close: parseFloat(k[4]),
-        volume: parseFloat(k[5])
-      };
-    });
+    var data = await require('./tradelab_okx_candles').fetchOkxSwapCandles(symbol, interval, limit || 100);
+    return data.map(function (k) { return { ...k, timestamp: k.time }; });
   } catch (err) {
-    clearTimeout(timeoutId);
     throw new Error('Failed to fetch candles for ' + symbol + ': ' + err.message);
   }
 }
@@ -177,3 +155,4 @@ if (require.main === module) {
 }
 
 module.exports = { runAICycle: runAICycle, runAllPairs: runAllPairs };
+

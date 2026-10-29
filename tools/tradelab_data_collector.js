@@ -5,7 +5,7 @@
  * 1. CryptoPanic — новости и тональность по монетам
  * 2. Alternative.me — Fear & Greed Index
  * 3. CoinGecko — макро-данные (BTC dominance, volume)
- * 4. Binance — Open Interest, Funding Rate
+ * 4. OKX swaps — Open Interest, Funding Rate
  *
  * Paper-only research tool. Does not place orders.
  */
@@ -183,31 +183,32 @@ async function fetchCoinGeckoMacro() {
   }
 }
 
-// ===== 4. BINANCE OPEN INTEREST =====
+// ===== 4. OKX OPEN INTEREST =====
 
 /**
- * Получить Open Interest для символа с Binance
+ * Получить Open Interest для символа с OKX
  * 
  * @param {string} symbol - Например 'BTCUSDT'
  * @returns {Object|null} { openInterest, timestamp }
  */
-async function fetchBinanceOpenInterest(symbol) {
+async function fetchOkxOpenInterest(symbol) {
   try {
     var controller = new AbortController();
     var timeoutId = setTimeout(function () { controller.abort(); }, 10000);
     var response = await fetch(
-      'https://fapi.binance.com/fapi/v1/openInterest?symbol=' + symbol,
+      'https://www.okx.com/api/v5/public/open-interest?instType=SWAP&instId=' + symbol.slice(0, -4) + '-USDT-SWAP',
       { signal: controller.signal }
     );
     clearTimeout(timeoutId);
 
     if (!response.ok) return null;
 
-    var data = await response.json();
+    var data = (await response.json()).data?.[0];
+    if (!data) return null;
     return {
       symbol: symbol,
-      openInterest: parseFloat(data.openInterest),
-      timestamp: data.time || Date.now()
+      openInterest: parseFloat(data.oiCcy),
+      timestamp: Number(data.ts) || Date.now()
     };
   } catch (e) {
     return null;
@@ -215,29 +216,30 @@ async function fetchBinanceOpenInterest(symbol) {
 }
 
 /**
- * Получить Funding Rate для символа с Binance
+ * Получить Funding Rate для символа с OKX
  * 
  * @param {string} symbol - Например 'BTCUSDT'
  * @returns {Object|null} { fundingRate, nextFundingTime }
  */
-async function fetchBinanceFundingRate(symbol) {
+async function fetchOkxFundingRate(symbol) {
   try {
     var controller = new AbortController();
     var timeoutId = setTimeout(function () { controller.abort(); }, 10000);
     var response = await fetch(
-      'https://fapi.binance.com/fapi/v1/premiumIndex?symbol=' + symbol,
+      'https://www.okx.com/api/v5/public/funding-rate?instId=' + symbol.slice(0, -4) + '-USDT-SWAP',
       { signal: controller.signal }
     );
     clearTimeout(timeoutId);
 
     if (!response.ok) return null;
 
-    var data = await response.json();
+    var data = (await response.json()).data?.[0];
+    if (!data) return null;
     return {
       symbol: symbol,
-      fundingRate: parseFloat(data.lastFundingRate) * 100, // в процентах
-      nextFundingTime: data.nextFundingTime || null,
-      markPrice: parseFloat(data.markPrice) || null
+      fundingRate: parseFloat(data.fundingRate) * 100, // в процентах
+      nextFundingTime: Number(data.nextFundingTime) || null,
+      markPrice: null
     };
   } catch (e) {
     return null;
@@ -298,7 +300,7 @@ async function collectAllData(options) {
   // 4. Open Interest (по одному, с задержкой)
   for (var i = 0; i < symbols.length; i++) {
     try {
-      var oi = await fetchBinanceOpenInterest(symbols[i]);
+      var oi = await fetchOkxOpenInterest(symbols[i]);
       if (oi) result.openInterest.push(oi);
       if (i < symbols.length - 1) await sleep(200); // задержка между запросами
     } catch (e) {
@@ -309,7 +311,7 @@ async function collectAllData(options) {
   // 5. Funding Rate
   for (var j = 0; j < symbols.length; j++) {
     try {
-      var fr = await fetchBinanceFundingRate(symbols[j]);
+      var fr = await fetchOkxFundingRate(symbols[j]);
       if (fr) result.fundingRates.push(fr);
       if (j < symbols.length - 1) await sleep(200);
     } catch (e) {
@@ -454,10 +456,11 @@ module.exports = {
   fetchCryptoPanicNews: fetchCryptoPanicNews,
   fetchFearGreedIndex: fetchFearGreedIndex,
   fetchCoinGeckoMacro: fetchCoinGeckoMacro,
-  fetchBinanceOpenInterest: fetchBinanceOpenInterest,
-  fetchBinanceFundingRate: fetchBinanceFundingRate,
+  fetchOkxOpenInterest: fetchOkxOpenInterest,
+  fetchOkxFundingRate: fetchOkxFundingRate,
   saveNews: saveNews,
   saveMacroData: saveMacroData,
   loadMacroData: loadMacroData,
   getMacroSummary: getMacroSummary
 };
+

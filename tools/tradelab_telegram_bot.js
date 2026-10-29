@@ -341,21 +341,8 @@ async function handleAI(args) {
 
   try {
     // Fetch candles
-    const url = `https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=100`;
-    const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
-    if (!response.ok) throw new Error('Binance API ' + response.status);
-    const klines = await response.json();
-
-    const candles = klines.map(function(k) {
-      return {
-        timestamp: new Date(k[0]).toISOString().replace('T', ' ').substring(0, 16),
-        open: parseFloat(k[1]),
-        high: parseFloat(k[2]),
-        low: parseFloat(k[3]),
-        close: parseFloat(k[4]),
-        volume: parseFloat(k[5])
-      };
-    });
+    const klines = await require('./tradelab_okx_candles').fetchOkxSwapCandles(symbol, interval, 100);
+    const candles = klines.map(function(k) { return { ...k, timestamp: k.time }; });
 
     const lastPrice = candles[candles.length - 1].close;
 
@@ -516,3 +503,4 @@ module.exports = {
   alertDailyPnl,
   isPaused
 };
+

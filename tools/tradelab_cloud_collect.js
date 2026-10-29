@@ -29,34 +29,22 @@ function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-// ===== Binance =====
-
-const BINANCE_HOSTS = ['data-api.binance.vision', 'api.binance.com'];
-const BINANCE_FUTURES_HOSTS = ['fapi.binance.com'];
-
-function fetchBinance(path) {
-  const urls = BINANCE_HOSTS.map(h => `https://${h}${path}`);
-  return urls.reduce((promise, url) =>
-    promise.then(async (result) => {
-      if (result !== undefined) return result;
-      const data = await fetchJSON(url);
-      return data !== undefined ? data : undefined;
-    }), Promise.resolve(undefined)).then((data) => data || null);
-}
+// ===== OKX USDT swaps =====
 
 async function fetchPrices() {
-  const data = await fetchBinance('/api/v3/ticker/24hr');
-  if (!Array.isArray(data)) return null;
+  const response = await fetchJSON('https://www.okx.com/api/v5/market/tickers?instType=SWAP');
+  if (response?.code !== '0' || !Array.isArray(response.data)) return null;
   const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'DOGEUSDT', 'ADAUSDT', 'LINKUSDT', 'AVAXUSDT', 'SUIUSDT', 'LTCUSDT', 'NEARUSDT'];
   const result = {};
-  for (const t of data) {
-    if (t && symbols.includes(t.symbol)) {
-      result[t.symbol] = {
-        price: parseFloat(t.lastPrice),
-        change24h: parseFloat(t.priceChangePercent),
-        volume: parseFloat(t.quoteVolume),
-        high: parseFloat(t.highPrice),
-        low: parseFloat(t.lowPrice)
+  for (const t of response.data) {
+    const symbol = t.instId?.replace('-USDT-SWAP', 'USDT');
+    if (symbols.includes(symbol) && t.instId === `${symbol.slice(0, -4)}-USDT-SWAP`) {
+      result[symbol] = {
+        price: Number(t.last),
+        change24h: Number(t.open24h) ? (Number(t.last) / Number(t.open24h) - 1) * 100 : null,
+        volume: Number(t.volCcy24h) * Number(t.last),
+        high: Number(t.high24h),
+        low: Number(t.low24h)
       };
     }
   }
@@ -64,25 +52,19 @@ async function fetchPrices() {
 }
 
 async function fetchCandles(symbol, interval, limit) {
-  const data = await fetchBinance(`/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`);
-  if (!Array.isArray(data)) return null;
-  return data.map(k => ({
-    time: k[0], open: parseFloat(k[1]), high: parseFloat(k[2]),
-    low: parseFloat(k[3]), close: parseFloat(k[4]), volume: parseFloat(k[5])
-  }));
+  try {
+    const data = await require('./tradelab_okx_candles').fetchOkxSwapCandles(symbol, interval, limit);
+    return data.map((k) => ({ ...k, time: Date.parse(k.time.replace(' ', 'T') + ':00Z') }));
+  } catch { return null; }
 }
 
 async function fetchFundingRates() {
   const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'SUIUSDT'];
   const rates = {};
   for (const sym of symbols) {
-    let data = null;
-    for (const host of BINANCE_FUTURES_HOSTS) {
-      const res = await fetchJSON(`https://${host}/fapi/v1/fundingRate?symbol=${sym}&limit=1`);
-      if (Array.isArray(res)) { data = res; break; }
-    }
-    if (data && data.length > 0) {
-      rates[sym] = { rate: parseFloat(data[0].fundingRate), time: data[0].fundingTime };
+    const data = await fetchJSON(`https://www.okx.com/api/v5/public/funding-rate?instId=${sym.slice(0, -4)}-USDT-SWAP`);
+    if (data?.code === '0' && data.data?.length) {
+      rates[sym] = { rate: Number(data.data[0].fundingRate), time: Number(data.data[0].fundingTime) };
     }
     await sleep(200);
   }
@@ -219,3 +201,4 @@ async function main() {
 }
 
 main().catch(console.error);
+

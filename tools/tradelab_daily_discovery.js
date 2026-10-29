@@ -15,6 +15,7 @@ const { detectPhase } = require('./tradelab_market_phase');
 const { CANDIDATES } = require('./tradelab_incubate_once');
 const { validateStrategy, portfolioKillSwitch } = require('./tradelab_risk_controls');
 const { isQuarantined, loadQuarantine, quarantineReason } = require('./tradelab_quarantine');
+const { discoveryBatch, saveCursor } = require('./tradelab_discovery_universe');
 
 const ROOT = path.join(__dirname, '..');
 const AUTO_CANDIDATES_PATH = path.join(ROOT, 'tradelab-auto-candidates.json');
@@ -22,27 +23,28 @@ const RECOVERY_SANDBOX_PATH = path.join(ROOT, 'tradelab-recovery-sandbox.json');
 const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
 const REPORT_PATH = path.join(ROOT, 'TRADELAB_DAILY_DISCOVERY.md');
 
-const SYMBOLS = [
-  'BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT',
-  'ADAUSDT', 'DOGEUSDT', 'LINKUSDT', 'AVAXUSDT', 'DOTUSDT',
-  'TRXUSDT', 'LTCUSDT', 'BCHUSDT', 'ATOMUSDT', 'NEARUSDT',
-  'APTUSDT', 'ARBUSDT', 'OPUSDT', 'FILUSDT', 'INJUSDT',
-  'SUIUSDT', 'TIAUSDT', 'SEIUSDT', 'RENDERUSDT', 'JUPUSDT'
-];
 const INTERVALS = ['1h', '4h', '1d'];
-// mean-reversion исключена — показывает -9274 PnL, 24% winrate, 8/8 в карантине
-const STRATEGIES = ['breakout', 'sma-rsi'];
+// mean-reversion исключена — показывает -9274 PnL, 24% winrate, 8/8 в карантине.
+// Добавлены bb-reversion (Bollinger+RSI) и ema-momentum (EMA 9/21+объём).
+const STRATEGIES = ['breakout', 'sma-rsi', 'bb-reversion', 'ema-momentum'];
 const LIMIT = 1000;
+const MAX_DISCOVERY_GRID = 16;
 
 const BLOCKED_STRATEGIES = ['mean-reversion'];
 
 const RULES = {
-  maxAdds: 5,
-  minTestTrades: 6,
+  maxAdds: 8,
+  // minTestTrades синхронизирован с VALIDATOR_RULES (было 6 — мёртвый порог:
+  // validateStrategy всё равно резал по 8, а отчёты врали про 6).
+  minTestTrades: 8,
   minProfitFactor: 1.8,
   maxDrawdownPct: 8.0,
   minScore: 80
 };
+
+// Приоритет таймфреймов: 1h торгуют чаще — статистика копится быстрее,
+// кандидаты скорее доходят до forward-доказательств.
+const INTERVAL_PRIORITY = { '1h': 0, '4h': 1, '1d': 2 };
 
 function isBlockedStrategy(candidate) {
   return BLOCKED_STRATEGIES.includes(candidate.params?.strategy);
@@ -65,7 +67,10 @@ function walkForwardFor(candles, params) {
   const split = Math.floor(candles.length * 0.7);
   const train = candles.slice(0, split);
   const test = candles.slice(split);
-  const best = parameterGrid(params)
+  const fullGrid = parameterGrid(params);
+  const step = Math.ceil(fullGrid.length / MAX_DISCOVERY_GRID);
+  const grid = fullGrid.filter((_, index) => index % step === 0);
+  const best = grid
     .map((candidate) => {
       const summary = simulate(train, candidate).summary;
       return { params: candidate, summary, score: scoreSummary(summary) };
@@ -116,8 +121,8 @@ function existingKeys() {
   const state = readJson(STATE_PATH, { candidates: {} });
   return new Set([
     ...CANDIDATES.map(keyFor),
-    ...(auto.candidates || []).map(keyFor),
-    ...Object.keys(state.candidates || {}).filter((key) => (state.candidates[key] || {}).status === 'rejected')
+    ...(auto.marketDataSource === 'okx-swap' ? auto.candidates || [] : []).map(keyFor),
+    ...Object.keys(state.marketDataSource === 'okx-swap' ? state.candidates || {} : {}).filter((key) => (state.candidates[key] || {}).status === 'rejected')
   ]);
 }
 
@@ -153,15 +158,17 @@ function sandboxRow(row) {
   };
 }
 
-function writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitch, skipped, marketPhases) {
+function writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitch, skipped, marketPhases, universe, historySkipped = []) {
   const lines = [
     '# TradeLab Daily Discovery',
     '',
     `Generated: ${new Date().toISOString()}`,
-    `Universe: ${SYMBOLS.length} symbols x ${INTERVALS.length} intervals x ${STRATEGIES.length} strategies`,
-    `Rules: trades >= ${RULES.minTestTrades}, PF >= ${RULES.minProfitFactor}, DD <= ${RULES.maxDrawdownPct}%, health score >= ${RULES.minScore}`,
+    `Universe: ${universe.allSymbols.length} liquid OKX USDT swaps; ${universe.symbols.length} scanned this run x ${INTERVALS.length} intervals x ${STRATEGIES.length} strategies`,
+    `Liquidity floor: ${universe.minQuoteVolume} USDT estimated OKX swap 24h notional; rotating batch ${universe.batchSize} symbols`,
+    `Rules: trades >= ${RULES.minTestTrades}, PF >= ${RULES.minProfitFactor}, DD <= ${RULES.maxDrawdownPct}%, health score >= ${RULES.minScore}; discovery tests up to ${MAX_DISCOVERY_GRID} parameter sets per strategy`,
     `Portfolio kill-switch: ${killSwitch.active ? 'ACTIVE' : 'clear'}`,
     `Quarantine skips: ${skipped.length}`,
+    `Insufficient OKX candle history: ${historySkipped.length} symbol/timeframe combinations`,
     '',
     '## Added To Auto-Incubation',
     ''
@@ -243,6 +250,10 @@ function writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitc
     lines.push('No rows passed the strict discovery rules.');
   }
 
+  if (historySkipped.length) {
+    lines.push('', '## Insufficient History', '',
+      `${historySkipped.length} symbol/timeframe combinations have fewer than ${LIMIT} OKX swap candles. They were skipped, not counted as API failures.`, '');
+  }
   if (errors.length) {
     lines.push('', '## Fetch Errors', '');
     for (const error of errors) lines.push(`- ${error.symbol} ${error.interval}: ${error.error}`);
@@ -252,9 +263,11 @@ function writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitc
 }
 
 async function discover() {
+  const universe = await discoveryBatch();
   const rows = [];
   const nearMisses = [];
   const errors = [];
+  const historySkipped = [];
   const skipped = [];
   const marketPhases = [];
   const skip = existingKeys();
@@ -263,10 +276,12 @@ async function discover() {
   // Маппинг: какая стратегия под какую фазу рынка подходит
   const STRATEGY_PHASE_MAP = {
     'breakout': ['trending', 'volatile'],
-    'sma-rsi': ['trending', 'ranging']
+    'sma-rsi': ['trending', 'ranging'],
+    'bb-reversion': ['ranging'],
+    'ema-momentum': ['trending']
   };
 
-  for (const symbol of SYMBOLS) {
+  for (const symbol of universe.symbols) {
     for (const interval of INTERVALS) {
       try {
         const candles = await fetchCandles(symbol, interval, LIMIT);
@@ -323,19 +338,26 @@ async function discover() {
           else if (!known && row.test.pnl > 0 && row.score > 0) nearMisses.push(row);
         }
       } catch (error) {
-        errors.push({ symbol, interval, error: error.message });
+        const row = { symbol, interval, error: error.message };
+        if (String(error.message).includes('OKX candles insufficient:')) historySkipped.push(row);
+        else errors.push(row);
       }
     }
   }
 
-  // Breakout имеет приоритет при сортировке: breakout выше, потом по score
+  // Breakout имеет приоритет при сортировке: breakout выше, потом 1h (быстрые),
+  // потом по score
   rows.sort((a, b) => {
     if (a.strategy === 'breakout' && b.strategy !== 'breakout') return -1;
     if (a.strategy !== 'breakout' && b.strategy === 'breakout') return 1;
+    const ai = INTERVAL_PRIORITY[a.interval] ?? 9;
+    const bi = INTERVAL_PRIORITY[b.interval] ?? 9;
+    if (ai !== bi) return ai - bi;
     return b.score - a.score || b.test.pnl - a.test.pnl;
   });
   nearMisses.sort((a, b) => b.score - a.score || b.test.pnl - a.test.pnl);
-  const auto = readJson(AUTO_CANDIDATES_PATH, { updatedAt: null, candidates: [] });
+  const storedAuto = readJson(AUTO_CANDIDATES_PATH, { updatedAt: null, candidates: [] });
+  const auto = storedAuto.marketDataSource === 'okx-swap' ? storedAuto : { updatedAt: null, marketDataSource: 'okx-swap', candidates: [] };
   const killSwitch = portfolioKillSwitch();
   // Discovery always adds candidates — kill-switch only blocks real-money gate
   const added = rows.slice(0, RULES.maxAdds).map(candidateFromRow);
@@ -355,11 +377,14 @@ async function discover() {
   auto.candidates = [...(auto.candidates || []), ...added];
   fs.writeFileSync(AUTO_CANDIDATES_PATH, `${JSON.stringify(auto, null, 2)}\n`);
   fs.writeFileSync(RECOVERY_SANDBOX_PATH, `${JSON.stringify(recoverySandbox, null, 2)}\n`);
-  writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitch, skipped, marketPhases);
+  writeReport(rows, nearMisses, added, recoverySandbox, errors, killSwitch, skipped, marketPhases, universe, historySkipped);
+  saveCursor(universe.nextCursor);
 
   return {
     generatedAt: auto.updatedAt,
-    tested: SYMBOLS.length * INTERVALS.length * STRATEGIES.length,
+    universeSize: universe.allSymbols.length,
+    scannedSymbols: universe.symbols,
+    tested: universe.symbols.length * INTERVALS.length * STRATEGIES.length,
     qualified: rows.length,
     quarantineSkipped: skipped.length,
     killSwitch,
@@ -375,6 +400,7 @@ async function discover() {
       nearMisses: recoverySandbox.nearMisses.length
     },
     errors,
+    historySkipped,
     reportPath: REPORT_PATH
   };
 }
@@ -392,3 +418,4 @@ if (require.main === module) {
 }
 
 module.exports = { discover, RULES };
+

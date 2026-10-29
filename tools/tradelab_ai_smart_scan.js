@@ -24,19 +24,8 @@ var path = require('path');
 var ROOT = path.join(__dirname, '..');
 
 async function fetchCandles(symbol, interval, limit) {
-  limit = limit || 100;
-  var url = 'https://data-api.binance.vision/api/v3/klines?symbol=' + symbol + '&interval=' + interval + '&limit=' + limit;
-  var response = await fetch(url, { signal: AbortSignal.timeout(15000) });
-  if (!response.ok) throw new Error('Binance ' + response.status);
-  var data = await response.json();
-  return data.map(function(k) {
-    return {
-      timestamp: new Date(k[0]).toISOString().replace('T', ' ').substring(0, 16),
-      open: parseFloat(k[1]), high: parseFloat(k[2]),
-      low: parseFloat(k[3]), close: parseFloat(k[4]),
-      volume: parseFloat(k[5])
-    };
-  });
+  var data = await require('./tradelab_okx_candles').fetchOkxSwapCandles(symbol, interval, limit || 100);
+  return data.map(function(k) { return { ...k, timestamp: k.time }; });
 }
 
 async function analyzeWithCache(symbol, interval, cache) {
@@ -203,3 +192,4 @@ async function main() {
 }
 
 main().catch(function (err) { console.error('Fatal:', err); process.exit(1); });
+

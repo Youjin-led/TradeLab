@@ -10,13 +10,17 @@ const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
 const ccxt = require('ccxt');
+const { sizeSwapPosition } = require('./tradelab_contract_sizing');
+const { confirmedFill, entryAccounting } = require('./tradelab_order_fill');
+const { liveParamsForCandles } = require('./tradelab_live_params');
+const { matchClosedFills } = require('./tradelab_fill_match');
 
 // Загружаем .env
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const { evaluateGate } = require('./tradelab_real_money_gate');
 const { portfolioKillSwitch } = require('./tradelab_risk_controls');
-const { fetchCandles, getSignal, simulate, describe, applyDynamicParams, DEFAULT_PARAMS } = require('./tradelab_run_once');
+const { fetchCandles, getSignal, simulate, describe, applyDynamicParams, DEFAULT_PARAMS, timeFilter, confirmHigherTimeframe, shortEntryVolumeConfirmed, isStrategySuitable } = require('./tradelab_run_once');
 
 const ROOT = path.join(__dirname, '..');
 const STATE_PATH = path.join(ROOT, 'tradelab-incubation-state.json');
@@ -38,15 +42,36 @@ const CONFIG = {
   // Максимальный размер позиции в USD
   maxPositionSizeUsd: Number(process.env.MAX_POSITION_SIZE_USD) || 100,
   // Максимальный дневной убыток в USD
-  maxDailyLossUsd: Number(process.env.MAX_DAILY_LOSS_USD) || 50,
+  maxDailyLossUsd: Math.min(Number(process.env.MAX_DAILY_LOSS_USD) || 50,
+    Number(process.env.LIVE_DAILY_LOSS_CAP_USD) || 3),
   // Режим торговли: 'spot' или 'futures'
   tradingMode: process.env.OKX_TRADING_MODE || 'futures',
-  // Минимальный объём сделки в USD (OKX комиссии)
-  minTradeUsd: 10,
+  // Минимальный объём сделки в USD (OKX комиссии) — снижен для малого баланса 45$
+  minTradeUsd: Number(process.env.MIN_TRADE_USD) || 1,
   // Таймаут для OKX API (мс)
   apiTimeout: 15000,
   // Количество попыток при ошибке API
-  apiRetries: 3
+  apiRetries: 3,
+  // Короткие сделки: лимит удержания позиции в часах (прибыльные не режем — см. monitorOpenPositions)
+  maxHoldHours: Number(process.env.LIVE_MAX_HOLD_HOURS) || 96,
+  // Клэмп динамических уровней (новые входы): коротко, а не «свинг на недели»
+  shortTermStopMin: Number(process.env.LIVE_STOP_MIN) || 1.2,
+  shortTermStopMax: Number(process.env.LIVE_STOP_MAX) || 2.5,
+  shortTermTakeMax: Number(process.env.LIVE_TAKE_MAX) || 4.5,
+  shortTermRiskMax: Number(process.env.LIVE_RISK_MAX) || 1.0,
+  liveTargetNotionalPct: Number(process.env.LIVE_TARGET_NOTIONAL_PCT) || 10,
+  liveMaxStopRiskPct: Number(process.env.LIVE_MAX_STOP_RISK_PCT) || 0.4,
+  // Облегчённые фильтры входа (объём/ADX).
+  // ADX 18 (было 15): только сигналы с импульсом выше среднего, чихи не торгуем.
+  volumeMultiplier: Number(process.env.LIVE_VOLUME_MULTIPLIER) || 1.2,
+  adxThreshold: Number(process.env.LIVE_ADX_THRESHOLD) || 18,
+  // Охрана реальных денег: кандидат пускается в live только после
+  // доказанной forward-бумажной истории (минимум сделок и profit factor)
+  liveMinForwardTrades: Number(process.env.LIVE_MIN_FORWARD_TRADES) || 10,
+  liveMinForwardPF: Number(process.env.LIVE_MIN_FORWARD_PF) || 1.2,
+  // Корреляция: максимум открытых позиций в одну сторону.
+  // Альты ходят вместе — один шок не должен бить по всем сразу.
+  maxSameSideOpen: Number(process.env.MAX_SAME_SIDE_OPEN) || 2
 };
 
 // ============================================================
@@ -89,6 +114,41 @@ function getOkxClient() {
 function loadTrades() {
   if (!fs.existsSync(TRADES_PATH)) return [];
   return JSON.parse(fs.readFileSync(TRADES_PATH, 'utf8'));
+}
+
+// Compare the bot ledger with the exchange before any new real-money entry.
+// A disagreement needs investigation; opening another position could compound it.
+async function verifyExchangePositions() {
+  if (PAPER_MODE) return { ok: true, paper: true };
+  const client = getOkxClient();
+  const positions = await client.fetchPositions();
+  const exchangeOpen = positions.filter((position) => Math.abs(Number(position.contracts) || 0) > 0);
+  const localOpen = loadTrades().filter((trade) => trade.status === 'open');
+  const expected = new Map(localOpen.map((trade) => [
+    `${trade.symbol.replace('USDT', '/USDT:USDT')}:${trade.side.toLowerCase()}`,
+    trade
+  ]));
+  const actual = new Map(exchangeOpen.map((position) => [
+    `${position.symbol}:${String(position.side).toLowerCase()}`,
+    position
+  ]));
+  const missingOnExchange = [...expected.keys()].filter((key) => !actual.has(key));
+  const missingLocally = [...actual.keys()].filter((key) => !expected.has(key));
+  const sizeMismatch = [...expected.entries()].filter(([key, trade]) => {
+    const position = actual.get(key);
+    const actualContracts = Number(position?.contracts);
+    const expectedContracts = Number(trade.size);
+    return position && (!Number.isFinite(actualContracts) || !Number.isFinite(expectedContracts) ||
+      Math.abs(actualContracts - expectedContracts) > 1e-8);
+  }).map(([key]) => key);
+  const unconfirmedEntry = localOpen.filter((trade) => trade.entryConfirmed === false).map((trade) => trade.key);
+  return {
+    ok: missingOnExchange.length === 0 && missingLocally.length === 0 && sizeMismatch.length === 0 && unconfirmedEntry.length === 0,
+    missingOnExchange,
+    missingLocally,
+    sizeMismatch,
+    unconfirmedEntry
+  };
 }
 
 function saveTrades(trades) {
@@ -205,10 +265,37 @@ function checkDailyLossLimit() {
 }
 
 // ============================================================
+// Бумажная история кандидата (forward-сделки инкубатора)
+// ============================================================
+
+function loadCandidateForwardRecord(candidateKey) {
+  try {
+    const state = JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+    const candidate = state && state.candidates ? state.candidates[candidateKey] : null;
+    if (!candidate) return null;
+    const pf = Number.isFinite(candidate.forwardProfitFactor) || candidate.forwardProfitFactor === null
+      ? candidate.forwardProfitFactor : null;
+    return {
+      forwardPaperTrades: Number(candidate.forwardPaperTrades) || 0,
+      forwardProfitFactor: pf
+    };
+  } catch (error) {
+    console.log(`[LiveExecutor] ⚠️ Cannot read forward record: ${error.message}`);
+    return null;
+  }
+}
+
+// ============================================================
 // Проверка gate перед реальной сделкой
 // ============================================================
 
 function checkGate(candidateKey) {
+  // ВАЖНО (дыра закрыта): НИ В ОДНОМ режиме, включая live-mirror-paper, реальный
+  // вход не выполняется автоматически. Реальные деньги открываются ТОЛЬКО после
+  // ручного подтверждения: gate === MANUAL_REVIEW_ALLOWED + кандидат с
+  // decision === 'manual-review-allowed'. Авто-входы по forward-метрикам запрещены.
+  // Mirror-режим больше НЕ торгует реальными деньгами автоматически — he приравнен
+  // к обычной live-ветке (требует ручного gate). Дырка автовходов закрыта навсегда.
   // В paper-режиме gate не применяется — тестируем прибыльность виртуально
   if (PAPER_MODE) {
     return { allowed: true, paper: true, reason: 'Paper mode — gate not enforced' };
@@ -258,6 +345,57 @@ function checkGate(candidateKey) {
 }
 
 // ============================================================
+// Входные гейты живого входа — те же, что в бумаге (иначе реал слабее статистики).
+// ============================================================
+
+async function checkLiveEntryGates(candidate, liveData, side) {
+  const { candles, params, barTime } = liveData || {};
+  if (!shortEntryVolumeConfirmed(candles, candles.length - 1, params || {}, side)) {
+    return { ok: false, reason: 'short entry volume below threshold' };
+  }
+  // Время суток / понедельник
+  try {
+    const tf = timeFilter(barTime, params || {});
+    if (tf && tf.blocked) return { ok: false, reason: tf.reason || 'blocked hour' };
+  } catch (error) {
+    return { ok: false, reason: `timeFilter error: ${error.message}` };
+  }
+  // Фаза рынка под стратегию
+  try {
+    if (params && params.dynamicRisk && !isStrategySuitable(candles || [], params)) {
+      return { ok: false, reason: `phase mismatch (${(params && params.marketPhase) || 'unknown'})` };
+    }
+  } catch (error) {
+    return { ok: false, reason: `phase check error: ${error.message}` };
+  }
+  // ATR-диапазон по недавним свечам
+  try {
+    const { detectPhase } = require('./tradelab_market_phase');
+    const win = Array.isArray(candles) && candles.length > 100 ? candles.slice(-100) : (candles || []);
+    const ph = detectPhase(win);
+    const atr = (ph && ph.atrPct) || 0;
+    if (!(atr >= (params.minAtrPct || 0.3) && atr <= (params.maxAtrPct || 5.0))) {
+      return { ok: false, reason: `atr filter ${atr.toFixed(2)}%` };
+    }
+  } catch (error) {
+    return { ok: false, reason: `atr check error: ${error.message}` };
+  }
+  // HTF-подтверждение по закрытым свечам; отсутствие данных блокирует новый вход.
+  try {
+    const { CONFIRM_INTERVAL } = require('./tradelab_incubate_once');
+    const ci = CONFIRM_INTERVAL[(candidate && candidate.interval) || ''];
+    if (ci && candidate && ci !== candidate.interval) {
+      const htfCandles = await fetchCandles(candidate.symbol, ci, 200);
+      const htf = confirmHigherTimeframe(htfCandles, side, params || {});
+      if (htf !== true) return { ok: false, reason: htf === null ? 'htf data insufficient' : 'htf confirmation failed' };
+    }
+  } catch (error) {
+    return { ok: false, reason: `htf check error: ${error.message}` };
+  }
+  return { ok: true };
+}
+
+// ============================================================
 // Получение сигнала для кандидата
 // ============================================================
 
@@ -285,6 +423,23 @@ function parseParamsDescription(description) {
       params.deviationPct = Number(match[2]);
       params.strategy = 'mean-reversion';
     }
+  } else if (description.startsWith('BB')) {
+    const match = description.match(/BB (\d+)\/([\d.]+)σ, RSI O(\d+)/);
+    if (match) {
+      params.bbPeriod = Number(match[1]);
+      params.bbStd = Number(match[2]);
+      params.rsiOversold = Number(match[3]);
+      params.rsiOverbought = 100 - Number(match[3]);
+      params.strategy = 'bb-reversion';
+    }
+  } else if (description.startsWith('EMA')) {
+    const match = description.match(/EMA (\d+)\/(\d+), RSI (\d+)/);
+    if (match) {
+      params.emaFast = Number(match[1]);
+      params.emaSlow = Number(match[2]);
+      params.rsiBuy = Number(match[3]);
+      params.strategy = 'ema-momentum';
+    }
   }
 
   const slMatch = description.match(/SL ([\d.]+)%/);
@@ -309,7 +464,8 @@ function candidateBaseParams(candidate) {
 async function getLiveSignal(candidate) {
   const candles = await fetchCandles(candidate.symbol, candidate.interval, candidate.limit || 1000);
   const baseParams = candidateBaseParams(candidate);
-  const effectiveParams = applyDynamicParams(candles, baseParams);
+  const effectiveParams = liveParamsForCandles(candles, baseParams, CONFIG);
+
   const closedBar = candles[candles.length - 2] || candles[candles.length - 1];
   const signal = getSignal(candles, candles.length - 1, effectiveParams);
 
@@ -327,7 +483,7 @@ async function getLiveSignal(candidate) {
 // Исполнение сделки на OKX
 // ============================================================
 
-async function placeOkxOrder(symbol, side, size, price = null) {
+async function placeOkxOrder(symbol, side, size, price = null, stopPrice = null, expectedContractSize = null) {
   // Paper-режим: фиктивный ордер, без API-ключей
   if (PAPER_MODE) {
     console.log(`[PAPER] Order (virtual): ${side} ${size} ${symbol} @ ${price || 'market'}`);
@@ -348,7 +504,7 @@ async function placeOkxOrder(symbol, side, size, price = null) {
   // Параметры ордера
   const orderParams = {
     instId: okxSymbol,
-    tdMode: CONFIG.tradingMode === 'futures' ? 'cross' : 'cash',
+    tdMode: CONFIG.tradingMode === 'futures' ? 'isolated' : 'cash',
     side: orderSide,
     ordType: orderType,
     sz: String(size)
@@ -358,12 +514,46 @@ async function placeOkxOrder(symbol, side, size, price = null) {
     orderParams.px = String(price);
   }
 
-  console.log(`[OKX] Placing order: ${JSON.stringify(orderParams)}`);
-  
+  // ccxt OKX: symbol "INJ/USDT:USDT", side buy/sell, posSide long/short for hedge
+  const ccxtSymbol = symbol.replace('USDT', '/USDT:USDT');
+  const ccxtSide = side === 'LONG' ? 'buy' : 'sell';
+  const posSide = side === 'LONG' ? 'long' : 'short';
+  await client.loadMarkets();
+  const market = client.market(ccxtSymbol);
+  if (!market?.swap || !Number.isFinite(Number(market.contractSize)) ||
+      Number(market.contractSize) !== expectedContractSize) {
+    throw new Error(`Contract size changed for ${ccxtSymbol}: ${market?.contractSize}`);
+  }
+  if (!(Number.isFinite(stopPrice) && stopPrice > 0)) {
+    throw new Error(`Invalid protective stop for ${ccxtSymbol}: ${stopPrice}`);
+  }
+  const slTriggerPx = client.priceToPrecision(ccxtSymbol, stopPrice);
+  if (!(Number(slTriggerPx) > 0)) {
+    throw new Error(`Protective stop rounds to zero for ${ccxtSymbol}`);
+  }
+  console.log(`[OKX] Placing order: ${ccxtSymbol} ${ccxtSide} ${size} market tdMode isolated posSide ${posSide}`);
   try {
-    const result = await client.placeOrder(orderParams);
+    const result = await client.createOrder(ccxtSymbol, 'market', ccxtSide, size, undefined, {
+      tdMode: 'isolated',
+      posSide,
+      attachAlgoOrds: [{ slTriggerPx, slOrdPx: '-1', slTriggerPxType: 'mark' }]
+    });
     console.log(`[OKX] Order result: ${JSON.stringify(result)}`);
-    return result;
+    const orderId = result.id || result.info?.ordId || null;
+    let fill = confirmedFill(result);
+    if (orderId && (!fill || fill.filled < size - 1e-8)) {
+      for (let attempt = 1; attempt <= 3; attempt += 1) {
+        await new Promise((resolve) => setTimeout(resolve, attempt * 350));
+        try {
+          const detail = await client.fetchOrder(orderId, ccxtSymbol);
+          fill = confirmedFill(detail) || fill;
+          if (fill && fill.filled >= size - 1e-8) break;
+        } catch (error) {
+          console.warn(`[OKX] Fill lookup ${attempt}/3 for ${orderId}: ${error.message}`);
+        }
+      }
+    }
+    return { data: [{ ordId: orderId || 'unknown', fill }] };
   } catch (error) {
     console.error(`[OKX] Order failed: ${error.message}`);
     throw error;
@@ -374,19 +564,38 @@ async function placeOkxOrder(symbol, side, size, price = null) {
 // Расчёт размера позиции
 // ============================================================
 
-function calculatePositionSize(price, balance, params) {
+// Минимальные лоты OKX (USDT-margin futures) для дорогих монет — защита от
+// «amount must be greater than minimum amount precision» при малом балансе.
+const OKX_MIN_QTY = {
+  'BCHUSDT': 0.1,
+  'BTCUSDT': 0.001,
+  'ETHUSDT': 0.01,
+  'LTCUSDT': 0.01,
+  'XRPUSDT': 10,
+  'TRXUSDT': 100,
+  'DOGEUSDT': 100
+};
+
+function calculatePositionSize(price, balance, params, symbol, conviction = 1) {
+  // conviction 1.0-2.5: сильным кандидатам — больше размер.
+  // Жёсткие капы ниже (15% баланса, $100) не трогаем — безопасность сохранена.
   const riskUsd = Math.min(
-    balance * (params.riskPct / 100),
+    balance * (params.riskPct / 100) * conviction,
     CONFIG.maxPositionSizeUsd
   );
-  
-  // Для фьючерсов: количество контрактов
-  const size = riskUsd / price;
-  
-  // Округляем до разумного минимума
-  const roundedSize = Math.max(0.001, Math.round(size * 1000) / 1000);
-  
-  return roundedSize;
+  // Малый баланс (45$): 15% на сделку максимум — иначе не влезает в мин.лот
+  const maxRiskUsd = Math.min(balance * 0.15, CONFIG.maxPositionSizeUsd);
+  let size = Math.min(riskUsd, maxRiskUsd) / price;
+  // OKX минимум для большинства альтов — 1 контракт, для BTC 0.001
+  let minSize = price > 100 ? 0.001 : 1;
+  // Точный минимум, если монета дорогая/дорогой шаг лота
+  if (symbol && OKX_MIN_QTY[symbol]) minSize = OKX_MIN_QTY[symbol];
+  size = Math.max(minSize, Math.round(size * 1000) / 1000);
+  // Если мин.лот уже больше риск-бюджета — оставляем мин.лот (проверка ниже отклонит)
+  if (size * price > maxRiskUsd && size * price > CONFIG.minTradeUsd) {
+    size = Math.max(minSize, Math.floor((maxRiskUsd / price) * 1000) / 1000);
+  }
+  return Math.max(minSize, size);
 }
 
 // ============================================================
@@ -403,6 +612,24 @@ async function executeTrade(candidateKey) {
   if (!gateCheck.allowed) {
     console.log(`[LiveExecutor] ❌ Gate blocked: ${gateCheck.reason}`);
     return { success: false, reason: gateCheck.reason };
+  }
+
+  // 1b. Ручное подтверждение — инвариант исполнителя, а не только цикла:
+  // без approved в approvals.json реальный вход запрещён из любого места (цикл, CLI).
+  // В paper-режиме не применяется (там всё виртуально).
+  if (!PAPER_MODE) {
+    try {
+      const { getApprovedCandidates } = require('./tradelab_manual_bridge');
+      const approved = await getApprovedCandidates();
+      const hasApproval = approved.some((a) => a && a.key === candidateKey);
+      if (!hasApproval) {
+        console.log(`[LiveExecutor] ❌ No manual approval for ${candidateKey} — real entry blocked`);
+        return { success: false, reason: 'No manual approval (нажмите Подтвердить в Telegram)' };
+      }
+    } catch (error) {
+      console.log(`[LiveExecutor] ❌ Approval check failed: ${error.message}`);
+      return { success: false, reason: `Approval check failed: ${error.message}` };
+    }
   }
 
   // 2. Загружаем состояние кандидата
@@ -422,16 +649,28 @@ async function executeTrade(candidateKey) {
     return { success: false, reason: `Signal error: ${error.message}` };
   }
 
-  const { signal, price, params, barTime } = liveData;
+  let { signal, price, params, barTime } = liveData;
+  const okxSignalPrice = price;
   
   if (signal.action === 'WAIT') {
     console.log(`[LiveExecutor] ⏸️ No signal (WAIT). Price: ${price}`);
     return { success: false, reason: 'No signal (WAIT)' };
   }
 
+  if (!(Number.isFinite(price) && price > 0)) return { success: false, reason: 'OKX reference close invalid' };
+
   // 4. Определяем сторону сделки
   const side = signal.action === 'BUY' ? 'LONG' : 'SHORT';
   console.log(`[LiveExecutor] 📊 Signal: ${signal.action} -> ${side} at ${price}`);
+
+  // 4b. Те же фильтры входа, что в бумаге: время, фаза, ATR, HTF.
+  // Раньше живой вход их пропускал — реал открывался по более слабым
+  // критериям, чем статистика, которая кандидата допустила.
+  const gate4b = await checkLiveEntryGates(candidate, liveData, side);
+  if (!gate4b.ok) {
+    console.log(`[LiveExecutor] ⏸️ Entry gates: ${gate4b.reason}`);
+    return { success: false, reason: `Entry gates: ${gate4b.reason}` };
+  }
 
   if (CONFIG.tradingMode === 'spot' && side === 'SHORT') {
     console.log(`[LiveExecutor] ❌ SHORT is not allowed in spot mode`);
@@ -451,46 +690,139 @@ async function executeTrade(candidateKey) {
     return { success: false, reason: `Already acted on candle ${barTime}` };
   }
 
-  // 6. Расчёт размера позиции по реальному балансу счёта
-  const account = await getAccountBalance();
-  const balance = account ? account.free : CONFIG.maxPositionSizeUsd * 10;
-  if (!account) {
-    console.log(`[LiveExecutor] ⚠️ Balance unavailable, using fallback size cap`);
+  // 5b. Корреляция: не копим однонаправленность — уже есть maxSameSideOpen позиций
+  // в ту же сторону (альты коррелируют, шок бьёт по всем сразу).
+  const openSameSide = existingTrades.filter((t) => t.status === 'open' && t.side === side).length;
+  if (openSameSide >= CONFIG.maxSameSideOpen) {
+    console.log(`[LiveExecutor] ⏸️ Direction cap: ${openSameSide} ${side} already open (max ${CONFIG.maxSameSideOpen})`);
+    return { success: false, reason: `Direction cap: too many ${side} positions` };
   }
-  const size = calculatePositionSize(price, balance, params);
+
+  // 6. Расчёт размера позиции по реальному балансу счёта.
+  // Баланс недоступен — НЕ торгуем: сайзинг от воображаемых денег запрещён.
+  const account = await getAccountBalance();
+  if (!account) {
+    console.log(`[LiveExecutor] ❌ Balance unavailable — trade blocked (no blind sizing)`);
+    return { success: false, reason: 'Balance unavailable — trading halted' };
+  }
+  const balance = account.free;
+  if (!(Number.isFinite(balance) && balance > 0)) {
+    console.log(`[LiveExecutor] ❌ Balance unusable (free=${balance}) — trade blocked`);
+    return { success: false, reason: 'Balance unusable (no free funds)' };
+  }
+  // Цена обязана быть конечным положительным числом — иначе size улетит в Infinity.
+  if (!(Number.isFinite(price) && price > 0)) {
+    console.log(`[LiveExecutor] ❌ Bad price (${price}) — trade blocked`);
+    return { success: false, reason: `Bad price: ${price}` };
+  }
+  // Уверенность по forward-доказательствам: PF выше 1.8 и больше сделок — больше размер.
+  // Новичок (PF 1.8, мало сделок): 1.0. Монстр (PF 10, 30+ сделок): 2.5.
+  const fwdPF = Number(candidate.forwardProfitFactor) || 0;
+  const fwdTr = Number(candidate.forwardPaperTrades) || 0;
+  const conviction = Math.min(1 + Math.max(0, fwdPF - 1.8) * 0.5 + Math.min(fwdTr / 30, 1) * 0.5, 2.5);
+  console.log(`[LiveExecutor] Conviction x${conviction.toFixed(2)} (fwdPF ${fwdPF.toFixed(2)}, fwdTr ${fwdTr})`);
+  let position;
+  if (PAPER_MODE) {
+    const paperSize = calculatePositionSize(price, balance, params, candidate.symbol, conviction);
+    position = { ok: true, contracts: paperSize, contractSize: 1, notionalUsd: paperSize * price };
+  } else {
+    try {
+      const client = getOkxClient();
+      await client.loadMarkets();
+      const ccxtSymbol = candidate.symbol.replace('USDT', '/USDT:USDT');
+      const market = client.market(ccxtSymbol);
+      position = sizeSwapPosition({
+        market, price, balance, riskPct: Number(params.riskPct), conviction,
+        maxPositionSizeUsd: CONFIG.maxPositionSizeUsd, minTradeUsd: CONFIG.minTradeUsd,
+        targetNotionalPct: CONFIG.liveTargetNotionalPct,
+        maxStopRiskPct: CONFIG.liveMaxStopRiskPct,
+        stopPct: Number(params.stopPct), feePct: Number(params.feePct),
+        slippagePct: Number(params.slippagePct),
+        amountToPrecision: (amount) => client.amountToPrecision(ccxtSymbol, amount)
+      });
+    } catch (error) {
+      return { success: false, reason: `Market sizing unavailable: ${error.message}` };
+    }
+  }
+  if (!position.ok) return { success: false, reason: `Market sizing blocked: ${position.reason}` };
+  const size = position.contracts;
+  const valueUsd = position.notionalUsd;
   
-  if (size * price < CONFIG.minTradeUsd) {
-    console.log(`[LiveExecutor] ❌ Trade too small: ${(size * price).toFixed(2)}$ < ${CONFIG.minTradeUsd}$`);
+  if (valueUsd < CONFIG.minTradeUsd) {
+    console.log(`[LiveExecutor] ❌ Trade too small: ${valueUsd.toFixed(2)}$ < ${CONFIG.minTradeUsd}$`);
     return { success: false, reason: 'Trade too small' };
   }
 
-  // 7. Исполняем ордер на OKX
+  // Если итоговая стоимость больше риск-бюджета — не суёмся.
+  // Универсально (не только для таблицы OKX_MIN_QTY): минлот вне таблицы тоже ловится.
+  const maxRiskUsd = Math.min(balance * 0.15, CONFIG.maxPositionSizeUsd);
+  if (valueUsd > maxRiskUsd && valueUsd > CONFIG.minTradeUsd) {
+    console.log(`[LiveExecutor] ❌ Size ${valueUsd.toFixed(2)}$ over risk budget ${maxRiskUsd.toFixed(2)}$ — blocked`);
+    return { success: false, reason: `Size over risk budget (${valueUsd.toFixed(2)}$ > ${maxRiskUsd.toFixed(2)}$)` };
+  }
+
+  // Если мин.лот монеты (OKX) требует больше риск-бюджета — не суёмся (защита от «min amount precision»)
+  const minQty = PAPER_MODE ? OKX_MIN_QTY[candidate.symbol] : null;
+  if (minQty && Math.abs(size - minQty) < 1e-9 && minQty * price > balance * 0.15) {
+    console.log(`[LiveExecutor] ❌ Min lot ${minQty} ${candidate.symbol} (≈$${(minQty * price).toFixed(1)}) не вмещается в риск-бюджет (≥15% баланса)`);
+    return { success: false, reason: `Min lot ${minQty} too big for balance` };
+  }
+
+  // 7. Последняя проверка перед ордером (гонка двух циклов/CLI+цикл):
+  // перечитываем файл — нет ли уже открытой позиции по ключу или символу.
+  const freshTrades = loadTrades();
+  if (freshTrades.some((t) => t.key === candidateKey && t.status === 'open')) {
+    console.log(`[LiveExecutor] ⏸️ Position already open for ${candidateKey} (recheck)`);
+    return { success: false, reason: 'Position already open (recheck)' };
+  }
+  if (freshTrades.some((t) => t.symbol === candidate.symbol && t.status === 'open')) {
+    console.log(`[LiveExecutor] ⏸️ Symbol ${candidate.symbol} already has open position (recheck)`);
+    return { success: false, reason: `Symbol ${candidate.symbol} already open` };
+  }
+
+  // 7b. Исполняем ордер на OKX
+  const levels = positionLevels(side, price, params);
   let orderResult;
   try {
-    orderResult = await placeOkxOrder(candidate.symbol, side, size);
+    orderResult = await placeOkxOrder(candidate.symbol, side, size, null, levels.stop, position.contractSize);
   } catch (error) {
     console.log(`[LiveExecutor] ❌ Order failed: ${error.message}`);
     return { success: false, reason: `Order failed: ${error.message}` };
   }
 
-  // 8. Логируем сделку с уровнями стоп/тейк для автозакрытия
-  const levels = positionLevels(side, price, params);
+  // 8. Биржевой стоп был прикреплён до исполнения по сигнальной цене.
+  // Локальный учёт входа и тейк считаем по фактическому fill, если он подтверждён.
+  const accounting = entryAccounting({
+    side, signalPrice: price, requestedSize: size, contractSize: position.contractSize,
+    stopPrice: levels.stop, takePct: params.takePct,
+    fill: PAPER_MODE ? { average: price, filled: size, status: 'closed' } : orderResult?.data?.[0]?.fill
+  });
+  if (!accounting.entryConfirmed) {
+    console.error(`[LiveExecutor] ⛔ Entry fill unconfirmed for ${candidateKey}; future entries blocked until reconciled`);
+  }
   const trade = {
     key: candidateKey,
     symbol: candidate.symbol,
     interval: candidate.interval,
     strategy: candidate.strategy,
     side,
-    entryPrice: price,
+    entryPrice: accounting.entryPrice,
+    signalPrice: accounting.signalPrice,
+    okxSignalPrice,
+    entryConfirmed: accounting.entryConfirmed,
+    fillStatus: accounting.fillStatus,
     entryBar: barTime,
     stopPrice: Number(levels.stop.toFixed(6)),
-    takePrice: Number(levels.take.toFixed(6)),
-    size,
-    valueUsd: price * size,
+    takePrice: Number(accounting.takePrice.toFixed(6)),
+    size: accounting.size,
+    contractSize: position.contractSize,
+    valueUsd: accounting.valueUsd,
     params: { ...params },
     candlesLimit: candidate.limit || 100,
     signal: signal.action,
     orderId: orderResult?.data?.[0]?.ordId || 'unknown',
+    trailingActivated: false,
+    trailStop: null,
     pnl: 0, // Будет обновлено при закрытии
     status: 'open',
     openedAt: new Date().toISOString()
@@ -502,9 +834,9 @@ async function executeTrade(candidateKey) {
   console.log(`\n[LiveExecutor] ✅ Trade executed successfully!`);
   console.log(`   Symbol: ${candidate.symbol}`);
   console.log(`   Side: ${side}`);
-  console.log(`   Size: ${size}`);
-  console.log(`   Entry: ${price}`);
-  console.log(`   Value: ${(price * size).toFixed(2)}$`);
+  console.log(`   Size: ${trade.size}`);
+  console.log(`   Entry: ${trade.entryPrice} (${trade.entryConfirmed ? 'OKX fill' : 'unconfirmed signal price'})`);
+  console.log(`   Value: ${trade.valueUsd.toFixed(2)}$`);
   console.log(`   Order ID: ${trade.orderId}\n`);
 
   return {
@@ -526,24 +858,27 @@ async function closePosition(symbol, side, size) {
   }
 
   const client = getOkxClient();
-  const okxSymbol = symbol.replace('USDT', '-USDT');
-  const closeSide = side === 'LONG' ? 'sell' : 'buy';
-  
-  const orderParams = {
-    instId: okxSymbol,
-    tdMode: CONFIG.tradingMode === 'futures' ? 'cross' : 'cash',
-    side: closeSide,
-    ordType: 'market',
-    sz: String(size),
-    reduceOnly: true
-  };
-
-  console.log(`[OKX] Closing position: ${JSON.stringify(orderParams)}`);
-  
+  const ccxtSymbol = symbol.replace('USDT', '/USDT:USDT');
+  const ccxtSide = side === 'LONG' ? 'sell' : 'buy';
+  const posSide = side === 'LONG' ? 'long' : 'short';
+  console.log(`[OKX] Closing position: ${ccxtSymbol} ${ccxtSide} ${size} market posSide ${posSide}`);
   try {
-    const result = await client.placeOrder(orderParams);
+    const result = await client.createOrder(ccxtSymbol, 'market', ccxtSide, size, undefined, { tdMode: 'isolated', posSide, reduceOnly: true });
     console.log(`[OKX] Close result: ${JSON.stringify(result)}`);
-    return result;
+    const orderId = result.id || result.info?.ordId || null;
+    let fill = confirmedFill(result);
+    if (orderId && (!fill || fill.filled < size - 1e-8)) {
+      for (let attempt = 1; attempt <= 3; attempt += 1) {
+        await new Promise((resolve) => setTimeout(resolve, attempt * 350));
+        try {
+          fill = confirmedFill(await client.fetchOrder(orderId, ccxtSymbol)) || fill;
+          if (fill && fill.filled >= size - 1e-8) break;
+        } catch (error) {
+          console.warn(`[OKX] Close fill lookup ${attempt}/3 for ${orderId}: ${error.message}`);
+        }
+      }
+    }
+    return { data: [{ ordId: orderId || 'unknown', fill }] };
   } catch (error) {
     console.error(`[OKX] Close failed: ${error.message}`);
     throw error;
@@ -598,8 +933,9 @@ function computeTradePnl(trade, exitPrice) {
   const entry = trade.entryPrice;
   const qty = trade.size;
   const feePct = (trade.params && trade.params.feePct) || 0.06;
-  const gross = trade.side === 'LONG' ? (exitPrice - entry) * qty : (entry - exitPrice) * qty;
-  const fees = (entry * qty + exitPrice * qty) * (feePct / 100);
+  const contractSize = Number(trade.contractSize) || 1;
+  const gross = (trade.side === 'LONG' ? (exitPrice - entry) : (entry - exitPrice)) * qty * contractSize;
+  const fees = (entry * qty + exitPrice * qty) * contractSize * (feePct / 100);
   return gross - fees;
 }
 
@@ -623,12 +959,22 @@ async function fetchMarketPrice(symbol) {
 
   const client = getOkxClient();
   try {
-    const ticker = await client.fetchTicker(symbol.replace('USDT', '/USDT'));
+    const ticker = await client.fetchTicker(symbol.replace('USDT', '/USDT:USDT'));
     if (ticker && ticker.last) return Number(ticker.last);
   } catch (error) {
     console.error(`[OKX] Ticker fetch failed for ${symbol}: ${error.message}`);
   }
   return null;
+}
+
+async function exchangeCloseMatch(trade, exitOrderId = null) {
+  const client = getOkxClient();
+  const instId = trade.symbol.replace('USDT', '-USDT-SWAP');
+  const response = await client.privateGetTradeFillsHistory({ instType: 'SWAP', instId, limit: '100' });
+  if (response.code !== '0' || !Array.isArray(response.data)) {
+    throw new Error(`OKX fills unavailable: ${response.code || 'invalid response'}`);
+  }
+  return matchClosedFills(trade, response.data, exitOrderId);
 }
 
 // ============================================================
@@ -640,24 +986,134 @@ async function monitorOpenPositions() {
   const open = trades.filter((t) => t.status === 'open');
   const results = [];
   const closedNow = [];
+  let exchangeOpenKeys = null;
+  if (!PAPER_MODE && open.length) {
+    const positions = await getOkxClient().fetchPositions();
+    exchangeOpenKeys = new Set(positions
+      .filter((position) => Math.abs(Number(position.contracts) || 0) > 0)
+      .map((position) => `${position.symbol}:${String(position.side).toLowerCase()}`));
+  }
 
   for (const trade of open) {
     try {
+      const exchangeKey = `${trade.symbol.replace('USDT', '/USDT:USDT')}:${trade.side.toLowerCase()}`;
+      const exchangeMissing = exchangeOpenKeys !== null && !exchangeOpenKeys.has(exchangeKey);
+      if (!PAPER_MODE && trade.entryConfirmed === false) {
+        try {
+          const client = getOkxClient();
+          const ccxtSymbol = trade.symbol.replace('USDT', '/USDT:USDT');
+          const order = await client.fetchOrder(trade.orderId, ccxtSymbol);
+          const fill = confirmedFill(order);
+          if (fill) {
+            const accounting = entryAccounting({
+              side: trade.side, signalPrice: trade.signalPrice || trade.entryPrice,
+              requestedSize: trade.size, contractSize: trade.contractSize,
+              stopPrice: trade.stopPrice, takePct: trade.params.takePct, fill
+            });
+            trade.entryPrice = accounting.entryPrice;
+            trade.size = accounting.size;
+            trade.valueUsd = accounting.valueUsd;
+            trade.takePrice = Number(accounting.takePrice.toFixed(6));
+            trade.entryConfirmed = true;
+            trade.fillStatus = accounting.fillStatus;
+            saveTrades(trades);
+          }
+        } catch (error) {
+          console.warn(`[LiveExecutor] Entry fill recovery for ${trade.key}: ${error.message}`);
+        }
+        if (trade.entryConfirmed === false && !exchangeMissing) {
+          results.push({ key: trade.key, symbol: trade.symbol, action: 'entry-unconfirmed' });
+          continue;
+        }
+      }
       const candles = await fetchCandles(trade.symbol, trade.interval, trade.candlesLimit || 100);
       const effectiveParams = applyDynamicParams(candles, { ...(trade.params || {}) });
       const signal = getSignal(candles, candles.length - 1, effectiveParams);
       const lastClosed = candles[candles.length - 2] || candles[candles.length - 1];
       const marketPrice = await fetchMarketPrice(trade.symbol) || lastClosed.close;
-      const exit = exitReasonForLive(trade, signal.action, marketPrice);
+
+      // Трейлинг-стоп: подтягиваем стоп за прибылью — фиксирует больше выигрышей
+      let exit = exchangeMissing ? { reason: 'external', price: marketPrice } : null;
+      if (!exit && marketPrice && trade.stopPrice > 0 && trade.entryPrice > 0) {
+        const effParams = { ...(trade.params || {}) };
+        const trailPct = Number(effParams.trailPct) || 0.8;
+        const activatePct = Number(effParams.trailActivatePct) || 1.5;
+        const entry = trade.entryPrice;
+        const pnlPct = trade.side === 'LONG'
+          ? ((marketPrice - entry) / entry) * 100
+          : ((entry - marketPrice) / entry) * 100;
+        if (pnlPct >= activatePct) {
+          trade.trailingActivated = true;
+          const newTrail = trade.side === 'LONG'
+            ? marketPrice - entry * (trailPct / 100)
+            : marketPrice + entry * (trailPct / 100);
+          const better = trade.side === 'LONG'
+            ? !trade.trailStop || newTrail > trade.trailStop
+            : !trade.trailStop || newTrail < trade.trailStop;
+          if (better) {
+            trade.trailStop = Number(newTrail.toFixed(6));
+            saveTrades(trades);
+          }
+        }
+        if (trade.trailingActivated && trade.trailStop) {
+          const hitTrail = trade.side === 'LONG'
+            ? marketPrice <= trade.trailStop
+            : marketPrice >= trade.trailStop;
+          if (hitTrail) exit = { reason: 'trail', price: marketPrice };
+        }
+      }
+      if (!exit) exit = exitReasonForLive(trade, signal.action, marketPrice);
+
+      // Короткие сделки: автозакрытие «зависших» позиций по времени удержания.
+      // Прибыльные позиции таймаутом НЕ трогаем — их выводит трейлинг-стоп,
+      // чтобы не срезать выигрышные ходы (как было с INJ на +7%).
+      if (!exit && CONFIG.maxHoldHours > 0 && trade.openedAt) {
+        const heldHours = (Date.now() - new Date(trade.openedAt).getTime()) / 3600000;
+        const inProfit = marketPrice && trade.entryPrice > 0
+          ? ((trade.side === 'LONG'
+              ? (marketPrice - trade.entryPrice) / trade.entryPrice
+              : (trade.entryPrice - marketPrice) / trade.entryPrice) * 100) >= 0.5
+          : false;
+        if (heldHours >= CONFIG.maxHoldHours && !inProfit) {
+          exit = { reason: 'timeout', price: marketPrice || lastClosed.close };
+        }
+      }
 
       if (exit) {
-        await closePosition(trade.symbol, trade.side, trade.size);
-        const pnl = computeTradePnl(trade, exit.price);
+        let closeOrderId = null;
+        let closeFill = null;
+        if (exit.reason !== 'external') {
+          try {
+            const closeResult = await closePosition(trade.symbol, trade.side, trade.size);
+            closeOrderId = closeResult.data?.[0]?.ordId || null;
+            closeFill = closeResult.data?.[0]?.fill || null;
+          } catch (error) {
+            const msg = String(error && error.message ? error.message : error);
+            if (!/51169|don't have any positions|reduce or close/i.test(msg)) throw error;
+            console.log(`[LiveExecutor] No position on exchange for ${trade.key} — checking external fills`);
+            exit.reason = 'external';
+          }
+        }
+        let matched = null;
+        if (!PAPER_MODE) {
+          try { matched = await exchangeCloseMatch(trade, closeOrderId); }
+          catch (error) { console.warn(`[LiveExecutor] Fill reconciliation for ${trade.key}: ${error.message}`); }
+        }
+        if (exit.reason === 'external' && !matched) {
+          results.push({ key: trade.key, symbol: trade.symbol, action: 'error', error: 'Exchange position absent; close fills ambiguous or unavailable' });
+          continue;
+        }
+        const actualExitPrice = matched?.exitPrice || closeFill?.average || exit.price;
+        const pnl = matched?.pnl ?? computeTradePnl(trade, actualExitPrice);
         trade.status = 'closed';
-        trade.exitPrice = Number(exit.price.toFixed(6));
+        trade.exitPrice = Number(actualExitPrice.toFixed(6));
+        trade.exitConfirmed = !!matched || !!closeFill;
+        trade.pnlEstimated = !matched; // funding still requires separate account-bill reconciliation
         trade.exitReason = exit.reason;
-        trade.pnl = Number(pnl.toFixed(2));
-        trade.closedAt = new Date().toISOString();
+        if (matched?.exitOrderId || closeOrderId) trade.exitOrderId = matched?.exitOrderId || closeOrderId;
+        trade.pnl = Number(pnl.toFixed(matched ? 8 : 2));
+        trade.closedAt = matched?.closeFillAt ? new Date(matched.closeFillAt).toISOString() : new Date().toISOString();
+        saveTrades(trades);
 
         const today = new Date().toISOString().slice(0, 10);
         const daily = loadDailyPnl();
@@ -669,6 +1125,18 @@ async function monitorOpenPositions() {
         daily.pnl += trade.pnl;
         saveDailyPnl(daily);
         paperReleaseFunds(trade);
+
+        // Перевооружение approve: плюс — остаётся одобренным под новые сигналы,
+        // минус — сгорает, новая кнопка только после кулдауна. Только реал.
+        if (!PAPER_MODE) {
+          try {
+            const { settleApprovalAfterClose } = require('./tradelab_manual_bridge');
+            const settle = await settleApprovalAfterClose(trade.key, trade.pnl);
+            console.log(`[LiveExecutor] Approval settle for ${trade.key}: ${settle.action} (pnl ${trade.pnl})`);
+          } catch (error) {
+            console.log(`[LiveExecutor] ⚠️ Approval settle failed: ${error.message}`);
+          }
+        }
 
         closedNow.push(trade);
         results.push({
@@ -729,6 +1197,14 @@ async function main() {
   }
 
   const result = await executeTrade(candidateKey);
+  if (result.success) {
+    try {
+      const { markExecuted } = require('./tradelab_manual_bridge');
+      await markExecuted(candidateKey);
+    } catch (error) {
+      console.log(`⚠️ markExecuted failed: ${error.message}`);
+    }
+  }
   console.log(JSON.stringify(result, null, 2));
 }
 
@@ -747,5 +1223,7 @@ module.exports = {
   monitorOpenPositions,
   loadTrades,
   loadDailyPnl,
-  paperAccountStatus
+  paperAccountStatus,
+  verifyExchangePositions
 };
+

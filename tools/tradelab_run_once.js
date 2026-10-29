@@ -25,16 +25,18 @@ const DEFAULT_PARAMS = {
   // Dynamic mode
   dynamicRisk: true,
   marketPhase: null,
-  // Trailing stop
+  // Trailing stop: позже активация и шире шаг — не душить прибыльные позиции в зародыше
+  // (старые 1.5%/0.8% фиксировали центы: 9 трейлов дали +0.32$ на реале).
   trailingActivated: true,
-  trailPct: 0.8,
-  trailActivatePct: 1.5,
+  trailPct: 1.0,
+  trailActivatePct: 2.0,
   // ATR filter
   minAtrPct: 0.3,
   maxAtrPct: 5.0,
   // Volume filter: require volume > 1.5x average
   volumeFilter: true,
   volumeMultiplier: 1.5,
+  shortEntryVolumeFilter: true,
   // ADX filter: require ADX > 20
   adxFilter: true,
   adxThreshold: 20,
@@ -50,6 +52,14 @@ const DEFAULT_PARAMS = {
   mondayQtyScale: 0.5,
   // Higher-timeframe confirmation SMA period
   confirmSlow: 20,
+  // Bollinger mean-reversion (BB + RSI)
+  bbPeriod: 20,
+  bbStd: 2.0,
+  rsiOversold: 28,
+  rsiOverbought: 72,
+  // EMA momentum (EMA cross + RSI + volume)
+  emaFast: 9,
+  emaSlow: 21,
 };
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -84,6 +94,25 @@ function rsi(values, period = 14, index = values.length - 1) {
   return 100 - (100 / (1 + rs));
 }
 
+function ema(values, period, index) {
+  if (index < period - 1) return null;
+  const k = 2 / (period + 1);
+  let e = values[index - (period - 1)];
+  for (let i = index - period + 2; i <= index; i += 1) e = values[i] * k + e * (1 - k);
+  return e;
+}
+
+function bollinger(closes, period, stdDev, index) {
+  if (index < period - 1) return null;
+  let sum = 0;
+  for (let i = index - period + 1; i <= index; i += 1) sum += closes[i];
+  const mid = sum / period;
+  let variance = 0;
+  for (let i = index - period + 1; i <= index; i += 1) variance += (closes[i] - mid) ** 2;
+  const std = Math.sqrt(variance / period);
+  return { mid, lower: mid - std * stdDev, upper: mid + std * stdDev };
+}
+
 function highest(values, period, index) {
   if (index < period) return null;
   let max = -Infinity;
@@ -99,13 +128,21 @@ function lowest(values, period, index) {
 }
 
 /**
- * Apply dynamic risk parameters based on ATR and market phase.
- * This modifies params in-place and returns the updated params.
+ * Окно для определения фазы: только недавние свечи, а не всё окно.
+ * Фаза обязана отражать ТЕКУЩИЙ режим (флэтовая нога внутри тренда — это флэт),
+ * иначе стратегии с фазовым фильтром мертвы на смешанных окнах.
  */
+const PHASE_LOOKBACK = 100;
+
+function recentCandles(candles) {
+  if (!Array.isArray(candles) || candles.length === 0) return candles;
+  return candles.length > PHASE_LOOKBACK ? candles.slice(-PHASE_LOOKBACK) : candles;
+}
+
 function applyDynamicParams(candles, params) {
   if (!params.dynamicRisk) return params;
   
-  const phase = detectPhase(candles);
+  const phase = detectPhase(recentCandles(candles));
   params.marketPhase = phase.phase;
   
   // Dynamic stop/take based on ATR
@@ -127,16 +164,16 @@ function applyDynamicParams(candles, params) {
 function isStrategySuitable(candles, params) {
   if (!params.dynamicRisk) return true;
   
-  const phase = detectPhase(candles);
+  const phase = detectPhase(recentCandles(candles));
   const strategy = params.strategy;
   
   // Mean reversion only in ranging markets
-  if (strategy === 'mean-reversion') {
+  if (strategy === 'mean-reversion' || strategy === 'bb-reversion') {
     return phase.phase.startsWith('ranging') || phase.phase === 'volatile-ranging';
   }
   
-  // Breakout only in trending markets
-  if (strategy === 'breakout') {
+  // Breakout/EMA momentum only in trending markets
+  if (strategy === 'breakout' || strategy === 'ema-momentum') {
     return phase.phase.startsWith('trending');
   }
   
@@ -173,7 +210,7 @@ function getSignal(candles, cursor, params) {
     avgVolume += volumes[v];
   }
   avgVolume /= volumeCount;
-  var volumeOk = avgVolume > 0 ? volumes[i] > avgVolume * 1.5 : true;
+  var volumeOk = avgVolume > 0 ? volumes[i] > avgVolume * (params.volumeMultiplier || 1.5) : true;
 
   // 2. ADX filter: require ADX > 20 for trend confirmation
   var adxValue = 0;
@@ -195,7 +232,7 @@ function getSignal(candles, cursor, params) {
       adxValue = dx;
     }
   }
-  var adxOk = adxValue > 20;
+  var adxOk = adxValue > (params.adxThreshold || 20);
 
   // 3. RSI filter: don't enter overbought/oversold
   var rsiOk = currentRsi > 25 && currentRsi < 75;
@@ -214,6 +251,24 @@ function getSignal(candles, cursor, params) {
     const deviation = basis ? ((price - basis) / basis) * 100 : 0;
     if (basis && deviation <= -params.deviationPct && currentRsi <= params.rsiBuy && volumeOk && rsiOk) action = 'BUY';
     else if ((basis && price >= basis) || (prevBasis && price < prevBasis * (1 - params.deviationPct / 100) && currentRsi > params.rsiBuy + 12)) action = 'SELL';
+  } else if (params.strategy === 'bb-reversion') {
+    // Bollinger mean-reversion: вход на пробое полос + экстремальный RSI (в боковике)
+    const band = bollinger(closes, params.bbPeriod || 20, params.bbStd || 2.0, i);
+    if (band) {
+      if (price <= band.lower && currentRsi <= (params.rsiOversold || 28) && volumeOk) action = 'BUY';
+      else if (price >= band.upper && currentRsi >= (params.rsiOverbought || 72) && volumeOk) action = 'SELL';
+    }
+  } else if (params.strategy === 'ema-momentum') {
+    // EMA momentum: кроссовер 9/21 + RSI + объём (в тренде)
+    const fastNow = ema(closes, params.emaFast || 9, i);
+    const fastPrev = ema(closes, params.emaFast || 9, i - 1);
+    const slowNow = ema(closes, params.emaSlow || 21, i);
+    const slowPrev = ema(closes, params.emaSlow || 21, i - 1);
+    const crossUp = fastNow !== null && slowPrev !== null && fastPrev !== null && fastPrev <= slowPrev && fastNow > slowNow;
+    const crossDown = fastNow !== null && slowPrev !== null && fastPrev !== null && fastPrev >= slowPrev && fastNow < slowNow;
+    if (crossUp && currentRsi <= Math.min((params.rsiSell || 68) + 7, 80) && volumeOk && adxOk && rsiOk) action = 'BUY';
+    else if (crossDown && currentRsi >= Math.max((params.rsiBuy || 42) - 12, 30) && volumeOk && adxOk && rsiOk) action = 'SELL';
+    else if (fastNow > slowNow && currentRsi <= Math.min((params.rsiBuy || 42) + 18, 62) && volumeOk && rsiOk) action = 'BUY';
   } else {
     // SMA+RSI with filters: volume, ADX, RSI
     if (crossUp && currentRsi <= Math.min(params.rsiSell + 7, 80) && volumeOk && adxOk && rsiOk) action = 'BUY';
@@ -233,6 +288,16 @@ function signalToEntrySide(signal, params) {
   if (signal.action === 'BUY' && canOpenSide(params, 'LONG')) return 'LONG';
   if (signal.action === 'SELL' && canOpenSide(params, 'SHORT')) return 'SHORT';
   return null;
+}
+
+function shortEntryVolumeConfirmed(candles, cursor, params, side) {
+  if (side !== 'SHORT' || !params.volumeFilter || !params.shortEntryVolumeFilter) return true;
+  if (!Array.isArray(candles) || cursor < 20) return false;
+  const volumes = candles.slice(cursor - 20, cursor).map((candle) => Number(candle.volume));
+  if (volumes.some((volume) => !Number.isFinite(volume) || volume < 0)) return false;
+  const average = volumes.reduce((sum, volume) => sum + volume, 0) / volumes.length;
+  return average > 0 && volumes[volumes.length - 1] >
+    average * (params.volumeMultiplier || 1.5);
 }
 
 function executionPrice(rawPrice, action, params) {
@@ -294,7 +359,8 @@ function floatingPnl(position, rawPrice, params) {
  */
 function maybePartialTake(position, price, params) {
   if (!position || position.partialTaken) return null;
-  const factor = params.partialTakePct || 0.5;
+  const factor = params.partialTakePct ?? 0.5;
+  if (!(factor > 0 && factor < 1)) return null;
   if (position.side === 'LONG' && price >= position.take) return { partialQty: position.initialQty * factor };
   if (position.side === 'SHORT' && price <= position.take) return { partialQty: position.initialQty * factor };
   return null;
@@ -345,8 +411,9 @@ function timeFilter(timeStr, params = {}) {
  * to agree with the entry side. Returns true/false, or null when data is insufficient.
  */
 function confirmHigherTimeframe(htfCandles, side, params = {}) {
-  if (!htfCandles || htfCandles.length < 30) return null;
-  const closes = htfCandles.map((c) => c.close);
+  // fetchCandles includes the candle currently forming; confirm only with closed bars.
+  if (!htfCandles || htfCandles.length < 31) return null;
+  const closes = htfCandles.slice(0, -1).map((c) => c.close);
   const period = params.confirmSlow || 20;
   const basis = sma(closes, period, closes.length - 1);
   if (basis === null) return null;
@@ -427,7 +494,7 @@ function simulate(candles, params) {
   const warmup = Math.max(params.slow + 2, params.lookback + 2, 20);
   
   // Apply dynamic params once at the start if enabled
-  const effectiveParams = applyDynamicParams(candles, { ...params });
+  const effectiveParams = params.skipDynamicReapply ? { ...params } : applyDynamicParams(candles, { ...params });
   
   for (let cursor = warmup; cursor < candles.length; cursor += 1) {
     const candle = candles[cursor - 1];
@@ -479,15 +546,18 @@ function simulate(candles, params) {
         account.position = null;
       }
     } else if (account.maxDd < effectiveParams.maxDrawdownPct) {
-      // Check if strategy is suitable for current market phase
-      if (isStrategySuitable(candles, effectiveParams)) {
+      // Check if strategy is suitable for current market phase.
+      // Per-bar окно: режим каждой ноги рынка, а не один замер на весь прогон.
+      if (isStrategySuitable(candles.slice(0, cursor), effectiveParams)) {
         // ATR-фильтр: не входить при слишком низкой или высокой волатильности
-        var phase = detectPhase(candles);
+        var phase = detectPhase(recentCandles(candles));
         var atrValue = phase.atrPct || 0;
         var atrOk = atrValue >= (effectiveParams.minAtrPct || 0.3) && atrValue <= (effectiveParams.maxAtrPct || 5.0);
         if (atrOk) {
           const side = signalToEntrySide(signal, effectiveParams);
-          if (side) account.position = makePosition(side, price, account.balance, effectiveParams, cursor, candle.time);
+          if (side && shortEntryVolumeConfirmed(candles, cursor, effectiveParams, side)) {
+            account.position = makePosition(side, price, account.balance, effectiveParams, cursor, candle.time);
+          }
         }
       }
     }
@@ -503,12 +573,40 @@ function parameterGrid(params) {
   if (params.strategy === 'mean-reversion') {
     return [20, 42, 80].flatMap((lookback) => [2, 3.2, 5].flatMap((deviationPct) => stops.map((risk) => ({ ...params, lookback, deviationPct, ...risk }))));
   }
+  if (params.strategy === 'bb-reversion') {
+    const rows = [];
+    for (const bbPeriod of [14, 20, 26]) {
+      for (const bbStd of [1.6, 2.0, 2.4]) {
+        for (const rsiOversold of [26, 30, 35]) {
+          for (const risk of stops) {
+            rows.push({ ...params, bbPeriod, bbStd, rsiOversold, rsiOverbought: 100 - rsiOversold, ...risk });
+          }
+        }
+      }
+    }
+    return rows;
+  }
+  if (params.strategy === 'ema-momentum') {
+    const rows = [];
+    for (const emaFast of [7, 9, 12]) {
+      for (const emaSlow of [18, 21, 26]) {
+        for (const rsiBuy of [38, 45]) {
+          for (const risk of stops) {
+            rows.push({ ...params, emaFast, emaSlow: Math.max(emaSlow, emaFast + 6), rsiBuy, ...risk });
+          }
+        }
+      }
+    }
+    return rows;
+  }
   return [8, 12, 16].flatMap((fast) => [24, 34, 55].flatMap((slow) => [35, 42, 48].flatMap((rsiBuy) => stops.map((risk) => ({ ...params, fast, slow: Math.max(slow, fast + 5), rsiBuy, ...risk })))));
 }
 
 function describe(params) {
   if (params.strategy === 'breakout') return `Breakout LB ${params.lookback}, SL ${params.stopPct}%, TP ${params.takePct}%`;
   if (params.strategy === 'mean-reversion') return `Mean Reversion LB ${params.lookback}, dev ${params.deviationPct}%, SL ${params.stopPct}%, TP ${params.takePct}%`;
+  if (params.strategy === 'bb-reversion') return `BB ${params.bbPeriod}/${params.bbStd}σ, RSI O${params.rsiOversold}, SL ${params.stopPct}%, TP ${params.takePct}%`;
+  if (params.strategy === 'ema-momentum') return `EMA ${params.emaFast}/${params.emaSlow}, RSI ${params.rsiBuy}, SL ${params.stopPct}%, TP ${params.takePct}%`;
   return `SMA ${params.fast}/${params.slow}, RSI ${params.rsiBuy}, SL ${params.stopPct}%, TP ${params.takePct}%`;
 }
 
@@ -529,31 +627,17 @@ function health(summary, wfStatus, blocked, params) {
 }
 
 async function fetchCandles(symbol, interval, limit, options = {}) {
-  const url = `https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
+  const { fetchOkxSwapCandles } = require('./tradelab_okx_candles');
   const attempts = options.attempts || FETCH_RETRY.attempts;
   const delayMs = options.delayMs || FETCH_RETRY.delayMs;
-  const timeoutMs = options.timeoutMs || 15000;
   let lastError = null;
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-      const response = await fetch(url, { signal: controller.signal });
-      clearTimeout(timeoutId);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const rows = await response.json();
-      return rows.map((row, index) => ({
-        index,
-        time: new Date(row[0]).toISOString().replace('T', ' ').slice(0, 16),
-        open: Number(row[1]),
-        high: Number(row[2]),
-        low: Number(row[3]),
-        close: Number(row[4]),
-        volume: Number(row[5])
-      }));
+      return await fetchOkxSwapCandles(symbol, interval, limit);
     } catch (error) {
       lastError = error;
+      if (/OKX candles insufficient:/.test(String(error.message))) break;
       if (attempt < attempts) await sleep(delayMs * attempt);
     }
   }
@@ -564,19 +648,7 @@ async function fetchCandles(symbol, interval, limit, options = {}) {
 
 
 async function fetchCandlesNoRetry(symbol, interval, limit) {
-  const url = `https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  const rows = await response.json();
-  return rows.map((row, index) => ({
-    index,
-    time: new Date(row[0]).toISOString().replace('T', ' ').slice(0, 16),
-    open: Number(row[1]),
-    high: Number(row[2]),
-    low: Number(row[3]),
-    close: Number(row[4]),
-    volume: Number(row[5])
-  }));
+  return require('./tradelab_okx_candles').fetchOkxSwapCandles(symbol, interval, limit);
 }
 
 async function runOnce(symbol = 'BTCUSDT', interval = '1h', limit = 500, params = DEFAULT_PARAMS) {
@@ -700,7 +772,9 @@ module.exports = {
   partialTradePnl,
   timeFilter,
   confirmHigherTimeframe,
+  shortEntryVolumeConfirmed,
   applyDynamicParams,
   isStrategySuitable,
   runOnce
 };
+

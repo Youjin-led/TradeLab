@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const { evaluateGate } = require('./tradelab_real_money_gate');
-const { detectPhase } = require('./tradelab_market_phase');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const REPORT_PATH = path.join(__dirname, '..', 'TRADELAB_INCUBATION_REPORT.md');
+const LIVE_TRADES_PATH = path.join(__dirname, '..', 'tradelab-live-trades.json');
 
 function readState() {
   if (!fs.existsSync(STATE_PATH)) return null;
@@ -20,6 +20,32 @@ function pct(value) {
   return `${Number(value || 0).toFixed(2)}%`;
 }
 
+function count(value) {
+  const number = Number(value);
+  return Number.isSafeInteger(number) && number >= 0 ? number : 'invalid';
+}
+
+function liveSummary() {
+  if (!fs.existsSync(LIVE_TRADES_PATH)) return null;
+  try {
+    const trades = JSON.parse(fs.readFileSync(LIVE_TRADES_PATH, 'utf8'));
+    if (!Array.isArray(trades)) return null;
+    const closed = trades.filter((trade) => trade.status === 'closed');
+    return {
+      closed: closed.length,
+      open: trades.filter((trade) => trade.status === 'open').length,
+      pnl: closed.reduce((sum, trade) => sum + (Number(trade.pnl) || 0), 0)
+    };
+  } catch (_) { return null; }
+}
+
+function quarantineReason(candidate) {
+  const reason = candidate.quarantine?.reason || 'quarantined';
+  return /\btrades\s+\d{9,}\b/i.test(reason)
+    ? 'legacy quarantine record contains an invalid trade count; inspect source state before using this statistic'
+    : reason;
+}
+
 function rowFor(candidate, gateCandidate) {
   const blockers = gateCandidate && gateCandidate.blockers.length
     ? gateCandidate.blockers.join('; ')
@@ -31,8 +57,8 @@ function rowFor(candidate, gateCandidate) {
     candidate.status,
     candidate.decision,
     candidate.health ? candidate.health.status : 'unknown',
-    candidate.liveObservations || 0,
-    candidate.forwardPaperTrades || 0,
+    count(candidate.liveObservations),
+    count(candidate.forwardPaperTrades),
     money(candidate.forwardPaperPnl || 0),
     money(candidate.totalPnl),
     Number(candidate.profitFactor || 0).toFixed(2),
@@ -47,13 +73,7 @@ function makeReport() {
   const candidates = state ? Object.values(state.candidates || {}) : [];
   const gateByKey = new Map((gate.candidates || []).map((candidate) => [candidate.key, candidate]));
   const generatedAt = new Date().toISOString();
-
-  // Определяем текущую фазу рынка
-  let marketPhase = 'unknown';
-  try {
-    const phase = detectPhase([]);
-    marketPhase = phase.phase || 'unknown';
-  } catch (_) { /* ignore */ }
+  const live = liveSummary();
 
   const lines = [
     '# TradeLab Incubation Report',
@@ -62,9 +82,8 @@ function makeReport() {
     `Incubation updated: ${state ? state.updatedAt || 'unknown' : 'missing'}`,
     `Real-money gate: **${gate.gate}**`,
     `Portfolio kill-switch: **${gate.portfolioKillSwitch && gate.portfolioKillSwitch.active ? 'ACTIVE' : 'clear'}**`,
-    `Market phase: **${marketPhase}**`,
     '',
-    'This report is paper-only. It does not approve automatic trading or exchange connectivity.',
+    'Candidate PnL and trade counts below are simulated paper results, not real-account returns. Live trading is enabled separately and requires manual approval plus entry and risk checks.',
     '',
     '## Summary',
     '',
@@ -77,10 +96,15 @@ function makeReport() {
     '',
     `Next action: ${gate.nextAction || 'Run incubation first.'}`,
     '',
+    '## Live Trading',
+    '',
+    live ? `Local trade ledger: ${live.closed} closed; ${live.open} open; recorded realized PnL: ${money(live.pnl)} USDT.` : 'Local live trade ledger unavailable.',
+    'This ledger summary does not replace exchange reconciliation and may exclude funding or historical fee corrections.',
+    '',
     '## Portfolio Kill-Switch',
     '',
     gate.portfolioKillSwitch
-      ? `Forward PnL: ${gate.portfolioKillSwitch.metrics.forwardPnl}; forward trades: ${gate.portfolioKillSwitch.metrics.forwardTrades}; rejected ratio: ${(gate.portfolioKillSwitch.metrics.rejectedRatio * 100).toFixed(1)}%.`
+      ? `Simulated forward PnL: ${gate.portfolioKillSwitch.metrics.forwardPnl}; simulated forward trades: ${gate.portfolioKillSwitch.metrics.forwardTrades}; rejected ratio: ${(gate.portfolioKillSwitch.metrics.rejectedRatio * 100).toFixed(1)}%.`
       : 'No kill-switch data available.',
     ...(gate.portfolioKillSwitch && (gate.portfolioKillSwitch.soft?.reasons || gate.portfolioKillSwitch.hard?.reasons || []).length ? (gate.portfolioKillSwitch.soft?.reasons || gate.portfolioKillSwitch.hard?.reasons || []).map((reason) => `- ${reason}`) : ['- clear']),
     '',
@@ -92,7 +116,7 @@ function makeReport() {
     ...candidates
       .filter((candidate) => candidate.status === 'quarantined')
       .slice(0, 12)
-      .map((candidate) => `- ${candidate.key}: ${candidate.quarantine ? candidate.quarantine.reason : 'quarantined'}`),
+      .map((candidate) => `- ${candidate.key}: ${quarantineReason(candidate)}`),
     '',
     '## Candidates',
     '',
@@ -123,7 +147,7 @@ function makeReport() {
     '',
     '## Operator Rule',
     '',
-    'If the gate is `BLOCKED`, do not connect API keys, do not place orders, and do not treat the strategy as real-money ready.'
+    'If the gate is `BLOCKED`, do not open new live positions. An allowed candidate still requires manual approval and all live entry and risk checks.'
   );
 
   fs.writeFileSync(REPORT_PATH, `${lines.join('\n')}\n`);
@@ -139,3 +163,4 @@ if (require.main === module) {
 }
 
 module.exports = { makeReport };
+

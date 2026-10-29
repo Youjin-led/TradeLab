@@ -10,19 +10,8 @@ var aiValidator = require('./tradelab_ai_validator');
 var ROOT = require('path').join(__dirname, '..');
 
 async function fetchCandles(symbol, interval, limit) {
-  limit = limit || 100;
-  var url = 'https://data-api.binance.vision/api/v3/klines?symbol=' + symbol + '&interval=' + interval + '&limit=' + limit;
-  var response = await fetch(url, { signal: AbortSignal.timeout(15000) });
-  if (!response.ok) throw new Error('Binance ' + response.status);
-  var data = await response.json();
-  return data.map(function(k) {
-    return {
-      timestamp: new Date(k[0]).toISOString().replace('T', ' ').substring(0, 16),
-      open: parseFloat(k[1]), high: parseFloat(k[2]),
-      low: parseFloat(k[3]), close: parseFloat(k[4]),
-      volume: parseFloat(k[5])
-    };
-  });
+  var data = await require('./tradelab_okx_candles').fetchOkxSwapCandles(symbol, interval, limit || 100);
+  return data.map(function(k) { return { ...k, timestamp: k.time }; });
 }
 
 async function analyzeOne(symbol, interval) {
@@ -114,6 +103,16 @@ async function main() {
   }
 
   console.log('Rate limit: ' + JSON.stringify(aiDecider.getRateLimitInfo()));
+
+  const fs = require('fs');
+  const output = {
+    generatedAt: new Date().toISOString(),
+    total: results.length,
+    summary: { buys: buys.length, sells: sells.length, holds: holds.length, errors: errors.length },
+    results: results
+  };
+  fs.writeFileSync(ROOT + '/tradelab-ai-scan.json', JSON.stringify(output, null, 2));
+  return output;
 }
 
 if (require.main === module) {
@@ -121,3 +120,4 @@ if (require.main === module) {
 }
 
 module.exports = { main: main };
+

@@ -99,14 +99,18 @@ function buildQuarantineFromDiagnostics(diagnostics = readJson(DIAGNOSTICS_PATH,
 }
 
 function loadQuarantine() {
-  return readJson(QUARANTINE_PATH, {
+  const empty = {
     generatedAt: null,
     rules: RULES,
     blockedSymbols: [],
     blockedStrategies: [],
     blockedCandidates: [],
     downrankIntervals: []
-  });
+  };
+  const state = readJson(STATE_PATH, null);
+  if (state?.marketDataSource !== 'okx-swap') return empty;
+  const quarantine = readJson(QUARANTINE_PATH, empty);
+  return Date.parse(quarantine.generatedAt || '') >= Date.parse(state.createdAt || '') ? quarantine : empty;
 }
 
 function quarantineReason(candidate, quarantine = loadQuarantine()) {
@@ -266,3 +270,4 @@ module.exports = {
   applyQuarantineToState,
   quarantineStateFile
 };
+

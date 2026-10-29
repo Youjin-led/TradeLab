@@ -39,8 +39,8 @@ const FORBIDDEN_PATTERNS = [
 ];
 
 const ALLOWED_MARKET_DATA_PATTERNS = [
-  'data-api.binance.vision',
-  '/api/v3/klines'
+  "require('./tradelab_okx_candles')",
+  'fetchOkxSwapCandles'
 ];
 
 function readText(relativePath) {
@@ -75,7 +75,7 @@ function checkGate() {
     findings.push({ severity: 'error', message: `Unexpected gate status: ${gate.gate}` });
   }
   if (gate.gate === 'MANUAL_REVIEW_ALLOWED') {
-    findings.push({ severity: 'warn', message: 'Gate allows manual review. Confirm risk plan before any live-trading implementation.' });
+    findings.push({ severity: 'warn', message: 'Gate allows manual review. Live entries still require Telegram approval and all risk checks.' });
   }
   return { gate, findings };
 }
@@ -104,7 +104,7 @@ function audit() {
     scope: FILES_TO_SCAN,
     gate: gateCheck.gate.gate,
     findings,
-    rule: 'No API keys, no exchange account access, no order endpoints, no real orders.'
+    rule: 'Research modules must not access trading keys or place orders; live execution is separately gated.'
   };
 }
 
@@ -119,3 +119,4 @@ if (require.main === module) {
 }
 
 module.exports = { audit };
+
