@@ -321,15 +321,20 @@ function nextDecision(record) {
   return 'watch';
 }
 
+function completedCandleCount(candles) {
+  return candles[candles.length - 1]?.complete === false ? candles.length - 1 : candles.length;
+}
+
 function makePaperLedger(prior, candles) {
   if (prior && prior.paperLedger) return prior.paperLedger;
+  const closedCount = completedCandleCount(candles);
   return {
     balance: 10000,
     peak: 10000,
     maxDd: 0,
     position: null,
     trades: [],
-    processedCloses: candles.map((candle) => `${candle.time}:${candle.close}`).slice(-2000),
+    processedCloses: candles.slice(0, closedCount).map((candle) => `${candle.time}:${candle.close}`).slice(-2000),
     initializedAt: new Date().toISOString()
   };
 }
@@ -470,11 +475,13 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
 }
 
 function mergeRecord(previous, candidate, candles, params, result, walk, alerts, opts = {}) {
-  const lastCandle = candles[candles.length - 1];
+  const closedCount = completedCandleCount(candles);
+  if (closedCount < 1) throw new Error('No completed OKX candle');
+  const lastCandle = candles[closedCount - 1];
   const prior = previous || {};
   const { wasRejected = false, rejectExpired = false } = opts;
   const effectiveParams = applyDynamicParams(candles, { ...params });
-  const currentSignal = getSignal(candles, candles.length, effectiveParams);
+  const currentSignal = getSignal(candles, closedCount, effectiveParams);
   const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams, opts);
   const observedCloses = new Set((prior.observedCloses || []).map((key) => String(key).slice(0, 16)));
   const closeKey = lastCandle.time;
@@ -765,5 +772,5 @@ if (require.main === module) {
   });
 }
 
-module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
+module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, completedCandleCount, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
 
