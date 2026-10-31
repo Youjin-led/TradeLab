@@ -1,20 +1,7 @@
 {
-  "balance": 4014.000556440857,
+  "balance": 4034.696990426517,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "NEARUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 4.532,
-      "qty": 366.06354810238304,
-      "notional": 1659,
-      "fee": 0.6636000000000001,
-      "openedAt": "2026-10-29T15:04:43.254Z",
-      "aiConfidence": 52,
-      "aiReasoning": "4h only: Price (4.532) is below both SMA20 (4.564) and SMA50 (4.688), trend is bearish, and market phase is t",
-      "atrPct": 3.5871895095196074
-    },
     {
       "symbol": "LTCUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 72,
       "aiReasoning": "TF agree: Price (78939.5) is below both SMA20 (80319) and SMA50 (80728 | Price (78971.8) is below both SMA20 (80496.7) and SMA50 (809",
       "atrPct": 1.3290006233689926
+    },
+    {
+      "symbol": "ADAUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.1926,
+      "qty": 8977.963930633105,
+      "notional": 1729.155853039936,
+      "fee": 0.6916623412159744,
+      "openedAt": "2026-10-31T04:55:09.891Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 0.1926 is below both SMA20 (0.1933) and SMA50 (0.1953) | Price 0.1926 is below both SMA20 (0.19869) and SMA50 (0.2038",
+      "atrPct": 3.182020471740098
     }
   ],
   "closedTrades": [
@@ -53,10 +53,21 @@
       "reason": "Stop loss 2.1% (ATR*1.5=1.4%)",
       "openedAt": "2026-10-29T15:04:43.254Z",
       "closedAt": "2026-10-29T20:57:31.547Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 4.532,
+      "exit": 4.282,
+      "pnl": 90.85228702559576,
+      "reason": "Take profit 4.7% (ATR*3=1.6%)",
+      "openedAt": "2026-10-29T15:04:43.254Z",
+      "closedAt": "2026-10-31T04:55:18.642Z"
     }
   ],
-  "totalPnl": -149.162129712537,
-  "wins": 0,
+  "totalPnl": -58.30984268694124,
+  "wins": 1,
   "losses": 1,
   "marketDataSource": "okx-swap"
 }
