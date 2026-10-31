@@ -1,20 +1,7 @@
 {
-  "balance": 4034.696990426517,
+  "balance": 5082.627041724253,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "LTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 54.65,
-      "qty": 44.96891786068141,
-      "notional": 2457.551361086239,
-      "fee": 0.9830205444344956,
-      "openedAt": "2026-10-29T20:57:26.062Z",
-      "aiConfidence": 78,
-      "aiReasoning": "TF agree: Price (54.66) is below both SMA20 (57.63) and SMA50 (57.80)  | Price (54.65) is below both SMA20 (57.31) and SMA50 (57.67),",
-      "atrPct": 2.4781074369363476
-    },
     {
       "symbol": "BTCUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 72,
       "aiReasoning": "TF agree: Price 0.1926 is below both SMA20 (0.1933) and SMA50 (0.1953) | Price 0.1926 is below both SMA20 (0.19869) and SMA50 (0.2038",
       "atrPct": 3.182020471740098
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 11.881,
+      "qty": 113.71753845487723,
+      "notional": 1351.0780743823964,
+      "fee": 0.5404312297529585,
+      "openedAt": "2026-10-31T19:48:51.191Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Strong bullish trend: price above SMA20 (11.54) and SMA50 (11.25), MACD positive (0.117), ADX 38 con",
+      "atrPct": 3.2711291738309707
     }
   ],
   "closedTrades": [
@@ -64,10 +64,21 @@
       "reason": "Take profit 4.7% (ATR*3=1.6%)",
       "openedAt": "2026-10-29T15:04:43.254Z",
       "closedAt": "2026-10-31T04:55:18.642Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 54.65,
+      "exit": 55.93,
+      "pnl": -58.543235406106746,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.5%)",
+      "openedAt": "2026-10-29T20:57:26.062Z",
+      "closedAt": "2026-10-31T19:48:59.862Z"
     }
   ],
-  "totalPnl": -58.30984268694124,
+  "totalPnl": -116.85307809304798,
   "wins": 1,
-  "losses": 1,
+  "losses": 2,
   "marketDataSource": "okx-swap"
 }
