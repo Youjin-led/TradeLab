@@ -1,20 +1,7 @@
 {
-  "balance": 5082.627041724253,
+  "balance": 4506.749903824684,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 78971.8,
-      "qty": 0.021783547453146153,
-      "notional": 1720.2859527603673,
-      "fee": 0.6881143811041469,
-      "openedAt": "2026-10-29T20:57:26.062Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price (78939.5) is below both SMA20 (80319) and SMA50 (80728 | Price (78971.8) is below both SMA20 (80496.7) and SMA50 (809",
-      "atrPct": 1.3290006233689926
-    },
     {
       "symbol": "ADAUSDT",
       "interval": "1h",
@@ -29,17 +16,30 @@
       "atrPct": 3.182020471740098
     },
     {
-      "symbol": "LINKUSDT",
+      "symbol": "SOLUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 11.881,
-      "qty": 113.71753845487723,
-      "notional": 1351.0780743823964,
-      "fee": 0.5404312297529585,
-      "openedAt": "2026-10-31T19:48:51.191Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Strong bullish trend: price above SMA20 (11.54) and SMA50 (11.25), MACD positive (0.117), ADX 38 con",
-      "atrPct": 3.2711291738309707
+      "side": "SHORT",
+      "entry": 95.52,
+      "qty": 25.59559724381789,
+      "notional": 2444.8914487294846,
+      "fee": 0.9779565794917939,
+      "openedAt": "2026-11-01T05:23:22.334Z",
+      "aiConfidence": 70,
+      "aiReasoning": "TF agree: Price 95.52 sits below both SMA20 (95.67) and SMA50 (95.87), | Price (95.52) is below both SMA20 (96.99) and SMA50 (99.63) ",
+      "atrPct": 1.5426836563771256
+    },
+    {
+      "symbol": "DOTUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.9489,
+      "qty": 1262.5111285461564,
+      "notional": 1197.9968098774477,
+      "fee": 0.4791987239509791,
+      "openedAt": "2026-11-01T05:23:22.334Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price below SMA20 and SMA50 with bearish trend and ADX 30.7 confirming trend strength. MACD negative",
+      "atrPct": 2.1987865648946894
     }
   ],
   "closedTrades": [
@@ -75,10 +75,32 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.5%)",
       "openedAt": "2026-10-29T20:57:26.062Z",
       "closedAt": "2026-10-31T19:48:59.862Z"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 11.881,
+      "exit": 11.624,
+      "pnl": -29.765838612656367,
+      "reason": "Stop loss 1.5% (ATR*1.5=1.0%)",
+      "openedAt": "2026-10-31T19:48:51.191Z",
+      "closedAt": "2026-11-01T05:23:24.508Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 78971.8,
+      "exit": 77773.6,
+      "pnl": 25.41293217725551,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-10-29T20:57:26.062Z",
+      "closedAt": "2026-11-01T05:23:31.012Z"
     }
   ],
-  "totalPnl": -116.85307809304798,
-  "wins": 1,
-  "losses": 2,
+  "totalPnl": -121.20598452844884,
+  "wins": 2,
+  "losses": 3,
   "marketDataSource": "okx-swap"
 }
