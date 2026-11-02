@@ -1,5 +1,5 @@
 {
-  "balance": 4506.749903824684,
+  "balance": 5557.14518917995,
   "peak": 10000,
   "positions": [
     {
@@ -16,19 +16,6 @@
       "atrPct": 3.182020471740098
     },
     {
-      "symbol": "SOLUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 95.52,
-      "qty": 25.59559724381789,
-      "notional": 2444.8914487294846,
-      "fee": 0.9779565794917939,
-      "openedAt": "2026-11-01T05:23:22.334Z",
-      "aiConfidence": 70,
-      "aiReasoning": "TF agree: Price 95.52 sits below both SMA20 (95.67) and SMA50 (95.87), | Price (95.52) is below both SMA20 (96.99) and SMA50 (99.63) ",
-      "atrPct": 1.5426836563771256
-    },
-    {
       "symbol": "DOTUSDT",
       "interval": "1h",
       "side": "SHORT",
@@ -40,6 +27,19 @@
       "aiConfidence": 56,
       "aiReasoning": "1h only: Price below SMA20 and SMA50 with bearish trend and ADX 30.7 confirming trend strength. MACD negative",
       "atrPct": 2.1987865648946894
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 77206.3,
+      "qty": 0.019133358414818634,
+      "notional": 1477.215809782012,
+      "fee": 0.5908863239128048,
+      "openedAt": "2026-11-02T18:02:52.237Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price below SMA20 (77654) and SMA50 (79146) with bearish trend and MACD deeply negative (-600), conf",
+      "atrPct": 0.733572630360845
     }
   ],
   "closedTrades": [
@@ -97,10 +97,21 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-10-29T20:57:26.062Z",
       "closedAt": "2026-11-01T05:23:31.012Z"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 95.52,
+      "exit": 92.25,
+      "pnl": 82.71964640779261,
+      "reason": "Take profit 3.0% (ATR*3=1.0%)",
+      "openedAt": "2026-11-01T05:23:22.334Z",
+      "closedAt": "2026-11-02T18:02:57.837Z"
     }
   ],
-  "totalPnl": -121.20598452844884,
-  "wins": 2,
+  "totalPnl": -38.48633812065623,
+  "wins": 3,
   "losses": 3,
   "marketDataSource": "okx-swap"
 }
