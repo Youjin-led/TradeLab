@@ -1,20 +1,7 @@
 {
-  "balance": 5557.14518917995,
+  "balance": 5778.327702920789,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "ADAUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.1926,
-      "qty": 8977.963930633105,
-      "notional": 1729.155853039936,
-      "fee": 0.6916623412159744,
-      "openedAt": "2026-10-31T04:55:09.891Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price 0.1926 is below both SMA20 (0.1933) and SMA50 (0.1953) | Price 0.1926 is below both SMA20 (0.19869) and SMA50 (0.2038",
-      "atrPct": 3.182020471740098
-    },
     {
       "symbol": "DOTUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 61,
       "aiReasoning": "4h only: Price below SMA20 (77654) and SMA50 (79146) with bearish trend and MACD deeply negative (-600), conf",
       "atrPct": 0.733572630360845
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 11.135,
+      "qty": 137.94442402657438,
+      "notional": 1536.0111615359058,
+      "fee": 0.6144044646143624,
+      "openedAt": "2026-11-03T11:45:06.900Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price (11.135) sits below both SMA20 (11.407) and SMA50 (11.421), trend is bearish, and MACD is nega",
+      "atrPct": 1.7608570145615527
     }
   ],
   "closedTrades": [
@@ -108,10 +108,21 @@
       "reason": "Take profit 3.0% (ATR*3=1.0%)",
       "openedAt": "2026-11-01T05:23:22.334Z",
       "closedAt": "2026-11-02T18:02:57.837Z"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.1926,
+      "exit": 0.1894,
+      "pnl": 28.037822236809788,
+      "reason": "timeout 79h (maxHoldHours)",
+      "openedAt": "2026-10-31T04:55:09.891Z",
+      "closedAt": "2026-11-03T11:45:14.149Z"
     }
   ],
-  "totalPnl": -38.48633812065623,
-  "wins": 3,
+  "totalPnl": -10.44851588384644,
+  "wins": 4,
   "losses": 3,
   "marketDataSource": "okx-swap"
 }
