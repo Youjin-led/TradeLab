@@ -1,33 +1,7 @@
 {
-  "balance": 4651.10027145424,
-  "peak": 10000,
+  "balance": 6923.465422202439,
+  "peak": 10000.248707858012,
   "positions": [
-    {
-      "symbol": "LINKUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 11.135,
-      "qty": 137.94442402657438,
-      "notional": 1536.0111615359058,
-      "fee": 0.6144044646143624,
-      "openedAt": "2026-11-03T11:45:06.900Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price (11.135) sits below both SMA20 (11.407) and SMA50 (11.421), trend is bearish, and MACD is nega",
-      "atrPct": 1.7608570145615527
-    },
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 2328.84,
-      "qty": 1.083458232678073,
-      "notional": 2523.200870590004,
-      "fee": 1.0092803482360015,
-      "openedAt": "2026-11-04T11:57:18.231Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price above SMA20 (2291) and SMA50 (2276), bullish trend wit | Price 2328.84 is above both SMA20 (2275.29) and SMA50 (2287.",
-      "atrPct": 1.436092033556865
-    },
     {
       "symbol": "ARBUSDT",
       "interval": "1h",
@@ -40,6 +14,19 @@
       "aiConfidence": 65,
       "aiReasoning": "1h only: Price above SMA20 (0.1587) and SMA50 (0.1574), bullish trend, MACD positive (0.001015), ADX 35.7 con",
       "atrPct": 2.6783528588914165
+    },
+    {
+      "symbol": "OPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.11005,
+      "qty": 16723.442608509507,
+      "notional": 1840.414859066471,
+      "fee": 0.7361659436265885,
+      "openedAt": "2026-11-04T19:39:57.836Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price (0.11005) is below both SMA20 (0.111177) and SMA50 (0.11124), trend is bearish, MACD is negati",
+      "atrPct": 3.3322515739598892
     }
   ],
   "closedTrades": [
@@ -141,10 +128,32 @@
       "reason": "timeout 79h (maxHoldHours)",
       "openedAt": "2026-11-01T05:23:22.334Z",
       "closedAt": "2026-11-04T11:57:25.241Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 2328.84,
+      "exit": 2416.83,
+      "pnl": 94.32420954510741,
+      "reason": "Take profit 3.0% (ATR*3=1.0%)",
+      "openedAt": "2026-11-04T11:57:18.231Z",
+      "closedAt": "2026-11-04T19:40:03.854Z"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 11.135,
+      "exit": 11.426,
+      "pnl": -40.756231856347554,
+      "reason": "Stop loss 2.1% (ATR*1.5=1.4%)",
+      "openedAt": "2026-11-03T11:45:06.900Z",
+      "closedAt": "2026-11-04T19:40:06.861Z"
     }
   ],
-  "totalPnl": -53.319269830749974,
-  "wins": 4,
-  "losses": 5,
+  "totalPnl": 0.2487078580098796,
+  "wins": 5,
+  "losses": 6,
   "marketDataSource": "okx-swap"
 }
