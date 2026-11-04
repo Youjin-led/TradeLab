@@ -1,33 +1,7 @@
 {
-  "balance": 5778.327702920789,
+  "balance": 4651.10027145424,
   "peak": 10000,
   "positions": [
-    {
-      "symbol": "DOTUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.9489,
-      "qty": 1262.5111285461564,
-      "notional": 1197.9968098774477,
-      "fee": 0.4791987239509791,
-      "openedAt": "2026-11-01T05:23:22.334Z",
-      "aiConfidence": 56,
-      "aiReasoning": "1h only: Price below SMA20 and SMA50 with bearish trend and ADX 30.7 confirming trend strength. MACD negative",
-      "atrPct": 2.1987865648946894
-    },
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 77206.3,
-      "qty": 0.019133358414818634,
-      "notional": 1477.215809782012,
-      "fee": 0.5908863239128048,
-      "openedAt": "2026-11-02T18:02:52.237Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price below SMA20 (77654) and SMA50 (79146) with bearish trend and MACD deeply negative (-600), conf",
-      "atrPct": 0.733572630360845
-    },
     {
       "symbol": "LINKUSDT",
       "interval": "1h",
@@ -40,6 +14,32 @@
       "aiConfidence": 56,
       "aiReasoning": "4h only: Price (11.135) sits below both SMA20 (11.407) and SMA50 (11.421), trend is bearish, and MACD is nega",
       "atrPct": 1.7608570145615527
+    },
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 2328.84,
+      "qty": 1.083458232678073,
+      "notional": 2523.200870590004,
+      "fee": 1.0092803482360015,
+      "openedAt": "2026-11-04T11:57:18.231Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price above SMA20 (2291) and SMA50 (2276), bullish trend wit | Price 2328.84 is above both SMA20 (2275.29) and SMA50 (2287.",
+      "atrPct": 1.436092033556865
+    },
+    {
+      "symbol": "ARBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.1634,
+      "qty": 7566.514238611395,
+      "notional": 1236.3684265891018,
+      "fee": 0.49454737063564075,
+      "openedAt": "2026-11-04T11:57:18.231Z",
+      "aiConfidence": 65,
+      "aiReasoning": "1h only: Price above SMA20 (0.1587) and SMA50 (0.1574), bullish trend, MACD positive (0.001015), ADX 35.7 con",
+      "atrPct": 2.6783528588914165
     }
   ],
   "closedTrades": [
@@ -119,10 +119,32 @@
       "reason": "timeout 79h (maxHoldHours)",
       "openedAt": "2026-10-31T04:55:09.891Z",
       "closedAt": "2026-11-03T11:45:14.149Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 77206.3,
+      "exit": 78526.6,
+      "pnl": -25.852659438997904,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.7%)",
+      "openedAt": "2026-11-02T18:02:52.237Z",
+      "closedAt": "2026-11-04T11:57:23.569Z"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.9489,
+      "exit": 0.962,
+      "pnl": -17.01809450790563,
+      "reason": "timeout 79h (maxHoldHours)",
+      "openedAt": "2026-11-01T05:23:22.334Z",
+      "closedAt": "2026-11-04T11:57:25.241Z"
     }
   ],
-  "totalPnl": -10.44851588384644,
+  "totalPnl": -53.319269830749974,
   "wins": 4,
-  "losses": 3,
+  "losses": 5,
   "marketDataSource": "okx-swap"
 }
