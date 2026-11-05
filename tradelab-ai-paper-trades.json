@@ -1,5 +1,5 @@
 {
-  "balance": 6923.465422202439,
+  "balance": 5469.5376835399275,
   "peak": 10000.248707858012,
   "positions": [
     {
@@ -27,6 +27,19 @@
       "aiConfidence": 56,
       "aiReasoning": "4h only: Price (0.11005) is below both SMA20 (0.111177) and SMA50 (0.11124), trend is bearish, MACD is negati",
       "atrPct": 3.3322515739598892
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 80732.7,
+      "qty": 0.018009155381431715,
+      "notional": 1453.9277386625122,
+      "fee": 0.5815710954650049,
+      "openedAt": "2026-11-05T00:47:59.139Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price above SMA20 (79356) and SMA50 (78038), trend bullish, MACD positive (829.6), ADX 29.1 confirms",
+      "atrPct": 1.2999777572868767
     }
   ],
   "closedTrades": [
