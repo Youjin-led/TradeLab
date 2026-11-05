@@ -1,20 +1,7 @@
 {
-  "balance": 5469.5376835399275,
+  "balance": 4444.348558995348,
   "peak": 10000.248707858012,
   "positions": [
-    {
-      "symbol": "ARBUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 0.1634,
-      "qty": 7566.514238611395,
-      "notional": 1236.3684265891018,
-      "fee": 0.49454737063564075,
-      "openedAt": "2026-11-04T11:57:18.231Z",
-      "aiConfidence": 65,
-      "aiReasoning": "1h only: Price above SMA20 (0.1587) and SMA50 (0.1574), bullish trend, MACD positive (0.001015), ADX 35.7 con",
-      "atrPct": 2.6783528588914165
-    },
     {
       "symbol": "OPUSDT",
       "interval": "1h",
@@ -29,17 +16,30 @@
       "atrPct": 3.3322515739598892
     },
     {
-      "symbol": "BTCUSDT",
+      "symbol": "INJUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 80732.7,
-      "qty": 0.018009155381431715,
-      "notional": 1453.9277386625122,
-      "fee": 0.5815710954650049,
-      "openedAt": "2026-11-05T00:47:59.139Z",
-      "aiConfidence": 56,
-      "aiReasoning": "1h only: Price above SMA20 (79356) and SMA50 (78038), trend bullish, MACD positive (829.6), ADX 29.1 confirms",
-      "atrPct": 1.2999777572868767
+      "entry": 8.179,
+      "qty": 294.7840813379751,
+      "notional": 2411.039001263299,
+      "fee": 0.9644156005053196,
+      "openedAt": "2026-11-05T21:50:40.173Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Trend bullish with price above SMA20 (8.16) and SMA50 (7.82) | Price 8.179 above SMA20 (7.59) and SMA50 (7.46), trend bulli",
+      "atrPct": 3.7648682165126734
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 75866.9,
+      "qty": 0.01557212843307182,
+      "notional": 1181.4091106190165,
+      "fee": 0.4725636442476066,
+      "openedAt": "2026-11-05T21:50:40.173Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price (75866.9) is below both SMA20 (78023) and SMA50 (78264), trend is bearish, MACD is deeply nega",
+      "atrPct": 1.792980300273993
     }
   ],
   "closedTrades": [
@@ -163,10 +163,32 @@
       "reason": "Stop loss 2.1% (ATR*1.5=1.4%)",
       "openedAt": "2026-11-03T11:45:06.900Z",
       "closedAt": "2026-11-04T19:40:06.861Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 80732.7,
+      "exit": 75859.6,
+      "pnl": -88.34198618471974,
+      "reason": "Stop loss 1.5% (ATR*1.5=1.0%)",
+      "openedAt": "2026-11-05T00:47:59.139Z",
+      "closedAt": "2026-11-05T21:50:42.454Z"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.1634,
+      "exit": 0.15888,
+      "pnl": -34.69519172915912,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-11-04T11:57:18.231Z",
+      "closedAt": "2026-11-05T21:50:48.828Z"
     }
   ],
-  "totalPnl": 0.2487078580098796,
+  "totalPnl": -122.78847005586898,
   "wins": 5,
-  "losses": 6,
+  "losses": 8,
   "marketDataSource": "okx-swap"
 }
