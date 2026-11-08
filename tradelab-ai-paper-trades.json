@@ -1,5 +1,5 @@
 {
-  "balance": 5195.009892943928,
+  "balance": 5166.05507529155,
   "peak": 10000.248707858012,
   "positions": [
     {
@@ -29,17 +29,17 @@
       "atrPct": 2.308242137434683
     },
     {
-      "symbol": "ARBUSDT",
+      "symbol": "OPUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 0.16998,
-      "qty": 13098.20456089942,
-      "notional": 2226.432811261683,
-      "fee": 0.8905731245046733,
-      "openedAt": "2026-11-08T14:54:19.234Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price 0.16999 above SMA20 (0.168749) and SMA50 (0.167419), t | Price above SMA20 (0.1656) and SMA50 (0.1628) with bullish t",
-      "atrPct": 1.993932059233858
+      "side": "SHORT",
+      "entry": 0.10039,
+      "qty": 22054.2245611752,
+      "notional": 2214.0236036963784,
+      "fee": 0.8856094414785514,
+      "openedAt": "2026-11-08T20:18:21.876Z",
+      "aiConfidence": 77,
+      "aiReasoning": "TF agree: Price (0.10039) sits below both SMA20 (0.101177) and SMA50 ( | Price (0.10039) is below both SMA20 (0.103277) and SMA50 (0.",
+      "atrPct": 1.5318827999373876
     }
   ],
   "closedTrades": [
@@ -207,10 +207,21 @@
       "reason": "AI SELL signal",
       "openedAt": "2026-11-05T21:50:40.173Z",
       "closedAt": "2026-11-08T14:54:28.297Z"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.16998,
+      "exit": 0.16689,
+      "pnl": -41.36402521768364,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.9%)",
+      "openedAt": "2026-11-08T14:54:19.234Z",
+      "closedAt": "2026-11-08T20:18:23.769Z"
     }
   ],
-  "totalPnl": -58.11664755877055,
+  "totalPnl": -99.48067277645418,
   "wins": 6,
-  "losses": 9,
+  "losses": 10,
   "marketDataSource": "okx-swap"
 }
