@@ -17,6 +17,8 @@ const VALIDATOR_RULES = {
 
 const KILL_SWITCH_RULES = {
   minForwardTrades: 8,
+  minCandidateForwardTrades: 3,
+  minEvaluatedActiveCandidates: 4,
   // SOFT kill-switch: warns but doesn't block discovery
   softMaxPortfolioLossUsd: -500,
   softMaxAverageLossPerTradeUsd: -80,
@@ -71,7 +73,8 @@ function num(value) {
 function portfolioKillSwitch(state = readIncubationState()) {
   const candidates = Object.values(state.candidates || {});
   const forwardRows = candidates.filter((candidate) => num(candidate.forwardPaperTrades) > 0);
-  const activeRows = candidates.filter((candidate) => candidate.status === 'incubating');
+  const activeRows = candidates.filter((candidate) => ['incubating', 'probation', 'ready-for-review'].includes(candidate.status));
+  const evaluatedActiveRows = activeRows.filter((candidate) => num(candidate.forwardPaperTrades) >= KILL_SWITCH_RULES.minCandidateForwardTrades);
   // A candidate rejected before it ever paper-traded was judged only on stale backtest
   // alerts, not on real forward performance. Only count rejected candidates with at
   // least MIN_FORWARD_TRADES_REJECTED forward paper trades against the ratio.
@@ -80,8 +83,8 @@ function portfolioKillSwitch(state = readIncubationState()) {
   const forwardPnl = forwardRows.reduce((sum, candidate) => sum + num(candidate.forwardPaperPnl), 0);
   const avgPerTrade = forwardTrades ? forwardPnl / forwardTrades : 0;
   const rejectedRatio = candidates.length ? rejectedRows.length / candidates.length : 0;
-  const activePositive = activeRows.filter((candidate) => (candidate.forwardPaperPnl || 0) > 0).length;
-  const activePositiveRatio = activeRows.length ? activePositive / activeRows.length : 0;
+  const activePositive = evaluatedActiveRows.filter((candidate) => num(candidate.forwardPaperPnl) > 0).length;
+  const activePositiveRatio = evaluatedActiveRows.length ? activePositive / evaluatedActiveRows.length : null;
   const rules = KILL_SWITCH_RULES;
 
   // SOFT kill-switch: warns, blocks only real-money gate, allows paper discovery
@@ -95,7 +98,7 @@ function portfolioKillSwitch(state = readIncubationState()) {
   if (candidates.length >= 10 && rejectedRatio >= rules.softMaxRejectedRatio) {
     softReasons.push(`rejected ratio ${(rejectedRatio * 100).toFixed(1)}% >= ${(rules.softMaxRejectedRatio * 100).toFixed(0)}%`);
   }
-  if (activeRows.length >= 4 && forwardTrades >= rules.minForwardTrades && activePositiveRatio < rules.softMinActivePositiveForwardRatio) {
+  if (evaluatedActiveRows.length >= rules.minEvaluatedActiveCandidates && forwardTrades >= rules.minForwardTrades && activePositiveRatio < rules.softMinActivePositiveForwardRatio) {
     softReasons.push(`active positive forward ratio ${(activePositiveRatio * 100).toFixed(1)}% < ${(rules.softMinActivePositiveForwardRatio * 100).toFixed(0)}%`);
   }
 
@@ -110,7 +113,7 @@ function portfolioKillSwitch(state = readIncubationState()) {
   if (candidates.length >= 10 && rejectedRatio >= rules.hardMaxRejectedRatio) {
     hardReasons.push(`rejected ratio ${(rejectedRatio * 100).toFixed(1)}% >= ${(rules.hardMaxRejectedRatio * 100).toFixed(0)}%`);
   }
-  if (activeRows.length >= 4 && forwardTrades >= rules.minForwardTrades && activePositiveRatio < rules.hardMinActivePositiveForwardRatio) {
+  if (evaluatedActiveRows.length >= rules.minEvaluatedActiveCandidates && forwardTrades >= rules.minForwardTrades && activePositiveRatio < rules.hardMinActivePositiveForwardRatio) {
     hardReasons.push(`active positive forward ratio ${(activePositiveRatio * 100).toFixed(1)}% < ${(rules.hardMinActivePositiveForwardRatio * 100).toFixed(0)}%`);
   }
 
@@ -136,13 +139,15 @@ function portfolioKillSwitch(state = readIncubationState()) {
     metrics: {
       candidates: candidates.length,
       incubating: activeRows.length,
+      evaluatedActiveCandidates: evaluatedActiveRows.length,
+      activePositiveCandidates: activePositive,
       rejected: candidates.filter((candidate) => candidate.status === 'rejected').length,
       rejectedEvaluated: rejectedRows.length,
       forwardTrades,
       forwardPnl: Number(forwardPnl.toFixed(2)),
       avgPerTrade: Number(avgPerTrade.toFixed(2)),
       rejectedRatio: Number(rejectedRatio.toFixed(3)),
-      activePositiveRatio: Number(activePositiveRatio.toFixed(3))
+      activePositiveRatio: activePositiveRatio === null ? null : Number(activePositiveRatio.toFixed(3))
     },
     rules: KILL_SWITCH_RULES
   };
