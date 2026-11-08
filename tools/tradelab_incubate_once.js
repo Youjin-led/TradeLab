@@ -297,7 +297,13 @@ function nextDecision(record) {
   // Before forward evidence exists, stale backtest alerts can reject a new candidate.
   if (forwardTrades === 0) {
     const criticalAlerts = record.alerts.filter((alert) => !alert.startsWith('low test sample'));
-    if (criticalAlerts.length > 0 || record.health.status === 'Blocked') return 'reject';
+    const historicalStreakOnly = criticalAlerts.length > 0
+      && criticalAlerts.every((alert) => /^loss streak \d+$/.test(alert))
+      && record.health?.status === 'Caution'
+      && record.walkForward === 'stable'
+      && Number(record.testPnl) > 0
+      && Number(record.testTrades) >= VALIDATOR_RULES.minTestTrades;
+    if ((criticalAlerts.length > 0 && !historicalStreakOnly) || record.health.status === 'Blocked') return 'reject';
   }
   // Forward-доказанный кандидат повышается независимо от бэктеста:
   // бэктест мог не торговаться в тестовом окне. Ветка стоит первой, чтобы
@@ -577,6 +583,12 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
       record.lastReincubated = { at: new Date().toISOString(), reason: 'reject cooldown expired' };
       record.alerts = record.alerts.filter((alert) => alert.startsWith('low test sample'));
       record.health = { status: 'Caution', score: 50, reasons: ['re-incubated after reject cooldown'] };
+    } else if (wasRejected && record.decision === 'incubate') {
+      // Fresh evidence has removed the rejection reason. Keep the warning and
+      // resume paper observation without waiting for the old freeze to expire.
+      record.previousStatus = 'rejected';
+      record.lastReincubated = { at: new Date().toISOString(), reason: 'fresh evaluation permits paper incubation' };
+      delete record.rejectedAt;
     } else if (wasRejected) {
       // Keep the rejection freeze but refresh metrics so the scoreboard shows progress.
       // Preserve the original rejection alerts so the reason stays visible.
