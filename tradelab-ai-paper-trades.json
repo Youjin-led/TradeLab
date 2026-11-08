@@ -1,20 +1,7 @@
 {
-  "balance": 5037.30911770056,
+  "balance": 5195.009892943928,
   "peak": 10000.248707858012,
   "positions": [
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 8.179,
-      "qty": 294.7840813379751,
-      "notional": 2411.039001263299,
-      "fee": 0.9644156005053196,
-      "openedAt": "2026-11-05T21:50:40.173Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Trend bullish with price above SMA20 (8.16) and SMA50 (7.82) | Price 8.179 above SMA20 (7.59) and SMA50 (7.46), trend bulli",
-      "atrPct": 3.7648682165126734
-    },
     {
       "symbol": "BTCUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 61,
       "aiReasoning": "4h only: Price (1.1592) is below SMA20 (1.2416) and SMA50 (1.2487), trend is bearish, MACD is negative, and A",
       "atrPct": 2.308242137434683
+    },
+    {
+      "symbol": "ARBUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.16998,
+      "qty": 13098.20456089942,
+      "notional": 2226.432811261683,
+      "fee": 0.8905731245046733,
+      "openedAt": "2026-11-08T14:54:19.234Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price 0.16999 above SMA20 (0.168749) and SMA50 (0.167419), t | Price above SMA20 (0.1656) and SMA50 (0.1628) with bullish t",
+      "atrPct": 1.993932059233858
     }
   ],
   "closedTrades": [
@@ -196,10 +196,21 @@
       "reason": "Take profit 3.1% (ATR*3=1.0%)",
       "openedAt": "2026-11-04T19:39:57.836Z",
       "closedAt": "2026-11-07T05:26:40.310Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 8.179,
+      "exit": 8.091,
+      "pnl": -26.905414758247414,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-11-05T21:50:40.173Z",
+      "closedAt": "2026-11-08T14:54:28.297Z"
     }
   ],
-  "totalPnl": -31.211232800523135,
+  "totalPnl": -58.11664755877055,
   "wins": 6,
-  "losses": 8,
+  "losses": 9,
   "marketDataSource": "okx-swap"
 }
