@@ -347,7 +347,8 @@ function updatePaperLedger(ledger, candles, params, opts = {}) {
   let lossStreakBlocked = false;
   ledger.consecutiveLosses = ledger.consecutiveLosses || 0;
 
-  for (let cursor = warmup; cursor < candles.length; cursor += 1) {
+  const closedCount = completedCandleCount(candles);
+  for (let cursor = warmup; cursor <= closedCount; cursor += 1) {
     const candle = candles[cursor - 1];
     const closeKey = candle.time;
     if (processed.has(closeKey)) continue;
@@ -480,7 +481,8 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
   const lastCandle = candles[closedCount - 1];
   const prior = previous || {};
   const { wasRejected = false, rejectExpired = false } = opts;
-  const effectiveParams = applyDynamicParams(candles, { ...params });
+  const completedCandles = candles.slice(0, closedCount);
+  const effectiveParams = applyDynamicParams(completedCandles, { ...params });
   const currentSignal = getSignal(candles, closedCount, effectiveParams);
   const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams, opts);
   const observedCloses = new Set((prior.observedCloses || []).map((key) => String(key).slice(0, 16)));
@@ -489,7 +491,7 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
   observedCloses.add(closeKey);
 
   // Check market phase
-  const phase = detectPhase(candles);
+  const phase = detectPhase(completedCandles);
   
   // Check news sentiment
   const newsCheck = shouldAllowEntry(candidate.symbol);
