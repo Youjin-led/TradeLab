@@ -106,6 +106,9 @@ function makeReport() {
     gate.portfolioKillSwitch
       ? `Simulated forward PnL: ${gate.portfolioKillSwitch.metrics.forwardPnl}; simulated forward trades: ${gate.portfolioKillSwitch.metrics.forwardTrades}; rejected ratio: ${(gate.portfolioKillSwitch.metrics.rejectedRatio * 100).toFixed(1)}%.`
       : 'No kill-switch data available.',
+    gate.portfolioKillSwitch
+      ? `Active candidates with at least ${gate.portfolioKillSwitch.rules.minCandidateForwardTrades} closed paper trades: ${gate.portfolioKillSwitch.metrics.evaluatedActiveCandidates}; profitable: ${gate.portfolioKillSwitch.metrics.activePositiveCandidates}; positive ratio: ${gate.portfolioKillSwitch.metrics.activePositiveRatio === null ? 'insufficient data' : (gate.portfolioKillSwitch.metrics.activePositiveRatio * 100).toFixed(1) + '%'}. Ratio threshold applies after ${gate.portfolioKillSwitch.rules.minEvaluatedActiveCandidates} candidates qualify.`
+      : '',
     ...(gate.portfolioKillSwitch && (gate.portfolioKillSwitch.soft?.reasons || gate.portfolioKillSwitch.hard?.reasons || []).length ? (gate.portfolioKillSwitch.soft?.reasons || gate.portfolioKillSwitch.hard?.reasons || []).map((reason) => `- ${reason}`) : ['- clear']),
     '',
     '## Quarantine',
