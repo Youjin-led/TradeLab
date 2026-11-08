@@ -7,7 +7,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const { executeTrade, checkGate, loadTrades, loadDailyPnl, monitorOpenPositions, paperAccountStatus } = require('./tradelab_live_executor');
+const dotenv = require('dotenv');
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
+const { executeTrade, checkGate, loadTrades, loadDailyPnl, monitorOpenPositions, paperAccountStatus, verifyExchangePositions } = require('./tradelab_live_executor');
 const { evaluateGate } = require('./tradelab_real_money_gate');
 const { evaluateSoftGate } = require('./tradelab_soft_gate');
 const { portfolioKillSwitch } = require('./tradelab_risk_controls');
@@ -15,6 +17,27 @@ const { sendTelegram } = require('./tradelab_telegram_sender');
 
 const STATE_PATH = path.join(__dirname, '..', 'tradelab-incubation-state.json');
 const REPORT_STATE_PATH = path.join(__dirname, '..', 'tradelab-paper-telegram-state.json');
+let activeSafetyAlert = null;
+
+async function notifySafetyState(code, message) {
+  if (activeSafetyAlert === code) return;
+  activeSafetyAlert = code;
+  try {
+    await sendTelegram(`⛔ *TradeLab: новые реальные входы остановлены*\n${message}`);
+  } catch (error) {
+    log(`⚠️ Safety alert send failed: ${error.message}`);
+  }
+}
+
+async function clearSafetyState() {
+  if (!activeSafetyAlert) return;
+  activeSafetyAlert = null;
+  try {
+    await sendTelegram('✅ *TradeLab: проверка безопасности восстановилась*\nНовые входы снова проходят обычные фильтры.');
+  } catch (error) {
+    log(`⚠️ Safety recovery alert send failed: ${error.message}`);
+  }
+}
 
 const CONFIG = {
   // Интервал проверки в минутах
@@ -22,17 +45,20 @@ const CONFIG = {
   // Режим: 'paper' (только логирует) или 'live' (реальные сделки)
   mode: process.env.LIVE_LOOP_MODE || 'paper',
   // Максимум сделок за цикл
-  maxTradesPerCycle: 2,
+  maxTradesPerCycle: 4,
   // Только кандидаты с PnL выше порога
-  minPnlThreshold: 0
+  minPnlThreshold: 0,
+  // Охрана live: кандидат в реальные деньги — только с доказанной бумажной историей
+  liveMinForwardTrades: Number(process.env.LIVE_MIN_FORWARD_TRADES) || 10,
+  liveMinForwardPF: Number(process.env.LIVE_MIN_FORWARD_PF) || 1.2
 };
 
 function loadReportState() {
-  if (!fs.existsSync(REPORT_STATE_PATH)) return { lastDailyDate: null };
+  if (!fs.existsSync(REPORT_STATE_PATH)) return { lastDailyDate: null, lastLiveDailyDate: null };
   try {
     return JSON.parse(fs.readFileSync(REPORT_STATE_PATH, 'utf8'));
   } catch {
-    return { lastDailyDate: null };
+    return { lastDailyDate: null, lastLiveDailyDate: null };
   }
 }
 
@@ -66,13 +92,68 @@ async function sendDailySummary() {
   await sendTelegram(lines.join('\n'));
 }
 
+// Ежедневная сводка по РЕАЛЬНОМУ счёту + статистика по причинам выхода
+async function sendLiveDailySummary() {
+  const today = new Date().toISOString().slice(0, 10);
+  const state = loadReportState();
+  if (state.lastLiveDailyDate === today) return;
+  state.lastLiveDailyDate = today;
+  saveReportState(state);
+
+  const trades = loadTrades().filter((t) => t.status === 'closed');
+  const daily = loadDailyPnl();
+  const closedPnl = trades.reduce((s, t) => s + (Number(t.pnl) || 0), 0);
+  const wins = trades.filter((t) => (Number(t.pnl) || 0) > 0);
+  const losses = trades.filter((t) => (Number(t.pnl) || 0) < 0);
+  const winrate = trades.length > 0 ? ((wins.length / trades.length) * 100).toFixed(0) : '0';
+
+  const byReason = {};
+  for (const t of trades) {
+    const r = t.exitReason || 'unknown';
+    if (!byReason[r]) byReason[r] = { n: 0, pnl: 0, wins: 0 };
+    byReason[r].n += 1;
+    byReason[r].pnl += Number(t.pnl) || 0;
+    if ((Number(t.pnl) || 0) > 0) byReason[r].wins += 1;
+  }
+  const reasons = Object.entries(byReason)
+    .sort((a, b) => b[1].pnl - a[1].pnl)
+    .map(([r, v]) => `  ${r}: ${v.n} сделок, ${v.pnl >= 0 ? '+' : ''}${v.pnl.toFixed(2)}$, win ${v.wins}/${v.n}`)
+    .join('\n');
+
+  let balanceLine = 'Баланс: n/a';
+  try {
+    const acc = await require('./tradelab_live_executor').getAccountBalance();
+    if (acc && !acc.paper) balanceLine = `Баланс: ${acc.total} USDT`;
+  } catch { /* ignore */ }
+
+  const open = loadTrades().filter((t) => t.status === 'open');
+  const lines = [
+    `💵 *TradeLab — дневная сводка (РЕАЛЬНЫЕ деньги)*`,
+    ``,
+    `Дата: ${today}`,
+    balanceLine,
+    `Открытых позиций: ${open.length}`,
+    `Закрыто всего: ${trades.length} (${wins.length}W/${losses.length}L, WR ${winrate}%)`,
+    `PnL всех закрытых: ${closedPnl >= 0 ? '+' : ''}${closedPnl.toFixed(2)}$`,
+    `Сегодня: ${daily.pnl >= 0 ? '+' : ''}${daily.pnl}$ за ${daily.trades} сдел.`,
+    ``,
+    `По причинам выхода:`,
+    reasons || '  — ещё нет закрытых'
+  ];
+  await sendTelegram(lines.join('\n'));
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function log(msg) {
   const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] ${msg}`);
+  const line = `[${timestamp}] ${msg}`;
+  console.log(line);
+  try {
+    fs.appendFileSync(path.join(__dirname, '..', 'logs', 'live-loop.log'), line + '\n');
+  } catch { /* ignore */ }
 }
 
 // ============================================================
@@ -106,14 +187,21 @@ async function runCycle(label) {
   // 0. Управляем открытыми позициями (всегда, даже при активном kill-switch)
   try {
     const exits = await monitorOpenPositions();
+    if (exits.results?.some((result) => result.action === 'error')) {
+      log('⛔ Exit monitoring failed — new entries paused for this cycle');
+      await notifySafetyState('exit-monitor-error', 'Не удалось проверить выходы из открытых позиций.');
+      return { status: 'exit-monitor-error', exits };
+    }
     if (exits.checked > 0) {
       log(`Exits: checked ${exits.checked}, closed ${exits.closed}`);
       for (const r of exits.results) {
         if (r.action === 'close') {
           log(`   Closed ${r.key} ${r.side} ${r.reason} @ ${r.exitPrice}, PnL ${r.pnl}`);
           const arrow = r.pnl >= 0 ? '📈' : '📉';
+          // Метка обязана совпадать с режимом: иначе реал-закрытие выглядит бумагой.
+          const modeTag = CONFIG.mode === 'paper' ? 'Paper' : 'LIVE (реал)';
           await sendTelegram(
-            `${arrow} *Paper закрыта позиция*\n` +
+            `${arrow} *${modeTag} закрыта позиция*\n` +
             `${r.key}\n` +
             `Сторона: ${r.side} | Выход: ${r.reason}\n` +
             `Цена: ${r.exitPrice}\n` +
@@ -124,6 +212,24 @@ async function runCycle(label) {
     }
   } catch (error) {
     log(`❌ Exit check error: ${error.message}`);
+    await notifySafetyState('exit-monitor-error', 'Ошибка мониторинга открытых позиций.');
+    return { status: 'exit-monitor-error', error: error.message };
+  }
+
+  if (CONFIG.mode === 'live') {
+    try {
+      const positions = await verifyExchangePositions();
+      if (!positions.ok) {
+        log(`⛔ Exchange/local position mismatch: ${JSON.stringify(positions)}`);
+        await notifySafetyState('position-mismatch', 'Позиции OKX не совпадают с журналом бота; требуется проверка.');
+        return { status: 'position-mismatch', positions };
+      }
+    } catch (error) {
+      log(`⛔ Position verification failed: ${error.message}`);
+      await notifySafetyState('position-check-error', 'Не удалось получить позиции OKX.');
+      return { status: 'position-check-error', error: error.message };
+    }
+    await clearSafetyState();
   }
 
   // Paper mode: торгуем виртуальными деньгами без gate.
@@ -194,67 +300,137 @@ async function runCycle(label) {
     log(`❌ Gate check error: ${error.message}`);
     return { status: 'error', error: error.message };
   }
-  log(`Gate: ${gate.gate}`);
-  
+  log(`Gate: ${gate.gate} (${gate.allowed?.length || 0} allowed)`);
   if (gate.gate !== 'MANUAL_REVIEW_ALLOWED') {
-    log(`   Gate BLOCKED: ${gate.nextAction}`);
-    
-    // В paper-режиме всё равно показываем что могли бы сделать
-    if (CONFIG.mode === 'paper') {
-      const best = findBestCandidates();
-      if (best.length > 0) {
-        log(`   📋 Paper signal — best candidates:`);
-        best.forEach(c => {
-          const key = `${c.symbol}:${c.interval}:${c.strategy}`;
-          log(`      ${key}: PnL +${(c.forwardPaperPnl || 0).toFixed(2)}$, PF ${(c.profitFactor || 0).toFixed(2)}`);
-        });
-      }
-    }
-    
-    return { status: 'gate-blocked' };
+    log(`   Gate BLOCKED: ${gate.nextAction} — входов нет, только мониторинг выходов`);
   }
 
-  // 3. Gate открыт — ищем кандидатов
-  const allowedCandidates = gate.allowed || [];
-  
-  if (allowedCandidates.length === 0) {
-    log(`   No candidates ready for live trading`);
+  // 3. Кандидаты — из gate.allowed (живая оценка evaluateGate, а не decision в state-файле:
+  //    gate не сохраняет decision в state, поэтому фильтр по state.decision мёртв).
+  // 🔒 ВАЖНО (ара доп.): реальные деньги входят только после MANUAL manual-review-allowed.
+  //    Больше никаких авто-входов реальными деньгами по одним forward-метрикам.
+  const liveCandidates = (() => {
+    const allowedKeys = new Set((gate.allowed || []).map((a) => a && a.key).filter(Boolean));
+    const state = JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+    const candidates = Object.values(state.candidates || {});
+    const openTrades = loadTrades().filter((t) => t.status === 'open');
+    const openSymbols = new Set(openTrades.map((t) => t.symbol));
+    return candidates
+      .filter((c) => c && c.key && !openSymbols.has(c.symbol) && allowedKeys.has(c.key))
+      .sort((a, b) => (b.forwardPaperPnl || 0) - (a.forwardPaperPnl || 0))
+      .slice(0, CONFIG.maxTradesPerCycle);
+  })();
+
+  if (liveCandidates.length === 0) {
+    log(`   No live candidates (нет прибыльных и ПРОВЕРЕННЫХ в paper)`);
     return { status: 'no-candidates' };
   }
 
-  log(`   ✅ ${allowedCandidates.length} candidate(s) ready:`);
-  allowedCandidates.forEach(c => {
-    log(`      ${c.key}: PnL ${c.metrics.forwardPaperPnl}$, PF ${c.metrics.profitFactor}`);
+  log(`   ✅ Live candidates (проверенные в paper, реал):`);
+  liveCandidates.forEach(c => {
+    const fp = Number.isFinite(c.forwardProfitFactor) ? c.forwardProfitFactor.toFixed(2) : 'n/a';
+    log(`      ${c.key}: PnL +${(c.forwardPaperPnl || 0).toFixed(2)}$, f-PF ${fp}, f-trades ${c.forwardPaperTrades || 0}`);
   });
 
-  // 4. Выполняем сделки
-  const executed = [];
-  if (CONFIG.mode === 'live') {
-    for (const candidate of allowedCandidates.slice(0, CONFIG.maxTradesPerCycle)) {
-      log(`   🚀 Executing trade for: ${candidate.key}`);
-      
-      try {
-        const result = await executeTrade(candidate.key);
-        if (result.success) {
-          log(`      ✅ Trade executed! Entry: ${result.trade.entryPrice}, Size: ${result.trade.size}`);
-          executed.push({ key: candidate.key, status: 'executed', entry: result.trade.entryPrice });
-        } else {
-          log(`      ❌ Trade failed: ${result.reason}`);
-          executed.push({ key: candidate.key, status: 'failed', reason: result.reason });
-        }
-      } catch (error) {
-        log(`      ❌ Error: ${error.message}`);
-        executed.push({ key: candidate.key, status: 'error', reason: error.message });
+  // 4. Ручной мост: кандидат manual-review-allowed шлётся в Telegram с кнопками,
+  //    реальный вход выполняется ТОЛЬКО после одобрения (approved в approvals.json).
+  const { createApprovalRequest, getApprovedCandidates, markExecuted } = require('./tradelab_manual_bridge');
+
+  // 4a. Отправляем кнопки тем, кого ещё не одобрили/не отклонили
+  for (const candidate of liveCandidates) {
+    try {
+      const req = await createApprovalRequest(candidate);
+      if (req.action === 'send-failed' || (req.action === 'sent' && !req.sent)) {
+        log(`      ⚠️ Telegram-отправка кнопки не удалась (${candidate.key}) — повтор в следующем цикле`);
+      } else if (req.action === 'sent') {
+        log(`      🔘 Отправлен на подтверждение: ${candidate.key}`);
+      } else if (req.action === 'already-approved') {
+        log(`      ✅ Уже одобрен: ${candidate.key}`);
+      } else if (req.action === 'already-declined') {
+        log(`      ⛔ Уже отклонён: ${candidate.key}`);
+      } else if (req.action === 'cooldown') {
+        log(`      🧊 Кулдаун после убыточного реала: ${candidate.key} (новая кнопка позже)`);
+      } else if (req.action === 'executed-wait') {
+        log(`      ⏳ Уже отработал реал: ${candidate.key} (новая кнопка после перевооружения)`);
       }
-      
-      // Пауза между сделками
-      await sleep(5000);
+    } catch (error) {
+      log(`      ❌ Approval request error for ${candidate.key}: ${error.message}`);
     }
-  } else {
-    log(`   📋 Paper mode — would execute ${Math.min(allowedCandidates.length, CONFIG.maxTradesPerCycle)} trade(s)`);
+    await sleep(1500);
   }
 
-  return { status: 'ok', executed };
+  // 4b. Исполняем только одобренные кандидаты.
+  // Сначала самочистка: фантомы и rejected удаляются, слоты не тратятся зря.
+  const { pruneStaleApprovals } = require('./tradelab_manual_bridge');
+  try {
+    const dropped = await pruneStaleApprovals();
+    if (dropped > 0) log(`   🧹 Убрано протухших approve: ${dropped}`);
+  } catch (error) {
+    log(`   ⚠️ Prune error: ${error.message}`);
+  }
+  const liveKeys = new Set(liveCandidates.map((c) => c.key));
+  const approved = (await getApprovedCandidates()).filter((record) => liveKeys.has(record.key));
+  if (approved.length === 0) {
+    log(`   No approved candidates yet (ожидаем ваше решение в Telegram)`);
+    return { status: 'awaiting-approval' };
+  }
+
+  const executed = [];
+  // Лимит на цикл: не больше maxTradesPerCycle, чтобы пачка накопленных
+  // approve не выстрелила залпом при открытии гейта. Остаток — в следующих циклах.
+  // Приоритет — живым кандидатам из гейта: иначе протухшие approve (по мёртвым
+  // ключам, их отбивает gate внутри executeTrade) съедают все слоты и актуальный
+  // кандидат не вызывается никогда.
+  const ordered = [...approved].sort((a, b) => {
+    const al = liveKeys.has(a.key) ? 0 : 1;
+    const bl = liveKeys.has(b.key) ? 0 : 1;
+    return al - bl;
+  });
+  const toExecute = ordered.slice(0, CONFIG.maxTradesPerCycle);
+  if (approved.length > toExecute.length) {
+    log(`   ⏳ Approved ${approved.length}, беру в этот цикл ${toExecute.length} (остальные — дальше)`);
+  }
+  for (const record of toExecute) {
+    const candidateKey = record.key;
+    log(`   🚀 LIVE Executing approved candidate: ${candidateKey}`);
+    try {
+      const result = await executeTrade(candidateKey);
+      if (result.success) {
+        log(`      ✅ LIVE Trade executed! ${candidateKey} ${result.trade.side} @ ${result.trade.entryPrice}, size ${result.trade.size}, value ${(result.trade.valueUsd||0).toFixed(2)}$`);
+        executed.push({ key: candidateKey, status: 'executed', entry: result.trade.entryPrice, side: result.trade.side });
+        const emoji = result.trade.side === 'LONG' ? '🟢' : '🔴';
+        await sendTelegram(
+          `💰 *LIVE открыта позиция (реал)*\n` +
+          `${result.trade.key}\n` +
+          `Сторона: ${result.trade.side} | Цена: ${result.trade.entryPrice}\n` +
+          `Стоп: ${result.trade.stopPrice} | Тейк: ${result.trade.takePrice}\n` +
+          `Размер: ${result.trade.size} | ~${(result.trade.valueUsd||0).toFixed(2)}$\n` +
+          `Комиссия/сеть: учтены (fee ${result.trade.params?.feePct || 0.06}% + slippage)`
+        );
+        await markExecuted(candidateKey);
+      } else {
+        log(`      ❌ LIVE Trade failed: ${result.reason}`);
+        executed.push({ key: candidateKey, status: 'failed', reason: result.reason });
+      }
+    } catch (error) {
+      log(`      ❌ LIVE Error: ${error.message}`);
+      executed.push({ key: candidateKey, status: 'error', reason: error.message });
+    }
+    await sleep(5000);
+  }
+
+  // Мониторинг закрытий уже сделал exits выше — отчёт о реале
+  const liveAccount = await (async () => {
+    try { const acc = await require('./tradelab_live_executor').getAccountBalance(); return acc; } catch { return null; }
+  })();
+  if (liveAccount && !liveAccount.paper) {
+    log(`Live account: total ${liveAccount.total} USDT, free ${liveAccount.free} USDT`);
+  }
+
+  // Ежедневная сводка по реальному счёту (раз в сутки) + статистика по exitReason
+  await sendLiveDailySummary();
+
+  return { status: 'ok', executed, mode: 'live' };
 }
 
 // ============================================================
@@ -348,3 +524,4 @@ if (require.main === module) {
 }
 
 module.exports = { liveLoop, findBestCandidates };
+
