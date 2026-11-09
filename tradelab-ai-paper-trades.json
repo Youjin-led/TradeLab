@@ -1,33 +1,7 @@
 {
-  "balance": 5166.05507529155,
+  "balance": 4301.254945783626,
   "peak": 10000.248707858012,
   "positions": [
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 75866.9,
-      "qty": 0.01557212843307182,
-      "notional": 1181.4091106190165,
-      "fee": 0.4725636442476066,
-      "openedAt": "2026-11-05T21:50:40.173Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price (75866.9) is below both SMA20 (78023) and SMA50 (78264), trend is bearish, MACD is deeply nega",
-      "atrPct": 1.792980300273993
-    },
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1.1592,
-      "qty": 1155.134176687892,
-      "notional": 1339.0315376166045,
-      "fee": 0.5356126150466418,
-      "openedAt": "2026-11-07T05:26:31.693Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price (1.1592) is below SMA20 (1.2416) and SMA50 (1.2487), trend is bearish, MACD is negative, and A",
-      "atrPct": 2.308242137434683
-    },
     {
       "symbol": "OPUSDT",
       "interval": "1h",
@@ -40,6 +14,32 @@
       "aiConfidence": 77,
       "aiReasoning": "TF agree: Price (0.10039) sits below both SMA20 (0.101177) and SMA50 ( | Price (0.10039) is below both SMA20 (0.103277) and SMA50 (0.",
       "atrPct": 1.5318827999373876
+    },
+    {
+      "symbol": "BNBUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 684.02,
+      "qty": 3.411320375124887,
+      "notional": 2333.411362992925,
+      "fee": 0.9333645451971702,
+      "openedAt": "2026-11-09T05:37:21.034Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 684.02 is below SMA20 (692.24) and SMA50 (694.23), tre | Price (684.02) is below both SMA20 (693.96) and SMA50 (700.0",
+      "atrPct": 0.7744134465575356
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 10.464,
+      "qty": 109.26716053770386,
+      "notional": 1143.3715678665333,
+      "fee": 0.45734862714661334,
+      "openedAt": "2026-11-09T05:37:21.034Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price 10.464 is below both SMA20 (10.604) and SMA50 (10.727) with a bearish trend and ADX 36 confirm",
+      "atrPct": 1.5911697247706393
     }
   ],
   "closedTrades": [
@@ -218,10 +218,32 @@
       "reason": "Stop loss 1.5% (ATR*1.5=0.9%)",
       "openedAt": "2026-11-08T14:54:19.234Z",
       "closedAt": "2026-11-08T20:18:23.769Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1.1592,
+      "exit": 1.1,
+      "pnl": 67.84833064487647,
+      "reason": "Take profit 4.3% (ATR*3=1.4%)",
+      "openedAt": "2026-11-07T05:26:31.693Z",
+      "closedAt": "2026-11-09T05:37:27.065Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 75866.9,
+      "exit": 74315,
+      "pnl": 23.693822471036462,
+      "reason": "timeout 80h (maxHoldHours)",
+      "openedAt": "2026-11-05T21:50:40.173Z",
+      "closedAt": "2026-11-09T05:37:28.697Z"
     }
   ],
-  "totalPnl": -99.48067277645418,
-  "wins": 6,
+  "totalPnl": -7.938519660541253,
+  "wins": 8,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }
