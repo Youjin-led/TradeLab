@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SHADOW_PATH = path.join(__dirname, '..', 'tradelab-okx-shadow-state.json');
+const MIN_SHADOW_CLOSED_POSITIONS = 3;
 
 function readShadow() {
   try { return JSON.parse(fs.readFileSync(SHADOW_PATH, 'utf8')); }
@@ -17,6 +18,9 @@ function assessOkxEvidence(record, updatedAt, nowMs = Date.now()) {
     return { allowed: false, reason: 'OKX paper evidence unavailable' };
   }
   const f = record.forward;
+  if ((Number(f.closedTrades) || 0) < MIN_SHADOW_CLOSED_POSITIONS) {
+    return { allowed: false, reason: `OKX shadow closed positions ${Number(f.closedTrades) || 0} < ${MIN_SHADOW_CLOSED_POSITIONS}` };
+  }
   if (f.closedTrades >= 10 && f.realizedPnl > 0 && f.profitFactor >= 1.5 && f.maxDrawdownPct <= 4) {
     return { allowed: true, reason: 'OKX forward recovery' };
   }
@@ -28,8 +32,8 @@ function assessOkxEvidence(record, updatedAt, nowMs = Date.now()) {
   if (stress.trades >= 8 && stress.pnl <= 0) {
     return { allowed: false, reason: `OKX cost stress negative: ${stress.pnl}` };
   }
-  return { allowed: true, reason: 'No OKX evidence veto; forward still required by existing gate' };
+  return { allowed: true, reason: 'OKX shadow sample collected; holdout checks passed' };
 }
 
-module.exports = { readShadow, assessOkxEvidence };
+module.exports = { readShadow, assessOkxEvidence, MIN_SHADOW_CLOSED_POSITIONS };
 
