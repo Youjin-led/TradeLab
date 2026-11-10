@@ -1,13 +1,58 @@
 {
-  "generatedAt": "2026-11-10T12:20:24.350Z",
+  "generatedAt": "2026-11-10T21:43:25.802Z",
   "summary": {
-    "totalCandidates": 0,
-    "live": 0,
+    "totalCandidates": 18,
+    "live": 5,
     "quarantined": 0,
-    "rejected": 0,
+    "rejected": 13,
     "readyForReview": 0
   },
-  "byStrategy": {},
+  "byStrategy": {
+    "sma-rsi": {
+      "totalPnl": 0,
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "maxDd": 0,
+      "symbols": [
+        "SEIUSDT",
+        "ATOMUSDT",
+        "INJUSDT",
+        "JUPUSDT",
+        "OPUSDT",
+        "RENDERUSDT"
+      ],
+      "forwardPnl": 0,
+      "forwardTrades": 0,
+      "avgHoldBars": 0,
+      "totalHoldBars": 0,
+      "winRate": 0,
+      "avgPnlPerTrade": 0
+    },
+    "breakout": {
+      "totalPnl": 0,
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "maxDd": 0,
+      "symbols": [
+        "BTCUSDT",
+        "ETHUSDT",
+        "SOLUSDT",
+        "NEARUSDT",
+        "BNBUSDT",
+        "LINKUSDT",
+        "DOTUSDT",
+        "AVAXUSDT"
+      ],
+      "forwardPnl": 0,
+      "forwardTrades": 0,
+      "avgHoldBars": 0,
+      "totalHoldBars": 0,
+      "winRate": 0,
+      "avgPnlPerTrade": 0
+    }
+  },
   "byTimeOfDay": {
     "0": {
       "pnl": 0,
