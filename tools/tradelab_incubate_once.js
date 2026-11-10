@@ -269,8 +269,23 @@ function forwardLedgerMetrics(ledger) {
     trades: trades.length,
     maxLossStreak: maxStreak,
     currentLossStreak: (ledger && ledger.consecutiveLosses) || 0,
-    profitFactor: grossLoss ? grossProfit / grossLoss : grossProfit ? Infinity : 0
+    // JSON serializes Infinity as null; keep an all-win record finite so
+    // lifecycle checks do not mistake its profit factor for zero.
+    profitFactor: grossLoss ? grossProfit / grossLoss : grossProfit ? 99 : 0
   };
+}
+
+function recoverInvalidProfitFactorQuarantine(prior, record) {
+  return prior?.status === 'quarantined'
+    && prior.forwardProfitFactor === null
+    && /^probation failed:/.test(prior.quarantine?.reason || '')
+    && record.health?.status === 'Healthy'
+    && Number(record.forwardPaperTrades) >= REQUIREMENTS.minClosedPaperTrades
+    && Number(record.forwardPaperPnl) > 0
+    && Number(record.forwardProfitFactor) === 99
+    && Number(record.forwardPaperMaxDd) <= REQUIREMENTS.maxDrawdownPct
+    && Number(record.forwardCurrentLossStreak) === 0
+    && record.paperLedger?.trades?.every((trade) => Number(trade.pnl) > 0);
 }
 
 function evaluateGuardrails(summary, walk, params, forward = {}) {
@@ -602,11 +617,13 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
   if (prior.status === 'quarantined') {
     const qUpdated = prior.quarantine && prior.quarantine.updatedAt ? Date.parse(prior.quarantine.updatedAt) : NaN;
     const qExpired = !Number.isNaN(qUpdated) && (Date.now() - qUpdated) >= QUARANTINE_COOLDOWN_HOURS * 3600e3;
-    if (qExpired) {
+    const invalidPfQuarantine = recoverInvalidProfitFactorQuarantine(prior, record);
+    if (qExpired || invalidPfQuarantine) {
       // Quarantine cooldown elapsed: let the candidate trade again so it can recover.
       record.previousStatus = 'quarantined';
       delete record.quarantine;
-      record.lastUnquarantine = { at: new Date().toISOString(), reason: 'quarantine cooldown expired' };
+      if (invalidPfQuarantine) delete record.probation;
+      record.lastUnquarantine = { at: new Date().toISOString(), reason: invalidPfQuarantine ? 'invalid forward profit factor repaired' : 'quarantine cooldown expired' };
     } else {
       record.status = 'quarantined';
       record.decision = prior.decision || 'quarantine';
@@ -786,5 +803,5 @@ if (require.main === module) {
   });
 }
 
-module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, completedCandleCount, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
+module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, completedCandleCount, forwardLedgerMetrics, recoverInvalidProfitFactorQuarantine, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
 
