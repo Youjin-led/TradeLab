@@ -248,6 +248,17 @@ function splitWalkForward(candles, params) {
   return { train, test, stability };
 }
 
+function closedPaperPositionCount(ledger) {
+  const completed = new Set();
+  let legacy = 0;
+  for (const trade of (ledger && ledger.trades) || []) {
+    if (trade.reason === 'partial-take') continue;
+    if (!trade.entryTime) { legacy += 1; continue; }
+    completed.add(`${trade.side || ''}:${trade.entryTime}`);
+  }
+  return completed.size + legacy;
+}
+
 function forwardLedgerMetrics(ledger) {
   const trades = (ledger && ledger.trades) || [];
   let maxStreak = 0;
@@ -266,7 +277,7 @@ function forwardLedgerMetrics(ledger) {
     }
   }
   return {
-    trades: trades.length,
+    trades: closedPaperPositionCount(ledger),
     maxLossStreak: maxStreak,
     currentLossStreak: (ledger && ledger.consecutiveLosses) || 0,
     // JSON serializes Infinity as null; keep an all-win record finite so
@@ -540,7 +551,7 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
     lastSignal: currentSignal.action,
     liveObservations: (prior.liveObservations || 0) + (isNewObservation ? 1 : 0),
     closedPaperTrades: result.account.trades.length,
-    forwardPaperTrades: paper.ledger.trades.length,
+    forwardPaperTrades: closedPaperPositionCount(paper.ledger),
     forwardPaperPnl: Number((paper.ledger.balance - 10000).toFixed(2)),
     forwardPaperMaxDd: Number(paper.ledger.maxDd.toFixed(2)),
     forwardMaxLossStreak: forwardLedgerMetrics(paper.ledger).maxLossStreak,
@@ -803,5 +814,5 @@ if (require.main === module) {
   });
 }
 
-module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, completedCandleCount, forwardLedgerMetrics, recoverInvalidProfitFactorQuarantine, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
+module.exports = { incubateOnce, CANDIDATES, updatePaperLedger, nextDecision, readRiskGate, completedCandleCount, closedPaperPositionCount, forwardLedgerMetrics, recoverInvalidProfitFactorQuarantine, MAX_CONSECUTIVE_LOSSES, CONFIRM_INTERVAL };
 
