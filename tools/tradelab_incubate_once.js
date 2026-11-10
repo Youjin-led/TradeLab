@@ -516,7 +516,10 @@ function mergeRecord(previous, candidate, candles, params, result, walk, alerts,
   const completedCandles = candles.slice(0, closedCount);
   const effectiveParams = applyDynamicParams(completedCandles, { ...params });
   const currentSignal = getSignal(candles, closedCount, effectiveParams);
-  const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, effectiveParams, opts);
+  // Live execution closes the full position at take profit. Match that rule in
+  // forward paper trading; older partial/final pairs remain one position above.
+  const paperParams = { ...effectiveParams, partialTakePct: 0 };
+  const paper = updatePaperLedger(makePaperLedger(prior, candles), candles, paperParams, opts);
   const observedCloses = new Set((prior.observedCloses || []).map((key) => String(key).slice(0, 16)));
   const closeKey = lastCandle.time;
   const isNewObservation = !observedCloses.has(closeKey);
