@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-11T05:34:55.397Z",
+  "generatedAt": "2026-11-11T15:59:00.438Z",
   "summary": {
     "totalCandidates": 18,
-    "live": 6,
+    "live": 5,
     "quarantined": 0,
-    "rejected": 12,
+    "rejected": 13,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -30,9 +30,9 @@
       "avgPnlPerTrade": 0
     },
     "breakout": {
-      "totalPnl": 0,
-      "trades": 0,
-      "wins": 0,
+      "totalPnl": 0.881891841820567,
+      "trades": 1,
+      "wins": 1,
       "losses": 0,
       "maxDd": 0,
       "symbols": [
@@ -45,12 +45,12 @@
         "DOTUSDT",
         "AVAXUSDT"
       ],
-      "forwardPnl": 0,
-      "forwardTrades": 0,
+      "forwardPnl": 0.88,
+      "forwardTrades": 1,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 0,
-      "avgPnlPerTrade": 0
+      "winRate": 100,
+      "avgPnlPerTrade": 0.88
     }
   },
   "byTimeOfDay": {
@@ -95,9 +95,9 @@
       "avgPnl": 0
     },
     "8": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": 0.88,
+      "trades": 1,
+      "avgPnl": 0.88
     },
     "9": {
       "pnl": 0,
@@ -192,9 +192,9 @@
       "avgPnl": 0
     },
     "Wednesday": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": 0.88,
+      "trades": 1,
+      "avgPnl": 0.88
     },
     "Thursday": {
       "pnl": 0,
@@ -217,8 +217,33 @@
       "time": "start",
       "equity": 10000,
       "pnl": 0
+    },
+    {
+      "time": "2026-11-11 09:00",
+      "equity": 10000.88,
+      "pnl": 0.88,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": null,
-  "distribution": null
+  "distribution": {
+    "totalTrades": 1,
+    "pnls": {
+      "min": 0.88,
+      "max": 0.88,
+      "median": 0.88,
+      "avg": 0.88,
+      "stdDev": 0
+    },
+    "holdTime": {
+      "avgBars": 0,
+      "minBars": 0,
+      "maxBars": 0
+    },
+    "streaks": {
+      "maxWinStreak": 1,
+      "maxLossStreak": 0
+    }
+  }
 }

@@ -185,5 +185,90 @@
     "validationReasons": [
       "HOLD — пропуск"
     ]
+  },
+  {
+    "timestamp": "2026-11-11T15:59:02.579Z",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1812,
+    "aiReasoning": "Conflicting signals: MACD positive (0.127) and price above SMA20 (83.45) with strong ADX (32.3) and 2x volume suggest bullish momentum, but the stated trend is bearish, price sits below SMA50 (84.64), RSI 63.4 is near overbought, and price is above the upper Bollinger band (overextended). Rule 4 also cautions against SELL when ADX>25 and price is above SMA50, and the bullish/bearish confirmation counts don't cleanly reach 2 aligned factors. No edge — stay flat.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T15:59:05.107Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2030,
+    "aiReasoning": "ADX14=16 signals a weak/choppy, trendless market, and the setup is genuinely conflicting: price (8.597) sits above both SMA20 (8.485) and SMA50 (8.496) with MACD positive (0.067) and RSI 61.9, which leans bullish, but the stated trend is bearish and the last 5 candles are range-bound with no breakout above resistance 9.01. Volume is elevated (1.4x) but price action is indecisive, and Fear&Greed at 24 with mixed phase adds caution. Per rule 3, HOLD when indicators conflict or ADX<18. No edge worth risking capital on a choppy range.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T15:59:07.559Z",
+    "symbol": "ATOMUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1960,
+    "aiReasoning": "Price above SMA20/SMA50 with positive MACD and RSI 62.3 suggests mild bullish bias, but ADX14=5.4 shows no trend (choppy/ranging), and price is stalling near resistance 1.436 after failing to break it. Rule 3 applies: trend clearly absent (ADX<18), so a decisive BUY is not justified despite bullish structure. Waiting for ADX expansion or a clean breakout above 1.436 before committing.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T15:59:09.868Z",
+    "symbol": "JUPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1832,
+    "aiReasoning": "Price is above SMA20/SMA50 with bullish trend and MACD>0, but RSI14=82.9 is deeply overbought and price is pressing resistance 0.2662 with volume only 0.98x average and ADX=20.3 (weak/choppy trend). Chasing a breakout here offers poor risk/reward; no confirmed breakout above resistance yet. Indicators conflict (bullish structure vs overbought exhaustion), so HOLD is appropriate.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T15:59:12.584Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2228,
+    "aiReasoning": "Conflicting signals: price (3.744) sits above SMA20 (3.628) but essentially at SMA50 (3.741), while the stated trend is bearish and ADX=28.8 confirms an active trend. MACD is positive and RSI=66.5 is elevated (near overbought), and volume is 1.93x average with a strong recent bullish candle, but the bearish trend label and price not clearly above SMA50 prevent a clean BUY. Rule 4 also cautions against SELL when ADX>25 and price is above SMA50. With no open positions and genuinely mixed indicators, staying flat is the prudent call until price decisively clears SMA50/resistance or the trend resolves.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
   }
 ]
