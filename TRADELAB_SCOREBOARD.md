@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-11-11T15:59:00.397Z
-Incubation updated: 2026-11-11T15:58:18.247Z
+Generated: 2026-11-11T22:37:29.577Z
+Incubation updated: 2026-11-11T22:36:47.974Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **clear**
 
@@ -17,21 +17,21 @@ Portfolio forward PnL: +0.88; forward trades: 1; avg/trade: +0.88.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-AVAXUSDT:1h:breakout | 51% | collecting | Healthy | 3 | 1 | +0.88 | 1.58 | 2.75% | 3 | status is incubating, expected ready-for-review
-JUPUSDT:4h:sma-rsi | 49% | collecting | Healthy | 3 | 0 | +0.00 | 2.37 | 2.00% | 1 | status is incubating, expected ready-for-review
-ATOMUSDT:1h:sma-rsi | 46% | collecting | Healthy | 3 | 0 | +0.00 | 1.77 | 1.99% | 3 | status is incubating, expected ready-for-review
-NEARUSDT:4h:breakout | 40% | collecting | Healthy | 3 | 0 | +0.00 | 1.08 | 5.62% | 3 | status is incubating, expected ready-for-review
-SOLUSDT:1h:breakout | 30% | collecting | Caution | 3 | 0 | +0.00 | 1.89 | 1.47% | 4 | status is incubating, expected ready-for-review
+AVAXUSDT:1h:breakout | 52% | collecting | Healthy | 4 | 1 | +0.88 | 1.54 | 2.45% | 3 | status is incubating, expected ready-for-review
+JUPUSDT:4h:sma-rsi | 50% | collecting | Healthy | 4 | 0 | +0.00 | 2.37 | 2.00% | 1 | status is incubating, expected ready-for-review
+ATOMUSDT:1h:sma-rsi | 47% | collecting | Healthy | 4 | 0 | +0.00 | 1.79 | 1.82% | 3 | status is incubating, expected ready-for-review
+NEARUSDT:4h:breakout | 41% | collecting | Healthy | 4 | 0 | +0.00 | 1.08 | 5.62% | 3 | status is incubating, expected ready-for-review
+SOLUSDT:1h:breakout | 30% | collecting | Caution | 4 | 0 | +0.00 | 1.58 | 1.69% | 4 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
 
 Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
-SOLUSDT:1h:breakout | 30% | collecting | +0.00 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 3 < 30; forward paper trades 0 < 3; critical alerts: loss streak 4; OKX shadow data stale or unavailable
-NEARUSDT:4h:breakout | 40% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 3 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
-ATOMUSDT:1h:sma-rsi | 46% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 3 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
-JUPUSDT:4h:sma-rsi | 49% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 3 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
-AVAXUSDT:1h:breakout | 51% | collecting | +0.88 | status is incubating, expected ready-for-review; live observations 3 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
+SOLUSDT:1h:breakout | 30% | collecting | +0.00 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 4 < 30; forward paper trades 0 < 3; critical alerts: loss streak 4; OKX shadow data stale or unavailable
+NEARUSDT:4h:breakout | 41% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 4 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
+ATOMUSDT:1h:sma-rsi | 47% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 4 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
+JUPUSDT:4h:sma-rsi | 50% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 4 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
+AVAXUSDT:1h:breakout | 52% | collecting | +0.88 | status is incubating, expected ready-for-review; live observations 4 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
 
 ## Quarantine Count
 

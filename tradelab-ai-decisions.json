@@ -270,5 +270,90 @@
     "validationReasons": [
       "HOLD — пропуск"
     ]
+  },
+  {
+    "timestamp": "2026-11-11T22:37:31.855Z",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1859,
+    "aiReasoning": "Price 83.92 sits below both SMA20 (84.0) and SMA50 (84.34) with a bearish trend label, and the last candle broke down toward support 81.25 — that leans bearish. However, MACD is still positive (0.44), RSI 59.4 is neutral-to-firm, ADX 29.4 confirms a trend but market phase is trending-up, and volume is only 0.43x average, so the bearish setup lacks confirmation. Rule 4 also warns against selling when ADX>25 and price is near/above SMA50. Conflicting signals → HOLD.",
+    "mergedDecision": "SELL",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (58%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T22:37:33.870Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1534,
+    "aiReasoning": "ADX=46.9 with SMA20(8.5637) > SMA50(8.4813) triggers hard block: SELL is forbidden in a strong uptrend. BUY is not confirmed either — price (8.525) is below SMA20, MACD momentum is fading, RSI 43.9 is weak, volume is only 0.5x, and the last candle broke down toward support. Conflicting signals in a strong trend = stand aside.",
+    "mergedDecision": "SELL",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (62%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T22:37:35.845Z",
+    "symbol": "ATOMUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1496,
+    "aiReasoning": "Price 1.39 is below SMA20 (1.4118) and just under SMA50 (1.3953), with RSI 36.3 weak and MACD barely positive, so signals conflict. ADX 20.5 is weak/choppy and volume is only 0.36x average, confirming no conviction. Trend labeled bullish but price action is falling toward support 1.357; no breakout or breakdown yet. Mixed market and Fear&Greed 24 argue for patience until a clear break of 1.357 or reclaim of 1.41.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T22:37:37.806Z",
+    "symbol": "JUPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1485,
+    "aiReasoning": "Price 0.2555 sits above SMA20 (0.25011) and SMA50 (0.248394) with MACD positive (0.00571) and trend bullish, which favors longs, but ADX14=18.3 signals a weak/choppy trend and volume is only 0.38x average, showing no conviction. RSI 56 is neutral, price is above-mid Bollinger but rejected from resistance 0.2676 on the last candle, and Fear&Greed=24 with mixed market phase adds caution. Conflicting signals (bullish structure vs. absent trend strength and weak volume) justify waiting for a breakout above 0.2676 or a pullback hold of SMA20 before committing.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-11T22:37:39.918Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1639,
+    "aiReasoning": "Bearish trend with price below SMA20 (3.625) and SMA50 (3.734), but MACD still positive and RSI neutral at 47.1, creating conflict. ADX=25 shows only moderate trend strength, volume very weak (0.41x), and last candle closed near support zone with choppy recent action. No clean 2-factor bearish confirmation (MACD not negative), so no SELL; no bullish confirmation either. Rule 4 not triggered (ADX<40), but signals are genuinely mixed — stand aside.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
   }
 ]

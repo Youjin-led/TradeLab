@@ -1,20 +1,7 @@
 {
-  "balance": 4301.254945783626,
-  "peak": 10000.248707858012,
+  "balance": 4596.971775717814,
+  "peak": 10043.885467599193,
   "positions": [
-    {
-      "symbol": "OPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.10039,
-      "qty": 22054.2245611752,
-      "notional": 2214.0236036963784,
-      "fee": 0.8856094414785514,
-      "openedAt": "2026-11-08T20:18:21.876Z",
-      "aiConfidence": 77,
-      "aiReasoning": "TF agree: Price (0.10039) sits below both SMA20 (0.101177) and SMA50 ( | Price (0.10039) is below both SMA20 (0.103277) and SMA50 (0.",
-      "atrPct": 1.5318827999373876
-    },
     {
       "symbol": "BNBUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 61,
       "aiReasoning": "1h only: Price 10.464 is below both SMA20 (10.604) and SMA50 (10.727) with a bearish trend and ADX 36 confirm",
       "atrPct": 1.5911697247706393
+    },
+    {
+      "symbol": "LTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 50.33,
+      "qty": 39.144263084083455,
+      "notional": 1970.13076102192,
+      "fee": 0.7880523044087681,
+      "openedAt": "2026-11-11T22:37:40.283Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price (50.32) is below both SMA20 (50.96) and SMA50 (50.97), | Price 50.33 below SMA20 (50.94) and SMA50 (52.37), trend bea",
+      "atrPct": 1.7555561863131917
     }
   ],
   "closedTrades": [
@@ -240,10 +240,21 @@
       "reason": "timeout 80h (maxHoldHours)",
       "openedAt": "2026-11-05T21:50:40.173Z",
       "closedAt": "2026-11-09T05:37:28.697Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.10039,
+      "exit": 0.098,
+      "pnl": 51.82398725972995,
+      "reason": "timeout 74h (maxHoldHours)",
+      "openedAt": "2026-11-08T20:18:21.876Z",
+      "closedAt": "2026-11-11T22:37:47.366Z"
     }
   ],
-  "totalPnl": -7.938519660541253,
-  "wins": 8,
+  "totalPnl": 43.885467599188694,
+  "wins": 9,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }
