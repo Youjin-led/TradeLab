@@ -355,5 +355,90 @@
     "validationReasons": [
       "HOLD — пропуск"
     ]
+  },
+  {
+    "timestamp": "2026-11-12T06:40:08.188Z",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1894,
+    "aiReasoning": "Price (82.89) sits below both SMA20 (83.97) and SMA50 (83.83) with MACD negative (-0.134) and market phase trending-down, which favors bearish bias. However, RSI14=29.6 is at oversold threshold, volume is very thin (0.31x), and ADX=31 with price only marginally below SMA50 means a SELL would be fighting a still-bullish labeled trend and risk a mean-reversion bounce off support 81.25. Signals conflict (oversold RSI vs bearish structure), so no decisive edge; HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-12T06:40:10.371Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1745,
+    "aiReasoning": "ADX 18.3 signals weak/choppy conditions, and market phase is ranging. Price is above SMA20/SMA50 with MACD>0 (mild bullish tilt), but volume is only 0.48x average and RSI 49.5 is neutral. Price sits just below resistance 8.736 with no breakout confirmation, so bullish signals are insufficient (need 2+ strong confirmations). Conflicting/weak setup warrants HOLD.",
+    "mergedDecision": "BUY",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (58%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-12T06:40:12.568Z",
+    "symbol": "ATOMUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1749,
+    "aiReasoning": "RSI14=24.4 is deeply oversold while price sits below SMA20 (1.4042) but above SMA50 (1.39766) and trend is labeled bullish, so signals conflict. MACD is negative (-0.008) and market phase is trending-down, but ADX=33.9 with price above SMA50 forbids a SELL under rule 4, and weak volume (0.3x) plus oversold RSI makes a BUY premature. No clean 2-factor alignment either way, so HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-12T06:40:15.041Z",
+    "symbol": "JUPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2021,
+    "aiReasoning": "ADX14=16.9 (<18) indicates a weak/choppy, trendless market, which per rule 3 mandates HOLD. Bullish factors exist (price above SMA20/SMA50, MACD>0, trend labeled bullish, RSI 52.9 neutral) but volume is very weak (0.43x) and price is fading from resistance 0.2676 toward mid-range, with recent candles showing rejection and drift lower. Conflicting/absent trend signals justify standing aside rather than forcing a trade.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-12T06:40:17.488Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "SELL",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 2008,
+    "aiReasoning": "Price below SMA20 (3.615) and SMA50 (3.721), trend bearish, MACD negative (-0.016), RSI 43 in bearish zone ticking down, price below mid-Bollinger. ADX 18.7 weak so no hard block, but bearish factors align (2+ confirmations). Volume very thin (0.3x) and choppy regime warrant moderate confidence. Stop above recent structure, target toward support 3.442.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-fallback",
+    "mergedReasoning": "Неопределенное состояние",
+    "validationValid": true,
+    "validationReasons": [
+      "прошло все проверки"
+    ]
   }
 ]

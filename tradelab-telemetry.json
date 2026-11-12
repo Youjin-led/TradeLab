@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T22:37:29.630Z",
+  "generatedAt": "2026-11-12T06:40:05.985Z",
   "summary": {
     "totalCandidates": 18,
     "live": 5,
@@ -9,11 +9,11 @@
   },
   "byStrategy": {
     "sma-rsi": {
-      "totalPnl": 0,
-      "trades": 0,
+      "totalPnl": -1.1288581119277417,
+      "trades": 1,
       "wins": 0,
-      "losses": 0,
-      "maxDd": 0,
+      "losses": 1,
+      "maxDd": 0.01,
       "symbols": [
         "SEIUSDT",
         "ATOMUSDT",
@@ -22,12 +22,12 @@
         "OPUSDT",
         "RENDERUSDT"
       ],
-      "forwardPnl": 0,
-      "forwardTrades": 0,
+      "forwardPnl": -1.13,
+      "forwardTrades": 1,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
       "winRate": 0,
-      "avgPnlPerTrade": 0
+      "avgPnlPerTrade": -1.13
     },
     "breakout": {
       "totalPnl": 0.881891841820567,
@@ -170,9 +170,9 @@
       "avgPnl": 0
     },
     "23": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": -1.13,
+      "trades": 1,
+      "avgPnl": -1.13
     }
   },
   "byDayOfWeek": {
@@ -192,9 +192,9 @@
       "avgPnl": 0
     },
     "Wednesday": {
-      "pnl": 0.88,
-      "trades": 1,
-      "avgPnl": 0.88
+      "pnl": -0.25,
+      "trades": 2,
+      "avgPnl": -0.12
     },
     "Thursday": {
       "pnl": 0,
@@ -224,17 +224,24 @@
       "pnl": 0.88,
       "symbol": "AVAXUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-12 00:00",
+      "equity": 9999.75,
+      "pnl": -1.13,
+      "symbol": "ATOMUSDT",
+      "strategy": "sma-rsi"
     }
   ],
   "riskAdjusted": null,
   "distribution": {
-    "totalTrades": 1,
+    "totalTrades": 2,
     "pnls": {
-      "min": 0.88,
+      "min": -1.13,
       "max": 0.88,
       "median": 0.88,
-      "avg": 0.88,
-      "stdDev": 0
+      "avg": -0.12,
+      "stdDev": 1.01
     },
     "holdTime": {
       "avgBars": 0,
@@ -243,7 +250,7 @@
     },
     "streaks": {
       "maxWinStreak": 1,
-      "maxLossStreak": 0
+      "maxLossStreak": 1
     }
   }
 }
