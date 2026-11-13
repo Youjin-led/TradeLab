@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-13T00:58:19.781Z",
+  "generatedAt": "2026-11-13T12:00:21.951Z",
   "summary": {
     "totalCandidates": 18,
-    "live": 5,
+    "live": 6,
     "quarantined": 0,
-    "rejected": 13,
+    "rejected": 12,
     "readyForReview": 0
   },
   "byStrategy": {
@@ -30,11 +30,11 @@
       "avgPnlPerTrade": -1.13
     },
     "breakout": {
-      "totalPnl": 0.881891841820567,
-      "trades": 1,
-      "wins": 1,
-      "losses": 0,
-      "maxDd": 0.13,
+      "totalPnl": 84.46098619914933,
+      "trades": 3,
+      "wins": 2,
+      "losses": 1,
+      "maxDd": 0.52,
       "symbols": [
         "BTCUSDT",
         "ETHUSDT",
@@ -45,12 +45,12 @@
         "DOTUSDT",
         "AVAXUSDT"
       ],
-      "forwardPnl": 0.88,
-      "forwardTrades": 1,
+      "forwardPnl": 84.46000000000001,
+      "forwardTrades": 3,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 100,
-      "avgPnlPerTrade": 0.88
+      "winRate": 66.7,
+      "avgPnlPerTrade": 28.15
     }
   },
   "byTimeOfDay": {
@@ -65,9 +65,9 @@
       "avgPnl": 0
     },
     "2": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": -10.32,
+      "trades": 1,
+      "avgPnl": -10.32
     },
     "3": {
       "pnl": 0,
@@ -110,9 +110,9 @@
       "avgPnl": 0
     },
     "11": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": 93.9,
+      "trades": 1,
+      "avgPnl": 93.9
     },
     "12": {
       "pnl": 0,
@@ -197,14 +197,14 @@
       "avgPnl": -0.12
     },
     "Thursday": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": 93.9,
+      "trades": 1,
+      "avgPnl": 93.9
     },
     "Friday": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": -10.32,
+      "trades": 1,
+      "avgPnl": -10.32
     },
     "Saturday": {
       "pnl": 0,
@@ -231,17 +231,31 @@
       "pnl": -1.13,
       "symbol": "ATOMUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-11-13 03:00",
+      "equity": 10093.66,
+      "pnl": 93.9,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-13 06:00",
+      "equity": 10083.33,
+      "pnl": -10.32,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": null,
   "distribution": {
-    "totalTrades": 2,
+    "totalTrades": 4,
     "pnls": {
-      "min": -1.13,
-      "max": 0.88,
+      "min": -10.32,
+      "max": 93.9,
       "median": 0.88,
-      "avg": -0.12,
-      "stdDev": 1.01
+      "avg": 20.83,
+      "stdDev": 42.4
     },
     "holdTime": {
       "avgBars": 0,
@@ -249,7 +263,7 @@
       "maxBars": 0
     },
     "streaks": {
-      "maxWinStreak": 1,
+      "maxWinStreak": 2,
       "maxLossStreak": 1
     }
   }

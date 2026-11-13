@@ -1,6 +1,6 @@
 {
-  "balance": 4507.0072650817365,
-  "peak": 10120.234314515114,
+  "balance": 5756.221447323882,
+  "peak": 10171.38327439376,
   "positions": [
     {
       "symbol": "LTCUSDT",
@@ -27,19 +27,6 @@
       "aiConfidence": 72,
       "aiReasoning": "TF agree: Price (3.524) is below both SMA20 (3.662) and SMA50 (3.633), | Price (3.523) is below both SMA20 (3.615) and SMA50 (3.721) ",
       "atrPct": 3.7468066988362234
-    },
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 2048.13,
-      "qty": 0.5849556533830857,
-      "notional": 1198.0652223634995,
-      "fee": 0.4792260889453998,
-      "openedAt": "2026-11-12T06:40:17.846Z",
-      "aiConfidence": 56,
-      "aiReasoning": "1h only: Price (2048.13) is below both SMA20 (2062.53) and SMA50 (2065.51), trend is bearish, MACD is negativ",
-      "atrPct": 1.7328350390704819
     }
   ],
   "closedTrades": [
@@ -273,10 +260,21 @@
       "reason": "timeout 73h (maxHoldHours)",
       "openedAt": "2026-11-09T05:37:21.034Z",
       "closedAt": "2026-11-12T06:40:22.893Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 2048.13,
+      "exit": 1959.87,
+      "pnl": 51.148959878645876,
+      "reason": "Take profit 3.6% (ATR*3=1.2%)",
+      "openedAt": "2026-11-12T06:40:17.846Z",
+      "closedAt": "2026-11-13T12:00:37.611Z"
     }
   ],
-  "totalPnl": 120.23431451511036,
-  "wins": 11,
+  "totalPnl": 171.38327439375624,
+  "wins": 12,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }
