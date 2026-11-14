@@ -1,20 +1,7 @@
 {
-  "balance": 7121.297068897043,
-  "peak": 10535.877979582894,
+  "balance": 6929.067497417546,
+  "peak": 10663.974534032815,
   "positions": [
-    {
-      "symbol": "XRPUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.9907,
-      "qty": 1535.861403423284,
-      "notional": 1521.5778923714474,
-      "fee": 0.608631156948579,
-      "openedAt": "2026-11-14T11:18:28.430Z",
-      "aiConfidence": 56,
-      "aiReasoning": "1h only: Price below SMA20 (1.0035) and SMA50 (1.0181), trend bearish, MACD negative, ADX 37 confirms strong ",
-      "atrPct": 2.3799910597124727
-    },
     {
       "symbol": "INJUSDT",
       "interval": "1h",
@@ -27,6 +14,19 @@
       "aiConfidence": 56,
       "aiReasoning": "4h only: Price 7.318 is below both SMA20 (7.70) and SMA50 (7.97), trend is bearish, MACD is negative, and the",
       "atrPct": 4.932065747862416
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 6.753,
+      "qty": 272.75344562429535,
+      "notional": 1841.9040183008667,
+      "fee": 0.7367616073203467,
+      "openedAt": "2026-11-14T23:46:47.623Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price 6.753 is below SMA20 (7.637) and SMA50 (7.935) with a bearish trend and MACD negative (-0.174)",
+      "atrPct": 5.628186414503609
     }
   ],
   "closedTrades": [
@@ -315,10 +315,21 @@
       "reason": "Take profit 3.7% (ATR*3=1.2%)",
       "openedAt": "2026-11-14T00:49:08.589Z",
       "closedAt": "2026-11-14T17:50:48.867Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.9907,
+      "exit": 0.9069,
+      "pnl": 128.0965544499226,
+      "reason": "Take profit 5.9% (ATR*3=2.0%)",
+      "openedAt": "2026-11-14T11:18:28.430Z",
+      "closedAt": "2026-11-14T23:46:53.076Z"
     }
   ],
-  "totalPnl": 535.87797958289,
-  "wins": 16,
+  "totalPnl": 663.9745340328126,
+  "wins": 17,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }
