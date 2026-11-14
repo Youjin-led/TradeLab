@@ -1,5 +1,5 @@
 {
-  "balance": 5756.221447323882,
+  "balance": 4547.4149433858665,
   "peak": 10171.38327439376,
   "positions": [
     {
@@ -27,6 +27,19 @@
       "aiConfidence": 72,
       "aiReasoning": "TF agree: Price (3.524) is below both SMA20 (3.662) and SMA50 (3.633), | Price (3.523) is below both SMA20 (3.615) and SMA50 (3.721) ",
       "atrPct": 3.7468066988362234
+    },
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1932.98,
+      "qty": 0.6253590331705527,
+      "notional": 1208.806503938015,
+      "fee": 0.48352260157520605,
+      "openedAt": "2026-11-14T00:49:08.589Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price 1932.87 is below both SMA20 (1939.67) and SMA50 (1989.12), trend is bearish, MACD is negative ",
+      "atrPct": 2.1552953766427243
     }
   ],
   "closedTrades": [
