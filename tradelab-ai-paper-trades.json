@@ -1,33 +1,7 @@
 {
-  "balance": 5724.031118921159,
-  "peak": 10380.46348025777,
+  "balance": 7121.297068897043,
+  "peak": 10535.877979582894,
   "positions": [
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1932.98,
-      "qty": 0.6253590331705527,
-      "notional": 1208.806503938015,
-      "fee": 0.48352260157520605,
-      "openedAt": "2026-11-14T00:49:08.589Z",
-      "aiConfidence": 56,
-      "aiReasoning": "1h only: Price 1932.87 is below both SMA20 (1939.67) and SMA50 (1989.12), trend is bearish, MACD is negative ",
-      "atrPct": 2.1552953766427243
-    },
-    {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.7717,
-      "qty": 2495.850673872163,
-      "notional": 1926.0479650271484,
-      "fee": 0.7704191860108593,
-      "openedAt": "2026-11-14T11:18:28.430Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Price below SMA20 (0.787) and SMA50 (0.794), trend bearish, MACD negative, ADX 26 confirms trending-",
-      "atrPct": 2.9332271978377973
-    },
     {
       "symbol": "XRPUSDT",
       "interval": "1h",
@@ -40,6 +14,19 @@
       "aiConfidence": 56,
       "aiReasoning": "1h only: Price below SMA20 (1.0035) and SMA50 (1.0181), trend bearish, MACD negative, ADX 37 confirms strong ",
       "atrPct": 2.3799910597124727
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 7.318,
+      "qty": 258.67764666772393,
+      "notional": 1893.0030183144036,
+      "fee": 0.7572012073257615,
+      "openedAt": "2026-11-14T17:50:40.001Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price 7.318 is below both SMA20 (7.70) and SMA50 (7.97), trend is bearish, MACD is negative, and the",
+      "atrPct": 4.932065747862416
     }
   ],
   "closedTrades": [
@@ -306,10 +293,32 @@
       "reason": "Take profit 3.3% (ATR*3=1.1%)",
       "openedAt": "2026-11-11T22:37:40.283Z",
       "closedAt": "2026-11-14T11:18:36.624Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.7717,
+      "exit": 0.7309,
+      "pnl": 101.06028830797354,
+      "reason": "Take profit 4.7% (ATR*3=1.6%)",
+      "openedAt": "2026-11-14T11:18:28.430Z",
+      "closedAt": "2026-11-14T17:50:45.335Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1932.98,
+      "exit": 1845.29,
+      "pnl": 54.354211017150604,
+      "reason": "Take profit 3.7% (ATR*3=1.2%)",
+      "openedAt": "2026-11-14T00:49:08.589Z",
+      "closedAt": "2026-11-14T17:50:48.867Z"
     }
   ],
-  "totalPnl": 380.46348025776587,
-  "wins": 14,
+  "totalPnl": 535.87797958289,
+  "wins": 16,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }
