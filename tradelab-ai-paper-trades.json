@@ -1,33 +1,7 @@
 {
-  "balance": 4547.4149433858665,
-  "peak": 10171.38327439376,
+  "balance": 5724.031118921159,
+  "peak": 10380.46348025777,
   "positions": [
-    {
-      "symbol": "LTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 50.33,
-      "qty": 39.144263084083455,
-      "notional": 1970.13076102192,
-      "fee": 0.7880523044087681,
-      "openedAt": "2026-11-11T22:37:40.283Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price (50.32) is below both SMA20 (50.96) and SMA50 (50.97), | Price 50.33 below SMA20 (50.94) and SMA50 (52.37), trend bea",
-      "atrPct": 1.7555561863131917
-    },
-    {
-      "symbol": "NEARUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 3.523,
-      "qty": 694.0196043281176,
-      "notional": 2445.031066047958,
-      "fee": 0.9780124264191833,
-      "openedAt": "2026-11-12T06:40:17.846Z",
-      "aiConfidence": 72,
-      "aiReasoning": "TF agree: Price (3.524) is below both SMA20 (3.662) and SMA50 (3.633), | Price (3.523) is below both SMA20 (3.615) and SMA50 (3.721) ",
-      "atrPct": 3.7468066988362234
-    },
     {
       "symbol": "ETHUSDT",
       "interval": "1h",
@@ -40,6 +14,32 @@
       "aiConfidence": 56,
       "aiReasoning": "1h only: Price 1932.87 is below both SMA20 (1939.67) and SMA50 (1989.12), trend is bearish, MACD is negative ",
       "atrPct": 2.1552953766427243
+    },
+    {
+      "symbol": "SUIUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.7717,
+      "qty": 2495.850673872163,
+      "notional": 1926.0479650271484,
+      "fee": 0.7704191860108593,
+      "openedAt": "2026-11-14T11:18:28.430Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price below SMA20 (0.787) and SMA50 (0.794), trend bearish, MACD negative, ADX 26 confirms trending-",
+      "atrPct": 2.9332271978377973
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.9907,
+      "qty": 1535.861403423284,
+      "notional": 1521.5778923714474,
+      "fee": 0.608631156948579,
+      "openedAt": "2026-11-14T11:18:28.430Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price below SMA20 (1.0035) and SMA50 (1.0181), trend bearish, MACD negative, ADX 37 confirms strong ",
+      "atrPct": 2.3799910597124727
     }
   ],
   "closedTrades": [
@@ -284,10 +284,32 @@
       "reason": "Take profit 3.6% (ATR*3=1.2%)",
       "openedAt": "2026-11-12T06:40:17.846Z",
       "closedAt": "2026-11-13T12:00:37.611Z"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 3.523,
+      "exit": 3.332,
+      "pnl": 131.57973200025145,
+      "reason": "Take profit 4.9% (ATR*3=1.6%)",
+      "openedAt": "2026-11-12T06:40:17.846Z",
+      "closedAt": "2026-11-14T11:18:33.591Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 50.33,
+      "exit": 48.33,
+      "pnl": 77.50047386375815,
+      "reason": "Take profit 3.3% (ATR*3=1.1%)",
+      "openedAt": "2026-11-11T22:37:40.283Z",
+      "closedAt": "2026-11-14T11:18:36.624Z"
     }
   ],
-  "totalPnl": 171.38327439375624,
-  "wins": 12,
+  "totalPnl": 380.46348025776587,
+  "wins": 14,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }

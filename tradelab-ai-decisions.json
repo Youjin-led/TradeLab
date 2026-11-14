@@ -1001,5 +1001,124 @@
     "validationReasons": [
       "HOLD — пропуск"
     ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:16.443Z",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1588,
+    "aiReasoning": "Bearish structure (price below SMA20 77.25 and SMA50 79.40, MACD -1.43, trending-down phase) supports a short bias, but price is already extended near support 74.77 with RSI 31.7 approaching oversold and volume only 0.14x average, signaling exhaustion rather than fresh downside. Portfolio is already full (7 open positions, including two SOL shorts), so adding exposure is not warranted. ADX 33.4 confirms trend but no clean entry; wait for a bounce toward SMA20 or a confirmed breakdown below 74.77.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:18.332Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1473,
+    "aiReasoning": "Price 8.024 is below SMA20 (8.175) and SMA50 (8.269) with bearish trend and MACD<0, which favors SELL, but RSI 29.7 is oversold and volume is only 0.2x average, suggesting exhaustion rather than fresh downside. ADX 33.1 confirms a strong downtrend, and rule 4 forbids SELL when ADX>25 and price is above SMA50 — here price is below SMA50, so SELL is technically allowed, but I already hold an AVAXUSDT SHORT at 8.1237 and the portfolio is full (7/3), so rule 7 dictates HOLD. No fresh bearish confirmation (no breakdown below 7.934 support) and oversold RSI argue against adding risk.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:20.308Z",
+    "symbol": "SEIUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1559,
+    "aiReasoning": "ADX=42.7 with SMA20 (0.042149) below SMA50 (0.042575) triggers rule 4 hard block: BUY is forbidden in a strong downtrend. Bearish alignment (price below both SMAs, MACD<0, falling trend) would otherwise favor SELL, but RSI=28.9 is oversold and price is sitting just above support 0.04065, so a short here risks a bounce. Portfolio already holds 7 positions (full) and multiple correlated shorts, so no new exposure.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:22.231Z",
+    "symbol": "ATOMUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1509,
+    "aiReasoning": "Bearish structure (price below SMA20 1.3568 and SMA50 1.38442, MACD negative, trend bearish) would normally favor SELL, but ADX=39.3 is near the 40 hard-block threshold and price sits well above the 1.314 support with RSI 35.3 near oversold and a modest bounce in the last candle. Volume is only 0.21x average, signaling weak conviction, and the portfolio is already full of correlated shorts (7/3), so adding risk is unattractive. Conflicting signals and trend-exhaustion risk justify standing aside.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:23.849Z",
+    "symbol": "JUPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1200,
+    "aiReasoning": "ADX=15.1 signals a weak/choppy market with no real trend, so rule 3 forces HOLD despite mildly bullish structure (price above SMA20/SMA50, MACD>0, RSI 53.8). Volume is thin (0.72x) and price is stalling below resistance 0.2701 after a pullback, giving no clean breakout. Portfolio is already full (7/3) and heavily short-biased, so adding a long here is not warranted.",
+    "mergedDecision": "BUY",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (58%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:25.939Z",
+    "symbol": "OPUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1673,
+    "aiReasoning": "Strong downtrend (ADX=47, price below SMA20/SMA50, MACD<0) would normally favor SELL, but RSI=27.4 is oversold and volume is very thin (0.24x), signaling exhaustion and poor reward. Rule 4 hard block: ADX>=40 with SMA20<SMA50 forbids BUY, and oversold+low volume makes a fresh SELL chase risky. Portfolio already holds 7 short positions (full/overloaded) and is heavily short-biased, so no new exposure. Neutral/conflicting setup warrants HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-14T11:18:28.077Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1723,
+    "aiReasoning": "Price (3.332) sits below both SMA20 (3.505) and SMA50 (3.596) with a bearish trend and MACD negative, which are bearish signals, but ADX=13.2 indicates a weak/choppy non-trending market, and volume is only 0.41x average — no momentum to justify a fresh short. RSI=36 is near oversold and price is just above support 3.262, raising bounce risk. Portfolio already holds 7 short positions (full/over-allocated) and is heavily short-biased, so adding NEAR short is poor risk management. Conflicting/absent trend per rule 3 → HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
   }
 ]
