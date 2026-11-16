@@ -1,20 +1,7 @@
 {
-  "balance": 6929.067497417546,
-  "peak": 10663.974534032815,
+  "balance": 4955.146484302818,
+  "peak": 10802.385906732725,
   "positions": [
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 7.318,
-      "qty": 258.67764666772393,
-      "notional": 1893.0030183144036,
-      "fee": 0.7572012073257615,
-      "openedAt": "2026-11-14T17:50:40.001Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price 7.318 is below both SMA20 (7.70) and SMA50 (7.97), trend is bearish, MACD is negative, and the",
-      "atrPct": 4.932065747862416
-    },
     {
       "symbol": "INJUSDT",
       "interval": "1h",
@@ -27,6 +14,32 @@
       "aiConfidence": 56,
       "aiReasoning": "4h only: Price 6.753 is below SMA20 (7.637) and SMA50 (7.935) with a bearish trend and MACD negative (-0.174)",
       "atrPct": 5.628186414503609
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 6.779,
+      "qty": 396.53998621176544,
+      "notional": 2688.144566529558,
+      "fee": 1.0752578266118231,
+      "openedAt": "2026-11-16T05:46:38.373Z",
+      "aiConfidence": 75,
+      "aiReasoning": "TF agree: Price (6.778) is below both SMA20 (6.942) and SMA50 (7.186)  | Price (6.779) is below both SMA20 (7.397) and SMA50 (7.721) ",
+      "atrPct": 5.152466651212782
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 64668.8,
+      "qty": 0.02036825853579289,
+      "notional": 1317.1908375994833,
+      "fee": 0.5268763350397934,
+      "openedAt": "2026-11-16T05:46:38.373Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price below SMA20 (64987) and SMA50 (65317), trend bearish, MACD negative (-42), ADX 31.8 confirms t",
+      "atrPct": 2.3702752663240565
     }
   ],
   "closedTrades": [
@@ -326,10 +339,21 @@
       "reason": "Take profit 5.9% (ATR*3=2.0%)",
       "openedAt": "2026-11-14T11:18:28.430Z",
       "closedAt": "2026-11-14T23:46:53.076Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 7.318,
+      "exit": 6.78,
+      "pnl": 138.41137269990958,
+      "reason": "Take profit 5.7% (ATR*3=1.9%)",
+      "openedAt": "2026-11-14T17:50:40.001Z",
+      "closedAt": "2026-11-16T05:46:43.838Z"
     }
   ],
-  "totalPnl": 663.9745340328126,
-  "wins": 17,
+  "totalPnl": 802.3859067327221,
+  "wins": 18,
   "losses": 10,
   "marketDataSource": "okx-swap"
 }

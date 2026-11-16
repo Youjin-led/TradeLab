@@ -1936,5 +1936,175 @@
     "validationReasons": [
       "прошло все проверки"
     ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:18.210Z",
+    "symbol": "AVAXUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1839,
+    "aiReasoning": "Already holding an AVAX SHORT from 6.815 (currently underwater at 7.146), so rule 7 favors HOLD. Indicators are mixed: trend bearish and price below SMA20/SMA50 with MACD<0 support the existing short bias, but ADX 29.7 with price above SMA50 and RSI 47.9 near neutral plus a recent bounce off 7.128 argue against adding fresh exposure. No fresh news, volume light (0.89x). Maintain position, no new entry.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:20.454Z",
+    "symbol": "LINKUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1762,
+    "aiReasoning": "Price (9.146) is below both SMA20 (9.44) and SMA50 (10.03) with bearish trend and MACD<0, which favors SELL. However ADX=55.6 is very strong and SMA20<SMA50, so per rule 4 a BUY is forbidden; but the setup is a downtrend continuation, not a fresh breakdown (price above support 8.567, RSI 31 near oversold, volume only 0.17x). Strong trend + oversold + no breakdown = poor risk/reward for a new short, so HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:22.738Z",
+    "symbol": "SOLUSDT",
+    "interval": "1h",
+    "aiDecision": "SELL",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1794,
+    "aiReasoning": "Price 71.36 is below both SMA20 (71.84) and SMA50 (72.29), trend is bearish, and ADX 28.1 confirms a real downtrend. MACD is only marginally positive and RSI 51.5 is drifting down, while volume is weak (0.48x) and price sits below the Bollinger mid — bearish continuation favored. Rule 4 not triggered: ADX 28.1 < 40 and price is below SMA50, so SELL is allowed. Nearest support 67.33 is far, so target a modest move down.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-fallback",
+    "mergedReasoning": "Неопределенное состояние",
+    "validationValid": true,
+    "validationReasons": [
+      "прошло все проверки"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:24.808Z",
+    "symbol": "SOLUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1581,
+    "aiReasoning": "Strong downtrend (ADX 68.9, price below SMA20 74.6 and SMA50 80.96) with MACD negative and RSI 31.5 near oversold, so bearish bias exists but rule 4 hard-blocks SELL since ADX>=40 and SMA20<SMA50. Volume is extremely thin (0.16x) and price is bouncing off support 67.33, making a fresh short risky. No bullish confirmation for BUY. Conflict + hard block = HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:27.076Z",
+    "symbol": "NEARUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1780,
+    "aiReasoning": "Price (3.159) is below both SMA20 (3.2753) and SMA50 (3.4708) with bearish trend and MACD<0, which would normally favor SELL. However ADX=55.5 is very strong and SMA20<SMA50, so rule 4 forbids a BUY but does not forbid SELL; still, volume is only 0.15x average (no conviction), RSI 31.9 is near oversold and ticking up slightly, and price is holding above support 2.865 with recent candles stabilizing. Conflicting signals (strong downtrend vs. oversold bounce risk and dead volume) plus already holding one open position argue for standing aside.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:29.253Z",
+    "symbol": "DOTUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1688,
+    "aiReasoning": "Strong downtrend (ADX 70.4, price below SMA20/SMA50, MACD negative) would normally favor SELL, but rule 4 hard-blocks it: ADX>=40 with SMA20<SMA50 forbids BUY, and ADX>25 with price below SMA50 plus deeply oversold RSI 23.7 and very low volume (0.11x) argue against chasing a fresh short at support. Indicators conflict with oversold bounce risk, so HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:31.261Z",
+    "symbol": "DOTUSDT",
+    "interval": "1h",
+    "aiDecision": "SELL",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1519,
+    "aiReasoning": "Price (0.7253) is below both SMA20 (0.73187) and SMA50 (0.739574), trend is bearish, and MACD momentum is fading with price below mid-Bollinger. ADX 38.2 confirms a strong downtrend, and rule 4 does not block SELL since SMA20 < SMA50. RSI 42.7 is in the bearish 35-55 band ticking down. Low volume (0.44x) and Fear&Greed 24 support continuation. Stop above recent swing high, target toward support 0.681.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-fallback",
+    "mergedReasoning": "Неопределенное состояние",
+    "validationValid": true,
+    "validationReasons": [
+      "прошло все проверки"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:33.648Z",
+    "symbol": "LINKUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 55,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1902,
+    "aiReasoning": "Price 9.133 sits below both SMA20 (9.22) and SMA50 (9.22), MACD is barely positive, RSI 44.1 is neutral, and volume is weak at 0.57x. ADX 32.7 confirms a trending market, but the stated trend is bullish while price is below the SMAs and the market phase is trending-down — a genuine conflict. Rule 4 also warns against selling into a strong trend with price near SMA50. No clean 2-factor setup for either side, so HOLD.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:35.929Z",
+    "symbol": "ATOMUSDT",
+    "interval": "1h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 62,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1799,
+    "aiReasoning": "Price 1.291 sits below both SMA20 (1.3038) and SMA50 (1.30028), and the market phase is trending-down, so bearish factors are present. However, ADX 31.9 with SMA20 > SMA50 flags a strong prevailing uptrend where SELL is forbidden by rule 4, and MACD is still positive (0.001454). RSI 41.1 is weak but not oversold, volume is thin (0.64x), and price is below the lower Bollinger band, suggesting a possible bounce rather than a clean short. Conflicting signals between trend structure and price action warrant standing aside; also already holding one open position.",
+    "mergedDecision": "HOLD",
+    "mergedSource": "merge-both-hold",
+    "mergedReasoning": "Оба источника: HOLD",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T05:46:38.006Z",
+    "symbol": "JUPUSDT",
+    "interval": "4h",
+    "aiDecision": "HOLD",
+    "aiConfidence": 58,
+    "aiSource": "ai-deepseek",
+    "aiLatencyMs": 1582,
+    "aiReasoning": "Price 0.2598 sits below SMA20 (0.26033) but above SMA50 (0.254674), and MACD is positive while RSI 46.5 is neutral — indicators conflict. ADX 27.6 with price above SMA50 forbids a SELL under rule 4, and volume is extremely thin (0.18x), giving no breakout confirmation for a BUY. Bollinger position below-mid and recent candles drifting lower add caution. No edge; wait for clearer alignment.",
+    "mergedDecision": "SELL",
+    "mergedSource": "merge-classical",
+    "mergedReasoning": "[Class] Классика: . AI: HOLD (58%)",
+    "validationValid": true,
+    "validationReasons": [
+      "HOLD — пропуск"
+    ]
   }
 ]
