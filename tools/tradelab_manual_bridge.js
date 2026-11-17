@@ -142,9 +142,17 @@ async function setApprovals(approvals) {
 // Локальные executed-метки — авторитетный overlay поверх любого источника.
 // НО: свежее нажатие пользователя (remote decidedAt новее локального executedAt)
 // всегда побеждает — иначе бессмертная метка будет давить новые approve вечно.
+function restoreLocalPending(approvals, local) {
+  const merged = { ...(approvals || {}) };
+  for (const [key, record] of Object.entries(local || {})) {
+    if (!merged[key] && record?.status === 'pending') merged[key] = record;
+  }
+  return merged;
+}
+
 function applyLocalOverlay(approvals) {
   const local = loadJSON(LOCAL_PATH, {});
-  const merged = { ...(approvals || {}) };
+  const merged = restoreLocalPending(approvals, local);
   for (const k of Object.keys(local)) {
     const v = local[k];
     if (v && (v.status === 'executed' || v.executed)) {
@@ -422,5 +430,5 @@ async function pruneStaleApprovals() {
   return dropped;
 }
 
-module.exports = { createApprovalRequest, getApprovals, setApprovals, getApprovedCandidates, markExecuted, settleApprovalAfterClose, pruneStaleApprovals, REAL_LOSS_COOLDOWN_MS, REAL_LOSS_EPS_USD, REARM_AFTER_MS };
+module.exports = { createApprovalRequest, getApprovals, setApprovals, getApprovedCandidates, markExecuted, settleApprovalAfterClose, pruneStaleApprovals, restoreLocalPending, REAL_LOSS_COOLDOWN_MS, REAL_LOSS_EPS_USD, REARM_AFTER_MS };
 
