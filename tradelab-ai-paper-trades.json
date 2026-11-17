@@ -1,33 +1,7 @@
 {
-  "balance": 4955.146484302818,
+  "balance": 9264.150622585497,
   "peak": 10802.385906732725,
   "positions": [
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 6.753,
-      "qty": 272.75344562429535,
-      "notional": 1841.9040183008667,
-      "fee": 0.7367616073203467,
-      "openedAt": "2026-11-14T23:46:47.623Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price 6.753 is below SMA20 (7.637) and SMA50 (7.935) with a bearish trend and MACD negative (-0.174)",
-      "atrPct": 5.628186414503609
-    },
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 6.779,
-      "qty": 396.53998621176544,
-      "notional": 2688.144566529558,
-      "fee": 1.0752578266118231,
-      "openedAt": "2026-11-16T05:46:38.373Z",
-      "aiConfidence": 75,
-      "aiReasoning": "TF agree: Price (6.778) is below both SMA20 (6.942) and SMA50 (7.186)  | Price (6.779) is below both SMA20 (7.397) and SMA50 (7.721) ",
-      "atrPct": 5.152466651212782
-    },
     {
       "symbol": "BTCUSDT",
       "interval": "1h",
@@ -350,10 +324,32 @@
       "reason": "Take profit 5.7% (ATR*3=1.9%)",
       "openedAt": "2026-11-14T17:50:40.001Z",
       "closedAt": "2026-11-16T05:46:43.838Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 6.779,
+      "exit": 7.098,
+      "pnl": -127.57151342816498,
+      "reason": "Stop loss 3.1% (ATR*1.5=2.1%)",
+      "openedAt": "2026-11-16T05:46:38.373Z",
+      "closedAt": "2026-11-17T02:51:48.479Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 6.753,
+      "exit": 7.093,
+      "pnl": -93.47293311958073,
+      "reason": "Stop loss 3.1% (ATR*1.5=2.1%)",
+      "openedAt": "2026-11-14T23:46:47.623Z",
+      "closedAt": "2026-11-17T02:51:52.227Z"
     }
   ],
-  "totalPnl": 802.3859067327221,
+  "totalPnl": 581.3414601849764,
   "wins": 18,
-  "losses": 10,
+  "losses": 12,
   "marketDataSource": "okx-swap"
 }
