@@ -1,5 +1,5 @@
 {
-  "balance": 9264.150622585497,
+  "balance": 7318.678991842543,
   "peak": 10802.385906732725,
   "positions": [
     {
@@ -14,6 +14,19 @@
       "aiConfidence": 61,
       "aiReasoning": "1h only: Price below SMA20 (64987) and SMA50 (65317), trend bearish, MACD negative (-42), ADX 31.8 confirms t",
       "atrPct": 2.3702752663240565
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 7.353,
+      "qty": 264.5820251248408,
+      "notional": 1945.4716307429544,
+      "fee": 0.7781886522971818,
+      "openedAt": "2026-11-17T23:25:56.688Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price 7.353 above SMA20 (7.295) and SMA50 (7.021), trend bullish, MACD positive (0.0917), RSI 51.6 n",
+      "atrPct": 4.146995395465409
     }
   ],
   "closedTrades": [
