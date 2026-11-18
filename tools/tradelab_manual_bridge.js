@@ -15,6 +15,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { randomBytes } = require('crypto');
 const dotenv = require('dotenv');
 
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
@@ -249,6 +250,7 @@ async function createApprovalRequest(candidate) {
         forwardPF: candidate.forwardProfitFactor != null ? candidate.forwardProfitFactor : null,
         forwardTrades: candidate.forwardPaperTrades || 0,
         status: 'pending',
+        requestId: sentLog[key].requestId,
         created: new Date().toISOString(),
         messageLink: sentLog[key].messageLink || `tl-${key.replace(/[^A-Za-z0-9]/g, '-')}`
       };
@@ -258,6 +260,7 @@ async function createApprovalRequest(candidate) {
   }
 
   const msgId = `tl-${key.replace(/[^A-Za-z0-9]/g, '-')}`;
+  const requestId = randomBytes(8).toString('hex');
 
   const text =
     `🧠 *AI-кандидат ждёт вашего решения*\n\n` +
@@ -272,8 +275,8 @@ async function createApprovalRequest(candidate) {
   const opts = {
     inlineButtons: [
       [
-        { text: '✅ Подтвердить', callback_data: `approve:${key}` },
-        { text: '⛔ Отклонить', callback_data: `decline:${key}` }
+        { text: '✅ Подтвердить', callback_data: `approve:${key}|${requestId}` },
+        { text: '⛔ Отклонить', callback_data: `decline:${key}|${requestId}` }
       ]
     ]
   };
@@ -286,7 +289,7 @@ async function createApprovalRequest(candidate) {
     return { ok: false, action: 'send-failed' };
   }
 
-  sentLog[key] = { messageLink: msgId, sentAt: new Date().toISOString() };
+  sentLog[key] = { messageLink: msgId, requestId, sentAt: new Date().toISOString() };
   saveJSON(SENT_PATH, sentLog);
 
   approvals[key] = {
@@ -299,6 +302,7 @@ async function createApprovalRequest(candidate) {
     forwardPF: candidate.forwardProfitFactor != null ? candidate.forwardProfitFactor : null,
     forwardTrades: candidate.forwardPaperTrades || 0,
     status: 'pending',
+    requestId,
     created: new Date().toISOString(),
     messageLink: msgId
   };
@@ -314,6 +318,7 @@ async function getApprovedCandidates() {
   // поэтому здесь прямой чек локального файла НЕ нужен — он давил актуальные approve.
   // Фантомы (approve по ключам, которых нет в incubation-state) отсекаем здесь же.
   const approvals = await getApprovals();
+  const sentLog = loadJSON(SENT_PATH, {});
   let knownKeys = null;
   let state = null;
   try {
@@ -322,6 +327,7 @@ async function getApprovedCandidates() {
   } catch { knownKeys = null; }
   return Object.values(approvals).filter((a) => {
     if (!a || a.status !== 'approved' || a.executed) return false;
+    if (!a.requestId || sentLog[a.key]?.requestId !== a.requestId) return false;
     if (!currentSourceApproval(a, state)) return false;
     if (knownKeys && a.key && !knownKeys.has(a.key)) return false;
     return true;
@@ -398,13 +404,14 @@ async function markExecuted(candidateKey) {
  * исполнения и шумят в логе. Карантин/ probation не трогаем (могут вернуться).
  * Возвращает число удалённых.
  */
-async function pruneStaleApprovals() {
+async function pruneStaleApprovals(allowedKeys = null) {
   const approvals = await getApprovals();
   let state = null;
   try {
     state = loadJSON(STATE_PATH, null);
   } catch { state = null; }
   const known = state && state.candidates ? state.candidates : null;
+  const allowed = allowedKeys ? new Set(allowedKeys) : null;
   const droppedKeys = [];
   for (const k of Object.keys(approvals)) {
     const rec = approvals[k];
@@ -413,19 +420,22 @@ async function pruneStaleApprovals() {
     if (known && !cand) {
       delete approvals[k];
       droppedKeys.push(k);
-    } else if (cand && cand.status === 'rejected') {
+    } else if ((cand && cand.status === 'rejected') || (allowed && !allowed.has(k)) || !rec.requestId) {
       delete approvals[k];
       droppedKeys.push(k);
     }
   }
   const dropped = droppedKeys.length;
   if (dropped > 0) {
-    await setApprovals(approvals);
     try {
+      const local = loadJSON(LOCAL_PATH, {});
+      for (const k of droppedKeys) delete local[k];
+      saveJSON(LOCAL_PATH, local);
       const sentLog = loadJSON(SENT_PATH, {});
       for (const k of droppedKeys) delete sentLog[k];
       saveJSON(SENT_PATH, sentLog);
     } catch { /* ignore */ }
+    await setApprovals(approvals);
   }
   return dropped;
 }
