@@ -301,6 +301,16 @@ async function runCycle(label) {
     return { status: 'error', error: error.message };
   }
   log(`Gate: ${gate.gate} (${gate.allowed?.length || 0} allowed)`);
+  // Сбрасываем заявки, пока кандидат вне допуска: старая кнопка не должна
+  // пережить смену рыночных условий. При новом допуске уйдёт новая заявка.
+  const { pruneStaleApprovals } = require('./tradelab_manual_bridge');
+  try {
+    const allowedKeys = (gate.allowed || []).map((a) => a && a.key).filter(Boolean);
+    const dropped = await pruneStaleApprovals(allowedKeys);
+    if (dropped > 0) log(`   🧹 Убрано устаревших заявок: ${dropped}`);
+  } catch (error) {
+    log(`   ⚠️ Prune error: ${error.message}`);
+  }
   if (gate.gate !== 'MANUAL_REVIEW_ALLOWED') {
     log(`   Gate BLOCKED: ${gate.nextAction} — входов нет, только мониторинг выходов`);
   }
@@ -359,15 +369,7 @@ async function runCycle(label) {
     await sleep(1500);
   }
 
-  // 4b. Исполняем только одобренные кандидаты.
-  // Сначала самочистка: фантомы и rejected удаляются, слоты не тратятся зря.
-  const { pruneStaleApprovals } = require('./tradelab_manual_bridge');
-  try {
-    const dropped = await pruneStaleApprovals();
-    if (dropped > 0) log(`   🧹 Убрано протухших approve: ${dropped}`);
-  } catch (error) {
-    log(`   ⚠️ Prune error: ${error.message}`);
-  }
+  // 4b. Исполняем только одобренных кандидатов после самочистки выше.
   const liveKeys = new Set(liveCandidates.map((c) => c.key));
   const approved = (await getApprovedCandidates()).filter((record) => liveKeys.has(record.key));
   if (approved.length === 0) {
