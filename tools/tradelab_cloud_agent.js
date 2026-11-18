@@ -28,6 +28,40 @@ const CHAT_ID = (typeof globalThis !== 'undefined' && globalThis.TELEGRAM_CHAT_I
 const GITHUB_RAW = 'https://raw.githubusercontent.com/Youjin-led/TradeLab/main';
 const GITHUB_API = 'https://api.github.com/repos/Youjin-led/TradeLab/contents';
 
+const GITHUB_TOKEN = (typeof globalThis !== 'undefined' && globalThis.GITHUB_TOKEN)
+  || (typeof process !== 'undefined' && process.env && process.env.GITHUB_TOKEN) || '';
+
+const BOT_CALL_KEY = (typeof globalThis !== 'undefined' && globalThis.BOT_CALL_KEY)
+  || (typeof process !== 'undefined' && process.env && process.env.BOT_CALL_KEY) || '';
+
+const APPR_FILENAME = 'tradelab-manual-approvals.json';
+const APPR_RAW = `${GITHUB_RAW}/${APPR_FILENAME}`;
+const APPR_API = `${GITHUB_API}/${APPR_FILENAME}`;
+
+// Публичный адрес воркера: нужен self-heal webhook (Telegram иногда сбрасывает url/allowed_updates).
+const SELF_BASE_URL = 'https://tradelab-bot.yevgeniy-karpov-1990.workers.dev';
+
+async function ensureWebhook(baseUrl) {
+  try {
+    const infoResp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getWebhookInfo`);
+    const info = await infoResp.json().catch(() => null);
+    const res = info && info.result;
+    const target = `${baseUrl}/webhook`;
+    const ok = res && res.url === target
+      && Array.isArray(res.allowed_updates) && res.allowed_updates.includes('callback_query');
+    if (!ok) {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/setWebhook`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target, allowed_updates: ['message', 'callback_query'] })
+      });
+      console.log('Webhook self-healed');
+    }
+  } catch (e) {
+    console.error('ensureWebhook:', e.message);
+  }
+}
+
 const SYMBOLS = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'DOGEUSDT', 'ADAUSDT', 'LINKUSDT', 'AVAXUSDT', 'SUIUSDT', 'LTCUSDT', 'NEARUSDT'];
 
 // ===== TELEGRAM =====
@@ -333,6 +367,7 @@ function formatDetailedStatus() {
 
 async function scheduledHourly() {
   console.log('Cron: hourly data collection');
+  await ensureWebhook(SELF_BASE_URL);
   const data = await collectAllData();
 
   // Store in globalThis (persists within worker instance)
@@ -524,11 +559,294 @@ function handleHelp() {
   ].join('\n');
 }
 
+// ===== MANUAL APPROVAL BRIDGE =====
+
+async function sendMessageMarkup(text, replyMarkup) {
+  const body = { chat_id: CHAT_ID, text: text };
+  if (replyMarkup) body.reply_markup = replyMarkup;
+  const resp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!resp.ok) {
+    const err = await resp.text().catch(() => '');
+    console.error('SendMarkup failed:', resp.status, err.slice(0, 200));
+    return false;
+  }
+  return true;
+}
+
+// Приём исходящих сообщений с сервера (обход блокировки api.telegram.org).
+// Сервер шлёт POST /notify с ключом X-Bot-Key и { text, inlineButtons }.
+async function handleNotify(request) {
+  if (BOT_CALL_KEY && request.headers.get('X-Bot-Key') !== BOT_CALL_KEY) {
+    return new Response('forbidden', { status: 403 });
+  }
+  // Кнопки уходят через этот же маршрут — чиним webhook до отправки,
+  // иначе нажатия некуда будет доставлять.
+  await ensureWebhook(SELF_BASE_URL);
+  try {
+    const payload = await request.json();
+    if (!payload || !payload.text) {
+      return new Response('bad request', { status: 400 });
+    }
+    let replyMarkup;
+    if (Array.isArray(payload.inlineButtons)) {
+      replyMarkup = {
+        inline_keyboard: payload.inlineButtons.map((row) => row.map((b) => ({ text: b.text, callback_data: b.callback_data })))
+      };
+    }
+    const ok = await sendMessageMarkup(payload.text, replyMarkup);
+    return new Response(ok ? 'ok' : 'tg_error', { status: ok ? 200 : 502 });
+  } catch (e) {
+    console.error('notify error:', e.message);
+    return new Response('error', { status: 500 });
+  }
+}
+
+
+
+async function handlePingToken() {
+  const res = {
+    hasToken: Boolean(GITHUB_TOKEN),
+    tokenLen: GITHUB_TOKEN ? GITHUB_TOKEN.length : 0,
+    hasCallKey: Boolean(BOT_CALL_KEY),
+    callKeyLen: BOT_CALL_KEY ? BOT_CALL_KEY.length : 0
+  };
+  if (!GITHUB_TOKEN) {
+    return new Response(JSON.stringify(res), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  }
+  // Сверка: какой аккаунт владеет токеном и какой CHAT_ID у Worker
+  try {
+    const who = await fetch('https://api.github.com/user', { headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0' } });
+    if (who.ok) { const info = await who.json(); res.githubLogin = info.login; }
+    else res.githubLoginStatus = who.status;
+  } catch (e) { res.githubLoginError = e.message; }
+  // Реальная тестовая запись в репо, чтобы увидеть код ошибки GitHub
+  try {
+    const testFile = `${GITHUB_API}/.ping-token-test`;
+    const getResp = await fetch(testFile, { headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0' } });
+    let sha = null;
+    if (getResp.ok) { const info = await getResp.json(); sha = info.sha; }
+    const putResp = await fetch(testFile, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'ping', content: btoa('ping'), sha: sha || undefined })
+    });
+    res.githubWriteStatus = putResp.status;
+    const txt = await putResp.text().catch(() => '');
+    res.githubWriteBody = txt.slice(0, 300);
+  } catch (e) {
+    res.githubWriteError = e.message;
+  }
+  // Прямой тест записи approvals-файла (создание первого файла)
+  try {
+    const putResp = await fetch(APPR_API, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'ping approvals', content: btoa(JSON.stringify({ ping: { status: 'probe', decidedAt: new Date().toISOString() } })) })
+    });
+    res.approvalsWriteStatus = putResp.status;
+    const txt2 = await putResp.text().catch(() => '');
+    res.approvalsWriteBody = txt2.slice(0, 200);
+  } catch (e) {
+    res.approvalsWriteError = e.message;
+  }
+  res.chatIdTail = String(CHAT_ID).slice(-4);
+  return new Response(JSON.stringify(res), { status: 200, headers: { 'Content-Type': 'application/json' } });
+}
+
+async function readApprovals() {
+  try {
+    if (GITHUB_TOKEN) {
+      const resp = await fetch(`${APPR_API}?ref=main&cb=${Date.now()}`, {
+        headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0', Accept: 'application/vnd.github+json' }
+      });
+      if (resp.ok) {
+        const info = await resp.json();
+        const content = atob(info.content.replace(/\n/g, ''));
+        const data = JSON.parse(content);
+        return (data && typeof data === 'object') ? data : {};
+      }
+    }
+    // fallback на raw (без токена) — редкий случай
+    const resp = await fetch(APPR_RAW, { headers: { 'User-Agent': 'TradeLab/1.0' } });
+    if (!resp.ok) return {};
+    const data = await resp.json();
+    return (data && typeof data === 'object') ? data : {};
+  } catch { return {}; }
+}
+
+async function resetApprovals(request) {
+  if (BOT_CALL_KEY && request.headers.get('X-Bot-Key') !== BOT_CALL_KEY) {
+    return new Response('forbidden', { status: 403 });
+  }
+  if (!GITHUB_TOKEN) {
+    return new Response(JSON.stringify({ ok: false, error: 'no token' }), { status: 403, headers: { 'Content-Type': 'application/json' } });
+  }
+  try {
+    const getResp = await fetch(APPR_API, { headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0' } });
+    let sha = null;
+    if (getResp.ok) {
+      const info = await getResp.json();
+      sha = info.sha;
+    }
+    const putResp = await fetch(APPR_API, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: 'TradeLab approvals reset (cleanup test data)',
+        content: btoa('{}'),
+        sha: sha || undefined
+      })
+    });
+    return new Response(JSON.stringify({ ok: putResp.ok, status: putResp.status }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+  }
+}
+
+// Диагностика: куда Telegram шлёт апдейты (getWebhookInfo) + при ?fix=1 переставляет webhook на себя.
+// fix защищён X-Bot-Key (если BOT_CALL_KEY задан).
+async function handleDiag(request) {
+  const out = { ok: true, selfHost: null, webhook: null, fixed: false };
+  try {
+    const u = new URL(request.url);
+    out.selfHost = u.host;
+    const infoResp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getWebhookInfo`);
+    out.webhook = await infoResp.json().catch(() => null);
+    if (u.searchParams.get('fix') === '1') {
+      if (BOT_CALL_KEY && request.headers.get('X-Bot-Key') !== BOT_CALL_KEY) {
+        return new Response('forbidden', { status: 403 });
+      }
+      const target = `https://${u.host}/webhook`;
+      const setResp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/setWebhook`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target, allowed_updates: ['message', 'callback_query'] })
+      });
+      out.setResult = await setResp.json().catch(() => null);
+      out.fixed = !!(out.setResult && out.setResult.ok);
+      const info2 = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getWebhookInfo`);
+      out.webhook = await info2.json().catch(() => null);
+    }
+  } catch (e) {
+    out.ok = false;
+    out.error = e.message;
+  }
+  return new Response(JSON.stringify(out, null, 2), { status: 200, headers: { 'Content-Type': 'application/json' } });
+}
+
+async function writeApprovals(approvals) {
+  if (!GITHUB_TOKEN) {
+    console.error('No GITHUB_TOKEN configured; approval not persisted.');
+    return false;
+  }
+  try {
+    let sha = null;
+    const getResp = await fetch(APPR_API, { headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0' } });
+    if (getResp.ok) {
+      const info = await getResp.json();
+      sha = info.sha;
+    }
+    const content = btoa(JSON.stringify(approvals, null, 2));
+    const putResp = await fetch(APPR_API, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'User-Agent': 'TradeLab/1.0', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: 'TradeLab manual approval decision',
+        content,
+        sha: sha || undefined
+      })
+    });
+    if (!putResp.ok) {
+      console.error(`Approval write failed: ${putResp.status}`);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error('Approval write error:', e.message);
+    return false;
+  }
+}
+
+async function handleCallbackData(callbackData) {
+  // Формат: approve:<candidateKey>|<requestId>. Старые кнопки без requestId
+  // больше не могут разрешить реальную сделку.
+  const sep = callbackData.indexOf(':');
+  if (sep <= 0) return null;
+  const action = callbackData.slice(0, sep);
+  if (action !== 'approve' && action !== 'decline') return null;
+  const payload = callbackData.slice(sep + 1);
+  const nonceSep = payload.lastIndexOf('|');
+  if (nonceSep <= 0) return { stale: true };
+  const key = payload.slice(0, nonceSep);
+  const requestId = payload.slice(nonceSep + 1);
+  if (!/^[a-f0-9]{16}$/.test(requestId)) return { stale: true };
+
+  const approvals = await readApprovals();
+  if (!approvals[key] || approvals[key].status !== 'pending' || approvals[key].requestId !== requestId) {
+    return { stale: true };
+  }
+  const status = action === 'approve' ? 'approved' : 'declined';
+  approvals[key].status = status;
+  approvals[key].decidedAt = new Date().toISOString();
+  delete approvals[key].executed;
+  delete approvals[key].executedAt;
+  delete approvals[key].coolUntil;
+  delete approvals[key].rearmedAt;
+  const saved = await writeApprovals(approvals);
+  return { action, key, status, saved };
+}
+
 // ===== WEBHOOK HANDLER =====
 
 async function handleWebhook(request) {
   try {
     const update = await request.json();
+
+    // Нажатие inline-кнопки (manual-review bridge)
+    if (update.callback_query) {
+      const cb = update.callback_query;
+      const chatId = String(cb.message && cb.message.chat ? cb.message.chat.id : '');
+      if (cb.from && chatId !== String(CHAT_ID)) return new Response('ok');
+
+      const decision = await handleCallbackData(String(cb.data || ''));
+      if (!decision) return new Response('ok');
+
+      if (decision.stale) {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ callback_query_id: cb.id, text: 'Заявка устарела — дождитесь новой кнопки', show_alert: true })
+        });
+        return new Response('ok');
+      }
+
+      const label = decision.action === 'approve' ? 'Подтверждён ✅' : 'Отклонён ⛔';
+      const extra = decision.saved ? '' : '\n(⚠️ не удалось записать решение)';
+      // Отвечаем на нажатие
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ callback_query_id: cb.id, text: label })
+      });
+      // Обновляем текст сообщения
+      const newText = `${cb.message.text}\n\n---\n${label}${extra}`;
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          message_id: cb.message.message_id,
+          text: newText,
+          reply_markup: { inline_keyboard: [] }
+        })
+      });
+      return new Response('ok');
+    }
+
     if (!update.message) return new Response('ok');
 
     const msg = update.message;
@@ -564,6 +882,14 @@ if (typeof globalThis !== 'undefined' && globalThis.addEventListener) {
     const url = new URL(event.request.url);
     if (url.pathname === '/webhook' && event.request.method === 'POST') {
       event.respondWith(handleWebhook(event.request));
+    } else if (url.pathname === '/notify' && event.request.method === 'POST') {
+      event.respondWith(handleNotify(event.request));
+    } else if (url.pathname === '/ping-token') {
+      event.respondWith(handlePingToken());
+    } else if (url.pathname === '/reset-approvals') {
+      event.respondWith(resetApprovals(event.request));
+    } else if (url.pathname === '/diag') {
+      event.respondWith(handleDiag(event.request));
     } else if (url.pathname === '/collect') {
       event.respondWith(collectAllData().then(d => new Response(JSON.stringify(d, null, 2))));
     } else {
@@ -578,5 +904,6 @@ if (typeof globalThis !== 'undefined' && globalThis.addEventListener) {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = { handleWebhook, collectAllData, scheduledHourly, sendMessage };
+  module.exports = { handleWebhook, handleCallbackData, collectAllData, scheduledHourly, sendMessage };
 }
+
