@@ -1,56 +1,7 @@
 {
-  "BCHUSDT:1h:sma-rsi": {
-    "key": "BCHUSDT:1h:sma-rsi",
-    "status": "approved",
-    "decidedAt": "2026-10-02T09:48:41.245Z"
-  },
-  "ATOMUSDT:1h:sma-rsi": {
-    "key": "ATOMUSDT:1h:sma-rsi",
-    "status": "approved",
-    "decidedAt": "2026-10-03T13:44:48.143Z"
-  },
   "test-deploy-check": {
     "key": "test-deploy-check",
     "status": "declined",
     "decidedAt": "2026-10-13T13:24:39.140Z"
-  },
-  "TIAUSDT:1h:sma-rsi": {
-    "key": "TIAUSDT:1h:sma-rsi",
-    "symbol": "TIAUSDT",
-    "interval": "1h",
-    "strategy": "sma-rsi",
-    "side": "auto",
-    "forwardPnL": 398.32,
-    "forwardPF": 13.270177560193046,
-    "forwardTrades": 11,
-    "status": "pending",
-    "created": "2026-10-27T22:19:06.664Z",
-    "messageLink": "tl-TIAUSDT-1h-sma-rsi"
-  },
-  "DOTUSDT:4h:sma-rsi": {
-    "key": "DOTUSDT:4h:sma-rsi",
-    "symbol": "DOTUSDT",
-    "interval": "4h",
-    "strategy": "sma-rsi",
-    "side": "auto",
-    "forwardPnL": 961.09,
-    "forwardPF": 2.228350803848093,
-    "forwardTrades": 26,
-    "status": "pending",
-    "created": "2026-10-27T22:24:11.152Z",
-    "messageLink": "tl-DOTUSDT-4h-sma-rsi"
-  },
-  "OPUSDT:1h:sma-rsi": {
-    "key": "OPUSDT:1h:sma-rsi",
-    "symbol": "OPUSDT",
-    "interval": "1h",
-    "strategy": "sma-rsi",
-    "side": "auto",
-    "forwardPnL": 470.62,
-    "forwardPF": 2.7811495435599394,
-    "forwardTrades": 17,
-    "status": "pending",
-    "created": "2026-10-27T22:24:14.779Z",
-    "messageLink": "tl-OPUSDT-1h-sma-rsi"
   }
 }
