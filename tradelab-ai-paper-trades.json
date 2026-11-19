@@ -1,20 +1,7 @@
 {
-  "balance": 6030.529428313683,
+  "balance": 8931.165474122472,
   "peak": 10802.385906732725,
   "positions": [
-    {
-      "symbol": "BTCUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 64668.8,
-      "qty": 0.02036825853579289,
-      "notional": 1317.1908375994833,
-      "fee": 0.5268763350397934,
-      "openedAt": "2026-11-16T05:46:38.373Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Price below SMA20 (64987) and SMA50 (65317), trend bearish, MACD negative (-42), ADX 31.8 confirms t",
-      "atrPct": 2.3702752663240565
-    },
     {
       "symbol": "ARBUSDT",
       "interval": "1h",
@@ -27,19 +14,6 @@
       "aiConfidence": 61,
       "aiReasoning": "4h only: Price 0.13075 is below both SMA20 (0.1327) and SMA50 (0.1437), trend is bearish, MACD is negative (-",
       "atrPct": 2.5643266866976226
-    },
-    {
-      "symbol": "SUIUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.7122,
-      "qty": 2250.8454458210667,
-      "notional": 1603.0521265137638,
-      "fee": 0.6412208506055056,
-      "openedAt": "2026-11-18T17:05:05.843Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price 0.7122 is below both SMA20 (0.7248) and SMA50 (0.7643), trend is bearish, MACD is negative, an",
-      "atrPct": 2.5685000200585733
     }
   ],
   "closedTrades": [
@@ -383,10 +357,32 @@
       "reason": "Stop loss 2.6% (ATR*1.5=1.8%)",
       "openedAt": "2026-11-17T23:25:56.688Z",
       "closedAt": "2026-11-18T17:05:11.025Z"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.7122,
+      "exit": 0.7285,
+      "pnl": -37.330001617488854,
+      "reason": "Stop loss 1.5% (ATR*1.5=1.0%)",
+      "openedAt": "2026-11-18T17:05:05.843Z",
+      "closedAt": "2026-11-19T12:41:44.156Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 64668.8,
+      "exit": 63772.8,
+      "pnl": 17.723083313030635,
+      "reason": "timeout 79h (maxHoldHours)",
+      "openedAt": "2026-11-16T05:46:38.373Z",
+      "closedAt": "2026-11-19T12:41:48.754Z"
     }
   ],
-  "totalPnl": 487.6949807138601,
-  "wins": 18,
-  "losses": 13,
+  "totalPnl": 468.0880624094019,
+  "wins": 19,
+  "losses": 14,
   "marketDataSource": "okx-swap"
 }
