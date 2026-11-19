@@ -1,19 +1,45 @@
 {
-  "balance": 8931.165474122472,
+  "balance": 3624.0899279863106,
   "peak": 10802.385906732725,
   "positions": [
     {
-      "symbol": "ARBUSDT",
+      "symbol": "BTCUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 0.13075,
-      "qty": 11754.666067204083,
-      "notional": 1536.922588286934,
-      "fee": 0.6147690353147736,
-      "openedAt": "2026-11-18T06:49:08.307Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price 0.13075 is below both SMA20 (0.1327) and SMA50 (0.1437), trend is bearish, MACD is negative (-",
-      "atrPct": 2.5643266866976226
+      "entry": 62201,
+      "qty": 0.050959919527129416,
+      "notional": 3169.7579545069766,
+      "fee": 1.2679031818027906,
+      "openedAt": "2026-11-19T22:58:51.152Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price (62201) is below both SMA20 (63182) and SMA50 (63534)  | Price (62201) is below both SMA20 (63902) and SMA50 (66380) ",
+      "atrPct": 1.6695069211105935
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.05817,
+      "qty": 38143.89836951837,
+      "notional": 2218.8305681548836,
+      "fee": 0.8875322272619535,
+      "openedAt": "2026-11-19T22:58:51.152Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 0.05816 is below both SMA20 (0.058975) and SMA50 (0.05 | Price (0.05817) is below both SMA20 (0.059075) and SMA50 (0.",
+      "atrPct": 1.9560892949237458
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 8.983,
+      "qty": 172.90230409756413,
+      "notional": 1553.1813977084187,
+      "fee": 0.6212725590833675,
+      "openedAt": "2026-11-19T22:58:51.152Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price 8.982 below SMA20 (9.103) and SMA50 (9.121), trend bea | Price 8.983 is below both SMA20 (9.138) and SMA50 (9.417), t",
+      "atrPct": 2.167586393346161
     }
   ],
   "closedTrades": [
@@ -379,10 +405,21 @@
       "reason": "timeout 79h (maxHoldHours)",
       "openedAt": "2026-11-16T05:46:38.373Z",
       "closedAt": "2026-11-19T12:41:48.754Z"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.13075,
+      "exit": 0.12238,
+      "pnl": 97.77178594718343,
+      "reason": "Take profit 4.4% (ATR*3=1.5%)",
+      "openedAt": "2026-11-18T06:49:08.307Z",
+      "closedAt": "2026-11-19T22:58:53.024Z"
     }
   ],
-  "totalPnl": 468.0880624094019,
-  "wins": 19,
+  "totalPnl": 565.8598483565853,
+  "wins": 20,
   "losses": 14,
   "marketDataSource": "okx-swap"
 }
