@@ -1,7 +1,7 @@
 # TradeLab Scoreboard
 
-Generated: 2026-11-20T06:38:23.175Z
-Incubation updated: 2026-11-20T06:37:52.732Z
+Generated: 2026-11-20T16:51:29.031Z
+Incubation updated: 2026-11-20T16:50:57.048Z
 Real-money gate: **BLOCKED**
 Portfolio kill-switch: **clear**
 
@@ -17,31 +17,31 @@ Portfolio forward PnL: +871.39; forward trades: 19; avg/trade: +45.86.
 
 Candidate | Progress | Trend | Health | Obs | Fwd Trades | Fwd PnL | PF | DD | Loss Streak | Next Step
 --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---
-AVAXUSDT:1h:breakout | 83% | improving | Healthy | 27 | 3 | +145.36 | 1.62 | 2.19% | 1 | status is incubating, expected ready-for-review
-SOLUSDT:1h:breakout | 82% | improving | Healthy | 27 | 4 | +138.43 | 1.99 | 1.50% | 2 | status is incubating, expected ready-for-review
-ATOMUSDT:1h:sma-rsi | 70% | collecting | Healthy | 27 | 2 | -9.61 | 3.89 | 0.98% | 3 | status is incubating, expected ready-for-review
-OPUSDT:1h:sma-rsi | 65% | collecting | Healthy | 27 | 1 | +42.52 | 2.17 | 2.38% | 1 | status is incubating, expected ready-for-review
-SEIUSDT:1h:sma-rsi | 60% | collecting | Healthy | 27 | 1 | +14.69 | 2.19 | 1.58% | 5 | status is incubating, expected ready-for-review
-JUPUSDT:4h:sma-rsi | 60% | collecting | Healthy | 27 | 0 | +0.00 | 2.12 | 1.60% | 1 | status is incubating, expected ready-for-review
-LINKUSDT:1h:breakout | 44% | collecting | Blocked | 27 | 2 | +71.56 | 0.65 | 4.04% | 6 | status is incubating, expected ready-for-review
-DOTUSDT:1h:breakout | 42% | collecting | Blocked | 27 | 2 | +127.59 | 0.49 | 6.83% | 4 | status is incubating, expected ready-for-review
-NEARUSDT:4h:breakout | 42% | collecting | Caution | 27 | 1 | +28.98 | 1.10 | 5.62% | 3 | status is incubating, expected ready-for-review
-LINKUSDT:4h:breakout | 39% | collecting | Caution | 27 | 1 | +77.73 | 1.14 | 5.60% | 5 | status is incubating, expected ready-for-review
-SOLUSDT:4h:breakout | 38% | collecting | Blocked | 27 | 1 | +84.25 | 0.69 | 7.00% | 4 | status is incubating, expected ready-for-review
-DOTUSDT:4h:breakout | 35% | collecting | Blocked | 27 | 1 | +149.89 | 0.51 | 8.41% | 4 | status is incubating, expected ready-for-review
+AVAXUSDT:1h:breakout | 83% | improving | Healthy | 28 | 3 | +145.36 | 2.43 | 2.22% | 1 | status is incubating, expected ready-for-review
+SOLUSDT:1h:breakout | 82% | improving | Healthy | 28 | 4 | +138.43 | 2.54 | 1.50% | 2 | status is incubating, expected ready-for-review
+ATOMUSDT:1h:sma-rsi | 70% | collecting | Healthy | 28 | 2 | -9.61 | 3.17 | 1.12% | 3 | status is incubating, expected ready-for-review
+OPUSDT:1h:sma-rsi | 65% | collecting | Healthy | 28 | 1 | +42.52 | 2.17 | 2.38% | 1 | status is incubating, expected ready-for-review
+SEIUSDT:1h:sma-rsi | 61% | collecting | Healthy | 28 | 1 | +14.69 | 2.28 | 1.58% | 5 | status is incubating, expected ready-for-review
+NEARUSDT:4h:breakout | 59% | collecting | Healthy | 28 | 1 | +28.98 | 1.11 | 4.52% | 3 | status is incubating, expected ready-for-review
+JUPUSDT:4h:sma-rsi | 59% | collecting | Healthy | 28 | 0 | +0.00 | 1.93 | 1.60% | 2 | status is incubating, expected ready-for-review
+LINKUSDT:1h:breakout | 44% | collecting | Blocked | 28 | 2 | +71.56 | 0.72 | 4.21% | 6 | status is incubating, expected ready-for-review
+DOTUSDT:1h:breakout | 42% | collecting | Blocked | 28 | 2 | +127.59 | 0.48 | 6.89% | 4 | status is incubating, expected ready-for-review
+LINKUSDT:4h:breakout | 40% | collecting | Caution | 28 | 1 | +77.73 | 1.10 | 5.05% | 5 | status is incubating, expected ready-for-review
+SOLUSDT:4h:breakout | 39% | collecting | Blocked | 28 | 1 | +84.25 | 0.90 | 6.83% | 4 | status is incubating, expected ready-for-review
+DOTUSDT:4h:breakout | 36% | collecting | Blocked | 28 | 1 | +149.89 | 0.50 | 9.19% | 4 | status is incubating, expected ready-for-review
 
 ## Highest Risk Live Rows
 
 Candidate | Progress | Trend | Fwd PnL | Blockers
 --- | ---: | --- | ---: | ---
-DOTUSDT:4h:breakout | 35% | collecting | +149.89 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 27 < 30; forward paper trades 1 < 3; drawdown 8.41% > 8%; OKX shadow data stale or unavailable
-SOLUSDT:4h:breakout | 38% | collecting | +84.25 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 27 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
-LINKUSDT:4h:breakout | 39% | collecting | +77.73 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 27 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
-NEARUSDT:4h:breakout | 42% | collecting | +28.98 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 27 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
-DOTUSDT:1h:breakout | 42% | collecting | +127.59 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 27 < 30; forward paper trades 2 < 3; profit factor 0.49 < 0.5; OKX shadow data stale or unavailable
-LINKUSDT:1h:breakout | 44% | collecting | +71.56 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 27 < 30; forward paper trades 2 < 3; loss streak 6 > 5; OKX shadow data stale or unavailable
-JUPUSDT:4h:sma-rsi | 60% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 27 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
-SEIUSDT:1h:sma-rsi | 60% | collecting | +14.69 | status is incubating, expected ready-for-review; live observations 27 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
+DOTUSDT:4h:breakout | 36% | collecting | +149.89 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 28 < 30; forward paper trades 1 < 3; drawdown 9.19% > 8%; OKX shadow data stale or unavailable
+SOLUSDT:4h:breakout | 39% | collecting | +84.25 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 28 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
+LINKUSDT:4h:breakout | 40% | collecting | +77.73 | status is incubating, expected ready-for-review; health is Caution, expected Healthy; live observations 28 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
+DOTUSDT:1h:breakout | 42% | collecting | +127.59 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 28 < 30; forward paper trades 2 < 3; profit factor 0.48 < 0.5; OKX shadow data stale or unavailable
+LINKUSDT:1h:breakout | 44% | collecting | +71.56 | status is incubating, expected ready-for-review; health is Blocked, expected Healthy; live observations 28 < 30; forward paper trades 2 < 3; loss streak 6 > 5; OKX shadow data stale or unavailable
+JUPUSDT:4h:sma-rsi | 59% | collecting | +0.00 | status is incubating, expected ready-for-review; live observations 28 < 30; forward paper trades 0 < 3; OKX shadow data stale or unavailable
+NEARUSDT:4h:breakout | 59% | collecting | +28.98 | status is incubating, expected ready-for-review; live observations 28 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
+SEIUSDT:1h:sma-rsi | 61% | collecting | +14.69 | status is incubating, expected ready-for-review; live observations 28 < 30; forward paper trades 1 < 3; OKX shadow data stale or unavailable
 
 ## Quarantine Count
 
