@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-11-19T22:58:30.917Z
+Generated: 2026-11-20T06:38:23.073Z
 Status: **NORMAL**
 
 ---
@@ -17,14 +17,14 @@ Status: **NORMAL**
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 1.37 | -500 | ✅ |
-| Weekly (7d) | 871.62 | -2500 | ✅ |
+| Daily (UTC) | 0.00 | -500 | ✅ |
+| Weekly (7d) | 788.05 | -2500 | ✅ |
 | Monthly | 871.38 | -5000 | ✅ |
 | Total (all time) | 871.39 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 3644.38 USDT (max 30000)
+- **Open Notional:** 7684.21 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -82,9 +82,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 298.31%
+- **Margin Level:** 141.48%
 - **Total PnL:** 871.39 USDT
-- **Total Exposure:** 3644.38 USDT
+- **Total Exposure:** 7684.21 USDT
+- **Warnings:**
+  - ℹ️ low_margin: 141.48% (threshold: 150%)
 
 ## Statistics
 
