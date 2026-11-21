@@ -29,6 +29,7 @@ const GITHUB_RAW = `https://raw.githubusercontent.com/${REPO}/main/${APPR_FILE}`
 const LOCAL_PATH = path.join(__dirname, '..', APPR_FILE);
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+const PENDING_REQUEST_TTL_MS = 24 * 60 * 60 * 1000;
 const { effectiveLossCoolUntil, shouldRearmExecuted } = require('./tradelab_reapproval_policy');
 
 // ===== local cache of sent requests (dedupe Telegram messages) =====
@@ -125,17 +126,21 @@ async function getApprovals() {
   // Поверх накатываем локальный overlay: executed-метки сервер пишет только локально
   // (без GITHUB_TOKEN), и их нельзя терять при чтении remote.
   const remote = await readRemoteApprovals();
+  // При настроенном GitHub временная ошибка чтения не должна превращать
+  // устаревший локальный pending в новое решение и перезаписывать approved.
+  if (GITHUB_TOKEN && remote === null) throw new Error('GitHub approvals temporarily unavailable');
   const base = (remote && typeof remote === 'object') ? remote : loadJSON(LOCAL_PATH, {});
-  return applyLocalOverlay(base);
+  return applyLocalOverlay(base, remote === null);
 }
 
-async function setApprovals(approvals) {
+async function setApprovals(approvals, { requireRemote = false } = {}) {
   // Сохраняем локальные executed-метки: иначе следующая запись затрет их
   // remote-содержимым (last-writer-wins между двумя хранилищами).
   const merged = applyLocalOverlay(approvals);
   if (GITHUB_TOKEN) {
     const ok = await writeRemoteApprovals(merged);
     if (ok) return true;
+    if (requireRemote) return false;
   }
   return await writeLocalApprovals(merged);
 }
@@ -151,9 +156,9 @@ function restoreLocalPending(approvals, local) {
   return merged;
 }
 
-function applyLocalOverlay(approvals) {
+function applyLocalOverlay(approvals, includePending = false) {
   const local = loadJSON(LOCAL_PATH, {});
-  const merged = restoreLocalPending(approvals, local);
+  const merged = includePending ? restoreLocalPending(approvals, local) : { ...(approvals || {}) };
   for (const k of Object.keys(local)) {
     const v = local[k];
     if (v && (v.status === 'executed' || v.executed)) {
@@ -182,6 +187,22 @@ async function createApprovalRequest(candidate) {
   const approvals = await getApprovals();
   const key = candidate.key;
   const state = loadJSON(STATE_PATH, null);
+  const pending = approvals[key];
+  const pendingAge = Date.now() - Date.parse(pending?.created || '');
+  if (pending?.status === 'pending' && (!Number.isFinite(pendingAge) || pendingAge > PENDING_REQUEST_TTL_MS)) {
+    // Метрики бумажной торговли за сутки могли измениться; аннулируем
+    // старую кнопку в GitHub до отправки новой.
+    delete approvals[key];
+    if (!(await setApprovals(approvals, { requireRemote: true }))) {
+      return { ok: false, action: 'remote-write-failed' };
+    }
+    const local = loadJSON(LOCAL_PATH, {});
+    delete local[key];
+    saveJSON(LOCAL_PATH, local);
+    const sent = loadJSON(SENT_PATH, {});
+    delete sent[key];
+    saveJSON(SENT_PATH, sent);
+  }
   if (approvals[key] && !currentSourceApproval(approvals[key], state)) {
     delete approvals[key];
     const local = loadJSON(LOCAL_PATH, {});
@@ -240,23 +261,14 @@ async function createApprovalRequest(candidate) {
   const sentLog = loadJSON(SENT_PATH, {});
   if (sentLog[key]) {
     if (!approvals[key]) {
-      approvals[key] = {
-        key,
-        symbol: candidate.symbol,
-        interval: candidate.interval,
-        strategy: candidate.strategy || '',
-        side: candidate.side || 'auto',
-        forwardPnL: candidate.forwardPaperPnl || 0,
-        forwardPF: candidate.forwardProfitFactor != null ? candidate.forwardProfitFactor : null,
-        forwardTrades: candidate.forwardPaperTrades || 0,
-        status: 'pending',
-        requestId: sentLog[key].requestId,
-        created: new Date().toISOString(),
-        messageLink: sentLog[key].messageLink || `tl-${key.replace(/[^A-Za-z0-9]/g, '-')}`
-      };
-      await setApprovals(approvals);
+      delete sentLog[key];
+      saveJSON(SENT_PATH, sentLog);
+      const local = loadJSON(LOCAL_PATH, {});
+      delete local[key];
+      saveJSON(LOCAL_PATH, local);
+    } else {
+      return { ok: true, action: 'already-sent' };
     }
-    return { ok: true, action: 'already-sent' };
   }
 
   const msgId = `tl-${key.replace(/[^A-Za-z0-9]/g, '-')}`;
