@@ -1,5 +1,5 @@
 {
-  "balance": 5402.712677857013,
+  "balance": 5348.81897459153,
   "peak": 10957.982386498861,
   "positions": [
     {
@@ -29,17 +29,17 @@
       "atrPct": 2.7339374809082533
     },
     {
-      "symbol": "INJUSDT",
+      "symbol": "XRPUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 6.072,
-      "qty": 236.52241922874296,
-      "notional": 1436.1641295569273,
-      "fee": 0.574465651822771,
-      "openedAt": "2026-11-20T16:51:49.607Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price below SMA20/SMA50 with bearish trend and MACD<0 confirms downside. RSI 20.1 deeply oversold an",
-      "atrPct": 4.476049313005836
+      "entry": 0.9101,
+      "qty": 1562.287611549463,
+      "notional": 1421.8379552711663,
+      "fee": 0.5687351821084665,
+      "openedAt": "2026-11-21T01:14:44.807Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price (0.9101) is below both SMA20 (0.9599) and SMA50 (0.9698) with a confirmed bearish trend and AD",
+      "atrPct": 2.4620528356381555
     }
   ],
   "closedTrades": [
@@ -449,10 +449,21 @@
       "reason": "Take profit 3.8% (ATR*3=1.3%)",
       "openedAt": "2026-11-19T22:58:51.152Z",
       "closedAt": "2026-11-20T16:51:58.509Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 6.072,
+      "exit": 6.358,
+      "pnl": -68.21987755124317,
+      "reason": "Stop loss 3.2% (ATR*1.5=2.1%)",
+      "openedAt": "2026-11-20T16:51:49.607Z",
+      "closedAt": "2026-11-21T01:14:46.778Z"
     }
   ],
-  "totalPnl": 957.9823864988582,
+  "totalPnl": 889.7625089476151,
   "wins": 23,
-  "losses": 14,
+  "losses": 15,
   "marketDataSource": "okx-swap"
 }
