@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-11-21T01:14:21.746Z
+Generated: 2026-11-21T12:20:41.324Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1133.20 USDT
+- **Total PnL:** 1469.04 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | 1049.86 | -2500 | ✅ |
-| Monthly | 1133.19 | -5000 | ✅ |
-| Total (all time) | 1133.20 | -5000 | ✅ |
+| Daily (UTC) | 335.85 | -500 | ✅ |
+| Weekly (7d) | 1385.71 | -2500 | ✅ |
+| Monthly | 1469.04 | -5000 | ✅ |
+| Total (all time) | 1469.04 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 14401.4 USDT (max 30000)
+- **Open Notional:** 9977.91 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -61,20 +61,20 @@ Status: **NORMAL**
 
 ## Portfolio Heat
 
-- **Heat:** 0.52% / 5% max
+- **Heat:** 0.4% / 5% max
 - **Status:** NORMAL
 - **Recommendation:** Portfolio heat within normal range.
 
 ## Correlation Guard
 
 - **OK:** ❌
-- **Active Positions:** 18
-- **Sector Distribution:** {"alt_mid":7,"blue_chip":3,"alt_large":8}
+- **Active Positions:** 14
+- **Sector Distribution:** {"alt_mid":4,"blue_chip":3,"alt_large":7}
 - **Warnings:**
-  - ⚠️ alt_mid: 7 positions (max 3)
-  - ⚠️ alt_large: 8 positions (max 3)
+  - ⚠️ alt_mid: 4 positions (max 3)
+  - ⚠️ alt_large: 7 positions (max 3)
 - **Blocks:**
-  - 🚫 max_concurrent_positions: 18/3
+  - 🚫 max_concurrent_positions: 14/3
 
 ## Trailing Stops
 
@@ -82,11 +82,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 77.31%
-- **Total PnL:** 1133.2 USDT
-- **Total Exposure:** 14401.4 USDT
+- **Margin Level:** 114.94%
+- **Total PnL:** 1469.04 USDT
+- **Total Exposure:** 9977.91 USDT
 - **Warnings:**
-  - 🔴 margin_call: 77.31% (threshold: 100%)
+  - ℹ️ low_margin: 114.94% (threshold: 150%)
 
 ## Statistics
 

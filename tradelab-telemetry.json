@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-21T01:14:21.827Z",
+  "generatedAt": "2026-11-21T12:20:41.400Z",
   "summary": {
     "totalCandidates": 18,
-    "live": 18,
+    "live": 14,
     "quarantined": 0,
-    "rejected": 0,
-    "readyForReview": 0
+    "rejected": 3,
+    "readyForReview": 1
   },
   "byStrategy": {
     "sma-rsi": {
@@ -30,10 +30,10 @@
       "avgPnlPerTrade": 11.9
     },
     "breakout": {
-      "totalPnl": 1085.591608964972,
-      "trades": 19,
-      "wins": 16,
-      "losses": 3,
+      "totalPnl": 1421.4464229546727,
+      "trades": 26,
+      "wins": 22,
+      "losses": 4,
       "maxDd": 1.82,
       "symbols": [
         "BTCUSDT",
@@ -45,12 +45,12 @@
         "DOTUSDT",
         "AVAXUSDT"
       ],
-      "forwardPnl": 1085.6000000000001,
-      "forwardTrades": 19,
+      "forwardPnl": 1421.44,
+      "forwardTrades": 26,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 84.2,
-      "avgPnlPerTrade": 57.14
+      "winRate": 84.6,
+      "avgPnlPerTrade": 54.67
     }
   },
   "byTimeOfDay": {
@@ -115,9 +115,9 @@
       "avgPnl": 93.9
     },
     "12": {
-      "pnl": 113.73,
-      "trades": 3,
-      "avgPnl": 37.91
+      "pnl": 374.25,
+      "trades": 6,
+      "avgPnl": 62.38
     },
     "13": {
       "pnl": 32.37,
@@ -135,9 +135,9 @@
       "avgPnl": -55.84
     },
     "16": {
-      "pnl": 6.21,
-      "trades": 2,
-      "avgPnl": 3.1
+      "pnl": 81.54,
+      "trades": 6,
+      "avgPnl": 13.59
     },
     "17": {
       "pnl": 0,
@@ -197,14 +197,14 @@
       "avgPnl": -7.01
     },
     "Thursday": {
-      "pnl": 136.42,
-      "trades": 2,
-      "avgPnl": 68.21
+      "pnl": 352.19,
+      "trades": 3,
+      "avgPnl": 117.4
     },
     "Friday": {
-      "pnl": 194.02,
-      "trades": 4,
-      "avgPnl": 48.5
+      "pnl": 314.11,
+      "trades": 10,
+      "avgPnl": 31.41
     },
     "Saturday": {
       "pnl": 891.29,
@@ -378,26 +378,75 @@
       "pnl": 76.34,
       "symbol": "LINKUSDT",
       "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 00:00",
+      "equity": 11348.95,
+      "pnl": 215.76,
+      "symbol": "DOTUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 04:00",
+      "equity": 11364.22,
+      "pnl": 15.26,
+      "symbol": "BTCUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 04:00",
+      "equity": 11335.74,
+      "pnl": -28.48,
+      "symbol": "ETHUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 04:00",
+      "equity": 11359.2,
+      "pnl": 23.46,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 04:00",
+      "equity": 11395.79,
+      "pnl": 36.59,
+      "symbol": "BNBUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 04:00",
+      "equity": 11447.75,
+      "pnl": 51.96,
+      "symbol": "AVAXUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-21 08:00",
+      "equity": 11469.04,
+      "pnl": 21.3,
+      "symbol": "NEARUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 12.379,
-    "sortinoRatio": 12.476,
-    "calmarRatio": 475.405,
+    "sharpeRatio": 12.224,
+    "sortinoRatio": 13.502,
+    "calmarRatio": 470.907,
     "maxDrawdown": 1.46,
-    "avgDailyReturn": 2.7581,
-    "dailyVolatility": 3.5241,
-    "annualizedReturn": 695.05,
-    "totalTrades": 23
+    "avgDailyReturn": 2.732,
+    "dailyVolatility": 3.5349,
+    "annualizedReturn": 688.47,
+    "totalTrades": 30
   },
   "distribution": {
-    "totalTrades": 23,
+    "totalTrades": 30,
     "pnls": {
       "min": -134.82,
-      "max": 154.8,
-      "median": 42.52,
-      "avg": 49.27,
-      "stdDev": 68.78
+      "max": 215.76,
+      "median": 42.23,
+      "avg": 48.97,
+      "stdDev": 69.6
     },
     "holdTime": {
       "avgBars": 0,
@@ -405,7 +454,7 @@
       "maxBars": 0
     },
     "streaks": {
-      "maxWinStreak": 7,
+      "maxWinStreak": 11,
       "maxLossStreak": 2
     }
   }
