@@ -1,20 +1,7 @@
 {
-  "balance": 5299.178798899695,
+  "balance": 5921.532875165379,
   "peak": 10957.982386498861,
   "positions": [
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 6.007,
-      "qty": 375.7413246822516,
-      "notional": 2257.0781373662853,
-      "fee": 0.9028312549465142,
-      "openedAt": "2026-11-21T21:32:07.588Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price (6.007) is below both SMA20 (6.58) and SMA50 (6.98) with a confirmed bearish trend and ADX 29.",
-      "atrPct": 4.713548479155272
-    },
     {
       "symbol": "SOLUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 56,
       "aiReasoning": "4h only: Price 0.9157 is below both SMA20 (0.9365) and SMA50 (0.9546), trend is bearish, MACD is negative (-0",
       "atrPct": 2.981325761712351
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 0.9249,
+      "qty": 1701.8903224361297,
+      "notional": 1574.0783592211765,
+      "fee": 0.6296313436884706,
+      "openedAt": "2026-11-22T16:05:56.955Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price 0.9249 is below both SMA20 (0.92835) and SMA50 (0.950772), trend is bearish, MACD is negative ",
+      "atrPct": 2.855134918060639
     }
   ],
   "closedTrades": [
@@ -493,10 +493,21 @@
       "reason": "Stop loss 1.7% (ATR*1.5=1.1%)",
       "openedAt": "2026-11-20T16:51:49.607Z",
       "closedAt": "2026-11-21T21:32:15.284Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 6.007,
+      "exit": 6.166,
+      "pnl": -60.645701879424784,
+      "reason": "Stop loss 2.4% (ATR*1.5=1.6%)",
+      "openedAt": "2026-11-21T21:32:07.588Z",
+      "closedAt": "2026-11-22T16:06:05.129Z"
     }
   ],
-  "totalPnl": 747.9911303156387,
+  "totalPnl": 687.3454284362139,
   "wins": 23,
-  "losses": 18,
+  "losses": 19,
   "marketDataSource": "okx-swap"
 }
