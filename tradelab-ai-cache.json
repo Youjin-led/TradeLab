@@ -2,24 +2,24 @@
   "SEIUSDT:1h": {
     "symbol": "SEIUSDT",
     "interval": "1h",
-    "decision": "SELL",
-    "confidence": 50,
-    "source": "merge-classical",
-    "reasoning": "[Class] Классика: . AI: HOLD (62%)",
+    "decision": "HOLD",
+    "confidence": 0,
+    "source": "merge-both-hold",
+    "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
     "aiConfidence": 62,
-    "classical": "SELL",
-    "latencyMs": 1677,
-    "price": 0.03428,
+    "classical": "HOLD",
+    "latencyMs": 1728,
+    "price": 0.03668,
     "indicators": {
-      "rsi": 34.4,
-      "adx": 6,
+      "rsi": 76.9,
+      "adx": 19.3,
       "trend": "bullish",
-      "atrPct": 0.84,
-      "volRatio": 1.04
+      "atrPct": 1.43,
+      "volRatio": 2.09
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:39.049Z",
+    "timestamp": "2026-11-23T14:14:57.567Z",
     "fromCache": false
   },
   "ATOMUSDT:1h": {
@@ -55,17 +55,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1080,
-    "price": 0.2665,
+    "latencyMs": 1268,
+    "price": 0.2501,
     "indicators": {
-      "rsi": 57.7,
-      "adx": 12.1,
+      "rsi": 90.3,
+      "adx": 32.3,
       "trend": "bearish",
-      "atrPct": 3.76,
-      "volRatio": 0.2
+      "atrPct": 3.05,
+      "volRatio": 1.29
     },
     "params": null,
-    "timestamp": "2026-11-19T12:41:41.794Z",
+    "timestamp": "2026-11-23T14:15:03.645Z",
     "fromCache": false
   },
   "NEARUSDT:4h": {
@@ -76,19 +76,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 58,
+    "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1948,
-    "price": 2.981,
+    "latencyMs": 1482,
+    "price": 3.207,
     "indicators": {
-      "rsi": 61.9,
-      "adx": 36.5,
+      "rsi": 91.8,
+      "adx": 25.9,
       "trend": "bearish",
-      "atrPct": 3.64,
-      "volRatio": 0.08
+      "atrPct": 3.14,
+      "volRatio": 1.22
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:45.166Z",
+    "timestamp": "2026-11-23T14:15:11.298Z",
     "fromCache": false
   },
   "AVAXUSDT:1h": {
@@ -101,17 +101,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 2423,
-    "price": 6.651,
+    "latencyMs": 1673,
+    "price": 7.069,
     "indicators": {
-      "rsi": 45,
-      "adx": 12.7,
+      "rsi": 79.2,
+      "adx": 23.8,
       "trend": "bullish",
-      "atrPct": 0.71,
-      "volRatio": 0.9
+      "atrPct": 1.24,
+      "volRatio": 2.84
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:34.765Z",
+    "timestamp": "2026-11-23T14:14:55.359Z",
     "fromCache": false
   },
   "SOLUSDT:1h": {
@@ -124,17 +124,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1886,
-    "price": 70.51,
+    "latencyMs": 1609,
+    "price": 76.33,
     "indicators": {
-      "rsi": 48.5,
-      "adx": 11.6,
+      "rsi": 84.2,
+      "adx": 36.1,
       "trend": "bullish",
-      "atrPct": 0.74,
-      "volRatio": 0.47
+      "atrPct": 1.38,
+      "volRatio": 2.45
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:31.847Z",
+    "timestamp": "2026-11-23T14:14:53.218Z",
     "fromCache": false
   },
   "INJUSDT:4h": {
@@ -170,17 +170,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1595,
-    "price": 0.07064,
+    "latencyMs": 1243,
+    "price": 0.07503,
     "indicators": {
-      "rsi": 22.4,
-      "adx": 12.3,
+      "rsi": 79.7,
+      "adx": 20.2,
       "trend": "bullish",
-      "atrPct": 0.82,
-      "volRatio": 1.01
+      "atrPct": 1.28,
+      "volRatio": 2.78
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:36.870Z",
+    "timestamp": "2026-11-23T14:15:05.356Z",
     "fromCache": false
   },
   "RENDERUSDT:4h": {
@@ -216,17 +216,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1438,
-    "price": 61111.5,
+    "latencyMs": 1541,
+    "price": 63371.1,
     "indicators": {
-      "rsi": 62.5,
-      "adx": 47,
+      "rsi": 81.7,
+      "adx": 29.4,
       "trend": "bearish",
-      "atrPct": 2.44,
-      "volRatio": 0.12
+      "atrPct": 2.13,
+      "volRatio": 1.29
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:40.979Z",
+    "timestamp": "2026-11-23T14:15:07.367Z",
     "fromCache": false
   },
   "DOTUSDT:1h": {
@@ -237,19 +237,19 @@
     "source": "merge-both-hold",
     "reasoning": "Оба источника: HOLD",
     "aiDecision": "HOLD",
-    "aiConfidence": 62,
+    "aiConfidence": 72,
     "classical": "HOLD",
-    "latencyMs": 1726,
-    "price": 0.645,
+    "latencyMs": 1852,
+    "price": 0.7147,
     "indicators": {
-      "rsi": 36.5,
-      "adx": 7.3,
-      "trend": "bearish",
-      "atrPct": 0.82,
-      "volRatio": 0.91
+      "rsi": 84.1,
+      "adx": 32.2,
+      "trend": "bullish",
+      "atrPct": 1.36,
+      "volRatio": 4.56
     },
     "params": null,
-    "timestamp": "2026-11-22T05:59:20.069Z",
+    "timestamp": "2026-11-23T14:14:59.895Z",
     "fromCache": false
   },
   "LINKUSDT:1h": {
@@ -262,17 +262,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1468,
-    "price": 8.481,
+    "latencyMs": 1535,
+    "price": 9.372,
     "indicators": {
-      "rsi": 46,
-      "adx": 29.7,
-      "trend": "bearish",
-      "atrPct": 1.86,
-      "volRatio": 0.14
+      "rsi": 77.9,
+      "adx": 32.8,
+      "trend": "bullish",
+      "atrPct": 1.21,
+      "volRatio": 3.18
     },
     "params": null,
-    "timestamp": "2026-11-21T12:20:47.743Z",
+    "timestamp": "2026-11-23T14:15:01.900Z",
     "fromCache": false
   },
   "SOLUSDT:4h": {
@@ -285,17 +285,17 @@
     "aiDecision": "HOLD",
     "aiConfidence": 62,
     "classical": "HOLD",
-    "latencyMs": 1246,
-    "price": 70.49,
+    "latencyMs": 1505,
+    "price": 76.26,
     "indicators": {
-      "rsi": 60.2,
-      "adx": 47.8,
+      "rsi": 85.8,
+      "adx": 30.8,
       "trend": "bearish",
-      "atrPct": 2.45,
-      "volRatio": 0.07
+      "atrPct": 2.17,
+      "volRatio": 1.7
     },
     "params": null,
-    "timestamp": "2026-11-23T00:40:42.728Z",
+    "timestamp": "2026-11-23T14:15:09.348Z",
     "fromCache": false
   },
   "LINKUSDT:4h": {

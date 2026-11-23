@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-11-23T00:40:27.192Z
+Generated: 2026-11-23T14:14:51.147Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 1009.40 USDT
+- **Total PnL:** 864.92 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
-| Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | 169.59 | -2500 | ✅ |
-| Monthly | 1009.39 | -5000 | ✅ |
-| Total (all time) | 1009.40 | -5000 | ✅ |
+| Daily (UTC) | -144.47 | -500 | ✅ |
+| Weekly (7d) | 25.12 | -2500 | ✅ |
+| Monthly | 864.92 | -5000 | ✅ |
+| Total (all time) | 864.92 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 1828.96 USDT (max 30000)
+- **Open Notional:** 10416.41 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -82,9 +82,11 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 601.95%
-- **Total PnL:** 1009.4 USDT
-- **Total Exposure:** 1828.96 USDT
+- **Margin Level:** 104.31%
+- **Total PnL:** 864.92 USDT
+- **Total Exposure:** 10416.41 USDT
+- **Warnings:**
+  - ⚠️ critical_margin: 104.31% (threshold: 110%)
 
 ## Statistics
 
