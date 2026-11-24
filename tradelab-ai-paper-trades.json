@@ -1,7 +1,47 @@
 {
-  "balance": 10310.41784968774,
+  "balance": 3991.1627496141236,
   "peak": 10957.982386498861,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 60219.4,
+      "qty": 0.0513642672445478,
+      "notional": 3093.1253549063217,
+      "fee": 1.2372501419625288,
+      "openedAt": "2026-11-24T02:49:55.014Z",
+      "aiConfidence": 72,
+      "aiReasoning": "TF agree: Price broke down sharply to 60225, now below SMA20 (61600) a | Price (60219) is below both SMA20 (60207, marginally) and SM",
+      "atrPct": 2.2502477844111946
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1.288,
+      "qty": 1681.046388536044,
+      "notional": 2165.187748434425,
+      "fee": 0.86607509937377,
+      "openedAt": "2026-11-24T02:49:55.014Z",
+      "aiConfidence": 70,
+      "aiReasoning": "TF agree: Price 1.288 is below both SMA20 (1.3292) and SMA50 (1.32928) | Price 1.288 is below SMA20 (1.3056) and SMA50 (1.35366) with",
+      "atrPct": 2.645297249334517
+    },
+    {
+      "symbol": "INJUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 6.179,
+      "qty": 171.70124562758832,
+      "notional": 1060.9419967328683,
+      "fee": 0.4243767986931474,
+      "openedAt": "2026-11-24T02:49:55.014Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price (6.179) is below both SMA20 (6.204) and SMA50 (6.674) with a bearish trend and ADX 31.9 confir",
+      "atrPct": 3.862159850183802
+    }
+  ],
   "closedTrades": [
     {
       "symbol": "BNBUSDT",
