@@ -1,5 +1,5 @@
 {
-  "balance": 3991.1627496141236,
+  "balance": 5110.230494307307,
   "peak": 10957.982386498861,
   "positions": [
     {
@@ -27,19 +27,6 @@
       "aiConfidence": 70,
       "aiReasoning": "TF agree: Price 1.288 is below both SMA20 (1.3292) and SMA50 (1.32928) | Price 1.288 is below SMA20 (1.3056) and SMA50 (1.35366) with",
       "atrPct": 2.645297249334517
-    },
-    {
-      "symbol": "INJUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 6.179,
-      "qty": 171.70124562758832,
-      "notional": 1060.9419967328683,
-      "fee": 0.4243767986931474,
-      "openedAt": "2026-11-24T02:49:55.014Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price (6.179) is below both SMA20 (6.204) and SMA50 (6.674) with a bearish trend and ADX 31.9 confir",
-      "atrPct": 3.862159850183802
     }
   ],
   "closedTrades": [
@@ -537,10 +524,21 @@
       "reason": "Stop loss 2.1% (ATR*1.5=1.4%)",
       "openedAt": "2026-11-21T21:32:07.588Z",
       "closedAt": "2026-11-23T14:15:21.377Z"
+    },
+    {
+      "symbol": "INJUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 6.179,
+      "exit": 5.838,
+      "pnl": 58.125747960314506,
+      "reason": "Take profit 4.9% (ATR*3=1.6%)",
+      "openedAt": "2026-11-24T02:49:55.014Z",
+      "closedAt": "2026-11-25T00:30:39.928Z"
     }
   ],
-  "totalPnl": 310.41784968773396,
-  "wins": 23,
+  "totalPnl": 368.5435976480485,
+  "wins": 24,
   "losses": 22,
   "marketDataSource": "okx-swap"
 }
