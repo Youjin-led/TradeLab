@@ -1,20 +1,7 @@
 {
-  "balance": 5089.937247786514,
+  "balance": 5363.083113859693,
   "peak": 10957.982386498861,
   "positions": [
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "SHORT",
-      "entry": 1690.02,
-      "qty": 1.2827989766267696,
-      "notional": 2167.955926478773,
-      "fee": 0.8671823705915093,
-      "openedAt": "2026-11-26T00:05:31.412Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price (1690) sits below both SMA20 (1694.7) and SMA50 (1713), trend is bearish with ADX 26.9 confirm",
-      "atrPct": 1.9790129279957804
-    },
     {
       "symbol": "LINKUSDT",
       "interval": "1h",
@@ -29,17 +16,30 @@
       "atrPct": 2.244807846971444
     },
     {
-      "symbol": "OPUSDT",
+      "symbol": "ETHUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 0.06923,
-      "qty": 19543.858063200954,
-      "notional": 1353.0212937154022,
-      "fee": 0.541208517486161,
-      "openedAt": "2026-11-26T00:05:31.412Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price (0.06923) sits below both SMA20 (0.069694) and SMA50 (0.07168), trend is bearish and market ph",
-      "atrPct": 2.602092404201316
+      "side": "LONG",
+      "entry": 1703.49,
+      "qty": 1.0593514152697756,
+      "notional": 1804.5945423979101,
+      "fee": 0.721837816959164,
+      "openedAt": "2026-11-26T13:41:43.215Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Bullish trend confirmed: price above SMA20 (1694.4) and SMA50 (1676.3), MACD positive (12.83), ADX 3",
+      "atrPct": 1.922314106418505
+    },
+    {
+      "symbol": "LINKUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 9.249,
+      "qty": 154.13879213907978,
+      "notional": 1425.629688494349,
+      "fee": 0.5702518753977396,
+      "openedAt": "2026-11-26T13:41:43.215Z",
+      "aiConfidence": 61,
+      "aiReasoning": "4h only: Price above SMA20 (8.971) and SMA50 (8.858), trend bullish, MACD positive (0.0635), RSI 57.1 in heal",
+      "atrPct": 2.183247609780209
     }
   ],
   "closedTrades": [
@@ -603,10 +603,32 @@
       "reason": "Stop loss 1.9% (ATR*1.5=1.2%)",
       "openedAt": "2026-11-25T14:02:57.628Z",
       "closedAt": "2026-11-26T00:05:39.313Z"
+    },
+    {
+      "symbol": "OPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.06923,
+      "exit": 0.06922,
+      "pnl": -0.3457699368542272,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-11-26T00:05:31.412Z",
+      "closedAt": "2026-11-26T13:41:44.535Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 1690.02,
+      "exit": 1702.8,
+      "pnl": -17.26135329188159,
+      "reason": "AI BUY signal",
+      "openedAt": "2026-11-26T00:05:31.412Z",
+      "closedAt": "2026-11-26T13:41:50.437Z"
     }
   ],
-  "totalPnl": 323.59964989891444,
+  "totalPnl": 305.99252667017856,
   "wins": 26,
-  "losses": 25,
+  "losses": 27,
   "marketDataSource": "okx-swap"
 }
