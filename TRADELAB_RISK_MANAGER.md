@@ -1,6 +1,6 @@
 # TradeLab Risk Manager Report
 
-Generated: 2026-11-25T14:02:36.239Z
+Generated: 2026-11-26T00:05:09.220Z
 Status: **NORMAL**
 
 ---
@@ -11,20 +11,20 @@ Status: **NORMAL**
 - **Next Action:** Normal operation. All risk limits within bounds.
 - **Entry Gate:** ✅ OPEN (all risk limits OK)
 - **Portfolio Stop-Loss:** ✅ OK
-- **Total PnL:** 849.07 USDT
+- **Total PnL:** 1032.71 USDT
 
 ## Loss Windows (realized)
 
 | Window | PnL | Limit | Status |
 | --- | --- | --- | --- |
 | Daily (UTC) | 0.00 | -500 | ✅ |
-| Weekly (7d) | -14.61 | -2500 | ✅ |
-| Monthly | 849.07 | -5000 | ✅ |
-| Total (all time) | 849.07 | -5000 | ✅ |
+| Weekly (7d) | 162.69 | -2500 | ✅ |
+| Monthly | 1032.70 | -5000 | ✅ |
+| Total (all time) | 1032.71 | -5000 | ✅ |
 
 ## Hard Exposure
 
-- **Open Notional:** 8102.87 USDT (max 30000)
+- **Open Notional:** 2003.05 USDT (max 30000)
 - **Status:** OK
 
 ## Active Locks
@@ -54,7 +54,7 @@ Status: **NORMAL**
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | AVAXUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
-| SOLUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
+| SOLUSDT | breakout | 2% | 200 | 8.75 | 60% | 95 |
 | AVAXUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | DOTUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
 | LINKUSDT | breakout | 0.7% | 70 | N/A (need 10+ trades) | N/A | 95 |
@@ -82,11 +82,9 @@ Status: **NORMAL**
 
 ## Margin Monitor
 
-- **Margin Level:** 133.89%
-- **Total PnL:** 849.07 USDT
-- **Total Exposure:** 8102.87 USDT
-- **Warnings:**
-  - ℹ️ low_margin: 133.89% (threshold: 150%)
+- **Margin Level:** 550.8%
+- **Total PnL:** 1032.71 USDT
+- **Total Exposure:** 2003.05 USDT
 
 ## Statistics
 

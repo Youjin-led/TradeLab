@@ -1,45 +1,45 @@
 {
-  "balance": 5219.421827175999,
+  "balance": 5089.937247786514,
   "peak": 10957.982386498861,
   "positions": [
     {
-      "symbol": "XRPUSDT",
+      "symbol": "ETHUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 0.8934,
-      "qty": 2488.3672115312957,
-      "notional": 2223.1072667820595,
-      "fee": 0.8892429067128238,
-      "openedAt": "2026-11-25T14:02:57.628Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price (0.8934) is below both SMA20 (0.9305) and SMA50 (0.9419), trend is bearish, MACD is negative (",
-      "atrPct": 2.878250023985417
+      "entry": 1690.02,
+      "qty": 1.2827989766267696,
+      "notional": 2167.955926478773,
+      "fee": 0.8671823705915093,
+      "openedAt": "2026-11-26T00:05:31.412Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price (1690) sits below both SMA20 (1694.7) and SMA50 (1713), trend is bearish with ADX 26.9 confirm",
+      "atrPct": 1.9790129279957804
     },
     {
-      "symbol": "BTCUSDT",
+      "symbol": "LINKUSDT",
       "interval": "1h",
-      "side": "SHORT",
-      "entry": 58113.2,
-      "qty": 0.030221270567750997,
-      "notional": 1756.2547407578272,
-      "fee": 0.7025018963031309,
-      "openedAt": "2026-11-25T14:02:57.628Z",
+      "side": "LONG",
+      "entry": 9.059,
+      "qty": 189.05896698512313,
+      "notional": 1712.6851819182305,
+      "fee": 0.6850740727672923,
+      "openedAt": "2026-11-26T00:05:31.412Z",
       "aiConfidence": 56,
-      "aiReasoning": "4h only: Price below SMA20/SMA50 with bearish trend and MACD deeply negative; RSI 25.4 oversold but still tic",
-      "atrPct": 2.150445780206318
+      "aiReasoning": "4h only: Bullish trend confirmed: price 9.059 above SMA20 8.9136 and SMA50 8.85912, MACD positive 0.0657, ADX",
+      "atrPct": 2.244807846971444
     },
     {
-      "symbol": "DOGEUSDT",
+      "symbol": "OPUSDT",
       "interval": "1h",
       "side": "SHORT",
-      "entry": 0.05279,
-      "qty": 26282.27401399287,
-      "notional": 1387.4412451986834,
-      "fee": 0.5549764980794734,
-      "openedAt": "2026-11-25T14:02:57.628Z",
+      "entry": 0.06923,
+      "qty": 19543.858063200954,
+      "notional": 1353.0212937154022,
+      "fee": 0.541208517486161,
+      "openedAt": "2026-11-26T00:05:31.412Z",
       "aiConfidence": 56,
-      "aiReasoning": "4h only: Price 0.05279 is below both SMA20 (0.0554) and SMA50 (0.0564) with a bearish trend and MACD negative",
-      "atrPct": 2.838741103563988
+      "aiReasoning": "4h only: Price (0.06923) sits below both SMA20 (0.069694) and SMA50 (0.07168), trend is bearish and market ph",
+      "atrPct": 2.602092404201316
     }
   ],
   "closedTrades": [
@@ -570,10 +570,43 @@
       "reason": "Take profit 3.0% (ATR*3=0.9%)",
       "openedAt": "2026-11-24T02:49:55.014Z",
       "closedAt": "2026-11-25T14:03:03.599Z"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.05279,
+      "exit": 0.05602,
+      "pnl": -85.44672156327653,
+      "reason": "Stop loss 1.9% (ATR*1.5=1.3%)",
+      "openedAt": "2026-11-25T14:02:57.628Z",
+      "closedAt": "2026-11-26T00:05:33.076Z"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 58113.2,
+      "exit": 60382.7,
+      "pnl": -69.28967544981403,
+      "reason": "Stop loss 1.7% (ATR*1.5=1.1%)",
+      "openedAt": "2026-11-25T14:02:57.628Z",
+      "closedAt": "2026-11-26T00:05:36.307Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "SHORT",
+      "interval": "1h",
+      "entry": 0.8934,
+      "exit": 0.9364,
+      "pnl": -107.88903300255863,
+      "reason": "Stop loss 1.9% (ATR*1.5=1.2%)",
+      "openedAt": "2026-11-25T14:02:57.628Z",
+      "closedAt": "2026-11-26T00:05:39.313Z"
     }
   ],
-  "totalPnl": 586.2250799145636,
+  "totalPnl": 323.59964989891444,
   "wins": 26,
-  "losses": 22,
+  "losses": 25,
   "marketDataSource": "okx-swap"
 }
