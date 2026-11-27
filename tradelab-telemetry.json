@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-27T00:26:54.603Z",
+  "generatedAt": "2026-11-27T13:39:02.710Z",
   "summary": {
     "totalCandidates": 18,
-    "live": 15,
+    "live": 14,
     "quarantined": 1,
-    "rejected": 1,
+    "rejected": 2,
     "readyForReview": 1
   },
   "byStrategy": {
@@ -30,10 +30,10 @@
       "avgPnlPerTrade": 11.38
     },
     "breakout": {
-      "totalPnl": 945.0714820764626,
-      "trades": 42,
-      "wins": 28,
-      "losses": 14,
+      "totalPnl": 851.8175372691414,
+      "trades": 47,
+      "wins": 30,
+      "losses": 17,
       "maxDd": 2.19,
       "symbols": [
         "BTCUSDT",
@@ -45,12 +45,12 @@
         "DOTUSDT",
         "AVAXUSDT"
       ],
-      "forwardPnl": 945.08,
-      "forwardTrades": 42,
+      "forwardPnl": 851.8199999999999,
+      "forwardTrades": 47,
       "avgHoldBars": 0,
       "totalHoldBars": 0,
-      "winRate": 66.7,
-      "avgPnlPerTrade": 22.5
+      "winRate": 63.8,
+      "avgPnlPerTrade": 18.12
     }
   },
   "byTimeOfDay": {
@@ -65,9 +65,9 @@
       "avgPnl": 21.19
     },
     "2": {
-      "pnl": 540.13,
-      "trades": 5,
-      "avgPnl": 108.03
+      "pnl": 571.66,
+      "trades": 7,
+      "avgPnl": 81.67
     },
     "3": {
       "pnl": 0,
@@ -80,9 +80,9 @@
       "avgPnl": -114.91
     },
     "5": {
-      "pnl": 0.96,
-      "trades": 1,
-      "avgPnl": 0.96
+      "pnl": -4.47,
+      "trades": 2,
+      "avgPnl": -2.23
     },
     "6": {
       "pnl": 0,
@@ -100,9 +100,9 @@
       "avgPnl": 13.07
     },
     "9": {
-      "pnl": 0,
-      "trades": 0,
-      "avgPnl": 0
+      "pnl": -9.53,
+      "trades": 1,
+      "avgPnl": -9.53
     },
     "10": {
       "pnl": 0,
@@ -115,9 +115,9 @@
       "avgPnl": 93.9
     },
     "12": {
-      "pnl": 277.94,
-      "trades": 8,
-      "avgPnl": 34.74
+      "pnl": 168.1,
+      "trades": 9,
+      "avgPnl": 18.68
     },
     "13": {
       "pnl": 27.75,
@@ -192,9 +192,9 @@
       "avgPnl": 28.28
     },
     "Wednesday": {
-      "pnl": -35.07,
-      "trades": 5,
-      "avgPnl": -7.01
+      "pnl": -144.9,
+      "trades": 6,
+      "avgPnl": -24.15
     },
     "Thursday": {
       "pnl": 367.02,
@@ -202,9 +202,9 @@
       "avgPnl": 91.76
     },
     "Friday": {
-      "pnl": 180.83,
-      "trades": 11,
-      "avgPnl": 16.44
+      "pnl": 197.41,
+      "trades": 15,
+      "avgPnl": 13.16
     },
     "Saturday": {
       "pnl": 431.64,
@@ -574,26 +574,61 @@
       "pnl": 14.83,
       "symbol": "OPUSDT",
       "strategy": "sma-rsi"
+    },
+    {
+      "time": "2026-11-27 00:00",
+      "equity": 10937.7,
+      "pnl": -109.83,
+      "symbol": "BTCUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-27 04:00",
+      "equity": 10945.1,
+      "pnl": 7.4,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-27 04:00",
+      "equity": 10969.23,
+      "pnl": 24.13,
+      "symbol": "LINKUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-27 06:00",
+      "equity": 10963.81,
+      "pnl": -5.42,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
+    },
+    {
+      "time": "2026-11-27 10:00",
+      "equity": 10954.28,
+      "pnl": -9.53,
+      "symbol": "SOLUSDT",
+      "strategy": "breakout"
     }
   ],
   "riskAdjusted": {
-    "sharpeRatio": 5.448,
-    "sortinoRatio": 5.509,
-    "calmarRatio": 60.919,
+    "sharpeRatio": 4.728,
+    "sortinoRatio": 4.833,
+    "calmarRatio": 52.137,
     "maxDrawdown": 5.45,
-    "avgDailyReturn": 1.3176,
-    "dailyVolatility": 3.8099,
-    "annualizedReturn": 332.04,
-    "totalTrades": 51
+    "avgDailyReturn": 1.1277,
+    "dailyVolatility": 3.7524,
+    "annualizedReturn": 284.17,
+    "totalTrades": 56
   },
   "distribution": {
-    "totalTrades": 51,
+    "totalTrades": 56,
     "pnls": {
       "min": -134.82,
       "max": 215.76,
-      "median": 16.37,
-      "avg": 20.54,
-      "stdDev": 73.46
+      "median": 15.26,
+      "avg": 17.04,
+      "stdDev": 72.37
     },
     "holdTime": {
       "avgBars": 0,

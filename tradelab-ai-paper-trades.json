@@ -1,20 +1,7 @@
 {
-  "balance": 5363.083113859693,
+  "balance": 5656.526207910285,
   "peak": 10957.982386498861,
   "positions": [
-    {
-      "symbol": "LINKUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 9.059,
-      "qty": 189.05896698512313,
-      "notional": 1712.6851819182305,
-      "fee": 0.6850740727672923,
-      "openedAt": "2026-11-26T00:05:31.412Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Bullish trend confirmed: price 9.059 above SMA20 8.9136 and SMA50 8.85912, MACD positive 0.0657, ADX",
-      "atrPct": 2.244807846971444
-    },
     {
       "symbol": "ETHUSDT",
       "interval": "1h",
@@ -40,6 +27,19 @@
       "aiConfidence": 61,
       "aiReasoning": "4h only: Price above SMA20 (8.971) and SMA50 (8.858), trend bullish, MACD positive (0.0635), RSI 57.1 in heal",
       "atrPct": 2.183247609780209
+    },
+    {
+      "symbol": "XRPUSDT",
+      "interval": "1h",
+      "side": "LONG",
+      "entry": 0.9706,
+      "qty": 1549.1794240038914,
+      "notional": 1503.633548938177,
+      "fee": 0.6014534195752709,
+      "openedAt": "2026-11-27T13:39:22.553Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price above SMA20 (0.94) and SMA50 (0.937), trend bullish, MACD positive (0.01083), ADX 35.9 confirm",
+      "atrPct": 2.1084160018839575
     }
   ],
   "closedTrades": [
@@ -625,10 +625,21 @@
       "reason": "AI BUY signal",
       "openedAt": "2026-11-26T00:05:31.412Z",
       "closedAt": "2026-11-26T13:41:50.437Z"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 9.059,
+      "exit": 9.509,
+      "pnl": 84.39146107053831,
+      "reason": "Take profit 3.0% (ATR*3=1.0%)",
+      "openedAt": "2026-11-26T00:05:31.412Z",
+      "closedAt": "2026-11-27T13:39:32.313Z"
     }
   ],
-  "totalPnl": 305.99252667017856,
-  "wins": 26,
+  "totalPnl": 390.38398774071686,
+  "wins": 27,
   "losses": 27,
   "marketDataSource": "okx-swap"
 }
