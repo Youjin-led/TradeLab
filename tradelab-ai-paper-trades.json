@@ -1,20 +1,7 @@
 {
-  "balance": 4913.653594532234,
+  "balance": 4741.180551212716,
   "peak": 10957.982386498861,
   "positions": [
-    {
-      "symbol": "LINKUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 9.249,
-      "qty": 154.13879213907978,
-      "notional": 1425.629688494349,
-      "fee": 0.5702518753977396,
-      "openedAt": "2026-11-26T13:41:43.215Z",
-      "aiConfidence": 61,
-      "aiReasoning": "4h only: Price above SMA20 (8.971) and SMA50 (8.858), trend bullish, MACD positive (0.0635), RSI 57.1 in heal",
-      "atrPct": 2.183247609780209
-    },
     {
       "symbol": "ETHUSDT",
       "interval": "1h",
@@ -29,17 +16,30 @@
       "atrPct": 2.2699162394117436
     },
     {
-      "symbol": "LTCUSDT",
+      "symbol": "XRPUSDT",
       "interval": "1h",
-      "side": "LONG",
-      "entry": 45.18,
-      "qty": 28.910161179522948,
-      "notional": 1306.1610820908468,
-      "fee": 0.5224644328363387,
-      "openedAt": "2026-11-27T23:58:33.986Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Price 45.18 above SMA20 (44.29) and SMA50 (43.88), bullish trend, MACD positive (0.113), RSI 59.8 ri",
-      "atrPct": 2.1754252829950063
+      "side": "SHORT",
+      "entry": 0.9446,
+      "qty": 1688.8989477978423,
+      "notional": 1595.333946089842,
+      "fee": 0.6381335784359368,
+      "openedAt": "2026-11-28T07:32:42.237Z",
+      "aiConfidence": 56,
+      "aiReasoning": "1h only: Price 0.9445 is below both SMA20 (0.95036) and SMA50 (0.954544), trend is bearish and market phase i",
+      "atrPct": 1.9418650373551913
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 6.53,
+      "qty": 193.0036473829977,
+      "notional": 1260.3138174109752,
+      "fee": 0.5041255269643901,
+      "openedAt": "2026-11-28T07:32:42.237Z",
+      "aiConfidence": 56,
+      "aiReasoning": "4h only: Price 6.53 is below both SMA20 (6.60) and SMA50 (6.63), trend is bearish, MACD is negative (-0.0056)",
+      "atrPct": 1.9886239334937632
     }
   ],
   "closedTrades": [
@@ -658,10 +658,32 @@
       "reason": "Stop loss 1.6% (ATR*1.5=1.1%)",
       "openedAt": "2026-11-26T13:41:43.215Z",
       "closedAt": "2026-11-27T23:58:42.060Z"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 45.18,
+      "exit": 44.08,
+      "pnl": -32.32364173031162,
+      "reason": "Stop loss 1.5% (ATR*1.5=0.9%)",
+      "openedAt": "2026-11-27T23:58:33.986Z",
+      "closedAt": "2026-11-28T07:32:43.968Z"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 9.249,
+      "exit": 9.147,
+      "pnl": -16.292408673583925,
+      "reason": "AI SELL signal",
+      "openedAt": "2026-11-26T13:41:43.215Z",
+      "closedAt": "2026-11-28T07:32:49.931Z"
     }
   ],
-  "totalPnl": 311.0792265273172,
+  "totalPnl": 262.46317612342165,
   "wins": 27,
-  "losses": 29,
+  "losses": 31,
   "marketDataSource": "okx-swap"
 }
