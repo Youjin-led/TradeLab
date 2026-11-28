@@ -1,20 +1,7 @@
 {
-  "balance": 5656.526207910285,
+  "balance": 4913.653594532234,
   "peak": 10957.982386498861,
   "positions": [
-    {
-      "symbol": "ETHUSDT",
-      "interval": "1h",
-      "side": "LONG",
-      "entry": 1703.49,
-      "qty": 1.0593514152697756,
-      "notional": 1804.5945423979101,
-      "fee": 0.721837816959164,
-      "openedAt": "2026-11-26T13:41:43.215Z",
-      "aiConfidence": 61,
-      "aiReasoning": "1h only: Bullish trend confirmed: price above SMA20 (1694.4) and SMA50 (1676.3), MACD positive (12.83), ADX 3",
-      "atrPct": 1.922314106418505
-    },
     {
       "symbol": "LINKUSDT",
       "interval": "1h",
@@ -29,17 +16,30 @@
       "atrPct": 2.183247609780209
     },
     {
-      "symbol": "XRPUSDT",
+      "symbol": "ETHUSDT",
+      "interval": "1h",
+      "side": "SHORT",
+      "entry": 1662.05,
+      "qty": 1.6038235079629926,
+      "notional": 2665.6348614098915,
+      "fee": 1.0662539445639567,
+      "openedAt": "2026-11-27T23:58:33.986Z",
+      "aiConfidence": 73,
+      "aiReasoning": "TF agree: Price (1662.05) is below both SMA20 (1697.61) and SMA50 (169 | Price 1662 is below SMA20 (1683.8) and SMA50 (1691.9), trend",
+      "atrPct": 2.2699162394117436
+    },
+    {
+      "symbol": "LTCUSDT",
       "interval": "1h",
       "side": "LONG",
-      "entry": 0.9706,
-      "qty": 1549.1794240038914,
-      "notional": 1503.633548938177,
-      "fee": 0.6014534195752709,
-      "openedAt": "2026-11-27T13:39:22.553Z",
-      "aiConfidence": 56,
-      "aiReasoning": "4h only: Price above SMA20 (0.94) and SMA50 (0.937), trend bullish, MACD positive (0.01083), ADX 35.9 confirm",
-      "atrPct": 2.1084160018839575
+      "entry": 45.18,
+      "qty": 28.910161179522948,
+      "notional": 1306.1610820908468,
+      "fee": 0.5224644328363387,
+      "openedAt": "2026-11-27T23:58:33.986Z",
+      "aiConfidence": 61,
+      "aiReasoning": "1h only: Price 45.18 above SMA20 (44.29) and SMA50 (43.88), bullish trend, MACD positive (0.113), RSI 59.8 ri",
+      "atrPct": 2.1754252829950063
     }
   ],
   "closedTrades": [
@@ -636,10 +636,32 @@
       "reason": "Take profit 3.0% (ATR*3=1.0%)",
       "openedAt": "2026-11-26T00:05:31.412Z",
       "closedAt": "2026-11-27T13:39:32.313Z"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 0.9706,
+      "exit": 0.9486,
+      "pnl": -34.68340074766091,
+      "reason": "Stop loss 1.5% (ATR*1.5=1.0%)",
+      "openedAt": "2026-11-27T13:39:22.553Z",
+      "closedAt": "2026-11-27T23:58:35.742Z"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "side": "LONG",
+      "interval": "1h",
+      "entry": 1703.49,
+      "exit": 1662.05,
+      "pnl": -44.621360465738725,
+      "reason": "Stop loss 1.6% (ATR*1.5=1.1%)",
+      "openedAt": "2026-11-26T13:41:43.215Z",
+      "closedAt": "2026-11-27T23:58:42.060Z"
     }
   ],
-  "totalPnl": 390.38398774071686,
+  "totalPnl": 311.0792265273172,
   "wins": 27,
-  "losses": 27,
+  "losses": 29,
   "marketDataSource": "okx-swap"
 }
